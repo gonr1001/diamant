@@ -175,7 +175,7 @@ public class DxReadInstructorsdotDia implements DxInstructorsReader {
 					&& isnotavail) {
 				instID = token;
 			} else
-				throw new DxException(DConst.INVALID_NAME_OF_THE_INSTRUCTOR
+				throw new DxException(DConst.INVALID_INSTRUCTOR_NAME
 						+ currentLine);
 			// Build Availability
 			dxaAvaTemp = new DxAvailability();

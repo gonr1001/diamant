@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: ConflictsOfAnEventPeriodPanel $Revision: 1.3 $  $Date: 2005-04-11 14:41:15 $
+ * Title: ConflictsOfAnEventPeriodPanel $Revision: 1.4 $  $Date: 2007-07-20 12:52:37 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,8 +15,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.3 $
- * @author  $Author: durp1901 $
+ * @version $Revision: 1.4 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -47,7 +47,7 @@ import dInternal.dTimeTable.Period;
 
 public class ConflictsOfAnEventPeriodPanel extends PeriodPanel{
   
-  private Vector _vec;
+  private Vector<String> _vec;
   private DResource _event;
   private String _shortEventName;
   private Period _totalPeriod;
@@ -89,11 +89,11 @@ public class ConflictsOfAnEventPeriodPanel extends PeriodPanel{
     // the events are displayed
     for(int i = 0; i < _vec.size(); i ++) {
 //        if ( ((String)_vec.get(i)).contains(_shortEventName) ){ // XXXX Pascal: lien inutile avec JDK 1.5
-		if ( ((String)_vec.get(i)).matches(".*" + _shortEventName + ".*") ){
-            JLabel jl = new JLabel((String)_vec.get(i));
+		if ( (_vec.get(i)).matches(".*" + _shortEventName + ".*") ){
+            JLabel jl = new JLabel(_vec.get(i));
             jl.setForeground(Color.BLUE);
             miPanel.add(jl);
-        }  else miPanel.add( new JLabel((String)_vec.get(i)));
+        }  else miPanel.add( new JLabel(_vec.get(i)));
     }
     
     add(topPanel, BorderLayout.NORTH); //add(topPanel);

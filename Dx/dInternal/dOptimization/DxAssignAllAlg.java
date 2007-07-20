@@ -97,7 +97,10 @@ public class DxAssignAllAlg implements Algorithm {
 						int[] dayTime = { value.getIntValue(),
 								currentPeriod.getBeginHour()[0],
 								currentPeriod.getBeginHour()[1] };
-						((DxEvent) currentEvent.getAttach()).setKey(4, _dm
+//						((DxEvent) currentEvent.getAttach()).setKey(4, _dm
+//								.getTTStructure().getCurrentCycle().getPeriod(
+//										dayTime));
+						((DxEvent) currentEvent.getAttach()).setPeriodKey(_dm
 								.getTTStructure().getCurrentCycle().getPeriod(
 										dayTime));
 						((DxEvent) currentEvent.getAttach()).setAssigned(true);

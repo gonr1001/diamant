@@ -90,7 +90,7 @@ public class DxStateBarModel {
 		_stateVec.elementAt(5).setValue(_dm.getSetOfEvents().size());
 		/* 6 */
 		_stateVec.elementAt(6).setValue(
-				_dm.getSetOfEvents().getNumberOfEventAssign());
+				_dm.getSetOfEvents().getNumberOfEventToAssign());
 		/* 7 */
 		_stateVec.elementAt(7).setValue(
 				_dm.getStudentConflicts() + _dm.getInstructorConflicts()

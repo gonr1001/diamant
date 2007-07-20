@@ -49,7 +49,7 @@ public class DxEvent extends DObject {
 
 	/**
 	 * _compositeKey is the composition of activity, type, section and unity
-	 * keys of an activity wich is represent in the following format a.b.c.d
+	 * keys of an activity which is represent in the following format a.b.c.d
 	 */
 	private String _compositeKey;
 
@@ -272,6 +272,7 @@ public class DxEvent extends DObject {
 	public void setPeriodKey(String str) {
 		_ttsKey = str;
 	}
+	
 
 	public void setPermanentState(boolean state) {
 		((Unity) _unity.getAttach()).setPermanent(state);
@@ -284,9 +285,15 @@ public class DxEvent extends DObject {
 	public void setRoomKey(String str) {
 		_roomKey = Long.parseLong(str);
 	}
-
+	/**
+	 * @param name
+	 */
+	public void setRoomKeyWithKey(long key) {
+		_roomKey = key;		
+	}
 	public void setRoomName(String str) {
 		_assignment.setRoomName(str);
+		_roomName=str;
 	}
 
 	/**
@@ -323,5 +330,7 @@ public class DxEvent extends DObject {
 //		strB.append(this._setInstructorKeys.toString());
 		return strB.toString();
 	}
+
+
 
 }

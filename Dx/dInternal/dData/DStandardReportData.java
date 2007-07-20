@@ -403,27 +403,18 @@ public class DStandardReportData {
 							if (confValue.getStringValue().equalsIgnoreCase(
 									DConst.R_ROOM_NAME)) {
 								long roomKey;
-								if(DxFlags.newEvent) {
-									roomKey = ((DxEvent) _dm
-											.getSetOfEvents().getResource(
-													confEvents.getID()).getAttach())
-											.getRoomKey();
+								if (DxFlags.newEvent) {
+									roomKey = ((DxEvent) _dm.getSetOfEvents()
+											.getResource(confEvents.getID())
+											.getAttach()).getRoomKey();
 								} else {
-									roomKey = ((EventDx) _dm
-											.getSetOfEvents().getResource(
-													confEvents.getID()).getAttach())
-											.getRoomKey();
+									roomKey = ((EventDx) _dm.getSetOfEvents()
+											.getResource(confEvents.getID())
+											.getAttach()).getRoomKey();
 								}
-								
-//								if (DxFlags.newRooms) {
-									strBuf = new StringBuffer(_dm
-											.getDxSetOfRooms().getRoomName(
-													roomKey));
-//								} else {
-//									strBuf = new StringBuffer(_dm
-//											.getSetOfRooms().getResource(
-//													roomKey).getID());
-//								}
+
+								strBuf = new StringBuffer(_dm.getDxSetOfRooms()
+										.getRoomName(roomKey));
 
 							}
 

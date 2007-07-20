@@ -22,6 +22,7 @@ import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.DxTools;
 import dInterface.dUtil.TwoButtonsPanel;
 import dInternal.DModel;
+import dInternal.dData.DxResource;
 import dInternal.dData.dActivities.DxActivity;
 import dInternal.dData.dActivities.DxSetOfActivities;
 
@@ -106,7 +107,7 @@ public class DxActivityDlg extends JDialog implements ActionListener,
 		_dxavLeft = new Vector<DxActivity>();
 
 		DxActivity dxaCurrentAct;
-		Iterator itActivities = _dxsoaAct.iterator();
+		Iterator<DxResource> itActivities = _dxsoaAct.iterator();
 		while (itActivities.hasNext()) {
 			dxaCurrentAct = (DxActivity) itActivities.next();
 			if (dxaCurrentAct.getVisibility()) {

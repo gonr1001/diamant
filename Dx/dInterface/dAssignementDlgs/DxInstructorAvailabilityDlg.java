@@ -202,10 +202,10 @@ public class DxInstructorAvailabilityDlg extends JDialog implements
 			for (int i = 0; i < nbOfDays; i++) {
 				JToggleButton tBut = new JToggleButton();
 				if (_currentAvailbility[i][j] == 1) {
-					Vector assignedSites = _currentInst.getAvailability()
+					Vector<String> assignedSites = _currentInst.getAvailability()
 							.isAssignedInPeriod(i, j, _dmodel.getOtherSites());
 					if (assignedSites.size() != 0) {
-						Color col = this.getGridColor((String) assignedSites
+						Color col = this.getGridColor(assignedSites
 								.get(0));
 						if (col == Color.RED || col == Color.BLUE
 								|| col == Color.GREEN) {

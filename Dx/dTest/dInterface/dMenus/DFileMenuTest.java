@@ -44,9 +44,9 @@ import dInterface.dMenus.DxMenuBar;
  * 
  */
 public class DFileMenuTest extends TestCase {
-	DApplication _da;
-
-	DxMenuBar _dxmb;
+//	DApplication _da;
+//
+//	DxMenuBar _dxmb;
 
 	public DFileMenuTest(String name) {
 		super(name);
@@ -57,22 +57,28 @@ public class DFileMenuTest extends TestCase {
 		// the dynamic way :
 		return new TestSuite(DFileMenuTest.class);
 	} // end suite
-
-	public void setUp() {
-		_da = new DApplication();
-		String[] args = { "-d" };
-		_da.doIt(args);
-		_dxmb = _da.getDxMenuBar();
-
-	}
+//
+//	public void setUp() {
+//
+//	}
 
 	public void tesIsDFileMenu() {
+		DApplication _da = new DApplication();
+		String[] args = { "-d" };
+		_da.doIt(args);
+		DxMenuBar _dxmb = _da.getDxMenuBar();
+
 		JMenu dfm = (JMenu) _dxmb.getComponent(0);
 		assertEquals("testIsDFileMenu: assertEquals", true,
 				dfm instanceof DFileMenu);
 	}
 
 	public void testNewTTable() {
+		DApplication _da = new DApplication();
+		String[] args = { "-d" };
+		_da.doIt(args);
+		DxMenuBar _dxmb = _da.getDxMenuBar();
+
 		DFileMenu dfm = (DFileMenu) _dxmb.getComponent(0);
 		assertEquals("testNewTTable:", true, dfm
 				.getMenuComponent(0) instanceof JMenu);
@@ -81,6 +87,11 @@ public class DFileMenuTest extends TestCase {
 	}
 
 	public void testNewTTableCycle() {
+		DApplication _da = new DApplication();
+		String[] args = { "-d" };
+		_da.doIt(args);
+		DxMenuBar _dxmb = _da.getDxMenuBar();
+
 		DFileMenu dfm = (DFileMenu) _dxmb.getComponent(0);
 		assertEquals("testNewTTableCycle: test_newTTable", true, dfm
 				.getMenuComponent(0) instanceof JMenuItem);

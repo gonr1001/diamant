@@ -16,10 +16,18 @@ import eLib.exit.exception.DxException;
 
 public class DxInstructorsReaderTest extends TestCase {
 
+	/**
+	 * 
+	 * 
+	 */
 	public DxInstructorsReaderTest(String name) {
 		super(name);
 	}
 
+	/**
+	 * 
+	 * 
+	 */
 	public static Test suite() {
 		// the type safe way is in SimpleTest
 		// the dynamic way :
@@ -27,11 +35,12 @@ public class DxInstructorsReaderTest extends TestCase {
 	} // end suite
 
 	/**
-	 * test_getSetOfInstructors, Analyser Should fail because of
-	 * invalid instructor count format
+	 * test_exceptionOnFirstLine, analysis should fail if an
+	 * invalid instructor format in first line
 	 */
-	public void test_getSetOfInstructors() {
-		String tokens = "    1k" + "\r\n" + "ADM111" + "\r\n"
+	public void test_exceptionOnFirstLine() {
+		String tokens = "    1k" + "\r\n" 
+			    + "ADM111" + "\r\n"
 				+ "1 1 5 1 5 1 5 1 5 1 5 1 5 1" + "\r\n"
 				+ "1 5 1 5 1 5 1 5 1 5 1 5 1 5" + "\r\n"
 				+ "1 5 5 5 5 5 5 5 5 5 5 1 1 1" + "\r\n"
@@ -41,27 +50,27 @@ public class DxInstructorsReaderTest extends TestCase {
 		DxInstructorsReader dxriTest = new DxReadInstructorsdotDia(ld
 				.buildDataExchange(tokens.getBytes()), 5, 14);
 		try {
-			@SuppressWarnings("unused") 
 			DxSetOfInstructors dxsoi = dxriTest.readSetOfInstructors();
-			assertFalse("test_getSetOfInstructors: Should have failed before",
+			dxsoi.getClass(); // exception is throw before this line
+			assertFalse("test_exceptionOnFirstLine: Should have failed before",
 					true);
-     } catch (DxException e) {
-		assertEquals("test_1_getSetOfInstructors: assertEquals",DConst.INVALID_NUMBER_OF_INSTRUCTORS+"For input string: \"1k\"", e.getMessage());
-			
-	}
-
+		} catch (DxException e) {
+			assertEquals("test_exceptionOnFirstLine:",DConst.INVALID_NUMBER_OF_INSTRUCTORS+"For input string: \"1k\"", e.getMessage());			
+		}
 	}
 
 	/**
-	 * test1_getSetOfInstructors, verifies v1.5 analyser invalid instructor name
+	 * test1_exceptionOnName, analysis fail if an invalid instructor name
 	 */
-	public void test1_getSetOfInstructors() {
-		String tokens = "    2" + "\r\n"  + " " + "\r\n"
+	public void test1_exceptionOnName() {
+		String tokens = "    2" + "\r\n"  
+				+ " " + "\r\n"
 				+ "1 1 5 1 5 1 5 1 5 1 5 1 5 1" + "\r\n"
 				+ "1 5 1 5 1 5 1 5 1 5 1 5 1 5" + "\r\n"
 				+ "1 5 5 5 5 5 5 5 5 5 5 1 1 1" + "\r\n"
 				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n"
-				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n" + "POLM" + "\r\n"
+				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n" 
+				+ "POLM" + "\r\n"
 				+ "1 1 5 1 5 1 5 1 5 1 5 1 5 1" + "\r\n"
 				+ "1 5 1 5 1 5 1 5 1 5 1 5 1 5" + "\r\n"
 				+ "1 5 5 5 5 5 5 5 5 5 5 1 1 1" + "\r\n"
@@ -72,28 +81,30 @@ public class DxInstructorsReaderTest extends TestCase {
 		DxInstructorsReader dxriTest = new DxReadInstructorsdotDia(ld
 				.buildDataExchange(tokens.getBytes()), 5, 14);
 		try {
-			@SuppressWarnings("unused")
 			DxSetOfInstructors dxsoi = dxriTest.readSetOfInstructors();
-			assertFalse("test1_getSetOfInstructors: Should have failed before",
+			dxsoi.getClass(); // exception is throw before this line
+			assertFalse("test1_exceptionOnName: Should have failed before",
 					true);
-      } catch (DxException e) {
+		} catch (DxException e) {
 			assertEquals("test1_1_getSetOfInstructors: assertEquals",
-					DConst.INVALID_NAME_OF_THE_INSTRUCTOR+"2", e
+					DConst.INVALID_INSTRUCTOR_NAME+"2", e
 							.getMessage());
 		}
 	}
 
 	/**
-	 * test2_getSetOfInstructors, verifies v1.5 analyser Suggested instructor
-	 * count and actual number of instrucator in the file does not match
+	 * test_numberOfInstructors, analysis throws exception if
+	 * count and actual number of instructor in the file does not match
 	 */
-	public void test2_getSetOfInstructors() {
-		String tokens = "    3" + "\r\n" + "JAC" + "\r\n"
+	public void test_numberOfInstructors() {
+		String tokens = "    3" + "\r\n" 
+		        + "JAC" + "\r\n"
 				+ "1 1 5 1 5 1 5 1 5 1 5 1 5 1" + "\r\n"
 				+ "1 5 1 5 1 5 1 5 1 5 1 5 1 5" + "\r\n"
 				+ "1 5 5 5 5 5 5 5 5 5 5 1 1 1" + "\r\n"
 				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n"
-				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n" + "POLM" + "\r\n"
+				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n" 
+				+ "POLM" + "\r\n"
 				+ "1 1 5 1 5 1 5 1 5 1 5 1 5 1" + "\r\n"
 				+ "1 5 1 5 1 5 1 5 1 5 1 5 1 5" + "\r\n"
 				+ "1 5 5 5 5 5 5 5 5 5 5 1 1 1" + "\r\n"
@@ -103,28 +114,30 @@ public class DxInstructorsReaderTest extends TestCase {
 		DxInstructorsReader dxriTest = new DxReadInstructorsdotDia(ld
 				.buildDataExchange(tokens.getBytes()), 5, 14);
 		try {
-			@SuppressWarnings("unused") 
 			DxSetOfInstructors dxsoi = dxriTest.readSetOfInstructors();
-			assertFalse("test2_getSetOfInstructors: Should have failed before",
+			dxsoi.getClass(); // exception is throw before this line
+			assertFalse("test_numberOfInstructors: Should have failed before",
 					true);
 
 		} catch (DxException e) {
-			assertEquals("test2_1_getSetOfInstructors: assertEquals",
+			assertEquals("test_numberOfInstructors: ",
 					 DConst.INVALID_NUMBER_OF_INSTRUCTORS, e.getMessage());
 		}
 	}
 
 	/**
-	 * test3_getSetOfInstructors, verifies v1.5 analyser Should fail because of
-	 * invalid number of periods in second instructor, 3rd day
+	 * test_badAvailability, analysis throws a exception when
+	 * the availability format contains a 6
 	 */
-	public void test3_getSetOfInstructors() {
-		String tokens = "    2" + "\r\n" + "John" + "\r\n"
+	public void test_badAvailability6() {
+		String tokens = "    2" + "\r\n" 
+		        + "John" + "\r\n"
 				+ "1 1 5 1 5 1 5 1 5 1 5 1 5 1" + "\r\n"
 				+ "1 5 1 5 1 5 1 5 1 5 1 5 1 5" + "\r\n"
 				+ "1 5 5 5 5 5 5 5 5 5 5 1 1 1" + "\r\n"
 				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n"
-				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n" + "POLM" + "\r\n"
+				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n" 
+				+ "POLM" + "\r\n"
 				+ "1 1 5 1 5 1 5 1 5 1 5 1 5 1" + "\r\n"
 				+ "1 5 1 5 1 5 1 5 1 5 1 5 1 5" + "\r\n"
 				+ "1 5 5 5 5 5 5 5 5 5 5 1 1 1 6" + "\r\n"
@@ -134,29 +147,29 @@ public class DxInstructorsReaderTest extends TestCase {
 		DxInstructorsReader dxriTest = new DxReadInstructorsdotDia(ld
 				.buildDataExchange(tokens.getBytes()), 5, 14);
 		try {
-			@SuppressWarnings("unused") 
 			DxSetOfInstructors dxsoi = dxriTest.readSetOfInstructors();
-			assertFalse("test3_getSetOfInstructors: Shoudd have failed before",
+			dxsoi.getClass(); // exception is throw before this line
+			assertFalse("test_badAvailability6: Shoudd have failed before",
 					true);
-
 		} catch (Exception e) {
-			assertEquals("test3_1_getSetOfInstructors: assertEquals",
+			assertEquals("test_badAvailability6: ",
 					DConst.INVALID_AVAILABILITY_AT+"11", e.getMessage());
 		}
 	}
 
 	/**
-	 * test4_getSetOfInstructors, verifies v1.5 analyser Make sure analyser
-	 * verify nature of period availability. 3 is an invalid period availability
-	 * in v1.5
+	test_badAvailability, analysis throws a exception when
+	 * the availability format contains a 3
 	 */
-	public void test4_getSetOfInstructors() {
-		String tokens = "    2" + "\r\n" + "JAC" + "\r\n"
+	public void test_badAvailability3() {
+		String tokens = "    2" + "\r\n" 
+		        + "JAC" + "\r\n"
 				+ "1 3 5 1 5 1 5 1 5 1 5 1 5 1" + "\r\n"
 				+ "1 5 1 5 1 5 1 5 1 5 1 5 1 5" + "\r\n"
 				+ "1 5 5 5 5 5 5 5 5 5 5 1 1 1" + "\r\n"
 				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n"
-				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n" + "POLM" + "\r\n"
+				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n" 
+				+ "POLM" + "\r\n"
 				+ "1 1 5 1 5 1 5 1 5 1 5 1 5 1" + "\r\n"
 				+ "1 5 1 5 1 5 1 5 1 5 1 5 1 5" + "\r\n"
 				+ "1 5 5 5 5 5 5 5 5 5 5 1 1 1" + "\r\n"
@@ -166,12 +179,12 @@ public class DxInstructorsReaderTest extends TestCase {
 		DxInstructorsReader dxriTest = new DxReadInstructorsdotDia(ld
 				.buildDataExchange(tokens.getBytes()), 5, 14);
 		try {
-			@SuppressWarnings("unused") 
 			DxSetOfInstructors dxsoi = dxriTest.readSetOfInstructors();
-			assertFalse("test4_getSetOfInstructors: Shoudd have failed before",
+			dxsoi.getClass(); // exception is throw before this line
+			assertFalse("test_badAvailability3: Shoudd have failed before",
 					true);
 		} catch (Exception e) {
-			assertEquals("test4_1_getSetOfInstructors: assertEquals",
+			assertEquals("test_badAvailability3:",
 					DConst.INVALID_AVAILABILITY_AT+"3", e.getMessage());
 		}
 	}
@@ -179,13 +192,15 @@ public class DxInstructorsReaderTest extends TestCase {
 	/**
 	 * test5_getSetOfInstructors
 	 */
-	public void test5_getSetOfInstructors() {
-		String tokens = "    2" + "\r\n" + "JAC" + "\r\n"
+	public void test_values() {
+		String tokens = "    2" + "\r\n" 
+				+ "JAC" + "\r\n"
 				+ "1 1 5 1 5 1 5 1 5 1 5 1 5 1" + "\r\n"
 				+ "1 5 1 5 1 5 1 5 1 5 1 5 1 5" + "\r\n"
 				+ "1 5 5 5 5 5 5 5 5 5 5 1 1 1" + "\r\n"
 				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n"
-				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n" + "POLM" + "\r\n"
+				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n" 
+				+ "POLM" + "\r\n"
 				+ "1 1 5 1 5 1 5 1 5 1 5 1 5 1" + "\r\n"
 				+ "1 5 1 5 1 5 1 5 1 5 1 5 1 5" + "\r\n"
 				+ "1 5 5 5 5 5 5 5 5 5 5 1 1 1" + "\r\n"
@@ -196,32 +211,38 @@ public class DxInstructorsReaderTest extends TestCase {
 				.buildDataExchange(tokens.getBytes()), 5, 14);
 		try {
 			DxSetOfInstructors dxsoiTemp = dxriTest.readSetOfInstructors();
-			assertNotSame("test5_getSetOfInstructors: assertNotSame",
-					dxsoiTemp, null);
-			assertNotNull("test5_1_getSetOfInstructors: assertEquals",
+			assertNotNull("test_values: assertNotNull",
+					dxsoiTemp);
+			assertNotNull("test_values: assertEquals",
 					dxsoiTemp.getResource("JAC"));
-			assertNotNull("test5_2_getSetOfInstructors: assertEquals",
+			assertNotNull("test_values: assertEquals",
 					dxsoiTemp.getResource("POLM"));
-		} catch (DxException e) {
-			assertFalse("test5_3_getSetOfInstructors: Should not have failed"
-					+ e.getMessage(), true);
+		} catch (Exception e) {
+			// Should not fail in tests
+			System.out.println("Exception in: test_values");
+			e.printStackTrace();
 		}
 	}
-/**
- * 
- *
- */
-	public void test6_getSetOfInstructors() {
+	
+	/**
+	 * 
+	 *
+	 */
+	public void test_valuesOnDispoInst() {
 		DxSetOfInstructors dxsoi = null;
-		String path = "." + File.separator + "dataTest" + File.separator
-				+ "disprof.sig.DISPROF";
+		
+		StringBuffer fileName = new StringBuffer("." + File.separator);
+		fileName.append("dataTest" + File.separator);
+		fileName.append("testDispoInst.sig");
+
 		DLoadData ld = new DLoadData();
 		byte[] dataloaded = null;
 		try {
-			dataloaded = ld.filterBadChars(path);
-		} catch (DxException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			dataloaded = ld.filterBadChars(fileName.toString());
+		} catch (Exception e) {
+			// Should not fail in tests
+			System.out.println("Exception in: test_valuesOnDispoInst");
+			e.printStackTrace();
 		}
 		
 		DataExchange de = ld.buildDataExchange(dataloaded);
@@ -254,8 +275,9 @@ public class DxInstructorsReaderTest extends TestCase {
 //			assertEquals("test6_10_getSetOfInstructors: assertEquals", -1, dxsoi
 //					.getInstructorKeyByName("YAHIA, AMMAR"));
 		} catch (Exception e) {
-			assertFalse("DxInstructorReaderTest: assertFalse" + e.toString(),
-					true);
+			// Should not fail in tests
+			System.out.println("Exception in: test_valuesOnDispoInst");
+			e.printStackTrace();
 		}
 
 

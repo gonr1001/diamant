@@ -131,9 +131,7 @@ public class DApplication {
 	private DToolBar _toolBar;
 	
 	private boolean _increase;
-	
-//	private boolean _decrease;
-	
+		
 	private boolean _best;
 
 	/**
@@ -147,8 +145,7 @@ public class DApplication {
 		_instance = this;
 		_inDevelopment = false;
 		_best = true;
-		_increase = true;
-//		_decrease = false;
+		_increase = false;
 		_fileToOpenAtStart = "";
 	}
 
@@ -950,11 +947,11 @@ public class DApplication {
 		System.out.println("rAO" + best + " " + inc + " " +  dec);
 		if(best){
 			_best = true;
-			_increase = true;
+			_increase = false;
 		} else {
 			if (inc){
 				_best = false;
-				_increase = true;
+				_increase = true; 
 			} else{
 				_best = false;
 				_increase = false;

@@ -21,7 +21,7 @@
  * in the application directory
  * eventually it is necessary to fix the CLASSPATH
  * include in .login file a line like
- * setenv classpath=%classpath%;INSTALL_DIR/junit.jar
+ * setenv classpath = %classpath%;INSTALL_DIR/junit.jar
  */
 package dmains;
 
@@ -101,61 +101,61 @@ public class DiamantTest {
 		TestSuite suite = new TestSuite("Diamant Tests");
 		
 		suite.addTest(DxAvailabilityTest.suite());
-//		suite.addTest(DxInstructorTest.suite());
-//		suite.addTest(DxSetOfInstructorsTest.suite());
-//		suite.addTest(DxInstructorsReaderTest.suite());
-//		suite.addTest(DxSetOfSitesTest.suite());
-//		suite.addTest(DxAssignAllAlgTest.suite());
-//		suite.addTest(DxAssignRoomsAlgTest.suite());
-//		suite.addTest(RefinedStudMixAlgoTest.suite());
-//		suite.addTest(ResourceTest.suite());
-//		suite.addTest(AssignmentTest.suite());
-//		suite.addTest(UnityTest.suite());
-//		suite.addTest(SectionTest.suite());
-//		suite.addTest(TypeTest.suite());
-//		suite.addTest(ActivityTest.suite());
-//		suite.addTest(PeriodTest.suite());
-//		suite.addTest(SequenceTest.suite());
-//		suite.addTest(DayTest.suite());
-//		suite.addTest(CycleTest.suite());
-//		suite.addTest(TTStructureTest.suite());
-//		suite.addTest(DXToolsMethodsTest.suite());
-//		suite.addTest(EventAttachTest.suite());
-//		suite.addTest(SetOfEventsTest.suite());
-//		suite.addTest(ConflictsAttachTest.suite());
-//		suite.addTest(StudentsConflictsMatrixTest.suite());
-//		suite.addTest(InstructorsConditionsTest.suite());
-//	    suite.addTest(DxSiteReaderTest.suite());
-//		suite.addTest(RoomsConditionsTest.suite());
-//		suite.addTest(StudentsConditionsTest.suite());
-//		suite.addTest(ConditionsTest.suite());
-//		suite.addTest(ScanFileTest.suite());
-//		suite.addTest(DRoomTest.suite());
-//		suite.addTest(SetOfSitesTest.suite());
-//		suite.addTest(SetOfStuSitesTest.suite());
-//		suite.addTest(DSetOfActivitiesTest.suite());
-//		if (DxFlags.newActivity) {
-//			suite.addTest(DxSetOfActivitiesSitesTest.suite());
-//		} else {
-//			suite.addTest(DSetOfActivitiesSitesTest.suite());
-//		}
-//		suite.addTest(DValueTest.suite());
-//		suite.addTest(DObjectTest.suite());
-//		suite.addTest(DxStateTest.suite());
-//		suite.addTest(DxStateBarModelTest.suite());
-//		suite.addTest(DataExchangeTest.suite());
-//		suite.addTest(ByteArrayMessageTest.suite());
-//		suite.addTest(StandardCollectionTest.suite());
-//		suite.addTest(DResourceTest.suite());
-//		suite.addTest(DLoadDataTest.suite());
-//		suite.addTest(DSaveDataTest.suite());
-//		suite.addTest(DSetOfResourcesTest.suite());
-//		suite.addTest(DStandardReportDataTest.suite());
-//		suite.addTest(SetOfStuSitesTest.suite());
-//		suite.addTest(StudentTest.suite());
-//		suite.addTest(ResourceTest.suite());
-//		suite.addTest(DFileMenuTest.suite());
-//		suite.addTest(DxEditEventDlgTest.suite());
+		suite.addTest(DxInstructorTest.suite());
+		suite.addTest(DxSetOfInstructorsTest.suite());
+		suite.addTest(DxInstructorsReaderTest.suite());
+		suite.addTest(DxSetOfSitesTest.suite());
+		suite.addTest(DxAssignAllAlgTest.suite());
+		suite.addTest(DxAssignRoomsAlgTest.suite());
+		suite.addTest(RefinedStudMixAlgoTest.suite());
+		suite.addTest(ResourceTest.suite());
+		suite.addTest(AssignmentTest.suite());
+		suite.addTest(UnityTest.suite());
+		suite.addTest(SectionTest.suite());
+		suite.addTest(TypeTest.suite());
+		suite.addTest(ActivityTest.suite());
+		suite.addTest(PeriodTest.suite());
+		suite.addTest(SequenceTest.suite());
+		suite.addTest(DayTest.suite());
+		suite.addTest(CycleTest.suite());
+		suite.addTest(TTStructureTest.suite());
+		suite.addTest(DXToolsMethodsTest.suite());
+		suite.addTest(EventAttachTest.suite());
+		suite.addTest(SetOfEventsTest.suite());
+		suite.addTest(ConflictsAttachTest.suite());
+		suite.addTest(StudentsConflictsMatrixTest.suite());
+		suite.addTest(InstructorsConditionsTest.suite());
+	    suite.addTest(DxSiteReaderTest.suite());
+		suite.addTest(RoomsConditionsTest.suite());
+		suite.addTest(StudentsConditionsTest.suite());
+		suite.addTest(ConditionsTest.suite());
+		suite.addTest(ScanFileTest.suite());
+		suite.addTest(DRoomTest.suite());
+		suite.addTest(SetOfSitesTest.suite());
+		suite.addTest(SetOfStuSitesTest.suite());
+		suite.addTest(DSetOfActivitiesTest.suite());
+		if (DxFlags.newActivity) {
+			suite.addTest(DxSetOfActivitiesSitesTest.suite());
+		} else {
+			suite.addTest(DSetOfActivitiesSitesTest.suite());
+		}
+		suite.addTest(DValueTest.suite());
+		suite.addTest(DObjectTest.suite());
+		suite.addTest(DxStateTest.suite());
+		suite.addTest(DxStateBarModelTest.suite());
+		suite.addTest(DataExchangeTest.suite());
+		suite.addTest(ByteArrayMessageTest.suite());
+		suite.addTest(StandardCollectionTest.suite());
+		suite.addTest(DResourceTest.suite());
+		suite.addTest(DLoadDataTest.suite());
+		suite.addTest(DSaveDataTest.suite());
+		suite.addTest(DSetOfResourcesTest.suite());
+		suite.addTest(DStandardReportDataTest.suite());
+		suite.addTest(SetOfStuSitesTest.suite());
+		suite.addTest(StudentTest.suite());
+		suite.addTest(ResourceTest.suite());
+		suite.addTest(DFileMenuTest.suite());
+		suite.addTest(DxEditEventDlgTest.suite());
 		suite.addTest(DxDeploymentManagerTest.suite());
 		System.out.println("Bye I was in Diamant tests");
 		return suite;

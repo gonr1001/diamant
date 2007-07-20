@@ -98,7 +98,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 
 	private ButtonsPanel _applyPanel;
 
-	private Vector _events; // contains event resource
+	private Vector<DResource>_events; // contains event resource
 
 	private JList[] _instructorsLists;
 
@@ -114,7 +114,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	 * @param dApplic
 	 *            The application
 	 * @param currentActivity
-	 *            The activity choiced in the activityDialog
+	 *            The activity choised in the activityDialog
 	 * @param canBeModified
 	 */
 
@@ -280,10 +280,10 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	 */
 	private boolean applyChanges() {
 		Cycle cycle = _dModel.getTTStructure().getCurrentCycle();
-		DxEvent event = (DxEvent) ((DResource) _events.get(_tabbedPane
+		DxEvent event = (DxEvent) ( _events.get(_tabbedPane
 				.getSelectedIndex())).getAttach();
 		_dModel.getConditionsToTest().removeEventInTTs(_dModel.getTTStructure(),
-				(DResource) _events.get(_tabbedPane.getSelectedIndex()), false);
+				 _events.get(_tabbedPane.getSelectedIndex()), false);
 
 		JPanel tpane = (JPanel) _tabbedPane.getSelectedComponent();
 		String duration = getSelectedDuration(tpane);
@@ -324,13 +324,13 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		event.setAssigned(assignBut);
 		event.setPermanentState(fixedBut);
 
-		Vector<Object> vect = new Vector<Object>();
+		Vector<DResource> vect = new Vector<DResource>();
 		vect.add(_events.get(_tabbedPane.getSelectedIndex()));
 
 		_dModel.getSetOfEvents().updateActivities(_dModel.getSetOfActivities(),
 				vect);
 		_dModel.getConditionsToTest().addEventInTTs(_dModel.getTTStructure(),
-				(DResource) _events.get(_tabbedPane.getSelectedIndex()), false);
+				 _events.get(_tabbedPane.getSelectedIndex()), false);
 
 		return true;
 	}
@@ -340,7 +340,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	 * 
 	 * @return
 	 */
-	private Vector buildCurrentInstructorList(DxEvent event) {
+	private Vector<String> buildCurrentInstructorList(DxEvent event) {
 		Vector<String> v = new Vector<String>();
 
 		DxSetOfInstructors soi = _dModel.getDxSetOfInstructors();
@@ -411,7 +411,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	}
 
 	private JPanel buildDurationPanel(DxEvent event, boolean canBeModified) {
-		Vector thePeriods = buildThePeriods(_dModel.getTTStructure()
+		Vector<String> thePeriods = buildThePeriods(_dModel.getTTStructure()
 				.getCurrentCycle().getMaxNumberOfPeriodsInASequence());
 		JPanel durationPanel = new JPanel();
 		JComboBox periodsCB = new JComboBox(thePeriods);
@@ -528,7 +528,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		return list;
 	}
 
-	private Vector buildInstructorList() {
+	private Vector<String> buildInstructorList() {
 		Vector<String> v = new Vector<String>();
 		DxSetOfInstructors dxsoi = _dModel.getDxSetOfInstructors();
 		v = dxsoi.getNamesVector();
@@ -541,7 +541,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		int HEIGTH_INSTRUCTOR_PANEL = 120;
 		JPanel localPanel = new JPanel();
 		JPanel instructorsPanel = new JPanel();
-		Vector vect = buildCurrentInstructorList(event);
+		Vector<String> vect = buildCurrentInstructorList(event);
 		_instructorsLists[index] = new JList(vect.toArray());
 		_jScrollPane = new JScrollPane(_instructorsLists[index]);
 		_jScrollPane.setPreferredSize(new Dimension(WIDTH_INSTRUCTOR_PANEL,
@@ -690,9 +690,9 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		_instructorsLists = new JList[_events.size()];
 		for (int i = 0; i < _events.size(); i++) {
 			if (_events.get(i) != null) {
-				DxEvent event = (DxEvent) ((DResource) _events.get(i))
+				DxEvent event = (DxEvent)  _events.get(i)
 						.getAttach();
-				jtp.addTab(((DResource) _events.get(i)).getID(),
+				jtp.addTab((_events.get(i)).getID(),
 						buildEventPanel(event, i, canBeModified));
 			}
 		}// end for
@@ -700,7 +700,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	}// end buildTabbedPane
 
 	// dans ttable
-	private Vector buildThePeriods(int size) {
+	private Vector<String>  buildThePeriods(int size) {
 		Vector<String> v = new Vector<String>();
 		for (int i = 0; i <= size; i++) {
 			v.addElement(Integer.toString(i));
@@ -752,7 +752,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	/**
 	 * Return vector of resources, each resource represent an event
 	 */
-	private Vector getEventsVector(String activityName) {
+	private Vector<DResource> getEventsVector(String activityName) {
 
 		Vector<DResource> events = new Vector<DResource>();
 		String actID = DXToolsMethods.getToken4Activitiy(activityName, ".", 0);
@@ -963,7 +963,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		return ((JToggleButton) (myJPanel.getComponent(1))).isSelected();
 	} // end isFixedButtonSelected
 
-	private Vector makeVector(JList jList) {
+	private Vector<Object> makeVector(JList jList) {
 		Vector<Object> v = new Vector<Object>();
 		if (jList != null) {
 			for (int i = 0; i < jList.getModel().getSize(); i++)

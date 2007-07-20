@@ -27,7 +27,7 @@ public class DConst {
 
 	static ResourceBundle res = ResourceBundle.getBundle("dConstants.DStringFrRes");
 
-  	public final static String V_DATE = "v 2.1.7 17 juillet 07";//res.getString("vDate");
+  	public final static String V_DATE = "v 2.1.8 18 juillet 07";//res.getString("vDate");
   	/** The number format for Hours **/
     public final static NumberFormat HourFormat = NumberFormat.getIntegerInstance();
 
@@ -648,7 +648,7 @@ public static final String PARTS_IN_DIA_SEPARATED_BY = "Wrong number of parts in
 
 public static final int MINIMUN_NAME = 1;
 
-public static final String INVALID_NAME_OF_THE_INSTRUCTOR = "Name of instructor should begin by a Letter at line:";
+public static final String INVALID_INSTRUCTOR_NAME = "Name of instructor should begin by a Letter at line:";
 
 public static final String WRONG_TIME_TABLE_STRUCTURE = "Wrong time table structure!";
 

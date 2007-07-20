@@ -7,6 +7,7 @@ import dInterface.dUtil.DxTools;
 import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
+import dInternal.DxConflictLimits;
 import dInternal.dData.StandardCollection;
 import dInternal.dData.dRooms.Room;
 import dInternal.dData.dRooms.SetOfRooms;
@@ -36,7 +37,7 @@ public class RoomAssignmentAlgo implements Algorithm {
 
 	DResource _allRscFunct;
 
-	int[] _conflictsPreference;
+	DxConflictLimits _dxCL;
 
 	/**
 	 * Constructeur
@@ -45,8 +46,12 @@ public class RoomAssignmentAlgo implements Algorithm {
 		super();
 		_dm = dm;
 		_allRscFunct = _dm.getSetOfRoomsFunctions().getResource(DConst.ALL);
-		_conflictsPreference = _dm.getDxDocument().getDMediator()
-				.getDApplication().getDxPreferences().getConflictLimits();
+		_dxCL = new DxConflictLimits();
+		String str = "conflictLimits;0;0;0;0;30;0;100;";
+		_dxCL.readLimits(str);
+	
+//		_conflictsPreference = _dm.getDxDocument().getDMediator()
+//				.getDApplication().getDxPreferences().getConflictLimits();
 		setNoRoomToEventsWithRoomsNotFixed();
 		doWork();
 	}
@@ -223,9 +228,9 @@ public class RoomAssignmentAlgo implements Algorithm {
 		int PERCENT = 100;
 		int numberOfStudents = Integer.parseInt(event.getID());
 		int needed_room_size = (numberOfStudents * PERCENT)
-				/ _conflictsPreference[FILLFULL_RATE_INDEX];
+				/_dxCL.getRoomBookingRate();// _conflictsPreference[FILLFULL_RATE_INDEX];
 		int needed_room_rest = (numberOfStudents * PERCENT)
-				% _conflictsPreference[FILLFULL_RATE_INDEX];
+				% _dxCL.getRoomBookingRate(); //_conflictsPreference[FILLFULL_RATE_INDEX];
 		if (needed_room_rest > 0)
 			needed_room_size += 1;
 		if (_allRscFunct != null) {

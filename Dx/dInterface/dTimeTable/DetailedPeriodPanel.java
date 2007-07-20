@@ -45,7 +45,7 @@ import dInternal.DResource;
 
 public class DetailedPeriodPanel extends PeriodPanel{
   private JList _jList;
-  private Vector _vec;
+  private Vector<String> _vec;
 
   public DetailedPeriodPanel(){
     super();
@@ -78,13 +78,13 @@ public class DetailedPeriodPanel extends PeriodPanel{
             // SelectiveScheduleManager
 
             DSetOfResources eip = period.getEventsInPeriod();
-            Vector setOfResources = eip.getSetOfResources();
-            Iterator itrSetOfResources = setOfResources.iterator();
+            Vector<DResource>setOfResources = eip.getSetOfResources();
+            Iterator<DResource> itrSetOfResources = setOfResources.iterator();
             DResource res;
             DResource eventRes;
 
             while (itrSetOfResources.hasNext()) {
-                res = (DResource) itrSetOfResources.next();
+                res = itrSetOfResources.next();
                 eventRes = DApplication.getInstance().getCurrentDModel()
                         .getSetOfEvents().getResource(res.getID());
                 if (SelectiveScheduleManager.getInstance().validateElement(

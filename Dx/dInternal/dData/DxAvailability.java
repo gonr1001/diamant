@@ -196,7 +196,7 @@ public class DxAvailability {
 	 * @param site
 	 * @return
 	 */
-	public Vector isAssignedInPeriod(int dayIndex, int periodIndex, Vector sites) {
+	public Vector<String> isAssignedInPeriod(int dayIndex, int periodIndex, Vector sites) {
 		Vector<String> v = new Vector<String>();
 		for (int i = 0; i < sites.size(); i++) {
 			String site = (String) sites.get(i);

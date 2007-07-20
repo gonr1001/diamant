@@ -523,9 +523,9 @@ public abstract class DSetOfResources extends DObject {
 	 * to biggest
 	 */
 	public void sortSetOfResourcesBySelectedAttachField(int field) {
-		Iterator it = _resourceList.iterator();
+		Iterator<DResource> it = _resourceList.iterator();
 		while (it.hasNext())
-			((DResource) it.next()).setSearchField(field);
+			 it.next().setSearchField(field);
 
 		Collections.sort(_resourceList, DResource.FieldComparator);
 		// sort(0, _resourceList.size() - 1, 2, field);
@@ -565,7 +565,7 @@ public abstract class DSetOfResources extends DObject {
 	 * 
 	 * @return Vector It contents the Resources's ID
 	 */
-	public Vector getNamesVector(Vector<String> namesVector) {
+	public Vector<String> getNamesVector(Vector<String> namesVector) {
 		if (_stateSort != 1)
 			sortSetOfResourcesByID();
 		for (int i = 0; i < this._resourceList.size(); i++)
@@ -607,7 +607,7 @@ public abstract class DSetOfResources extends DObject {
 	 *            The comparaison value for the field selected
 	 * @return a vector containing the IDs of the resources selected
 	 */
-	public Vector getIDsByField(int fieldIndex, String fieldValue) {
+	public Vector<String> getIDsByField(int fieldIndex, String fieldValue) {
 		Vector<String> idVector = new Vector<String>();
 		DResource res = null;
 		boolean membership = false;
@@ -629,12 +629,12 @@ public abstract class DSetOfResources extends DObject {
 	 * @param fieldValue
 	 *            The comparaison value for the field selected
 	 */
-	public void setByField(Vector setOfElements, int fieldIndex,
+	public void setByField(Vector<String>setOfElements, int fieldIndex,
 			String fieldValue) {
 		DResource res = null;
 		// boolean membership = false;
 		for (int i = 0; i < setOfElements.size(); i++) {
-			res = getResource((String) setOfElements.get(i));
+			res = getResource( setOfElements.get(i));
 			if (res != null)
 				res.getAttach().setField(fieldIndex, fieldValue);
 		}

@@ -243,7 +243,7 @@ public class SetOfEvents extends DSetOfResources {
 	 * 
 	 * @return
 	 */
-	public int getNumberOfEventAssign() {
+	public int getNumberOfEventToAssign() {
 		int count = 0;
 		for (int i = 0; i < this.size(); i++) {
 			if (DxFlags.newEvent) {
@@ -269,11 +269,11 @@ public class SetOfEvents extends DSetOfResources {
 	 *            <p>
 	 *            A vector containing all changed events
 	 */
-	public void updateActivities(SetOfActivities soa, Vector eventsToUpdate) {
+	public void updateActivities(SetOfActivities soa, Vector<DResource> eventsToUpdate) {
 		if (DxFlags.newEvent) {
 			DxEvent event;
 			for (int i = 0; i < eventsToUpdate.size(); i++) {
-				event = (DxEvent) ((DResource) eventsToUpdate.get(i))
+				event = (DxEvent)  eventsToUpdate.get(i)
 						.getAttach();
 				// System.out.println("SetofE updateActivities event room name:
 				// "+ event.getRoomName());
@@ -316,7 +316,7 @@ public class SetOfEvents extends DSetOfResources {
 		} else {
 			EventDx event;
 			for (int i = 0; i < eventsToUpdate.size(); i++) {
-				event = (EventDx) ((DResource) eventsToUpdate.get(i))
+				event = (EventDx)  eventsToUpdate.get(i)
 						.getAttach();
 
 				long actKey = Long.parseLong(DXToolsMethods.getToken4Activitiy(

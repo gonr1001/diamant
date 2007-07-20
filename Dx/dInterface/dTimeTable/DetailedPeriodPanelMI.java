@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: DetailedPeriodPanel $Revision: 1.16 $  $Date: 2005-03-08 16:00:43 $
+ * Title: DetailedPeriodPanel $Revision: 1.17 $  $Date: 2007-07-20 12:52:37 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,8 +15,8 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.16 $
- * @author  $Author: syay1801 $
+ * @version $Revision: 1.17 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
  * Our convention is that: It's necessary to indicate explicitly
@@ -45,7 +45,7 @@ import dInternal.dTimeTable.Period;
 
 public class DetailedPeriodPanelMI extends PeriodPanel{
   
-  private Vector _vec;
+  private Vector<String> _vec;
   private String _eventName;
   
   public DetailedPeriodPanelMI(){
@@ -78,7 +78,7 @@ public class DetailedPeriodPanelMI extends PeriodPanel{
     topPanel.add(nbAct);
     // the events are displayed
     for(int i = 0; i < _vec.size(); i ++) {
-      miPanel.add( new JLabel((String)_vec.get(i)));
+      miPanel.add( new JLabel(_vec.get(i)));
     }
     add(topPanel, BorderLayout.NORTH); //add(topPanel);
     add(miPanel, BorderLayout.CENTER);

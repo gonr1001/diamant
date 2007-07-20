@@ -1,5 +1,5 @@
 /**
- * Created on Jun 16, 2006
+ * Created on June 16, 2006
  * 
  * 
  * Title: DxAssignAllAlgTest.java 
@@ -29,7 +29,6 @@ import dInterface.DxTTableDoc;
 import dInternal.DModel;
 import dInternal.DxConflictLimits;
 import dInternal.dOptimization.DxAssignAllAlg;
-import eLib.exit.dialog.DxExceptionDlg;
 import eLib.exit.exception.DxException;
 
 /**
@@ -37,28 +36,38 @@ import eLib.exit.exception.DxException;
  * 
  * Description: DxAssignAllAlgTest is a class used to:
  * <p>
- * TODO:insert comments
+ * test the assignment of events to the tt
  * <p>
  * 
  */
 public class DxAssignAllAlgTest extends TestCase {
 
+	/**
+	 * 
+	 * 
+	 */
 	public DxAssignAllAlgTest(String name) {
 		super(name);
 	}
 
+	/**
+	 * 
+	 * 
+	 */
 	public static Test suite() {
 		// the type safe way is in SimpleTest
 		// the dynamic way :
 		return new TestSuite(DxAssignAllAlgTest.class);
 	} // end suite
 
-	@SuppressWarnings("null")
+	/**
+	 * 
+	 * 
+	 */
 	public void test_buildScNoAssigned() {
 		DxConflictLimits dxCL = new DxConflictLimits();
 		String str = "conflictLimits;0;0;0;0;30;0;100;";
 		dxCL.readLimits(str);
-		DModel dm1 = null;
 		DxDocument dxDocument1 = new DxTTableDoc();
 		StringBuffer fileName = new StringBuffer("." + File.separator);
 		fileName.append("dataTest" + File.separator);
@@ -68,28 +77,32 @@ public class DxAssignAllAlgTest extends TestCase {
 		fileName.append("scNoAssigned.dia");
 
 		try {
-			dm1 = new DModel(dxDocument1, fileName.toString());
+			DModel dm1 = new DModel(dxDocument1, fileName.toString());
+			dm1.changeInDModel(new String("DxAssign"));
+			assertEquals("test_buildScNoAssigned: activities size", 140, dm1
+					.getSetOfActivities().size());
+			assertEquals("test_buildScNoAssigned: events size", 275, dm1
+					.getSetOfEvents().size());
+			DxAssignAllAlg alg = new DxAssignAllAlg(dm1, dxCL);
+			alg.doWork();
+			assertEquals("test_buildScNoAssigned: number of Events", 254, dm1
+					.getSetOfEvents().getNumberOfEventToAssign());
 		} catch (Exception e) {
-			// Should not fail in controled conditions
+			// Should not fail in tests
+			System.out.println("Exception in: test_buildScNoAssigned");
+			e.printStackTrace();
 		}
-		dm1.changeInDModel(new String("DxAssign"));
-		assertEquals("test_build: assertEquals", 140, dm1
-				.getSetOfActivities().size());
-		assertEquals("test_build: assertEquals", 275, dm1.getSetOfEvents()
-				.size());
-		DxAssignAllAlg alg = new DxAssignAllAlg(dm1, dxCL);
-		alg.doWork();
-		assertEquals("test_build: assertEquals", 254, dm1.getSetOfEvents()
-				.getNumberOfEventAssign());
-		dm1 = null;
 	}
 
-	@SuppressWarnings("null")
+	/**
+	 * 
+	 * 
+	 */
 	public void test_buildGenNoAssigned() {
 		DxConflictLimits dxCL = new DxConflictLimits();
 		String str = "conflictLimits;0;0;0;0;30;0;100;";
 		dxCL.readLimits(str);
-		DModel dm1 = null;
+
 		DxDocument dxDocument1 = new DxTTableDoc();
 		StringBuffer fileName = new StringBuffer("." + File.separator);
 		fileName.append("dataTest" + File.separator);
@@ -99,20 +112,21 @@ public class DxAssignAllAlgTest extends TestCase {
 		fileName.append("genNoAssigned.dia");
 
 		try {
-			dm1 = new DModel(dxDocument1, fileName.toString());
-
+			DModel dm1 = new DModel(dxDocument1, fileName.toString());
+			dm1.changeInDModel(new Object());
+			assertEquals("test_buildScNoAssigned: activities size", 140, dm1
+					.getSetOfActivities().size());
+			assertEquals("test_buildScNoAssigned: events size", 293, dm1
+					.getSetOfEvents().size());
+			DxAssignAllAlg alg = new DxAssignAllAlg(dm1, dxCL);
+			alg.doWork();
+			assertEquals("test_buildScNoAssigned: number of Events", 245, dm1
+					.getSetOfEvents().getNumberOfEventToAssign());
 		} catch (DxException e) {
-			new DxExceptionDlg(e.getMessage(), e);
+			// Should not fail in tests
+			System.out.println("Exception in: test_buildGenNoAssigned");
+			e.printStackTrace();
 		}
-		dm1.changeInDModel(new Object());
-		assertEquals("test_build: assertEquals", 140, dm1
-				.getSetOfActivities().size());
-		assertEquals("test_build: assertEquals", 293, dm1.getSetOfEvents()
-				.size());
-		DxAssignAllAlg alg = new DxAssignAllAlg(dm1, dxCL);
-		alg.doWork();
-		assertEquals("test_build: assertEquals", 245, dm1.getSetOfEvents()
-				.getNumberOfEventAssign());
-		dm1 = null;
 	}
+
 } // end DxAssignAllAlgTest
