@@ -106,7 +106,9 @@ public class DiamantTest {
 		suite.addTest(DxInstructorsReaderTest.suite());
 		suite.addTest(DxSetOfSitesTest.suite());
 		suite.addTest(DxAssignAllAlgTest.suite());
-		suite.addTest(DxAssignRoomsAlgTest.suite());
+		if (DxFlags.newAlg) {
+			suite.addTest(DxAssignRoomsAlgTest.suite());
+		}
 		suite.addTest(RefinedStudMixAlgoTest.suite());
 		suite.addTest(ResourceTest.suite());
 		suite.addTest(AssignmentTest.suite());
