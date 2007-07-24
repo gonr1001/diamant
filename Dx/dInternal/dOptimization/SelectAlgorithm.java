@@ -56,8 +56,8 @@ public class SelectAlgorithm {
 	private void buildAlgorithmToRun(){
 		_algorithmToRun.removeAllElements();
 		switch(_currentAlgoToExecute){
-		case 0: _algorithmToRun.add(new FirstAffectAlgorithm(_dm));
-		break;
+//		case 0: _algorithmToRun.add(new FirstAffectAlgorithm(_dm));
+//		break;
 		case 1: _algorithmToRun.add(new StudentMixingAlgorithm(_dm,0));
 		break;
 		case 2: _algorithmToRun.add(new StudentMixingAlgorithm(_dm,1));//intermediaire

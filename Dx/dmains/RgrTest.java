@@ -26,8 +26,6 @@ import dTest.dInterface.dMenus.DFileMenuTest;
 import dTest.dInternal.dData.DSaveDataTest;
 import dTest.dInternal.dData.DStandardReportDataTest;
 import dTest.dInternal.dData.dInstructors.DxInstructorsReaderTest;
-import dTest.dInternal.dData.dRooms.DRoomTest;
-import dTest.dInternal.dData.dRooms.SetOfSitesTest;
 import dTest.dInternal.dOptimizationTest.ConditionsTest;
 import dTest.dInternal.dOptimizationTest.DxAssignAllAlgTest;
 import dTest.dInternal.dOptimizationTest.RoomsConditionsTest;
@@ -68,13 +66,10 @@ public class RgrTest {
 			suite.addTest(DxAssignRoomsAlgTest.suite());
 		}
 		suite.addTest(DxInstructorsReaderTest.suite());
-		suite.addTest(SetOfSitesTest.suite());
 		suite.addTest(SetOfEventsTest.suite());
 		suite.addTest(ConditionsTest.suite());
-		suite.addTest(SetOfSitesTest.suite());
 		suite.addTest(DStandardReportDataTest.suite());
 		suite.addTest(DSaveDataTest.suite());
-		suite.addTest(DRoomTest.suite());
 		suite.addTest(DFileMenuTest.suite());
 
 		System.out.println("Bye I was in rgr selected Tests");

@@ -33,11 +33,9 @@ import dInternal.dData.dActivities.Unity;
 import dInternal.dData.dStudents.Student;
 
 import dConstants.DConst;
-import developer.DxFlags;
 import dInternal.DModel;
 import dInternal.dOptimization.ConflictsAttach;
 import dInternal.dOptimization.DxEvent;
-import dInternal.dOptimization.EventDx;
 import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
 import dInternal.dTimeTable.Sequence;
@@ -403,15 +401,9 @@ public class DStandardReportData {
 							if (confValue.getStringValue().equalsIgnoreCase(
 									DConst.R_ROOM_NAME)) {
 								long roomKey;
-								if (DxFlags.newEvent) {
-									roomKey = ((DxEvent) _dm.getSetOfEvents()
-											.getResource(confEvents.getID())
-											.getAttach()).getRoomKey();
-								} else {
-									roomKey = ((EventDx) _dm.getSetOfEvents()
-											.getResource(confEvents.getID())
-											.getAttach()).getRoomKey();
-								}
+								roomKey = ((DxEvent) _dm.getSetOfEvents()
+										.getResource(confEvents.getID())
+										.getAttach()).getRoomKey();
 
 								strBuf = new StringBuffer(_dm.getDxSetOfRooms()
 										.getRoomName(roomKey));

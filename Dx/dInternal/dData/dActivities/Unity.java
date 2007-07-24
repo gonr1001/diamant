@@ -13,7 +13,6 @@ import dInternal.DSetOfResources;
 import dInternal.DValue;
 import dInternal.dData.StandardCollection;
 import dInternal.dOptimization.DxEvent;
-import dInternal.dOptimization.EventDx;
 
 public class Unity extends DObject {
 
@@ -344,14 +343,8 @@ public class Unity extends DObject {
 		this.setAssign(event.isAssigned());
 		this.setPermanent(event.getPermanentState());
 		this.setDuration(event.getDuration());
-//		this.setFirstPreferFunctionRoom(event.getRoomFunction());
 	}
 
 	
-	public void updateWith(EventDx event) {
-		this.setAssign(event.isAssigned());
-		this.setPermanent(event.getPermanentState());
-		this.setDuration(event.getDuration());
-//		this.setFirstPreferFunctionRoom(event.getRoomFunction());
-	}
+
 }

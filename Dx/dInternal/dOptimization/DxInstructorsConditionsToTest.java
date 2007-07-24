@@ -22,7 +22,6 @@ package dInternal.dOptimization;
 import java.util.Vector;
 
 import dConstants.DConst;
-import developer.DxFlags;
 import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.dTimeTable.Period;
@@ -108,46 +107,7 @@ public class DxInstructorsConditionsToTest implements DxCondition {
 	 */
 	private int InstructorAvailibilityConflicts(Period period, int[] perK,
 			String eventKey, ConflictsAttach confV) {
-		if (DxFlags.newEvent) {
-			DxEvent event = (DxEvent) _dm.getSetOfEvents()
-					.getResource(eventKey).getAttach();
-			long instKey[] = event.getInstructorKey();
-			int nbConf = 0;
-			int[][] matrix;
-			period.getBeginHour();// only to disable warning
-			Vector<Long> description = new Vector<Long>();// is a vector of Long
-			// containing
-			// instructor keys
-			for (int i = 0; i < instKey.length; i++) {
-				if (event.getPeriodKey().length() != 0) {
-					matrix = _dm.getDxSetOfInstructors()
-							.getInstructorAvailability(instKey[i])
-							.getMatrixAvailability();
-
-					int dayIndexAvail = _dm.getTTStructure()
-							.findIndexInWeekTable(perK[0]);
-					int perPosition = _dm.getTTStructure().getCurrentCycle()
-							.getPeriodPositionInDay(perK[0], perK[1], perK[2]);
-					if (perPosition > 0) {
-						if (dayIndexAvail < matrix.length && dayIndexAvail >= 0) {
-							if (matrix[dayIndexAvail][perPosition - 1] == _NOTAVAIL) {
-								nbConf++;
-								description.add(new Long(instKey[i]));
-							}
-						} else {// else if ((dayIndexAvail < matrix.length))
-							nbConf++;
-							description.add(new Long(instKey[i]));
-						}// end else if ((dayIndexAvail < matrix.length))
-					}// end if(perPosition>0)
-				}
-			}// end for (int i=0; i< instKey.length; i++)
-			if (nbConf > 0) {
-				confV.addConflict("Disponibilite Enseignant", nbConf,
-						DConst.R_INSTRUCTOR_NAME_AVAIL, description);
-			}
-			return nbConf;
-		} //else {
-		EventDx event = (EventDx) _dm.getSetOfEvents().getResource(eventKey)
+		DxEvent event = (DxEvent) _dm.getSetOfEvents().getResource(eventKey)
 				.getAttach();
 		long instKey[] = event.getInstructorKey();
 		int nbConf = 0;
@@ -183,8 +143,6 @@ public class DxInstructorsConditionsToTest implements DxCondition {
 					DConst.R_INSTRUCTOR_NAME_AVAIL, description);
 		}
 		return nbConf;
-		//} else
-
 	}
 
 	/**
@@ -196,42 +154,15 @@ public class DxInstructorsConditionsToTest implements DxCondition {
 	 */
 	private int InstructorEventsConflicts(Period period, String eventKey,
 			ConflictsAttach confV) {
-		if (DxFlags.newEvent) {
-			DxEvent event1 = (DxEvent) _dm.getSetOfEvents().getResource(
-					eventKey).getAttach();
-			long keys1[] = event1.getInstructorKey();
-			DxEvent event2;
-			int nbConf = 0;
-			for (int i = 0; i < period.getEventsInPeriod().size(); i++) {
-				String event2ID = period.getEventsInPeriod().getResourceAt(i)
-						.getID();
-				event2 = (DxEvent) _dm.getSetOfEvents().getResource(event2ID)
-						.getAttach();
-				long keys2[] = event2.getInstructorKey();
-				for (int j = 0; j < keys1.length; j++) {
-					for (int k = 0; k < keys2.length; k++) {
-						if (!event1.getPrincipalRescKey().equalsIgnoreCase(
-								event2.getPrincipalRescKey())) {
-							if ((keys1[j] == keys2[k])) {
-								confV.addConflict(event2ID, 1,
-										DConst.R_INSTRUCTOR_NAME, new Vector());
-								nbConf++;
-							}
-						}
-					}// end for(int k=0; k< keys2.length; k++)
-				}// end for(int j=0; j< keys1.length; j++)
-			}
-			return nbConf;
-		} //else {
-		EventDx event1 = (EventDx) _dm.getSetOfEvents().getResource(eventKey)
+		DxEvent event1 = (DxEvent) _dm.getSetOfEvents().getResource(eventKey)
 				.getAttach();
 		long keys1[] = event1.getInstructorKey();
-		EventDx event2;
+		DxEvent event2;
 		int nbConf = 0;
 		for (int i = 0; i < period.getEventsInPeriod().size(); i++) {
 			String event2ID = period.getEventsInPeriod().getResourceAt(i)
 					.getID();
-			event2 = (EventDx) _dm.getSetOfEvents().getResource(event2ID)
+			event2 = (DxEvent) _dm.getSetOfEvents().getResource(event2ID)
 					.getAttach();
 			long keys2[] = event2.getInstructorKey();
 			for (int j = 0; j < keys1.length; j++) {
@@ -248,8 +179,6 @@ public class DxInstructorsConditionsToTest implements DxCondition {
 			}// end for(int j=0; j< keys1.length; j++)
 		}
 		return nbConf;
-		//} else
-
 	}
 
 	public int addTest(int[] perKey, Period period, String eventKey) {

@@ -1,6 +1,6 @@
 /**
  * 
- * Title: StudentMixingAlgorithm $Revision: 1.53 $ $Date: 2007-06-07 18:00:53 $
+ * Title: StudentMixingAlgorithm $Revision: 1.54 $ $Date: 2007-07-24 14:04:41 $
  * Description: StudentMixingAlgorithm  
  * 
  * 
@@ -145,7 +145,7 @@ public class StudentMixingAlgorithm implements Algorithm {
     Vector <String> vect= new Vector<String>();
     for (int i=0; i< _dm.getSetOfEvents().size(); i++){
       DResource rescEvent= _dm.getSetOfEvents().getResourceAt(i);
-      if(((EventDx)rescEvent.getAttach()).isPlaceInAPeriod()){
+      if(((DxEvent)rescEvent.getAttach()).isPlaceInAPeriod()){
         String actID= DXToolsMethods.getToken(rescEvent.getID(),".",0);
         String typeID= DXToolsMethods.getToken(rescEvent.getID(),".",1);
         Type type= _dm.getSetOfActivities().getType(actID,typeID);
@@ -172,7 +172,7 @@ public class StudentMixingAlgorithm implements Algorithm {
     for(int j=0; j< ((Section)section.getAttach()).getSetOfUnities().size(); j++){
       DResource unity= ((Section)section.getAttach()).getSetOfUnities().getResourceAt(j);
       String eventID=activityID+"."+typeID+"."+section.getID()+"."+unity.getID()+".";
-      EventDx event= (EventDx)_dm.getSetOfEvents().getResource(eventID).getAttach();
+      DxEvent event= (DxEvent)_dm.getSetOfEvents().getResource(eventID).getAttach();
       if(event.isPlaceInAPeriod()){
         int duration = event.getDuration()/_dm.getTTStructure().getPeriodLenght();
         long dayKey= Long.parseLong(DXToolsMethods.getToken(event.getPeriodKey(),".",0));

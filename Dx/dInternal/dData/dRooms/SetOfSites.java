@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfSites $Revision: 1.13 $  $Date: 2007-04-14 16:54:45 $
+* Title: SetOfSites $Revision: 1.14 $  $Date: 2007-07-24 14:04:43 $
 * Description: SetOfSites is a class used as a data structure container.
 *              It contains the rooms and their attributes.
 *
@@ -15,7 +15,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.13 $
+* @version $Revision: 1.14 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -57,7 +57,7 @@ public class SetOfSites extends DSetOfResources{
 	}
 
 	public boolean analyseTokens(DataExchange de, int beginPosition) {
-
+//
 	    if (de.getHeader().equalsIgnoreCase(DConst.FILE_VER_NAME1_6)) {
 	    	return analyseTokens1_6(de.getContents().getBytes(), beginPosition);
 	    } //else if (token.equalsIgnoreCase(DConst.FILE_VER_NAME1_7)) {

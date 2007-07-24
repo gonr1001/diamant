@@ -41,7 +41,6 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 
 import dConstants.DConst;
-import developer.DxFlags;
 import dInterface.DApplication;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.DxTools;
@@ -49,7 +48,7 @@ import dInternal.DModel;
 import dInternal.dData.dActivities.SetOfActivities;
 import dInternal.dData.dActivities.Unity;
 import dInternal.dOptimization.DxEvent;
-import dInternal.dOptimization.EventDx;
+
 import dInternal.dOptimization.SetOfEvents;
 import dInternal.dUtil.DXToolsMethods;
 
@@ -58,7 +57,7 @@ public abstract class EventsDlgInterface extends JDialog implements
 
 	protected DApplication _dApplic;
 
-	protected EventDx _currEvent;
+	protected DxEvent _currEvent;
 
 	protected int buttonsPanelHeight = 80;
 
@@ -298,14 +297,10 @@ public abstract class EventsDlgInterface extends JDialog implements
 		String _eventFullID;
 		StringTokenizer stk;
 		for (int i = 0; i < _events.size(); i++) {
-			if (DxFlags.newEvent) {
+
 				_eventFullKey = ((DxEvent) _events.getResourceAt(i).getAttach())
 				.getPrincipalRescKey();
-				
-			} else {
-				_eventFullKey = ((EventDx) _events.getResourceAt(i).getAttach())
-				.getPrincipalRescKey();
-			}
+
 
 			stk = new StringTokenizer(_eventFullKey, ".");
 			_currUnity = _activities.getUnity(Long.parseLong(stk.nextToken()),

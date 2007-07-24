@@ -30,6 +30,7 @@ import dInterface.DxDocument;
 import dInternal.dData.DLoadData;
 import dInternal.dData.DSaveData;
 import dInternal.dData.DxAvailability;
+import dInternal.dData.DxResource;
 import dInternal.dData.ExportData;
 import dInternal.dData.StandardCollection;
 import dInternal.dData.dActivities.Activity;
@@ -1006,7 +1007,7 @@ public class DModel extends Observable {
 		return _currentSite;
 	}
 
-	public Vector getOtherSites() {
+	public Vector<String> getOtherSites() {
 		Vector<String> v = new Vector<String>();
 		for (int i = 0; i < _setOfActivitiesSites.size(); i++)
 			if (!_currentSite.equalsIgnoreCase(_setOfActivitiesSites
@@ -1050,7 +1051,7 @@ public class DModel extends Observable {
 	public void updateInstructorAvail() {
 		String currentS = _currentSite;
 		if (isMultiSite()) {
-			Vector sites = this.getSites();
+			Vector<String> sites = this.getSites();
 			for (int i = 0; i < sites.size(); i++) {
 				if (!DConst.ALL_SITES.equalsIgnoreCase(sites.get(i).toString())) {
 					this.setCurrentSite(sites.get(i).toString());
@@ -1079,7 +1080,7 @@ public class DModel extends Observable {
 		int[][] matrix;
 		DxInstructor dxiTemp;
 
-		Iterator itInst = soiRes.iterator();
+		Iterator<DxResource> itInst = soiRes.iterator();
 		while (itInst.hasNext()) {
 			dxiTemp = (DxInstructor) itInst.next();
 			matrix = dxiTemp.getAvailability().getMatrixAvailability();
@@ -1117,7 +1118,7 @@ public class DModel extends Observable {
 	public void resizeSiteAvailability() {// DxSetOfSites dxSetOfSites) {
 		// DxSetOfRooms dxrAllRooms = getDxSetOfRooms();
 		DxSetOfRooms dxrAllRooms = _dxSetOfSites.getAllDxRooms();
-		Iterator itRooms = dxrAllRooms.iterator();
+		Iterator<DxResource> itRooms = dxrAllRooms.iterator();
 		while (itRooms.hasNext()) {
 			DxRoom dxrTemp = (DxRoom) itRooms.next();
 			int[][] nMatrix = dxrTemp.getAvailability().getMatrixAvailability();

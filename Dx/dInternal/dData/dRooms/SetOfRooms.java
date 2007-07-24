@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfSites $Revision: 1.12 $  $Date: 2007-04-14 21:36:43 $
+* Title: SetOfSites $Revision: 1.13 $  $Date: 2007-07-24 14:04:43 $
 * Description: SetOfSites is a class used as a data structure container.
 *              It contains the rooms and their attributes.
 *
@@ -15,7 +15,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.12 $
+* @version $Revision: 1.13 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -57,7 +57,7 @@ public class SetOfRooms extends DSetOfResources {
 		String room = DXToolsMethods.getToken(de.getContents(), ";",DConst.ROOM_NAME_TOKEN).trim();
 		Room roomRsc= (Room)getResource(room);
 		if(roomRsc==null){
-			roomRsc=new Room(room,new RoomAttach());
+//			roomRsc=new Room(room,new RoomAttach());
 			addResource(roomRsc,1);
 		}
 //		RoomAttach roomAttach= ((RoomAttach)roomRsc.getAttach());

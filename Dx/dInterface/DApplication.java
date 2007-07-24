@@ -74,7 +74,6 @@ import dInternal.DModel;
 import dInternal.DxPreferences;
 import dInternal.dOptimization.DxAssignAllAlg;
 import dInternal.dOptimization.DxAssignRoomsAlg;
-import dInternal.dOptimization.RoomAssignmentAlgo;
 import dInternal.dOptimization.SelectAlgorithm;
 import eLib.exit.dialog.DxExceptionDlg;
 import eLib.exit.dialog.FatalProblemDlg;
@@ -129,9 +128,9 @@ public class DApplication {
 	private DxMenuBar _dxMenuBar;
 
 	private DToolBar _toolBar;
-	
+
 	private boolean _increase;
-		
+
 	private boolean _best;
 
 	/**
@@ -192,8 +191,7 @@ public class DApplication {
 		jFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 
 		jFrame.addWindowListener(new WindowAdapter() {
-			public void windowClosing(
-			@SuppressWarnings("unused")
+			public void windowClosing(@SuppressWarnings("unused")
 			WindowEvent e) {
 				closeApplic();
 			}
@@ -820,19 +818,19 @@ public class DApplication {
 					this.getJFrame());
 			_dxMenuBar.afterInitialAssignment();
 
-		} else {			
+		} else {
 			setCurrentDir(".\\dataTest\\");
-//			String fileName = "." + File.separator;
-//			fileName += "dataTest" + File.separator;
-//			fileName += "refFiles" + File.separator;
-//			fileName += "facs" + File.separator;
-//			fileName += "flsh2_1" + File.separator;
-//			fileName += "RoomAffContTT.dia";
+			// String fileName = "." + File.separator;
+			// fileName += "dataTest" + File.separator;
+			// fileName += "refFiles" + File.separator;
+			// fileName += "facs" + File.separator;
+			// fileName += "flsh2_1" + File.separator;
+			// fileName += "RoomAffContTT.dia";
 			try {
 				String filepath = "." + File.separator;
-//				filepath += "refFiles" + File.separator;
-//				filepath += "facs" + File.separator;
-//				filepath += "flsh2_1" + File.separator;
+				// filepath += "refFiles" + File.separator;
+				// filepath += "facs" + File.separator;
+				// filepath += "flsh2_1" + File.separator;
 				filepath += "test2.dia";
 				System.out.println("path: " + filepath);
 				_dMediator.addDxTTableDoc("", getCurrentDir() + filepath);
@@ -865,12 +863,8 @@ public class DApplication {
 	 * 
 	 */
 	public void roomAssignment() {
-		if (DxFlags.newAlg) {
-			new DxAssignRoomsAlg(this.getCurrentDModel(), this
-					.getDxPreferences().getDxConflictLimits(), _increase, _best).doWork();
-		} else {
-			new RoomAssignmentAlgo(this.getCurrentDxDoc().getCurrentDModel());
-		}
+		new DxAssignRoomsAlg(this.getCurrentDModel(), this.getDxPreferences()
+				.getDxConflictLimits(), _increase, _best).doWork();
 		new InformationDlg(this.getJFrame(), DConst.ROOM_ASSIGN_MESSAGE);
 	}
 
@@ -921,8 +915,6 @@ public class DApplication {
 		_fileToOpen = absolutePath;
 	}
 
-
-
 	public void doImport(JFileChooser fc, String str, String dlg) {
 		this.getCurrentDxDoc().setAutoImportDIMFilePath(
 				fc.getSelectedFile().getAbsolutePath().substring(
@@ -934,31 +926,30 @@ public class DApplication {
 		this.getCurrentDModel().setIsATimeTable();
 		this.getCurrentDModel().changeInDModel(dlg);
 		this.setCurrentDir(fc.getSelectedFile().getPath());
-		this.afterImport();		
+		this.afterImport();
 	}
 
 	/**
-	 * @param d 
-	 * @param c 
-	 * @param b 
+	 * @param d
+	 * @param c
+	 * @param b
 	 * 
 	 */
 	public void roomAssignOptions(boolean best, boolean inc, boolean dec) {
-		System.out.println("rAO" + best + " " + inc + " " +  dec);
-		if(best){
+		System.out.println("rAO" + best + " " + inc + " " + dec);
+		if (best) {
 			_best = true;
 			_increase = false;
 		} else {
-			if (inc){
+			if (inc) {
 				_best = false;
-				_increase = true; 
-			} else{
+				_increase = true;
+			} else {
 				_best = false;
 				_increase = false;
 			}
 		}
-		
-		
+
 	}
 
 	/**

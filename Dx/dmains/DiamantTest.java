@@ -51,10 +51,8 @@ import dTest.dInternal.dData.dActivities.DxSetOfActivitiesSitesTest;
 import dTest.dInternal.dData.dInstructors.DxInstructorTest;
 import dTest.dInternal.dData.dInstructors.DxInstructorsReaderTest;
 import dTest.dInternal.dData.dInstructors.DxSetOfInstructorsTest;
-import dTest.dInternal.dData.dRooms.DRoomTest;
 import dTest.dInternal.dData.dRooms.DxSetOfSitesTest;
 import dTest.dInternal.dData.dRooms.DxSiteReaderTest;
-import dTest.dInternal.dData.dRooms.SetOfSitesTest;
 import dTest.dInternal.dData.dStudents.SetOfStuSitesTest;
 import dTest.dInternal.dData.dStudents.StudentTest;
 import dTest.dInternal.dDataTxt.ActivityTest;
@@ -66,7 +64,6 @@ import dTest.dInternal.dDataTxt.UnityTest;
 import dTest.dInternal.dOptimizationTest.ConditionsTest;
 import dTest.dInternal.dOptimizationTest.ConflictsAttachTest;
 import dTest.dInternal.dOptimizationTest.DxAssignAllAlgTest;
-import dTest.dInternal.dOptimizationTest.EventAttachTest;
 import dTest.dInternal.dOptimizationTest.InstructorsConditionsTest;
 import dTest.dInternal.dOptimizationTest.RefinedStudMixAlgoTest;
 import dTest.dInternal.dOptimizationTest.RoomsConditionsTest;
@@ -122,7 +119,7 @@ public class DiamantTest {
 		suite.addTest(CycleTest.suite());
 		suite.addTest(TTStructureTest.suite());
 		suite.addTest(DXToolsMethodsTest.suite());
-		suite.addTest(EventAttachTest.suite());
+//		suite.addTest(EventAttachTest.suite());
 		suite.addTest(SetOfEventsTest.suite());
 		suite.addTest(ConflictsAttachTest.suite());
 		suite.addTest(StudentsConflictsMatrixTest.suite());
@@ -132,8 +129,8 @@ public class DiamantTest {
 		suite.addTest(StudentsConditionsTest.suite());
 		suite.addTest(ConditionsTest.suite());
 		suite.addTest(ScanFileTest.suite());
-		suite.addTest(DRoomTest.suite());
-		suite.addTest(SetOfSitesTest.suite());
+//		suite.addTest(DRoomTest.suite());
+//		suite.addTest(SetOfSitesTest.suite());
 		suite.addTest(SetOfStuSitesTest.suite());
 		suite.addTest(DSetOfActivitiesTest.suite());
 		if (DxFlags.newActivity) {
@@ -156,7 +153,7 @@ public class DiamantTest {
 		suite.addTest(SetOfStuSitesTest.suite());
 		suite.addTest(StudentTest.suite());
 		suite.addTest(ResourceTest.suite());
-		suite.addTest(DFileMenuTest.suite());
+//		suite.addTest(DFileMenuTest.suite());
 		suite.addTest(DxEditEventDlgTest.suite());
 		suite.addTest(DxDeploymentManagerTest.suite());
 		System.out.println("Bye I was in Diamant tests");
