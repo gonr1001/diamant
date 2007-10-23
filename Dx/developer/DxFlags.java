@@ -17,7 +17,7 @@
  * 
  * 
  */
-package dDeveloper;
+package developer;
 
 /**
  * Ruben Gonzalez-Rubio

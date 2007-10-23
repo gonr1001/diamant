@@ -19,7 +19,7 @@
  *
  *
  */
-package dDeveloper;
+package developer;
 
 import javax.swing.JDialog;
 import javax.swing.JFrame;

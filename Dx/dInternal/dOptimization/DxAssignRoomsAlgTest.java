@@ -58,8 +58,15 @@ public class DxAssignRoomsAlgTest extends TestCase {
 	 * 
 	 * 
 	 */
+	
+	private boolean _increase;
+
+	private boolean _best;
+
 	public DxAssignRoomsAlgTest(String name) {
 		super(name);
+		_best = true;
+		_increase = false;
 	}
 
 	/**
@@ -98,7 +105,7 @@ public class DxAssignRoomsAlgTest extends TestCase {
 			assertEquals("test_basicData: events size", 117, dm1
 					.getSetOfEvents().size());
 			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL,
-					DxFlags.increase, DxFlags.best);
+					_increase, _best);
 			alg.doWork();
 			assertEquals("test_basicData: nbEventsToAssign", 116, dm1
 					.getSetOfEvents().getNumberOfEventToAssign());
@@ -135,7 +142,7 @@ public class DxAssignRoomsAlgTest extends TestCase {
 			assertEquals("test_basicData2: events size", 253, dm1
 					.getSetOfEvents().size());
 			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL,
-					DxFlags.increase, DxFlags.best);
+					_increase, _best);
 			alg.doWork();
 			assertEquals("test_basicData2: nbEventsToAssign", 250, dm1
 					.getSetOfEvents().getNumberOfEventToAssign());
@@ -169,7 +176,7 @@ public class DxAssignRoomsAlgTest extends TestCase {
 			dm1.changeInDModel(new Object());
 
 			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL,
-					DxFlags.increase, DxFlags.best);
+					_increase, _best);
 			assertEquals("test_getNumberOfPeriods: nb Periods", 28, alg
 					.getNumberOfPeriods());
 			dm1 = null;
@@ -201,7 +208,7 @@ public class DxAssignRoomsAlgTest extends TestCase {
 			dm.changeInDModel(new Object());
 
 			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm, dxCL,
-					DxFlags.increase, DxFlags.best);
+					_increase, _best);
 			Cycle cycle = dm.getTTStructure().getCurrentCycle();
 			cycle.setCurrentDaySeqPerIndex(0, 0, 0);
 			int periodStep = 1;
@@ -339,7 +346,7 @@ public class DxAssignRoomsAlgTest extends TestCase {
 			dm1.changeInDModel(new Object());
 
 			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL,
-					DxFlags.increase, DxFlags.best);
+					_increase, _best);
 			Cycle cycle = dm1.getTTStructure().getCurrentCycle();
 			cycle.setCurrentDaySeqPerIndex(0, 0, 0);
 			int periodStep = 1;
