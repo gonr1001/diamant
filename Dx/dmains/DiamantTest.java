@@ -153,7 +153,7 @@ public class DiamantTest {
 		suite.addTest(SetOfStuSitesTest.suite());
 		suite.addTest(StudentTest.suite());
 		suite.addTest(ResourceTest.suite());
-//		suite.addTest(DFileMenuTest.suite());
+		suite.addTest(DFileMenuTest.suite());
 		suite.addTest(DxEditEventDlgTest.suite());
 		suite.addTest(DxDeploymentManagerTest.suite());
 		System.out.println("Bye I was in Diamant tests");

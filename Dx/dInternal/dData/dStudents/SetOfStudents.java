@@ -1,6 +1,6 @@
 /**
  *
- * Title: SetOfStudents $Revision: 1.20 $  $Date: 2007-07-13 15:36:21 $
+ * Title: SetOfStudents $Revision: 1.21 $  $Date: 2007-10-23 18:19:51 $
  * Description: SetOfStudents is a class used as a data structure container.
  *              It contains the student and their attributes.
  *
@@ -15,7 +15,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.20 $
+ * @version $Revision: 1.21 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -50,10 +50,10 @@ public class SetOfStudents extends DSetOfResources {
 		super();
 	}
 
-//	public boolean analyseTokens(DataExchange de, int beginPosition) {
-//		de.toString();
-//		return false;
-//	}
+	//	public boolean analyseTokens(DataExchange de, int beginPosition) {
+	//		de.toString();
+	//		return false;
+	//	}
 
 	/**
 	 * 
@@ -80,9 +80,9 @@ public class SetOfStudents extends DSetOfResources {
 			try {
 				addCourses1_6(stuLine, courses);
 			} catch (StringIndexOutOfBoundsException e) {
-				new DxExceptionDlg(e.getMessage()+DConst.CR_LF+stuLine);
-			//	System.exit(-1);
-			} 
+				new DxExceptionDlg(e.getMessage() + DConst.CR_LF + stuLine);
+				//	System.exit(-1);
+			}
 		} else {
 			addCourses1_5(stuLine, courses);
 		}
@@ -139,7 +139,7 @@ public class SetOfStudents extends DSetOfResources {
 		int diff;
 		String iD, key;
 		Student studentRes;
-		Vector <String> list = new Vector <String>();
+		Vector<String> list = new Vector<String>();
 		for (int i = 0; i < size(); i++) {
 			studentRes = (Student) getResourceAt(i);
 			if (studentRes.isInGroup(activityID + typeID, group)) {
@@ -172,18 +172,18 @@ public class SetOfStudents extends DSetOfResources {
 			int group, int order) {
 		int iDLength = DConst.STUDENT_ID_LENGTH;
 		int keyLength = DConst.STUDENT_KEY_LENGTH;
-		
+
 		int diff;
 		String iD, key, studentProgram, str = null;
 		Student studentRes;
-		Vector <String> list = new Vector <String>();
+		Vector<String> list = new Vector<String>();
 		if (order == 0)
 			sortSetOfResourcesByID();
 		if (order == 1)
 			sortSetOfResourcesByKey();
 		if (order == 2)
 			sortSetOfResourcesBySelectedAttachField(5);//sort by _auxField
-		
+
 		for (int i = 0; i < size(); i++) {
 			studentRes = (Student) getResourceAt(i);
 			if (studentRes.isInGroup(activityID + typeID, group)) {
@@ -228,14 +228,14 @@ public class SetOfStudents extends DSetOfResources {
 
 	public Vector getStudentsByGroupTable(String activityID, String typeID,
 			int group, int order) {
-		Vector <Vector>v = new Vector <Vector>();
-		Vector <String> vID = new Vector <String>();
-		Vector <String> vKey = new Vector <String> ();
-		Vector <String> vSelField = new Vector <String>();
-		Vector <String> vFixState = new Vector <String>();
-		
+		Vector<Vector> v = new Vector<Vector>();
+		Vector<String> vID = new Vector<String>();
+		Vector<String> vKey = new Vector<String>();
+		Vector<String> vSelField = new Vector<String>();
+		Vector<String> vFixState = new Vector<String>();
+
 		int keyLength = DConst.STUDENT_KEY_LENGTH;
-		
+
 		int diff;
 		String iD, key, studentProgram;
 		Student studentRes;
@@ -246,7 +246,7 @@ public class SetOfStudents extends DSetOfResources {
 			sortSetOfResourcesByKey();
 		if (order == 2)
 			sortSetOfResourcesBySelectedAttachField(5);//sort by _auxField
-		
+
 		for (int i = 0; i < size(); i++) {
 			studentRes = (Student) getResourceAt(i);
 			if (studentRes.isInGroup(activityID + typeID, group)) {
@@ -326,7 +326,7 @@ public class SetOfStudents extends DSetOfResources {
 	 */
 	public static Vector createAVectorInstance(DSetOfResources sos) {
 		Vector v = new Vector();
-		Vector [] vec = {new Vector(), new Vector<String>(), new Vector(),
+		Vector[] vec = { new Vector(), new Vector<String>(), new Vector(),
 				new Vector<String>() };
 		int keyLength = DConst.STUDENT_KEY_LENGTH;
 		int diff;
@@ -474,13 +474,14 @@ public class SetOfStudents extends DSetOfResources {
 	 * @param stuLine
 	 * @param courses
 	 */
-	private void addCourses1_6(String nameLine, String coursesLine) throws StringIndexOutOfBoundsException{
+	private void addCourses1_6(String nameLine, String coursesLine)
+			throws StringIndexOutOfBoundsException {
 		String stuInfo = buildLines1_6(nameLine, coursesLine);
 		String stuLine = DXToolsMethods.getToken(stuInfo, DConst.CR_LF,
 				DConst.STUDENT_NAME_LINE).trim();
 		String studentName = stuLine.substring(DConst.BEGIN_STUDENT_NAME)
 				.trim();
-	//	System.out.println(stuLine);
+		//	System.out.println(stuLine);
 		String courses = DXToolsMethods.getToken(stuInfo, DConst.CR_LF,
 				DConst.STUDENT_COURSE_LINE).trim();
 		long studentKey = (new Integer(stuLine.substring(

@@ -44,8 +44,8 @@ import dInternal.dData.dRooms.DxReadSitedotDia;
 import dInternal.dData.dRooms.DxSetOfRooms;
 import dInternal.dData.dRooms.DxSetOfSites;
 import dInternal.dData.dRooms.DxSiteReader;
-import dInternal.dData.dRooms.SetOfCategories;
-import dInternal.dData.dRooms.SetOfRooms;
+//import dInternal.dData.dRooms.SetOfCategories;
+//import dInternal.dData.dRooms.SetOfRooms;
 import dInternal.dData.dRooms.SetOfSites;
 import dInternal.dData.dStudents.SetOfStuCourses;
 import dInternal.dData.dStudents.SetOfStuSites;
@@ -1171,28 +1171,28 @@ public class DLoadData {
 	 * @return
 	 */
 	private String getCategory(DSetOfResources sourceCategories, int index) {
-		if (sourceCategories instanceof SetOfCategories) {
-			DResource rsc = sourceCategories.getResourceAt(index);
-			if (rsc != null)
-				return rsc.getID();
-			return null;
-		}
+//		if (sourceCategories instanceof SetOfCategories) {
+//			DResource rsc = sourceCategories.getResourceAt(index);
+//			if (rsc != null)
+//				return rsc.getID();
+//			return null;
+//		}
 
 		return DConst.ROOM_STANDARD_CAT;
 	}
 
-	/**
-	 * 
-	 * @param sourceSites
-	 * @param index
-	 * @return
-	 */
+//	/**
+//	 * 
+//	 * @param sourceSites
+//	 * @param index
+//	 * @return
+//	 */
 	private int getCategorySize(DSetOfResources sourceCategories) {
-		if (sourceCategories instanceof SetOfCategories) {
-			return sourceCategories.size();
-		}
-
-		return 1;
+//		if (sourceCategories instanceof SetOfCategories) {
+//			return sourceCategories.size();
+//		}
+//
+		return 11111;
 	}
 
 	/**
@@ -1203,12 +1203,12 @@ public class DLoadData {
 	 */
 	private DSetOfResources getRscCategory(DSetOfResources sourceCategories,
 			int index) {
-		if (sourceCategories instanceof SetOfRooms) {
-			DResource rsc = sourceCategories.getResourceAt(index);
-			if (rsc != null)
-				return (DSetOfResources) rsc.getAttach();
-			return null;
-		}
+//		if (sourceCategories instanceof SetOfRooms) {
+//			DResource rsc = sourceCategories.getResourceAt(index);
+//			if (rsc != null)
+//				return (DSetOfResources) rsc.getAttach();
+//			return null;
+//		}
 
 		return sourceCategories;
 	}
@@ -1256,9 +1256,9 @@ public class DLoadData {
 		return _dxSoSRooms;
 	}
 
-	public SetOfSites getSetOfSitesRooms() {
-		return _roomsList;
-	}
+//	public SetOfSites getSetOfSitesRooms() {
+//		return _roomsList;
+//	}
 
 	public DxActivitiesSitesReader getDxActivitiesSitesReader() {
 		return _dxasr;

@@ -220,7 +220,7 @@ public class DxStudentConflictMatrix {
 						.getStudentRegistered().size(); k++) {
 					groupInd = this.getIndexOfSmallerValue(tab);// groupInc%
 																
-					String studentKey = (String) ((Activity) rescActivity
+					String studentKey =  ((Activity) rescActivity
 							.getAttach()).getStudentRegistered().get(k);
 					Student student = (Student) sos.getResource(Long
 							.parseLong(studentKey));

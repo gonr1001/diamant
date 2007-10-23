@@ -222,7 +222,7 @@ public class Activity extends DObject {
 	 * 
 	 * @return
 	 */
-	public Vector getStudentRegistered() {
+	public Vector<String> getStudentRegistered() {
 		return _studentRegistered;
 	}
 

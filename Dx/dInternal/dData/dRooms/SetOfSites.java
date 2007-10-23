@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfSites $Revision: 1.14 $  $Date: 2007-07-24 14:04:43 $
+* Title: SetOfSites $Revision: 1.15 $  $Date: 2007-10-23 18:19:51 $
 * Description: SetOfSites is a class used as a data structure container.
 *              It contains the rooms and their attributes.
 *
@@ -15,7 +15,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.14 $
+* @version $Revision: 1.15 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -128,23 +128,25 @@ public class SetOfSites extends DSetOfResources{
 		 * @return the string itself
 		 * */
 		public  String toWrite(){
-			String reslist="";
-			Vector resourceList = getSetOfResources();
-			if(resourceList.size()>0){
-				SetOfCategories setOfCat;
-				DResource siteRsc;
-				for (int i=0; i< resourceList.size()-1; i++){
-					siteRsc= ((DResource)resourceList.get(i));
-					setOfCat = (SetOfCategories)siteRsc.getAttach();
-					reslist+= setOfCat.toWrite(siteRsc.getID());
-				}
-				siteRsc= ((DResource)resourceList.get(resourceList.size()-1));
-				setOfCat = (SetOfCategories)siteRsc.getAttach();
-				reslist+= setOfCat.toWrite(siteRsc.getID());
-			}// end if(_resourceList.size()>0)
-			return reslist;
-			
+//			String reslist="";
+//			Vector resourceList = getSetOfResources();
+//			if(resourceList.size()>0){
+//				SetOfCategories setOfCat;
+//				DResource siteRsc;
+//				for (int i=0; i< resourceList.size()-1; i++){
+//					siteRsc= ((DResource)resourceList.get(i));
+//					setOfCat = (SetOfCategories)siteRsc.getAttach();
+//					reslist+= setOfCat.toWrite(siteRsc.getID());
+//				}
+//				siteRsc= ((DResource)resourceList.get(resourceList.size()-1));
+//				setOfCat = (SetOfCategories)siteRsc.getAttach();
+//				reslist+= setOfCat.toWrite(siteRsc.getID());
+//			}// end if(_resourceList.size()>0)
+//			return reslist;
+//			
+			return new String("some horrible string");
 		}
+		
 	/**
 	 * analyseTokens1_5 will analyse the tokens of files
 	 *        without any header like Diamant1.6
@@ -349,12 +351,12 @@ public class SetOfSites extends DSetOfResources{
 		      		String site= DConst.ROOM_DEFAULT_SITE;
 		      		DResource siteRsc= getResource(site);
 		      		if(siteRsc==null){
-		      			siteRsc=new DResource(site,new SetOfCategories());
+		//      			siteRsc=new DResource(site,new SetOfCategories());
 		      			addResource(siteRsc,1);
 		      		}
-		      		SetOfCategories setOfCat= ((SetOfCategories)siteRsc.getAttach());
+		//      		SetOfCategories setOfCat= ((SetOfCategories)siteRsc.getAttach());
 		      		DataExchange dEx= new ByteArrayMsg(DConst.FILE_VER_NAME1_6, line1_6);
-		      		setOfCat.buildSetOfResources(dEx /*,0*/);
+		//      		setOfCat.buildSetOfResources(dEx /*,0*/);
 				break;
 			}// end switch(position)
 		     
@@ -390,12 +392,12 @@ public class SetOfSites extends DSetOfResources{
 		      		String site = DXToolsMethods.getToken(currentLine, ";",DConst.ROOM_SITE_TOKEN).trim();
 		      		DResource siteRsc= getResource(site);
 		      		if(siteRsc==null){
-		      			siteRsc=new DResource(site,new SetOfCategories());
+		 //     			siteRsc=new DResource(site,new SetOfCategories());
 		      			addResource(siteRsc,1);
 		      		}
-		      		SetOfCategories setOfCat= ((SetOfCategories)siteRsc.getAttach());
+		//      		SetOfCategories setOfCat= ((SetOfCategories)siteRsc.getAttach());
 		      		DataExchange dEx= new ByteArrayMsg(DConst.FILE_VER_NAME1_6, currentLine);
-		      		setOfCat.buildSetOfResources(dEx/*,0*/);
+		//      		setOfCat.buildSetOfResources(dEx/*,0*/);
 				break;
 			}// end switch(position)
 		}// end while (st.hasMoreElements())

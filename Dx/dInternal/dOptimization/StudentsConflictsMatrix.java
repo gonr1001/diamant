@@ -164,7 +164,7 @@ public class StudentsConflictsMatrix {
 
         for (int k=0; k< ((Activity)rescActivity.getAttach()).getStudentRegistered().size(); k++){
           groupInd= this.getIndexOfSmallerValue(tab);//groupInc% ((Type)rescType.getAttach()).getSetOfSections().size();
-          String studentKey = (String)((Activity)rescActivity.getAttach()).getStudentRegistered().get(k);
+          String studentKey = ((Activity)rescActivity.getAttach()).getStudentRegistered().get(k);
           Student student = (Student)sos.getResource(Long.parseLong(studentKey));
           int groupValue = DxTools.STIConvertGroupToInt(((Type)rescType.getAttach()).getSetOfSections().getResourceAt(groupInd).getID());
           //int groupValue = (int)((Type)rescType.getAttach()).getSetOfSections().getResourceAt(groupInd).getKey();

@@ -47,9 +47,9 @@ import dInternal.dData.dInstructors.DxSetOfInstructors;
 import dInternal.dData.dRooms.DxRoom;
 import dInternal.dData.dRooms.DxSetOfRooms;
 import dInternal.dData.dRooms.DxSetOfSites;
-import dInternal.dData.dRooms.SetOfCategories;
-import dInternal.dData.dRooms.SetOfRooms;
-import dInternal.dData.dRooms.SetOfRoomsFunctions;
+//import dInternal.dData.dRooms.SetOfCategories;
+//import dInternal.dData.dRooms.SetOfRooms;
+//import dInternal.dData.dRooms.SetOfRoomsFunctions;
 import dInternal.dData.dRooms.SetOfSites;
 import dInternal.dData.dStudents.SetOfStuSites;
 import dInternal.dData.dStudents.SetOfStudents;
@@ -98,11 +98,11 @@ public class DModel extends Observable {
 
 	private DxSetOfActivitiesSites _dxsoasSetOfAct;
 
-	private SetOfRoomsFunctions _setOfRoomsFunctions;
+//	private SetOfRoomsFunctions _setOfRoomsFunctions;
 
 	private SetOfSites _setOfSites;
 
-	private SetOfCategories _setOfCategories;
+//	private SetOfCategories _setOfCategories;
 
 	private SetOfStuSites _setOfStuSites;
 
@@ -183,8 +183,8 @@ public class DModel extends Observable {
 			_isOnlyATimeTable = true;
 		}
 		_type = type;
-		_setOfRoomsFunctions = new SetOfRoomsFunctions();
-		_setOfRoomsFunctions.functionReader();
+//		_setOfRoomsFunctions = new SetOfRoomsFunctions();
+//		_setOfRoomsFunctions.functionReader();
 		this.notifyObservers(this);
 
 	}
@@ -231,8 +231,8 @@ public class DModel extends Observable {
 		// _isOnlyATimeTable = true;
 		// }
 		// _type = type;
-		_setOfRoomsFunctions = new SetOfRoomsFunctions();
-		_setOfRoomsFunctions.functionReader();
+//		_setOfRoomsFunctions = new SetOfRoomsFunctions();
+//		_setOfRoomsFunctions.functionReader();
 		this.notifyObservers(this);
 
 	}
@@ -613,36 +613,36 @@ public class DModel extends Observable {
 	 * 
 	 * @return
 	 */
-	public SetOfRooms getSetOfRooms() {
-		SetOfRooms sorTmp = new SetOfRooms();
-		if (_currentSite.equalsIgnoreCase(DConst.ALL_SITES)) {
-			sorTmp = new SetOfRooms();
-			for (int i = 0; i < _setOfSites.size(); i++) {
-				SetOfCategories soc = (SetOfCategories) _setOfSites
-						.getResourceAt(i).getAttach();
-				for (int j = 0; j < soc.size(); j++) {
-					SetOfRooms sor = (SetOfRooms) soc.getResourceAt(j)
-							.getAttach();
-					for (int k = 0; k < soc.size(); k++) {
-						sorTmp.addResource(sor.getResourceAt(k), 1);
-					}
-				}// end for (int j = 0; j < sor.size(); j++)
-			}// end for (int i = 0; i < _setOfSites
-			// return sorTmp;
-		} else {// else if (_currentSite.equalsIgnoreCase(DConst.ALL_SITES))
-			DResource resc = _setOfSites.getResource(_currentSite);
-			if (resc != null) {
-				SetOfCategories site = (SetOfCategories) resc.getAttach();
-				for (int i = 0; i < site.size(); i++) {
-					SetOfRooms catSOR = (SetOfRooms) site.getResourceAt(i)
-							.getAttach();
-					for (int j = 0; j < catSOR.size(); j++)
-						sorTmp.addResource(catSOR.getResourceAt(j), 1);
-				}
-			}
-		}
-		return sorTmp;
-	}
+//	public SetOfRooms getSetOfRooms() {
+//		SetOfRooms sorTmp = new SetOfRooms();
+////		if (_currentSite.equalsIgnoreCase(DConst.ALL_SITES)) {
+////			sorTmp = new SetOfRooms();
+////			for (int i = 0; i < _setOfSites.size(); i++) {
+////				SetOfCategories soc = (SetOfCategories) _setOfSites
+////						.getResourceAt(i).getAttach();
+////				for (int j = 0; j < soc.size(); j++) {
+////					SetOfRooms sor = (SetOfRooms) soc.getResourceAt(j)
+////							.getAttach();
+////					for (int k = 0; k < soc.size(); k++) {
+////						sorTmp.addResource(sor.getResourceAt(k), 1);
+////					}
+////				}// end for (int j = 0; j < sor.size(); j++)
+////			}// end for (int i = 0; i < _setOfSites
+////			// return sorTmp;
+////		} else {// else if (_currentSite.equalsIgnoreCase(DConst.ALL_SITES))
+////			DResource resc = _setOfSites.getResource(_currentSite);
+////			if (resc != null) {
+////				SetOfCategories site = (SetOfCategories) resc.getAttach();
+////				for (int i = 0; i < site.size(); i++) {
+////					SetOfRooms catSOR = (SetOfRooms) site.getResourceAt(i)
+////							.getAttach();
+////					for (int j = 0; j < catSOR.size(); j++)
+////						sorTmp.addResource(catSOR.getResourceAt(j), 1);
+////				}
+////			}
+////		}
+//		return sorTmp;
+//	}
 
 	public DxSetOfRooms getDxSetOfRooms() {
 		// // DxSetOfRooms dxsorTmp = new DxSetOfRooms();
@@ -677,13 +677,13 @@ public class DModel extends Observable {
 		return _dxSetOfSites.getAllDxRooms();
 	}
 
-	/**
-	 * 
-	 * @return
-	 */
-	public SetOfCategories getSetOfCategories() {
-		return _setOfCategories;
-	}
+//	/**
+//	 * 
+//	 * @return
+//	 */
+//	public SetOfCategories getSetOfCategories() {
+//		return _setOfCategories;
+//	}
 
 	/**
 	 * @return Returns the _setOfActivitiesSites.
@@ -711,13 +711,13 @@ public class DModel extends Observable {
 		return _setOfEvents;
 	}
 
-	/**
-	 * 
-	 * @return
-	 */
-	public SetOfRoomsFunctions getSetOfRoomsFunctions() {
-		return _setOfRoomsFunctions;
-	}
+//	/**
+//	 * 
+//	 * @return
+//	 */
+//	public SetOfRoomsFunctions getSetOfRoomsFunctions() {
+//		return _setOfRoomsFunctions;
+//	}
 
 	/**
 	 * 
@@ -1102,14 +1102,14 @@ public class DModel extends Observable {
 	 * @param ofSites
 	 */
 	public void resizeSiteAvailability(SetOfSites setOfSites) {
-		for (int i = 0; i < setOfSites.size(); i++) {
-			SetOfCategories soc = (SetOfCategories) setOfSites.getResourceAt(i)
-					.getAttach();
-			for (int j = 0; j < soc.size(); j++) {
-				SetOfRooms sor = (SetOfRooms) soc.getResourceAt(j).getAttach();
-				resizeResource(sor);
-			} // end for (int j=0; j < soc.size(); j++) {
-		}// end for (int i=0; i< setOfSites.size(); i++){
+//		for (int i = 0; i < setOfSites.size(); i++) {
+//			SetOfCategories soc = (SetOfCategories) setOfSites.getResourceAt(i)
+//					.getAttach();
+//			for (int j = 0; j < soc.size(); j++) {
+//				SetOfRooms sor = (SetOfRooms) soc.getResourceAt(j).getAttach();
+//				resizeResource(sor);
+//			} // end for (int j=0; j < soc.size(); j++) {
+//		}// end for (int i=0; i< setOfSites.size(); i++){
 	} // resizeSiteAvailability
 
 	/**
