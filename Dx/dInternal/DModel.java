@@ -27,6 +27,7 @@ import dConstants.DConst;
 import developer.DxFlags;
 import dInterface.DApplication;
 import dInterface.DxDocument;
+import dInterface.DxPreferences;
 import dInternal.dData.DLoadData;
 import dInternal.dData.DSaveData;
 import dInternal.dData.DxAvailability;

@@ -40,7 +40,7 @@ public class DxDeploymentManager {
 
 	private static Vector<String> _vsListFiles;
 
-	// list of ressources to deploy
+	// list of resources to deploy
 	private Vector<DxConfigResource> _vsFileNames;
 
 	private static Logger _logger = Logger.getLogger(Diamant.class.getName());

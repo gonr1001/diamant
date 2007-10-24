@@ -71,7 +71,6 @@ import dInterface.dUtil.ConflictDlg;
 import dInterface.dUtil.PLAFDlg;
 import dInterface.selectiveSchedule.dialog.SelectiveScheduleDlg;
 import dInternal.DModel;
-import dInternal.DxPreferences;
 import dInternal.dOptimization.DxAssignAllAlg;
 import dInternal.dOptimization.DxAssignRoomsAlg;
 import dInternal.dOptimization.SelectAlgorithm;
@@ -146,6 +145,10 @@ public class DApplication {
 		_best = true;
 		_increase = false;
 		_fileToOpenAtStart = "";
+		String str = System.getProperty("user.home") + File.separator + "pref"
+				+ File.separator + "pref.txt";
+		System.out.println("Preference file is in :" + str);
+		_preferences = new DxPreferences(str);
 	}
 
 	// singleton: has only one instance
@@ -160,10 +163,11 @@ public class DApplication {
 		if (args.length > 0) {
 			lookUpforOptions(args); // args came from the command line
 		}
-		String str = System.getProperty("user.home") + File.separator + "pref"
-				+ File.separator + "pref.txt";
-		System.out.println("Preference file is in :" + str);
-		_preferences = new DxPreferences(str);
+		// String str = System.getProperty("user.home") + File.separator +
+		// "pref"
+		// + File.separator + "pref.txt";
+		// System.out.println("Preference file is in :" + str);
+		// _preferences = new DxPreferences(str);
 		_dMediator = new DMediator(this);
 		_currentDir = System.getProperty("user.dir");
 		_jFrame = createFrame(DConst.APP_NAME + "   " + DConst.V_DATE);
@@ -290,7 +294,7 @@ public class DApplication {
 		// Force SwingApp to come up in the System L&F
 		try {
 			UIManager.setLookAndFeel(str);
-			// System.out.println("pref" + str );
+			System.out.println("pref" + str);
 		} catch (UnsupportedLookAndFeelException ulafe) {
 			new FatalProblemDlg("UnsupportedLookAndFeel: " + str);
 			System.err.println("Warning: UnsupportedLookAndFeel: " + str);

@@ -17,14 +17,14 @@
  * 
  * 
  */
-package dInternal;
+package dInterface;
 
 import java.util.StringTokenizer;
 import java.util.Vector;
 
 import dConstants.DConst;
 import developer.DxFlags;
-import dInterface.DApplication;
+import dInternal.DxConflictLimits;
 import eLib.exit.dialog.DxExceptionDlg;
 import eLib.exit.exception.IOFileException;
 import eLib.exit.txt.ByteOutputFile;
@@ -151,7 +151,6 @@ public class DxPreferences {
 				";");
 		String s = "selectedOptionsInFullReport";
 		Vector<String> res = new Vector<String>();
-		// st.nextToken();
 		if (st.nextToken().equals(s)) {
 			while (st.countTokens() > 0) {
 				res.add(st.nextToken());
@@ -168,7 +167,6 @@ public class DxPreferences {
 				_selectedOptionsInConflictReport, ";");
 		String s = "selectedOptionsInConflictReport";
 		Vector<String> res = new Vector<String>();
-		// st.nextToken();
 		if (st.nextToken().equals(s)) {
 			while (st.countTokens() > 0) {
 				res.add(st.nextToken());
