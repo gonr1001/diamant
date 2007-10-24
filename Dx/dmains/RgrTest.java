@@ -61,17 +61,17 @@ public class RgrTest {
 		System.out.println("Hello I am rgr selected Tests");
 		TestSuite suite = new TestSuite("rgr selected Tests");
 
-//		suite.addTest(DxAssignAllAlgTest.suite());
-//		suite.addTest(RoomsConditionsTest.suite());
-//		if (DxFlags.newAlg) {
-//			suite.addTest(DxAssignRoomsAlgTest.suite());
-//		}
-//		suite.addTest(DxInstructorsReaderTest.suite());
-//		suite.addTest(SetOfEventsTest.suite());
-//		suite.addTest(ConditionsTest.suite());
-//		suite.addTest(DStandardReportDataTest.suite());
-//		suite.addTest(DSaveDataTest.suite());
-//		suite.addTest(DxDeploymentManagerTest.suite());
+		suite.addTest(DxAssignAllAlgTest.suite());
+		suite.addTest(RoomsConditionsTest.suite());
+		if (DxFlags.newAlg) {
+			suite.addTest(DxAssignRoomsAlgTest.suite());
+		}
+		suite.addTest(DxInstructorsReaderTest.suite());
+		suite.addTest(SetOfEventsTest.suite());
+		suite.addTest(ConditionsTest.suite());
+		suite.addTest(DStandardReportDataTest.suite());
+		suite.addTest(DSaveDataTest.suite());
+		suite.addTest(DxDeploymentManagerTest.suite());
 		suite.addTest(DFileMenuTest.suite());
 
 		System.out.println("Bye I was in rgr selected Tests");

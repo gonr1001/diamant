@@ -24,12 +24,12 @@ import java.util.Vector;
 
 import dConstants.DConst;
 import developer.DxFlags;
+import dInterface.DxPreferences;
 import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
 import dInternal.DValue;
 import dInternal.DataExchange;
-import dInternal.DxPreferences;
 import dInternal.dData.dActivities.DxActivitiesSitesReader;
 import dInternal.dData.dActivities.DxReadActivitiesSites1dot5;
 import dInternal.dData.dActivities.DxReadActivitiesSites1dot6;
@@ -299,7 +299,7 @@ public class DLoadData {
 	 */
 
 	// TODO: since getSetOfInstructors throws exceptions, I had choice to add
-	// thorws to function
+	// throws to function
 	// or try catch on the return. Since we want to propagate error to the
 	// application, I thought throws was the solution
 	public boolean loadDataStructures(String fileName, String currentDir)
@@ -358,7 +358,7 @@ public class DLoadData {
 			inDiaFileRooms = dataTokens.nextToken().trim();
 			de = buildDataExchange(inDiaFileRooms.getBytes());
 //			if (DxFlags.newRooms) {
-				DxSiteReader dxrr = new DxReadSitedotDia(de, _tts
+				DxSiteReader dxrr = new DxReadSitedotDia(de, _tts  
 						.getNumberOfActiveDays(), _tts.getCurrentCycle()
 						.getMaxNumberOfPeriodsADay(), linePosition);
 				_dxSoSRooms = dxrr.readSetOfSites();
@@ -474,9 +474,10 @@ public class DLoadData {
 	}
 
 	private String getAcceptedChars() {
-		DxPreferences preferences = new DxPreferences(System
-				.getProperty("user.home")
-				+ File.separator + "pref" + File.separator + "pref.txt");
+		String str = System.getProperty("user.home") + File.separator + "pref"
+		+ File.separator + "pref.txt";
+		DxPreferences preferences = new DxPreferences(str);
+		
 		return preferences._acceptedChars;
 	}
 
