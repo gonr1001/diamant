@@ -44,6 +44,9 @@ public class DxFlags {
 	// public final static boolean newActivity = true;
 	public final static boolean newActivity = false;
 	
+	// public final static boolean newPref = true;
+	public final static boolean newPref = false;
+	
 	//public final static boolean newEvent = false;
 	public final static boolean newEvent = MASTER;
 	
