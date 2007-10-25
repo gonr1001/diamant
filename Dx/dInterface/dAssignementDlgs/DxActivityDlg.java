@@ -11,6 +11,7 @@ import java.util.Iterator;
 import java.util.Vector;
 
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
@@ -55,27 +56,49 @@ public class DxActivityDlg extends JDialog implements ActionListener,
 
 	private Vector<DxActivity> _dxavLeft;
 
-	private DModel _dmodel;
+	private DModel _dModel;
 
 	/**
-	 * Dafault constructor
+	 * Default constructor
 	 * 
 	 * @param dApplic
 	 *            The application object (for extracting the JFrame)
 	 */
 
-	public DxActivityDlg(DApplication dApplic) {
-		super(dApplic.getJFrame(), DConst.ACT_LIST, true);
-		_dApplic = dApplic;
+//	public DxActivityDlg(DApplication dApplic) {
+//		super(dApplic.getJFrame(), DConst.ACT_LIST, true);
+//		_dApplic = dApplic;
+//		_jd = this; // to pass this dialog to the EditActivityDlg
+//		if (dApplic.getCurrentDxDoc() == null)
+//			return;
+//		_dmodel = dApplic.getCurrentDxDoc().getCurrentDModel();
+//		_dxsoaAct = _dmodel.getDxSetOfActivities();
+//
+//		initialize();
+//		int x = _dApplic.getJFrame().getX();
+//		int y = _dApplic.getJFrame().getY();
+//		this.setLocation(x + DConst.X_OFFSET, y + DConst.Y_OFFSET);
+//		// this.setMinimumSize(new Dimension(300, 300));
+//		// this.setPreferredSize(new Dimension(400, 400)); //the real
+//		// this.setMaximumSize(new Dimension(500, 500)); // XXXX Pascal: lien
+//		// inutile avec JDK 1.5
+//		this.pack();
+//		this.setResizable(false);
+//		this.setVisible(true);
+//	}
+	
+	public DxActivityDlg(JFrame jFrame, DModel dModel) {
+		super(jFrame, DConst.ACT_LIST, true);
+//		_dApplic = dApplic;
 		_jd = this; // to pass this dialog to the EditActivityDlg
-		if (dApplic.getCurrentDxDoc() == null)
-			return;
-		_dmodel = dApplic.getCurrentDxDoc().getCurrentDModel();
-		_dxsoaAct = _dmodel.getDxSetOfActivities();
+//		if (dApplic.getCurrentDxDoc() == null)
+//			return;
+		_dModel = dModel;
+		_dxsoaAct = _dModel.getDxSetOfActivities();
 
 		initialize();
-		int x = _dApplic.getJFrame().getX();
-		int y = _dApplic.getJFrame().getY();
+		int x = jFrame.getX();
+		int y = jFrame.getY();
 		this.setLocation(x + DConst.X_OFFSET, y + DConst.Y_OFFSET);
 		// this.setMinimumSize(new Dimension(300, 300));
 		// this.setPreferredSize(new Dimension(400, 400)); //the real
@@ -174,7 +197,7 @@ public class DxActivityDlg extends JDialog implements ActionListener,
 			_currentActivities = ((JList) e.getSource()).getSelectedValues();
 			
 			if (e.getClickCount() == 2) {
-				new DxEditEventDlg(_jd, _dApplic,
+				new DxEditEventDlg(_jd, _dModel,
 						(String) _currentActivities[0], false);
 			}// end if
 		}// end public void mouseClicked
@@ -194,7 +217,7 @@ public class DxActivityDlg extends JDialog implements ActionListener,
 		if (command.equals(DConst.BUT_APPLY)) {
 			setActivitesVisibility();
 
-			_dmodel.changeInDModel(this.idDlgToString());
+			_dModel.changeInDModel(this.idDlgToString());
 			_buttonsPanel.setFirstDisable();
 		}
 		// if arrows

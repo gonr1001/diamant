@@ -36,12 +36,12 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 
 import dConstants.DConst;
-import dInterface.DApplication;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.DxTools;
 import dInternal.DModel;
@@ -55,7 +55,8 @@ import dInternal.dUtil.DXToolsMethods;
 public abstract class EventsDlgInterface extends JDialog implements
 		ActionListener {
 
-	protected DApplication _dApplic;
+//	protected DApplication _dApplic;
+	protected JFrame _jFrame;
 
 	protected DxEvent _currEvent;
 
@@ -84,7 +85,7 @@ public abstract class EventsDlgInterface extends JDialog implements
 
 	protected Unity _currUnity;
 
-	private DModel _dmodel;
+	protected DModel _dModel;
 
 	/**
 	 * @associates String
@@ -111,16 +112,28 @@ public abstract class EventsDlgInterface extends JDialog implements
 	 * @param title
 	 *            the title of the dialog
 	 */
-	public EventsDlgInterface(DApplication dApplic, String title) {
-		super(dApplic.getJFrame(), title + " rgrEDL", true);
-		_dApplic = dApplic;
+//	public EventsDlgInterface(DApplication dApplic, String title) {
+//		super(dApplic.getJFrame(), title + " rgrEDL", true);
+//		_dApplic = dApplic;
+//		_jDialog = this;
+//		if (dApplic.getCurrentDxDoc() == null)
+//			return;
+//		_dModel = dApplic.getCurrentDxDoc().getCurrentDModel();
+//		_activities = _dModel.getSetOfActivities();
+//		_events = _dModel.getSetOfEvents();
+//	}//end method
+	
+	public EventsDlgInterface(JFrame jFrame, DModel dModel, String title) {
+		super(jFrame, title + " rgrEDL", true);
+		_jFrame = jFrame;
 		_jDialog = this;
-		if (dApplic.getCurrentDxDoc() == null)
-			return;
-		_dmodel = dApplic.getCurrentDxDoc().getCurrentDModel();
-		_activities = _dmodel.getSetOfActivities();
-		_events = _dmodel.getSetOfEvents();
+//		if (dApplic.getCurrentDxDoc() == null)
+//			return;
+		_dModel = dModel;
+		_activities = _dModel.getSetOfActivities();
+		_events = _dModel.getSetOfEvents();
 	}//end method
+	
 
 	public abstract void actionPerformed(ActionEvent e);
 
@@ -152,7 +165,7 @@ public abstract class EventsDlgInterface extends JDialog implements
 		//int y = _dApplic.getJFrame().getY();
 		//this.getContentPane().setLocation(x + DConst.X_OFFSET, y + DConst.Y_OFFSET); //_dApplic.getJFrame());
 		this.pack();
-		this.setLocationRelativeTo(_dApplic.getJFrame());
+		this.setLocationRelativeTo(_jFrame);
 		//        this.setMinimumSize(new Dimension(500, 300));
 		//        this.setPreferredSize(new Dimension(700, 400)); // the real
 		//        this.setMaximumSize(new Dimension(800, 400)); // XXXX Pascal: lien inutile avec JDK 1.5

@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfSites $Revision: 1.15 $  $Date: 2007-10-23 18:19:51 $
+* Title: SetOfSites $Revision: 1.16 $  $Date: 2007-10-25 17:55:49 $
 * Description: SetOfSites is a class used as a data structure container.
 *              It contains the rooms and their attributes.
 *
@@ -15,7 +15,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.15 $
+* @version $Revision: 1.16 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -24,7 +24,6 @@ package dInternal.dData.dRooms;
 
 
 import java.util.StringTokenizer;
-import java.util.Vector;
 
 import dConstants.DConst;
 import dInternal.DResource;

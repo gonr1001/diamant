@@ -1,6 +1,6 @@
 /**
 *
-* Title: SetOfElementsInterface $Revision: 1.11 $  $Date: 2006-06-08 21:33:09 $
+* Title: SetOfElementsInterface $Revision: 1.12 $  $Date: 2007-10-25 17:55:48 $
 * Description: SetOfElementsInterface is a class used to
 *
 *
@@ -14,8 +14,8 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.11 $
-* @author  $Author: caln1901 $
+* @version $Revision: 1.12 $
+* @author  $Author: gonzrubi $
 * @since JDK1.3
 */
 
@@ -39,8 +39,8 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 
 import dConstants.DConst;
-import dInterface.DApplication;
 import dInterface.dUtil.DxTools;
+import dInternal.DModel;
 
 public abstract class SetOfElementsInterface extends JDialog implements ActionListener{
 
@@ -63,8 +63,8 @@ public abstract class SetOfElementsInterface extends JDialog implements ActionLi
   private int _LINEHEIGHT=20;
   private int _MAXHEIGHT=400;
   //private JDialog _jDialog;
-  protected DApplication _dApplic;
-
+//  protected DApplication _dApplic;
+  protected DModel _dModel;
 
   /**
    * Constructor
@@ -72,26 +72,42 @@ public abstract class SetOfElementsInterface extends JDialog implements ActionLi
    * @param title
    * @param numberOfPanel
    */
-  public SetOfElementsInterface(Dialog parent, DApplication dApplic,String title, String elementsToDisplay, int numberOfPanel) {
-    super(parent, title, true);
-    _parent = parent;
-    //_title= title;
-    _dApplic= dApplic;
-    _elementsToDisplay= elementsToDisplay;
-    //_jDialog= this;
-    _numberOfPanel=numberOfPanel;
-    _listOfElements = new JList[_numberOfPanel];
-    _panelOfElements= new JPanel[_numberOfPanel];
-    _vectorOfElements= new Vector[_numberOfPanel];
-    _labelOfElements= new JLabel[_numberOfPanel];
-    //_dialogDim = new Dimension(_WIDTH, _MINHEIGHT);
-    //_panelDim = new Dimension((_WIDTH-100),
-     //                          _MINHEIGHT-buttonsPanelHeight-20);
-  }//end method
+//  public SetOfElementsInterface(Dialog parent, DApplication dApplic,String title, String elementsToDisplay, int numberOfPanel) {
+//    super(parent, title, true);
+//    _parent = parent;
+//    //_title= title;
+//    _dApplic= dApplic;
+//    _elementsToDisplay= elementsToDisplay;
+//    //_jDialog= this;
+//    _numberOfPanel=numberOfPanel;
+//    _listOfElements = new JList[_numberOfPanel];
+//    _panelOfElements= new JPanel[_numberOfPanel];
+//    _vectorOfElements= new Vector[_numberOfPanel];
+//    _labelOfElements= new JLabel[_numberOfPanel];
+//    //_dialogDim = new Dimension(_WIDTH, _MINHEIGHT);
+//    //_panelDim = new Dimension((_WIDTH-100),
+//     //                          _MINHEIGHT-buttonsPanelHeight-20);
+//  }//end method
 
+  public SetOfElementsInterface(Dialog parent, DModel dModel, String title, String elementsToDisplay, int numberOfPanel) {
+	    super(parent, title, true);
+	    _parent = parent;
+	    //_title= title;
+	    _dModel = dModel;
+	    _elementsToDisplay= elementsToDisplay;
+	    //_jDialog= this;
+	    _numberOfPanel=numberOfPanel;
+	    _listOfElements = new JList[_numberOfPanel];
+	    _panelOfElements= new JPanel[_numberOfPanel];
+	    _vectorOfElements= new Vector[_numberOfPanel];
+	    _labelOfElements= new JLabel[_numberOfPanel];
+	    //_dialogDim = new Dimension(_WIDTH, _MINHEIGHT);
+	    //_panelDim = new Dimension((_WIDTH-100),
+	     //                          _MINHEIGHT-buttonsPanelHeight-20);
+	  }//end method
 
   /**
-   * Initialise the dialog
+   * Initialize the dialog
    */
   public void initDialog(){
   	int FACTOR = 50;

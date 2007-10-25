@@ -25,7 +25,6 @@ import java.util.StringTokenizer;
 
 import dConstants.DConst;
 import dInternal.DataExchange;
-import dInternal.dData.DxResource;
 import dInternal.dData.dInstructors.DxInstructor;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
 import dInternal.dData.dRooms.DxRoom;

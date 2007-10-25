@@ -33,13 +33,15 @@ import java.awt.event.ActionEvent;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.JFrame;
+
 import dConstants.DConst;
-import dInterface.DApplication;
 import dInterface.DlgIdentification;
 import dInterface.dAffectation.EventsDlgInterface;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.DxTools;
 import dInterface.dUtil.TwoButtonsPanel;
+import dInternal.DModel;
 import eLib.exit.dialog.InformationDlg;
 
 public class DxEventsDlg extends EventsDlgInterface implements Observer, DlgIdentification {
@@ -58,15 +60,27 @@ public class DxEventsDlg extends EventsDlgInterface implements Observer, DlgIden
 	 *          function and room state) else if true use EditEventDlg (the new
 	 *          dialog with room function and room state)
 	 */
-	public DxEventsDlg(DApplication dApplic) {
-		super(dApplic, DConst.EVENTS_DLG_TITLE);
+//	public DxEventsDlg(DApplication dApplic) {
+//		super(dApplic, DConst.EVENTS_DLG_TITLE);
+//		_arrowsNames = new String [2];		
+//		_arrowsNames [0] = DConst.TO_RIGHT;
+//		_arrowsNames [1] = DConst.TO_LEFT;
+//		buildArrowButtons(true);
+//		_dApplic.getCurrentDModel().addObserver(this);
+//		initialize();
+//	}// end method
+	
+	public DxEventsDlg(JFrame jFrame, DModel dModel, String title) {
+		super(jFrame,dModel, DConst.EVENTS_DLG_TITLE);
+		_dModel =dModel;
 		_arrowsNames = new String [2];		
 		_arrowsNames [0] = DConst.TO_RIGHT;
 		_arrowsNames [1] = DConst.TO_LEFT;
 		buildArrowButtons(true);
-		_dApplic.getCurrentDModel().addObserver(this);
+		_dModel.addObserver(this);
 		initialize();
 	}// end method
+
 
 	public ButtonsPanel setButtons() {
 		// _applyPanel
@@ -122,14 +136,14 @@ public class DxEventsDlg extends EventsDlgInterface implements Observer, DlgIden
 		}// end if (
 		// if Button CLOSE is pressed
 		if (e.getActionCommand().equals(DConst.BUT_CLOSE)){
-			_dApplic.getCurrentDModel().deleteObserver(this);
+			_dModel.deleteObserver(this);
 			dispose();
 			
 		}
 		// if Button APPLY is pressed
 		if (e.getActionCommand().equals(DConst.BUT_APPLY)) {
 			setUnities();
-			_dApplic.getCurrentDxDoc().getCurrentDModel().changeInDModel(
+			_dModel.changeInDModel(
 					this.idDlgToString());
 			_buttonsPanel.setFirstDisable();
 		}// end if Button APPLY
@@ -140,7 +154,9 @@ public class DxEventsDlg extends EventsDlgInterface implements Observer, DlgIden
 	 */
 	protected void doubleClicMouseProcess() {
 		if (!_buttonsPanel.isFirstEnable()) {
-			new DxEditEventDlg(_jDialog, _dApplic, (String) selectedItems[0],
+//			new DxEditEventDlg(_jDialog, _dApplic, (String) selectedItems[0],
+//					/*this,*/ false);
+			new DxEditEventDlg(_jDialog, _dModel, (String) selectedItems[0],
 					/*this,*/ false);
 			_buttonsPanel.setFirstDisable();
 		} else {

@@ -1,6 +1,6 @@
 /**
  *
- * Title: SectionModifDlg $Revision: 1.21 $  $Date: 2006-09-05 17:50:02 $
+ * Title: SectionModifDlg $Revision: 1.22 $  $Date: 2007-10-25 17:55:48 $
  * Description: SectionModifDlg is class used
  *           to display a dialog to modifiy the number of sections
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.21 $
+ * @version $Revision: 1.22 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -27,9 +27,8 @@ import java.awt.event.ActionEvent;
 import java.util.Vector;
 
 import dConstants.DConst;
-import dInterface.DApplication;
 import dInterface.dUtil.DxTools;
-//import dInternal.dDataTxt.Resource;
+import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.dData.dActivities.Type;
 
@@ -42,21 +41,33 @@ private DResource _type;
 private String _title;
 //private Dialog _parent;
 //private DApplication _dApplic;
-  /**
-   * Constructor
-   * @param dApplic
-   */
-  public SectionModifDlg(Dialog parent, DApplication dApplic,String title,DResource type) {
-    super(parent,dApplic,title+type.getID()+".",DConst.NUMBER_OF_SECTIONS,1);//  "Nombre de sections",1);
-    //Vector [] vect= new Vector[1];
-    //_parent = parent;
-    _type= type;
-    _title= title;
-    _dApplic= dApplic;
-     _buttonsPanel = DxTools.buttonsPanel(this, _buttonsNames);
-     init();
-     initDialog();
-  }
+//  /**
+//   * Constructor
+//   * @param dApplic
+//   */
+//  public SectionModifDlg(Dialog parent, DApplication dApplic,String title,DResource type) {
+//    super(parent,dApplic,title+type.getID()+".",DConst.NUMBER_OF_SECTIONS,1);//  "Nombre de sections",1);
+//    //Vector [] vect= new Vector[1];
+//    //_parent = parent;
+//    _type= type;
+//    _title= title;
+//    _dApplic= dApplic;
+//     _buttonsPanel = DxTools.buttonsPanel(this, _buttonsNames);
+//     init();
+//     initDialog();
+//  }
+  
+  public SectionModifDlg(Dialog parent, DModel dModel,String title,DResource type) {
+	    super(parent,dModel,title+type.getID()+".",DConst.NUMBER_OF_SECTIONS,1);//  "Nombre de sections",1);
+	    //Vector [] vect= new Vector[1];
+	    //_parent = parent;
+	    _type= type;
+	    _title= title;
+	    _dModel= dModel;
+	     _buttonsPanel = DxTools.buttonsPanel(this, _buttonsNames);
+	     init();
+	     initDialog();
+	  }
 
   /**
    *
@@ -65,7 +76,7 @@ private String _title;
     Vector [] vect= new Vector[1];
     vect[0]= ((Type)_type.getAttach()).getSetOfSections().getNamesVector(1);
     setVectorsOfElements(vect);
-    _dApplic.getCurrentDModel().changeInDModelBySectionModDlg(this);
+    _dModel.changeInDModelBySectionModDlg(this);
   }
 
   /**
@@ -74,7 +85,7 @@ private String _title;
   protected void doubleClicMouseProcess(){
     DResource section= ((Type)_type.getAttach()).getSetOfSections().getResource(_listOfElements[_selectedPanel].
        getSelectedValue().toString());
-    new UnityModifDlg(this,this._dApplic,_title+_type.getID()+".", section);
+    new UnityModifDlg(this,this._dModel,_title+_type.getID()+".", section);
   }
 
   /**
@@ -116,12 +127,12 @@ private String _title;
     return (Type)_type.getAttach();
   }
 
-  /**
-   *
-   * @return
-   */
-  public DApplication getDApplic(){
-    return _dApplic;
+//  /**
+//   *
+//   * @return
+//   */
+  public DModel getDModel(){
+    return _dModel;
   }
 
 }

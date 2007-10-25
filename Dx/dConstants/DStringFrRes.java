@@ -23,6 +23,9 @@ package dConstants;
 public class DStringFrRes extends java.util.ListResourceBundle {
 	static final Object[][] contents = new String[][] {
 			{ "appName", "Diamant " },
+			{ "incorrect_JVM", "Téléchargez et installez la  \n"
+				+ "Java Virtual Machine \n" + "version" + DConst.JVM +
+				" ou plus récente"},
 			{ "fileVerName1_5", "Diamant1.5" },
 			{ "fileVerName1_6", "Diamant1.6" },
 			{ "fileVerName1_6_1", "Diamant1.6.1" },

@@ -14,10 +14,10 @@ import java.awt.event.ActionEvent;
 import java.util.Vector;
 
 import dConstants.DConst;
-import dInterface.DApplication;
 import dInterface.dUtil.DxTools;
 import dInternal.dData.dActivities.Activity;
 //import dInternal.dDataTxt.Resource;
+import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.dData.dActivities.Type;
 
@@ -31,18 +31,31 @@ private DResource _activity;
    * Constructor
    * @param dApplic
    */
-  public TypeModifDlg(Dialog parent, DApplication dApplic,DResource activity) {
-    super(parent,dApplic,activity.getID(), DConst.NUMBER_OF_TYPES, 1);//  )"Nombre de types",1);
-    _dApplic= dApplic;
-    Vector [] vect= new Vector[1];
-    _activity= activity;
-    vect[0]= ((Activity)_activity.getAttach()).getSetOfTypes().getNamesVector(1);
-     _buttonsPanel = DxTools.buttonsPanel(this, _buttonsNames);
-     _buttonsPanel.getComponent(0).setEnabled(true);
-     _buttonsPanel.getComponent(1).setEnabled(true);
-    setVectorsOfElements(vect);
-    initDialog();
-  }
+//  public TypeModifDlg(Dialog parent, DApplication dApplic,DResource activity) {
+//    super(parent,dApplic,activity.getID(), DConst.NUMBER_OF_TYPES, 1);//  )"Nombre de types",1);
+//    _dApplic= dApplic;
+//    Vector [] vect= new Vector[1];
+//    _activity= activity;
+//    vect[0]= ((Activity)_activity.getAttach()).getSetOfTypes().getNamesVector(1);
+//     _buttonsPanel = DxTools.buttonsPanel(this, _buttonsNames);
+//     _buttonsPanel.getComponent(0).setEnabled(true);
+//     _buttonsPanel.getComponent(1).setEnabled(true);
+//    setVectorsOfElements(vect);
+//    initDialog();
+//  }
+  
+  public TypeModifDlg(Dialog parent, DModel dModel,DResource activity) {
+	    super(parent,dModel,activity.getID(), DConst.NUMBER_OF_TYPES, 1);//  )"Nombre de types",1);
+	    _dModel= dModel;
+	    Vector [] vect= new Vector[1];
+	    _activity= activity;
+	    vect[0]= ((Activity)_activity.getAttach()).getSetOfTypes().getNamesVector(1);
+	     _buttonsPanel = DxTools.buttonsPanel(this, _buttonsNames);
+	     _buttonsPanel.getComponent(0).setEnabled(true);
+	     _buttonsPanel.getComponent(1).setEnabled(true);
+	    setVectorsOfElements(vect);
+	    initDialog();
+	  }
 
   /**
    *
@@ -52,7 +65,7 @@ private DResource _activity;
     //SectionModifDlg
     DResource type= ((Activity)_activity.getAttach()).getSetOfTypes().getResource(_listOfElements[_selectedPanel].
        getSelectedValue().toString());
-    new SectionModifDlg(this,this._dApplic,_activity.getID()+".", type);
+    new SectionModifDlg(this,this._dModel,_activity.getID()+".", type);
   }
 
   /**
@@ -70,11 +83,11 @@ private DResource _activity;
       if(activity.getSetOfTypes().size()<2){
         activity.addType("2");
         Type type = (Type) activity.getSetOfTypes().getResource("2").getAttach();
-        int nbCycle= _dApplic.getCurrentDModel().getTTStructure().getSetOfCycles().size();
+        int nbCycle= _dModel.getTTStructure().getSetOfCycles().size();
         type.addSection("01",nbCycle,true);
         init();
          Vector students= activity.getStudentRegistered();
-         _dApplic.getCurrentDModel().changeInDModelByModifyAdd(this, students, _activity.getID()+"201;0");
+         _dModel.changeInDModelByModifyAdd(this, students, _activity.getID()+"201;0");
          /*_dApplic.getDModel().getSetOfStudents().addActivityToStudents(students,_activity.getID()+"201;0");
          _dApplic.getDModel().getConditionsTest().setMatrixBuilded(false,false);
         _dApplic.getDModel().getSetOfActivities().sendEvent(this);*/
@@ -85,7 +98,7 @@ private DResource _activity;
       if(activity.getSetOfTypes().size()>1){
         activity.getSetOfTypes().removeResource("2");
         init();
-        _dApplic.getCurrentDModel().changeInDModelByModifyRemove(this);
+        _dModel.changeInDModelByModifyRemove(this);
       }
     }
 

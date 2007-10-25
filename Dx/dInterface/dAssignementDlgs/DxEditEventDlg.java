@@ -57,7 +57,6 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import dConstants.DConst;
-import dInterface.DApplication;
 import dInterface.DlgIdentification;
 import dInterface.dAffectation.SelectInstructors;
 import dInterface.dUtil.ButtonsPanel;
@@ -118,12 +117,25 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	 * @param canBeModified
 	 */
 
-	public DxEditEventDlg(JDialog dialog, DApplication dApplic,
+//	public DxEditEventDlg(JDialog dialog, DApplication dApplic,
+//			String currentActivity, boolean canBeModified) {
+//		// One activity or n events
+//		super(dialog, DConst.T_AFFEC_DLG);
+//		setLocationRelativeTo(dialog);
+//		_dModel = dApplic.getCurrentDModel();
+//		_events = getEventsVector(currentActivity);
+//
+//		buildDlg(canBeModified);
+//		displayDlg();
+//	} // end DxEditActivityDlg
+
+	
+	public DxEditEventDlg(JDialog dialog, DModel dModel,
 			String currentActivity, boolean canBeModified) {
 		// One activity or n events
 		super(dialog, DConst.T_AFFEC_DLG);
 		setLocationRelativeTo(dialog);
-		_dModel = dApplic.getCurrentDModel();
+		_dModel = dModel;
 		_events = getEventsVector(currentActivity);
 
 		buildDlg(canBeModified);

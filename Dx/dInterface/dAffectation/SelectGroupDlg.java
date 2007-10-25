@@ -43,7 +43,7 @@ public class SelectGroupDlg extends JDialog implements ActionListener {
     super(parent,"Choix du groupe à "+DConst.BUT_ADD);
     _list= list;
     //_parent = parent;
-    _sectionMod= (SectionModifDlg)parent;
+    _sectionMod = (SectionModifDlg)parent;
     //_addGroup = add;
     if(add)
       jbInitAddGroup();
@@ -64,7 +64,7 @@ public class SelectGroupDlg extends JDialog implements ActionListener {
       }
 
       if (ligne == 0) {
-        int nbCycle= _sectionMod.getDApplic().getCurrentDModel().getTTStructure().getSetOfCycles().size();
+        int nbCycle= _sectionMod.getDModel().getTTStructure().getSetOfCycles().size();
         _sectionMod.getType().addSection(_textField0.getText(),nbCycle,true);
         _sectionMod.init();
         //_sectionMod.getType().add

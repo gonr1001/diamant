@@ -14,12 +14,13 @@ import java.awt.Dialog;
 import java.awt.event.ActionEvent;
 import java.util.Vector;
 
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import dConstants.DConst;
-import dInterface.DApplication;
 import dInterface.dUtil.DxTools;
-//import dInternal.dDataTxt.Resource;
+
+import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.dData.dActivities.SetOfActivities;
 
@@ -34,12 +35,29 @@ public class ActivityModifDlg extends SetOfElementsInterface{
    */
   
   // XXXX Pascal: On internationalise ou pas ?!
-  public ActivityModifDlg(DApplication dApplic) {
-    super(new Dialog(dApplic.getJFrame()),dApplic,"Activités","Nombre d'activités",1);
+//  public ActivityModifDlg(JFrame jFrame) {
+//    super(new Dialog(jFrame),dApplic,"Activités","Nombre d'activités",1);
+//    getContentPane().add(new JLabel("hello"), BorderLayout.NORTH);
+//    _soa= dApplic.getCurrentDModel().getSetOfActivities();
+//    Vector [] vect= new Vector[1];
+//    vect[0]= dApplic.getCurrentDModel().getSetOfActivities().getIDsByField(3, "true");
+//  /*  JButton button = new JButton( DConst.BUT_CLOSE);
+//       button.setActionCommand( DConst.BUT_CLOSE);
+//      button.addActionListener(this);
+//      vect[0]= dApplic.getDMediator().getCurrentDoc().getDM().getSetOfActivities().getIDsByField(3, "true");;*/
+//     _buttonsPanel = DxTools.buttonsPanel(this, _buttonsNames);
+//    // _buttonsPanel.getComponent(0).setEnabled(false);
+//   // _buttonsPanel.getComponent(1).setEnabled(false);
+//    setVectorsOfElements(vect);
+//    initDialog();
+//  }
+  // XXXX Pascal: On internationalise ou pas ?!
+  public ActivityModifDlg(JFrame jFrame, DModel dModel) {
+    super(new Dialog(jFrame),dModel,"Activités","Nombre d'activités",1);
     getContentPane().add(new JLabel("hello"), BorderLayout.NORTH);
-    _soa= dApplic.getCurrentDModel().getSetOfActivities();
+    _soa= dModel.getSetOfActivities();
     Vector [] vect= new Vector[1];
-    vect[0]= dApplic.getCurrentDModel().getSetOfActivities().getIDsByField(3, "true");
+    vect[0]= dModel.getSetOfActivities().getIDsByField(3, "true");
   /*  JButton button = new JButton( DConst.BUT_CLOSE);
        button.setActionCommand( DConst.BUT_CLOSE);
       button.addActionListener(this);
@@ -50,7 +68,6 @@ public class ActivityModifDlg extends SetOfElementsInterface{
     setVectorsOfElements(vect);
     initDialog();
   }
-
   /**
    *
    */
@@ -58,7 +75,7 @@ public class ActivityModifDlg extends SetOfElementsInterface{
     //System.out.println("Activity modif:"+ _listOfElements[_selectedPanel].getSelectedValue().toString());
     DResource activity= _soa.getResource(_listOfElements[_selectedPanel].
         getSelectedValue().toString());
-    new TypeModifDlg(this,this._dApplic, activity);
+    new TypeModifDlg(this,this._dModel, activity);
   }
 
   /**

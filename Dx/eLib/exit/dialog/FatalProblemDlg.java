@@ -1,7 +1,7 @@
 package eLib.exit.dialog;
 /**
  *
- * Title: FatalProblemDlg $Revision: 1.5 $  $Date: 2006-12-28 15:57:31 $
+ * Title: FatalProblemDlg $Revision: 1.6 $  $Date: 2007-10-25 17:55:51 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -14,7 +14,7 @@ package eLib.exit.dialog;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -31,10 +31,10 @@ import javax.swing.JOptionPane;
 
 /**
   * Description: FatalProblemDlg is a class used to display a message,
-  *              when an exception is throwed, the dialog displays
+  *              when an exception is throw, the dialog displays
   *              the exception message.
   *              Normally after the dialog is displayed
-  *              a statment System.exit(1) is executed.
+  *              a statement System.exit(1) is executed.
   *
   */
 public class FatalProblemDlg {

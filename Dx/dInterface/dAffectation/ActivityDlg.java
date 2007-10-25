@@ -1,6 +1,6 @@
 /**
  * 
- * Title: ActivityDlg $Revision: 1.62 $ $Date: 2007-06-07 18:00:53 $
+ * Title: ActivityDlg $Revision: 1.63 $ $Date: 2007-10-25 17:55:48 $
  * Description: ActivityDlg is a class used to
  * 
  * 
@@ -12,7 +12,7 @@
  * Information and shall use it only in accordance with the terms of the license
  * agreement you entered into with rgr.
  * 
- * @version $Revision: 1.62 $
+ * @version $Revision: 1.63 $
  * @author $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -28,13 +28,13 @@ import java.awt.event.MouseListener;
 import java.util.Vector;
 
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 
 import dConstants.DConst;
 import developer.DxFlags;
-import dInterface.DApplication;
 import dInterface.DlgIdentification;
 import dInterface.dAssignementDlgs.DxEditEventDlg;
 import dInterface.dUtil.ButtonsPanel;
@@ -46,7 +46,7 @@ import dInternal.dData.dActivities.SetOfActivities;
 public class ActivityDlg extends JDialog implements ActionListener,
 		DlgIdentification {
 
-	private DApplication _dApplic;
+//	private DApplication _dApplic;
 
 	private JDialog _jd;
 
@@ -76,29 +76,50 @@ public class ActivityDlg extends JDialog implements ActionListener,
 
 	private Vector _leftVec;
 
-	private DModel _dmodel;
+	private DModel _dModel;
 
 	/**
-	 * Dafault constructor
+	 * Default constructor
 	 * 
 	 * @param dApplic
 	 *            The application object (for extracting the JFrame)
 	 */
 
-	public ActivityDlg(DApplication dApplic) {
-		super(dApplic.getJFrame(), DConst.ACT_LIST, true);
-		_dApplic = dApplic;
+//	public ActivityDlg(DApplication dApplic) {
+//		super(dApplic.getJFrame(), DConst.ACT_LIST, true);
+//		_dApplic = dApplic;
+//		_jd = this; // to pass this dialog to the EditActivityDlg
+//
+////		if (dApplic.getCurrentDxDoc() == null)
+////			return;
+//		_dModel = dApplic.getCurrentDModel();
+//
+//		_activities = _dModel.getSetOfActivities();
+//
+//		initialize();
+//		int x = _dApplic.getJFrame().getX();
+//		int y = _dApplic.getJFrame().getY();
+//		this.setLocation(x + DConst.X_OFFSET, y + DConst.Y_OFFSET);
+//
+//		this.pack();
+//		this.setResizable(false);
+//		this.setVisible(true);
+//	}
+
+	public ActivityDlg(JFrame jFrame, DModel dModel) {
+		super(jFrame, DConst.ACT_LIST, true);
+//		_dApplic = dApplic;
 		_jd = this; // to pass this dialog to the EditActivityDlg
 
-		if (dApplic.getCurrentDxDoc() == null)
-			return;
-		_dmodel = dApplic.getCurrentDModel();
+//		if (dApplic.getCurrentDxDoc() == null)
+//			return;
+		_dModel = dModel;
 
-		_activities = _dmodel.getSetOfActivities();
+		_activities = _dModel.getSetOfActivities();
 
 		initialize();
-		int x = _dApplic.getJFrame().getX();
-		int y = _dApplic.getJFrame().getY();
+		int x = jFrame.getX();
+		int y = jFrame.getY();
 		this.setLocation(x + DConst.X_OFFSET, y + DConst.Y_OFFSET);
 
 		this.pack();
@@ -180,7 +201,7 @@ public class ActivityDlg extends JDialog implements ActionListener,
 			_currentActivities = ((JList) e.getSource()).getSelectedValues();
 			if (e.getClickCount() == 2) {
 				if (DxFlags.newEditEventDlg) {
-					new DxEditEventDlg(_jd, _dApplic,
+					new DxEditEventDlg(_jd, _dModel, /*_dApplic,*/
 							(String) _currentActivities[0], false);
 				}
 				// else {
@@ -208,7 +229,7 @@ public class ActivityDlg extends JDialog implements ActionListener,
 			// if (DxFlags.newDoc) {
 			//_dmodel.changeInDModel(this.idDlgToString());
 			// } else {
-			 _dmodel.changeInDModelByActivity(this.idDlgToString());
+			 _dModel.changeInDModelByActivity(this.idDlgToString());
 			// }
 			_buttonsPanel.setFirstDisable();
 		}

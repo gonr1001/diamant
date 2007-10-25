@@ -30,6 +30,7 @@ import org.apache.log4j.PropertyConfigurator;
 import dConstants.DConst;
 import dInterface.DApplication;
 import dInternal.dDeployment.DxDeploymentManager;
+import eLib.exit.dialog.FatalProblemDlg;
 
 /**
  *
@@ -48,7 +49,7 @@ public class Diamant {
 	
 	private static Logger _logger = Logger.getLogger(Diamant.class.getName());
 
-	private static DApplication dApplic = new DApplication();
+	//private static DApplication dApplic = new DApplication();
 
 	/**
 	 *  main has a constant GUI used to decide
@@ -63,12 +64,12 @@ public class Diamant {
 	 * 
 	 */
 	public static void main(String[] args) {
-		
+
 		// Check that all files required by Diamant exist
 		// If not deploy them
 		DxDeploymentManager deploymentManager = new DxDeploymentManager();
 		deploymentManager.checkAndDeploy();
-		
+
 		PropertyConfigurator.configure(System.getProperty("user.home")
 				+ File.separator + "trace" + File.separator + "log4j.conf");
 		if (GUI) {
@@ -77,12 +78,14 @@ public class Diamant {
 
 			if (DConst.JVM.compareToIgnoreCase(System
 					.getProperty("java.version")) <= 0) {
+				DApplication dApplic = DApplication.getInstance();
 				dApplic.doIt(args);
 			} else {
-				_logger.error(
-						"You need to download and install a new  \n"
-								+ "Java Virtual Machine");
+				_logger.error(DConst.INCORRECT_JVM);
+				new FatalProblemDlg(DConst.INCORRECT_JVM);
+				System.out.println("bye");
 				System.exit(1);
+
 			}
 			_logger.warn("hi_with_a_GUI");
 		} else {
@@ -90,7 +93,7 @@ public class Diamant {
 			DILine dil = new DILine();
 			dil.doIt(args);
 			System.out.println("bye");
-			System.exit(1);
+			System.exit(0);
 		}
 
 	} // end main

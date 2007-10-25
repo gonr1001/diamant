@@ -1,6 +1,6 @@
 /**
 *
-* Title: ConflictsOfAnEventDlg $Revision: 1.6 $  $Date: 2007-06-07 18:00:53 $
+* Title: ConflictsOfAnEventDlg $Revision: 1.7 $  $Date: 2007-10-25 17:55:48 $
 * Description: ConflictsOfAnEventDlg is a class used to
 *
 *
@@ -14,7 +14,7 @@
 * it only in accordance with the terms of the license agreement
 * you entered into with rgr.
 *
-* @version $Revision: 1.6 $
+* @version $Revision: 1.7 $
 * @author  $Author: gonzrubi $
 * @since JDK1.3
 */
@@ -22,11 +22,11 @@ package dInterface.dTimeTable;
 
 import java.awt.event.ActionEvent;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import dConstants.DConst;
 import developer.DxFlags;
-import dInterface.DApplication;
 import dInterface.DToolBar;
 //import dInterface.dAffectation.EditEventDlg;
 import dInterface.dAffectation.EventsDlgInterface;
@@ -46,10 +46,10 @@ public class ConflictsOfAnEventDlg extends EventsDlgInterface {
    * Constructor
    * @param dApplic The application
    */
-  public ConflictsOfAnEventDlg(DApplication dApplic, String title) {
-    super(dApplic,title);
-    _toolBar= dApplic.getToolBar();
-    _dm = dApplic.getCurrentDModel();
+  public ConflictsOfAnEventDlg(JFrame jFrame, DModel dModel, String title) {
+    super(jFrame, dModel, title);
+// @todo RGR   _toolBar= dApplic.getToolBar();
+    _dm = dModel;
     buildArrowButtons(false);
 	initialize();
   }//end method
@@ -76,7 +76,8 @@ public class ConflictsOfAnEventDlg extends EventsDlgInterface {
       dispose();
     if ((command.equals(DConst.BUT_CHANGE)) && (selectedItems!=null)){
     	if (DxFlags.newEditEventDlg) {
-    		new DxEditEventDlg(_jDialog, _dApplic, (String)selectedItems[0], /*this,*/ false);
+//       		new DxEditEventDlg(_jDialog, _dApplic, (String)selectedItems[0], /*this,*/ false);
+    		new DxEditEventDlg(_jDialog, _dModel, (String)selectedItems[0], /*this,*/ false);
 		} else {
 //			new EditEventDlg(_jDialog, _dApplic, (String) selectedItems[0],
 //					this, false);

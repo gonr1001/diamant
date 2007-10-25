@@ -11,14 +11,16 @@ package dInterface.dAffectation;
 
 import java.awt.event.ActionEvent;
 
+import javax.swing.JFrame;
+
 import dConstants.DConst;
 import developer.DxFlags;
-import dInterface.DApplication;
 import dInterface.DlgIdentification;
 import dInterface.dAssignementDlgs.DxEditEventDlg;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.DxTools;
 import dInterface.dUtil.TwoButtonsPanel;
+import dInternal.DModel;
 import eLib.exit.dialog.InformationDlg;
 
 public class EventsDlg extends EventsDlgInterface implements DlgIdentification {
@@ -37,8 +39,15 @@ public class EventsDlg extends EventsDlgInterface implements DlgIdentification {
 	 *          function and room state) else if true use EditEventDlg (the new
 	 *          dialog with room function and room state)
 	 */
-	public EventsDlg(DApplication dApplic) {
-		super(dApplic, DConst.EVENTS_DLG_TITLE);
+//	public EventsDlg(DApplication dApplic) {
+//		super(dApplic, DConst.EVENTS_DLG_TITLE);
+//		// _withRoomFunction = withRoomFunction;
+//		buildArrowButtons(true);
+//		initialize();
+//	}// end method
+	
+	public EventsDlg(JFrame jFrame, DModel dModel, String title) {
+		super(jFrame, dModel, DConst.EVENTS_DLG_TITLE);
 		// _withRoomFunction = withRoomFunction;
 		buildArrowButtons(true);
 		initialize();
@@ -106,7 +115,7 @@ public class EventsDlg extends EventsDlgInterface implements DlgIdentification {
 		// if Button APPLY is pressed
 		if (e.getActionCommand().equals(DConst.BUT_APPLY)) {
 			setUnities();
-			_dApplic.getCurrentDxDoc().getCurrentDModel().changeInDModel(
+			_dModel.changeInDModel(
 					this.idDlgToString());
 			_buttonsPanel.setFirstDisable();
 		}// end if Button APPLY
@@ -119,7 +128,9 @@ public class EventsDlg extends EventsDlgInterface implements DlgIdentification {
 		if (!_buttonsPanel.isFirstEnable()) {
 			// if (this._withRoomFunction)
 			if (DxFlags.newEditEventDlg) {
-				new DxEditEventDlg(_jDialog, _dApplic,
+//				new DxEditEventDlg(_jDialog, _dApplic,
+//						(String) selectedItems[0], false);
+				new DxEditEventDlg(_jDialog, _dModel,
 						(String) selectedItems[0], false);
 			}
 //			} else {

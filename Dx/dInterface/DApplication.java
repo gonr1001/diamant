@@ -80,6 +80,20 @@ import eLib.exit.dialog.InformationDlg;
 import eLib.exit.exception.DxException;
 
 public class DApplication {
+	
+	
+	// singleton: has only one instance
+	private static int instanceNumber = 0;
+	private static DApplication _instance = null;
+	public static DApplication getInstance(){
+		if (instanceNumber == 0) {
+			instanceNumber++;
+			_instance = new DApplication();			
+		} 
+			return _instance;
+
+		
+	}
 
 	private static Logger _logger = Logger.getLogger(DApplication.class
 			.getName());
@@ -87,7 +101,7 @@ public class DApplication {
 	public static boolean _inDevelopment;
 
 	// DApplication is a singleton
-	private static DApplication _instance = null;
+	
 
 	/* ZERO is needed to fix Frame Location (origin) */
 	private final int ZERO = 0;
@@ -140,7 +154,7 @@ public class DApplication {
 		PropertyConfigurator.configureAndWatch("trace" + File.separator
 				+ "log4j.conf");
 		_logger.warn("Hi from DApplication");
-		_instance = this;
+		//_instance = this;
 		_inDevelopment = false;
 		_best = true;
 		_increase = false;
@@ -151,13 +165,13 @@ public class DApplication {
 		_preferences = new DxPreferences(str);
 	}
 
-	// singleton: has only one instance
-	public static DApplication getInstance() {
-		if (_instance == null) {
-			_instance = new DApplication();
-		}
-		return _instance;
-	}
+//	// singleton: has only one instance
+//	public static DApplication getInstance() {
+//		if (_instance == null) {
+//			_instance = new DApplication();
+//		}
+//		return _instance;
+//	}
 
 	public void doIt(String[] args) {
 		if (args.length > 0) {
@@ -598,12 +612,12 @@ public class DApplication {
 	 */
 	public void assignActivities() {
 		if (DxFlags.newActivity) {
-			new DxActivityDlg(this);
+			new DxActivityDlg(this.getJFrame(), this.getCurrentDModel());
 		} else {
 			if (DxFlags.newEditEventDlg) {
-				new ActivityDlg(this);
+				new ActivityDlg(this.getJFrame(), this.getCurrentDModel());
 			} else {
-				new ActivityDlg(this);
+				new ActivityDlg(this.getJFrame(), this.getCurrentDModel());
 			}
 		}
 	}
@@ -645,9 +659,9 @@ public class DApplication {
 	 */
 	public void assignEvents() {
 		if (DxFlags.newEditEventDlg) {
-			new DxEventsDlg(this);
+			new DxEventsDlg(this.getJFrame(), this.getCurrentDModel(), "");
 		} else {
-			new EventsDlg(this);
+			new EventsDlg(this.getJFrame(), this.getCurrentDModel(), "");
 		}
 	}
 
@@ -662,14 +676,14 @@ public class DApplication {
 	 * 
 	 */
 	public void conflictsOfAnEvent() {
-		new ConflictsOfAnEventDlg(this, DConst.CONFLICTS_OF_AN_EVENT_DLG_TITLE);
+		new ConflictsOfAnEventDlg(this.getJFrame(), this.getCurrentDModel(),  DConst.CONFLICTS_OF_AN_EVENT_DLG_TITLE);
 	}
 
 	/**
 	 * 
 	 */
 	public void modifyActivity() {
-		new ActivityModifDlg(this);
+		new ActivityModifDlg(this.getJFrame(),this.getCurrentDModel());
 	}
 
 	/**
@@ -804,7 +818,7 @@ public class DApplication {
 	 * 
 	 */
 	public void showAboutDlg() {
-		new AboutDlg(this);
+		new AboutDlg(this.getJFrame());
 	}
 
 	/**
@@ -877,9 +891,9 @@ public class DApplication {
 	 */
 	public void eventAssignment() {
 		if (DxFlags.newEditEventDlg) {
-			new DxEventsDlg(this);
+			new DxEventsDlg(this.getJFrame(), this.getCurrentDModel(), "");
 		} else {
-			new EventsDlg(this);
+			new EventsDlg(this.getJFrame(), this.getCurrentDModel(), "");
 		}
 	}
 
