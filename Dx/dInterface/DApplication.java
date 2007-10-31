@@ -3,7 +3,7 @@
  * Title: DApplication
  *
  * Description: DApplication is a class used to display the application GUI,
- *              The class creates the main window, and menubar, and toolBar,
+ *              The class creates the main window, and menuBar, and toolBar,
  *              and the logger
  *
  *
@@ -80,19 +80,20 @@ import eLib.exit.dialog.InformationDlg;
 import eLib.exit.exception.DxException;
 
 public class DApplication {
-	
-	
+
+	private static final String LOGO_PATH = "images/dia.gif";
+	private static final String LOGO_DESCRIPTION = "logoDiamant";
 	// singleton: has only one instance
 	private static int instanceNumber = 0;
 	private static DApplication _instance = null;
-	public static DApplication getInstance(){
+
+	public static DApplication getInstance() {
 		if (instanceNumber == 0) {
 			instanceNumber++;
-			_instance = new DApplication();			
-		} 
-			return _instance;
+			_instance = new DApplication();
+		}
+		return _instance;
 
-		
 	}
 
 	private static Logger _logger = Logger.getLogger(DApplication.class
@@ -101,7 +102,6 @@ public class DApplication {
 	public static boolean _inDevelopment;
 
 	// DApplication is a singleton
-	
 
 	/* ZERO is needed to fix Frame Location (origin) */
 	private final int ZERO = 0;
@@ -154,7 +154,7 @@ public class DApplication {
 		PropertyConfigurator.configureAndWatch("trace" + File.separator
 				+ "log4j.conf");
 		_logger.warn("Hi from DApplication");
-		//_instance = this;
+		// _instance = this;
 		_inDevelopment = false;
 		_best = true;
 		_increase = false;
@@ -165,13 +165,13 @@ public class DApplication {
 		_preferences = new DxPreferences(str);
 	}
 
-//	// singleton: has only one instance
-//	public static DApplication getInstance() {
-//		if (_instance == null) {
-//			_instance = new DApplication();
-//		}
-//		return _instance;
-//	}
+	// // singleton: has only one instance
+	// public static DApplication getInstance() {
+	// if (_instance == null) {
+	// _instance = new DApplication();
+	// }
+	// return _instance;
+	// }
 
 	public void doIt(String[] args) {
 		if (args.length > 0) {
@@ -243,14 +243,17 @@ public class DApplication {
 					- DConst.ADJUST_WIDTH, screenSize.height
 					- DConst.ADJUST_HEIGHT));
 		}
-		/* Icone de l'application */
-		ImageIcon iconeDiamant = new ImageIcon(System.getProperty("user.home")
-				+ File.separator + "pref" + File.separator + "logoDiamant.gif");
-		jFrame.setIconImage(iconeDiamant.getImage());
+		/* Application Icon*/
+		// ImageIcon iconeDiamant 
+		ImageIcon diamantIcon = createImageIcon(LOGO_PATH, LOGO_DESCRIPTION);
+		if (diamantIcon != null) {
+			jFrame.setIconImage(diamantIcon.getImage());
+		}
 		jFrame.pack();
 		jFrame.setVisible(true);
 		return jFrame;
 	} // end createUI
+
 
 	public JDesktopPane getDesktop() {
 		return _jDesktopPane;
@@ -590,7 +593,7 @@ public class DApplication {
 	}
 
 	/**
-	 * return a token in from a stringtokenizer
+	 * return a token in from a stringTokenizer
 	 * 
 	 * @param str
 	 * @param delimiter
@@ -676,14 +679,15 @@ public class DApplication {
 	 * 
 	 */
 	public void conflictsOfAnEvent() {
-		new ConflictsOfAnEventDlg(this.getJFrame(), this.getCurrentDModel(),  DConst.CONFLICTS_OF_AN_EVENT_DLG_TITLE);
+		new ConflictsOfAnEventDlg(this.getJFrame(), this.getCurrentDModel(),
+				DConst.CONFLICTS_OF_AN_EVENT_DLG_TITLE);
 	}
 
 	/**
 	 * 
 	 */
 	public void modifyActivity() {
-		new ActivityModifDlg(this.getJFrame(),this.getCurrentDModel());
+		new ActivityModifDlg(this.getJFrame(), this.getCurrentDModel());
 	}
 
 	/**
@@ -977,4 +981,14 @@ public class DApplication {
 		return _best;
 	}
 
+	private ImageIcon createImageIcon(String path, String description) {
+		java.net.URL imgURL = DApplication.class.getResource(path);
+		if (imgURL != null) {
+			return new ImageIcon(imgURL, description);
+		}
+		System.err.println("Couldn't find file: " + path);
+		return null;
+	}
+
+	
 } /* end class DApplication */

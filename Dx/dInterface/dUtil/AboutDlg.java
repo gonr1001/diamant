@@ -1,6 +1,6 @@
 /**
  *
- * Title: AboutDlg $Revision: 1.9 $  $Date: 2007-10-25 17:55:48 $
+ * Title: AboutDlg 
  * Description: AboutDlg is a class representing the Dialog About
  *
  *
@@ -14,8 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.9 $
- * @author  $Author: gonzrubi $
+ * @version 
+ * @author  
  * @since JDK1.3
  */
 package dInterface.dUtil;

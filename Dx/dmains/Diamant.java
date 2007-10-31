@@ -35,7 +35,8 @@ import eLib.exit.dialog.FatalProblemDlg;
 /**
  *
  * Diamant is used to call the whole application.
- * It makes an instance of DApplication then call doIt methode
+ * It makes an instance of DApplication then call doIt method
+ * 
  * which runs the application.
  * 
  * The constant GUI (true) allows to have a Graphical User Interface
@@ -66,7 +67,7 @@ public class Diamant {
 	public static void main(String[] args) {
 
 		// Check that all files required by Diamant exist
-		// If not deploy them
+		// if not create them
 		DxDeploymentManager deploymentManager = new DxDeploymentManager();
 		deploymentManager.checkAndDeploy();
 

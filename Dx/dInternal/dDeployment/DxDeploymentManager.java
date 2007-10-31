@@ -39,7 +39,7 @@ public class DxDeploymentManager {
 
 	private static Vector<String> _vsListFiles;
 
-	// list of ressources to deploy
+	// list of resources to deploy
 	private Vector<DxConfigResource> _vsFileNames;
 
 	private static Logger _logger = Logger.getLogger(Diamant.class.getName());
@@ -55,7 +55,7 @@ public class DxDeploymentManager {
 		_vsListFiles.add("pref/DXcaracteristics.sig");
 		_vsListFiles.add("pref/DXfunctions.sig");
 		_vsListFiles.add("pref/logoDiamant.gif");
-		_vsListFiles.add("pref/room_function.xml");
+		//_vsListFiles.add("pref/room_function.xml");
 		_vsListFiles.add("pref/StandardTTC.xml");
 		_vsListFiles.add("pref/StandardTTE.xml");
 		_vsListFiles.add("trace/log4j.conf");
@@ -144,7 +144,7 @@ public class DxDeploymentManager {
 				}
 			}
 		}
-	}
+   	}
 
 	/**
 	 * Method that checks if the ressource was already deployed
@@ -171,10 +171,10 @@ public class DxDeploymentManager {
 	}
 
 	/**
-	 * Deploys a ressource from the jar of the application
+	 * Deploys a resource from the jar of the application
 	 * 
 	 * @param ressource
-	 *            the resssource to deploy
+	 *            the resource to deploy
 	 * @throws IOException
 	 */
 	private void deploy(DxConfigResource ressource) throws IOException {
