@@ -81,7 +81,7 @@ import eLib.exit.exception.DxException;
 
 public class DApplication {
 
-	private static final String LOGO_PATH = "images/dia.gif";
+	private static final String LOGO_PATH = "images/logoDia.gif";
 	private static final String LOGO_DESCRIPTION = "logoDiamant";
 	// singleton: has only one instance
 	private static int instanceNumber = 0;

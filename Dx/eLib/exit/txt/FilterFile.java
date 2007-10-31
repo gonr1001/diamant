@@ -21,10 +21,12 @@
 package eLib.exit.txt;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
+import java.util.Properties;
 import dConstants.DConst;
-
 import eLib.exit.dialog.DxExceptionDlg;
 import eLib.exit.exception.DxException;
 import eLib.exit.exception.IOFileException;
@@ -36,12 +38,15 @@ import eLib.exit.exception.IOFileException;
  * after construction.
  * 
  * <p>
- * All Exceptions are catched then a IOFileExeption is throw, then when using
- * this ByteInputFile only one Exception must be catched.
+ * All Exceptions are catch then a IOFileExeption is throw, then when using
+ * this ByteInputFile only one Exception must be catch.
  * 
  */
 
 public class FilterFile {
+	
+	private static final String CHAR_PATH = "data/chars.txt";
+
 	private ByteInputFile _bif;
 
 	private ByteOutputFile _bof;
@@ -64,31 +69,15 @@ public class FilterFile {
 	 */
 	public FilterFile() {
 		_bytesArray = null;
-		_charKnown = "";
-	} // end FilterFile
-
-	/**
-	 * 
-	 * Requires: a String where the charKnown are defined
-	 * 
-	 * <p>
-	 * Modifies: the set of char that can be recognized
-	 * 
-	 * <p>
-	 * Effect: the internal champs sont initialized. Recognized chars are 0 to
-	 * 127 ASCII + those contanied in the String
-	 * 
-	 * @param charKnown
-	 *            a String containing the char that can be recognized.
-	 * 
-	 */
-	public FilterFile(String charKnown) {
-		_bytesArray = null;
+		String charKnown = createCharKnown(CHAR_PATH);
 		if (charKnown != null)
 			_charKnown = charKnown;
 		else
 			_charKnown = "";
 	} // end FilterFile
+
+
+
 
 	/**
 	 * 
@@ -333,5 +322,33 @@ public class FilterFile {
 		}
 		return true;
 	}// end testByte method
+	
+	private String createCharKnown(String path) {
+		if (path != null) {
+			try {
+				//open file
+				Properties prop = new Properties();
+				prop.load(FilterFile.class.getResource(path).openStream());
+				return prop.getProperty("acceptedChars", "");			
+
+			} catch (NullPointerException npe) {
+				System.err.println("Couldn't find file1: " + path);
+				return null;
+				//throw new IOFileException("The file name was empty");
+
+			} catch (FileNotFoundException fnfe) {
+				System.err.println("Couldn't find file3: " + path);
+				//throw new IOFileException("The file: " + path + " was not found");
+				return null;
+
+			} catch (IOException npe) {
+				System.err.println("Couldn't find file2: " + path);
+				return null;			
+			}
+		}
+		return "";
+
+	}
+
 }// end class Filter
 

@@ -18,13 +18,12 @@
  */
 package dInternal.dData;
 
-import java.io.File;
+
 import java.util.StringTokenizer;
 import java.util.Vector;
 
 import dConstants.DConst;
 import developer.DxFlags;
-import dInterface.DxPreferences;
 import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
@@ -69,8 +68,6 @@ public class DLoadData {
 
 	private DModel _dm;
 
-	private String _acceptedChars;
-
 	private String _inDiaFileVersion;
 
 	private TTStructure _tts;
@@ -79,7 +76,7 @@ public class DLoadData {
 
 	private DxSetOfSites _dxSoSRooms;
 
-	private SetOfSites _roomsList;
+//	private SetOfSites _roomsList;
 
 	private DxActivitiesSitesReader _dxasr;
 
@@ -106,7 +103,6 @@ public class DLoadData {
 	 */
 	public DLoadData() {
 		_dm = null;
-		_acceptedChars = getAcceptedChars();
 	}
 
 	/**
@@ -119,7 +115,6 @@ public class DLoadData {
 	 */
 	public DLoadData(DModel dm) {
 		_dm = dm;
-		_acceptedChars = getAcceptedChars();
 	}
 
 	/**
@@ -133,8 +128,6 @@ public class DLoadData {
 	 */
 	public DLoadData(DModel dm, String str) {
 		_dm = dm;
-		if (_dm != null) // XXXX Pascal: else ?
-			_acceptedChars = getAcceptedChars();
 		try {
 			verifyImportDataFile(str);
 		} catch (DxException e) {
@@ -473,24 +466,15 @@ public class DLoadData {
 
 	}
 
-	private String getAcceptedChars() {
-		String str = System.getProperty("user.home") + File.separator + "pref"
-		+ File.separator + "pref.txt";
-		DxPreferences preferences = new DxPreferences(str);
-		
-		return preferences._acceptedChars;
-	}
 
 	public byte[] filterBadChars(String str) throws DxException {
 		FilterFile filter = new FilterFile();
-		filter.setCharKnown("");
-		filter.appendToCharKnown(_acceptedChars);
 		filter.validFile(str);
 		return filter.getByteArray();
 	}
 
 	private void verifyImportDataFile(String str) throws DxException {
-		FilterFile filter = new FilterFile(_acceptedChars);
+		FilterFile filter = new FilterFile();//_acceptedChars);
 		if (filter.validFile(str)) {
 			StringTokenizer st = new StringTokenizer(new String(filter
 					.getByteArray()), DConst.CR_LF);

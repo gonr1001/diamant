@@ -904,6 +904,7 @@ public void test7_analyseTokens(){
 
   private byte[] dataPreLoad(String str) throws DxException {
     FilterFile filter = new FilterFile();
+    filter.setCharKnown("");
     filter.appendToCharKnown("ิห้-',:; ()๊.เ");
     if (filter.validFile(str)) {
       return filter.getByteArray();

@@ -36,7 +36,7 @@ import dTest.dInternal.DResourceTest;
 import dTest.dInternal.DSetOfResourcesTest;
 import dTest.dInternal.DValueTest;
 import dTest.dInternal.DataExchangeTest;
-import dTest.dInternal.DxDeploymentManagerTest;
+//import dTest.dInternal.DxDeploymentManagerTest;
 import dTest.dInternal.DxStateBarModelTest;
 import dTest.dInternal.DxStateTest;
 import dTest.dInternal.dData.ByteArrayMessageTest;
@@ -155,7 +155,7 @@ public class DiamantTest {
 		suite.addTest(ResourceTest.suite());
 		suite.addTest(DFileMenuTest.suite());
 		suite.addTest(DxEditEventDlgTest.suite());
-		suite.addTest(DxDeploymentManagerTest.suite());
+//		suite.addTest(DxDeploymentManagerTest.suite());
 		System.out.println("Bye I was in Diamant tests");
 		return suite;
 	}

@@ -23,7 +23,6 @@ import junit.framework.Test;
 import junit.framework.TestSuite;
 import dInternal.dOptimization.DxAssignRoomsAlgTest;
 import dTest.dInterface.dMenus.DFileMenuTest;
-import dTest.dInternal.DxDeploymentManagerTest;
 import dTest.dInternal.dData.DSaveDataTest;
 import dTest.dInternal.dData.DStandardReportDataTest;
 import dTest.dInternal.dData.dInstructors.DxInstructorsReaderTest;
@@ -71,7 +70,6 @@ public class RgrTest {
 		suite.addTest(ConditionsTest.suite());
 		suite.addTest(DStandardReportDataTest.suite());
 		suite.addTest(DSaveDataTest.suite());
-		suite.addTest(DxDeploymentManagerTest.suite());
 		suite.addTest(DFileMenuTest.suite());
 
 		System.out.println("Bye I was in rgr selected Tests");
