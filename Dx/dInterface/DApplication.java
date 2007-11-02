@@ -662,9 +662,9 @@ public class DApplication {
 	 */
 	public void assignEvents() {
 		if (DxFlags.newEditEventDlg) {
-			new DxEventsDlg(this.getJFrame(), this.getCurrentDModel(), "");
+			new DxEventsDlg(this.getJFrame(), this.getCurrentDModel());
 		} else {
-			new EventsDlg(this.getJFrame(), this.getCurrentDModel(), "");
+			new EventsDlg(this.getJFrame(), this.getCurrentDModel());
 		}
 	}
 
@@ -895,9 +895,9 @@ public class DApplication {
 	 */
 	public void eventAssignment() {
 		if (DxFlags.newEditEventDlg) {
-			new DxEventsDlg(this.getJFrame(), this.getCurrentDModel(), "");
+			new DxEventsDlg(this.getJFrame(), this.getCurrentDModel());
 		} else {
-			new EventsDlg(this.getJFrame(), this.getCurrentDModel(), "");
+			new EventsDlg(this.getJFrame(), this.getCurrentDModel());
 		}
 	}
 

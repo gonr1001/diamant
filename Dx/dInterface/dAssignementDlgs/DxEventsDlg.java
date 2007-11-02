@@ -70,7 +70,7 @@ public class DxEventsDlg extends EventsDlgInterface implements Observer, DlgIden
 //		initialize();
 //	}// end method
 	
-	public DxEventsDlg(JFrame jFrame, DModel dModel, String title) {
+	public DxEventsDlg(JFrame jFrame, DModel dModel) {
 		super(jFrame,dModel, DConst.EVENTS_DLG_TITLE);
 		_dModel =dModel;
 		_arrowsNames = new String [2];		

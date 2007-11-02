@@ -64,7 +64,7 @@
 			<pathelement path="${localJars}/log4j-1.2.8.jar" />
 			<pathelement path="${localJars}/xml-api.jar" />
 			<pathelement path="${localJars}/jdom.jar" />
-			<pathelement path="${build}" />
+			<pathelement path="${build}"/>
 		</path>
 	</target>
 	<target name="compile" depends="compilepath" description="compile the java sources.">
@@ -73,7 +73,23 @@
 			<classpath refid="c.classpath" />
 		</javac>
 	</target>
-	<target name="testpath" depends="prepare,compile" description="test path classpath.">
+	
+	<target name="addToClasses" depends="prepare,compile" description="add files to classes.">
+		<copy todir="${build}/eLib/exit/txt/data">
+			<fileset dir="${srcDir}/eLib/exit/txt/data">
+				<exclude name="**/CVS" />
+				<exclude name="**/*.txvpck" />
+			</fileset>
+		</copy>
+		<copy todir="${build}/dInterface/images">
+					<fileset dir="${srcDir}/dInterface/images">
+						<exclude name="**/CVS" />
+						<exclude name="**/*.txvpck" />
+					</fileset>
+				</copy>
+	</target>
+	
+	<target name="testpath" depends="prepare,compile,addToClasses " description="test path classpath.">
 		<path id="t.classpath">
 			<pathelement path="${localJars}/junit.jar" />
 			<pathelement path="${localJars}/log4j-1.2.8.jar" />
@@ -123,6 +139,9 @@
 			<attribute name="Main-Class" value="dmains.Diamant" />
 		</manifest>
 	</target>
+	
+	
+	
 	<target name="package" depends="manifest">
 		<copy todir="${build}/pref">
 			<fileset dir="${srcDir}/pref">

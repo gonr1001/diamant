@@ -46,7 +46,7 @@ public class EventsDlg extends EventsDlgInterface implements DlgIdentification {
 //		initialize();
 //	}// end method
 	
-	public EventsDlg(JFrame jFrame, DModel dModel, String title) {
+	public EventsDlg(JFrame jFrame, DModel dModel) {
 		super(jFrame, dModel, DConst.EVENTS_DLG_TITLE);
 		// _withRoomFunction = withRoomFunction;
 		buildArrowButtons(true);

@@ -134,8 +134,7 @@ public class DxAssignRoomsAlg implements Algorithm {
 			DSetOfResources eventsInCat = this.getEventsWithRoomNamed(
 					eventsInPeriod, sCatName);
 
-			result = placeEvents(/*eventsToUpdate,*/ roomsInCat,
-					eventsInCat);
+			result = placeEvents(roomsInCat, eventsInCat);
 			for(int j = 0 ; j < result.size(); j++){
 				eventsToUpdate.add(result.elementAt(j));
 			}			
@@ -160,7 +159,7 @@ public class DxAssignRoomsAlg implements Algorithm {
 		}
 		DSetOfResources eventsToPlace = this.getEventsWithRoomNamed(
 				eventsInPeriod, "------");
-		return placeEvents(/*eventsToUpdate,*/ allRooms, eventsToPlace);
+		return placeEvents(allRooms, eventsToPlace);
 	}
 
 	/**
