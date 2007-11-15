@@ -133,7 +133,7 @@ public class DApplication {
 
 	private DxPreferences _dxPreferences;
 
-	private Preferences _preferences;
+//	private Preferences _preferences;
 
 	private DMediator _dMediator;
 
@@ -169,19 +169,10 @@ public class DApplication {
 		System.out.println("Preference file is in :" + str);
 		_dxPreferences = new DxPreferences(str);
 		
-//		_preferences = Preferences.userRoot().node("/diamant/exit/dinc");
-//		_preferences = Preferences.userNodeForPackage();//userRoot().node("/diamant/exit/dinc");
-//		addPrefsListener();
-//		System.out.println("path " + _preferences.absolutePath());
+//		_preferences = Preferences.userRoot().node("/com.dinc/exit/diamant");
 	}
 
-	// // singleton: has only one instance
-	// public static DApplication getInstance() {
-	// if (_instance == null) {
-	// _instance = new DApplication();
-	// }
-	// return _instance;
-	// }
+
 
 
 
@@ -189,25 +180,22 @@ public class DApplication {
 		if (args.length > 0) {
 			lookUpforOptions(args); // args came from the command line
 		}
-		// String str = System.getProperty("user.home") + File.separator +
-		// "pref"
-		// + File.separator + "pref.txt";
-		// System.out.println("Preference file is in :" + str);
-		// _preferences = new DxPreferences(str);
+		 String str = System.getProperty("user.home") + File.separator +
+		 "pref"
+		 + File.separator + "pref.txt";
+		 System.out.println("Preference file is in :" + str);
+		 _dxPreferences = new DxPreferences(str);
 		_dMediator = new DMediator(this);
 		_currentDir = System.getProperty("user.dir");
 		_jFrame = createFrame(DConst.APP_NAME + "   " + DConst.V_DATE);
-		// String lookAndFeel = _preferences.get ("lookAndFeel",
-		// "com.sun.java.swing.plaf.motif.MotifLookAndFeel");
-		// String lookAndFeel = _preferences.get("lookAndFeel",
-		// "javax.swing.plaf.metal.MetalLookAndFeel");
 		if (DxFlags.newPref) {
-//		String lookAndFeel = getLAFFromPref();
 			setLAF(getLAFFromPref());
 		} else {
 			setLAF(_dxPreferences._lookAndFeel);
 		}
-		tryOpenDevFile();
+		if (_inDevelopment) {
+			tryOpenDevFile();
+		}
 		_logger.warn("bye_from DApplication"); // this must be the end of an
 		// execution
 	}
@@ -820,20 +808,18 @@ public class DApplication {
 			new PLAFDlg(this);
 		}
 	}
-//	public void addPrefsListener(Preferences pref) {
-//		//_preferences
-//			pref.addPreferenceChangeListener(new PreferenceChangeListener() {
-//					public void preferenceChange(PreferenceChangeEvent pce) {
-//						String str = pce.getNewValue();
-//						System.out.println("Change: (" + pce.getNode()
-//								+ ") key= " + pce.getKey() + "   value = "
-//								+ str);
-//						//setLAF(pce.getNewValue());
-//						
-//						updateLAF(str);
-//					}
-//				});
-//	}
+	public void addPrefsListener(Preferences pref) {
+		//_preferences
+			pref.addPreferenceChangeListener(new PreferenceChangeListener() {
+					public void preferenceChange(PreferenceChangeEvent pce) {
+						String str = pce.getNewValue();
+						System.out.println("Change: (" + pce.getNode()
+								+ ") key= " + pce.getKey() + "   value = "
+								+ str);
+						updateLAF(str);
+					}
+				});
+	}
 	/**
 	 * 
 	 */

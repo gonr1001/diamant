@@ -156,7 +156,7 @@ public class DiamantTest {
 //		suite.addTest(ResourceTest.suite());
 //		suite.addTest(DFileMenuTest.suite());
 		suite.addTest(DxEditEventDlgTest.suite());
-//		suite.addTest(DxDeploymentManagerTest.suite());
+		suite.addTest(DxDeploymentManagerTest.suite());
 		System.out.println("Bye I was in Diamant tests");
 		return suite;
 	}

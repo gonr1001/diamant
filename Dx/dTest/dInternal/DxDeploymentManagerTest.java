@@ -40,8 +40,7 @@ public class DxDeploymentManagerTest extends TestCase {
 				false));
 		vsFileNamesExpected.add(new DxConfigResource(pref, "logoDiamant.gif",
 				false));
-		vsFileNamesExpected.add(new DxConfigResource(pref, "room_function.xml",
-				false));
+
 		vsFileNamesExpected.add(new DxConfigResource(pref, "StandardTTC.xml",
 				false));
 		vsFileNamesExpected.add(new DxConfigResource(pref, "StandardTTE.xml",

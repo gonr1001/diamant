@@ -45,10 +45,10 @@ public class DxFlags {
 	public final static boolean newActivity = false;
 	
 	// public final static boolean newPref = true;
-	public final static boolean newPref = true;
+	public final static boolean newPref = MASTER;
 	
-	//public final static boolean newEvent = false;
-	public final static boolean newEvent = MASTER;
+//	//public final static boolean newEvent = false;
+//	public final static boolean newEvent = MASTER;
 	
 	public final static boolean newEditEventDlg = MASTER;
 	//public final static boolean newEditEventDlg = MASTER;
