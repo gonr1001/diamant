@@ -29,6 +29,7 @@ import org.apache.log4j.PropertyConfigurator;
 
 import dConstants.DConst;
 import dInterface.DApplication;
+import dInternal.dDeployment.DxDeploymentManager;
 //import dInternal.dDeployment.DxDeploymentManager;
 import eLib.exit.dialog.FatalProblemDlg;
 
@@ -68,8 +69,8 @@ public class Diamant {
 //      TODO delete comment
 //		// Check that all files required by Diamant exist
 //		// if not create them
-//		DxDeploymentManager deploymentManager = new DxDeploymentManager();
-//		deploymentManager.checkAndDeploy();
+		DxDeploymentManager deploymentManager = new DxDeploymentManager();
+		deploymentManager.checkAndDeploy();
 
 		PropertyConfigurator.configure(System.getProperty("user.home")
 				+ File.separator + "trace" + File.separator + "log4j.conf");

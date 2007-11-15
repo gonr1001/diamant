@@ -30,6 +30,9 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.util.StringTokenizer;
+import java.util.prefs.PreferenceChangeEvent;
+import java.util.prefs.PreferenceChangeListener;
+import java.util.prefs.Preferences;
 
 import javax.swing.DefaultDesktopManager;
 import javax.swing.ImageIcon;
@@ -62,6 +65,7 @@ import dInterface.dData.ImportSelectiveFileDlg;
 import dInterface.dData.ReportsDlg;
 import dInterface.dFileMenuDlgs.NewTimeTableDlg;
 import dInterface.dMenus.DxMenuBar;
+import dInterface.dPreferencesDlgs.DxPLAFDlg;
 import dInterface.dTimeTable.ConflictsOfAnEventDlg;
 import dInterface.dTimeTable.OpenTTDlg;
 import dInterface.dTimeTable.OpenTTSDlg;
@@ -93,7 +97,6 @@ public class DApplication {
 			_instance = new DApplication();
 		}
 		return _instance;
-
 	}
 
 	private static Logger _logger = Logger.getLogger(DApplication.class
@@ -128,7 +131,9 @@ public class DApplication {
 
 	private JDesktopPane _jDesktopPane;
 
-	private DxPreferences _preferences;
+	private DxPreferences _dxPreferences;
+
+	private Preferences _preferences;
 
 	private DMediator _dMediator;
 
@@ -162,7 +167,12 @@ public class DApplication {
 		String str = System.getProperty("user.home") + File.separator + "pref"
 				+ File.separator + "pref.txt";
 		System.out.println("Preference file is in :" + str);
-		_preferences = new DxPreferences(str);
+		_dxPreferences = new DxPreferences(str);
+		
+//		_preferences = Preferences.userRoot().node("/diamant/exit/dinc");
+//		_preferences = Preferences.userNodeForPackage();//userRoot().node("/diamant/exit/dinc");
+//		addPrefsListener();
+//		System.out.println("path " + _preferences.absolutePath());
 	}
 
 	// // singleton: has only one instance
@@ -172,6 +182,8 @@ public class DApplication {
 	// }
 	// return _instance;
 	// }
+
+
 
 	public void doIt(String[] args) {
 		if (args.length > 0) {
@@ -185,10 +197,27 @@ public class DApplication {
 		_dMediator = new DMediator(this);
 		_currentDir = System.getProperty("user.dir");
 		_jFrame = createFrame(DConst.APP_NAME + "   " + DConst.V_DATE);
-		setLAF(_preferences._lookAndFeel);
+		// String lookAndFeel = _preferences.get ("lookAndFeel",
+		// "com.sun.java.swing.plaf.motif.MotifLookAndFeel");
+		// String lookAndFeel = _preferences.get("lookAndFeel",
+		// "javax.swing.plaf.metal.MetalLookAndFeel");
+		if (DxFlags.newPref) {
+//		String lookAndFeel = getLAFFromPref();
+			setLAF(getLAFFromPref());
+		} else {
+			setLAF(_dxPreferences._lookAndFeel);
+		}
 		tryOpenDevFile();
 		_logger.warn("bye_from DApplication"); // this must be the end of an
 		// execution
+	}
+
+	private String getLAFFromPref() {
+		boolean visible = false;
+		DxPLAFDlg dlg = new DxPLAFDlg(this, visible);
+		String str = dlg.getLookAndFeelFromPref();
+		dlg.dispose();
+		return str;
 	}
 
 	private void lookUpforOptions(String[] args) {
@@ -243,8 +272,8 @@ public class DApplication {
 					- DConst.ADJUST_WIDTH, screenSize.height
 					- DConst.ADJUST_HEIGHT));
 		}
-		/* Application Icon*/
-		// ImageIcon iconeDiamant 
+		/* Application Icon */
+		// ImageIcon iconeDiamant
 		ImageIcon diamantIcon = createImageIcon(LOGO_PATH, LOGO_DESCRIPTION);
 		if (diamantIcon != null) {
 			jFrame.setIconImage(diamantIcon.getImage());
@@ -253,7 +282,6 @@ public class DApplication {
 		jFrame.setVisible(true);
 		return jFrame;
 	} // end createUI
-
 
 	public JDesktopPane getDesktop() {
 		return _jDesktopPane;
@@ -284,7 +312,7 @@ public class DApplication {
 	}
 
 	public DxPreferences getDxPreferences() {
-		return _preferences;
+		return _dxPreferences;
 	} // end getPreferences
 
 	public String getCurrentDir() {
@@ -311,7 +339,9 @@ public class DApplication {
 		// Force SwingApp to come up in the System L&F
 		try {
 			UIManager.setLookAndFeel(str);
-			System.out.println("pref" + str);
+			System.out.println("pref: " + str);
+			UIManager.setLookAndFeel(str);
+			System.out.println("pref: " + str);
 		} catch (UnsupportedLookAndFeelException ulafe) {
 			new FatalProblemDlg("UnsupportedLookAndFeel: " + str);
 			System.err.println("Warning: UnsupportedLookAndFeel: " + str);
@@ -784,9 +814,26 @@ public class DApplication {
 	 * 
 	 */
 	public void showPLAFDlg() {
-		new PLAFDlg(this);
+		if (DxFlags.newPref) {
+			new DxPLAFDlg(this,true);
+		} else {
+			new PLAFDlg(this);
+		}
 	}
-
+//	public void addPrefsListener(Preferences pref) {
+//		//_preferences
+//			pref.addPreferenceChangeListener(new PreferenceChangeListener() {
+//					public void preferenceChange(PreferenceChangeEvent pce) {
+//						String str = pce.getNewValue();
+//						System.out.println("Change: (" + pce.getNode()
+//								+ ") key= " + pce.getKey() + "   value = "
+//								+ str);
+//						//setLAF(pce.getNewValue());
+//						
+//						updateLAF(str);
+//					}
+//				});
+//	}
 	/**
 	 * 
 	 */
@@ -885,6 +932,7 @@ public class DApplication {
 	 * 
 	 */
 	public void roomAssignment() {
+		System.out.println("before call RAO" +  _increase + " " + _best);
 		new DxAssignRoomsAlg(this.getCurrentDModel(), this.getDxPreferences()
 				.getDxConflictLimits(), _increase, _best).doWork();
 		new InformationDlg(this.getJFrame(), DConst.ROOM_ASSIGN_MESSAGE);
@@ -990,5 +1038,4 @@ public class DApplication {
 		return null;
 	}
 
-	
 } /* end class DApplication */

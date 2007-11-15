@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<DXTimeTable>
+     <TTcycle>
+        <TTdays>
+        <TTday>
+             <TTsequences>
+               <TTsequence><sequenceID>Séquence 1</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>08:50</BeginTime><EndTime>11:40</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>Séquence 2</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>13:00</BeginTime><EndTime>15:50</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>Séquence 3</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>16:00</BeginTime><EndTime>18:50</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>Séquence 4</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>19:00</BeginTime><EndTime>21:50</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+             </TTsequences>
+          <dayID>Lu</dayID><dayRef>1</dayRef>
+          </TTday>
+        <TTday>
+             <TTsequences>
+               <TTsequence><sequenceID>Séquence 1</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>08:50</BeginTime><EndTime>11:40</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>Séquence 2</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>13:00</BeginTime><EndTime>15:50</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>Séquence 3</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>16:00</BeginTime><EndTime>18:50</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>Séquence 4</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>19:00</BeginTime><EndTime>21:50</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+             </TTsequences>
+          <dayID>Ma</dayID><dayRef>2</dayRef>
+          </TTday>
+        <TTday>
+             <TTsequences>
+               <TTsequence><sequenceID>Séquence 1</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>08:50</BeginTime><EndTime>11:40</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>Séquence 2</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>13:00</BeginTime><EndTime>15:50</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>Séquence 3</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>16:00</BeginTime><EndTime>18:50</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>Séquence 4</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>19:00</BeginTime><EndTime>21:50</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+             </TTsequences>
+          <dayID>Me</dayID><dayRef>3</dayRef>
+          </TTday>
+        <TTday>
+             <TTsequences>
+               <TTsequence><sequenceID>Séquence 1</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>08:50</BeginTime><EndTime>11:40</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>Séquence 2</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>13:00</BeginTime><EndTime>15:50</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>Séquence 3</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>16:00</BeginTime><EndTime>18:50</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>Séquence 4</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>19:00</BeginTime><EndTime>21:50</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+             </TTsequences>
+          <dayID>Je</dayID><dayRef>4</dayRef>
+          </TTday>
+        <TTday>
+             <TTsequences>
+               <TTsequence><sequenceID>Séquence 1</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>08:50</BeginTime><EndTime>11:40</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>Séquence 2</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>13:00</BeginTime><EndTime>15:50</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>Séquence 3</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>16:00</BeginTime><EndTime>18:50</EndTime><priority>1</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>Séquence 4</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>19:00</BeginTime><EndTime>21:50</EndTime><priority>1</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+             </TTsequences>
+          <dayID>Ve</dayID><dayRef>5</dayRef>
+          </TTday>
+        <TTday>
+             <TTsequences>
+               <TTsequence><sequenceID>Séquence 1</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>08:50</BeginTime><EndTime>11:40</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>Séquence 2</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>13:00</BeginTime><EndTime>15:50</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>Séquence 3</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>16:00</BeginTime><EndTime>18:50</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>Séquence 4</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>19:00</BeginTime><EndTime>21:50</EndTime><priority>2</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+             </TTsequences>
+          <dayID>Sa</dayID><dayRef>6</dayRef>
+          </TTday>
+        <TTday>
+             <TTsequences>
+               <TTsequence><sequenceID>Séquence 1</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>08:50</BeginTime><EndTime>11:40</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>Séquence 2</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>13:00</BeginTime><EndTime>15:50</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>Séquence 3</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>16:00</BeginTime><EndTime>18:50</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>Séquence 4</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>19:00</BeginTime><EndTime>21:50</EndTime><priority>2</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+             </TTsequences>
+          <dayID>Di</dayID><dayRef>7</dayRef>
+          </TTday>
+        </TTdays>
+<cycleID>1</cycleID><pLength>170</pLength>
+     </TTcycle>
+</DXTimeTable>

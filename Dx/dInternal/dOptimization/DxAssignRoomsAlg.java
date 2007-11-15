@@ -182,8 +182,8 @@ public class DxAssignRoomsAlg implements Algorithm {
 				if (!_best) {
 					DxRoom room = (DxRoom) it.next();
 					if (fitIn(eventToAssign, room)) {
-						((DxEvent) eventToAssign.getAttach()).setRoomName(room
-								.getName());
+						assignRoom(eventToAssign, room);
+						//rgr change
 						allRooms.remove(room);
 						break;
 					} // if
@@ -196,15 +196,19 @@ public class DxAssignRoomsAlg implements Algorithm {
 			} // while
 			if (myRooms.size() > 0) {
 				DxRoom r = (DxRoom) myRooms.get(myRooms.size()-1);
-				((DxEvent) eventToAssign.getAttach())
-						.setRoomName(r.getName());
-				((DxEvent) eventToAssign.getAttach())			
-				.setRoomKeyWithKey(r.getKey());
+				assignRoom(eventToAssign, r);
 				allRooms.remove(myRooms.size()-1);
 				myRooms = new Vector<DxResource>();
 			}
 		} // while
 		return eventsToUpdate;
+	}
+
+	private void assignRoom(DResource eventToAssign, DxRoom room) {
+		((DxEvent) eventToAssign.getAttach()).setRoomName(room
+				.getName());
+		((DxEvent) eventToAssign.getAttach())			
+		.setRoomKeyWithKey(room.getKey());
 	}
 
 	protected DSetOfResources getEventsWithRoomNamed(DSetOfResources events,
