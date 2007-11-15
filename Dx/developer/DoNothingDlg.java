@@ -30,6 +30,7 @@ import javax.swing.JOptionPane;
  * DoNothingDlg is a class used to show a dialog which does nothing.
  * 
  */
+@SuppressWarnings("serial")
 public class DoNothingDlg extends JDialog {
 
 	final static String STR = "rgr, \nNot Implemented yet, \nWorking on that!!";
