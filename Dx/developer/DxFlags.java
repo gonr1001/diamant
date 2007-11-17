@@ -24,7 +24,7 @@ package developer;
  * 
  * Description: DxFlags is a class used to:
  * <p>
- * Offer some flags used when developping a new feature
+ * Offer some flags used when developing a new feature
  * <p>
  * 
  */
@@ -46,10 +46,7 @@ public class DxFlags {
 	
 	// public final static boolean newPref = true;
 	public final static boolean newPref = MASTER;
-	
-//	//public final static boolean newEvent = false;
-//	public final static boolean newEvent = MASTER;
-	
+		
 	public final static boolean newEditEventDlg = MASTER;
 	//public final static boolean newEditEventDlg = MASTER;
 	

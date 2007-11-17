@@ -51,14 +51,14 @@ public class NewTimeTableDlg extends JDialog {
 	 * @param type       indicating CYCLE or EXAM
 	 * 
 	 */
-	public NewTimeTableDlg(DApplication dApplic, int type) {
-		buildDialog(dApplic, type);
+	public NewTimeTableDlg() {
+		//doWork(dApplic, type);
 	} // end constructor
 
 	/**
 	 *
 	 * */
-	private void buildDialog(DApplication dApplic, int type) {
+	public String doWork(DApplication dApplic, int type) {
 		JFileChooser fc = new JFileChooser(dApplic.getCurrentDir());
 		String str1 = DConst.XML;
 		String str2 = DConst.XML_FILE;
@@ -91,11 +91,13 @@ public class NewTimeTableDlg extends JDialog {
 
 		// If the file chooser exited sucessfully,
 		// and a file was selected, continue
+	
 		if ((returnVal == JFileChooser.APPROVE_OPTION)) {
-			// get the file name
-			dApplic.setFileToOpen(fc.getSelectedFile().getAbsolutePath());
-			dispose();
-		} // if ((returnVal == JFileChooser.APPROVE_OPTION)) {
+			return fc.getSelectedFile().getAbsolutePath();
+		} 
+		return "";
+		
+		// if ((returnVal == JFileChooser.APPROVE_OPTION)) {
 		// XXXX Pascal: else?  Si on choisi un mauvais fichier XML 
 		//on recoit un message d'erreur est l'application ferme en catastrophe.
 		//       Si on choisi un fichier avec une mauvaise extension, 

@@ -133,13 +133,13 @@ public class DApplication {
 
 	private DxPreferences _dxPreferences;
 
-//	private Preferences _preferences;
+	//	private Preferences _preferences;
 
 	private DMediator _dMediator;
 
 	private String _currentDir;
 
-	private String _fileToOpen;
+	//	private String _fileToOpen;
 
 	private String _fileToOpenAtStart;
 
@@ -168,23 +168,18 @@ public class DApplication {
 				+ File.separator + "pref.txt";
 		System.out.println("Preference file is in :" + str);
 		_dxPreferences = new DxPreferences(str);
-		
-//		_preferences = Preferences.userRoot().node("/com.dinc/exit/diamant");
+
+		//		_preferences = Preferences.userRoot().node("/com.dinc/exit/diamant");
 	}
-
-
-
-
 
 	public void doIt(String[] args) {
 		if (args.length > 0) {
 			lookUpforOptions(args); // args came from the command line
 		}
-		 String str = System.getProperty("user.home") + File.separator +
-		 "pref"
-		 + File.separator + "pref.txt";
-		 System.out.println("Preference file is in :" + str);
-		 _dxPreferences = new DxPreferences(str);
+		String str = System.getProperty("user.home") + File.separator + "pref"
+				+ File.separator + "pref.txt";
+		System.out.println("Preference file is in :" + str);
+		_dxPreferences = new DxPreferences(str);
 		_dMediator = new DMediator(this);
 		_currentDir = System.getProperty("user.dir");
 		_jFrame = createFrame(DConst.APP_NAME + "   " + DConst.V_DATE);
@@ -355,7 +350,7 @@ public class DApplication {
 
 	// -------------------------------------------
 	/**
-	 * This methode updates the look and feel style
+	 * This method updates the look and feel style
 	 * 
 	 * @param String
 	 *            A look and feel style
@@ -426,62 +421,64 @@ public class DApplication {
 	 * 
 	 */
 	public void newTTable() {
-		new NewTimeTableDlg(this, DConst.CYCLE);
-		this.setCurrentDir(_fileToOpen);
-		try {
-			this.getDMediator().addDxTTableDoc(
-					this.getCurrentDir() + DConst.NO_NAME, _fileToOpen);
-			_dxMenuBar.afterNewTTable();
-		} catch (DxException e) {
-			new DxExceptionDlg(_jFrame, e.getMessage(), e);
-		}
+		buildTTable(DConst.CYCLE);
 	}
-
+	
 	/**
 	 * 
 	 */
 	public void newTTableExam() {
-		new NewTimeTableDlg(this, DConst.EXAM);
-		this.setCurrentDir(_fileToOpen);
-		try {
-			this.getDMediator().addDxTTExamDoc(
-					this.getCurrentDir() + DConst.NO_NAME, _fileToOpen,
-					DConst.EXAM);
-		} catch (DxException e) {
-			new DxExceptionDlg(_jFrame, e.getMessage(), e);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		_dxMenuBar.afterNewTTable();
+		buildTTable(DConst.EXAM);
 	}
+
+	/**
+	 * @param i TODO
+	 * 
+	 */
+	private void buildTTable(int i) {
+		NewTimeTableDlg dlg = new NewTimeTableDlg();
+		String pathfileName = dlg.doWork(this, i);
+		
+		if (pathfileName == "") {// cancel button was pressed!
+			dlg.dispose();
+		} else {
+			dlg.dispose();
+			this.setCurrentDir(pathfileName);
+			try {
+				this.getDMediator().addDxTTableDoc(
+						this.getCurrentDir() + DConst.NO_NAME, pathfileName);
+				_dxMenuBar.afterNewTTable();
+			} catch (DxException e) {
+				new DxExceptionDlg(_jFrame, e.getMessage(), e);
+			}
+		}
+	}
+
+
 
 	/**
 	 * 
 	 */
 	public void newTTStrucCycle() {
-		this.showToolBar();
-		this.setCursorWait();
-		try {
-			this._dMediator
-					.addDxTTStructureDoc(this.getDxPreferences()._standardTTC);
-			_dxMenuBar.afterNewTTStruc();
-		} catch (Exception e) {
-			new DxExceptionDlg(this._jFrame, e.getMessage(), e);
-			this.hideToolBar();
-		}
-		this.setCursorDefault();
+		buildTTStruc(this.getDxPreferences()._standardTTC);
 	}
 
 	/**
 	 * 
 	 */
 	public void newTTStrucExam() {
+		buildTTStruc(this.getDxPreferences()._standardTTE);
+	}
+
+	/**
+	 * @param string indicates the type of timetable structure
+	 * 
+	 */
+	private void buildTTStruc(String str) {
 		this.showToolBar();
 		this.setCursorWait();
 		try {
-			this._dMediator
-					.addDxTTStructureDoc(this.getDxPreferences()._standardTTE);
+			this._dMediator.addDxTTStructureDoc(str);
 			_dxMenuBar.afterNewTTStruc();
 		} catch (Exception e) {
 			new DxExceptionDlg(this._jFrame, e.getMessage(), e);
@@ -495,7 +492,6 @@ public class DApplication {
 	 */
 	public void openTTable() {
 		new OpenTTDlg(this);
-		this.afterInitialAssign();
 	}
 
 	/**
@@ -803,23 +799,24 @@ public class DApplication {
 	 */
 	public void showPLAFDlg() {
 		if (DxFlags.newPref) {
-			new DxPLAFDlg(this,true);
+			new DxPLAFDlg(this, true);
 		} else {
 			new PLAFDlg(this);
 		}
 	}
+
 	public void addPrefsListener(Preferences pref) {
 		//_preferences
-			pref.addPreferenceChangeListener(new PreferenceChangeListener() {
-					public void preferenceChange(PreferenceChangeEvent pce) {
-						String str = pce.getNewValue();
-						System.out.println("Change: (" + pce.getNode()
-								+ ") key= " + pce.getKey() + "   value = "
-								+ str);
-						updateLAF(str);
-					}
-				});
+		pref.addPreferenceChangeListener(new PreferenceChangeListener() {
+			public void preferenceChange(PreferenceChangeEvent pce) {
+				String str = pce.getNewValue();
+				System.out.println("Change: (" + pce.getNode() + ") key= "
+						+ pce.getKey() + "   value = " + str);
+				updateLAF(str);
+			}
+		});
 	}
+
 	/**
 	 * 
 	 */
@@ -918,7 +915,7 @@ public class DApplication {
 	 * 
 	 */
 	public void roomAssignment() {
-		System.out.println("before call RAO" +  _increase + " " + _best);
+		System.out.println("before call RAO" + _increase + " " + _best);
 		new DxAssignRoomsAlg(this.getCurrentDModel(), this.getDxPreferences()
 				.getDxConflictLimits(), _increase, _best).doWork();
 		new InformationDlg(this.getJFrame(), DConst.ROOM_ASSIGN_MESSAGE);
@@ -967,9 +964,9 @@ public class DApplication {
 					this.getJFrame());
 	}
 
-	public void setFileToOpen(String absolutePath) {
-		_fileToOpen = absolutePath;
-	}
+	//	public void setFileToOpen(String absolutePath) {
+	//		_fileToOpen = absolutePath;
+	//	}
 
 	public void doImport(JFileChooser fc, String str, String dlg) {
 		this.getCurrentDxDoc().setAutoImportDIMFilePath(
