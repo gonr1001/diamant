@@ -52,7 +52,7 @@ import dConstants.DConst;
 import developer.DxFlags;
 import dInterface.dAffectation.ActivityDlg;
 import dInterface.dAffectation.ActivityModifDlg;
-import dInterface.dAffectation.EventsDlg;
+//import dInterface.dAffectation.EventsDlg;
 import dInterface.dAffectation.SectionDlg;
 import dInterface.dAlgorithms.PersonalizeMixingAlgorithmDlg;
 import dInterface.dAssignementDlgs.DxActivityDlg;
@@ -677,9 +677,10 @@ public class DApplication {
 	public void assignEvents() {
 		if (DxFlags.newEditEventDlg) {
 			new DxEventsDlg(this.getJFrame(), this.getCurrentDModel());
-		} else {
-			new EventsDlg(this.getJFrame(), this.getCurrentDModel());
-		}
+		} 
+//		else {
+//			new EventsDlg(this.getJFrame(), this.getCurrentDModel());
+//		}
 	}
 
 	/**
@@ -927,9 +928,10 @@ public class DApplication {
 	public void eventAssignment() {
 		if (DxFlags.newEditEventDlg) {
 			new DxEventsDlg(this.getJFrame(), this.getCurrentDModel());
-		} else {
-			new EventsDlg(this.getJFrame(), this.getCurrentDModel());
-		}
+		} 
+//		else {
+//			new EventsDlg(this.getJFrame(), this.getCurrentDModel());
+//		}
 	}
 
 	/**

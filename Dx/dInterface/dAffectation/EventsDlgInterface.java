@@ -137,7 +137,7 @@ public abstract class EventsDlgInterface extends JDialog implements
 
 	public abstract void actionPerformed(ActionEvent e);
 
-	public abstract void buildArrowButtons(boolean enableArrows);
+	public abstract void buildArrowButtons();//boolean enableArrows);
 
 	public abstract ButtonsPanel setButtons();
 

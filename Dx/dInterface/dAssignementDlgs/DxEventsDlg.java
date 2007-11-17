@@ -76,7 +76,7 @@ public class DxEventsDlg extends EventsDlgInterface implements Observer, DlgIden
 		_arrowsNames = new String [2];		
 		_arrowsNames [0] = DConst.TO_RIGHT;
 		_arrowsNames [1] = DConst.TO_LEFT;
-		buildArrowButtons(true);
+		buildArrowButtons(); //true);
 		_dModel.addObserver(this);
 		initialize();
 	}// end method
@@ -94,7 +94,8 @@ public class DxEventsDlg extends EventsDlgInterface implements Observer, DlgIden
 	/**
 	 * build buttom to use in the dialog
 	 */
-	public void buildArrowButtons(boolean enableArrows) {
+	public void buildArrowButtons() {
+		boolean enableArrows = true;
 		_leftArrowsPanel = DxTools.arrowsPanel(this, "left", _arrowsNames,
 				enableArrows);
 		_rightArrowsPanel = DxTools.arrowsPanel(this, "right", _arrowsNames,
