@@ -52,9 +52,9 @@ public class DxDeploymentManager {
 		_vsListFiles = new Vector<String>();
 		//chargement ds vecteur
 		_vsListFiles.add("pref/pref.txt");
-		_vsListFiles.add("pref/DXcaracteristics.sig");
-		_vsListFiles.add("pref/DXfunctions.sig");
-		_vsListFiles.add("pref/logoDiamant.gif");
+//		_vsListFiles.add("pref/DXcaracteristics.sig");
+//		_vsListFiles.add("pref/DXfunctions.sig");
+//		_vsListFiles.add("pref/logoDiamant.gif");
 		//_vsListFiles.add("pref/room_function.xml");
 		_vsListFiles.add("pref/StandardTTC.xml");
 		_vsListFiles.add("pref/StandardTTE.xml");

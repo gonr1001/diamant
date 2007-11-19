@@ -34,17 +34,7 @@ public class DxDeploymentManagerTest extends TestCase {
 		// files
 		vsFileNamesExpected.add(pref);
 		vsFileNamesExpected.add(new DxConfigResource(pref, "pref.txt", false));
-		vsFileNamesExpected.add(new DxConfigResource(pref,
-				"DXcaracteristics.sig", false));
-		vsFileNamesExpected.add(new DxConfigResource(pref, "DXfunctions.sig",
-				false));
-		vsFileNamesExpected.add(new DxConfigResource(pref, "logoDiamant.gif",
-				false));
 
-		vsFileNamesExpected.add(new DxConfigResource(pref, "StandardTTC.xml",
-				false));
-		vsFileNamesExpected.add(new DxConfigResource(pref, "StandardTTE.xml",
-				false));
 		vsFileNamesExpected.add(trace);
 		vsFileNamesExpected
 				.add(new DxConfigResource(trace, "log4j.conf", false));

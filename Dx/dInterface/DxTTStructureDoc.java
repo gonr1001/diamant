@@ -212,11 +212,6 @@ public class DxTTStructureDoc extends DxDocument {
 		_autoImportDIMFilePath = importDIMFilePath;
 	}
 
-//	@Override
-//	public void saveTTStrucure(String str) {
-//		_ttStructure.saveTTStructure(str);
-//	}
-
 	@Override
 	public DModel getCurrentDModel() {
 		return null;
