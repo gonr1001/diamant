@@ -28,7 +28,7 @@ A4-377;42;;Salle de classe;5 5 5 5,5 5 5 5,5 5 5 5,5 5 5 5,5 5 5 5,1 1 1 1,1 1 1
 A3-134;20;Classe;Salle de classe;5 5 1 1,5 5 1 1,5 5 1 1,5 5 1 1,5 5 1 1,1 1 1 1,1 1 1 1;
 A3-136;20;Classe;Salle de classe;5 5 1 1,5 5 1 1,1 1 1 1,5 5 1 1,5 5 1 1,1 1 1 1,1 1 1 1;
 
-A4-255;60;Lab;Salle de classe;5 1 1 5,1 1 1 5,1 1 1 1,1 1 5 1,1 1 1 1,1 1 1 1,1 1 1 1;
-A6-2004;40;Lab;Salle de classe;1 1 1 1,5 1 1 1,1 1 1 1,5 1 1 1,5 1 1 1,1 1 1 1,1 1 1 1;
-A4-268;24;Lab;Salle de classe;1 5 1 1,1 1 5 1,1 5 1 1,5 5 5 1,5 1 1 1,1 1 1 1,1 1 1 1;
-A4-274;22;Lab;Salle de classe;1 1 1 1,1 1 1 1,5 1 1 1,1 1 1 1,1 1 1 1,1 1 1 1,1 1 1 1;
+A4-255;60;Lab;Salle de classe;
+A6-2004;40;Lab;Salle de classe;
+A4-268;24;Lab;Salle de classe;
+A4-274;22;Lab;Salle de classe;

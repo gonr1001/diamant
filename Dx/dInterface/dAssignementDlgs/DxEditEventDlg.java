@@ -88,6 +88,8 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	private final String ACTION_CB_TYPE = "aCBTYPE";
 
 	private final String ACTION_CB_ROOM = "aCBROOM";
+	
+	private final String JOKER = "------";
 
 	private DModel _dModel;
 
@@ -97,7 +99,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 
 	private ButtonsPanel _applyPanel;
 
-	private Vector<DResource>_events; // contains event resource
+	private Vector<DResource>_events;
 
 	private JList[] _instructorsLists;
 
@@ -113,22 +115,9 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	 * @param dApplic
 	 *            The application
 	 * @param currentActivity
-	 *            The activity choised in the activityDialog
+	 *            The selected activity the parent Dialog
 	 * @param canBeModified
 	 */
-
-//	public DxEditEventDlg(JDialog dialog, DApplication dApplic,
-//			String currentActivity, boolean canBeModified) {
-//		// One activity or n events
-//		super(dialog, DConst.T_AFFEC_DLG);
-//		setLocationRelativeTo(dialog);
-//		_dModel = dApplic.getCurrentDModel();
-//		_events = getEventsVector(currentActivity);
-//
-//		buildDlg(canBeModified);
-//		displayDlg();
-//	} // end DxEditActivityDlg
-
 	
 	public DxEditEventDlg(JDialog dialog, DModel dModel,
 			String currentActivity, boolean canBeModified) {
@@ -155,10 +144,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		String command = e.getActionCommand();
 
 		if (command.equals(ACTION_CB_SITE)) {
-			_applyPanel.setFirstDisable();
-			//JPanel tpane = (JPanel) _tabbedPane.getSelectedComponent();
-			//String siteName = getSelectedSite(tpane);
-			_applyPanel.setFirstEnable();
+			actionCbSite();
 		}
 
 		if (command.equals(ACTION_CB_TYPE)) {
@@ -173,22 +159,22 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 			cbTypes.setSelectedItem(sTypeName);
 			DefaultComboBoxModel dcbmRooms;
 
-			if (sTypeName.equalsIgnoreCase("......")) {
+			if (sTypeName.equalsIgnoreCase(JOKER)) {
 				dcbmRooms = new DefaultComboBoxModel(currentSite
 						.getAllRoomsNameSorted());
-				dcbmRooms.insertElementAt("......", 0);
+				dcbmRooms.insertElementAt(JOKER, 0);
 			} else {
 				DxCategory currentCat = _dModel.getDxSetOfSites().getCat(
 						sSiteName, sTypeName);
 				dcbmRooms = new DefaultComboBoxModel(currentCat
 						.getSetOfDxRooms().getRoomsNameSorted());
-				dcbmRooms.insertElementAt("......", 0);
+				dcbmRooms.insertElementAt(JOKER, 0);
 			}
 
 			JComboBox cbRooms = getRoomsJCB(tpane);
 			cbRooms.removeActionListener(this);
 			cbRooms.setModel(dcbmRooms);
-			cbRooms.setSelectedItem("......");
+			cbRooms.setSelectedItem(JOKER);
 			int capacity = 0;
 			JLabel jl = getCapacityLabel(tpane);
 			jl.setText(new Integer(capacity).toString());
@@ -206,7 +192,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 			String roomName = getSelectedRoom(tpane);
 			DxSite currentSite = _dModel.getDxSetOfSites().getSite(sSiteName);
 
-			if (roomName.equalsIgnoreCase("......")) {
+			if (roomName.equalsIgnoreCase(JOKER)) {
 
 				dcbmRooms = new DefaultComboBoxModel(currentSite
 						.getAllRoomsNameSorted());
@@ -214,10 +200,10 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 				JComboBox cbRooms = getRoomsJCB(tpane);
 				cbRooms.removeActionListener(this);
 				cbRooms.setModel(dcbmRooms);
-				cbRooms.setSelectedItem("......");
+				cbRooms.setSelectedItem(JOKER);
 				JComboBox cbTypes = getTypesJCB(tpane);
 				cbTypes.removeActionListener(this);
-				cbTypes.setSelectedItem("......");
+				cbTypes.setSelectedItem(JOKER);
 				int capacity = 0;
 				JLabel jl = getCapacityLabel(tpane);
 				jl.setText(new Integer(capacity).toString());
@@ -285,6 +271,13 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 					buildInstructorList());
 		}
 
+	}
+
+	private void actionCbSite() {
+		_applyPanel.setFirstDisable();
+		//JPanel tpane = (JPanel) _tabbedPane.getSelectedComponent();
+		//String siteName = getSelectedSite(tpane);
+		_applyPanel.setFirstEnable();
 	}
 
 	/**
@@ -604,24 +597,24 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		DxRoom currentRoom;
 		DefaultComboBoxModel dcbmCategories = new DefaultComboBoxModel(
 				currentSite.getSetOfCat().getCatsNamesSorted());
-		dcbmCategories.insertElementAt("......", 0);
+		dcbmCategories.insertElementAt(JOKER, 0);
 		JComboBox cbCategories = new JComboBox(dcbmCategories);
 		DefaultComboBoxModel dcbmRooms;
 		JComboBox cbRooms = new JComboBox();
 		//System.out.println("room " + name);
 
-		if (name.equalsIgnoreCase("......") || name.equalsIgnoreCase("------")) { ///rgr
+		if (name.equalsIgnoreCase(JOKER) || name.equalsIgnoreCase(JOKER)) { ///rgr
 			//System.out.println("......" + " ou " + "------" + name);
 			currentRoom = null;
 			currentCat = null;
 
 			dcbmRooms = new DefaultComboBoxModel(currentSite
 					.getAllRoomsNameSorted());
-			dcbmRooms.insertElementAt("......", 0);
+			dcbmRooms.insertElementAt(JOKER, 0);
 			cbRooms.setModel(dcbmRooms);
 
-			cbRooms.setSelectedItem("......");
-			cbCategories.setSelectedItem("......");
+			cbRooms.setSelectedItem(JOKER);
+			cbCategories.setSelectedItem(JOKER);
 			capacity = 0;
 		} else {
 			// if it is a room?
@@ -633,7 +626,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 //						+ name);
 				dcbmRooms = new DefaultComboBoxModel(currentCat
 						.getSetOfDxRooms().getRoomsNameSorted());
-				dcbmRooms.insertElementAt("......", 0);
+				dcbmRooms.insertElementAt(JOKER, 0);
 				cbRooms.setModel(dcbmRooms);
 
 				cbRooms.setSelectedItem(name);
@@ -647,10 +640,10 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 //						+ name);
 				dcbmRooms = new DefaultComboBoxModel(currentCat
 						.getSetOfDxRooms().getRoomsNameSorted());
-				dcbmRooms.insertElementAt("......", 0);
+				dcbmRooms.insertElementAt(JOKER, 0);
 				cbRooms.setModel(dcbmRooms);
 
-				cbRooms.setSelectedItem("......");
+				cbRooms.setSelectedItem(JOKER);
 				cbCategories.setSelectedItem(name);
 
 				capacity = 0;
@@ -861,19 +854,6 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		return (JList) (jsp.getViewport()).getComponent(0);
 	} // getInstructorsList
 
-	//	/**
-	//	 * get a resource key
-	//	 * 
-	//	 * @param soresc
-	//	 * @param elt
-	//	 * @return the resource key or -1 if key does not found
-	//	 */
-	//	private long getResourceKey(SetOfRooms sor, String elt) {
-	//		if (!elt.equalsIgnoreCase(DConst.NO_ROOM_INTERNAL)) {
-	//			return sor.getResource(elt).getKey();
-	//		}
-	//		return -1;
-	//	}
 
 	/**
 	 * 
