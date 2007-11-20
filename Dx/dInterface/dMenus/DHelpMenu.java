@@ -1,5 +1,5 @@
 /**
- * Created on Feb 16, 2006
+ * Created on febuary 16, 2006
  * 
  * 
  * Title: DHelpMenu.java 

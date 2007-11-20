@@ -47,10 +47,9 @@ public class DxFlags {
 	// public final static boolean newPref = true;
 	public final static boolean newPref = MASTER;
 		
-	public final static boolean newEditEventDlg = true;
+	public final static boolean newDxEditEventDlg = false;
 	//public final static boolean newEditEventDlg = MASTER;
 	
-
 	public static boolean unitTest = true;
 
 }

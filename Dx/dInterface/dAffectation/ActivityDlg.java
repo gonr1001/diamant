@@ -1,6 +1,6 @@
 /**
  * 
- * Title: ActivityDlg $Revision: 1.63 $ $Date: 2007-10-25 17:55:48 $
+ * Title: ActivityDlg $Revision: 1.64 $ $Date: 2007-11-20 20:21:31 $
  * Description: ActivityDlg is a class used to
  * 
  * 
@@ -12,7 +12,7 @@
  * Information and shall use it only in accordance with the terms of the license
  * agreement you entered into with rgr.
  * 
- * @version $Revision: 1.63 $
+ * @version $Revision: 1.64 $
  * @author $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -37,6 +37,7 @@ import dConstants.DConst;
 import developer.DxFlags;
 import dInterface.DlgIdentification;
 import dInterface.dAssignementDlgs.DxEditEventDlg;
+import dInterface.dAssignementDlgs.EditEventDlg;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.DxTools;
 import dInterface.dUtil.TwoButtonsPanel;
@@ -46,7 +47,7 @@ import dInternal.dData.dActivities.SetOfActivities;
 public class ActivityDlg extends JDialog implements ActionListener,
 		DlgIdentification {
 
-//	private DApplication _dApplic;
+	// private DApplication _dApplic;
 
 	private JDialog _jd;
 
@@ -85,34 +86,33 @@ public class ActivityDlg extends JDialog implements ActionListener,
 	 *            The application object (for extracting the JFrame)
 	 */
 
-//	public ActivityDlg(DApplication dApplic) {
-//		super(dApplic.getJFrame(), DConst.ACT_LIST, true);
-//		_dApplic = dApplic;
-//		_jd = this; // to pass this dialog to the EditActivityDlg
-//
-////		if (dApplic.getCurrentDxDoc() == null)
-////			return;
-//		_dModel = dApplic.getCurrentDModel();
-//
-//		_activities = _dModel.getSetOfActivities();
-//
-//		initialize();
-//		int x = _dApplic.getJFrame().getX();
-//		int y = _dApplic.getJFrame().getY();
-//		this.setLocation(x + DConst.X_OFFSET, y + DConst.Y_OFFSET);
-//
-//		this.pack();
-//		this.setResizable(false);
-//		this.setVisible(true);
-//	}
-
+	// public ActivityDlg(DApplication dApplic) {
+	// super(dApplic.getJFrame(), DConst.ACT_LIST, true);
+	// _dApplic = dApplic;
+	// _jd = this; // to pass this dialog to the EditActivityDlg
+	//
+	// // if (dApplic.getCurrentDxDoc() == null)
+	// // return;
+	// _dModel = dApplic.getCurrentDModel();
+	//
+	// _activities = _dModel.getSetOfActivities();
+	//
+	// initialize();
+	// int x = _dApplic.getJFrame().getX();
+	// int y = _dApplic.getJFrame().getY();
+	// this.setLocation(x + DConst.X_OFFSET, y + DConst.Y_OFFSET);
+	//
+	// this.pack();
+	// this.setResizable(false);
+	// this.setVisible(true);
+	// }
 	public ActivityDlg(JFrame jFrame, DModel dModel) {
 		super(jFrame, DConst.ACT_LIST, true);
-//		_dApplic = dApplic;
+		// _dApplic = dApplic;
 		_jd = this; // to pass this dialog to the EditActivityDlg
 
-//		if (dApplic.getCurrentDxDoc() == null)
-//			return;
+		// if (dApplic.getCurrentDxDoc() == null)
+		// return;
 		_dModel = dModel;
 
 		_activities = _dModel.getSetOfActivities();
@@ -126,7 +126,6 @@ public class ActivityDlg extends JDialog implements ActionListener,
 		this.setResizable(false);
 		this.setVisible(true);
 	}
-
 
 	public Dimension getMinimumSize() {
 		return new Dimension(300, 300);
@@ -200,14 +199,13 @@ public class ActivityDlg extends JDialog implements ActionListener,
 				_leftList.clearSelection();
 			_currentActivities = ((JList) e.getSource()).getSelectedValues();
 			if (e.getClickCount() == 2) {
-				if (DxFlags.newEditEventDlg) {
-					new DxEditEventDlg(_jd, _dModel, /*_dApplic,*/
+				if (DxFlags.newDxEditEventDlg) {
+					new DxEditEventDlg(_jd, _dModel, /* _dApplic, */
+					(String) _currentActivities[0], false);
+				} else {
+					new EditEventDlg(_jd, _dModel,
 							(String) _currentActivities[0], false);
 				}
-				// else {
-				// new EditEventDlg(_jd, _dApplic,
-				// (String) _currentActivities[0], false);
-				// }
 
 			}// end if
 		}// end public void mouseClicked
@@ -227,9 +225,9 @@ public class ActivityDlg extends JDialog implements ActionListener,
 		if (command.equals(DConst.BUT_APPLY)) {
 			setActivitesVisibility();
 			// if (DxFlags.newDoc) {
-			//_dmodel.changeInDModel(this.idDlgToString());
+			// _dmodel.changeInDModel(this.idDlgToString());
 			// } else {
-			 _dModel.changeInDModelByActivity(this.idDlgToString());
+			_dModel.changeInDModelByActivity(this.idDlgToString());
 			// }
 			_buttonsPanel.setFirstDisable();
 		}

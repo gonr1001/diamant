@@ -30,6 +30,7 @@ import junit.framework.TestSuite;
 import developer.DxFlags;
 import dInternal.dOptimization.DxAssignRoomsAlgTest;
 import dTest.dInterface.dAssignementDlgs.DxEditEventDlgTest;
+import dTest.dInterface.dAssignementDlgs.EditEventDlgTest;
 import dTest.dInterface.dMenus.DFileMenuTest;
 import dTest.dInternal.DObjectTest;
 import dTest.dInternal.DResourceTest;
@@ -151,12 +152,16 @@ public class DiamantTest {
 		suite.addTest(DSaveDataTest.suite());
 		suite.addTest(DSetOfResourcesTest.suite());
 		suite.addTest(DStandardReportDataTest.suite());
-//		suite.addTest(SetOfStuSitesTest.suite());
-//		suite.addTest(StudentTest.suite());
-//		suite.addTest(ResourceTest.suite());
-//		suite.addTest(DFileMenuTest.suite());
-//		suite.addTest(DxEditEventDlgTest.suite());
-//		suite.addTest(DxDeploymentManagerTest.suite());
+		suite.addTest(SetOfStuSitesTest.suite());
+		suite.addTest(StudentTest.suite());
+		suite.addTest(ResourceTest.suite());
+		suite.addTest(DFileMenuTest.suite());
+		if (DxFlags.newEditEventDlg) {
+			suite.addTest(DxEditEventDlgTest.suite());
+		} else {
+			suite.addTest(EditEventDlgTest.suite());
+		}
+		suite.addTest(DxDeploymentManagerTest.suite());
 		System.out.println("Bye I was in Diamant tests");
 		return suite;
 	}

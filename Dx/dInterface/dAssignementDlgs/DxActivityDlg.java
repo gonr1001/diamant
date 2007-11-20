@@ -17,7 +17,6 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 
 import dConstants.DConst;
-import dInterface.DApplication;
 import dInterface.DlgIdentification;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.DxTools;
@@ -26,10 +25,11 @@ import dInternal.DModel;
 import dInternal.dData.DxResource;
 import dInternal.dData.dActivities.DxActivity;
 import dInternal.dData.dActivities.DxSetOfActivities;
+import developer.DxFlags;
 
 public class DxActivityDlg extends JDialog implements ActionListener,
 		DlgIdentification {
-	private DApplication _dApplic;
+	//private DApplication _dApplic;
 
 	private JDialog _jd;
 
@@ -197,8 +197,13 @@ public class DxActivityDlg extends JDialog implements ActionListener,
 			_currentActivities = ((JList) e.getSource()).getSelectedValues();
 			
 			if (e.getClickCount() == 2) {
-				new DxEditEventDlg(_jd, _dModel,
-						(String) _currentActivities[0], false);
+				if (DxFlags.newDxEditEventDlg) {
+					new DxEditEventDlg(_jd, _dModel, /* _dApplic, */
+					(String) _currentActivities[0], false);
+				} else {
+					new EditEventDlg(_jd, _dModel,
+							(String) _currentActivities[0], false);
+				}
 			}// end if
 		}// end public void mouseClicked
 	};// end definition of MouseListener mouseListener = new MouseAdapter(){

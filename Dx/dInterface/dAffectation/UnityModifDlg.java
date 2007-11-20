@@ -16,10 +16,12 @@ import java.util.Vector;
 import dConstants.DConst;
 
 import dInterface.dAssignementDlgs.DxEditEventDlg;
+import dInterface.dAssignementDlgs.EditEventDlg;
 import dInterface.dUtil.DxTools;
 import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.dData.dActivities.Section;
+import developer.DxFlags;
 
 
 public class UnityModifDlg extends SetOfElementsInterface{
@@ -61,12 +63,15 @@ private String _title;
    *
    */
   protected void doubleClicMouseProcess(){
-    //System.out.println("Activity modif:"+ _listOfElements[_selectedPanel].getSelectedValue().toString());
     DResource unity= _section.getSetOfUnities().getResource(_listOfElements[_selectedPanel].
        getSelectedValue().toString());
-//    new DxEditEventDlg(this,this._dApplic, _title+unity.getID()+".",true);
-    new DxEditEventDlg(this,_dModel, _title+unity.getID()+".",true);
-    //new DxEditActivityDlg(this,this._dApplic, _title+unity.getID()+".",true);
+    if (DxFlags.newDxEditEventDlg) {
+		new DxEditEventDlg(this, _dModel, /* _dApplic, */
+				_title+unity.getID()+".", true);
+	} else {
+		new EditEventDlg(this, _dModel,
+				_title+unity.getID()+".", true);
+	}
   }
 
   /**

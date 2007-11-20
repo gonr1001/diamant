@@ -631,7 +631,7 @@ public class DApplication {
 		if (DxFlags.newActivity) {
 			new DxActivityDlg(this.getJFrame(), this.getCurrentDModel());
 		} else {
-			if (DxFlags.newEditEventDlg) {
+			if (DxFlags.newDxEditEventDlg) {
 				new ActivityDlg(this.getJFrame(), this.getCurrentDModel());
 			} else {
 				new ActivityDlg(this.getJFrame(), this.getCurrentDModel());
@@ -675,7 +675,7 @@ public class DApplication {
 	 * 
 	 */
 	public void assignEvents() {
-		if (DxFlags.newEditEventDlg) {
+		if (DxFlags.newDxEditEventDlg) {
 			new DxEventsDlg(this.getJFrame(), this.getCurrentDModel());
 		} 
 //		else {
@@ -926,7 +926,7 @@ public class DApplication {
 	 * 
 	 */
 	public void eventAssignment() {
-		if (DxFlags.newEditEventDlg) {
+		if (DxFlags.newDxEditEventDlg) {
 			new DxEventsDlg(this.getJFrame(), this.getCurrentDModel());
 		} 
 //		else {
