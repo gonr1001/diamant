@@ -156,7 +156,7 @@ public class DiamantTest {
 		suite.addTest(StudentTest.suite());
 		suite.addTest(ResourceTest.suite());
 		suite.addTest(DFileMenuTest.suite());
-		if (DxFlags.newEditEventDlg) {
+		if (DxFlags.newDxEditEventDlg) {
 			suite.addTest(DxEditEventDlgTest.suite());
 		} else {
 			suite.addTest(EditEventDlgTest.suite());
