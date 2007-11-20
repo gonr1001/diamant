@@ -31,7 +31,7 @@ public class DxDeploymentManagerTest extends TestCase {
 		// directories
 		DxConfigResource pref = new DxConfigResource("pref", true);
 		DxConfigResource trace = new DxConfigResource("trace", true);
-		// files
+//		// files
 		vsFileNamesExpected.add(pref);
 		vsFileNamesExpected.add(new DxConfigResource(pref, "pref.txt", false));
 
