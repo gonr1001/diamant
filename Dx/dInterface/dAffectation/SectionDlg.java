@@ -719,7 +719,7 @@ public class SectionDlg extends DDialog implements ActionListener,
 	}
 
 	private void listTransfers(JList sourceList, JList destinationList,
-			Vector sourceVector, Vector destinationVector, String chain,
+			Vector sourceVector, Vector <String>destinationVector, String chain,
 			boolean toLeft, int sortIndex) {
 		if (sourceList == null || destinationList == null
 				|| sourceVector == null || destinationVector == null)
@@ -739,10 +739,10 @@ public class SectionDlg extends DDialog implements ActionListener,
 				} else {
 					elementsToTransfer[i] = strElement + chain;
 				}
-				destinationVector.add(elementsToTransfer[i]);
+				destinationVector.add((String)elementsToTransfer[i]);
 			}
 			for (int j = 0; j < destinationVector.size(); j++) {
-				res = new DResource((String) destinationVector.elementAt(j),
+				res = new DResource( destinationVector.elementAt(j),
 						null);
 				destinationRes.addResource(res, 1);
 			}

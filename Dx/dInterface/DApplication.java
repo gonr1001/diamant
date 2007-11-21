@@ -91,6 +91,7 @@ public class DApplication {
 	private static int instanceNumber = 0;
 	private static DApplication _instance = null;
 
+	// DApplication is a singleton
 	public static DApplication getInstance() {
 		if (instanceNumber == 0) {
 			instanceNumber++;
@@ -103,8 +104,6 @@ public class DApplication {
 			.getName());
 
 	public static boolean _inDevelopment;
-
-	// DApplication is a singleton
 
 	/* ZERO is needed to fix Frame Location (origin) */
 	private final int ZERO = 0;
@@ -432,7 +431,7 @@ public class DApplication {
 	}
 
 	/**
-	 * @param i TODO
+	 * @param i type of ttable
 	 * 
 	 */
 	private void buildTTable(int i) {

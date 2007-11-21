@@ -1241,10 +1241,6 @@ public class DLoadData {
 		return _dxSoSRooms;
 	}
 
-//	public SetOfSites getSetOfSitesRooms() {
-//		return _roomsList;
-//	}
-
 	public DxActivitiesSitesReader getDxActivitiesSitesReader() {
 		return _dxasr;
 	}
@@ -1256,10 +1252,5 @@ public class DLoadData {
 	public SetOfStuSites getSetofStuSites() {
 		return _studentsList;
 	}
-
-//	public SetOfActivitiesSites getSetOfActivitiesSites(DxSetOfSites setOfSites) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
 
 } // end DLoadData
