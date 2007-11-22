@@ -31,6 +31,7 @@ import developer.DxFlags;
 import dInternal.dOptimization.DxAssignRoomsAlgTest;
 import dTest.dInterface.dAssignementDlgs.DxEditEventDlgTest;
 import dTest.dInterface.dAssignementDlgs.EditEventDlgTest;
+//import dTest.dInterface.dAssignementDlgs.EditEventDlgTest;
 import dTest.dInterface.dMenus.DFileMenuTest;
 import dTest.dInternal.DObjectTest;
 import dTest.dInternal.DResourceTest;
