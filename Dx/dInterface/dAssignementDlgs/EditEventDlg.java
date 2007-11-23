@@ -955,11 +955,11 @@ public class EditEventDlg extends JDialog implements ActionListener,
 		return ((JToggleButton) (myJPanel.getComponent(1))).isSelected();
 	} // end isFixedButtonSelected
 
-	private Vector<Object> makeVector(JList jList) {
-		Vector<Object> v = new Vector<Object>();
+	private Vector<String> makeVector(JList jList) {
+		Vector<String> v = new Vector<String>();
 		if (jList != null) {
 			for (int i = 0; i < jList.getModel().getSize(); i++)
-				v.add(jList.getModel().getElementAt(i));
+				v.add((String)jList.getModel().getElementAt(i));
 		}
 		return v;
 	}
