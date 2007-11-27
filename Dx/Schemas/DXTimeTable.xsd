@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" >
+<!-- The first xsd:element is the timetable -->   
+   <xsd:element name="DXTimeTable">
+    <xsd:complexType>
+      <xsd:sequence>
+          <xsd:element ref="TTcycle" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element> 
+  <!-- ******************************************************************** -->   
+  <!-- The TTcycle -->   
+
+   <xsd:element name="TTcycle">
+      <xsd:complexType>
+         <xsd:sequence>
+             <xsd:element ref="TTdays" minOccurs="0" maxOccurs="unbounded"/>
+             <xsd:element name="cycleID" type="xsd:nonNegativeInteger"/>
+             <xsd:element name="pLength" type="xsd:string"/>
+         </xsd:sequence>             
+      </xsd:complexType>
+   </xsd:element>
+  <!-- ******************************************************************** -->   
+  <!-- The ttdays -->   
+  <xsd:element name="TTdays">
+     <xsd:complexType>
+        <xsd:sequence>
+           <xsd:element ref="TTday" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+     </xsd:complexType>
+   </xsd:element>
+
+   <xsd:element name="TTday">
+      <xsd:complexType>
+         <xsd:sequence>
+             <xsd:element ref="TTsequences" minOccurs="0" maxOccurs="unbounded"/>
+             <xsd:element name="dayID" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+             <xsd:element name="dayRef" type="xsd:nonNegativeInteger" minOccurs="1" maxOccurs="1"/>
+         </xsd:sequence>             
+      </xsd:complexType>
+   </xsd:element>
+  <!-- ******************************************************************** -->   
+  <!-- The sequences -->   
+  <xsd:element name="TTsequences">
+     <xsd:complexType>
+        <xsd:sequence>
+              <xsd:element ref="TTsequence" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+     </xsd:complexType>
+   </xsd:element>
+   
+   <xsd:element name="TTsequence">
+      <xsd:complexType>
+         <xsd:sequence>
+             <xsd:element name="sequenceID" type="xsd:string" minOccurs="1" maxOccurs="1"/>                      
+             <xsd:element ref="TTperiods" minOccurs="0" maxOccurs="unbounded"/>
+         </xsd:sequence>
+      </xsd:complexType>
+   </xsd:element>   
+  <!-- ******************************************************************** -->   
+  <!-- The ttperiods -->   
+  <xsd:element name="TTperiods">
+     <xsd:complexType>
+        <xsd:sequence>
+           <xsd:element ref="TTperiod" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+     </xsd:complexType>
+   </xsd:element>
+   
+   <xsd:element name="TTperiod">
+      <xsd:complexType>
+         <xsd:sequence>
+            <xsd:element name="BeginTime" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="EndTime" type="xsd:string" minOccurs="0" maxOccurs="1"/>            
+            <xsd:element name="priority" type="xsd:nonNegativeInteger" minOccurs="1" maxOccurs="1"/>              
+            <xsd:element name="periodID" type="xsd:nonNegativeInteger" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>            
+      </xsd:complexType>
+   </xsd:element>       
+</xsd:schema>
