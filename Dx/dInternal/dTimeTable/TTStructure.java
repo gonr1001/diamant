@@ -40,10 +40,14 @@ import eLib.exit.xml.output.XMLWriter;
 import eLib.exit.xml.output.XMLOutputFile;
 
 public class TTStructure extends Observable {
+	
+	static final String _TAG_TT_CYCLE = "TTcycle";
 
-	private DSetOfResources _setOfCycles;
+	static final String _TAGITEM1 = "cycleID";
 
-	private boolean _modified;
+	static final String _TAGITEM2 = "pLength";
+
+	static final String _TAGITEM3 = "TTdays";
 
 	static final String ITEM2 = "DXTimeTable";
 
@@ -60,23 +64,23 @@ public class TTStructure extends Observable {
 
 	public static final String[] _priorityTable = { "Normale", "Basse", "Nulle" };
 
+	private DSetOfResources _setOfCycles;
+
+	private boolean _modified;
+	
 	private String _error = "";
 
-	public static int NUMBEROFACTIVESDAYS = 5;// monday to friday
+	public static int NUMBEROFACTIVESDAYS = 5;
 
 	private int _numberOfDays;
 
-	private int _periodLenght; // XXXX Pascal: Non initialise
+	private int _periodLenght; 
 
 	private int _currentCycleIndex = 0;
 
-	static final String _TAG_TT_CYCLE = "TTcycle";
 
-	static final String _TAGITEM1 = "cycleID";
 
-	static final String _TAGITEM2 = "pLength";
 
-	static final String _TAGITEM3 = "TTdays";
 
 	// private String[] _dayNames;
 
@@ -86,16 +90,13 @@ public class TTStructure extends Observable {
 	}
 
 	public int getNumberOfActiveDays() {
-		return _numberOfDays; // //NUMBEROFACTIVESDAYS; //
+		return _numberOfDays; 
 	}
 
 	public String[] getWeekTable() {
 		return _weekTable;
 	}
 
-	// public String[] getDayNames() {
-	// return _dayNames;
-	// }
 
 	public int getPeriodLenght() {
 		return _periodLenght;
@@ -475,18 +476,18 @@ public class TTStructure extends Observable {
 	 * Create a sequence of periods
 	 * 
 	 * @param Document
-	 *            the xml document where we are working
+	 *            the XML document where we are working
 	 * @param String
 	 *            String the sequence ID (AM, PM or EM= evening)
 	 * @param int
 	 *            the number of periods in the sequence
 	 * @param int
-	 *            the lenght of each period in the sequence
+	 *            the length of each period in the sequence
 	 * @param int[2]
 	 *            the begin time of the period. the first element of the table
 	 *            is the our, and the second is the minutes
 	 * @param int
-	 *            the prioryti of each period
+	 *            the priority of each period
 	 * @return Element the sequence element
 	 */
 	private Element CreateSeqPeriods(Document doc, String seqID,
@@ -595,7 +596,7 @@ public class TTStructure extends Observable {
 	 * 
 	 * @return
 	 */
-	public void setModified() {
+	private void setModified() {
 		_modified = true;
 	}
 

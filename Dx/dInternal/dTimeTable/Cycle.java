@@ -41,7 +41,7 @@ public class Cycle extends DObject {
 	// private int _periodLength;
 	private String _error = "";
 
-	private int _currentDayIndex = 0;
+	private int _currentDayIndex;
 
 	private String _errorMessage = "XML file is corrupted";
 
@@ -50,6 +50,7 @@ public class Cycle extends DObject {
 
 	public Cycle() {
 		_setOfDays = new StandardCollection();
+		_currentDayIndex = 0;
 	}
 
 	/**

@@ -105,25 +105,19 @@ public class DApplication {
 
 	public static boolean _inDevelopment;
 
-	/* ZERO is needed to fix Frame Location (origin) */
+	// ZERO fix Frame Location (origin) 
 	private final int ZERO = 0;
 
-	/*
-	 * ADJUST_WIDTH is needed to adjust the screenSize minus border pixels (the
-	 * value is a guess) at each side of the screen
-	 */
+	
+	 // ADJUST_WIDTH adjust the screenSize minus border pixels (the
+	 // value is a guess) at each side of the screen
 	private final int ADJUST_WIDTH = 6;
 
-	/*
-	 * MIN_HEIGHT is needed to adjust the minimum height of the screenSize
-	 */
-	private final int MIN_HEIGHT = 512;
+	private final int SCREEN_MIN_HEIGHT = 512;
 
-	/*
-	 * MIN_WIDTH is needed to adjust the minimum width screenSize
-	 */
-	private final int MIN_WIDTH = 512;
-
+	private final int SCREEN_MIN_WIDTH = 512;
+	
+	// -d" option in the command line means debug
 	private final String DEV = "-d";
 
 	private JFrame _jFrame;
@@ -137,8 +131,6 @@ public class DApplication {
 	private DMediator _dMediator;
 
 	private String _currentDir;
-
-	//	private String _fileToOpen;
 
 	private String _fileToOpenAtStart;
 
@@ -242,7 +234,7 @@ public class DApplication {
 		panel.add(_jDesktopPane, BorderLayout.CENTER);
 
 		jFrame.setLocation(ZERO, ZERO);
-		panel.setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
+		panel.setMinimumSize(new Dimension(SCREEN_MIN_WIDTH, SCREEN_MIN_HEIGHT));
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		panel.setMaximumSize(screenSize);
 
@@ -925,12 +917,7 @@ public class DApplication {
 	 * 
 	 */
 	public void eventAssignment() {
-		if (DxFlags.newDxEditEventDlg) {
 			new DxEventsDlg(this.getJFrame(), this.getCurrentDModel());
-		} 
-//		else {
-//			new EventsDlg(this.getJFrame(), this.getCurrentDModel());
-//		}
 	}
 
 	/**
@@ -938,7 +925,6 @@ public class DApplication {
 	 */
 	public void conflictOption() {
 		new ConflictDlg(this);
-
 	}
 
 	/**
@@ -949,7 +935,6 @@ public class DApplication {
 			return false;
 		}
 		return this.getCurrentDxDoc().getCurrentDModel().isMultiSite();
-
 	}
 
 	/**
@@ -965,9 +950,6 @@ public class DApplication {
 					this.getJFrame());
 	}
 
-	//	public void setFileToOpen(String absolutePath) {
-	//		_fileToOpen = absolutePath;
-	//	}
 
 	public void doImport(JFileChooser fc, String str, String dlg) {
 		this.getCurrentDxDoc().setAutoImportDIMFilePath(
