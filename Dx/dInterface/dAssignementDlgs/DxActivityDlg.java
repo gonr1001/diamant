@@ -25,7 +25,7 @@ import dInternal.DModel;
 import dInternal.dData.DxResource;
 import dInternal.dData.dActivities.DxActivity;
 import dInternal.dData.dActivities.DxSetOfActivities;
-import developer.DxFlags;
+
 
 public class DxActivityDlg extends JDialog implements ActionListener,
 		DlgIdentification {

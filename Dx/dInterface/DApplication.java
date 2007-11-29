@@ -427,18 +427,22 @@ public class DApplication {
 	 * 
 	 */
 	public void openTTable() {
-		buildTTable();
+		if (DxFlags.newDxLoadData) {
+			buildTTable();
+		} else {
+			oldBuildTTable();
+		}
 	}
 
 	/**
 	 * 
 	 */
 	public void openTTStruc() {
-		buildTTStruc();
-		// this.showToolBar();
-		// new OpenTTSDlg(this);
-		// _dxMenuBar.afterNewTTStruc();
-		// this.afterOpenTTSruc();
+		if (DxFlags.newDxLoadData) {
+			buildTTStruc();
+		} else {
+			oldBuildTTStruc();
+		}
 	}
 
 	/**
@@ -1000,6 +1004,43 @@ public class DApplication {
 	}
 
 	/**
+	 * 
+	 * 
+	 */
+	private void oldBuildTTable() {
+		OpenTimeTableDlg dlg = new OpenTimeTableDlg();
+		String fullFileName = dlg.getFileName(this);
+
+		if (fullFileName == "") {// the cancel button was pressed!
+			this.initialState();
+		} else {
+			this.setCurrentDir(fullFileName);
+			try {
+				this.setCursorWait();
+				this.hideToolBar();
+				this.getDMediator().addDxTTableDoc(fullFileName, fullFileName);
+				_dxMenuBar.afterNewTTable();
+			} catch (DxException e) {
+				new DxExceptionDlg(_jFrame, e.getMessage(), e);
+				DMediator dMed = this.getDMediator();
+				dMed.clean();
+				dMed = null;
+				this.initialState();
+			} catch (Exception e) {
+				new DxExceptionDlg(_jFrame, e.getMessage(), e);
+				DMediator dMed = this.getDMediator();
+				dMed.clean();
+				dMed = null;
+				this.initialState();
+			}
+			this.setCursorDefault();
+			this.getCurrentDxDoc().changeInModel(this.getClass().toString());
+			this.afterInitialAssign();
+		}
+		dlg.dispose();
+	}
+	
+	/**
 	 * @param string
 	 *            indicates the type of timetable structure
 	 * 
@@ -1049,6 +1090,38 @@ public class DApplication {
 		this.setCursorDefault();
 	}
 
+
+	/**
+	 * @param string
+	 *            indicates the type of timetable structure
+	 * 
+	 */
+	private void oldBuildTTStruc() {
+		this.showToolBar();
+		this.setCursorWait();
+		OpenTTSDlg dlg = new OpenTTSDlg();
+		String fullFileName = dlg.getFileName(this);
+		
+		if (fullFileName == "") {// cancel button was pressed!
+			dlg.dispose();
+			this.initialState();
+		} else {
+			dlg.dispose();
+			// this.setCurrentDir(fullFileName);
+			this.closeCurrentDxDoc();
+			// this.hideToolBar();
+			try {
+				this._dMediator.addDxTTStructureDoc(fullFileName);
+				_dxMenuBar.afterNewTTStruc();
+			} catch (DxException e) {
+				new DxExceptionDlg(_jFrame, e.getMessage(), e);
+			} catch (Exception e) {
+				new DxExceptionDlg(_jFrame, e.getMessage(), e);
+			}
+		}
+		this.setCursorDefault();
+	}
+	
 	private ImageIcon createImageIcon(String path, String description) {
 		java.net.URL imgURL = DApplication.class.getResource(path);
 		if (imgURL != null) {

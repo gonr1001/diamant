@@ -16,12 +16,11 @@ import java.util.Vector;
 import dConstants.DConst;
 
 import dInterface.dAssignementDlgs.DxEditEventDlg;
-import dInterface.dAssignementDlgs.EditEventDlg;
 import dInterface.dUtil.DxTools;
 import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.dData.dActivities.Section;
-import developer.DxFlags;
+
 
 public class UnityModifDlg extends SetOfElementsInterface {
 
