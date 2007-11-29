@@ -306,6 +306,34 @@ public class DxLoadData {
 		return new ByteArrayMsg(DConst.FILE_VER_NAME1_5, new String(dataloaded));
 	}
 	
+	public String getVersion() {
+		return _inDiaFileVersion;
+	}
+	
+	public TTStructure getTTStructure() {
+		return _tts;
+	}
+
+	public DxActivitiesSitesReader getDxActivitiesSitesReader() {
+		return _dxasr;
+	}
+
+	public SetOfActivitiesSites getSetOfActivitiesSites() {
+		return _activitiesList;
+	}
+	
+	public SetOfStuSites getSetofStuSites() {
+		return _studentsList;
+	}
+	
+	public DxSetOfInstructors getDxSetOfInstructors() {
+		return _dxSoInst;
+	}
+	
+	public DxSetOfSites getDxSetOfSitesRooms() {
+		return _dxSoSRooms;
+	}
+	
 	public byte[] filterBadChars(String str) throws DxException {
 		FilterFile filter = new FilterFile();
 		filter.validFile(str);
