@@ -355,4 +355,11 @@ public class DMediator extends Object {
 		return _dApplication;
 	}
 
+	public void clean() {
+		DxDocument dxd = this.getCurrentDxDoc();
+		dxd.clean();
+		dxd = null;
+		
+	}
+
 } /* end class DMediator */

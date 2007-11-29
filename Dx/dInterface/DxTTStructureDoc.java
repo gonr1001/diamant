@@ -231,4 +231,9 @@ public class DxTTStructureDoc extends DxDocument {
 	public void saveDxDocument(String str) {
 		_ttStructure.saveTTStructure(str);	
 	}
+
+	@Override
+	public void clean() {
+		_ttStructure = null;	
+	}
 }

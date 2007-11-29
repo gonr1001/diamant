@@ -41,7 +41,7 @@ import org.apache.log4j.Logger;
  * <p> 
  * 
  */
-public class NewTimeTableDlg extends JDialog {
+public class NewTimeTableDlg extends JDialog /*TODO decomment rgr implements DlgGetFileName*/ {
 	private static Logger logger = Logger.getLogger(NewTimeTableDlg.class);
 
 	/**
@@ -52,13 +52,13 @@ public class NewTimeTableDlg extends JDialog {
 	 * 
 	 */
 	public NewTimeTableDlg() {
-		//doWork(dApplic, type);
+		// to avoid warning
 	} // end constructor
 
 	/**
 	 *
 	 * */
-	public String doWork(DApplication dApplic, int type) {
+	public String getFileName(DApplication dApplic, int type) {
 		JFileChooser fc = new JFileChooser(dApplic.getCurrentDir());
 		String str1 = DConst.XML;
 		String str2 = DConst.XML_FILE;

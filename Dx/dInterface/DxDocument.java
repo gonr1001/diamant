@@ -135,5 +135,8 @@ public abstract class DxDocument implements Observer {
 
 	public abstract void displayHorizontalSplit();
 
+	public abstract void clean();
+	
+
 
 } /* end DxDocument class */

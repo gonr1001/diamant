@@ -206,4 +206,10 @@ public class DxTTableDoc extends DxDocument {
 		_dm.saveTimeTable(str);
 		
 	}
+
+	@Override
+	public void clean() {
+		_stateBar = null;
+		_dm = null;
+	}
 }

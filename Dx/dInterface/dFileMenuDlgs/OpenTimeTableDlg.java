@@ -1,9 +1,8 @@
 /**
- *
- * Created 29 November 07
- * Title: OpenTTDlg 
- * Description: OpenTTDlg is created by OpenTTDCmd
- *
+ * Created on 29-Nov-07
+ * 
+ * 
+ * Title: OpenTimeTableDlg.java
  *
  * Copyright (c) 2001 by rgr.
  * All rights reserved.
@@ -15,12 +14,12 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @author gonzrubi 
- * @since JDK1.3
+ * 
+ * 
  */
 
+package dInterface.dFileMenuDlgs;
 
-package dInterface.dTimeTable;
 import java.io.File;
 
 import javax.swing.JDialog;
@@ -31,14 +30,13 @@ import dInterface.DApplication;
 import dInterface.DlgGetFileName;
 import dResources.DFileFilter;
 
-
 /**
  * 
  * OpenTTDlg is a class used to show a dialog
  * 
  */
 
-public class OpenTTDlg extends JDialog  implements DlgGetFileName {
+public class OpenTimeTableDlg extends JDialog  implements DlgGetFileName {
 
 	@Override
 	public String getFileName(DApplication dApplic) {
@@ -67,4 +65,4 @@ public class OpenTTDlg extends JDialog  implements DlgGetFileName {
 	}
 
 	
-} /* end class OpenTTDlg */
+} /* end class OpenTimeTableDlg */

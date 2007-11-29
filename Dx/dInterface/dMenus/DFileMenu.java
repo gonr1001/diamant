@@ -310,7 +310,7 @@ public class DFileMenu extends JMenu implements MenuStates {
 		class ExitListener implements ActionListener {
 			public void actionPerformed(ActionEvent event) {
 				event.toString(); // to avoid warning;
-				_dApplication.exit();
+				_dApplication.closeApplic();
 			}
 		}
 		ActionListener exitListener = new ExitListener();
