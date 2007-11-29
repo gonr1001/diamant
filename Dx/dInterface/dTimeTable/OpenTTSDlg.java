@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: OpenTTSDlg $Revision: 1.26 $  $Date: 2006-12-31 18:09:52 $
+ * Title: OpenTTSDlg $Revision: 1.27 $  $Date: 2007-11-29 15:57:12 $
  * Description: OpenTTSDlg is a class used to
  *
  *
@@ -16,7 +16,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.26 $
+ * @version $Revision: 1.27 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -29,28 +29,72 @@ import javax.swing.JFileChooser;
 
 import dConstants.DConst;
 import dInterface.DApplication;
+import dInterface.DlgGetFileName;
 
 import dResources.DFileFilter;
 
 
-public class OpenTTSDlg extends JDialog {
+public class OpenTTSDlg extends JDialog implements DlgGetFileName {
 
-	/**
-	 * the constructor will displays the dialog
-	 *
-	 * @param jframe    the parent of the dialog
-	 * @param str       the title of the window dialog
-	 * @since           JDK1.3
-	 */
+//	/**
+//	 *
+//	 * */
+//	private void buildDocument(DApplication dApplic) {
+//		JFileChooser fc = new JFileChooser(dApplic.getCurrentDir());
+//		String str1 = DConst.XML;
+//		String str2 = DConst.XML_FILE;
+//		//String str3 = DConst.NEW_TT_M;
+//
+//		fc.setFileFilter(new DFileFilter(new String[] { str1 }, str2));
+//		// Display the file chooser in a dialog
+//		Dimension d = fc.getPreferredSize();
+//		fc.setPreferredSize(new Dimension((int) d.getWidth() + 100, (int) d
+//				.getHeight()));
+//		//int returnVal = fc.showDialog(dApplic.getJFrame(), str3);
+//		//int returnVal = DxTools.showDialog(dApplic.getJFrame(), fc, str3);
+//		
+//		int returnVal=0;
+//	      String filename="nothing.txt";
+//	      while(!(new File(filename)).exists()&&
+//	            (returnVal==JFileChooser.APPROVE_OPTION)){
+//	          returnVal = fc.showOpenDialog(dApplic.getJFrame());
+//	        if(fc.getSelectedFile()!=null)
+//	          filename= fc.getSelectedFile().getAbsolutePath();
+//
+//	      }
+//	     
+//		// If the file chooser exited sucessfully,
+//		// and a file was selected, continue
+//		if (returnVal == JFileChooser.CANCEL_OPTION) {
+//			dApplic.closeCurrentDxDoc();
+//			dApplic.hideToolBar();
+//		}
+//		if (returnVal == JFileChooser.APPROVE_OPTION) {
+//			// get the file name
+//			String fil = fc.getSelectedFile().getAbsolutePath();
+//			dApplic.setCurrentDir(fil);
+/////*!!!NIC!!!*/			String error;
+//            try {
+////            	if (DxFlags.newDoc){
+//            		dApplic.getDMediator().addDxTTStructureDoc(fil);
+////            	} else {
+////            		dApplic.getDMediator().addDoc(fil, 0);
+////            	}
+//            } catch (Exception e) {
+//                /*!!!NIC!!!*/
+//            }
+/////*!!!NIC!!!*/			if (error.length() != 0) {
+/////*!!!NIC!!!*/				new FatalProblemDlg(dApplic.getJFrame(), error);
+/////*!!!NIC!!!*/				System.exit(1);
+/////*!!!NIC!!!*/			}
+//			dispose();
+//			
+//
+//		}
+//	}// end loadTTData
 
-	public OpenTTSDlg(DApplication dApplic) {
-		buildDocument(dApplic);
-	} // end constructor
-
-	/**
-	 *
-	 * */
-	private void buildDocument(DApplication dApplic) {
+	@Override
+	public String getFileName(DApplication dApplic) {
 		JFileChooser fc = new JFileChooser(dApplic.getCurrentDir());
 		String str1 = DConst.XML;
 		String str2 = DConst.XML_FILE;
@@ -61,47 +105,26 @@ public class OpenTTSDlg extends JDialog {
 		Dimension d = fc.getPreferredSize();
 		fc.setPreferredSize(new Dimension((int) d.getWidth() + 100, (int) d
 				.getHeight()));
-		//int returnVal = fc.showDialog(dApplic.getJFrame(), str3);
-		//int returnVal = DxTools.showDialog(dApplic.getJFrame(), fc, str3);
-		
-		int returnVal=0;
-	      String filename="nothing.txt";
-	      while(!(new File(filename)).exists()&&
-	            (returnVal==JFileChooser.APPROVE_OPTION)){
-	          returnVal = fc.showOpenDialog(dApplic.getJFrame());
-	        if(fc.getSelectedFile()!=null)
-	          filename= fc.getSelectedFile().getAbsolutePath();
+		int returnVal = 0;
+		String fileName="";
+		while (!(new File(fileName)).exists()
+				&& (returnVal == JFileChooser.APPROVE_OPTION)) {
+			returnVal = fc.showOpenDialog(dApplic.getJFrame());
+			if (fc.getSelectedFile() != null)
+				fileName = fc.getSelectedFile().getAbsolutePath();
 
-	      }
-	     
+		}
 		// If the file chooser exited sucessfully,
 		// and a file was selected, continue
-		if (returnVal == JFileChooser.CANCEL_OPTION) {
-			dApplic.getDMediator().closeCurrentDxDoc();
-			dApplic.hideToolBar();
-		}
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
 			// get the file name
-			String fil = fc.getSelectedFile().getAbsolutePath();
-			dApplic.setCurrentDir(fil);
-///*!!!NIC!!!*/			String error;
-            try {
-//            	if (DxFlags.newDoc){
-            		dApplic.getDMediator().addDxTTStructureDoc(fil);
-//            	} else {
-//            		dApplic.getDMediator().addDoc(fil, 0);
-//            	}
-            } catch (Exception e) {
-                /*!!!NIC!!!*/
-            }
-///*!!!NIC!!!*/			if (error.length() != 0) {
-///*!!!NIC!!!*/				new FatalProblemDlg(dApplic.getJFrame(), error);
-///*!!!NIC!!!*/				System.exit(1);
-///*!!!NIC!!!*/			}
-			dispose();
-			
-
+			return  fc.getSelectedFile().getAbsolutePath();		
 		}
-	}// end loadTTData
+		if (returnVal == JFileChooser.CANCEL_OPTION) {
+			return "";			
+		}
+		return "";
+	}// end getFileName
+	
 
 } /* end class OpenTTSDlg */
