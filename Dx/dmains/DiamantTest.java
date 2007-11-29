@@ -148,8 +148,7 @@ public class DiamantTest {
 			suite.addTest(DxLoadDataTest.suite());
 		} else {
 			suite.addTest(DLoadDataTest.suite());
-		}
-		
+		}	
 		suite.addTest(DSaveDataTest.suite());
 		suite.addTest(DSetOfResourcesTest.suite());
 		suite.addTest(DStandardReportDataTest.suite());

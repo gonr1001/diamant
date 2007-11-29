@@ -22,9 +22,11 @@ package dmains;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 import dInternal.dOptimization.DxAssignRoomsAlgTest;
-import dTest.dInterface.dMenus.DFileMenuTest;
+//import dTest.dInterface.dMenus.DFileMenuTest;
+import dTest.dInternal.DxLoadDataTest;
+import dTest.dInternal.dData.DLoadDataTest;
 import dTest.dInternal.dData.DSaveDataTest;
-import dTest.dInternal.dData.DStandardReportDataTest;
+//import dTest.dInternal.dData.DStandardReportDataTest;
 import dTest.dInternal.dData.dInstructors.DxInstructorsReaderTest;
 import dTest.dInternal.dOptimizationTest.ConditionsTest;
 import dTest.dInternal.dOptimizationTest.DxAssignAllAlgTest;
@@ -65,12 +67,16 @@ public class RgrTest {
 		if (DxFlags.newAlg) {
 			suite.addTest(DxAssignRoomsAlgTest.suite());
 		}
+		
+		if (DxFlags.newDxLoadData) {
+			suite.addTest(DxLoadDataTest.suite());
+		} else {
+			suite.addTest(DLoadDataTest.suite());
+		}
 		suite.addTest(DxInstructorsReaderTest.suite());
 		suite.addTest(SetOfEventsTest.suite());
 		suite.addTest(ConditionsTest.suite());
-		suite.addTest(DStandardReportDataTest.suite());
 		suite.addTest(DSaveDataTest.suite());
-		suite.addTest(DFileMenuTest.suite());
 
 		System.out.println("Bye I was in rgr selected Tests");
 		return suite;
