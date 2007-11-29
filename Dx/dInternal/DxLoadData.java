@@ -1,8 +1,8 @@
 /**
- * Created on May 23, 2006
+ * Created on 29-Nov-07
  * 
  * 
- * Title: DxLoadData.java 
+ * Title: DxLoadData.java
  *
  * Copyright (c) 2001 by rgr.
  * All rights reserved.
@@ -17,7 +17,8 @@
  * 
  * 
  */
-package dInternal.dData;
+
+package dInternal;
 
 import java.util.StringTokenizer;
 import java.util.Vector;
@@ -25,6 +26,7 @@ import java.util.Vector;
 import dConstants.DConst;
 import dInternal.DModel;
 import dInternal.DataExchange;
+import dInternal.dData.ByteArrayMsg;
 import dInternal.dData.dActivities.DxActivitiesSitesReader;
 import dInternal.dData.dActivities.DxReadActivitiesSites1dot5;
 import dInternal.dData.dActivities.SetOfActivitiesSites;

@@ -37,6 +37,7 @@ import dTest.dInternal.DSetOfResourcesTest;
 import dTest.dInternal.DValueTest;
 import dTest.dInternal.DataExchangeTest;
 import dTest.dInternal.DxDeploymentManagerTest;
+import dTest.dInternal.DxLoadDataTest;
 import dTest.dInternal.DxStateBarModelTest;
 import dTest.dInternal.DxStateTest;
 import dTest.dInternal.dData.ByteArrayMessageTest;
@@ -119,7 +120,6 @@ public class DiamantTest {
 		suite.addTest(CycleTest.suite());
 		suite.addTest(TTStructureTest.suite());
 		suite.addTest(DXToolsMethodsTest.suite());
-		// suite.addTest(EventAttachTest.suite());
 		suite.addTest(SetOfEventsTest.suite());
 		suite.addTest(ConflictsAttachTest.suite());
 		suite.addTest(StudentsConflictsMatrixTest.suite());
@@ -129,8 +129,6 @@ public class DiamantTest {
 		suite.addTest(StudentsConditionsTest.suite());
 		suite.addTest(ConditionsTest.suite());
 		suite.addTest(ScanFileTest.suite());
-		// suite.addTest(DRoomTest.suite());
-		// suite.addTest(SetOfSitesTest.suite());
 		suite.addTest(SetOfStuSitesTest.suite());
 		suite.addTest(DSetOfActivitiesTest.suite());
 		if (DxFlags.newActivity) {
@@ -146,7 +144,12 @@ public class DiamantTest {
 		suite.addTest(ByteArrayMessageTest.suite());
 		suite.addTest(StandardCollectionTest.suite());
 		suite.addTest(DResourceTest.suite());
-		suite.addTest(DLoadDataTest.suite());
+		if (DxFlags.newDxLoadData) {
+			suite.addTest(DxLoadDataTest.suite());
+		} else {
+			suite.addTest(DLoadDataTest.suite());
+		}
+		
 		suite.addTest(DSaveDataTest.suite());
 		suite.addTest(DSetOfResourcesTest.suite());
 		suite.addTest(DStandardReportDataTest.suite());

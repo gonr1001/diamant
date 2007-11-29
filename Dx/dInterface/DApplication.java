@@ -74,6 +74,7 @@ import dInterface.dUtil.ConflictDlg;
 import dInterface.dUtil.PLAFDlg;
 import dInterface.selectiveSchedule.dialog.SelectiveScheduleDlg;
 import dInternal.DModel;
+import dInternal.dData.DxLoadData;
 import dInternal.dOptimization.DxAssignAllAlg;
 import dInternal.dOptimization.DxAssignRoomsAlg;
 import dInternal.dOptimization.SelectAlgorithm;
@@ -981,23 +982,27 @@ public class DApplication {
 			try {
 				this.setCursorWait();
 				this.hideToolBar();
-				this.getDMediator().addDxTTableDoc(fullFileName, fullFileName);
+				DxLoadData dxLoadData = new DxLoadData();
+				dxLoadData.loadDataStructures(fullFileName, this.getCurrentDir());
+				
+//				this.getDMediator().addDxTTableDoc(fullFileName, fullFileName);
 				_dxMenuBar.afterNewTTable();
 			} catch (DxException e) {
 				new DxExceptionDlg(_jFrame, e.getMessage(), e);
-				DMediator dMed = this.getDMediator();
-				dMed.clean();
-				dMed = null;
+//				DMediator dMed = this.getDMediator();
+//				dMed.clean();
+//				dMed = null;
 				this.initialState();
 			} catch (Exception e) {
 				new DxExceptionDlg(_jFrame, e.getMessage(), e);
-				DMediator dMed = this.getDMediator();
-				dMed.clean();
-				dMed = null;
+//				DMediator dMed = this.getDMediator();
+//				dMed.clean();
+//				dMed = null;
 				this.initialState();
 			}
 			this.setCursorDefault();
-			this.getCurrentDxDoc().changeInModel(this.getClass().toString());
+//			this.getCurrentDxDoc().changeInModel(this.getClass().toString());
+			System.out.println("Load was done");
 			this.afterInitialAssign();
 		}
 		dlg.dispose();
