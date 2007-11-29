@@ -29,7 +29,7 @@ import developer.DxFlags;
 
 public class DxActivityDlg extends JDialog implements ActionListener,
 		DlgIdentification {
-	//private DApplication _dApplic;
+	// private DApplication _dApplic;
 
 	private JDialog _jd;
 
@@ -65,34 +65,33 @@ public class DxActivityDlg extends JDialog implements ActionListener,
 	 *            The application object (for extracting the JFrame)
 	 */
 
-//	public DxActivityDlg(DApplication dApplic) {
-//		super(dApplic.getJFrame(), DConst.ACT_LIST, true);
-//		_dApplic = dApplic;
-//		_jd = this; // to pass this dialog to the EditActivityDlg
-//		if (dApplic.getCurrentDxDoc() == null)
-//			return;
-//		_dmodel = dApplic.getCurrentDxDoc().getCurrentDModel();
-//		_dxsoaAct = _dmodel.getDxSetOfActivities();
-//
-//		initialize();
-//		int x = _dApplic.getJFrame().getX();
-//		int y = _dApplic.getJFrame().getY();
-//		this.setLocation(x + DConst.X_OFFSET, y + DConst.Y_OFFSET);
-//		// this.setMinimumSize(new Dimension(300, 300));
-//		// this.setPreferredSize(new Dimension(400, 400)); //the real
-//		// this.setMaximumSize(new Dimension(500, 500)); // XXXX Pascal: lien
-//		// inutile avec JDK 1.5
-//		this.pack();
-//		this.setResizable(false);
-//		this.setVisible(true);
-//	}
-	
+	// public DxActivityDlg(DApplication dApplic) {
+	// super(dApplic.getJFrame(), DConst.ACT_LIST, true);
+	// _dApplic = dApplic;
+	// _jd = this; // to pass this dialog to the EditActivityDlg
+	// if (dApplic.getCurrentDxDoc() == null)
+	// return;
+	// _dmodel = dApplic.getCurrentDxDoc().getCurrentDModel();
+	// _dxsoaAct = _dmodel.getDxSetOfActivities();
+	//
+	// initialize();
+	// int x = _dApplic.getJFrame().getX();
+	// int y = _dApplic.getJFrame().getY();
+	// this.setLocation(x + DConst.X_OFFSET, y + DConst.Y_OFFSET);
+	// // this.setMinimumSize(new Dimension(300, 300));
+	// // this.setPreferredSize(new Dimension(400, 400)); //the real
+	// // this.setMaximumSize(new Dimension(500, 500)); // XXXX Pascal: lien
+	// // inutile avec JDK 1.5
+	// this.pack();
+	// this.setResizable(false);
+	// this.setVisible(true);
+	// }
 	public DxActivityDlg(JFrame jFrame, DModel dModel) {
 		super(jFrame, DConst.ACT_LIST, true);
-//		_dApplic = dApplic;
+		// _dApplic = dApplic;
 		_jd = this; // to pass this dialog to the EditActivityDlg
-//		if (dApplic.getCurrentDxDoc() == null)
-//			return;
+		// if (dApplic.getCurrentDxDoc() == null)
+		// return;
 		_dModel = dModel;
 		_dxsoaAct = _dModel.getDxSetOfActivities();
 
@@ -195,15 +194,10 @@ public class DxActivityDlg extends JDialog implements ActionListener,
 			else
 				_leftList.clearSelection();
 			_currentActivities = ((JList) e.getSource()).getSelectedValues();
-			
+
 			if (e.getClickCount() == 2) {
-				if (DxFlags.newDxEditEventDlg) {
-					new DxEditEventDlg(_jd, _dModel, /* _dApplic, */
-					(String) _currentActivities[0], false);
-				} else {
-					new EditEventDlg(_jd, _dModel,
-							(String) _currentActivities[0], false);
-				}
+				new DxEditEventDlg(_jd, _dModel, /* _dApplic, */
+				(String) _currentActivities[0], false);
 			}// end if
 		}// end public void mouseClicked
 	};// end definition of MouseListener mouseListener = new MouseAdapter(){

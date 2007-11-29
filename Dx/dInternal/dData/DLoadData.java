@@ -473,7 +473,7 @@ public class DLoadData {
 		return filter.getByteArray();
 	}
 
-	private void verifyImportDataFile(String str) throws DxException {
+	private void  verifyImportDataFile(String str) throws DxException {
 		FilterFile filter = new FilterFile();//_acceptedChars);
 		if (filter.validFile(str)) {
 			StringTokenizer st = new StringTokenizer(new String(filter

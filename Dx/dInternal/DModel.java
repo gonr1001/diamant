@@ -48,9 +48,6 @@ import dInternal.dData.dInstructors.DxSetOfInstructors;
 import dInternal.dData.dRooms.DxRoom;
 import dInternal.dData.dRooms.DxSetOfRooms;
 import dInternal.dData.dRooms.DxSetOfSites;
-//import dInternal.dData.dRooms.SetOfCategories;
-//import dInternal.dData.dRooms.SetOfRooms;
-//import dInternal.dData.dRooms.SetOfRoomsFunctions;
 import dInternal.dData.dRooms.SetOfSites;
 import dInternal.dData.dStudents.SetOfStuSites;
 import dInternal.dData.dStudents.SetOfStudents;
@@ -58,7 +55,6 @@ import dInternal.dOptimization.DxConditionsToTest;
 import dInternal.dOptimization.SetOfEvents;
 import dInternal.dTimeTable.TTStructure;
 import dInternal.dUtil.DXToolsMethods;
-import eLib.exit.dialog.DxExceptionDlg;
 import eLib.exit.exception.DxException;
 
 /**
@@ -99,11 +95,7 @@ public class DModel extends Observable {
 
 	private DxSetOfActivitiesSites _dxsoasSetOfAct;
 
-//	private SetOfRoomsFunctions _setOfRoomsFunctions;
-
 	private SetOfSites _setOfSites;
-
-//	private SetOfCategories _setOfCategories;
 
 	private SetOfStuSites _setOfStuSites;
 
@@ -126,7 +118,7 @@ public class DModel extends Observable {
 	private DSetOfResources _setOfImportSelErrors;
 
 	/**
-	 * intvalue is between 0-1000 and give the state of the progress bar
+	 * int value is between 0-1000 and give the state of the progress bar
 	 */
 	private DValue _progressBarState;
 
@@ -184,8 +176,7 @@ public class DModel extends Observable {
 			_isOnlyATimeTable = true;
 		}
 		_type = type;
-//		_setOfRoomsFunctions = new SetOfRoomsFunctions();
-//		_setOfRoomsFunctions.functionReader();
+
 		this.notifyObservers(this);
 
 	}
@@ -383,10 +374,10 @@ public class DModel extends Observable {
 	 * @throws Exception
 	 */
 
-	public String loadTimeTable(String fileName, String currentDir) {
+	public String loadTimeTable(String fileName, String currentDir) throws DxException{
 
 		DLoadData loadData = new DLoadData(this);
-		try {
+//		try {
 			boolean loadOk = loadData.loadDataStructures(fileName, currentDir);
 			if (loadOk) {
 				setVersion(loadData.getVersion());
@@ -420,19 +411,20 @@ public class DModel extends Observable {
 			}
 			_constructionState = 1;
 			setImportDone(false);
+			DApplication.getInstance().setCursorDefault();
 			return "";
 
 			// } catch (FileNotFoundException fnfe) { // alert the user that the
 			// // specified file does not exist
 			// new DxExceptionDlg(fnfe.getMessage(), fnfe);
-		} catch (DxException e) {
-			new DxExceptionDlg(e.getMessage(), e);
-			// TODO hara2602
-
-		} finally {
-			DApplication.getInstance().setCursorDefault();
-		}
-		return "";
+//		} catch (DxException e) {
+//			new DxExceptionDlg(e.getMessage(), e);
+//			// TODO hara2602
+//
+//		} finally {
+//			DApplication.getInstance().setCursorDefault();
+//		}
+//		return "";
 
 	}
 

@@ -1,6 +1,6 @@
 /**
  * 
- * Title: ActivityDlg $Revision: 1.64 $ $Date: 2007-11-20 20:21:31 $
+ * Title: ActivityDlg $Revision: 1.65 $ $Date: 2007-11-29 18:41:39 $
  * Description: ActivityDlg is a class used to
  * 
  * 
@@ -12,7 +12,7 @@
  * Information and shall use it only in accordance with the terms of the license
  * agreement you entered into with rgr.
  * 
- * @version $Revision: 1.64 $
+ * @version $Revision: 1.65 $
  * @author $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -199,14 +199,8 @@ public class ActivityDlg extends JDialog implements ActionListener,
 				_leftList.clearSelection();
 			_currentActivities = ((JList) e.getSource()).getSelectedValues();
 			if (e.getClickCount() == 2) {
-				if (DxFlags.newDxEditEventDlg) {
-					new DxEditEventDlg(_jd, _dModel, /* _dApplic, */
-					(String) _currentActivities[0], false);
-				} else {
-					new EditEventDlg(_jd, _dModel,
-							(String) _currentActivities[0], false);
-				}
-
+				new DxEditEventDlg(_jd, _dModel, /* _dApplic, */
+				(String) _currentActivities[0], false);
 			}// end if
 		}// end public void mouseClicked
 	};// end definition of MouseListener mouseListener = new MouseAdapter(){

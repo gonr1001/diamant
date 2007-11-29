@@ -30,8 +30,6 @@ import junit.framework.TestSuite;
 import developer.DxFlags;
 import dInternal.dOptimization.DxAssignRoomsAlgTest;
 import dTest.dInterface.dAssignementDlgs.DxEditEventDlgTest;
-import dTest.dInterface.dAssignementDlgs.EditEventDlgTest;
-//import dTest.dInterface.dAssignementDlgs.EditEventDlgTest;
 import dTest.dInterface.dMenus.DFileMenuTest;
 import dTest.dInternal.DObjectTest;
 import dTest.dInternal.DResourceTest;
@@ -39,7 +37,6 @@ import dTest.dInternal.DSetOfResourcesTest;
 import dTest.dInternal.DValueTest;
 import dTest.dInternal.DataExchangeTest;
 import dTest.dInternal.DxDeploymentManagerTest;
-//import dTest.dInternal.DxDeploymentManagerTest;
 import dTest.dInternal.DxStateBarModelTest;
 import dTest.dInternal.DxStateTest;
 import dTest.dInternal.dData.ByteArrayMessageTest;
@@ -97,9 +94,9 @@ public class DiamantTest {
 	 */
 	public static Test suite() {
 		System.out.println("Hello I am in Diamant tests");
-		DxFlags.unitTest=true;
+		DxFlags.unitTest = true;
 		TestSuite suite = new TestSuite("Diamant Tests");
-		
+
 		suite.addTest(DxAvailabilityTest.suite());
 		suite.addTest(DxInstructorTest.suite());
 		suite.addTest(DxSetOfInstructorsTest.suite());
@@ -122,18 +119,18 @@ public class DiamantTest {
 		suite.addTest(CycleTest.suite());
 		suite.addTest(TTStructureTest.suite());
 		suite.addTest(DXToolsMethodsTest.suite());
-//		suite.addTest(EventAttachTest.suite());
+		// suite.addTest(EventAttachTest.suite());
 		suite.addTest(SetOfEventsTest.suite());
 		suite.addTest(ConflictsAttachTest.suite());
 		suite.addTest(StudentsConflictsMatrixTest.suite());
 		suite.addTest(InstructorsConditionsTest.suite());
-	    suite.addTest(DxSiteReaderTest.suite());
+		suite.addTest(DxSiteReaderTest.suite());
 		suite.addTest(RoomsConditionsTest.suite());
 		suite.addTest(StudentsConditionsTest.suite());
 		suite.addTest(ConditionsTest.suite());
 		suite.addTest(ScanFileTest.suite());
-//		suite.addTest(DRoomTest.suite());
-//		suite.addTest(SetOfSitesTest.suite());
+		// suite.addTest(DRoomTest.suite());
+		// suite.addTest(SetOfSitesTest.suite());
 		suite.addTest(SetOfStuSitesTest.suite());
 		suite.addTest(DSetOfActivitiesTest.suite());
 		if (DxFlags.newActivity) {
@@ -157,11 +154,7 @@ public class DiamantTest {
 		suite.addTest(StudentTest.suite());
 		suite.addTest(ResourceTest.suite());
 		suite.addTest(DFileMenuTest.suite());
-		if (DxFlags.newDxEditEventDlg) {
-			suite.addTest(DxEditEventDlgTest.suite());
-		} else {
-			suite.addTest(EditEventDlgTest.suite());
-		}
+		suite.addTest(DxEditEventDlgTest.suite());
 		suite.addTest(DxDeploymentManagerTest.suite());
 		System.out.println("Bye I was in Diamant tests");
 		return suite;

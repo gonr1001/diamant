@@ -136,11 +136,11 @@ public class SelectInstructors extends JDialog implements ActionListener {
 	// setVisible(true);
 	// }
 
-	public SelectInstructors(DxEditEventDlg dxEEventDlg, Vector<String> leftVec,
-			Vector<String>rightVec) {
+	public SelectInstructors(DxEditEventDlg dxEEventDlg,
+			Vector<String> leftVec, Vector<String> rightVec) {
 
 		super(dxEEventDlg, DConst.LISTS_INSTRUCTOR_TD, true); // true gives a
-																// modal Dlg
+		// modal Dlg
 		int FACTOR = 50;
 		_dxEEventDlg = dxEEventDlg;
 		_leftVec = leftVec;
@@ -161,7 +161,7 @@ public class SelectInstructors extends JDialog implements ActionListener {
 			Vector<String> rightVec) {
 
 		super(eEventDlg, DConst.LISTS_INSTRUCTOR_TD, true); // true gives a
-															// modal Dlg
+		// modal Dlg
 		int FACTOR = 50;
 		_eEventDlg = eEventDlg;
 		_leftVec = leftVec;
@@ -189,13 +189,13 @@ public class SelectInstructors extends JDialog implements ActionListener {
 	// * @param Vector rightVec est le vecteur contenant les enseignants de la
 	// liste droite
 	// */
-	public SelectInstructors(DApplication dApplic,
-			Vector<String> leftVec, Vector<String> rightVec) {
+	public SelectInstructors(DApplication dApplic, Vector<String> leftVec,
+			Vector<String> rightVec) {
 		super(dApplic.getJFrame(), DConst.LISTS_INSTRUCTOR_TD, true); // true
-																		// gives
-																		// a
-																		// modal
-																		// Dlg
+		// gives
+		// a
+		// modal
+		// Dlg
 		// _dApplic = dApplic;
 		// _eEventDlg = eEventd;
 		_leftVec = leftVec;
@@ -280,14 +280,11 @@ public class SelectInstructors extends JDialog implements ActionListener {
 		if (command.equals(DConst.BUT_CLOSE))
 			dispose();
 		if (command.equals(DConst.BUT_VALIDATE)) {
-
-			if(DxFlags.newDxEditEventDlg) {
 			if (_dxEEventDlg != null)
 				_dxEEventDlg.updateInstructorList(_leftVec);
-			} else {
-				if (_eEventDlg != null)
-					_eEventDlg.updateInstructorList(_leftVec);
-			}
+		} else {
+			if (_eEventDlg != null)
+				_eEventDlg.updateInstructorList(_leftVec);
 			_validatePanel.setFirstDisable();
 			dispose();
 
@@ -304,7 +301,7 @@ public class SelectInstructors extends JDialog implements ActionListener {
 			_lVisible.setText(_leftVec.size() + " " + DConst.INCLUDED);
 			_validatePanel.setFirstEnable();
 		}// end if (command.equals(_arrowsNames[0]) ||
-			// command.equals(_arrowsNames[1]))
-	}//end method
+		// command.equals(_arrowsNames[1]))
+	}// end method
 
 }// end class

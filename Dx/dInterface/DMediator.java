@@ -31,7 +31,7 @@ import eLib.exit.exception.DxException;
 /**
  * Description: DMediator is a class used as in the pattern mediator to make a
  * link between DApplication and the current DDocument. There is only one
- * currect document the one which is at the top of all jInternalFrames
+ * current document the one which is at the top of all jInternalFrames
  * 
  * <p>
  * 
@@ -42,8 +42,6 @@ public class DMediator extends Object {
 
 	private DApplication _dApplication;
 
-//	private Vector<DDocument> _documents;
-
 	private Vector<DxDocument> _dxDocuments;
 
 	private boolean _cancel;
@@ -51,10 +49,9 @@ public class DMediator extends Object {
 	// -----------------------------
 	public DMediator(DApplication dApplic) {
 		_dApplication = dApplic;
-//		_documents = new Vector<DDocument>();
 		_dxDocuments = new Vector<DxDocument>();
 		_cancel = false;
-	} // end Mediator
+	} // end DMediator
 
 	public boolean getCancel() {
 		return _cancel;
@@ -128,12 +125,10 @@ public class DMediator extends Object {
 	 */
 	public String addDxTTableDoc(String ttName, String fileName)
 			throws DxException {
-		DApplication.getInstance().setCursorWait();
 		DxDocument currentDoc = new DxTTableDoc(this, fileName);
 		currentDoc.setDocumentName(ttName);
 		_dxDocuments.addElement(currentDoc);
-		_dApplication.hideToolBar();
-		DApplication.getInstance().setCursorDefault();
+
 		return "";
 	}
 

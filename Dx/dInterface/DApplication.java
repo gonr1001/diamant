@@ -104,18 +104,17 @@ public class DApplication {
 
 	public static boolean _inDevelopment;
 
-	// ZERO fix Frame Location (origin) 
+	// ZERO fix Frame Location (origin)
 	private final int ZERO = 0;
 
-	
-	 // ADJUST_WIDTH adjust the screenSize minus border pixels (the
-	 // value is a guess) at each side of the screen
+	// ADJUST_WIDTH adjust the screenSize minus border pixels (the
+	// value is a guess) at each side of the screen
 	private final int ADJUST_WIDTH = 6;
 
 	private final int SCREEN_MIN_HEIGHT = 512;
 
 	private final int SCREEN_MIN_WIDTH = 512;
-	
+
 	// -d" option in the command line means debug
 	private final String DEV = "-d";
 
@@ -125,7 +124,7 @@ public class DApplication {
 
 	private DxPreferences _dxPreferences;
 
-	//	private Preferences _preferences;
+	// private Preferences _preferences;
 
 	private DMediator _dMediator;
 
@@ -157,7 +156,7 @@ public class DApplication {
 				+ File.separator + "pref.txt";
 		System.out.println("Preference file is in :" + str);
 		_dxPreferences = new DxPreferences(str);
-		//		_preferences = Preferences.userRoot().node("/com.dinc/exit/diamant");
+		// _preferences = Preferences.userRoot().node("/com.dinc/exit/diamant");
 	}
 
 	public void doIt(String[] args) {
@@ -209,7 +208,7 @@ public class DApplication {
 
 		jFrame.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
-				e.toString(); //to avoid warning
+				e.toString(); // to avoid warning
 				closeApplic();
 			}
 		});
@@ -230,7 +229,9 @@ public class DApplication {
 		panel.add(_jDesktopPane, BorderLayout.CENTER);
 
 		jFrame.setLocation(ZERO, ZERO);
-		panel.setMinimumSize(new Dimension(SCREEN_MIN_WIDTH, SCREEN_MIN_HEIGHT));
+		panel
+				.setMinimumSize(new Dimension(SCREEN_MIN_WIDTH,
+						SCREEN_MIN_HEIGHT));
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		panel.setMaximumSize(screenSize);
 
@@ -272,7 +273,7 @@ public class DApplication {
 	public String saveCurrentDxDoc(String str) {
 		return _dMediator.saveCurrentDxDoc(str);
 	} // end getCurrentDoc
-	
+
 	public void closeCurrentDxDoc() {
 		_dMediator.closeCurrentDxDoc();
 	} // end getCurrentDoc
@@ -351,7 +352,6 @@ public class DApplication {
 		SwingUtilities.updateComponentTreeUI(_jFrame);
 	}
 
-
 	/**
 	 * Closes the document(s) and the application. Use this method for
 	 * processing close via the exit menuItem.
@@ -362,7 +362,7 @@ public class DApplication {
 	public void closeApplic() {
 		// while documents to close, close them
 		while (this.getCurrentDxDoc() != null) { // is a while
-			this.close(); 
+			this.close();
 			// but if the user cancel break
 			if (_dMediator.getCancel())
 				break;
@@ -391,19 +391,17 @@ public class DApplication {
 							.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 	}
 
-
-
 	/*
 	 * In File menu
 	 */
-	
+
 	/**
 	 * 
 	 */
 	public void newTTable() {
 		buildTTable(DConst.CYCLE);
 	}
-	
+
 	/**
 	 * 
 	 */
@@ -425,7 +423,6 @@ public class DApplication {
 		buildTTStruc(this.getDxPreferences()._standardTTE);
 	}
 
-
 	/**
 	 * 
 	 */
@@ -436,12 +433,12 @@ public class DApplication {
 	/**
 	 * 
 	 */
-	public void openTTStruc() {		
+	public void openTTStruc() {
 		buildTTStruc();
-//		this.showToolBar();
-//		new OpenTTSDlg(this);
-//		_dxMenuBar.afterNewTTStruc();
-//		this.afterOpenTTSruc();
+		// this.showToolBar();
+		// new OpenTTSDlg(this);
+		// _dxMenuBar.afterNewTTStruc();
+		// this.afterOpenTTSruc();
 	}
 
 	/**
@@ -571,11 +568,7 @@ public class DApplication {
 		if (DxFlags.newActivity) {
 			new DxActivityDlg(this.getJFrame(), this.getCurrentDModel());
 		} else {
-			if (DxFlags.newDxEditEventDlg) {
-				new ActivityDlg(this.getJFrame(), this.getCurrentDModel());
-			} else {
-				new ActivityDlg(this.getJFrame(), this.getCurrentDModel());
-			}
+			new ActivityDlg(this.getJFrame(), this.getCurrentDModel());
 		}
 	}
 
@@ -615,12 +608,7 @@ public class DApplication {
 	 * 
 	 */
 	public void assignEvents() {
-		if (DxFlags.newDxEditEventDlg) {
-			new DxEventsDlg(this.getJFrame(), this.getCurrentDModel());
-		} 
-//		else {
-//			new EventsDlg(this.getJFrame(), this.getCurrentDModel());
-//		}
+		new DxEventsDlg(this.getJFrame(), this.getCurrentDModel());
 	}
 
 	/**
@@ -747,7 +735,7 @@ public class DApplication {
 	}
 
 	public void addPrefsListener(Preferences pref) {
-		//_preferences
+		// _preferences
 		pref.addPreferenceChangeListener(new PreferenceChangeListener() {
 			public void preferenceChange(PreferenceChangeEvent pce) {
 				String str = pce.getNewValue();
@@ -866,7 +854,7 @@ public class DApplication {
 	 * 
 	 */
 	public void eventAssignment() {
-			new DxEventsDlg(this.getJFrame(), this.getCurrentDModel());
+		new DxEventsDlg(this.getJFrame(), this.getCurrentDModel());
 	}
 
 	/**
@@ -898,7 +886,6 @@ public class DApplication {
 			this.getCurrentDxDoc().getCurrentDModel().changeInDModel(
 					this.getJFrame());
 	}
-
 
 	public void doImport(JFileChooser fc, String str, String dlg) {
 		this.getCurrentDxDoc().setAutoImportDIMFilePath(
@@ -943,21 +930,23 @@ public class DApplication {
 	public boolean getBest() {
 		return _best;
 	}
+
 	/**
 	 * @return
 	 */
 	public static boolean isInDevelopment() {
 		return _inDevelopment;
 	}
-	
+
 	/**
-	 * @param i timetable type
+	 * @param i
+	 *            timetable type
 	 * 
 	 */
 	private void buildTTable(int i) {
 		NewTimeTableDlg dlg = new NewTimeTableDlg();
 		String pathfileName = dlg.getFileName(this, i);
-		
+
 		if (pathfileName == "") {// cancel button was pressed!
 			dlg.dispose();
 		} else {
@@ -972,45 +961,47 @@ public class DApplication {
 			}
 		}
 	}
-	
+
 	/**
-	 * @param i timetable type
+	 * 
 	 * 
 	 */
 	private void buildTTable() {
 		OpenTimeTableDlg dlg = new OpenTimeTableDlg();
 		String fullFileName = dlg.getFileName(this);
 
-		if (fullFileName == "") {// cancel button was pressed!
-			
+		if (fullFileName == "") {// the cancel button was pressed!
 			this.initialState();
 		} else {
-			
 			this.setCurrentDir(fullFileName);
 			try {
+				this.setCursorWait();
+				this.hideToolBar();
 				this.getDMediator().addDxTTableDoc(fullFileName, fullFileName);
 				_dxMenuBar.afterNewTTable();
 			} catch (DxException e) {
 				new DxExceptionDlg(_jFrame, e.getMessage(), e);
-			}catch (Exception e) {
+				DMediator dMed = this.getDMediator();
+				dMed.clean();
+				dMed = null;
+				this.initialState();
+			} catch (Exception e) {
 				new DxExceptionDlg(_jFrame, e.getMessage(), e);
-			} 
-//			finally {
-//				DMediator dMed = this.getDMediator();
-//				dMed.clean();
-//				dMed = null;
-//				this.initialState();
-//			}
-			this.setCurrentDir(fullFileName);
+				DMediator dMed = this.getDMediator();
+				dMed.clean();
+				dMed = null;
+				this.initialState();
+			}
+			this.setCursorDefault();
 			this.getCurrentDxDoc().changeInModel(this.getClass().toString());
-			this.afterInitialAssign();			
+			this.afterInitialAssign();
 		}
 		dlg.dispose();
-
 	}
-	
+
 	/**
-	 * @param string indicates the type of timetable structure
+	 * @param string
+	 *            indicates the type of timetable structure
 	 * 
 	 */
 	private void buildTTStruc(String str) {
@@ -1025,9 +1016,10 @@ public class DApplication {
 		}
 		this.setCursorDefault();
 	}
-	
+
 	/**
-	 * @param string indicates the type of timetable structure
+	 * @param string
+	 *            indicates the type of timetable structure
 	 * 
 	 */
 	private void buildTTStruc() {
@@ -1035,16 +1027,16 @@ public class DApplication {
 		this.setCursorWait();
 		OpenTTSDlg dlg = new OpenTTSDlg();
 		String fullFileName = dlg.getFileName(this);
-		//dApplic.setCurrentDir(fil);
-		
+		// dApplic.setCurrentDir(fil);
+
 		if (fullFileName == "") {// cancel button was pressed!
 			dlg.dispose();
 			this.initialState();
 		} else {
 			dlg.dispose();
-			//this.setCurrentDir(fullFileName);
+			// this.setCurrentDir(fullFileName);
 			this.closeCurrentDxDoc();
-			//this.hideToolBar();
+			// this.hideToolBar();
 			try {
 				this._dMediator.addDxTTStructureDoc(fullFileName);
 				_dxMenuBar.afterNewTTStruc();
@@ -1053,7 +1045,7 @@ public class DApplication {
 			} catch (Exception e) {
 				new DxExceptionDlg(_jFrame, e.getMessage(), e);
 			}
-		}		
+		}
 		this.setCursorDefault();
 	}
 
@@ -1065,7 +1057,5 @@ public class DApplication {
 		System.err.println("Couldn't find file: " + path);
 		return null;
 	}
-	
-
 
 } /* end class DApplication */

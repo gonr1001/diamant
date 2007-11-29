@@ -52,10 +52,9 @@ public class OpenTimeTableDlg extends JDialog  implements DlgGetFileName {
 			if (fc.getSelectedFile() != null)
 				fileName = fc.getSelectedFile().getAbsolutePath();
 		}
-		// If the file chooser has a file Name,
+		// If the file chooser has a file Name which exists,
 		// continue
 		if (returnVal == JFileChooser.APPROVE_OPTION) {
-			// return  the file name
 			return  fileName;		
 		}
 		if (returnVal == JFileChooser.CANCEL_OPTION) {
