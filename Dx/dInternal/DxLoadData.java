@@ -94,7 +94,7 @@ public class DxLoadData {
 	// or try catch on the return. Since we want to propagate error to the
 	// application, I thought throws was the solution
 	public boolean loadDataStructures(String fileName, String currentDir)
-			throws DxException {
+			throws Exception {
 
 		String dataloaded = new String(filterBadChars(fileName));
 		StringTokenizer readFile;
@@ -112,7 +112,7 @@ public class DxLoadData {
 	}
 
 	private boolean loadData(String fileName, String currentDir)
-			throws DxException {
+			throws Exception {
 
 		String dataloaded = new String(filterBadChars(fileName));
 		StringTokenizer dataTokens;
@@ -193,7 +193,7 @@ public class DxLoadData {
 		return true;
 	}
 
-	private boolean loadData2dot1(String fileName) throws DxException {
+	private boolean loadData2dot1(String fileName) throws Exception {
 
 		String dataloaded = new String(filterBadChars(fileName));
 		StringTokenizer dataTokens;
@@ -271,7 +271,7 @@ public class DxLoadData {
 	 * @return
 	 * @throws DxException
 	 */
-	private DataExchange buildDataExchange(String fileName) throws DxException {
+	private DataExchange buildDataExchange(String fileName) throws Exception {
 		byte[] dataloaded = filterBadChars(fileName);
 		StringTokenizer st = new StringTokenizer(new String(dataloaded),
 				DConst.CR_LF);
@@ -334,7 +334,7 @@ public class DxLoadData {
 		return _dxSoSRooms;
 	}
 	
-	public byte[] filterBadChars(String str) throws DxException {
+	public byte[] filterBadChars(String str) throws Exception {
 		FilterFile filter = new FilterFile();
 		filter.validFile(str);
 		return filter.getByteArray();

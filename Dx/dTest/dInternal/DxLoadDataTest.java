@@ -47,31 +47,18 @@ import eLib.exit.exception.DxException;
 
 public class DxLoadDataTest extends TestCase {
 
-//	private DxLoadData _loadData5j;
+	//	private DxLoadData _loadData5j;
 
-	private DxLoadData _loadData7j;
+//	private DxLoadData _loadData7j;
 
 	public DxLoadDataTest(String name) {
 		super(name);
-
-		String path7j = "." + File.separator + "dataTest" + File.separator
-				+ "loadData7j.dia";
-		_loadData7j = new DxLoadData();
-
-		try {
-			boolean timeTable7j = _loadData7j.loadDataStructures(path7j, "."
-					+ File.separator + "dataTest");
-			assertEquals("test_loadTimeTable7j : loadDataOk: ", true,
-					timeTable7j);
-		} catch (Exception e) {
-			System.out.println("DLoadDataTest failed to load loadData7j.dia");
-		}
 	}
 
 	public static Test suite() {
 		// the type safe way is in SimpleTest
 		// the dynamic way :
-		return new TestSuite(DLoadDataTest.class);
+		return new TestSuite(DxLoadDataTest.class);
 	} // end suite
 
 	/**
@@ -109,8 +96,7 @@ public class DxLoadDataTest extends TestCase {
 			assertNotNull("test2_1_loadTimeTable5j", dxasSite
 					.getActivity("AMC640"));
 		} else {
-			SetOfActivitiesSites setSite = loadData5j
-					.getSetOfActivitiesSites();
+			SetOfActivitiesSites setSite = loadData5j.getSetOfActivitiesSites();
 			assertEquals("test2_2_loadTimeTable5j : assertEquals: ", "SHE",
 					setSite.getResourceAt(0).getID());
 
@@ -120,14 +106,14 @@ public class DxLoadDataTest extends TestCase {
 					setAct.getResourceAt(1).getID());
 		}
 		//test that check the setofstudents
-		SetOfStuSites setSite =  loadData5j.getSetofStuSites();
+		SetOfStuSites setSite = loadData5j.getSetofStuSites();
 		assertEquals("test3_loadTimeTable5j : assertEquals: ", "SHE", setSite
 				.getResourceAt(0).getID());
 		SetOfStudents setStud = (SetOfStudents) setSite.getResourceAt(0)
 				.getAttach();
 		assertEquals("test3_1_loadTimeTable5j : assertEquals: ", "BERNARD D",
 				setStud.getResourceAt(1).getID());
-		
+
 		// test that check the setofinstructors
 		DxSetOfInstructors setIns = loadData5j.getDxSetOfInstructors();
 		// Above, we get instructor at index 2, and here we get at 3. Reason
@@ -137,7 +123,7 @@ public class DxLoadDataTest extends TestCase {
 		assertEquals("test4_1_loadTimeTable5j : assertEquals: ",
 				"THÉRIAULT, MICHÈLE", setIns
 						.getInstructor("THÉRIAULT, MICHÈLE").getName());
-		
+
 		// test that check the setofrooms
 		DxSetOfSites dxsosSetSites = loadData5j.getDxSetOfSitesRooms();
 		DxSite dxsSite = dxsosSetSites.getSite("SHE");
@@ -147,9 +133,6 @@ public class DxLoadDataTest extends TestCase {
 		DxRoom dxrRoom = dxcCat1.getRoom("D13016");
 		assertNotNull("test5_2_loadTimeTable5j : assertNotNull: ", dxrRoom);
 	}
-
-
-
 
 	//
 	// /**
@@ -194,13 +177,25 @@ public class DxLoadDataTest extends TestCase {
 	//
 	// }
 	//
-	// /**
-	// * test that check the version of timetable
-	// */
-	// public void test_loadTimeTable7j() {
-	// assertEquals("test_loadTimeTable7j : assertEquals: ", "1.5",
-	// _loadData7j.getVersion());
-	// }
+	/**
+	 * test that check the version of timetable
+	 */
+	public void test_loadTimeTable7j() {
+		String path7j = "." + File.separator + "dataTest" + File.separator
+				+ "loadData7j.dia";
+		DxLoadData loadData7j = new DxLoadData();
+
+		try {
+			boolean timeTable7j = loadData7j.loadDataStructures(path7j, "."
+					+ File.separator + "dataTest");
+			assertEquals("test_loadTimeTable7j : loadDataOk: ", true,
+					timeTable7j);
+		} catch (Exception e) {
+			System.out.println("DLoadDataTest failed to load loadData7j.dia");
+		}
+		assertEquals("test_loadTimeTable7j : assertEquals: ", "1.5",
+				loadData7j.getVersion());
+	}
 	//
 	// /**
 	// * test that check the xml file
