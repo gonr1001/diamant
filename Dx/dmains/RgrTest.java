@@ -1,5 +1,5 @@
 /**
- * Created on Jun 21, 2006
+ * Created on June 21, 2006
  * 
  * 
  * Title: MiniTest.java 
@@ -33,6 +33,9 @@ import dTest.dInternal.dOptimizationTest.DxAssignAllAlgTest;
 import dTest.dInternal.dOptimizationTest.RoomsConditionsTest;
 import dTest.dInternal.dOptimizationTest.SetOfEventsTest;
 import developer.DxFlags;
+import eTest.ByteInputFileTest;
+import eTest.FilterFileTest;
+
 
 /**
  * Ruben Gonzalez-Rubio
@@ -62,6 +65,9 @@ public class RgrTest {
 		System.out.println("Hello I am rgr selected Tests");
 		TestSuite suite = new TestSuite("rgr selected Tests");
 
+		suite.addTest(ByteInputFileTest.suite());
+		suite.addTest(FilterFileTest.suite());
+		
 		suite.addTest(DxAssignAllAlgTest.suite());
 		suite.addTest(RoomsConditionsTest.suite());
 		if (DxFlags.newAlg) {

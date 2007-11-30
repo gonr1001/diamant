@@ -1,6 +1,6 @@
 /**
  *
- * Title: ELibTest $Revision: 1.8 $  $Date: 2006-07-27 16:01:05 $
+ * Title: ELibTest $Revision: 1.9 $  $Date: 2007-11-30 14:35:33 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -38,7 +38,6 @@ package dmains;
 
 import eTest.ByteInputFileTest;
 import eTest.FilterFileTest;
-import eTest.SimpleTest;
 import junit.framework.*;
 
 /**
@@ -55,7 +54,6 @@ public class ELibTest {
 	// The tests are very poor at the moment
 	public static Test suite() {
 		TestSuite suite = new TestSuite("Library eLib tests");
-		suite.addTest(SimpleTest.suite());
 		suite.addTest(ByteInputFileTest.suite());
 		suite.addTest(FilterFileTest.suite());
 		return suite;
