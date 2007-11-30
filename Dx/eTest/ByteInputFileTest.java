@@ -76,11 +76,26 @@ public class ByteInputFileTest extends TestCase {
 			System.out.println(e);
 			e.printStackTrace();
 			throw new RuntimeException("Problem in testFileEmpty");
-		}
-
-		
+		}	
 	}
 
+	
+	public void testFileNonEmpty() {
+		ByteInputFile bif;
+		try {
+			bif = new ByteInputFile("." + File.separator + "eDataTest"
+					+ File.separator + "nonEmpty.txt");
+			byte[] b = bif.readFileAsBytes();
+			assertEquals("Test File nonEmpty size :", 2, b.length);
+			bif.close();
+		} catch (Exception e) {
+			System.out.println(e);
+			e.printStackTrace();
+			throw new RuntimeException("Problem in testFileNonEmpty");
+		}	
+	}
+
+	
 //	public void testByteInputFileNull() {
 //		ByteInputFile bif ;
 //		@SuppressWarnings("unused")
