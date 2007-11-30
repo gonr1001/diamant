@@ -24,15 +24,12 @@ import junit.framework.*;
 import java.lang.RuntimeException;
 import java.io.*;
 
-import eLib.exit.exception.IOFileException;
 import eLib.exit.txt.ByteInputFile;
 
 public class ByteInputFileTest extends TestCase {
-	ByteInputFile _bif;
 
 	public ByteInputFileTest(String name) {
 		super(name);
-		_bif = null;
 	}
 
 	public static Test suite() {
@@ -41,53 +38,66 @@ public class ByteInputFileTest extends TestCase {
 		return new TestSuite(ByteInputFileTest.class);
 	} // end suite
 
-	public void testFileNotExist()  {		
-		 try {
-			 _bif = new ByteInputFile("hello.txt");
-			 }
-			 catch (IOFileException e) {
-			   return;
-			 }
-			 fail("Expected IOFileException");
+	public void testFileNotExist() {
+		@SuppressWarnings("unused")
+		ByteInputFile bif;
+		try {
+			bif = new ByteInputFile("hello.txt");
+		} catch (FileNotFoundException e) {
+			return;
+		}
+		fail("Expected FileNotFoundException");
 	}
 
-	
-	public void testFileEmpty()throws Exception  {
+	public void testFileNameNull() {
+		@SuppressWarnings("unused")
+		ByteInputFile bif;
 		try {
-			_bif = new ByteInputFile("." + File.separator + "eDataTest"
+			bif = new ByteInputFile(null);
+		} catch (NullPointerException e) {
+			return;
+		} catch (Exception e) {
+			System.out.println(e);
+			e.printStackTrace();
+			throw new RuntimeException("Problem in testFileNameNull");
+		}
+		fail("Expected NullPointerException");
+	}
+
+	public void testFileEmpty() {
+		ByteInputFile bif;
+		try {
+			bif = new ByteInputFile("." + File.separator + "eDataTest"
 					+ File.separator + "empty.txt");
-		} catch (IOFileException e) {
+			byte[] b = bif.readFileAsBytes();
+			assertEquals("Test File Empty :", null, b);
+			bif.close();
+		} catch (Exception e) {
 			System.out.println(e);
 			e.printStackTrace();
 			throw new RuntimeException("Problem in testFileEmpty");
 		}
-		byte[] b = _bif.readFileAsBytes();
-		assertEquals("Test FileEmpty :", null, b);
-		_bif.close();
+
+		
 	}
 
-	public void testNameFileEmpty() throws Exception {
-		String str = null;
-		try {
-			_bif = new ByteInputFile(str);
-		} catch (IOFileException e) {
-			e.toString();
-		}
-		assertEquals("testNameFileEmpty :", null, str);
-	}
-
-	public void testFileNotOpen() {
-		@SuppressWarnings("unused")
-		byte[] b = null;
-		try {
-			b = _bif.readFileAsBytes();
-		} catch (IOFileException e){
-			System.out.println("hello");
-		} catch (NullPointerException e) {
-			return; //System.out.println("Exception :" + e);
-		}
-		fail("Expected NullPointerException");
-	}
+//	public void testByteInputFileNull() {
+//		ByteInputFile bif ;
+//		@SuppressWarnings("unused")
+//		byte[] b = null;
+//		try {
+//			b = bif.readFileAsBytes();
+//		} catch (NullPointerException e) {
+//			return; 
+//		}
+//		catch (Exception e) {
+//			System.out.println("hello");
+//			System.out.println(e);
+//			e.printStackTrace();
+//			throw new RuntimeException("Problem in testByteInputFileNull");
+//		}
+//		fail("Expected NullPointerException");
+//	}
 
 } // end ByteInputFileTest
 

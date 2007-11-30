@@ -19,6 +19,7 @@
 package dInterface;
 
 import java.beans.PropertyVetoException;
+import java.io.IOException;
 import java.util.Vector;
 
 import javax.swing.JInternalFrame;
@@ -120,11 +121,13 @@ public class DMediator extends Object {
 	 * @param type
 	 *            is the type of timetable to be constructed possible types
 	 *            NO_TYPE = 0; CYCLE = 1; EXAM = 2; CYCLEANDEXAM = 3;
+	 * @throws IOException 
+	 * @throws NullPointerException 
 	 * @throws Exception
 	 * 
 	 */
 	public String addDxTTableDoc(String ttName, String fileName)
-			throws DxException {
+			throws DxException, NullPointerException, IOException {
 		DxDocument currentDoc = new DxTTableDoc(this, fileName);
 		currentDoc.setDocumentName(ttName);
 		_dxDocuments.addElement(currentDoc);

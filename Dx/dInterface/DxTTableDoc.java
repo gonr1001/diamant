@@ -21,6 +21,7 @@ package dInterface;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.io.IOException;
 import java.util.Observable;
 
 import javax.swing.JInternalFrame;
@@ -58,20 +59,20 @@ public class DxTTableDoc extends DxDocument {
 		// for tests
 	}
 
-	public DxTTableDoc(DMediator mediator, String fileName) throws DxException {
+	public DxTTableDoc(DMediator mediator, String fileName) throws DxException, NullPointerException, IOException {
 		super(mediator);
 		_type = 0;
 		initDxTTableDoc(fileName);
 	}
 
-	private void initDxTTableDoc(String fileName) throws DxException {
+	private void initDxTTableDoc(String fileName) throws DxException, NullPointerException, IOException {
 		_dm = new DModel(this, fileName, _type);
 		_documentName = fileName;
 		buidDocument(true, true);
 		_ttPane.updateTTPane(_dm.getTTStructure());
 	}
 	
-	public DxTTableDoc(DMediator mediator, String fileName, int type) throws DxException {
+	public DxTTableDoc(DMediator mediator, String fileName, int type) throws DxException, NullPointerException, IOException {
 		super(mediator);
 		_type = type;
 		initDxTTableDoc(fileName);

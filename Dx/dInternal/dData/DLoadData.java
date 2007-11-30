@@ -19,6 +19,7 @@
 package dInternal.dData;
 
 
+import java.io.IOException;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
@@ -288,6 +289,8 @@ public class DLoadData {
 	 *         <p>
 	 *         SetOfStudents
 	 *         </p>
+	 * @throws IOException 
+	 * @throws NullPointerException 
 	 * @throws Exception
 	 */
 
@@ -296,7 +299,7 @@ public class DLoadData {
 	// or try catch on the return. Since we want to propagate error to the
 	// application, I thought throws was the solution
 	public boolean loadDataStructures(String fileName, String currentDir)
-			throws DxException {
+			throws DxException, NullPointerException, IOException {
 
 		String dataloaded = new String(filterBadChars(fileName));
 		StringTokenizer readFile;
@@ -315,7 +318,7 @@ public class DLoadData {
 	}
 
 	private boolean loadData(String fileName, String currentDir)
-			throws DxException {
+			throws DxException, NullPointerException, IOException {
 
 		String dataloaded = new String(filterBadChars(fileName));
 		StringTokenizer dataTokens;
@@ -327,7 +330,7 @@ public class DLoadData {
 		if (dataTokens.countTokens() == DConst.SAVE_SEPARATOR_COUNT) { // =================================
 			// extract version
 			_inDiaFileVersion = dataTokens.nextToken().trim();
-			linePosition += ByteInputFile.count(_inDiaFileVersion);
+			linePosition += ByteInputFile.countLines(_inDiaFileVersion);
 
 			linePosition++; // for separator =========================
 			// extract ttStructure
@@ -345,7 +348,7 @@ public class DLoadData {
 					.getMaxNumberOfPeriodsADay(), linePosition);
 			_dxSoInst = dxir.readSetOfInstructors();
 
-			linePosition += ByteInputFile.count(inDiaFileInstructors);
+			linePosition += ByteInputFile.countLines(inDiaFileInstructors);
 			linePosition++; // for separator =========================
 			// extract SetOfSites
 			inDiaFileRooms = dataTokens.nextToken().trim();
@@ -361,7 +364,7 @@ public class DLoadData {
 //					_roomsList.buildSetOfResources(de, 3);
 //				}
 //			}
-			linePosition += ByteInputFile.count(inDiaFileRooms);
+			linePosition += ByteInputFile.countLines(inDiaFileRooms);
 			linePosition++; // for separator =========================
 			// extract SetOfActivities
 			inDiaFileActivities = dataTokens.nextToken().trim();
@@ -377,11 +380,11 @@ public class DLoadData {
 					_activitiesList.buildSetOfResources(de, 1);
 				}
 			}
-			linePosition += ByteInputFile.count(inDiaFileActivities);
+			linePosition += ByteInputFile.countLines(inDiaFileActivities);
 			linePosition++; // for separator =========================
 			// extract SetOfStudents
 			inDiaFileStudents = dataTokens.nextToken().trim();
-			linePosition += ByteInputFile.count(inDiaFileStudents);
+			linePosition += ByteInputFile.countLines(inDiaFileStudents);
 			de = buildDataExchange(inDiaFileStudents.getBytes());
 			_studentsList = new SetOfStuSites();
 			if (_studentsList.analyseTokens(de, 0)) {

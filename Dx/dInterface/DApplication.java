@@ -74,7 +74,7 @@ import dInterface.dUtil.ConflictDlg;
 import dInterface.dUtil.PLAFDlg;
 import dInterface.selectiveSchedule.dialog.SelectiveScheduleDlg;
 import dInternal.DModel;
-import dInternal.dData.DxLoadData;
+import dInternal.DxLoadData;
 import dInternal.dOptimization.DxAssignAllAlg;
 import dInternal.dOptimization.DxAssignRoomsAlg;
 import dInternal.dOptimization.SelectAlgorithm;
@@ -796,7 +796,7 @@ public class DApplication {
 		if (!_fileToOpenAtStart.equalsIgnoreCase("")) {
 			try {
 				_dMediator.addDxTTableDoc("", _fileToOpenAtStart);
-			} catch (DxException e) {
+			} catch (Exception e) {
 				new DxExceptionDlg(e.getMessage(), e);
 			}
 			getCurrentDxDoc().setAutoImportDIMFilePath(".\\devData\\");
@@ -821,7 +821,7 @@ public class DApplication {
 				System.out.println("path: " + filepath);
 				_dMediator.addDxTTableDoc("", getCurrentDir() + filepath);
 
-			} catch (DxException e) {
+			} catch (Exception e) {
 				new DxExceptionDlg(e.getMessage(), e);
 			}
 			getCurrentDxDoc().setAutoImportDIMFilePath(".\\devData\\");
@@ -961,7 +961,7 @@ public class DApplication {
 				this.getDMediator().addDxTTableDoc(
 						this.getCurrentDir() + DConst.NO_NAME, pathfileName);
 				_dxMenuBar.afterNewTTable();
-			} catch (DxException e) {
+			} catch (Exception e) {
 				new DxExceptionDlg(_jFrame, e.getMessage(), e);
 			}
 		}

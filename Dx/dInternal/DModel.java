@@ -19,6 +19,7 @@ package dInternal;
 
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.Observable;
 import java.util.Vector;
@@ -131,12 +132,14 @@ public class DModel extends Observable {
 	 *            is the type of timetable to be constructed see DConst.
 	 *            possible types NO_TYPE = 0; CYCLE = 1; EXAM = 2; CYCLEANDEXAM =
 	 *            3;
+	 * @throws IOException 
+	 * @throws NullPointerException 
 	 * @throws Exception
 	 * 
 	 */
 	// XXXX Pascal: 'type' devrait etre un objet, pas un 'int' !
 	public DModel(DxDocument dDocument, String fileName, int type)
-			throws DxException {
+			throws DxException, NullPointerException, IOException {
 		_error = "";
 		_modified = false;
 		_isExamPrepared = false;
@@ -182,7 +185,7 @@ public class DModel extends Observable {
 	}
 
 	// this constructor is used only for tests
-	public DModel(DxDocument dxDocument, String fileName) throws DxException {
+	public DModel(DxDocument dxDocument, String fileName) throws DxException, NullPointerException, IOException {
 		_error = "";
 		_modified = false;
 		_isExamPrepared = false;
@@ -371,10 +374,12 @@ public class DModel extends Observable {
 	 * 
 	 * @param fileName
 	 * @return
+	 * @throws IOException 
+	 * @throws NullPointerException 
 	 * @throws Exception
 	 */
 
-	public String loadTimeTable(String fileName, String currentDir) throws DxException{
+	public String loadTimeTable(String fileName, String currentDir) throws DxException, NullPointerException, IOException{
 
 		DLoadData loadData = new DLoadData(this);
 //		try {

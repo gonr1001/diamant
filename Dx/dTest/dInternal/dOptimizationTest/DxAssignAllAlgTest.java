@@ -122,7 +122,7 @@ public class DxAssignAllAlgTest extends TestCase {
 			alg.doWork();
 			assertEquals("test_buildScNoAssigned: number of Events", 245, dm1
 					.getSetOfEvents().getNumberOfEventToAssign());
-		} catch (DxException e) {
+		} catch (Exception e) {
 			// Should not fail in tests
 			System.out.println("Exception in: test_buildGenNoAssigned");
 			e.printStackTrace();

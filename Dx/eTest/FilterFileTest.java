@@ -24,7 +24,7 @@
  * 
  * Description: FilterFileTest is a class used to:
  * <p>
- * Offer some flags used when developing a new feature
+ * Make tests to FilterFile
  * <p>
  * 
  */
