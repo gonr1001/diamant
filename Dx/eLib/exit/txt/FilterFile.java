@@ -63,7 +63,7 @@ public class FilterFile {
 	 * Modifies: nothing.
 	 * 
 	 * <p>
-	 * Effect: the internal champs sont initialized. Recognized chars are 0 to
+	 * Effect: the internal fields are initialized. Recognized chars are 0 to
 	 * 127 ASCII.
 	 * 
 	 */
@@ -88,8 +88,8 @@ public class FilterFile {
 	 * Modifies: the set of char that can be recognized
 	 * 
 	 * <p>
-	 * Effect: the internal champs sont initialized. Recognized chars are 0 to
-	 * 127 ASCII + those contanied in the String
+	 * Effect: the internal fields are initialized. Recognized chars are 0 to
+	 * 127 ASCII + those contained in the String
 	 * 
 	 * @param b
 	 *            an array of bytes.

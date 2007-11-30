@@ -1,10 +1,8 @@
-package eTest;
-
 /**
- *
- * Title: ClassName $Revision: 1.5 $  $Date: 2007-07-13 16:05:26 $
- * Description: ClassName is a class used to
- *
+ * Created on Jul 13, 2007
+ * 
+ * 
+ * Title: FilterFileTest.java 
  *
  * Copyright (c) 2001 by rgr.
  * All rights reserved.
@@ -16,10 +14,21 @@ package eTest;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.5 $
- * @author  $Author: gonzrubi $
- * @since JDK1.3
+ * 
+ * 
  */
+ package eTest;
+
+/**
+ * Ruben Gonzalez-Rubio
+ * 
+ * Description: FilterFileTest is a class used to:
+ * <p>
+ * Offer some flags used when developing a new feature
+ * <p>
+ * 
+ */
+
 
 import java.io.File;
 import java.util.ArrayList;
@@ -195,7 +204,7 @@ public class FilterFileTest extends TestCase {
 					return res;
 			}
 			res = true;
-		} // en if
+		} // end if
 		return res;
 	}
 } // end FilterFileTest
