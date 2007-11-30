@@ -192,7 +192,7 @@ public class FilterFile {
 			_bif = new ByteInputFile(fixSeparator(str));
 			_bytesArray = _bif.readFileAsBytes();
 			_bif.close();
-		} catch (IOFileException iofe) {
+		} catch (Exception iofe) {
 			new DxExceptionDlg(iofe.getMessage(),iofe);
 		} // end catch
 	}// readFile(String str)
