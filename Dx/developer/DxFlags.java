@@ -30,9 +30,8 @@ package developer;
  */
 public class DxFlags {
 
-	
 	public final static boolean MASTER = true;
-//	public final static boolean newRooms = false;
+
 	public final static boolean newRooms = MASTER;
 
 	public final static boolean newAlg = MASTER;
@@ -46,8 +45,7 @@ public class DxFlags {
 	
 	// public final static boolean newPref = true;
 	public final static boolean newPref = MASTER;
-	
-	
+		
 	// public final static boolean newDxLoadData = true;
 	public final static boolean newDxLoadData = false;
 			

@@ -1,8 +1,36 @@
-package eLib.exit.txt;
+/**
+ *  Created on July 13, 2007
+ * 
+ * 
+ * Title: ByteInputFile.java 
+ *
+ * Copyright (c) 2001 by rgr.
+ * All rights reserved.
+ *
+ *
+ * This software is the confidential and proprietary information
+ * of rgr. ("Confidential Information").  You
+ * shall not disclose such Confidential Information and shall use
+ * it only in accordance with the terms of the license agreement
+ * you entered into with rgr.
+ *
+ * 
+ * 
+ */
+ package eLib.exit.txt;
+/**
+ * 
+ * Description: FilterFileTest is a class used to:
+ * <p>
+ * Make tests to FilterFile
+ * <p>
+ * 
+ */
+
 
 /**
  *
- * Title: ByteInputFile $Revision: 1.5 $  $Date: 2007-11-30 20:25:44 $
+ * Title: ByteInputFile $Revision: 1.6 $  $Date: 2007-11-30 21:40:15 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +43,7 @@ package eLib.exit.txt;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *

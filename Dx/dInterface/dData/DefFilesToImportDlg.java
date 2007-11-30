@@ -1,7 +1,7 @@
 package dInterface.dData;
 /**
  *
- * Title: DefFileToImportDlg $Revision: 1.12 $  $Date: 2006-09-13 13:08:22 $
+ * Title: DefFileToImportDlg $Revision: 1.13 $  $Date: 2007-11-30 21:40:12 $
  * Description: DefFileToImportDlg is created by DefFileToImportCmd
  *
  *
@@ -15,8 +15,8 @@ package dInterface.dData;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.12 $
- * @author  $Author: hara2602 $
+ * @version $Revision: 1.13 $
+ * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
 
@@ -38,7 +38,6 @@ import dInterface.DApplication;
 import dResources.DFileFilter;
 import eLib.exit.dialog.DxExceptionDlg;
 import eLib.exit.dialog.InformationDlg;
-import eLib.exit.exception.IOFileException;
 import eLib.exit.txt.ByteOutputFile;
 
 
@@ -233,7 +232,7 @@ implements ActionListener{
 			thefiles += _tfStudents.getText();
 			bof.writeFileFromBytes(thefiles.getBytes());
 			bof.close();
-		} catch(IOFileException iofe) {
+		} catch(Exception iofe) {
 			new DxExceptionDlg(_dApplic.getJFrame(),iofe.getMessage(),iofe);
 			iofe.printStackTrace();
 			System.exit(31);

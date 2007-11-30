@@ -29,12 +29,12 @@ import java.util.Properties;
 import dConstants.DConst;
 import eLib.exit.dialog.DxExceptionDlg;
 import eLib.exit.exception.DxException;
-import eLib.exit.exception.IOFileException;
+
 
 /**
  * Description: FilterFile is a class used to read a file all ASCII char in
  * range 0 to 127 are accepted. It is possible to add char from 128 to 255 by
- * puting them in a string then calling the constructor or call setCharKnown
+ * putting them in a string then calling the constructor or call setCharKnown
  * after construction.
  * 
  * <p>
@@ -263,7 +263,7 @@ public class FilterFile {
 			_bof = new ByteOutputFile(str);
 			_bof.writeFileFromBytes(_bytesArray);
 			_bof.close();
-		} catch (IOFileException iofe) {
+		} catch (Exception iofe) {
 			new DxException("Error while writing bytes !\n"+iofe.getMessage());
 			System.exit(101);
 		} // end catch

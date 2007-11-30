@@ -26,7 +26,6 @@ import dConstants.DConst;
 import developer.DxFlags;
 import dInternal.DxConflictLimits;
 import eLib.exit.dialog.DxExceptionDlg;
-import eLib.exit.exception.IOFileException;
 import eLib.exit.txt.ByteOutputFile;
 import eLib.exit.txt.FilterFile;
 
@@ -139,7 +138,7 @@ public class DxPreferences {
 			ByteOutputFile bof = new ByteOutputFile(name);
 			bof.writeFileFromBytes(data.getBytes());
 			bof.close();
-		} catch (IOFileException iofe) {
+		} catch (Exception iofe) {
 			new DxExceptionDlg(_dApplic.getJFrame(), iofe.getMessage(), iofe);
 			iofe.printStackTrace();
 			System.exit(31);
