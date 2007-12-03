@@ -63,9 +63,10 @@ public class DSaveData {
 			return error;
 		}
 		FilterFile filter;
+		String locaFileName = "";
 		if (fileName.endsWith(DConst.DOT_DIA))
-			fileName = fileName.substring(0, fileName.length() - 4);
-		tts.saveTTStructure(fileName + DConst.DOT_XML);
+			locaFileName = fileName.substring(0, fileName.length() - 4);
+		tts.saveTTStructure(locaFileName + DConst.DOT_XML);
 		String diaData = _version + DConst.CR_LF;
 		diaData += DConst.SAVE_SEPARATOR + DConst.CR_LF;
 		diaData += DXToolsMethods
@@ -100,10 +101,11 @@ public class DSaveData {
 			error = "SaveData : Some data have a null reference";
 			return error;
 		}
+		String locaFileName = "";
 		FilterFile filter;
 		if (fileName.endsWith(DConst.DOT_DIA))
-			fileName = fileName.substring(0, fileName.length() - 4);
-		tts.saveTTStructure(fileName + DConst.DOT_XML);
+			locaFileName = fileName.substring(0, fileName.length() - 4);
+		tts.saveTTStructure(locaFileName + DConst.DOT_XML);
 		String diaData = _version + DConst.CR_LF;
 		diaData += DConst.SAVE_SEPARATOR + DConst.CR_LF;
 		diaData += DXToolsMethods
@@ -136,13 +138,14 @@ public class DSaveData {
 			return error;
 		}
 		FilterFile filter;
+		String locaFileName = "";
 		if (fileName.endsWith(DConst.DOT_DIA))
-			fileName = fileName.substring(0, fileName.length() - 4);
-		tts.saveTTStructure(fileName + DConst.DOT_XML);
+			locaFileName = fileName.substring(0, fileName.length() - 4);
+		tts.saveTTStructure(locaFileName + DConst.DOT_XML);
 		String diaData = _version + DConst.CR_LF;
 		diaData += DConst.SAVE_SEPARATOR + DConst.CR_LF;
 		diaData += DXToolsMethods
-				.getRelativeFileName(fileName + DConst.DOT_XML).trim()
+				.getRelativeFileName(locaFileName + DConst.DOT_XML).trim()
 				+ DConst.CR_LF;
 		diaData += DConst.SAVE_SEPARATOR + DConst.CR_LF;
 		diaData += inst.size() + DConst.CR_LF;
@@ -171,9 +174,10 @@ public class DSaveData {
 			return error;
 		}
 		FilterFile filter;
+		String locaFileName = "";
 		if (fileName.endsWith(DConst.DOT_DIA))
-			fileName = fileName.substring(0, fileName.length() - 4);
-		tts.saveTTStructure(fileName + DConst.DOT_XML);
+			locaFileName = fileName.substring(0, fileName.length() - 4);
+		tts.saveTTStructure(locaFileName + DConst.DOT_XML);
 		String diaData = _version + DConst.CR_LF;
 		diaData += DConst.SAVE_SEPARATOR + DConst.CR_LF;
 		diaData += DXToolsMethods
@@ -202,9 +206,10 @@ public class DSaveData {
 	 * */
 	public String saveTTStructure(TTStructure tts, String fileName) {
 		String error = "";
+		String localFileName = "";
 		if (!fileName.endsWith(DConst.DOT_XML))
-			fileName = fileName + DConst.DOT_XML;
-		error = tts.saveTTStructure(fileName);
+			localFileName = fileName + DConst.DOT_XML;
+		error = tts.saveTTStructure(localFileName);
 		return error;
 	}
 }
