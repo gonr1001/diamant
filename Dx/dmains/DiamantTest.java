@@ -78,6 +78,9 @@ import dTest.dInternal.dTimeTable.SequenceTest;
 import dTest.dInternal.dTimeTable.TTStructureTest;
 import dTest.dInternal.dUtil.DXToolsMethodsTest;
 import dTest.dmains.ScanFileTest;
+import eTest.ByteInputFileTest;
+import eTest.ByteOutputFileTest;
+import eTest.FilterFileTest;
 
 public class DiamantTest {
 
@@ -98,6 +101,12 @@ public class DiamantTest {
 		DxFlags.unitTest = true;
 		TestSuite suite = new TestSuite("Diamant Tests");
 
+		
+		suite.addTest(ByteInputFileTest.suite());
+		suite.addTest(ByteOutputFileTest.suite());
+		suite.addTest(FilterFileTest.suite());
+		
+		
 		suite.addTest(DxAvailabilityTest.suite());
 		suite.addTest(DxInstructorTest.suite());
 		suite.addTest(DxSetOfInstructorsTest.suite());
