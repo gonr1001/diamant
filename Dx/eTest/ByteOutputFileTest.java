@@ -54,15 +54,15 @@ public class ByteOutputFileTest extends TestCase {
 			assertEquals("Test File nonEmpty byte :", (byte)'5', b[4]);
 			bif.close();
 			bof = new ByteOutputFile("."+ File.separator + "eDataTest"
-					+ File.separator + "aux.txt");
+					+ File.separator + "testReadWriteRead.txt");
 			bof.writeFileFromBytes(b);
 			bof.close();
 			bif = new ByteInputFile("." + File.separator + "eDataTest"
-					+ File.separator + "aux.txt");
+					+ File.separator + "testReadWriteRead.txt");
 			b = bif.readFileAsBytes();
 			assertEquals("Test File nonEmpty size :", 5, b.length);
-			assertEquals("Test File nonEmpty byte :", (byte)'q', b[0]);
-			assertEquals("Test File nonEmpty byte :", (byte)'q', b[4]);
+			assertEquals("Test File nonEmpty byte :", (byte)'1', b[0]);
+			assertEquals("Test File nonEmpty byte :", (byte)'5', b[4]);
 			bif.close();
 		} catch (Exception e) {
 			System.out.println(e);

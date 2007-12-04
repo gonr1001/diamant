@@ -33,7 +33,7 @@ package eLib.exit.txt;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -90,7 +90,6 @@ public class ByteOutputFile {
   */  
   
   public ByteOutputFile(String fileName) throws FileNotFoundException {   
-      //open file
       _fos = new FileOutputStream(fileName);
   }
 
