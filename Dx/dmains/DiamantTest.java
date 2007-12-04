@@ -82,6 +82,7 @@ import eTest.ByteInputFileTest;
 import eTest.ByteOutputFileTest;
 import eTest.DxFilterFileTest;
 import eTest.FilterFileTest;
+import eTest.SemiExtendedAsciiFileTest;
 
 public class DiamantTest {
 
@@ -106,7 +107,7 @@ public class DiamantTest {
 		suite.addTest(ByteInputFileTest.suite());
 		suite.addTest(ByteOutputFileTest.suite());
 		suite.addTest(FilterFileTest.suite());
-		suite.addTest(DxFilterFileTest.suite());
+		suite.addTest(SemiExtendedAsciiFileTest.suite());
 		
 		suite.addTest(DxAvailabilityTest.suite());
 		suite.addTest(DxInstructorTest.suite());
