@@ -1,7 +1,8 @@
 /**
- *
- * Title: FilterFile
- *
+ * Created on 4-Dec-07
+ * 
+ * 
+ * Title: SemiExtendedAsciiFile.java
  *
  * Copyright (c) 2001 by rgr.
  * All rights reserved.
@@ -13,11 +14,10 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- *
- * Our convention is that: It's necessary to indicate explicitly
- * all Exceptions that a method can throw.
- * All Exceptions must be handled explicitly.
+ * 
+ * 
  */
+
 package eLib.exit.txt;
 
 import java.io.File;
@@ -30,7 +30,7 @@ import eLib.exit.exception.DxException;
 
 
 /**
- * Description: FilterFile is a class used to read a file all ASCII char in
+ * Description: SemiExtendedAsciiFile is a class used to read a file all ASCII char in
  * range 0 to 127 are accepted. It is possible to add char from 128 to 255 by
  * putting them in a string then calling the constructor or call setCharKnown
  * after construction.
@@ -41,7 +41,7 @@ import eLib.exit.exception.DxException;
  * 
  */
 
-public class DxFilterFile {
+public class SemiExtendedAsciiFile {
 	
 	private static final String CHAR_PATH = "data/chars.txt";
 
@@ -65,7 +65,7 @@ public class DxFilterFile {
 	 * 127 ASCII.
 	 * 
 	 */
-	public DxFilterFile()throws NullPointerException,
+	public SemiExtendedAsciiFile()throws NullPointerException,
 	FileNotFoundException,IOException  {
 		_bytesArray = null;
 		String charKnown = createCharKnown(CHAR_PATH);
@@ -96,7 +96,7 @@ public class DxFilterFile {
 	 *            a String containing the char that can be recognized.
 	 * 
 	 */
-	public DxFilterFile(byte[] b, String charKnown) {
+	public SemiExtendedAsciiFile(byte[] b, String charKnown) {
 		_bytesArray = b;
 		if (charKnown != null)
 			_charKnown = charKnown;
@@ -374,4 +374,3 @@ public class DxFilterFile {
 	}
 
 }// end class Filter
-

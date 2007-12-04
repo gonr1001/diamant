@@ -80,7 +80,6 @@ import dTest.dInternal.dUtil.DXToolsMethodsTest;
 import dTest.dmains.ScanFileTest;
 import eTest.ByteInputFileTest;
 import eTest.ByteOutputFileTest;
-import eTest.DxFilterFileTest;
 import eTest.FilterFileTest;
 import eTest.SemiExtendedAsciiFileTest;
 

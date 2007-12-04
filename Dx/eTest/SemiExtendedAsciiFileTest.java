@@ -1,17 +1,24 @@
 /**
+ * Created on 4-Dec-07
+ * 
+ * 
+ * Title: SemiExtendedAsciiFileTest.java
+ *
+ * Copyright (c) 2001 by rgr.
+ * All rights reserved.
+ *
+ *
+ * This software is the confidential and proprietary information
+ * of rgr. ("Confidential Information").  You
+ * shall not disclose such Confidential Information and shall use
+ * it only in accordance with the terms of the license agreement
+ * you entered into with rgr.
+ *
+ * 
  * 
  */
-package eTest;
 
-/**
- * Ruben Gonzalez-Rubio
- * 
- * Description: FilterFileTest is a class used to:
- * <p>
- * Make tests to FilterFile
- * <p>
- * 
- */
+package eTest;
 
 
 import java.io.File;
@@ -25,16 +32,16 @@ import junit.framework.TestSuite;
 import eLib.exit.exception.DxException;
 import eLib.exit.txt.FilterFile;
 
-public class DxFilterFileTest extends TestCase {
+public class SemiExtendedAsciiFileTest extends TestCase {
 
-	public DxFilterFileTest(String name) {
+	public SemiExtendedAsciiFileTest(String name) {
 		super(name);
 	}
 
 	public static Test suite() {
 		// the type safe way is in SimpleTest
 		// the dynamic way :
-		return new TestSuite(DxFilterFileTest.class);
+		return new TestSuite(SemiExtendedAsciiFileTest.class);
 	} // end suite
 
 	public void testSimple() throws Exception {
