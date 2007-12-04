@@ -156,12 +156,36 @@ public class DxFilterFile {
 	 * 
 	 * 
 	 */
+//	public void oldAppendToCharKnown(String str) {
+//		byte[] b = new byte[1];
+//		for (int i = 0; i < str.length(); i++) {
+//			b[0] = (byte) str.charAt(i);
+//			if (!isIn(_charKnown, b))
+//				_charKnown += new String(b);
+//		}
+//	}
+	
+	/**
+	 * 
+	 * Requires: a String containing the char to be recognized
+	 * 
+	 * <p>
+	 * Modifies: nothing.
+	 * 
+	 * <p>
+	 * Effect: nothing.
+	 * 
+	 * @param a
+	 *            String containing the recognized char
+	 * 
+	 * 
+	 */
 	public void appendToCharKnown(String str) {
-		byte[] b = new byte[1];
+		byte b = 0;
 		for (int i = 0; i < str.length(); i++) {
-			b[0] = (byte) str.charAt(i);
-			if (!isIn(_charKnown, b))
-				_charKnown += new String(b);
+			b = (byte) str.charAt(i);
+			if (-1 ==_charKnown.indexOf((char)b))
+				_charKnown += (char)b;
 		}
 	}
 
@@ -273,14 +297,7 @@ public class DxFilterFile {
 		} // end catch
 
 	}
-//	private String writeTo(byte[] bytes) {
-//		String toReturn = "";
-//		// byte [] b = str.getBytes();
-//		for (int i = 0; i < bytes.length; i++) {
-//			toReturn += (int) bytes[i] + " ";
-//		}
-//		return toReturn;
-//	}
+
 
 	private String fixSeparator(String str) {
 		return str.replace('/', File.separatorChar);
@@ -299,17 +316,17 @@ public class DxFilterFile {
 		return false;
 	}
 
-	private boolean isIn(String str, byte[] b) { // XXXX Pascal: Pourquoi
-		// reinventer la roue quand
-		// ce type de methode est
-		// dans l'API standard?
-
-		for (int i = 0; i < str.length(); i++) {
-			if (b[0] == str.charAt(i))
-				return true;
-		}
-		return false;
-	}
+//	private boolean isIn(String str, byte[] b) { // XXXX Pascal: Pourquoi
+//		// reinventer la roue quand
+//		// ce type de methode est
+//		// dans l'API standard?
+//
+//		for (int i = 0; i < str.length(); i++) {
+//			if (b[0] == str.charAt(i))
+//				return true;
+//		}
+//		return false;
+//	}
 
 	// -----------------------------------------------------------------------
 	private boolean testValidityOfBytes() throws NullPointerException,
