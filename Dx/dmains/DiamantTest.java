@@ -80,6 +80,7 @@ import dTest.dInternal.dUtil.DXToolsMethodsTest;
 import dTest.dmains.ScanFileTest;
 import eTest.ByteInputFileTest;
 import eTest.ByteOutputFileTest;
+import eTest.DxFilterFileTest;
 import eTest.FilterFileTest;
 
 public class DiamantTest {
@@ -105,7 +106,7 @@ public class DiamantTest {
 		suite.addTest(ByteInputFileTest.suite());
 		suite.addTest(ByteOutputFileTest.suite());
 		suite.addTest(FilterFileTest.suite());
-		
+		suite.addTest(DxFilterFileTest.suite());
 		
 		suite.addTest(DxAvailabilityTest.suite());
 		suite.addTest(DxInstructorTest.suite());

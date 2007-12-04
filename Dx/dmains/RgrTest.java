@@ -34,6 +34,8 @@ import dTest.dInternal.dOptimizationTest.RoomsConditionsTest;
 import dTest.dInternal.dOptimizationTest.SetOfEventsTest;
 import developer.DxFlags;
 import eTest.ByteInputFileTest;
+import eTest.ByteOutputFileTest;
+import eTest.DxFilterFileTest;
 import eTest.FilterFileTest;
 
 
@@ -66,7 +68,9 @@ public class RgrTest {
 		TestSuite suite = new TestSuite("rgr selected Tests");
 
 		suite.addTest(ByteInputFileTest.suite());
+		suite.addTest(ByteOutputFileTest.suite());
 		suite.addTest(FilterFileTest.suite());
+		suite.addTest(DxFilterFileTest.suite());
 		
 		suite.addTest(DxAssignAllAlgTest.suite());
 		suite.addTest(RoomsConditionsTest.suite());
