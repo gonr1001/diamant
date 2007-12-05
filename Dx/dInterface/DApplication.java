@@ -1025,13 +1025,14 @@ public class DApplication {
 				this.hideToolBar();
 				this.getDMediator().addDxTTableDoc(fullFileName, fullFileName);
 				_dxMenuBar.afterNewTTable();
-			} catch (DxException e) {
-				new DxExceptionDlg(_jFrame, e.getMessage(), e);
-				DMediator dMed = this.getDMediator();
-				dMed.clean();
-				dMed = null;
-				this.initialState();
+//			} catch (Exception e) {
+//				new DxExceptionDlg(_jFrame, e.getMessage(), e);
+//				DMediator dMed = this.getDMediator();
+//				dMed.clean();
+//				dMed = null;
+//				this.initialState();
 			} catch (Exception e) {
+				e.printStackTrace();
 				new DxExceptionDlg(_jFrame, e.getMessage(), e);
 				DMediator dMed = this.getDMediator();
 				dMed.clean();

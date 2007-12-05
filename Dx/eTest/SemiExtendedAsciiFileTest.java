@@ -21,13 +21,14 @@
 package eTest;
 
 import java.io.File;
-
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-import eLib.exit.txt.FilterFile;
+import eLib.exit.exception.DxException;
 import eLib.exit.txt.SemiExtendedAsciiFile;
 
 public class SemiExtendedAsciiFileTest extends TestCase {
@@ -42,155 +43,193 @@ public class SemiExtendedAsciiFileTest extends TestCase {
 		return new TestSuite(SemiExtendedAsciiFileTest.class);
 	} // end suite
 
-	public void testSimple() {
+	public void testReadValidFile() {
 		try {
-			SemiExtendedAsciiFile filter = new SemiExtendedAsciiFile();
-			filter.setCharKnown("");
+			SemiExtendedAsciiFile seaf = new SemiExtendedAsciiFile();
+			seaf.setCharKnown("");
 			String str = "." + File.separator + "eDataTest" + File.separator
 					+ "Simple.txt";
-			assertEquals("testSimple assertEquals :", true, filter
-					.validFile(str));
+			assertEquals("testSimple assertEquals :", true, seaf.validFile(str));
 		} catch (Exception e) {
 			// Should not fail in tests
-			System.out.println("Exception in: testSimple");
+			System.out.println("Exception in: testReadValidFile");
 			e.printStackTrace();
 		}
 	}
 
-//	public void testEmptyCollection() {
-//		Collection<Object> collection = new ArrayList<Object>();
-//		assertTrue(collection.isEmpty());
-//	}
-
-	public void testSimple1() {
+	public void testCharNotValid() {
 		try {
-		SemiExtendedAsciiFile filter = new SemiExtendedAsciiFile();
-		filter.setCharKnown("");
-		String str = "." + File.separator + "eDataTest" + File.separator
-				+ "SimpleCharNotV.txt";
-//		try {
-			filter.validFile(str);
-		} catch (Exception e) {
+			SemiExtendedAsciiFile seaf = new SemiExtendedAsciiFile();
+			seaf.setCharKnown("");
+			String str = "." + File.separator + "eDataTest" + File.separator
+					+ "SimpleCharNotV.txt";
+			seaf.validFile(str);
+		} catch (NullPointerException e) {
+			// Should not fail in tests
+			System.out.println(e);
+			e.printStackTrace();
+			throw new RuntimeException("Problem in testCharNotValid");
+		} catch (FileNotFoundException e) {
+			// Should not fail in tests
+			System.out.println(e);
+			e.printStackTrace();
+			throw new RuntimeException("Problem in testCharNotValid");
+		} catch (IOException e) {
+			// Should not fail in tests
+			System.out.println(e);
+			e.printStackTrace();
+			throw new RuntimeException("Problem in testCharNotValid");
+		} catch (DxException e) {
+			// Should fail in tests
 			return;
+		} catch (Exception e) {
+			// Should not fail in tests
+			System.out.println(e);
+			e.printStackTrace();
+			throw new RuntimeException("Problem in testCharNotValid");
 		}
 		fail("DxException");
 	}
 
-	public void testReadFile() throws Exception {
-		FilterFile filter = new FilterFile();
-		filter.setCharKnown("");
-		String str = "." + File.separator + "eDataTest" + File.separator
-				+ "TwoLines.txt";
-		filter.readFile(str);
-		byte[] a = { (byte) 65, (byte) 13, (byte) 10, (byte) 66, (byte) 13,
-				(byte) 10 };
-		assertEquals("testReadFile assertEquals :", a.length, filter
-				.getByteArray().length);
-		assertEquals("testReadFile assertEquals :", true, compareArrays(a,
-				filter.getByteArray()));
+	public void testReadFile() {
+		try {
+			SemiExtendedAsciiFile seaf = new SemiExtendedAsciiFile();
+			seaf.setCharKnown("");
+			String str = "." + File.separator + "eDataTest" + File.separator
+					+ "TwoLines.txt";
+			seaf.readFile(str);
+			byte[] a = { (byte) 65, (byte) 13, (byte) 10, (byte) 66, (byte) 13,
+					(byte) 10 };
+			assertEquals("testReadFile assertEquals :", a.length, seaf
+					.getByteArray().length);
+			assertEquals("testReadFile assertEquals :", true, compareArrays(a,
+					seaf.getByteArray()));
+		} catch (NullPointerException e) {
+			// Should not fail in tests
+			System.out.println(e);
+			e.printStackTrace();
+			throw new RuntimeException("Problem in testReadFile");
+		} catch (FileNotFoundException e) {
+			// Should not fail in tests
+			System.out.println(e);
+			e.printStackTrace();
+			throw new RuntimeException("Problem in testReadFile");
+		} catch (IOException e) {
+			// Should not fail in tests
+			System.out.println(e);
+			e.printStackTrace();
+			throw new RuntimeException("Problem in testReadFile");
+		} catch (Exception e) {
+			// Should not fail in tests
+			System.out.println(e);
+			e.printStackTrace();
+			throw new RuntimeException("Problem in testReadFile");
+		}
 	}
 
-	public void testAdjustingLinesLF() throws Exception {
+	public void testAdjustingLinesLF() {
 		byte[] a = { (byte) 65, (byte) 10, (byte) 66, (byte) 10 };
-		FilterFile filter = new FilterFile(a, "");
-		filter.adjustingLines();
-
 		byte[] b = { (byte) 65, (byte) 13, (byte) 10, (byte) 66, (byte) 13,
 				(byte) 10 };
-		assertEquals("testAdjustingLinesLF assertEquals1 :", b.length, filter
+
+		SemiExtendedAsciiFile seaf = new SemiExtendedAsciiFile(a, "");
+		seaf.adjustingLines();
+		assertEquals("testAdjustingLinesLF length:", b.length, seaf
 				.getByteArray().length);
-		assertEquals("testAdjustingLinesLF assertEquals2 :", true,
-				compareArrays(b, filter.getByteArray()));
+		assertEquals("testAdjustingLinesLF compare:", true, compareArrays(b,
+				seaf.getByteArray()));
 	}
 
-	public void testAdjustingLinesCR() throws Exception {
+	public void testAdjustingLinesCR() {
 		byte[] a = { (byte) 65, (byte) 13, (byte) 66, (byte) 13 };
-		FilterFile filter = new FilterFile(a, "");
-		filter.adjustingLines();
-
 		byte[] b = { (byte) 65, (byte) 13, (byte) 10, (byte) 66, (byte) 13,
 				(byte) 10 };
-		assertEquals("testAdjustingLinesCR assertEquals1 :", b.length, filter
+
+		SemiExtendedAsciiFile seaf = new SemiExtendedAsciiFile(a, "");
+		seaf.adjustingLines();
+		assertEquals("testAdjustingLinesCR length: :", b.length, seaf
 				.getByteArray().length);
-		assertEquals("testAdjustingLinesCR assertEquals2 :", true,
-				compareArrays(b, filter.getByteArray()));
+		assertEquals("testAdjustingLinesCR compare: ", true, compareArrays(b,
+				seaf.getByteArray()));
 	}
 
-	public void testAdjustingLines1() throws Exception {
+	public void testAdjustingLinesCRLF() {
+
 		byte[] a = { (byte) 65, (byte) 13, (byte) 66, (byte) 67 };
-		FilterFile filter = new FilterFile(a, "");
-		filter.adjustingLines();
-
 		byte[] b = { (byte) 65, (byte) 13, (byte) 10, (byte) 66, (byte) 67 };
-		assertEquals("testAdjustingLines1 assertEquals1 :", b.length, filter
+
+		SemiExtendedAsciiFile seaf = new SemiExtendedAsciiFile(a, "");
+		seaf.adjustingLines();
+		assertEquals("testAdjustingLinesCRLF length: ", b.length, seaf
 				.getByteArray().length);
-		assertEquals("testAdjustingLines1 assertEquals2 :", true,
-				compareArrays(b, filter.getByteArray()));
+		assertEquals("testAdjustingLinesCRLF compare: ", true, compareArrays(b,
+				seaf.getByteArray()));
 	}
 
-	public void testAdjustingLines2() throws Exception {
+	public void testAdjustingLinesManyCRLF() {
 		byte[] a = { (byte) 13, (byte) 65, (byte) 13, (byte) 13, (byte) 66,
 				(byte) 67 };
-		FilterFile filter = new FilterFile(a, "");
-		filter.adjustingLines();
-
 		byte[] b = { (byte) 13, (byte) 10, (byte) 65, (byte) 13, (byte) 10,
 				(byte) 13, (byte) 10, (byte) 66, (byte) 67 };
-		assertEquals("testAdjustingLines2 assertEquals1 :", b.length, filter
+		SemiExtendedAsciiFile seaf = new SemiExtendedAsciiFile(a, "");
+		seaf.adjustingLines();
+		
+		assertEquals("testAdjustingLinesManyCRLF length: ", b.length, seaf
 				.getByteArray().length);
-		assertEquals("testAdjustingLines2 assertEquals2 :", true,
-				compareArrays(b, filter.getByteArray()));
+		assertEquals("testAdjustingLinesManyCRLF compare: ", true,
+				compareArrays(b, seaf.getByteArray()));
 	}
 
-	public void testAdjustingEndFileLF() throws Exception {
+	public void testAdjustingEndFileLF() {
 		byte[] a = { (byte) 65, (byte) 10, (byte) 66, (byte) 10 };
-		FilterFile filter = new FilterFile(a, "");
-		filter.adjustingLines();
-		filter.adjustingEndFile();
-
 		byte[] b = { (byte) 65, (byte) 13, (byte) 10, (byte) 66 };
-		assertEquals("testAdjustingEndFileLF assertEquals1 :", b.length, filter
+		
+		SemiExtendedAsciiFile seaf = new SemiExtendedAsciiFile(a, "");
+		seaf.adjustingLines();
+		seaf.adjustingEndFile();
+		
+		assertEquals("testAdjustingEndFileLF  length: ", b.length, seaf
 				.getByteArray().length);
-		assertEquals("testAdjustingEndFileLF assertEquals2 :", true,
-				compareArrays(b, filter.getByteArray()));
+		assertEquals("testAdjustingEndFileLF compare: ", true,
+				compareArrays(b, seaf.getByteArray()));
 	}
 
-	public void testAdjustingEndFileCR() throws Exception {
+	public void testAdjustingEndFileCR() {
 		byte[] a = { (byte) 65, (byte) 13, (byte) 66, (byte) 13 };
-		FilterFile filter = new FilterFile(a, "");
-		filter.adjustingLines();
-		filter.adjustingEndFile();
 		byte[] b = { (byte) 65, (byte) 13, (byte) 10, (byte) 66 };
-		assertEquals("testAdjustingEndFileCR assertEquals1 :", b.length, filter
+		SemiExtendedAsciiFile seaf = new SemiExtendedAsciiFile(a, "");
+		seaf.adjustingLines();
+		seaf.adjustingEndFile();
+		
+		assertEquals("testAdjustingEndFileCR  length: ", b.length, seaf
 				.getByteArray().length);
-		assertEquals("testAdjustingEndFileCR assertEquals2 :", true,
-				compareArrays(b, filter.getByteArray()));
+		assertEquals("testAdjustingEndFileCR compare: ", true,
+				compareArrays(b, seaf.getByteArray()));
 	}
 
-	public void testAdjustingEndFile() throws Exception {
+	public void testAdjustingEndFile() {
 		byte[] a = { (byte) 65, (byte) 13, (byte) 66, (byte) 13, (byte) 10,
 				(byte) 13, (byte) 10, (byte) 13, (byte) 10 };
-		FilterFile filter = new FilterFile(a, "");
-		filter.adjustingLines();
-		filter.adjustingEndFile();
 		byte[] b = { (byte) 65, (byte) 13, (byte) 10, (byte) 66 };
-		assertEquals("testAdjustingEndFile assertEquals1 :", b.length, filter
+		
+		SemiExtendedAsciiFile seaf = new SemiExtendedAsciiFile(a, "");
+		seaf.adjustingLines();
+		seaf.adjustingEndFile();
+		
+		assertEquals("testAdjustingEndFile  length: ", b.length, seaf
 				.getByteArray().length);
-		assertEquals("testAdjustingEndFile assertEquals2 :", true,
-				compareArrays(b, filter.getByteArray()));
+		assertEquals("testAdjustingEndFile  compare: ", true,
+				compareArrays(b, seaf.getByteArray()));
 	}
 
-	public void testAppendToCharKnown() throws Exception {
+	public void testAppendToCharKnown() {
 		byte[] a = { (byte) 65, (byte) 13, (byte) 66, (byte) 13, (byte) 10,
 				(byte) 13, (byte) 10, (byte) 13, (byte) 10 };
-		FilterFile filter = new FilterFile(a, "aeiou");
-		filter.appendToCharKnown("bc");
+		SemiExtendedAsciiFile seaf = new SemiExtendedAsciiFile(a, "aeiou");
+		seaf.appendToCharKnown("bc");
 
-		// byte [] b = {(byte)65, (byte)13,(byte)10, (byte)66};
-		assertEquals("testAppendToCharKnownassertEquals :", filter
+		assertEquals("testAppendToCharKnownassertEquals :", seaf
 				.getCharKnown(), "aeioubc");
-		// assertEquals("testAdjustingEndFile assertEquals2 :", true,
-		// compareArrays(b, filter.getByteArray()));
 	}
 
 	private boolean compareArrays(byte[] a, byte[] b) {
