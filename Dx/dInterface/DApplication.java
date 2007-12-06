@@ -984,7 +984,7 @@ public class DApplication {
 				this.hideToolBar();
 				DxLoadData dxLoadData = new DxLoadData();
 				dxLoadData.loadDataStructures(fullFileName, this.getCurrentDir());
-				
+// TODO change to addDxTTableDoc(dxLoadData);			
 //				this.getDMediator().addDxTTableDoc(fullFileName, fullFileName);
 				_dxMenuBar.afterNewTTable();
 			} catch (DxException e) {
@@ -1025,12 +1025,6 @@ public class DApplication {
 				this.hideToolBar();
 				this.getDMediator().addDxTTableDoc(fullFileName, fullFileName);
 				_dxMenuBar.afterNewTTable();
-//			} catch (Exception e) {
-//				new DxExceptionDlg(_jFrame, e.getMessage(), e);
-//				DMediator dMed = this.getDMediator();
-//				dMed.clean();
-//				dMed = null;
-//				this.initialState();
 			} catch (Exception e) {
 				e.printStackTrace();
 				new DxExceptionDlg(_jFrame, e.getMessage(), e);

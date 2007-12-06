@@ -54,7 +54,7 @@ import eLib.exit.txt.SemiExtendedAsciiFile;
  * 
  * Description: DxLoadData is a class used to:
  * <p>
- * TODO:insert comments
+ * Load the data from a a file to classes
  * <p>
  * 
  */
@@ -94,12 +94,10 @@ public class DxLoadData {
 
 	Vector<Object> _diaData;
 
-	// TODO: since getSetOfInstructors throws exceptions, I had choice to add
-	// throws to function
-	// or try catch on the return. Since we want to propagate error to the
-	// application, I thought throws was the solution
+
 	public boolean loadDataStructures(String fileName, String currentDir)
-			throws Exception {
+			throws NullPointerException, FileNotFoundException, IOException,
+			DxException {
 
 		String dataloaded = new String(filterBadChars(fileName));
 		StringTokenizer readFile;
@@ -117,7 +115,8 @@ public class DxLoadData {
 	}
 
 	private boolean loadData(String fileName, String currentDir)
-			throws Exception {
+			throws NullPointerException, FileNotFoundException, IOException,
+			DxException {
 
 		String dataloaded = new String(filterBadChars(fileName));
 		StringTokenizer dataTokens;
@@ -192,7 +191,8 @@ public class DxLoadData {
 		return true;
 	}
 
-	private boolean loadData2dot1(String fileName) throws Exception {
+	private boolean loadData2dot1(String fileName) throws NullPointerException,
+			FileNotFoundException, IOException, DxException {
 
 		String dataloaded = new String(filterBadChars(fileName));
 		StringTokenizer dataTokens;
@@ -263,27 +263,28 @@ public class DxLoadData {
 
 	}
 
-//	/**
-//	 * 
-//	 * @param fileName
-//	 * @return
-//	 * @throws DxException
-//	 */
-//	private DataExchange buildDataExchange(String fileName) throws Exception {
-//		byte[] dataloaded = filterBadChars(fileName);
-//		StringTokenizer st = new StringTokenizer(new String(dataloaded),
-//				DConst.CR_LF);
-//		String token = st.nextToken().toString().trim();
-//
-//		if (token.equalsIgnoreCase(DConst.FILE_VER_NAME1_6)) {
-//			return new ByteArrayMsg(DConst.FILE_VER_NAME1_6, new String(
-//					dataloaded));
-//		}
-//		if (token.equalsIgnoreCase(DConst.FILE_VER_NAME_XML1_7)) {
-//			return new ByteArrayMsg(DConst.FILE_VER_NAME_XML1_7, fileName);
-//		}
-//		return new ByteArrayMsg(DConst.FILE_VER_NAME1_5, new String(dataloaded));
-//	}
+	// /**
+	// *
+	// * @param fileName
+	// * @return
+	// * @throws DxException
+	// */
+	// private DataExchange buildDataExchange(String fileName) throws Exception
+	// {
+	// byte[] dataloaded = filterBadChars(fileName);
+	// StringTokenizer st = new StringTokenizer(new String(dataloaded),
+	// DConst.CR_LF);
+	// String token = st.nextToken().toString().trim();
+	//
+	// if (token.equalsIgnoreCase(DConst.FILE_VER_NAME1_6)) {
+	// return new ByteArrayMsg(DConst.FILE_VER_NAME1_6, new String(
+	// dataloaded));
+	// }
+	// if (token.equalsIgnoreCase(DConst.FILE_VER_NAME_XML1_7)) {
+	// return new ByteArrayMsg(DConst.FILE_VER_NAME_XML1_7, fileName);
+	// }
+	// return new ByteArrayMsg(DConst.FILE_VER_NAME1_5, new String(dataloaded));
+	// }
 
 	/**
 	 * 
@@ -340,12 +341,13 @@ public class DxLoadData {
 	 *            the file to import
 	 * @return DSetOfResources which is merge of the new DSetOfResources to the
 	 *         current DSetOfResources
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
-	 * @throws NullPointerException 
+	 * @throws IOException
+	 * @throws FileNotFoundException
+	 * @throws NullPointerException
 	 */
 	public DSetOfResources selectiveImport(DSetOfResources currentSetOfResc,
-			String file) throws DxException, NullPointerException, FileNotFoundException, IOException {// , boolean merge){
+			String file) throws DxException, NullPointerException,
+			FileNotFoundException, IOException {// , boolean merge){
 		// DataExchange de = buildDataExchange(file);
 		DSetOfResources newSetOfResc = null;
 		// int position=0;
@@ -376,14 +378,14 @@ public class DxLoadData {
 			currentSetOfResc.sortSetOfResourcesByID();
 		}// Ici sans le else on passe même s’il y a une erreur !!!!
 		else {
-			if(newSetOfResc != null)
+			if (newSetOfResc != null)
 				throw new DxException(newSetOfResc.getError());
 		}
 		return currentSetOfResc;
 	}
-	
-	
-	public DxSetOfInstructors extractInstructors() throws DxException, NullPointerException, FileNotFoundException, IOException {
+
+	public DxSetOfInstructors extractInstructors() throws DxException,
+			NullPointerException, FileNotFoundException, IOException {
 		DataExchange de = buildDataExchange(_instructorFileName);
 		// hara2602 ! TODO params 4 et 14 Trop dangeureux
 		DxInstructorsReader dxir = new DxReadInstructors1dot5(de, 5, 14);// 5
@@ -393,8 +395,9 @@ public class DxLoadData {
 		return dxir.readSetOfInstructors(); // 
 
 	}
-	
-	public DxSetOfSites extractDxRooms() throws DxException, NullPointerException, FileNotFoundException, IOException {
+
+	public DxSetOfSites extractDxRooms() throws DxException,
+			NullPointerException, FileNotFoundException, IOException {
 		DataExchange de = buildDataExchange(_roomsFileName);
 		DxSiteReader dxsrReader;
 		TTStructure tts = _dm.getTTStructure();
@@ -422,12 +425,13 @@ public class DxLoadData {
 	 *            new SetOfStudents)
 	 * @return SetOfStudents
 	 * @throws DxException
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
-	 * @throws NullPointerException 
+	 * @throws IOException
+	 * @throws FileNotFoundException
+	 * @throws NullPointerException
 	 */
 	public SetOfStuSites extractStudents(SetOfStuSites currentList,
-			boolean merge) throws DxException, NullPointerException, FileNotFoundException, IOException {
+			boolean merge) throws DxException, NullPointerException,
+			FileNotFoundException, IOException {
 		DataExchange de = buildDataExchange(_studentsFileName);
 		SetOfStuSites studentsList = new SetOfStuSites();
 		if (de.getContents() != null) {
@@ -460,12 +464,14 @@ public class DxLoadData {
 	 *            (if merge = false --> replace the current SetOfActivities by
 	 *            the new SetOfActivities)
 	 * @return SetOfActivities
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
-	 * @throws NullPointerException 
+	 * @throws IOException
+	 * @throws FileNotFoundException
+	 * @throws NullPointerException
 	 */
 	public SetOfActivitiesSites extractActivities(
-			SetOfActivitiesSites currentList, boolean merge) throws DxException, NullPointerException, FileNotFoundException, IOException {
+			SetOfActivitiesSites currentList, boolean merge)
+			throws DxException, NullPointerException, FileNotFoundException,
+			IOException {
 		DataExchange de = buildDataExchange(_activitiesFileName);
 		SetOfActivitiesSites activitiesList = new SetOfActivitiesSites(false,
 				_dm.getTTStructure().getPeriodLenght());
@@ -484,17 +490,18 @@ public class DxLoadData {
 		}
 		return activitiesList;
 	}
-	
+
 	/**
 	 * 
 	 * @param fileName
 	 * @return
 	 * @throws DxException
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
-	 * @throws NullPointerException 
+	 * @throws IOException
+	 * @throws FileNotFoundException
+	 * @throws NullPointerException
 	 */
-	private DataExchange buildDataExchange(String fileName) throws DxException, NullPointerException, FileNotFoundException, IOException {
+	private DataExchange buildDataExchange(String fileName) throws DxException,
+			NullPointerException, FileNotFoundException, IOException {
 		byte[] dataloaded = filterBadChars(fileName);
 		StringTokenizer st = new StringTokenizer(new String(dataloaded),
 				DConst.CR_LF);
@@ -538,36 +545,36 @@ public class DxLoadData {
 			DSetOfResources currentSites) {
 		// find a site
 
-//		int siteSize = getSiteSize(currentSites);
-//		for (int i = 0; i < siteSize; i++) {
-//			String rscSite = getSite(currentSites, i);
-//			DSetOfResources rescSite = getRscSite(currentSites, i);
-//			int catSize = getCategorySize(rescSite);
-//			// find category in site
-//			for (int j = 0; j < catSize; j++) {
-//				String rscCat = getCategory(rescSite, j);
-//				DSetOfResources rescCat = getRscCategory(rescSite, j);
-//				// find resource in a category
-//				for (int k = 0; k < rescCat.size(); k++) {
-//					// current ressource
-//					DResource curResc = rescCat.getResourceAt(k);
-//					if (getResource(newSites, curResc, rscSite, rscCat) == null) {
-//						DValue error = new DValue();
-//						error.setStringValue(DConst.DELETED_ELEMENT
-//								+ curResc.getID());
-//						if (_dm != null)
-//							_dm.getSetOfImportSelErrors().addResource(
-//									new DResource("1", error), 0);
-//						// System.out.println("DELETED_ELEMENT "+
-//						// curResc.getID());
-//						rescCat.removeResource(curResc.getID());
-//						k--; // Puisque la liste est trié Sinon c est k=0;
-//					}// end
-//					// if(newRsc.getResource(currentRsc.getResourceAt(i).getID())!=null)
-//				}// end for k++
-//			}// end for j++
-//
-//		}// end for i++
+		// int siteSize = getSiteSize(currentSites);
+		// for (int i = 0; i < siteSize; i++) {
+		// String rscSite = getSite(currentSites, i);
+		// DSetOfResources rescSite = getRscSite(currentSites, i);
+		// int catSize = getCategorySize(rescSite);
+		// // find category in site
+		// for (int j = 0; j < catSize; j++) {
+		// String rscCat = getCategory(rescSite, j);
+		// DSetOfResources rescCat = getRscCategory(rescSite, j);
+		// // find resource in a category
+		// for (int k = 0; k < rescCat.size(); k++) {
+		// // current ressource
+		// DResource curResc = rescCat.getResourceAt(k);
+		// if (getResource(newSites, curResc, rscSite, rscCat) == null) {
+		// DValue error = new DValue();
+		// error.setStringValue(DConst.DELETED_ELEMENT
+		// + curResc.getID());
+		// if (_dm != null)
+		// _dm.getSetOfImportSelErrors().addResource(
+		// new DResource("1", error), 0);
+		// // System.out.println("DELETED_ELEMENT "+
+		// // curResc.getID());
+		// rescCat.removeResource(curResc.getID());
+		// k--; // Puisque la liste est trié Sinon c est k=0;
+		// }// end
+		// // if(newRsc.getResource(currentRsc.getResourceAt(i).getID())!=null)
+		// }// end for k++
+		// }// end for j++
+		//
+		// }// end for i++
 
 	}
 
@@ -580,38 +587,38 @@ public class DxLoadData {
 			DSetOfResources currentSites) {
 		// find a site
 
-//		int newSize = getSiteSize(newSites);
-//		for (int i = 0; i < newSize; i++) {
-//			String rscSite = getSite(newSites, i);
-//			DSetOfResources rescSite = getRscSite(newSites, i);
-//			int catSize = getCategorySize(rescSite);
-//			// find category in site
-//			for (int j = 0; j < catSize; j++) {
-//				String rscCat = getCategory(rescSite, j);
-//				DSetOfResources rescCat = getRscCategory(rescSite, j);
-//				// find resource in a category
-//				for (int k = 0; k < rescCat.size(); k++) {
-//					// current ressource
-//					DResource newRes = rescCat.getResourceAt(k);
-//					if (getResource(currentSites, newRes, rscSite, rscCat) == null) {
-//						DValue error = new DValue();
-//						error.setStringValue(DConst.ADDED_ELEMENT
-//								+ newRes.getID());
-//						if (_dm != null)
-//							_dm.getSetOfImportSelErrors().addResource(
-//									new DResource("2", error), 0);
-//						// System.out.println("ADDED_ELEMENT "+ newRes.getID());
-//						DResource crescSite = currentSites.getResource(rscSite);
-//						if (crescSite != null) {
-//							DSetOfResources crescCat = ((DSetOfResources) crescSite
-//									.getAttach());
-//							crescCat.addResourceMod(newRes, 1);
-//						}
-//					}// end
-//					// if(newRsc.getResource(currentRsc.getResourceAt(i).getID())!=null)
-//				}// end for k++
-//			}// end for j++
-//		}// end for i++
+		// int newSize = getSiteSize(newSites);
+		// for (int i = 0; i < newSize; i++) {
+		// String rscSite = getSite(newSites, i);
+		// DSetOfResources rescSite = getRscSite(newSites, i);
+		// int catSize = getCategorySize(rescSite);
+		// // find category in site
+		// for (int j = 0; j < catSize; j++) {
+		// String rscCat = getCategory(rescSite, j);
+		// DSetOfResources rescCat = getRscCategory(rescSite, j);
+		// // find resource in a category
+		// for (int k = 0; k < rescCat.size(); k++) {
+		// // current ressource
+		// DResource newRes = rescCat.getResourceAt(k);
+		// if (getResource(currentSites, newRes, rscSite, rscCat) == null) {
+		// DValue error = new DValue();
+		// error.setStringValue(DConst.ADDED_ELEMENT
+		// + newRes.getID());
+		// if (_dm != null)
+		// _dm.getSetOfImportSelErrors().addResource(
+		// new DResource("2", error), 0);
+		// // System.out.println("ADDED_ELEMENT "+ newRes.getID());
+		// DResource crescSite = currentSites.getResource(rscSite);
+		// if (crescSite != null) {
+		// DSetOfResources crescCat = ((DSetOfResources) crescSite
+		// .getAttach());
+		// crescCat.addResourceMod(newRes, 1);
+		// }
+		// }// end
+		// // if(newRsc.getResource(currentRsc.getResourceAt(i).getID())!=null)
+		// }// end for k++
+		// }// end for j++
+		// }// end for i++
 
 	}
 
@@ -624,54 +631,54 @@ public class DxLoadData {
 			DSetOfResources currentSites) {
 		// find a site
 
-//		int siteSize = getSiteSize(currentSites);
-//		for (int i = 0; i < siteSize; i++) {
-//			String rscSite = getSite(currentSites, i);
-//			DSetOfResources rescSite = getRscSite(currentSites, i);
-//			int catSize = getCategorySize(rescSite);
-//			// find category in site
-//			for (int j = 0; j < catSize; j++) {
-//				String rscCat = getCategory(rescSite, j);
-//				DSetOfResources rescCat = getRscCategory(rescSite, j);
-//				// find resource in a category
-//				for (int k = 0; k < rescCat.size(); k++) {
-//					DResource resc = rescCat.getResourceAt(k);
-//					DResource newRes = getResource(newSites, resc, rscSite,
-//							rscCat);
-//					if (newRes != null) {
-//						// Already exist does it change ?
-//						boolean changed = false;
-//						if (currentSites instanceof SetOfStuSites) {
-//							// Find if element change
-//							changed = compareStudents(newRes, resc);
-//						} // TODO a revoir
-//						// else if (currentSites instanceof SetOfInstructors) {
-//						// changed = compareInstructors(resc, newRes);
-//						// }
-//						DValue error = new DValue();
-//						if (changed == true) {
-//							error.setStringValue(DConst.CHANGED_ELEMENT
-//									+ newRes.getID());
-//							if (_dm != null)
-//								_dm.getSetOfImportSelErrors().addResource(
-//										new DResource("3", error), 0);
-//							// System.out.println("CHANGED_ELEMENT "+
-//							// newRes.getID());
-//						} else {
-//							error.setStringValue(DConst.UNCHANGED_ELEMENT
-//									+ newRes.getID());
-//							if (_dm != null)
-//								_dm.getSetOfImportSelErrors().addResource(
-//										new DResource("4", error), 0);
-//							// System.out.println("UNCHANGED_ELEMENT "+
-//							// newRes.getID());
-//						}
-//					}// end if !=null
-//				}// end for k++
-//			}// end for j++
-//		}// end for i++
+		// int siteSize = getSiteSize(currentSites);
+		// for (int i = 0; i < siteSize; i++) {
+		// String rscSite = getSite(currentSites, i);
+		// DSetOfResources rescSite = getRscSite(currentSites, i);
+		// int catSize = getCategorySize(rescSite);
+		// // find category in site
+		// for (int j = 0; j < catSize; j++) {
+		// String rscCat = getCategory(rescSite, j);
+		// DSetOfResources rescCat = getRscCategory(rescSite, j);
+		// // find resource in a category
+		// for (int k = 0; k < rescCat.size(); k++) {
+		// DResource resc = rescCat.getResourceAt(k);
+		// DResource newRes = getResource(newSites, resc, rscSite,
+		// rscCat);
+		// if (newRes != null) {
+		// // Already exist does it change ?
+		// boolean changed = false;
+		// if (currentSites instanceof SetOfStuSites) {
+		// // Find if element change
+		// changed = compareStudents(newRes, resc);
+		// } // TODO a revoir
+		// // else if (currentSites instanceof SetOfInstructors) {
+		// // changed = compareInstructors(resc, newRes);
+		// // }
+		// DValue error = new DValue();
+		// if (changed == true) {
+		// error.setStringValue(DConst.CHANGED_ELEMENT
+		// + newRes.getID());
+		// if (_dm != null)
+		// _dm.getSetOfImportSelErrors().addResource(
+		// new DResource("3", error), 0);
+		// // System.out.println("CHANGED_ELEMENT "+
+		// // newRes.getID());
+		// } else {
+		// error.setStringValue(DConst.UNCHANGED_ELEMENT
+		// + newRes.getID());
+		// if (_dm != null)
+		// _dm.getSetOfImportSelErrors().addResource(
+		// new DResource("4", error), 0);
+		// // System.out.println("UNCHANGED_ELEMENT "+
+		// // newRes.getID());
+		// }
+		// }// end if !=null
+		// }// end for k++
+		// }// end for j++
+		// }// end for i++
 	}
-	
+
 	public byte[] filterBadChars(String str) throws NullPointerException,
 			FileNotFoundException, IOException, DxException {
 		SemiExtendedAsciiFile filter = new SemiExtendedAsciiFile();
