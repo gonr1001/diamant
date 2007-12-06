@@ -42,7 +42,7 @@ import dInternal.dUtil.DXToolsMethods;
 import developer.DxFlags;
 import eLib.exit.exception.DxException;
 import eLib.exit.txt.ByteInputFile;
-import eLib.exit.txt.FilterFile;
+import eLib.exit.txt.SemiExtendedAsciiFile;
 
 /**
  * Ruben Gonzalez-Rubio
@@ -335,7 +335,7 @@ public class DxLoadData {
 	}
 	
 	public byte[] filterBadChars(String str) throws Exception {
-		FilterFile filter = new FilterFile();
+		SemiExtendedAsciiFile filter = new SemiExtendedAsciiFile();
 		filter.validFile(str);
 		return filter.getByteArray();
 	}
