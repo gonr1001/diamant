@@ -158,7 +158,6 @@ public class DLoadDataTest extends TestCase {
 	 * test that check the setofrooms
 	 */
 	public void test5_loadTimeTable5j() {
-//		if (DxFlags.newRooms) {
 			DxSetOfSites dxsosSetSites = _loadData5j.getDxSetOfSitesRooms();
 			DxSite dxsSite = dxsosSetSites.getSite("SHE");
 			assertNotNull("test5_loadTimeTable : assertNotNull: ", dxsSite);
@@ -166,19 +165,6 @@ public class DLoadDataTest extends TestCase {
 			assertNotNull("test5_1_loadTimeTable5j : assertNotNull: ", dxcCat1);
 			DxRoom dxrRoom = dxcCat1.getRoom("D13016");
 			assertNotNull("test5_2_loadTimeTable5j : assertNotNull: ", dxrRoom);
-//		} else {
-//			SetOfSites setSite =  _loadData5j.getSetOfSitesRooms();
-//			assertEquals("test5_loadTimeTable : assertEquals: ", "SHE", setSite
-//					.getResourceAt(0).getID());
-//			SetOfCategories setCat = ((SetOfCategories) setSite
-//					.getResourceAt(0).getAttach());
-//			assertEquals("test5_1_loadTimeTable5j : assertEquals: ", "CAT 1",
-//					setCat.getResourceAt(0).getID());
-//			SetOfRooms setRooms = ((SetOfRooms) setCat.getResourceAt(0)
-//					.getAttach());
-//			assertEquals("test5_2_loadTimeTable5j : assertEquals: ", "D13016",
-//					setRooms.getResourceAt(4).getID());
-//		}
 	}
 
 	/**

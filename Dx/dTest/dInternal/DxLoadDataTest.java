@@ -42,14 +42,8 @@ import dInternal.dData.dStudents.SetOfStudents;
 import dInternal.dData.dStudents.Student;
 import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.TTStructure;
-import dTest.dInternal.dData.DLoadDataTest;
-import eLib.exit.exception.DxException;
 
 public class DxLoadDataTest extends TestCase {
-
-	//	private DxLoadData _loadData5j;
-
-//	private DxLoadData _loadData7j;
 
 	public DxLoadDataTest(String name) {
 		super(name);
@@ -62,7 +56,7 @@ public class DxLoadDataTest extends TestCase {
 	} // end suite
 
 	/**
-	 * test that check the version of timetable
+	 * test that check different attributes in DxLoadData
 	 */
 	public void test_loadTimeTable5j() {
 		String path5j = "." + File.separator + "dataTest" + File.separator
@@ -74,109 +68,125 @@ public class DxLoadDataTest extends TestCase {
 			assertEquals("test_loadTimeTable5j : loadDataOk: ", true,
 					timeTable5j);
 		} catch (Exception e) {
-			System.out.println("DLoadDataTest failed to load loadData5j.dia");
+			// Should not fail in tests
+			System.out.println("Exception in: test_loadTimeTable5j");
+			e.printStackTrace();
 		}
 		assertEquals("test_loadTimeTable5j : getVersion: ", "1.5", loadData5j
 				.getVersion());
 		// test that check the xml file
 		Cycle cycle = loadData5j.getTTStructure().getCurrentCycle();
-		assertEquals("test1_loadTimeTable5j : getMaxNumberOfPeriodsADay: ", 12,
+		assertEquals("test_loadTimeTable5j : getMaxNumberOfPeriodsADay: ", 12,
 				cycle.getMaxNumberOfPeriodsADay());
-		assertEquals("test1_loadTimeTable5j : getMaxNumberOfSeqs: ", 3, cycle
+		assertEquals("test_loadTimeTable5j : getMaxNumberOfSeqs: ", 3, cycle
 				.getMaxNumberOfSeqs());
-		assertEquals("test1_loadTimeTable : active days: ", 5,
+		assertEquals("test_loadTimeTable5j : active days: ", 5,
 				TTStructure.NUMBEROFACTIVESDAYS);
 
-		//test that check the setofactivities
+		// test that check the set of activities
 		if (DxFlags.newActivity) {
 			DxSetOfActivitiesSites dxsoasSet = (DxSetOfActivitiesSites) loadData5j
 					.getDxActivitiesSitesReader();
 			DxActivitySite dxasSite = dxsoasSet.getActivitySite("SHE");
-			assertNotNull("test2_loadTimeTable5j", dxasSite);
-			assertNotNull("test2_1_loadTimeTable5j", dxasSite
+			assertNotNull("test_loadTimeTable5j: setOfActivities notNull",
+					dxasSite);
+			assertNotNull("test_loadTimeTable5j: getActivity", dxasSite
 					.getActivity("AMC640"));
 		} else {
 			SetOfActivitiesSites setSite = loadData5j.getSetOfActivitiesSites();
-			assertEquals("test2_2_loadTimeTable5j : assertEquals: ", "SHE",
-					setSite.getResourceAt(0).getID());
+			assertEquals("test_loadTimeTable5j : getSiteId: ", "SHE", setSite
+					.getResourceAt(0).getID());
 
 			SetOfActivities setAct = (SetOfActivities) setSite.getResourceAt(0)
 					.getAttach();
-			assertEquals("test2_3_loadTimeTable5j : assertEquals: ", "AMC640",
+			assertEquals("test_loadTimeTable5j : getActivityId: ", "AMC640",
 					setAct.getResourceAt(1).getID());
 		}
-		//test that check the setofstudents
+
+		// test that check the set of students
 		SetOfStuSites setSite = loadData5j.getSetofStuSites();
-		assertEquals("test3_loadTimeTable5j : assertEquals: ", "SHE", setSite
+		assertEquals("test_loadTimeTable5j : getSiteId: ", "SHE", setSite
 				.getResourceAt(0).getID());
 		SetOfStudents setStud = (SetOfStudents) setSite.getResourceAt(0)
 				.getAttach();
-		assertEquals("test3_1_loadTimeTable5j : assertEquals: ", "BERNARD D",
+		assertEquals("test_loadTimeTable5j : getStudentId: ", "BERNARD D",
 				setStud.getResourceAt(1).getID());
 
-		// test that check the setofinstructors
+		// test that check the set of instructors
 		DxSetOfInstructors setIns = loadData5j.getDxSetOfInstructors();
 		// Above, we get instructor at index 2, and here we get at 3. Reason
 		// is that above is an index and bellow is a key, which start at 1
-		assertNotNull("test4_1_loadTimeTable5j : assertNotNull: ", setIns
+		assertNotNull("test_loadTimeTable5j : instructor NotNull: ", setIns
 				.getInstructor("THÉRIAULT, MICHÈLE"));
-		assertEquals("test4_1_loadTimeTable5j : assertEquals: ",
+		assertEquals("test_loadTimeTable5j : InstructorGetName: ",
 				"THÉRIAULT, MICHÈLE", setIns
 						.getInstructor("THÉRIAULT, MICHÈLE").getName());
 
-		// test that check the setofrooms
+		// test that check the set of rooms
 		DxSetOfSites dxsosSetSites = loadData5j.getDxSetOfSitesRooms();
 		DxSite dxsSite = dxsosSetSites.getSite("SHE");
-		assertNotNull("test5_loadTimeTable : assertNotNull: ", dxsSite);
+		assertNotNull("test_loadTimeTable5j : SiteNotNull: ", dxsSite);
 		DxCategory dxcCat1 = dxsSite.getCat("CAT 1");
-		assertNotNull("test5_1_loadTimeTable5j : assertNotNull: ", dxcCat1);
+		assertNotNull("test_loadTimeTable5j : CategoryNotNull: ", dxcCat1);
 		DxRoom dxrRoom = dxcCat1.getRoom("D13016");
-		assertNotNull("test5_2_loadTimeTable5j : assertNotNull: ", dxrRoom);
+		assertNotNull("test_loadTimeTable5j : RoomNotNull: ", dxrRoom);
 	}
 
-	//
-	// /**
-	// * test that check the selective import of Students
-	// */
-	// public void test1_ImportSelective5j() {
-	//
-	// SetOfStuSites newStuSites = null;
-	// try {
-	// newStuSites = (SetOfStuSites) _loadData5j.selectiveImport(
-	// _loadData5j.getSetofStuSites(), "." + File.separator
-	// + "dataTest" + File.separator + "ImportSTUDS.SIG");
-	// assertEquals("test1_ImportSelective : assertEquals: ", "",
-	// newStuSites.getError());
-	// if (newStuSites.getError() == "") {
-	// // Set Of Student Sites. Check if Update is done
-	// SetOfStuSites setSite = _loadData5j.getSetofStuSites();
-	// // Test of DLoadData.findAddedElements
-	// SetOfStudents setStud = (SetOfStudents) setSite
-	// .getResourceAt(0).getAttach();
-	// assertNotNull(
-	// "test2_ImportSelective5j : assertNotNull: added student",
-	// setStud.getResource("NOUVEAUET"));
-	//
-	// // Test of DLoadData.findChangesInElements
-	// Student studentChanged = setStud.getStudent("GIRALDO-L");
-	// SetOfStuCourses currentCourses = studentChanged
-	// .getCoursesList();
-	// assertNull(
-	// "test3_ImportSelective5j : assertNull: Changed student ",
-	// currentCourses.getResource("GIN3252"));
-	//
-	// // Test of DLoadData.findDeletedElements
-	// assertNull(
-	// "test4_ImportSelective5j : assertNull: Deleted student ",
-	// setStud.getStudent("RHEAULT M"));
-	// }
-	// } catch (DxException e) {
-	// // TODO Auto-generated catch block
-	// e.printStackTrace();
-	// }
-	//
-	// }
-	//
+	/**
+	 * test that check the selective import of Students
+	 */
+	public void test_SelectiveImport5j() {
+		String path5j = "." + File.separator + "dataTest" + File.separator
+				+ "loadData5j.dia";
+		DxLoadData loadData5j = new DxLoadData();
+		try {
+			boolean timeTable5j = loadData5j.loadDataStructures(path5j, "."
+					+ File.separator + "dataTest");
+			assertEquals("test_SelectiveImport5j : loadDataOk: ", true,
+					timeTable5j);
+		} catch (Exception e) {
+			// Should not fail in tests
+			System.out.println("Exception in: test_loadTimeTable5j");
+			e.printStackTrace();
+		}
+		SetOfStuSites newStuSites = null;
+		try {
+			newStuSites = (SetOfStuSites) loadData5j.selectiveImport(loadData5j
+					.getSetofStuSites(), "." + File.separator + "dataTest"
+					+ File.separator + "ImportSTUDS.SIG");
+			assertEquals("test_SelectiveImport5j : assertEquals: ", "",
+					newStuSites.getError());
+			if (newStuSites.getError() == "") {
+				// Set Of Student Sites. Check if Update is done
+				SetOfStuSites setSite = loadData5j.getSetofStuSites();
+				// Test of DLoadData.findAddedElements
+				SetOfStudents setStud = (SetOfStudents) setSite
+						.getResourceAt(0).getAttach();
+				assertNotNull(
+						"test_SelectiveImport5j : assertNotNull: added student",
+						setStud.getResource("NOUVEAUET"));
+
+				// Test of DLoadData.findChangesInElements
+				Student studentChanged = setStud.getStudent("GIRALDO-L");
+				SetOfStuCourses currentCourses = studentChanged
+						.getCoursesList();
+				assertNull(
+						"test_SelectiveImport5j : assertNull: Changed student ",
+						currentCourses.getResource("GIN3252"));
+
+				// Test of DLoadData.findDeletedElements
+				assertNull(
+						"test_SelectiveImport5j : assertNull: Deleted student ",
+						setStud.getStudent("RHEAULT M"));
+			}
+		} catch (Exception e) {
+			// Should not fail in tests
+			System.out.println("Exception in: test_SelectiveImport5j");
+			e.printStackTrace();
+		}
+
+	}
+
 	/**
 	 * test that check the version of timetable
 	 */
@@ -191,140 +201,125 @@ public class DxLoadDataTest extends TestCase {
 			assertEquals("test_loadTimeTable7j : loadDataOk: ", true,
 					timeTable7j);
 		} catch (Exception e) {
-			System.out.println("DLoadDataTest failed to load loadData7j.dia");
+			// Should not fail in tests
+			System.out.println("Exception in: test_loadTimeTable5j");
+			e.printStackTrace();
 		}
-		assertEquals("test_loadTimeTable7j : assertEquals: ", "1.5",
-				loadData7j.getVersion());
+		assertEquals("test_loadTimeTable7j : assertEquals: ", "1.5", loadData7j
+				.getVersion());
+
+		// test that check the xml file
+		Cycle cycle = loadData7j.getTTStructure().getCurrentCycle();
+		assertEquals("test1_loadTimeTable5j : getMaxNumberOfPeriodsADay: ", 12,
+				cycle.getMaxNumberOfPeriodsADay());
+		assertEquals("test1_loadTimeTable5j : getMaxNumberOfSeqs: ", 3, cycle
+				.getMaxNumberOfSeqs());
+		assertEquals("test1_loadTimeTable : active days: ", 5,
+				TTStructure.NUMBEROFACTIVESDAYS);
+
+		// test that check the set of activities
+
+		// test that check the set of activities
+		if (DxFlags.newActivity) {
+			DxSetOfActivitiesSites dxsoasSet = (DxSetOfActivitiesSites) loadData7j
+					.getDxActivitiesSitesReader();
+			DxActivitySite dxasSite = dxsoasSet.getActivitySite("SHE");
+			assertNotNull("test2_loadTimeTable5j", dxasSite);
+			assertNotNull("test2_1_loadTimeTable5j", dxasSite
+					.getActivity("AMC640"));
+		} else {
+			SetOfActivitiesSites setSite = loadData7j.getSetOfActivitiesSites();
+			assertEquals("test2_2_loadTimeTable5j : assertEquals: ", "SHE",
+					setSite.getResourceAt(0).getID());
+
+			SetOfActivities setAct = (SetOfActivities) setSite.getResourceAt(0)
+					.getAttach();
+			assertEquals("test2_3_loadTimeTable5j : assertEquals: ", "AMC640",
+					setAct.getResourceAt(1).getID());
+		}
+
+		// test that check the set of students
+		SetOfStuSites setSite = loadData7j.getSetofStuSites();
+		assertEquals("test3_loadTimeTable5j : assertEquals: ", "SHE", setSite
+				.getResourceAt(0).getID());
+		SetOfStudents setStud = (SetOfStudents) setSite.getResourceAt(0)
+				.getAttach();
+		assertEquals("test3_1_loadTimeTable5j : assertEquals: ", "BERNARD D",
+				setStud.getResourceAt(1).getID());
+
+		// test that check the set of instructors
+		DxSetOfInstructors setIns = loadData7j.getDxSetOfInstructors();
+		// Above, we get instructor at index 2, and here we get at 3. Reason
+		// is that above is an index and bellow is a key, which start at 1
+		assertNotNull("test4_1_loadTimeTable5j : assertNotNull: ", setIns
+				.getInstructor("THÉRIAULT, MICHÈLE"));
+		assertEquals("test4_1_loadTimeTable5j : assertEquals: ",
+				"THÉRIAULT, MICHÈLE", setIns
+						.getInstructor("THÉRIAULT, MICHÈLE").getName());
+
+		// test that check the set of rooms
+		DxSetOfSites dxsosSetSites = loadData7j.getDxSetOfSitesRooms();
+		DxSite dxsSite = dxsosSetSites.getSite("SHE");
+		assertNotNull("test5_loadTimeTable : assertNotNull: ", dxsSite);
+		DxCategory dxcCat1 = dxsSite.getCat("CAT 1");
+		assertNotNull("test5_1_loadTimeTable5j : assertNotNull: ", dxcCat1);
+		DxRoom dxrRoom = dxcCat1.getRoom("D13016");
+		assertNotNull("test5_2_loadTimeTable5j : assertNotNull: ", dxrRoom);
 	}
-	//
-	// /**
-	// * test that check the xml file
-	// */
-	// public void test1_loadTimeTable7j() {
-	// Cycle cycle = _loadData7j.getTTStructure().getCurrentCycle();
-	// assertEquals("test1_loadTimeTable7j : assertEquals1: ", 12, cycle
-	// .getMaxNumberOfPeriodsADay());
-	// assertEquals("test1_loadTimeTable7j : assertEquals2: ", 3, cycle
-	// .getMaxNumberOfSeqs());
-	// assertEquals("test1_loadTimeTable7j : assertEquals3: ", 5,
-	// TTStructure.NUMBEROFACTIVESDAYS);
-	// }
-	//
-	// /**
-	// * test that check the setofactivities
-	// */
-	// public void test2_loadTimeTable7j() {
-	// if (DxFlags.newActivity) {
-	// DxSetOfActivitiesSites dxsoasSet = (DxSetOfActivitiesSites) _loadData7j
-	// .getDxActivitiesSitesReader();
-	// DxActivitySite dxasSite = dxsoasSet.getActivitySite("SHE");
-	// assertNotNull("test2_loadTimeTable5j", dxasSite);
-	// assertNotNull("test2_1_loadTimeTable5j", dxasSite
-	// .getActivity("AMC640"));
-	// } else {
-	// SetOfActivitiesSites setSite = _loadData7j
-	// .getSetOfActivitiesSites();
-	// assertEquals("test2_loadTimeTable7j : assertEquals: ", "SHE",
-	// setSite.getResourceAt(0).getID());
-	// SetOfActivities setAct = (SetOfActivities) setSite.getResourceAt(0)
-	// .getAttach();
-	// assertEquals("test2_1_loadTimeTable7j : assertEquals: ", "AMC640",
-	// setAct.getResourceAt(1).getID());
-	// }
-	// }
-	//
-	// /**
-	// * test that check the setofstudents
-	// */
-	// public void test3_loadTimeTable7j() {
-	// SetOfStuSites setSite = _loadData7j.getSetofStuSites();
-	// assertEquals("test3_loadTimeTable7j : assertEquals: ", "SHE", setSite
-	// .getResourceAt(0).getID());
-	// SetOfStudents setStud = (SetOfStudents) setSite.getResourceAt(0)
-	// .getAttach();
-	// assertEquals("test3_1_loadTimeTable7j : assertEquals: ", "BERNARD D",
-	// setStud.getResourceAt(1).getID());
-	// }
-	//
-	// /**
-	// * test that check the setofinstructors
-	// */
-	// public void test4_loadTimeTable7j() {
-	// DxSetOfInstructors setIns = _loadData7j.getDxSetOfInstructors();
-	// // Above, we get instructor at index 2, and here we get at 3. Reason
-	// // is that above is an index and bellow is a key, which start at 1
-	// assertNotNull("test4_1_loadTimeTable5j : assertNotNull: ", setIns
-	// .getInstructor("THÉRIAULT, MICHÈLE"));
-	// assertEquals("test4_1_loadTimeTable5j : assertEquals: ",
-	// "THÉRIAULT, MICHÈLE", setIns
-	// .getInstructor("THÉRIAULT, MICHÈLE").getName());
-	// }
-	//
-	// /**
-	// * test that check the setofrooms
-	// */
-	// public void test5_loadTimeTable7j() {
-	// // if (DxFlags.newRooms) {
-	// DxSetOfSites dxsosSetSites = _loadData7j.getDxSetOfSitesRooms();
-	// DxSite dxsSite = dxsosSetSites.getSite("SHE");
-	// assertNotNull("test5_loadTimeTable : assertNotNull: ", dxsSite);
-	// DxCategory dxcCat1 = dxsSite.getCat("CAT 1");
-	// assertNotNull("test5_1_loadTimeTable5j : assertNotNull: ", dxcCat1);
-	// DxRoom dxrRoom = dxcCat1.getRoom("D13016");
-	// assertNotNull("test5_2_loadTimeTable5j : assertNotNull: ", dxrRoom);
-	// // } else {
-	// // SetOfSites setSite = _loadData7j.getSetOfSitesRooms();
-	// // assertEquals("test5_loadTimeTable7j : assertEquals: ", "SHE",
-	// // setSite.getResourceAt(0).getID());
-	// // SetOfCategories setCat = ((SetOfCategories) setSite
-	// // .getResourceAt(0).getAttach());
-	// // assertEquals("test5_1_loadTimeTable7j : assertEquals: ", "CAT 1",
-	// // setCat.getResourceAt(0).getID());
-	// // SetOfRooms setRooms = ((SetOfRooms) setCat.getResourceAt(0)
-	// // .getAttach());
-	// // assertEquals("test5_2_loadTimeTable7j : assertEquals: ", "D13016",
-	// // setRooms.getResourceAt(4).getID());
-	// // }
-	// }
-	//
-	// /**
-	// * test that check the selective import of Students
-	// */
-	// public void test1_ImportSelective7j() {
-	//
-	// SetOfStuSites newStuSites = null;
-	// try {
-	// newStuSites = (SetOfStuSites) _loadData7j.selectiveImport(
-	// _loadData7j.getSetofStuSites(), "." + File.separator
-	// + "dataTest" + File.separator + "ImportSTUDS.SIG");
-	// assertEquals("test1_ImportSelective : assertEquals: ", "",
-	// newStuSites.getError());
-	// if (newStuSites.getError() == "") {
-	// // Set Of Student Sites. Check if Update is done
-	// SetOfStuSites setSite = _loadData7j.getSetofStuSites();
-	// // Test of DLoadData.findAddedElements
-	// SetOfStudents setStud = (SetOfStudents) setSite
-	// .getResourceAt(0).getAttach();
-	// assertNotNull(
-	// "test2_ImportSelective7j : assertNotNull: added student",
-	// setStud.getResource("NOUVEAUET"));
-	//
-	// // Test of DLoadData.findChangesInElements
-	// Student studentChanged = setStud.getStudent("GIRALDO-L");
-	// SetOfStuCourses currentCourses = studentChanged
-	// .getCoursesList();
-	// assertNull(
-	// "test3_ImportSelective7j : assertNull: Changed student ",
-	// currentCourses.getResource("GIN3252"));
-	//
-	// // Test of DLoadData.findDeletedElements
-	//				assertNull(
-	//						"test4_ImportSelective7j : assertNull: Deleted student ",
-	//						setStud.getStudent("RHEAULT M"));
-	//			}
-	//		} catch (DxException e) {
-	//			// TODO Auto-generated catch block
-	//			e.printStackTrace();
-	//		}
+
+	/**
+	 * test that check the selective import of Students
+	 */
+	public void test1_ImportSelective7j() {
+		String path7j = "." + File.separator + "dataTest" + File.separator
+				+ "loadData7j.dia";
+		DxLoadData loadData7j = new DxLoadData();
+		try {
+			boolean timeTable5j = loadData7j.loadDataStructures(path7j, "."
+					+ File.separator + "dataTest");
+			assertEquals("test_SelectiveImport5j : loadDataOk: ", true,
+					timeTable5j);
+		} catch (Exception e) {
+			// Should not fail in tests
+			System.out.println("Exception in: test_loadTimeTable5j");
+			e.printStackTrace();
+		}
+		SetOfStuSites newStuSites = null;
+		try {
+			newStuSites = (SetOfStuSites) loadData7j.selectiveImport(loadData7j
+					.getSetofStuSites(), "." + File.separator + "dataTest"
+					+ File.separator + "ImportSTUDS.SIG");
+			assertEquals("test1_ImportSelective : assertEquals: ", "",
+					newStuSites.getError());
+			if (newStuSites.getError() == "") {
+				// Set Of Student Sites. Check if Update is done
+				SetOfStuSites setSite = loadData7j.getSetofStuSites();
+				// Test of DLoadData.findAddedElements
+				SetOfStudents setStud = (SetOfStudents) setSite
+						.getResourceAt(0).getAttach();
+				assertNotNull(
+						"test2_ImportSelective7j : assertNotNull: added student",
+						setStud.getResource("NOUVEAUET"));
+
+				// Test of DLoadData.findChangesInElements
+				Student studentChanged = setStud.getStudent("GIRALDO-L");
+				SetOfStuCourses currentCourses = studentChanged
+						.getCoursesList();
+				assertNull(
+						"test3_ImportSelective7j : assertNull: Changed student ",
+						currentCourses.getResource("GIN3252"));
+
+				// Test of DLoadData.findDeletedElements
+				assertNull(
+						"test4_ImportSelective7j : assertNull: Deleted student ",
+						setStud.getStudent("RHEAULT M"));
+			}
+		} catch (Exception e) {
+			// Should not fail in tests
+			System.out.println("Exception in: test_SelectiveImport5j");
+			e.printStackTrace();
+		}
+
+	}
 
 }
