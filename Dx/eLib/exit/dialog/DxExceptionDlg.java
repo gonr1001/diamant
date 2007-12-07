@@ -35,7 +35,7 @@ public class DxExceptionDlg {
 		new DxExceptionDlg(null,message,DX_EXCEPTION);
 	}
 	public DxExceptionDlg(Component comp, String message, String title) {
-		if (!DxFlags.unitTest)
+//		if (!DxFlags.unitTest)
 			JOptionPane.showMessageDialog(comp,
 	                  message,title,  JOptionPane.ERROR_MESSAGE);
 	}

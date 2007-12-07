@@ -99,7 +99,7 @@ public class DiamantTest {
 	 */
 	public static Test suite() {
 		System.out.println("Hello I am in Diamant tests");
-		DxFlags.unitTest = true;
+//		DxFlags.unitTest = true;
 		TestSuite suite = new TestSuite("Diamant Tests");
 
 		

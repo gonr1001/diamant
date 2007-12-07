@@ -546,14 +546,14 @@ public class DxLoadData {
 		for (int i = 0; i < siteSize; i++) {
 			String rscSite = getSite(currentSites, i);
 			DSetOfResources rescSite = getRscSite(currentSites, i);
-			int catSize = getCategorySize(rescSite);
+			int catSize = 111111; //getCategorySize(rescSite);
 			// find category in site
 			for (int j = 0; j < catSize; j++) {
-				String rscCat = getCategory(rescSite, j);
-				DSetOfResources rescCat = getRscCategory(rescSite, j);
+				String rscCat = DConst.ROOM_STANDARD_CAT;//getCategory(rescSite, j);
+				DSetOfResources rescCat = rescSite; // getRscCategory(rescSite, j);
 				// find resource in a category
 				for (int k = 0; k < rescCat.size(); k++) {
-					// current ressource
+					// current resource
 					DResource curResc = rescCat.getResourceAt(k);
 					if (getResource(newSites, curResc, rscSite, rscCat) == null) {
 						DValue error = new DValue();
@@ -588,11 +588,11 @@ public class DxLoadData {
 		for (int i = 0; i < newSize; i++) {
 			String rscSite = getSite(newSites, i);
 			DSetOfResources rescSite = getRscSite(newSites, i);
-			int catSize = getCategorySize(rescSite);
+			int catSize = 111111; //getCategorySize(rescSite);
 			// find category in site
 			for (int j = 0; j < catSize; j++) {
-				String rscCat = getCategory(rescSite, j);
-				DSetOfResources rescCat = getRscCategory(rescSite, j);
+				String rscCat = DConst.ROOM_STANDARD_CAT; //getCategory(rescSite, j);
+				DSetOfResources rescCat = rescSite; //getRscCategory(rescSite, j);
 				// find resource in a category
 				for (int k = 0; k < rescCat.size(); k++) {
 					// current ressource
@@ -632,11 +632,11 @@ public class DxLoadData {
 		for (int i = 0; i < siteSize; i++) {
 			String rscSite = getSite(currentSites, i);
 			DSetOfResources rescSite = getRscSite(currentSites, i);
-			int catSize = getCategorySize(rescSite);
+			int catSize = 111111; //getCategorySize(rescSite);
 			// find category in site
 			for (int j = 0; j < catSize; j++) {
-				String rscCat = getCategory(rescSite, j);
-				DSetOfResources rescCat = getRscCategory(rescSite, j);
+				String rscCat = DConst.ROOM_STANDARD_CAT;//getCategory(rescSite, j);
+				DSetOfResources rescCat = rescSite; //getRscCategory(rescSite, j);
 				// find resource in a category
 				for (int k = 0; k < rescCat.size(); k++) {
 					DResource resc = rescCat.getResourceAt(k);
@@ -808,54 +808,47 @@ public class DxLoadData {
 
 	}
 
-	/**
-	 * 
-	 * @param sourceSites
-	 * @param index
-	 * @return
-	 */
-	private String getCategory(DSetOfResources sourceCategories, int index) {
-		// if (sourceCategories instanceof SetOfCategories) {
-		// DResource rsc = sourceCategories.getResourceAt(index);
-		// if (rsc != null)
-		// return rsc.getID();
-		// return null;
-		// }
+//	/**
+//	 * 
+//	 * @param sourceSites
+//	 * @param index
+//	 * @return
+//	 */
+//	private String getCategory(DSetOfResources sourceCategories, int index) {
+//		return DConst.ROOM_STANDARD_CAT;
+//	}
 
-		return DConst.ROOM_STANDARD_CAT;
-	}
+//	// /**
+//	// *
+//	// * @param sourceSites
+//	// * @param index
+//	// * @return
+//	// */
+//	private int getCategorySize(DSetOfResources sourceCategories) {
+//		// if (sourceCategories instanceof SetOfCategories) {
+//		// return sourceCategories.size();
+//		// }
+//		//
+//		return 11111;
+//	}
 
-	// /**
-	// *
-	// * @param sourceSites
-	// * @param index
-	// * @return
-	// */
-	private int getCategorySize(DSetOfResources sourceCategories) {
-		// if (sourceCategories instanceof SetOfCategories) {
-		// return sourceCategories.size();
-		// }
-		//
-		return 11111;
-	}
-
-	/**
-	 * 
-	 * @param sourceSites
-	 * @param index
-	 * @return
-	 */
-	private DSetOfResources getRscCategory(DSetOfResources sourceCategories,
-			int index) {
-		// if (sourceCategories instanceof SetOfRooms) {
-		// DResource rsc = sourceCategories.getResourceAt(index);
-		// if (rsc != null)
-		// return (DSetOfResources) rsc.getAttach();
-		// return null;
-		// }
-
-		return sourceCategories;
-	}
+//	/**
+//	 * 
+//	 * @param sourceSites
+//	 * @param index
+//	 * @return
+//	 */
+//	private DSetOfResources getRscCategory(DSetOfResources sourceCategories,
+//			int index) {
+//		// if (sourceCategories instanceof SetOfRooms) {
+//		// DResource rsc = sourceCategories.getResourceAt(index);
+//		// if (rsc != null)
+//		// return (DSetOfResources) rsc.getAttach();
+//		// return null;
+//		// }
+//
+//		return sourceCategories;
+//	}
 
 	public byte[] filterBadChars(String str) throws NullPointerException,
 			FileNotFoundException, IOException, DxException {
