@@ -47,8 +47,8 @@ public class DxFlags {
 	public final static boolean newPref = false;
 		
 	// public final static boolean newDxLoadData = true;
-	public final static boolean newDxLoadData = false;
+	public final static boolean newDxLoadData = true;
 			
-	public static boolean unitTest = true;
+	public static boolean unitTest = false;
 
 }

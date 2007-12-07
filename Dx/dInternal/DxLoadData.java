@@ -41,7 +41,9 @@ import dInternal.dData.dRooms.DxReadSitedotDia;
 import dInternal.dData.dRooms.DxSetOfSites;
 import dInternal.dData.dRooms.DxSiteReader;
 import dInternal.dData.dRooms.SetOfSites;
+import dInternal.dData.dStudents.SetOfStuCourses;
 import dInternal.dData.dStudents.SetOfStuSites;
+import dInternal.dData.dStudents.Student;
 import dInternal.dTimeTable.TTStructure;
 import dInternal.dUtil.DXToolsMethods;
 import developer.DxFlags;
@@ -93,7 +95,6 @@ public class DxLoadData {
 	private String inDiaFileStudents;
 
 	Vector<Object> _diaData;
-
 
 	public boolean loadDataStructures(String fileName, String currentDir)
 			throws NullPointerException, FileNotFoundException, IOException,
@@ -348,7 +349,7 @@ public class DxLoadData {
 	public DSetOfResources selectiveImport(DSetOfResources currentSetOfResc,
 			String file) throws DxException, NullPointerException,
 			FileNotFoundException, IOException {// , boolean merge){
-		// DataExchange de = buildDataExchange(file);
+
 		DSetOfResources newSetOfResc = null;
 		// int position=0;
 		// TODO a revoir
@@ -356,10 +357,6 @@ public class DxLoadData {
 		// if (currentSetOfResc instanceof
 		// dInternal.dData.dInstructors.DxSetOfInstructors) {
 		// _instructorFileName = file;
-		// newSetOfResc = extractInstructors((DxSetOfInstructors) null, false,
-		// false);
-		// _dm.resizeResourceAvailability(newSetOfResc);
-		// ((SetOfInstructors)currentSetOfResc).setDataToLoad(dataloaded,5,14);
 		/* } else */
 		if (currentSetOfResc instanceof dInternal.dData.dRooms.SetOfSites) {
 			_dm.resizeSiteAvailability((SetOfSites) newSetOfResc);
@@ -545,36 +542,36 @@ public class DxLoadData {
 			DSetOfResources currentSites) {
 		// find a site
 
-		// int siteSize = getSiteSize(currentSites);
-		// for (int i = 0; i < siteSize; i++) {
-		// String rscSite = getSite(currentSites, i);
-		// DSetOfResources rescSite = getRscSite(currentSites, i);
-		// int catSize = getCategorySize(rescSite);
-		// // find category in site
-		// for (int j = 0; j < catSize; j++) {
-		// String rscCat = getCategory(rescSite, j);
-		// DSetOfResources rescCat = getRscCategory(rescSite, j);
-		// // find resource in a category
-		// for (int k = 0; k < rescCat.size(); k++) {
-		// // current ressource
-		// DResource curResc = rescCat.getResourceAt(k);
-		// if (getResource(newSites, curResc, rscSite, rscCat) == null) {
-		// DValue error = new DValue();
-		// error.setStringValue(DConst.DELETED_ELEMENT
-		// + curResc.getID());
-		// if (_dm != null)
-		// _dm.getSetOfImportSelErrors().addResource(
-		// new DResource("1", error), 0);
-		// // System.out.println("DELETED_ELEMENT "+
-		// // curResc.getID());
-		// rescCat.removeResource(curResc.getID());
-		// k--; // Puisque la liste est trié Sinon c est k=0;
-		// }// end
-		// // if(newRsc.getResource(currentRsc.getResourceAt(i).getID())!=null)
-		// }// end for k++
-		// }// end for j++
-		//
-		// }// end for i++
+		int siteSize = getSiteSize(currentSites);
+		for (int i = 0; i < siteSize; i++) {
+			String rscSite = getSite(currentSites, i);
+			DSetOfResources rescSite = getRscSite(currentSites, i);
+			int catSize = getCategorySize(rescSite);
+			// find category in site
+			for (int j = 0; j < catSize; j++) {
+				String rscCat = getCategory(rescSite, j);
+				DSetOfResources rescCat = getRscCategory(rescSite, j);
+				// find resource in a category
+				for (int k = 0; k < rescCat.size(); k++) {
+					// current ressource
+					DResource curResc = rescCat.getResourceAt(k);
+					if (getResource(newSites, curResc, rscSite, rscCat) == null) {
+						DValue error = new DValue();
+						error.setStringValue(DConst.DELETED_ELEMENT
+								+ curResc.getID());
+						if (_dm != null)
+							_dm.getSetOfImportSelErrors().addResource(
+									new DResource("1", error), 0);
+						// System.out.println("DELETED_ELEMENT "+
+						// curResc.getID());
+						rescCat.removeResource(curResc.getID());
+						k--; // Puisque la liste est trié Sinon c est k=0;
+					}// end
+					// if(newRsc.getResource(currentRsc.getResourceAt(i).getID())!=null)
+				}// end for k++
+			}// end for j++
+
+		}// end for i++
 
 	}
 
@@ -587,38 +584,38 @@ public class DxLoadData {
 			DSetOfResources currentSites) {
 		// find a site
 
-		// int newSize = getSiteSize(newSites);
-		// for (int i = 0; i < newSize; i++) {
-		// String rscSite = getSite(newSites, i);
-		// DSetOfResources rescSite = getRscSite(newSites, i);
-		// int catSize = getCategorySize(rescSite);
-		// // find category in site
-		// for (int j = 0; j < catSize; j++) {
-		// String rscCat = getCategory(rescSite, j);
-		// DSetOfResources rescCat = getRscCategory(rescSite, j);
-		// // find resource in a category
-		// for (int k = 0; k < rescCat.size(); k++) {
-		// // current ressource
-		// DResource newRes = rescCat.getResourceAt(k);
-		// if (getResource(currentSites, newRes, rscSite, rscCat) == null) {
-		// DValue error = new DValue();
-		// error.setStringValue(DConst.ADDED_ELEMENT
-		// + newRes.getID());
-		// if (_dm != null)
-		// _dm.getSetOfImportSelErrors().addResource(
-		// new DResource("2", error), 0);
-		// // System.out.println("ADDED_ELEMENT "+ newRes.getID());
-		// DResource crescSite = currentSites.getResource(rscSite);
-		// if (crescSite != null) {
-		// DSetOfResources crescCat = ((DSetOfResources) crescSite
-		// .getAttach());
-		// crescCat.addResourceMod(newRes, 1);
-		// }
-		// }// end
-		// // if(newRsc.getResource(currentRsc.getResourceAt(i).getID())!=null)
-		// }// end for k++
-		// }// end for j++
-		// }// end for i++
+		int newSize = getSiteSize(newSites);
+		for (int i = 0; i < newSize; i++) {
+			String rscSite = getSite(newSites, i);
+			DSetOfResources rescSite = getRscSite(newSites, i);
+			int catSize = getCategorySize(rescSite);
+			// find category in site
+			for (int j = 0; j < catSize; j++) {
+				String rscCat = getCategory(rescSite, j);
+				DSetOfResources rescCat = getRscCategory(rescSite, j);
+				// find resource in a category
+				for (int k = 0; k < rescCat.size(); k++) {
+					// current ressource
+					DResource newRes = rescCat.getResourceAt(k);
+					if (getResource(currentSites, newRes, rscSite, rscCat) == null) {
+						DValue error = new DValue();
+						error.setStringValue(DConst.ADDED_ELEMENT
+								+ newRes.getID());
+						if (_dm != null)
+							_dm.getSetOfImportSelErrors().addResource(
+									new DResource("2", error), 0);
+						// System.out.println("ADDED_ELEMENT "+ newRes.getID());
+						DResource crescSite = currentSites.getResource(rscSite);
+						if (crescSite != null) {
+							DSetOfResources crescCat = ((DSetOfResources) crescSite
+									.getAttach());
+							crescCat.addResourceMod(newRes, 1);
+						}
+					}// end
+					// if(newRsc.getResource(currentRsc.getResourceAt(i).getID())!=null)
+				}// end for k++
+			}// end for j++
+		}// end for i++
 
 	}
 
@@ -631,52 +628,233 @@ public class DxLoadData {
 			DSetOfResources currentSites) {
 		// find a site
 
-		// int siteSize = getSiteSize(currentSites);
-		// for (int i = 0; i < siteSize; i++) {
-		// String rscSite = getSite(currentSites, i);
-		// DSetOfResources rescSite = getRscSite(currentSites, i);
-		// int catSize = getCategorySize(rescSite);
-		// // find category in site
-		// for (int j = 0; j < catSize; j++) {
-		// String rscCat = getCategory(rescSite, j);
-		// DSetOfResources rescCat = getRscCategory(rescSite, j);
-		// // find resource in a category
-		// for (int k = 0; k < rescCat.size(); k++) {
-		// DResource resc = rescCat.getResourceAt(k);
-		// DResource newRes = getResource(newSites, resc, rscSite,
-		// rscCat);
-		// if (newRes != null) {
-		// // Already exist does it change ?
-		// boolean changed = false;
-		// if (currentSites instanceof SetOfStuSites) {
-		// // Find if element change
-		// changed = compareStudents(newRes, resc);
-		// } // TODO a revoir
-		// // else if (currentSites instanceof SetOfInstructors) {
-		// // changed = compareInstructors(resc, newRes);
-		// // }
-		// DValue error = new DValue();
-		// if (changed == true) {
-		// error.setStringValue(DConst.CHANGED_ELEMENT
-		// + newRes.getID());
-		// if (_dm != null)
-		// _dm.getSetOfImportSelErrors().addResource(
-		// new DResource("3", error), 0);
-		// // System.out.println("CHANGED_ELEMENT "+
-		// // newRes.getID());
-		// } else {
-		// error.setStringValue(DConst.UNCHANGED_ELEMENT
-		// + newRes.getID());
-		// if (_dm != null)
-		// _dm.getSetOfImportSelErrors().addResource(
-		// new DResource("4", error), 0);
-		// // System.out.println("UNCHANGED_ELEMENT "+
-		// // newRes.getID());
+		int siteSize = getSiteSize(currentSites);
+		for (int i = 0; i < siteSize; i++) {
+			String rscSite = getSite(currentSites, i);
+			DSetOfResources rescSite = getRscSite(currentSites, i);
+			int catSize = getCategorySize(rescSite);
+			// find category in site
+			for (int j = 0; j < catSize; j++) {
+				String rscCat = getCategory(rescSite, j);
+				DSetOfResources rescCat = getRscCategory(rescSite, j);
+				// find resource in a category
+				for (int k = 0; k < rescCat.size(); k++) {
+					DResource resc = rescCat.getResourceAt(k);
+					DResource newRes = getResource(newSites, resc, rscSite,
+							rscCat);
+					if (newRes != null) {
+						// Already exist does it change ?
+						boolean changed = false;
+						if (currentSites instanceof SetOfStuSites) {
+							// Find if element change
+							changed = compareStudents(newRes, resc);
+						} // TODO a revoir
+						// else if (currentSites instanceof SetOfInstructors) {
+						// changed = compareInstructors(resc, newRes);
+						// }
+						DValue error = new DValue();
+						if (changed == true) {
+							error.setStringValue(DConst.CHANGED_ELEMENT
+									+ newRes.getID());
+							if (_dm != null)
+								_dm.getSetOfImportSelErrors().addResource(
+										new DResource("3", error), 0);
+							// System.out.println("CHANGED_ELEMENT "+
+							// newRes.getID());
+						} else {
+							error.setStringValue(DConst.UNCHANGED_ELEMENT
+									+ newRes.getID());
+							if (_dm != null)
+								_dm.getSetOfImportSelErrors().addResource(
+										new DResource("4", error), 0);
+							// System.out.println("UNCHANGED_ELEMENT "+
+							// newRes.getID());
+						}
+					}// end if !=null
+				}// end for k++
+			}// end for j++
+		}// end for i++
+	}
+
+	/**
+	 * Compare two students
+	 * 
+	 * @param newSites
+	 * @param currentSites
+	 * @return boolean resChanged
+	 */
+	private boolean compareStudents(DResource newRes, DResource currentRes) {
+		boolean resChanged = false;
+		Student currentStudent = (Student) currentRes;
+		SetOfStuCourses currentCourses = currentStudent.getCoursesList();
+		Student newStudent = (Student) newRes;
+		SetOfStuCourses newCourses = newStudent.getCoursesList();
+		// course added
+		for (int m = 0; m < newCourses.size(); m++) {
+			if (currentCourses.getIndexOfResource(newCourses.getResourceAt(m)
+					.getID()) == -1) {
+				resChanged = true;
+				// System.out.println("added "
+				// + newCourses.getResourceAt(m).getID());// debug
+				currentCourses.addResourceMod(newCourses.getResourceAt(m), 1);
+			}
+		} // end for
+
+		// course deleted
+		for (int k = 0; k < currentCourses.size(); k++) {
+			// if(currentRsc.getResource(newRsc.getResourceAt(i).getKey())==null){
+			if (newCourses.getIndexOfResource(currentCourses.getResourceAt(k)
+					.getID()) == -1) {
+				resChanged = true;
+				// System.out.println("remove "
+				// + currentCourses.getResourceAt(k).getID());// debug
+				currentCourses.removeResourceAt(k);
+			}
+		}// end for
+		return resChanged;
+	}
+
+	/**
+	 * 
+	 * @param source
+	 * @param target
+	 * @return
+	 */
+	private DResource getResource(DSetOfResources source, DResource target,
+			String site, String cat) {
+		// String str= source.getClass().getName();
+		// TODO make getResource for each site to search the resource
+		// TODO a revoir
+		// if (source instanceof dInternal.dData.dInstructors.SetOfInstructors)
+		// {
+		// return source.getResource(target.getID());
 		// }
-		// }// end if !=null
-		// }// end for k++
-		// }// end for j++
-		// }// end for i++
+		DResource rescSite = source.getResource(site);
+		if (source instanceof SetOfSites) {
+			if (rescSite != null) {
+				DResource rescCat = ((DSetOfResources) rescSite.getAttach())
+						.getResource(cat);
+				if (rescCat != null)
+					return ((DSetOfResources) rescCat.getAttach())
+							.getResource(target.getID());
+			}
+		}
+
+		// TODO Make getResource for DxSetOfActivitiesSites
+		if (source instanceof SetOfActivitiesSites) {
+			if (rescSite != null)
+				return ((DSetOfResources) rescSite.getAttach())
+						.getResource(target.getID());
+		}
+		if (source instanceof SetOfStuSites) {
+			if (rescSite != null)
+				return ((DSetOfResources) rescSite.getAttach())
+						.getResource(target.getID());
+		}
+
+		return null;
+	}
+
+	/**
+	 * 
+	 * @param sourceSites
+	 * @param index
+	 * @return
+	 */
+	private String getSite(DSetOfResources sourceSites, int index) {
+		// TODO a revoir
+		// if (sourceSites instanceof
+		// dInternal.dData.dInstructors.SetOfInstructors) {
+		// return DConst.ROOM_STANDARD_SITE;
+		// }
+		DResource rsc = sourceSites.getResourceAt(index);
+		if (rsc != null)
+			return rsc.getID();
+		return null;
+
+	}
+
+	/**
+	 * 
+	 * @param sourceSites
+	 * @return
+	 */
+	private int getSiteSize(DSetOfResources sourceSites) {
+		// TODO a revoir
+		// if (sourceSites instanceof
+		// dInternal.dData.dInstructors.SetOfInstructors) {
+		// return 1;
+		// }
+		return sourceSites.size();
+
+	}
+
+	/**
+	 * 
+	 * @param sourceSites
+	 * @param index
+	 * @return
+	 */
+	private DSetOfResources getRscSite(DSetOfResources sourceSites, int index) {
+		// TODO a revoir
+		// if (sourceSites instanceof
+		// dInternal.dData.dInstructors.SetOfInstructors) {
+		// return sourceSites;
+		// }
+		DResource rsc = sourceSites.getResourceAt(index);
+		if (rsc != null)
+			return (DSetOfResources) rsc.getAttach();
+		return null;
+
+	}
+
+	/**
+	 * 
+	 * @param sourceSites
+	 * @param index
+	 * @return
+	 */
+	private String getCategory(DSetOfResources sourceCategories, int index) {
+		// if (sourceCategories instanceof SetOfCategories) {
+		// DResource rsc = sourceCategories.getResourceAt(index);
+		// if (rsc != null)
+		// return rsc.getID();
+		// return null;
+		// }
+
+		return DConst.ROOM_STANDARD_CAT;
+	}
+
+	// /**
+	// *
+	// * @param sourceSites
+	// * @param index
+	// * @return
+	// */
+	private int getCategorySize(DSetOfResources sourceCategories) {
+		// if (sourceCategories instanceof SetOfCategories) {
+		// return sourceCategories.size();
+		// }
+		//
+		return 11111;
+	}
+
+	/**
+	 * 
+	 * @param sourceSites
+	 * @param index
+	 * @return
+	 */
+	private DSetOfResources getRscCategory(DSetOfResources sourceCategories,
+			int index) {
+		// if (sourceCategories instanceof SetOfRooms) {
+		// DResource rsc = sourceCategories.getResourceAt(index);
+		// if (rsc != null)
+		// return (DSetOfResources) rsc.getAttach();
+		// return null;
+		// }
+
+		return sourceCategories;
 	}
 
 	public byte[] filterBadChars(String str) throws NullPointerException,

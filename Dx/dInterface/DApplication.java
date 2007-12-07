@@ -972,6 +972,7 @@ public class DApplication {
 	 * 
 	 */
 	private void buildTTable() {
+		System.out.println("begin builTTAbel");
 		OpenTimeTableDlg dlg = new OpenTimeTableDlg();
 		String fullFileName = dlg.getFileName(this);
 
@@ -984,25 +985,27 @@ public class DApplication {
 				this.hideToolBar();
 				DxLoadData dxLoadData = new DxLoadData();
 				dxLoadData.loadDataStructures(fullFileName, this.getCurrentDir());
+				System.out.println("DxLoadData was done");
 // TODO change to addDxTTableDoc(dxLoadData);			
 //				this.getDMediator().addDxTTableDoc(fullFileName, fullFileName);
 				_dxMenuBar.afterNewTTable();
-			} catch (DxException e) {
-				new DxExceptionDlg(_jFrame, e.getMessage(), e);
+//			} catch (DxException e) {
+//				new DxExceptionDlg(_jFrame, e.getMessage(), e);
 //				DMediator dMed = this.getDMediator();
 //				dMed.clean();
 //				dMed = null;
-				this.initialState();
+//				this.initialState();
 			} catch (Exception e) {
+				System.out.println("Exception:   " + e.toString());
 				new DxExceptionDlg(_jFrame, e.getMessage(), e);
 //				DMediator dMed = this.getDMediator();
 //				dMed.clean();
 //				dMed = null;
-				this.initialState();
+//				this.initialState();
 			}
 			this.setCursorDefault();
 //			this.getCurrentDxDoc().changeInModel(this.getClass().toString());
-			System.out.println("Load was done");
+			System.out.println("end builTTAbel");
 			this.afterInitialAssign();
 		}
 		dlg.dispose();
