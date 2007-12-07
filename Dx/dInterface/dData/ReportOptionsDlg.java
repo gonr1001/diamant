@@ -2,7 +2,7 @@ package dInterface.dData;
 
 /**
  *
- * Title: ReportOptionsDlg $Revision: 1.30 $  $Date: 2007-06-12 13:24:16 $
+ * Title: ReportOptionsDlg $Revision: 1.31 $  $Date: 2007-12-07 01:19:18 $
  * Description: ReportOptionsDlg is a class used to display
  *              a dialog to chose the fields to include in a report
  *              also the order of fields can be defined by the dialog
@@ -18,7 +18,7 @@ package dInterface.dData;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.30 $
+ * @version $Revision: 1.31 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -153,8 +153,10 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
 		return panel;
 	}
 
-	private void listTransfers(Object[] elementsToTransfer, Vector source,
-			JList s, Vector destination, JList d, boolean left) {
+	private void listTransfers(Object[] elementsToTransfer, Vector sourceIn,
+			JList s, Vector destinationIn, JList d, boolean left) {
+		Vector source = sourceIn;
+		Vector destination = destinationIn;
 		if (elementsToTransfer.length != 0) {
 			for (int i = 0; i < elementsToTransfer.length; i++) {
 				source.remove(elementsToTransfer[i]);
