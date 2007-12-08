@@ -975,40 +975,33 @@ public class DApplication {
 		System.out.println("begin builTTAbel");
 		OpenTimeTableDlg dlg = new OpenTimeTableDlg();
 		String fullFileName = dlg.getFileName(this);
-
 		if (fullFileName == "") {// the cancel button was pressed!
 			this.initialState();
 		} else {
 			this.setCurrentDir(fullFileName);
+			this.setCursorWait();
 			try {
-				this.setCursorWait();
-				this.hideToolBar();
+				// this.hideToolBar();
 				DxLoadData dxLoadData = new DxLoadData();
-				dxLoadData.loadDataStructures(fullFileName, this.getCurrentDir());
+				dxLoadData.loadDataStructures(fullFileName, this
+						.getCurrentDir());
 				System.out.println("DxLoadData was done");
-// TODO change to addDxTTableDoc(dxLoadData);			
-//				this.getDMediator().addDxTTableDoc(fullFileName, fullFileName);
+				// TODO change to addDxTTableDoc(dxLoadData);
+				this.getDMediator().addDxTTableDoc(dxLoadData, fullFileName);
 				_dxMenuBar.afterNewTTable();
-//			} catch (DxException e) {
-//				new DxExceptionDlg(_jFrame, e.getMessage(), e);
-//				DMediator dMed = this.getDMediator();
-//				dMed.clean();
-//				dMed = null;
-//				this.initialState();
+				
+				// this.getCurrentDxDoc().changeInModel(this.getClass().toString());
+				this.afterInitialAssign();
 			} catch (Exception e) {
 				System.out.println("Exception:   " + e.toString());
 				new DxExceptionDlg(_jFrame, e.getMessage(), e);
-//				DMediator dMed = this.getDMediator();
-//				dMed.clean();
-//				dMed = null;
-//				this.initialState();
+				this.initialState();
+
 			}
+			dlg.dispose();
 			this.setCursorDefault();
-//			this.getCurrentDxDoc().changeInModel(this.getClass().toString());
 			System.out.println("end builTTAbel");
-			this.afterInitialAssign();
 		}
-		dlg.dispose();
 	}
 
 	/**
@@ -1042,7 +1035,7 @@ public class DApplication {
 		}
 		dlg.dispose();
 	}
-	
+
 	/**
 	 * @param string
 	 *            indicates the type of timetable structure
@@ -1093,7 +1086,6 @@ public class DApplication {
 		this.setCursorDefault();
 	}
 
-
 	/**
 	 * @param string
 	 *            indicates the type of timetable structure
@@ -1104,7 +1096,7 @@ public class DApplication {
 		this.setCursorWait();
 		OpenTTSDlg dlg = new OpenTTSDlg();
 		String fullFileName = dlg.getFileName(this);
-		
+
 		if (fullFileName == "") {// cancel button was pressed!
 			dlg.dispose();
 			this.initialState();
@@ -1124,7 +1116,7 @@ public class DApplication {
 		}
 		this.setCursorDefault();
 	}
-	
+
 	private ImageIcon createImageIcon(String path, String description) {
 		java.net.URL imgURL = DApplication.class.getResource(path);
 		if (imgURL != null) {

@@ -32,6 +32,7 @@ import javax.swing.event.InternalFrameEvent;
 import dInterface.dTimeTable.DetailedTTPane;
 import dInterface.dTimeTable.SimpleTTPane;
 import dInternal.DModel;
+import dInternal.DxLoadData;
 import dInternal.DxStateBarModel;
 import dInternal.dTimeTable.TTStructure;
 import eLib.exit.dialog.DxExceptionDlg;
@@ -76,6 +77,29 @@ public class DxTTableDoc extends DxDocument {
 		super(mediator);
 		_type = type;
 		initDxTTableDoc(fileName);
+	}
+
+	/**
+	 * @param mediator
+	 * @param dxLoadData
+	 * @param fileName
+	 */
+	public DxTTableDoc(DMediator mediator, DxLoadData dxLoadData,
+			String fileName) {
+		super(mediator);
+		_type = 0;
+		_documentName = fileName;
+		initDxTTableDoc(dxLoadData);
+	}
+
+	/**
+	 * @param dxLoadData
+	 */
+	private void initDxTTableDoc(DxLoadData dxLoadData) {
+		_dm = new DModel(this, dxLoadData, _type);
+		buidDocument(true, true);
+		_ttPane.updateTTPane(_dm.getTTStructure());
+		
 	}
 
 	// -------------------------------------------

@@ -29,6 +29,7 @@ import developer.DxFlags;
 import dInterface.DApplication;
 import dInterface.DxDocument;
 import dInterface.DxPreferences;
+import dInterface.DxTTableDoc;
 import dInternal.dData.DLoadData;
 import dInternal.dData.DSaveData;
 import dInternal.dData.DxAvailability;
@@ -233,6 +234,38 @@ public class DModel extends Observable {
 	}
 
 	/**
+	 * @param dxTTableDoc
+	 * @param dxLoadData
+	 * @param _type2
+	 */
+	public DModel(DxTTableDoc dxTTableDoc, DxLoadData dxLoadData, int _type2) {
+		_error = "";
+		_modified = false;
+		_isExamPrepared = false;
+		_currentSite = DConst.ACTIVITY_STANDARD_SITE;
+		_importDone = false;
+		_mergeDone = false;
+		_constructionState = 0;
+		_currentCycle = 1;
+		_nbConflicts = new int[] { 10, 20, 30 };
+		_setOfEvents = new SetOfEvents(this);
+		_setOfImportErrors = new StandardCollection();
+		_setOfImportSelErrors = new StandardCollection();
+
+		_progressBarState = new DValue();
+		_progressBarState.setIntValue(0); // XXXX Pascal: magic number
+		_dxDocument = dxTTableDoc;
+		_isOnlyATimeTable = false;
+		_isATimeTable = true;
+		
+		this.transferTimeTable(dxLoadData);
+		
+		
+		if (_isATimeTable)
+			_conditionsToTest = new DxConditionsToTest(this);
+	}
+
+	/**
 	 * 
 	 * @return
 	 */
@@ -432,7 +465,59 @@ public class DModel extends Observable {
 //		return "";
 
 	}
+	public String transferTimeTable(DxLoadData dxLoadData){// throws DxException, NullPointerException, IOException{
 
+		//DLoadData loadData = new DLoadData(this);
+//		try {
+		//	boolean loadOk = loadData.loadDataStructures(fileName, currentDir);
+			if (true) {
+				setVersion(dxLoadData.getVersion());
+				_ttStruct = dxLoadData.getTTStructure();
+				if (_ttStruct.getError().length() != 0)
+					return _ttStruct.getError();
+
+				_dxSetOfInstructors = dxLoadData.getDxSetOfInstructors();
+
+				_dxSetOfSites = dxLoadData.getDxSetOfSitesRooms();
+
+				if (DxFlags.newActivity) {
+					_dxsoasSetOfAct = (DxSetOfActivitiesSites) dxLoadData
+							.getDxActivitiesSitesReader();
+				} else {
+					_setOfActivitiesSites = dxLoadData.getSetOfActivitiesSites();
+
+				}
+				_setOfStuSites = dxLoadData.getSetofStuSites();
+
+				if (_setOfActivitiesSites.getError().length() != 0) {
+					return _setOfActivitiesSites.getError();
+				}
+				if (_setOfStuSites.getError().length() != 0) {
+					return _setOfStuSites.getError();
+				}
+
+				buildSetOfEvents();
+				_conditionsToTest = new DxConditionsToTest(this);
+				this._conditionsToTest.initAllConditions();
+			}
+			_constructionState = 1;
+			setImportDone(false);
+	//		DApplication.getInstance().setCursorDefault();
+			return "";
+
+			// } catch (FileNotFoundException fnfe) { // alert the user that the
+			// // specified file does not exist
+			// new DxExceptionDlg(fnfe.getMessage(), fnfe);
+//		} catch (DxException e) {
+//			new DxExceptionDlg(e.getMessage(), e);
+//			// TODO hara2602
+//
+//		} finally {
+//			DApplication.getInstance().setCursorDefault();
+//		}
+//		return "";
+
+	}
 	/**
 	 * build set of events using currentcycle, setofactivities, setofinstructors
 	 * and setofrooms

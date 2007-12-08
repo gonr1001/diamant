@@ -25,7 +25,6 @@ import java.awt.Component;
 import javax.swing.JOptionPane;
 
 import dConstants.DConst;
-import developer.DxFlags;
 import eLib.exit.exception.DxException;
 
 public class DxExceptionDlg {

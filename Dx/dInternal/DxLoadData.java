@@ -857,4 +857,12 @@ public class DxLoadData {
 		return filter.getByteArray();
 	}
 
+	/**
+	 * @param model
+	 */
+	public void transfer(DModel model) {
+		// TODO Auto-generated method stub
+		
+	}
+
 } // end DxLoadData

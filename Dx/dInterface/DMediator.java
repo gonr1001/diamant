@@ -26,6 +26,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
 import dConstants.DConst;
+import dInternal.DxLoadData;
 import eLib.exit.dialog.DxExceptionDlg;
 import eLib.exit.exception.DxException;
 
@@ -130,6 +131,31 @@ public class DMediator extends Object {
 			throws DxException, NullPointerException, IOException {
 		DxDocument currentDoc = new DxTTableDoc(this, fileName);
 		currentDoc.setDocumentName(ttName);
+		_dxDocuments.addElement(currentDoc);
+
+		return "";
+	}
+	
+	
+	/**
+	 * for new tt and for open tt
+	 * 
+	 * @param ttname
+	 *            This string will be displayed as the title of the JIF
+	 * @param fileName
+	 *            is the full path file name containing the TTStructure
+	 * @param type
+	 *            is the type of timetable to be constructed possible types
+	 *            NO_TYPE = 0; CYCLE = 1; EXAM = 2; CYCLEANDEXAM = 3;
+	 * @throws IOException 
+	 * @throws NullPointerException 
+	 * @throws Exception
+	 * 
+	 */
+	public String addDxTTableDoc(DxLoadData dxLoadData, String fileName)
+			throws DxException, NullPointerException, IOException {
+		DxDocument currentDoc = new DxTTableDoc(this, dxLoadData, fileName);
+		currentDoc.setDocumentName(fileName);
 		_dxDocuments.addElement(currentDoc);
 
 		return "";

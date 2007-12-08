@@ -29,7 +29,7 @@ import dInterface.DxTTableDoc;
 import dInternal.DModel;
 import dInternal.DxConflictLimits;
 import dInternal.dOptimization.DxAssignAllAlg;
-import eLib.exit.exception.DxException;
+
 
 /**
  * Ruben Gonzalez-Rubio
