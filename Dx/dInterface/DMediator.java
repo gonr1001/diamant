@@ -152,8 +152,8 @@ public class DMediator extends Object {
 	 * @throws Exception
 	 * 
 	 */
-	public String addDxTTableDoc(DxLoadData dxLoadData, String fileName)
-			throws DxException, NullPointerException, IOException {
+	public String addDxTTableDoc(DxLoadData dxLoadData, String fileName){
+			//throws DxException, NullPointerException, IOException {
 		DxDocument currentDoc = new DxTTableDoc(this, dxLoadData, fileName);
 		currentDoc.setDocumentName(fileName);
 		_dxDocuments.addElement(currentDoc);

@@ -260,9 +260,10 @@ public class DModel extends Observable {
 		
 		this.transferTimeTable(dxLoadData);
 		
-		
+		_isATimeTable = true;
 		if (_isATimeTable)
 			_conditionsToTest = new DxConditionsToTest(this);
+		this.notifyObservers(this);
 	}
 
 	/**
@@ -465,16 +466,12 @@ public class DModel extends Observable {
 //		return "";
 
 	}
-	public String transferTimeTable(DxLoadData dxLoadData){// throws DxException, NullPointerException, IOException{
-
-		//DLoadData loadData = new DLoadData(this);
-//		try {
-		//	boolean loadOk = loadData.loadDataStructures(fileName, currentDir);
+	public void transferTimeTable(DxLoadData dxLoadData) {
 			if (true) {
 				setVersion(dxLoadData.getVersion());
 				_ttStruct = dxLoadData.getTTStructure();
-				if (_ttStruct.getError().length() != 0)
-					return _ttStruct.getError();
+//				if (_ttStruct.getError().length() != 0)
+//					return _ttStruct.getError();
 
 				_dxSetOfInstructors = dxLoadData.getDxSetOfInstructors();
 
@@ -489,12 +486,12 @@ public class DModel extends Observable {
 				}
 				_setOfStuSites = dxLoadData.getSetofStuSites();
 
-				if (_setOfActivitiesSites.getError().length() != 0) {
-					return _setOfActivitiesSites.getError();
-				}
-				if (_setOfStuSites.getError().length() != 0) {
-					return _setOfStuSites.getError();
-				}
+//				if (_setOfActivitiesSites.getError().length() != 0) {
+//					return _setOfActivitiesSites.getError();
+//				}
+//				if (_setOfStuSites.getError().length() != 0) {
+//					return _setOfStuSites.getError();
+//				}
 
 				buildSetOfEvents();
 				_conditionsToTest = new DxConditionsToTest(this);
@@ -502,22 +499,9 @@ public class DModel extends Observable {
 			}
 			_constructionState = 1;
 			setImportDone(false);
-	//		DApplication.getInstance().setCursorDefault();
-			return "";
-
-			// } catch (FileNotFoundException fnfe) { // alert the user that the
-			// // specified file does not exist
-			// new DxExceptionDlg(fnfe.getMessage(), fnfe);
-//		} catch (DxException e) {
-//			new DxExceptionDlg(e.getMessage(), e);
-//			// TODO hara2602
-//
-//		} finally {
-//			DApplication.getInstance().setCursorDefault();
-//		}
-//		return "";
-
 	}
+	
+	
 	/**
 	 * build set of events using currentcycle, setofactivities, setofinstructors
 	 * and setofrooms

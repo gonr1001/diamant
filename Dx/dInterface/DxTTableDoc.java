@@ -162,6 +162,7 @@ public class DxTTableDoc extends DxDocument {
 			pve.printStackTrace();
 			System.exit(1); // end of execution abnormal
 		}
+			this.update(_dm, this);
 	} // end buidDocument
 
 	@Override
