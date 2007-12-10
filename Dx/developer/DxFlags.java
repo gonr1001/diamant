@@ -44,5 +44,4 @@ public class DxFlags {
 
 	public final static boolean newDxLoadData = true;
 
-
 }
