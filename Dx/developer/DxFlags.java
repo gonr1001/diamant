@@ -35,18 +35,13 @@ public class DxFlags {
 	public final static boolean newRooms = MASTER;
 
 	public final static boolean newAlg = MASTER;
-	//public final static boolean newAlg = true;
-
-	//public final static boolean newPartitionAlg = true;
+	
 	public final static boolean newPartitionAlg = false;
 
-	// public final static boolean newActivity = true;
 	public final static boolean newActivity = false;
-	
-	// public final static boolean newPref = true;
+
 	public final static boolean newPref = false;
-		
-	// public final static boolean newDxLoadData = true;
+
 	public final static boolean newDxLoadData = true;
 
 

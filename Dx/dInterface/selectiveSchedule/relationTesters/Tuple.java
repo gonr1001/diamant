@@ -20,17 +20,20 @@ import dInterface.selectiveSchedule.relationTesters.RelationTester_ActivityEvent
  *  
  */
 public class Tuple {
-    private Class[] _elements = null;
+    @SuppressWarnings("unchecked")
+	private Class[] _elements = null;
 
     public Tuple() {
     	super();
     }
     
-    public Tuple(Class[] elements) {
+    @SuppressWarnings("unchecked")
+	public Tuple(Class[] elements) {
         _elements = elements;
     }
     
-    public void setTuple(Class[] elements) {
+    @SuppressWarnings("unchecked")
+	public void setTuple(Class[] elements) {
         _elements = elements;
     }
 
@@ -39,7 +42,8 @@ public class Tuple {
      * 
      * @see java.lang.Object#equals(java.lang.Object)
      */
-    public boolean equals(Object obj) {
+    @SuppressWarnings("unchecked")
+	public boolean equals(Object obj) {
         if (!(obj instanceof Tuple))
             return false;
 
