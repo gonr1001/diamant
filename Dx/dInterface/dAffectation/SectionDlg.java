@@ -110,11 +110,11 @@ public class SectionDlg extends DDialog implements ActionListener,
 
 	private Type _type;
 
-	private Vector _activitiesVector;
+	private Vector <String> _activitiesVector;
 
-	private Vector _notAssignedVector;
+	private Vector <String>_notAssignedVector;
 
-	private Vector _typeVector;
+	private Vector<String> _typeVector;
 
 	private Vector _assignedVectors[];
 
@@ -179,7 +179,7 @@ public class SectionDlg extends DDialog implements ActionListener,
 				for (int i = 0; i < _typeVector.size(); i++) {
 					_typeCombo.addItem(_typeVector.elementAt(i));
 				}//end for
-				_selectedType = (String) _typeVector.get(0);
+				_selectedType = _typeVector.get(0);
 				_type = getType(_selectedActivity, _selectedType);
 				_numberOfSections = getNumberOfSections(_type);
 				setListsLoad(false);
@@ -290,7 +290,7 @@ public class SectionDlg extends DDialog implements ActionListener,
 	 * @return JPanel the Activity Panel
 	 */
 	private JPanel initActivityPanel() {
-		_activitiesVector = new Vector();
+		_activitiesVector = new Vector<String>();
 		// This vector contains the activities whose their visibility member =
 		// true
 		_activitiesVector = _activities.getIDsByField(3, "true");
@@ -301,7 +301,7 @@ public class SectionDlg extends DDialog implements ActionListener,
 		activityPanel.setBorder(new TitledBorder(new EtchedBorder(),
 				DConst.ACTIVITY));
 		activityPanel.add(_activitiesCombo);
-		_selectedActivity = (String) _activitiesVector.elementAt(0);
+		_selectedActivity =  _activitiesVector.elementAt(0);
 		return activityPanel;
 	} //end initActivityPanel
 
@@ -322,7 +322,7 @@ public class SectionDlg extends DDialog implements ActionListener,
 		JPanel typePanel = new JPanel();
 		typePanel.setBorder(new TitledBorder(new EtchedBorder(), DConst.TYPE));
 		typePanel.add(_typeCombo);
-		_selectedType = (String) _typeVector.elementAt(0);
+		_selectedType = _typeVector.elementAt(0);
 		return typePanel;
 	} //end initTypePanel
 
@@ -606,7 +606,7 @@ public class SectionDlg extends DDialog implements ActionListener,
 
 	private void setListsLoad(boolean forUpdate) {
 		_notAssignedVector = _students.getStudentsByGroup(_selectedActivity,
-				(String) _typeVector.elementAt(_typeCombo.getSelectedIndex()),
+				_typeVector.elementAt(_typeCombo.getSelectedIndex()),
 				-1, _sortIndex);// to change
 		if (_notAssignedList == null) {
 			_notAssignedList = new JList(_notAssignedVector);
@@ -675,7 +675,7 @@ public class SectionDlg extends DDialog implements ActionListener,
 		Student s;
 		String studentData;
 		for (int i = 0; i < _notAssignedVector.size(); i++) {
-			studentData = (String) _notAssignedVector.elementAt(i);
+			studentData =  _notAssignedVector.elementAt(i);
 			s = (Student) getStudent(studentData);
 			s.setInGroup(_selectedActivity + _selectedType, -1, false);
 		}//end for(int i = 0; i < _notAssignedVector.size(); i++)
@@ -719,7 +719,7 @@ public class SectionDlg extends DDialog implements ActionListener,
 	}
 
 	private void listTransfers(JList sourceList, JList destinationList,
-			Vector sourceVector, Vector <String>destinationVector, String chain,
+			Vector <String> sourceVector, Vector <String>destinationVector, String chain,
 			boolean toLeft, int sortIndex) {
 		if (sourceList == null || destinationList == null
 				|| sourceVector == null || destinationVector == null)
@@ -822,8 +822,9 @@ public class SectionDlg extends DDialog implements ActionListener,
 		if (_currentAssignedGroup > -1) {
 			//System.out.println("leftPressed");
 			//			doClickOnArrowToLeft();
+			Vector vector = _assignedVectors[_currentAssignedGroup];
 			listTransfers(_assignedLists[_currentAssignedGroup],
-					_notAssignedList, _assignedVectors[_currentAssignedGroup],
+					_notAssignedList, vector,
 					_notAssignedVector, DConst.CHAR_FIXED_IN_GROUP, true,
 					_sortIndex);
 			//_buttonsPanel.getComponent(1).setEnabled(true);
@@ -836,7 +837,7 @@ public class SectionDlg extends DDialog implements ActionListener,
 			((JLabel) ((JPanel) ((JPanel) _insidePanel
 					.getComponent(_currentAssignedGroup)).getComponent(0))
 					.getComponent(4)).setText(String
-					.valueOf(_assignedVectors[_currentAssignedGroup].size()));
+					.valueOf(vector.size()));
 		}
 	}
 

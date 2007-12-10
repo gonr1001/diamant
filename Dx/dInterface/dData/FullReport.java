@@ -1,6 +1,6 @@
 /**
  *
- * Title: FullReport $Revision: 1.19 $  $Date: 2007-05-14 11:18:57 $
+ * Title: FullReport $Revision: 1.20 $  $Date: 2007-12-10 01:59:12 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.19 $
+ * @version $Revision: 1.20 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -84,7 +84,7 @@ public class FullReport extends ViewReport implements ActionListener {
   * 7= begin hour of the activity, 8= end hour of the activity, 9= instructor name
   * 10= room name
   * */
-  private Vector buildAllOptionsVector() {
+  private Vector<DValue> buildAllOptionsVector() {
     Vector <DValue> v = new Vector<DValue>();
     v.add(new DValue(0,
                       new FieldRecord(Integer.parseInt(DConst.R_ACTIVITY_NAME_L), DConst.R_ACTIVITY_NAME)));
@@ -154,7 +154,7 @@ public class FullReport extends ViewReport implements ActionListener {
     }//end if (e.getActionCommand().equals(_buttonsNames[0]))
   }//end method
 
-  public void doSave(Vector rigth) {
+  public void doSave(Vector <String> rigth) {
     _dApplic.getDxPreferences().setSelectedOptionsInFullReport(rigth);
     _dApplic.getDxPreferences().save();
     _rightVec = rigth;
