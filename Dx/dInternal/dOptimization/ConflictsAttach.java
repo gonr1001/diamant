@@ -26,7 +26,7 @@ public class ConflictsAttach extends DObject{
 
 
   /**
-   * set of conflicts contains a resource in wich the ID is the name of event and the
+   * set of conflicts contains a resource in which the ID is the name of event and the
    * object attach is a DXValue where
    * intValue is the number of conflicts
    * stringValue is the type of conflict
@@ -178,24 +178,24 @@ public class ConflictsAttach extends DObject{
     return false;
   }
 
-  /**
-   * get an event conflicts from setof conflicts
-   * @param eventName the event name
-   * @param typeOfConflict the type of conflicts
-   * @return Vector of dxvalue containing conflict information
-   */
-  public Vector getConflicts(String eventName, String typeOfConflict){
-    Vector <DObject>conflict = new Vector<DObject>();
-    for (int i=0; i< _setOfConflicts.size(); i++){
-      DResource conf= _setOfConflicts.getResourceAt(i);
-      if(conf.getID().equalsIgnoreCase(eventName)){
-        if ( ((DValue)conf.getAttach()).getStringValue().equalsIgnoreCase(typeOfConflict)){
-          conflict.add(conf.getAttach());
-        }
-      }// end if(conf.getID().equalsIgnoreCase(eventName))
-    }// end for (int i=0; i< _setOfConflicts.size(); i++)
-    return conflict;
-  }
+//  /**
+//   * get an event conflicts from setof conflicts
+//   * @param eventName the event name
+//   * @param typeOfConflict the type of conflicts
+//   * @return Vector of dxvalue containing conflict information
+//   */
+//  public Vector<DObject> getConflicts(String eventName, String typeOfConflict){
+//    Vector <DObject>conflict = new Vector<DObject>();
+//    for (int i=0; i< _setOfConflicts.size(); i++){
+//      DResource conf= _setOfConflicts.getResourceAt(i);
+//      if(conf.getID().equalsIgnoreCase(eventName)){
+//        if ( ((DValue)conf.getAttach()).getStringValue().equalsIgnoreCase(typeOfConflict)){
+//          conflict.add(conf.getAttach());
+//        }
+//      }// end if(conf.getID().equalsIgnoreCase(eventName))
+//    }// end for (int i=0; i< _setOfConflicts.size(); i++)
+//    return conflict;
+//  }
 
 
   /**

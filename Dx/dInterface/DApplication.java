@@ -296,10 +296,11 @@ public class DApplication {
 	} // end getCurrentDir
 
 	/*
-	 * the 
+	 * the
 	 */
 	public void setCurrentDir(String fileName) {
-		_currentDir = fileName.substring(0, fileName.lastIndexOf(File.separator) + 1);
+		_currentDir = fileName.substring(0, fileName
+				.lastIndexOf(File.separator) + 1);
 	} // end setCurrentDir
 
 	public void showToolBar() {
@@ -445,8 +446,6 @@ public class DApplication {
 			oldBuildTTStruc();
 		}
 	}
-
-
 
 	/**
 	 * 
@@ -670,8 +669,6 @@ public class DApplication {
 		new InformationDlg(this.getJFrame(), DConst.INITIAL_ASSIGN_MESSAGE);
 	}
 
-
-
 	/**
 	 * 
 	 */
@@ -679,20 +676,20 @@ public class DApplication {
 		_dxMenuBar.afterInitialAssignment();
 	}
 
-	
 	/**
 	 * 
 	 */
 	public void afterOpenTTSruc() {
 		_dxMenuBar.afterOpenTTSruc();
 	}
+
 	/**
 	 * 
 	 */
 	public void afterNewTTable() {
 		_dxMenuBar.afterNewTTable();
 	}
-	
+
 	/**
 	 * 
 	 */
@@ -997,8 +994,9 @@ public class DApplication {
 						.getCurrentDir());
 				System.out.println("DxLoadData was done");
 				this.getDMediator().addDxTTableDoc(dxLoadData, fullFileName);
-				this.afterNewTTable();				
-				this.getCurrentDxDoc().changeInModel(this.getClass().toString());
+				this.afterNewTTable();
+				this.getCurrentDxDoc()
+						.changeInModel(this.getClass().toString());
 				this.afterInitialAssign();
 			} catch (Exception e) {
 				System.out.println("Exception:   " + e.toString());
