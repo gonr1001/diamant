@@ -49,9 +49,9 @@ public class DxPeriod {
 
 	private int _nbStudentsConflicts;
 
-	private int _nbInstructorsConflicts = 0;
+	private int _nbInstructorsConflicts;
 
-	private int _nbRoomConflicts = 0;
+	private int _nbRoomConflicts;
 
 	private int[] _beginHour = { 8, 0 };// _beginHour[0]= hour; _beginHour[1]=
 										// minute
@@ -61,7 +61,6 @@ public class DxPeriod {
 
 	private int _priority;// 0= normal; 1= low; 2= null
 
-	private String _error = "";
 
 	/**
 	 * contains a resource where ID is the event which is place in the period,
@@ -80,7 +79,6 @@ public class DxPeriod {
 		_nbRoomConflicts = 0;
 		_beginHour[0] = 8;
 		_beginHour[1] = 0;
-		_error = "";
 	}
 
 	/**
@@ -285,15 +283,11 @@ public class DxPeriod {
 			// e.printStackTrace();
 		}
 
-		if (begin == null || end == null || prior == null) {
-			_error = DConst.ERROR_XML;
-			return _error;
-		}
-		return _error;
-
-		// System.out.println(" Period properties -- begin:
-		// "+_beginHour[0]+"%"+_beginHour[1]+" end: "+end+" Priority:
-		// "+prior);//debug
+//		if (begin == null || end == null || prior == null) {
+//			_error = DConst.ERROR_XML;
+//			return _error;
+//		}
+		return "";
 	}
 
 	/**

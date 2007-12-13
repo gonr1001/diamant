@@ -256,4 +256,16 @@ public class Sequence extends DObject {
 		return 0;
 	}
 
+	@Override
+	public boolean compareByField(int fieldIndex, String value) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void setField(int fieldIndex, String value) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
