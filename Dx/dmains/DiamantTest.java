@@ -73,6 +73,7 @@ import dTest.dInternal.dOptimizationTest.StudentsConditionsTest;
 import dTest.dInternal.dOptimizationTest.StudentsConflictsMatrixTest;
 import dTest.dInternal.dTimeTable.CycleTest;
 import dTest.dInternal.dTimeTable.DayTest;
+import dTest.dInternal.dTimeTable.DxTTStructureTest;
 import dTest.dInternal.dTimeTable.PeriodTest;
 import dTest.dInternal.dTimeTable.SequenceTest;
 import dTest.dInternal.dTimeTable.TTStructureTest;
@@ -101,7 +102,7 @@ public class DiamantTest {
 		System.out.println("Hello I am in Diamant tests");
 		TestSuite suite = new TestSuite("Diamant Tests");
 
-		
+		suite.addTest(DxTTStructureTest.suite());
 		suite.addTest(ByteInputFileTest.suite());
 		suite.addTest(ByteOutputFileTest.suite());
 		suite.addTest(FilterFileTest.suite());

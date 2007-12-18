@@ -33,7 +33,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
 
-import dmains.ScanFile;
+
 
 
 public class DxTTStructure extends Observable {
@@ -94,6 +94,39 @@ public class DxTTStructure extends Observable {
 	// _setOfCycles = new StandardCollection();
 	// _modified = false;
 	// }
+	
+	
+	 /**
+	 * it load the time table structure
+	 *
+	 * @param String
+	 * the xml file containing the timetable structure
+	 * @return String the error message, empty if it does not found error
+	 */
+	
+	public void loadTTSFromFile(String fileName) throws FileNotFoundException,
+			MalformedURLException, IOException, SAXException {
+
+		// Create instances needed for parsing
+		XMLReader reader = XMLReaderFactory.createXMLReader();
+		TTStructureSAXContentHandler ttsContentHandler = new TTStructureSAXContentHandler(
+				this);
+		ErrorHandler ttsErrorHandler = new TTStructureSAXErrorHandler();
+		EntityResolver eResolver = new TTStructureEntitySolver();
+		// Register handlers and resolver
+		reader.setContentHandler(ttsContentHandler);
+		reader.setErrorHandler(ttsErrorHandler);		
+		reader.setEntityResolver(eResolver);
+
+		// Turn on validation
+		reader.setFeature(VALIDATION, true);
+		reader.setFeature(VALIDATION_SCHEMA, true);
+		reader.setFeature(VALIDATION_SCHEMA_FULL, true);
+
+		// parse
+		InputSource inputSource = new InputSource(fileName);
+		reader.parse(inputSource);
+	}
 	//
 	// public int getNumberOfActiveDays() {
 	// return _numberOfDays;
@@ -220,43 +253,7 @@ public class DxTTStructure extends Observable {
 	// }
 	// }// end of CreateStandardTT method
 	//
-	// /**
-	// * it load the time table structure
-	// *
-	// * @param String
-	// * the xml file containing the timetable structure
-	// * @return String the error message, empty if it does not found error
-	// */
-	//
-	public void loadTTSFromFile(String fileName) throws FileNotFoundException,
-			MalformedURLException, IOException, SAXException {
 
-		// Create instances needed for parsing
-		XMLReader reader = XMLReaderFactory.createXMLReader();// OConstant.PARSER_CLASS);
-		TTStructureSAXContentHandler ttsContentHandler = new TTStructureSAXContentHandler(
-				this);
-		ErrorHandler ttsErrorHandler = new TTStructureSAXErrorHandler();
-
-		// Register content handler
-		reader.setContentHandler(ttsContentHandler);
-
-		// Register error handler
-		reader.setErrorHandler(ttsErrorHandler);
-
-		EntityResolver eResolver = new TTStructureEntitySolver();
-		reader.setEntityResolver(eResolver);
-
-		// Turn on validation
-		reader.setFeature(VALIDATION, true);
-		reader.setFeature(VALIDATION_SCHEMA, true);
-		reader.setFeature(VALIDATION_SCHEMA_FULL, true);
-
-		// parse
-		// File f = new File(fileName);
-		InputSource inputSource = new InputSource(fileName);
-		reader.parse(inputSource);
-
-	}
 
 	//
 	// /**

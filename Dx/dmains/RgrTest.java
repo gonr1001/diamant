@@ -30,6 +30,7 @@ import dTest.dInternal.dOptimizationTest.ConditionsTest;
 import dTest.dInternal.dOptimizationTest.DxAssignAllAlgTest;
 import dTest.dInternal.dOptimizationTest.RoomsConditionsTest;
 import dTest.dInternal.dOptimizationTest.SetOfEventsTest;
+import dTest.dInternal.dTimeTable.DxTTStructureTest;
 import developer.DxFlags;
 import eTest.ByteInputFileTest;
 import eTest.ByteOutputFileTest;
@@ -64,7 +65,9 @@ public class RgrTest {
 	public static Test suite() {
 		System.out.println("Hello I am rgr selected Tests");
 		TestSuite suite = new TestSuite("rgr selected Tests");
+		
 
+		suite.addTest(DxTTStructureTest.suite());
 		suite.addTest(ByteInputFileTest.suite());
 		suite.addTest(ByteOutputFileTest.suite());
 		suite.addTest(FilterFileTest.suite());
