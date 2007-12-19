@@ -42,8 +42,8 @@ public class TTStructureSAXContentHandler implements ContentHandler {
 
 	public TTStructureSAXContentHandler(DxTTStructure dxTTStructure) {
 		if (PRINT_MESSAGE)
-			System.out.println("JOthelloSAXContentHandler: constructor");
-		this.namespaceMappings = new HashMap();
+			System.out.println("TTStructureSAXContentHandler: constructor");
+		this.namespaceMappings = new HashMap<String, String>();
 		_currentText = null;
 	}
 
@@ -62,7 +62,7 @@ public class TTStructureSAXContentHandler implements ContentHandler {
 	public void characters(char[] ch, int start, int length)
 			throws SAXException {
 		if (PRINT_MESSAGE)
-			System.out.println("JOthelloSAXContentHandler: characters");
+			System.out.println("TTStructureSAXContentHandler: characters");
 		_currentText.append(ch, start, length);
 		/*
 		 String s = new String(ch, start, length);
@@ -106,7 +106,7 @@ public class TTStructureSAXContentHandler implements ContentHandler {
 	public void endElement(String uri, String localName, String qName)
 			throws SAXException {
 		if (PRINT_MESSAGE)
-			System.out.println("JOthelloSAXContentHandler: endElement");
+			System.out.println("TTStructureSAXContentHandler: endElement");
 		uri += ""; //to avoid warning
 		qName += ""; //to avoid warning
 
@@ -154,7 +154,7 @@ public class TTStructureSAXContentHandler implements ContentHandler {
 	 */
 	public void endPrefixMapping(String prefix) throws SAXException {
 		if (PRINT_MESSAGE)
-			System.out.println("JOthelloSAXContentHandler: endPrefixMapping");
+			System.out.println("TTStructureSAXContentHandler: endPrefixMapping");
 		// No visual events occur here.
 		for (Iterator i = namespaceMappings.keySet().iterator(); i.hasNext();) {
 
@@ -184,7 +184,7 @@ public class TTStructureSAXContentHandler implements ContentHandler {
 	public void ignorableWhitespace(char[] ch, int start, int length)
 			throws SAXException {
 		if (PRINT_MESSAGE)
-			System.out.println("JOthelloSAXContentHandler: ignorableWhitespace");
+			System.out.println("TTStructureSAXContentHandler: ignorableWhitespace");
 		ch.toString(); //to avoid warning
 		start = start + 0; //to avoid warning
 		length = length + 0; //to avoid warning
@@ -213,7 +213,7 @@ public class TTStructureSAXContentHandler implements ContentHandler {
 			throws SAXException {
 		if (PRINT_MESSAGE)
 			System.out
-					.println("JOthelloSAXContentHandler: processingInstruction");
+					.println("TTStructureSAXContentHandler: processingInstruction");
 		target += ""; //to avid warning
 		data += ""; //to avoid warning
 	}
@@ -231,7 +231,7 @@ public class TTStructureSAXContentHandler implements ContentHandler {
 	@Override
 	public void setDocumentLocator(Locator locator) {
 		if (PRINT_MESSAGE)
-			System.out.println("JOthelloSAXContentHandler: setDocumentLocator");
+			System.out.println("TTStructureSAXContentHandler: setDocumentLocator");
 		// Save this for later use
 		//_locator = locator;
 		locator.toString(); //to avoid warning
@@ -254,7 +254,7 @@ public class TTStructureSAXContentHandler implements ContentHandler {
 	@Override
 	public void skippedEntity(String name) throws SAXException {
 		if (PRINT_MESSAGE)
-			System.out.println("JOthelloSAXContentHandler: skippedEntity");
+			System.out.println("TTStructureSAXContentHandler: skippedEntity");
 	}
 
 	/**
@@ -269,7 +269,7 @@ public class TTStructureSAXContentHandler implements ContentHandler {
 	@Override
 	public void startDocument() throws SAXException {
 		if (PRINT_MESSAGE)
-			System.out.println("JOthelloSAXContentHandler: startDocument");
+			System.out.println("TTStructureSAXContentHandler: startDocument");
 		// No visual events occur here
 	}
 
@@ -297,7 +297,7 @@ public class TTStructureSAXContentHandler implements ContentHandler {
 	public void startElement(String uri, String localName, String qName,
 			Attributes attributes) throws SAXException {
 		if (PRINT_MESSAGE)
-			System.out.println("JOthelloSAXContentHandler: startElement");
+			System.out.println("TTStructureSAXContentHandler: startElement");
 		uri += ""; //to avoid warning
 		qName += ""; //to avoid warning
 		_currentText = new StringBuffer();
@@ -335,15 +335,12 @@ public class TTStructureSAXContentHandler implements ContentHandler {
 	@Override
 	public void startPrefixMapping(String prefix, String uri) {
 		if (PRINT_MESSAGE)
-			System.out.println("JOthelloSAXContentHandler: startPrefixMapping");
+			System.out.println("TTStructureSAXContentHandler: startPrefixMapping");
 		// No visual events occur here.
 		namespaceMappings.put(uri, prefix);
 	}
 
-
-
-
-
+  
 
 	/**
 	 * @param text

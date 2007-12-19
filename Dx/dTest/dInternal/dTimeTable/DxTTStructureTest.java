@@ -95,7 +95,7 @@ public class DxTTStructureTest extends TestCase {
 //		path.append(OConstant.FILE_TESTS_DATA);
 //		path.append(File.separator);
 //		return path.toString();
-		return "";
+		return "";     
 	}
 
 }

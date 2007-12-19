@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
-<DXTimeTable>
+<DxTimeTable>
 	<TTcycle>
 		<cycleID>1</cycleID>
 		<pLength>180</pLength>
@@ -84,4 +84,4 @@
 			</TTday>
 		</TTdays>
 	</TTcycle>
-</DXTimeTable>
+</DxTimeTable>
