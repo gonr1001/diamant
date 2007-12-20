@@ -128,6 +128,9 @@ public class DxTTStructure extends Observable {
 		reader.setFeature(VALIDATION_SCHEMA, true);
 		reader.setFeature(VALIDATION_SCHEMA_FULL, true);
 		reader.setProperty(
+			     "http://apache.org/xml/properties/schema/external-schemaLocation",
+			     "http://www.exemple.com DxTimeTable.xsd");
+		reader.setProperty(
 			     "http://apache.org/xml/properties/schema/external-noNamespaceSchemaLocation",
 			     "DxTimeTable.xsd");
 		// parse
@@ -635,7 +638,7 @@ public class DxTTStructure extends Observable {
 		String RESOURCES_FOLDER = "pref";
 		DxTTStructure tts = new DxTTStructure();
 		try {
-			tts.loadTTSFromFile(RESOURCES_FOLDER + "/test.xml" ); //"/StandardTTE.xml");
+			tts.loadTTSFromFile(RESOURCES_FOLDER + "/ntest.xml" ); //"/StandardTTE.xml");
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
