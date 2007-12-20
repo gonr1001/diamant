@@ -33,6 +33,8 @@ public class TTStructureSAXContentHandler implements ContentHandler {
 	
 	private static boolean PRINT_MESSAGE = false;
 	
+	private DxTTStructure _dxTTStructure;
+	
 	private StringBuffer _currentText;
 
 	
@@ -43,8 +45,13 @@ public class TTStructureSAXContentHandler implements ContentHandler {
 	public TTStructureSAXContentHandler(DxTTStructure dxTTStructure) {
 		if (PRINT_MESSAGE)
 			System.out.println("TTStructureSAXContentHandler: constructor");
+		_dxTTStructure = dxTTStructure;
 		this.namespaceMappings = new HashMap<String, String>();
 		_currentText = null;
+	}
+	
+	public DxTTStructure getdxTTStructure() {
+		return _dxTTStructure;
 	}
 
 	
@@ -110,35 +117,43 @@ public class TTStructureSAXContentHandler implements ContentHandler {
 		uri += ""; //to avoid warning
 		qName += ""; //to avoid warning
 
-//		if (localName.equals(OthelloTag.O_ROOT)) {
-//			//;
-//		} else if (localName.equals(OthelloTag.O_BOARD_SIZE)) {
-//			_boardSize = Integer.parseInt(_currentText.toString());
-//			_oXMLGameData.setBoardSize(_boardSize);
-//		} else if (localName.equals(OthelloTag.O_WHITE_PLAYER)) {
-//			_whitePlayer = Integer.parseInt(_currentText.toString());
-//			if (_whitePlayer == 0 || _whitePlayer == 1)
-//				_oXMLGameData.setWhitePlayer(_whitePlayer);
-//		} else if (localName.equals(OthelloTag.O_ROW)) {
-//			//_currentRow = new StringBuffer(_currentText.toString());
-//			if (validateRow(_currentText)) {
-//				_oXMLGameData.addRow(_rowIndex, _currentText);
-//				_rowIndex++;
-//			}
-//		} else if (localName.equals(OthelloTag.O_BOARD_STATE)) {
-//			// to avoid warning
-//		} else if (localName.equals(OthelloTag.O_INDEX_COLUMN)) {
-//			if (validateC(_currentText))
-//				_c = convertToIndex(_currentText);
-//		} else if (localName.equals(OthelloTag.O_INDEX_ROW)) {
-//			_r = Integer.parseInt(_currentText.toString());
-//		} else if (localName.equals(OthelloTag.O_MOVE)) {
-//			_oXMLGameData.addMove(_c, _r);
-//		} else if (localName.equals(OthelloTag.O_LIST_OF_MOVES)) {
-//			// to avoid warning
-//		} else {
-//			throw new SAXException("Unknown element in XML fileGame");
-//		}
+		if (localName.equals("DxTimeTable")) {
+			;
+		} else if (localName.equals("TTcycle")) {
+			;
+		} else if (localName.equals("TTdays")) {
+			;
+		} else if (localName.equals("cycleID")) {
+			;
+		} else if (localName.equals("pLength")) {
+			;
+		} else if (localName.equals("TTday")) {
+			;
+		} else if (localName.equals("TTsequences")) {
+			;
+		} else if (localName.equals("dayID")) { 
+			;
+		} else if (localName.equals("dayRef")) {
+			;
+		} else if (localName.equals("TTsequence")) {
+			;
+		} else if (localName.equals("sequenceID")) {
+			;
+		} else if (localName.equals("TTperiods")) {
+			;
+		} else if (localName.equals("TTperiod")) {
+			;
+		} else if (localName.equals("BeginTime")) { 
+			;
+		} else if (localName.equals("EndTime")) {
+			;
+		} else if (localName.equals("priority")) {
+			;
+		} else if (localName.equals("periodID")) {
+			;
+		} else {
+			throw new SAXException("Unknown element in XML ttStructure");
+		}
 	}
 
 
@@ -339,49 +354,5 @@ public class TTStructureSAXContentHandler implements ContentHandler {
 		// No visual events occur here.
 		namespaceMappings.put(uri, prefix);
 	}
-
-  
-
-	/**
-	 * @param text
-	 * @return
-	 */
-	private int convertToIndex(StringBuffer text) {
-		return "abcdefgh".indexOf(text.charAt(0));
-	}
-
-	/**
-	 * @param text
-	 * @return
-	 */
-	private boolean validateC(StringBuffer text) {
-		if (text.length()!=1)
-			return false;
-		return ("abcdefgh".contains(text));
-	}
-
-	/**
-	 * @param string
-	 * @return
-	 */
-	private boolean validateRow(StringBuffer sb) {
-		if (sb.length() != 8) return false;
-		for(int i = 0; i < sb.length(); i++) {
-			if (sb.charAt(i)=='b'||sb.charAt(i)=='w'||sb.charAt(i)=='x') {
-				 // to avoid warning
-			} else return false;
-		}
-		return true;
-	}
-
-
-
-
-	
-	
-
-	
-	
-
 
 }

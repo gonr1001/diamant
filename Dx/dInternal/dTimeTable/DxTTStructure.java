@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.Observable;
 
+
 import org.xml.sax.EntityResolver;
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.InputSource;
@@ -107,22 +108,28 @@ public class DxTTStructure extends Observable {
 	public void loadTTSFromFile(String fileName) throws FileNotFoundException,
 			MalformedURLException, IOException, SAXException {
 
+		
+		System.out.println(System.getProperty("java org.apache.xerces.impl.Version"));
 		// Create instances needed for parsing
-		XMLReader reader = XMLReaderFactory.createXMLReader();
+		XMLReader reader = XMLReaderFactory.createXMLReader("org.apache.xerces.parsers.SAXParser");
 		TTStructureSAXContentHandler ttsContentHandler = new TTStructureSAXContentHandler(
 				this);
 		ErrorHandler ttsErrorHandler = new TTStructureSAXErrorHandler();
 		EntityResolver eResolver = new TTStructureEntitySolver();
-		// Register handlers and resolver
+		// Register handlers 
 		reader.setContentHandler(ttsContentHandler);
 		reader.setErrorHandler(ttsErrorHandler);		
-		reader.setEntityResolver(eResolver);
-
+//		reader.setEntityResolver(eResolver);
+//		reader.setFeature
+//		("http://xml.org/sax/features/namespaces", true);
+//		reader.setValidating(true); 
 		// Turn on validation
 		reader.setFeature(VALIDATION, true);
 		reader.setFeature(VALIDATION_SCHEMA, true);
 		reader.setFeature(VALIDATION_SCHEMA_FULL, true);
-
+		reader.setProperty(
+			     "http://apache.org/xml/properties/schema/external-noNamespaceSchemaLocation",
+			     "DxTimeTable.xsd");
 		// parse
 		InputSource inputSource = new InputSource(fileName);
 		reader.parse(inputSource);
@@ -616,13 +623,19 @@ public class DxTTStructure extends Observable {
 	//	private void setModified() {
 	//		_modified = true;
 	//	}
-	
+	public String toString() {
+		StringBuffer sb = new StringBuffer();
+		
+		sb.append("TTStructure");
+		
+		return sb.toString();
+	}
 	public static void main(String[] args) {
 		System.out.println("hi!");
 		String RESOURCES_FOLDER = "pref";
 		DxTTStructure tts = new DxTTStructure();
 		try {
-			tts.loadTTSFromFile(RESOURCES_FOLDER + "/StandardTTE.xml");
+			tts.loadTTSFromFile(RESOURCES_FOLDER + "/test.xml" ); //"/StandardTTE.xml");
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -636,8 +649,10 @@ public class DxTTStructure extends Observable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		System.out.println(tts.toString());	
 		System.out.println("bye");
-		System.exit(1);
+		System.exit(0);
 	} //end main
 
 
