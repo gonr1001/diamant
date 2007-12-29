@@ -21,6 +21,7 @@
 package dInternal.dTimeTable;
 
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -33,8 +34,6 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
-
-
 
 
 public class DxTTStructure extends Observable {
@@ -108,7 +107,17 @@ public class DxTTStructure extends Observable {
 	public void loadTTSFromFile(String fileName) throws FileNotFoundException,
 			MalformedURLException, IOException, SAXException {
 
+		String fullName = DxTTStructure.class.getCanonicalName();
+		System.out.println(fullName);
+		String name = DxTTStructure.class.getSimpleName();
+		System.out.println(name);
+		char sep = '/';
+		String str1 = fullName.replace('.', sep);
+		int i = fullName.indexOf(name);
+		String str2 = str1.substring(0, i-1);
 		
+		String str ="file:./"+ str2 +"/DxTimetable.xsd";
+		System.out.println(str);
 		System.out.println(System.getProperty("java org.apache.xerces.impl.Version"));
 		// Create instances needed for parsing
 		XMLReader reader = XMLReaderFactory.createXMLReader("org.apache.xerces.parsers.SAXParser");
@@ -119,7 +128,7 @@ public class DxTTStructure extends Observable {
 		// Register handlers 
 		reader.setContentHandler(ttsContentHandler);
 		reader.setErrorHandler(ttsErrorHandler);		
-//		reader.setEntityResolver(eResolver);
+		reader.setEntityResolver(eResolver);
 //		reader.setFeature
 //		("http://xml.org/sax/features/namespaces", true);
 //		reader.setValidating(true); 
@@ -127,12 +136,18 @@ public class DxTTStructure extends Observable {
 		reader.setFeature(VALIDATION, true);
 		reader.setFeature(VALIDATION_SCHEMA, true);
 		reader.setFeature(VALIDATION_SCHEMA_FULL, true);
+//		reader.setProperty(
+//			     "http://apache.org/xml/properties/schema/external-schemaLocation",
+//			     "http://www.exemple.com file:./dInternal/dTimeTable/DxTimeTable.xsd");
+//		reader.setProperty(
+//			     "http://apache.org/xml/properties/schema/external-noNamespaceSchemaLocation",
+//			     "file:./dInternal/dTimeTable/DxTimeTable.xsd");
 		reader.setProperty(
 			     "http://apache.org/xml/properties/schema/external-schemaLocation",
-			     "http://www.exemple.com DxTimeTable.xsd");
+			     "http://www.exemple.com "+ str);
 		reader.setProperty(
 			     "http://apache.org/xml/properties/schema/external-noNamespaceSchemaLocation",
-			     "DxTimeTable.xsd");
+			     str);
 		// parse
 		InputSource inputSource = new InputSource(fileName);
 		reader.parse(inputSource);
