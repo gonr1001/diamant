@@ -115,7 +115,7 @@ public class DxTTStructure extends Observable {
 		int i = fullName.indexOf(name);
 		String str2 = str1.substring(0, i-1);
 		
-		String str ="file./"+ str2 +"/DxTimetable.xsd";
+		String str ="file:./"+ str2 +"/DxTimetable.xsd";
 		System.out.println(str);
 		System.out.println(System.getProperty("java org.apache.xerces.impl.Version"));
 		// Create instances needed for parsing
