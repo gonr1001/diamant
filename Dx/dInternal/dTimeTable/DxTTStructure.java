@@ -20,12 +20,22 @@
 
 package dInternal.dTimeTable;
 
-
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.Observable;
 
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamConstants;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
+import javax.xml.stream.events.Characters;
+import javax.xml.stream.events.EndElement;
+import javax.xml.stream.events.StartElement;
+import javax.xml.stream.events.XMLEvent;
+import javax.xml.stream.util.XMLEventAllocator;
 
 import org.xml.sax.EntityResolver;
 import org.xml.sax.ErrorHandler;
@@ -34,9 +44,12 @@ import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
 
+import com.sun.xml.stream.events.XMLEventAllocatorImpl;
 
 public class DxTTStructure extends Observable {
-
+	
+	static XMLEventAllocator allocator = null;
+	
 	public static String XML_HEADER = "?xml version=\"1.0\" encoding=\"UTF-8\" ?";
 
 	public static String VALIDATION = "http://xml.org/sax/features/validation";
@@ -45,112 +58,157 @@ public class DxTTStructure extends Observable {
 
 	public static String VALIDATION_SCHEMA_FULL = "http://apache.org/xml/features/validation/schema-full-checking";
 
-	// static final String _TAG_TT_CYCLE = "TTcycle";
-	//
-	// static final String _TAGITEM1 = "cycleID";
-	//
-	// static final String _TAGITEM2 = "pLength";
-	//
-	// static final String _TAGITEM3 = "TTdays";
-	//
-	// static final String ITEM2 = "DXTimeTable";
-	//
-	// // subtag
-	// private final String[] ITEM2_subTag = { "TTcycle", "TTdays", "TTday",
-	// "TTsequences", "TTsequence", "TTperiods", "TTperiod" };
-	//
-	// private final String[] ITEM2_subConst = { "cycleID", "pLength", "dayRef",
-	// "sequenceID", "priority", "BeginTime", "EndTime", "periodID",
-	// "dayID" };
-	//
-	// public static final String[] _weekTable = { "Lu", "Ma", "Me", "Je", "Ve",
-	// "Sa", "Di" };
-	//
-	// public static final String[] _priorityTable = { "Normale", "Basse",
-	// "Nulle" };
-	//
-	// private DSetOfResources _setOfCycles;
-	//
-	// private boolean _modified;
-	//	
-	// private String _error = "";
-	//
-	// public static int NUMBEROFACTIVESDAYS = 5;
-	//
-	// private int _numberOfDays;
-	//
-	// private int _periodLenght;
-	//
-	// private int _currentCycleIndex = 0;
-	//
-	//
-	//
-	//
-	//
-	// // private String[] _dayNames;
-	//
-	// public DxTTStructure() {
-	// _setOfCycles = new StandardCollection();
-	// _modified = false;
-	// }
-	
-	
-	 /**
-	 * it load the time table structure
-	 *
+	/**
+	 * it loads the time table structure
+	 * 
 	 * @param String
-	 * the xml file containing the timetable structure
+	 *            the xml file containing the timetable structure
 	 * @return String the error message, empty if it does not found error
 	 */
-	
-	public void loadTTSFromFile(String fileName) throws FileNotFoundException,
-			MalformedURLException, IOException, SAXException {
 
-		String fullName = DxTTStructure.class.getCanonicalName();
-		System.out.println(fullName);
-		String name = DxTTStructure.class.getSimpleName();
-		System.out.println(name);
-		char sep = '/';
-		String str1 = fullName.replace('.', sep);
-		int i = fullName.indexOf(name);
-		String str2 = str1.substring(0, i-1);
-		
-		String str ="file:./"+ str2 +"/DxTimetable.xsd";
-		System.out.println(str);
-		System.out.println(System.getProperty("java org.apache.xerces.impl.Version"));
+	public void loadTTSFromFile(String fileName) throws FileNotFoundException,
+			MalformedURLException, IOException, SAXException, XMLStreamException {
+
+		String schemaFileName = getSchemaFileName();
+		System.out.println(schemaFileName);
+		System.out.println(System
+				.getProperty("java org.apache.xerces.impl.Version"));
 		// Create instances needed for parsing
-		XMLReader reader = XMLReaderFactory.createXMLReader("org.apache.xerces.parsers.SAXParser");
+		XMLReader reader = XMLReaderFactory
+				.createXMLReader("org.apache.xerces.parsers.SAXParser");
 		TTStructureSAXContentHandler ttsContentHandler = new TTStructureSAXContentHandler(
 				this);
 		ErrorHandler ttsErrorHandler = new TTStructureSAXErrorHandler();
 		EntityResolver eResolver = new TTStructureEntitySolver();
-		// Register handlers 
+		// Register handlers
 		reader.setContentHandler(ttsContentHandler);
-		reader.setErrorHandler(ttsErrorHandler);		
+		reader.setErrorHandler(ttsErrorHandler);
 		reader.setEntityResolver(eResolver);
-//		reader.setFeature
-//		("http://xml.org/sax/features/namespaces", true);
-//		reader.setValidating(true); 
+		// reader.setFeature
+		// ("http://xml.org/sax/features/namespaces", true);
+		// reader.setValidating(true);
 		// Turn on validation
 		reader.setFeature(VALIDATION, true);
 		reader.setFeature(VALIDATION_SCHEMA, true);
 		reader.setFeature(VALIDATION_SCHEMA_FULL, true);
-//		reader.setProperty(
-//			     "http://apache.org/xml/properties/schema/external-schemaLocation",
-//			     "http://www.exemple.com file:./dInternal/dTimeTable/DxTimeTable.xsd");
-//		reader.setProperty(
-//			     "http://apache.org/xml/properties/schema/external-noNamespaceSchemaLocation",
-//			     "file:./dInternal/dTimeTable/DxTimeTable.xsd");
-		reader.setProperty(
-			     "http://apache.org/xml/properties/schema/external-schemaLocation",
-			     "http://www.exemple.com "+ str);
-		reader.setProperty(
-			     "http://apache.org/xml/properties/schema/external-noNamespaceSchemaLocation",
-			     str);
+		reader
+				.setProperty(
+						"http://apache.org/xml/properties/schema/external-schemaLocation",
+						"http://www.exemple.com file:./dInternal/dTimeTable/DxTimeTable.xsd");
+		reader
+				.setProperty(
+						"http://apache.org/xml/properties/schema/external-noNamespaceSchemaLocation",
+						"file:./dInternal/dTimeTable/DxTimeTable.xsd");
+		reader
+				.setProperty(
+						"http://apache.org/xml/properties/schema/external-schemaLocation",
+						"http://www.exemple.com " + schemaFileName);
+		reader
+				.setProperty(
+						"http://apache.org/xml/properties/schema/external-noNamespaceSchemaLocation",
+						schemaFileName);
 		// parse
 		InputSource inputSource = new InputSource(fileName);
 		reader.parse(inputSource);
+
+//		try {
+			XMLInputFactory xmlif = XMLInputFactory.newInstance();
+			System.out.println("FACTORY: " + xmlif);
+			xmlif.setEventAllocator(new XMLEventAllocatorImpl());
+			allocator = xmlif.getEventAllocator();
+			XMLStreamReader xmlr = xmlif.createXMLStreamReader(fileName,
+					new FileInputStream(fileName));
+
+			int eventType = xmlr.getEventType();
+			int state = 0;
+			while (xmlr.hasNext()) {
+				eventType = xmlr.next();
+				// Get all "Book" elements as XMLEvent object
+				switch (state) {
+				case 0:
+					break; // test start state 1
+				case 1:
+					break; // test cycle state 2
+				case 2:
+					break; // test days state 3
+				case 3:
+					break; // test day state 4
+				case 4:
+					break; // test seqs state 5
+				case 5:
+					break; // test period state 6
+				case 6:
+					break; // test in period 7
+				case 7:
+					break; // test end period 8
+				case 8:
+					break; // test end period 7 or end seq 9
+				case 9:
+					break; // test end day 10 or seq
+				case 10:
+					break; // test end cycle 11 or day 3
+				case 11:
+					break; // test en tt
+				}
+				if (eventType == XMLStreamConstants.START_ELEMENT) {// &&
+					// xmlr.getLocalName().equals("Book")){
+					// get immutable XMLEvent
+					StartElement sEvent = getXMLEvent(xmlr).asStartElement();
+					System.out.println("EVENT sE: " + sEvent.toString());
+				}
+				chars(xmlr, eventType);
+				if (eventType == XMLStreamConstants.END_ELEMENT) {// &&
+					// xmlr.getLocalName().equals("Book")){
+					// get immutable XMLEvent
+					EndElement eEvent = getXMLEvent(xmlr).asEndElement();
+					System.out.println("EVENT eE: " + eEvent.toString());
+				}
+
+			}
+
+//		} catch (XMLStreamException ex) {
+//			ex.printStackTrace();
+//		} catch (Exception ex) {
+//			ex.printStackTrace();
+//		}
 	}
+
+	private String getSchemaFileName() {
+		String fullClassName = DxTTStructure.class.getCanonicalName();
+		String SimpleName = DxTTStructure.class.getSimpleName();
+		String str1 = fullClassName.replace('.', File.separatorChar);
+		int i = fullClassName.indexOf(SimpleName);
+		String middle = str1.substring(0, i - 1);
+
+//		String str = "file:./" + middle + "/DxTimetable.xsd";
+		return "file:./" + middle + "/DxTimetable.xsd";
+	}
+
+	/**
+	 * @param xmlr
+	 * @param eventType
+	 * @throws XMLStreamException
+	 */
+	private static void chars(XMLStreamReader xmlr, int eventType)
+			throws XMLStreamException {
+		if (eventType == XMLStreamConstants.CHARACTERS) {// &&
+			// xmlr.getLocalName().equals("Book")){
+			// get immutable XMLEvent
+			Characters chars = getXMLEvent(xmlr).asCharacters();
+			if (chars.toString() != "")
+				System.out.println("EVENT c: " + chars);
+		}
+	}
+
+	/**
+	 * Get the immutable XMLEvent from given XMLStreamReader using
+	 * XMLEventAllocator
+	 */
+	private static XMLEvent getXMLEvent(XMLStreamReader reader)
+			throws XMLStreamException {
+		return allocator.allocate(reader);
+	}
+
 	//
 	// public int getNumberOfActiveDays() {
 	// return _numberOfDays;
@@ -277,7 +335,6 @@ public class DxTTStructure extends Observable {
 	// }
 	// }// end of CreateStandardTT method
 	//
-
 
 	//
 	// /**
@@ -616,43 +673,44 @@ public class DxTTStructure extends Observable {
 	// .getAttach();
 	// String[] sReturn = new String[cTemp.getNumberOfDays()];
 	// for (int i = 0; i < cTemp.getNumberOfDays(); i++) {
-	//			sReturn[i] = new String(cTemp.getSetOfDays().getResourceAt(i)
-	//					.getID());
-	//		}
-	//		return sReturn;
-	//	}
+	// sReturn[i] = new String(cTemp.getSetOfDays().getResourceAt(i)
+	// .getID());
+	// }
+	// return sReturn;
+	// }
 	//
-	//	public void changeInTTStructure(Object obj) {
-	//		this.setModified();
-	//		this.setChanged();
-	//		this.notifyObservers(obj);
-	//		this.clearChanged();
-	//	}
+	// public void changeInTTStructure(Object obj) {
+	// this.setModified();
+	// this.setChanged();
+	// this.notifyObservers(obj);
+	// this.clearChanged();
+	// }
 	//
-	//	public boolean isModified() {
-	//		return _modified;
-	//	}
+	// public boolean isModified() {
+	// return _modified;
+	// }
 	//
-	//	/**
-	//	 * 
-	//	 * @return
-	//	 */
-	//	private void setModified() {
-	//		_modified = true;
-	//	}
+	// /**
+	// *
+	// * @return
+	// */
+	// private void setModified() {
+	// _modified = true;
+	// }
 	public String toString() {
 		StringBuffer sb = new StringBuffer();
-		
+
 		sb.append("TTStructure");
-		
+
 		return sb.toString();
 	}
+
 	public static void main(String[] args) {
 		System.out.println("hi!");
 		String RESOURCES_FOLDER = "pref";
 		DxTTStructure tts = new DxTTStructure();
 		try {
-			tts.loadTTSFromFile(RESOURCES_FOLDER + "/ntest.xml" ); //"/StandardTTE.xml");
+			tts.loadTTSFromFile(RESOURCES_FOLDER + "/ntest.xml"); // "/StandardTTE.xml");
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -665,12 +723,15 @@ public class DxTTStructure extends Observable {
 		} catch (SAXException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (XMLStreamException ex) {
+			// TODO Auto-generated catch block
+			ex.printStackTrace();
+
 		}
-		
-		System.out.println(tts.toString());	
+
+		System.out.println(tts.toString());
 		System.out.println("bye");
 		System.exit(0);
-	} //end main
-
+	} // end main
 
 } // end TTStructure

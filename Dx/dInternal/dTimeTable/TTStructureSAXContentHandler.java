@@ -144,9 +144,11 @@ public class TTStructureSAXContentHandler implements ContentHandler {
 		} 
 		if (localName.equals("periodID")) {
 			//avoid warning
-		} else {
-			throw new SAXException("Unknown element in XML ttStructure");
-		}
+		} 
+//		else {
+//			System.out.println(localName.toString());
+//			throw new SAXException("Unknown element in XML ttStructure " + localName.toString() );
+//		}
 	}
 
 

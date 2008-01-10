@@ -7,6 +7,6 @@
 	<classpathentry kind="lib" path="jars/xml-apis.jar"/>
 	<classpathentry kind="lib" path="jars/junit.jar"/>
 	<classpathentry kind="lib" path="jars/xercesImpl.jar"/>
-	<classpathentry kind="lib" path="D:/_exitDev/exitProjects/DiamantExtreme/Dx/jars/sjsxp.jar"/>
+	<classpathentry kind="lib" path="jars/sjsxp.jar"/>
 	<classpathentry kind="output" path="DiamantClasses"/>
 </classpath>
