@@ -30,7 +30,7 @@ import dTest.dInternal.dData.dInstructors.DxInstructorsReaderTest;
 import dTest.dInternal.dOptimizationTest.ConditionsTest;
 import dTest.dInternal.dOptimizationTest.DxAssignAllAlgTest;
 import dTest.dInternal.dOptimizationTest.RoomsConditionsTest;
-import dTest.dInternal.dOptimizationTest.SetOfEventsTest;
+import dTest.dInternal.dOptimizationTest.SetOfEventsTest;   
 import developer.DxFlags;
 import eTest.ByteInputFileTest;
 import eTest.ByteOutputFileTest;

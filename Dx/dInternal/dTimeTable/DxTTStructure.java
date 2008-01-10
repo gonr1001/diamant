@@ -27,6 +27,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.Observable;
 
+import javax.xml.stream.FactoryConfigurationError;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
@@ -38,9 +39,11 @@ import javax.xml.stream.events.XMLEvent;
 import javax.xml.stream.util.XMLEventAllocator;
 
 import org.xml.sax.EntityResolver;
-import org.xml.sax.ErrorHandler;
+import org.xml.sax.ErrorHandler; // import org.xml.sax.InputSource;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
+import org.xml.sax.SAXNotRecognizedException;
+import org.xml.sax.SAXNotSupportedException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
 
@@ -49,6 +52,8 @@ import com.sun.xml.stream.events.XMLEventAllocatorImpl;
 public class DxTTStructure extends Observable {
 
 	private static XMLEventAllocator allocator = null;
+
+	private static String SAX_PARSER = "org.apache.xerces.parsers.SAXParser";
 
 	private static String FILE = "file:." + File.separator;
 
@@ -63,6 +68,12 @@ public class DxTTStructure extends Observable {
 
 	public static String VALIDATION_SCHEMA_FULL = "http://apache.org/xml/features/validation/schema-full-checking";
 
+	public static String EXTERNAL_SCHEMA_LOCATION = "http://apache.org/xml/properties/schema/external-schemaLocation";
+
+	public static String D_INC = "http://www.dInc.com "; 
+	// last space in D_INC is important!!!
+	public static String NO_NAMESPACE = "http://apache.org/xml/properties/schema/external-noNamespaceSchemaLocation";
+
 	/**
 	 * it loads the time table structure
 	 * 
@@ -75,12 +86,15 @@ public class DxTTStructure extends Observable {
 			MalformedURLException, IOException, SAXException,
 			XMLStreamException {
 
-		String schemaFileName = getSchemaFileName();
-		System.out.println(schemaFileName);
+		validateFile(fileName);
+		parse(fileName);
+	}
 
-		// Create instances needed for parsing
-		XMLReader reader = XMLReaderFactory
-				.createXMLReader("org.apache.xerces.parsers.SAXParser");
+	private void validateFile(String fileName) throws SAXException,
+			SAXNotRecognizedException, SAXNotSupportedException, IOException {
+
+		// Create instances needed for validate
+		XMLReader reader = XMLReaderFactory.createXMLReader(SAX_PARSER);
 		TTStructureSAXContentHandler ttsContentHandler = new TTStructureSAXContentHandler(
 				this);
 		ErrorHandler ttsErrorHandler = new TTStructureSAXErrorHandler();
@@ -89,34 +103,25 @@ public class DxTTStructure extends Observable {
 		reader.setContentHandler(ttsContentHandler);
 		reader.setErrorHandler(ttsErrorHandler);
 		reader.setEntityResolver(eResolver);
-		// reader.setFeature
-		// ("http://xml.org/sax/features/namespaces", true);
-		// reader.setValidating(true);
+
 		// Turn on validation
 		reader.setFeature(VALIDATION, true);
 		reader.setFeature(VALIDATION_SCHEMA, true);
 		reader.setFeature(VALIDATION_SCHEMA_FULL, true);
-		reader
-				.setProperty(
-						"http://apache.org/xml/properties/schema/external-schemaLocation",
-						"http://www.exemple.com file:./dInternal/dTimeTable/DxTimeTable.xsd");
-		reader
-				.setProperty(
-						"http://apache.org/xml/properties/schema/external-noNamespaceSchemaLocation",
-						"file:./dInternal/dTimeTable/DxTimeTable.xsd");
-		reader
-				.setProperty(
-						"http://apache.org/xml/properties/schema/external-schemaLocation",
-						"http://www.exemple.com " + FILE + schemaFileName);
-		reader
-				.setProperty(
-						"http://apache.org/xml/properties/schema/external-noNamespaceSchemaLocation",
-						FILE + schemaFileName);
-		// parse
-		InputSource inputSource = new InputSource(fileName);
-		reader.parse(inputSource);
 
-		//		try {
+		String schemaFileName = getSchemaFileName();
+		System.out.println(schemaFileName);
+		reader.setProperty(EXTERNAL_SCHEMA_LOCATION, D_INC + FILE
+				+ schemaFileName);
+		reader.setProperty(NO_NAMESPACE, FILE + schemaFileName);
+		// // parse
+		// InputSource inputSource = new InputSource(fileName);
+		// reader.parse(inputSource);
+	}
+
+	private void parse(String fileName) throws FactoryConfigurationError,
+			XMLStreamException, FileNotFoundException {
+		// try {
 		XMLInputFactory xmlif = XMLInputFactory.newInstance();
 		System.out.println("FACTORY: " + xmlif);
 		xmlif.setEventAllocator(new XMLEventAllocatorImpl());
@@ -171,11 +176,11 @@ public class DxTTStructure extends Observable {
 
 		}
 
-		//		} catch (XMLStreamException ex) {
-		//			ex.printStackTrace();
-		//		} catch (Exception ex) {
-		//			ex.printStackTrace();
-		//		}
+		// } catch (XMLStreamException ex) {
+		// ex.printStackTrace();
+		// } catch (Exception ex) {
+		// ex.printStackTrace();
+		// }
 	}
 
 	/**
@@ -184,7 +189,7 @@ public class DxTTStructure extends Observable {
 	 * @return String SchemaFileName
 	 */
 
-	private String getSchemaFileName() {
+	protected String getSchemaFileName() {
 		String fullClassName = DxTTStructure.class.getCanonicalName();
 		String SimpleName = DxTTStructure.class.getSimpleName();
 		fullClassName = fullClassName.replace('.', File.separatorChar);

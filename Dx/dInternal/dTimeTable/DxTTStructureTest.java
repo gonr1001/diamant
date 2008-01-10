@@ -20,7 +20,7 @@
 
 package dInternal.dTimeTable;
 
-
+import java.io.File;
 import java.io.FileNotFoundException;
 
 import org.xml.sax.SAXException;
@@ -32,6 +32,7 @@ import junit.framework.TestSuite;
 
 public class DxTTStructureTest extends TestCase {
 	private String _path;
+
 	/**
 	 * 
 	 */
@@ -39,7 +40,7 @@ public class DxTTStructureTest extends TestCase {
 		super(name);
 		_path = buildPathName();
 	}
-		
+
 	public static Test suite() {
 		// the type safe way is in SimpleTest
 		// the dynamic way :
@@ -58,7 +59,15 @@ public class DxTTStructureTest extends TestCase {
 			assertFalse(true);
 		}
 	}
-	
+
+	public void test_getSchemaFileName() {
+		DxTTStructure dxTTS = new DxTTStructure();
+		assertEquals("test_getSchemaFileName: equals", dxTTS
+				.getSchemaFileName(), "dInternal" + File.separator
+				+ "dTimeTable" + File.separator + "schemas" + File.separator
+				+ "DxTimetable.xsd");
+	}
+
 	public void test_fileNoCloseTag() {
 		DxTTStructure dxTTS = new DxTTStructure();
 		try {
@@ -71,7 +80,7 @@ public class DxTTStructureTest extends TestCase {
 			assertFalse(true);
 		}
 	}
-	
+
 	public void test_fileNoOpenTag() {
 		DxTTStructure dxTTS = new DxTTStructure();
 		try {
@@ -84,14 +93,14 @@ public class DxTTStructureTest extends TestCase {
 			assertFalse(true);
 		}
 	}
-		
+
 	private String buildPathName() {
-//		StringBuffer path = new StringBuffer(OConstant.ROOT_DIR);
-//		path.append(File.separator);
-//		path.append(OConstant.FILE_TESTS_DATA);
-//		path.append(File.separator);
-//		return path.toString();
-		return "";     
+		// StringBuffer path = new StringBuffer(OConstant.ROOT_DIR);
+		// path.append(File.separator);
+		// path.append(OConstant.FILE_TESTS_DATA);
+		// path.append(File.separator);
+		// return path.toString();
+		return "";
 	}
 
 }
