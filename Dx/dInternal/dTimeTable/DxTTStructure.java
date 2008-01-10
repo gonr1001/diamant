@@ -86,38 +86,39 @@ public class DxTTStructure extends Observable {
 			MalformedURLException, IOException, SAXException,
 			XMLStreamException {
 
-		validateFile(fileName);
+		//validateFile(fileName);
 		parse(fileName);
 	}
 
-	private void validateFile(String fileName) throws SAXException,
-			SAXNotRecognizedException, SAXNotSupportedException, IOException {
-
-		// Create instances needed for validate
-		XMLReader reader = XMLReaderFactory.createXMLReader(SAX_PARSER);
-		TTStructureSAXContentHandler ttsContentHandler = new TTStructureSAXContentHandler(
-				this);
-		ErrorHandler ttsErrorHandler = new TTStructureSAXErrorHandler();
-		EntityResolver eResolver = new TTStructureEntitySolver();
-		// Register handlers
-		reader.setContentHandler(ttsContentHandler);
-		reader.setErrorHandler(ttsErrorHandler);
-		reader.setEntityResolver(eResolver);
-
-		// Turn on validation
-		reader.setFeature(VALIDATION, true);
-		reader.setFeature(VALIDATION_SCHEMA, true);
-		reader.setFeature(VALIDATION_SCHEMA_FULL, true);
-
-		String schemaFileName = getSchemaFileName();
-		System.out.println(schemaFileName);
-		reader.setProperty(EXTERNAL_SCHEMA_LOCATION, D_INC + FILE
-				+ schemaFileName);
-		reader.setProperty(NO_NAMESPACE, FILE + schemaFileName);
-		// // parse
-		// InputSource inputSource = new InputSource(fileName);
-		// reader.parse(inputSource);
-	}
+//	private void validateFile(String fileName) throws SAXException,
+//			SAXNotRecognizedException, SAXNotSupportedException, IOException {
+//
+//		// Create instances needed for validate
+//		XMLReader reader = XMLReaderFactory.createXMLReader(SAX_PARSER);
+//		TTStructureSAXContentHandler ttsContentHandler = new TTStructureSAXContentHandler(
+//				this);
+//		ErrorHandler ttsErrorHandler = new TTStructureSAXErrorHandler();
+//		EntityResolver eResolver = new TTStructureEntitySolver();
+//		// Register handlers
+//		reader.setContentHandler(ttsContentHandler);
+//		reader.setErrorHandler(ttsErrorHandler);
+//		reader.setEntityResolver(eResolver);
+//
+//		// Turn on validation
+//		reader.setFeature(VALIDATION, true);
+//		reader.setFeature(VALIDATION_SCHEMA, true);
+//		reader.setFeature(VALIDATION_SCHEMA_FULL, true);
+//
+//		String schemaFileName = getSchemaFileName();
+//		System.out.println(schemaFileName);
+//		reader.setProperty(EXTERNAL_SCHEMA_LOCATION, D_INC + FILE
+//				+ schemaFileName);
+//		reader.setProperty(NO_NAMESPACE, FILE + schemaFileName);
+//		
+//		 @SuppressWarnings("unused")
+//		InputSource inputSource = new InputSource(fileName);
+//		// reader.parse(inputSource);
+//	}
 
 	private void parse(String fileName) throws FactoryConfigurationError,
 			XMLStreamException, FileNotFoundException {
