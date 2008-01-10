@@ -47,9 +47,14 @@ import org.xml.sax.helpers.XMLReaderFactory;
 import com.sun.xml.stream.events.XMLEventAllocatorImpl;
 
 public class DxTTStructure extends Observable {
-	
-	static XMLEventAllocator allocator = null;
-	
+
+	private static XMLEventAllocator allocator = null;
+
+	private static String FILE = "file:." + File.separator;
+
+	private static String DXTTSTRUCTURE_SCHEMA_2_dot_2 = File.separator
+			+ "schemas" + File.separator + "DxTimetable.xsd";
+
 	public static String XML_HEADER = "?xml version=\"1.0\" encoding=\"UTF-8\" ?";
 
 	public static String VALIDATION = "http://xml.org/sax/features/validation";
@@ -67,12 +72,12 @@ public class DxTTStructure extends Observable {
 	 */
 
 	public void loadTTSFromFile(String fileName) throws FileNotFoundException,
-			MalformedURLException, IOException, SAXException, XMLStreamException {
+			MalformedURLException, IOException, SAXException,
+			XMLStreamException {
 
 		String schemaFileName = getSchemaFileName();
 		System.out.println(schemaFileName);
-		System.out.println(System
-				.getProperty("java org.apache.xerces.impl.Version"));
+
 		// Create instances needed for parsing
 		XMLReader reader = XMLReaderFactory
 				.createXMLReader("org.apache.xerces.parsers.SAXParser");
@@ -102,86 +107,90 @@ public class DxTTStructure extends Observable {
 		reader
 				.setProperty(
 						"http://apache.org/xml/properties/schema/external-schemaLocation",
-						"http://www.exemple.com " + schemaFileName);
+						"http://www.exemple.com " + FILE + schemaFileName);
 		reader
 				.setProperty(
 						"http://apache.org/xml/properties/schema/external-noNamespaceSchemaLocation",
-						schemaFileName);
+						FILE + schemaFileName);
 		// parse
 		InputSource inputSource = new InputSource(fileName);
 		reader.parse(inputSource);
 
-//		try {
-			XMLInputFactory xmlif = XMLInputFactory.newInstance();
-			System.out.println("FACTORY: " + xmlif);
-			xmlif.setEventAllocator(new XMLEventAllocatorImpl());
-			allocator = xmlif.getEventAllocator();
-			XMLStreamReader xmlr = xmlif.createXMLStreamReader(fileName,
-					new FileInputStream(fileName));
+		//		try {
+		XMLInputFactory xmlif = XMLInputFactory.newInstance();
+		System.out.println("FACTORY: " + xmlif);
+		xmlif.setEventAllocator(new XMLEventAllocatorImpl());
+		allocator = xmlif.getEventAllocator();
+		XMLStreamReader xmlr = xmlif.createXMLStreamReader(fileName,
+				new FileInputStream(fileName));
 
-			int eventType = xmlr.getEventType();
-			int state = 0;
-			while (xmlr.hasNext()) {
-				eventType = xmlr.next();
-				// Get all "Book" elements as XMLEvent object
-				switch (state) {
-				case 0:
-					break; // test start state 1
-				case 1:
-					break; // test cycle state 2
-				case 2:
-					break; // test days state 3
-				case 3:
-					break; // test day state 4
-				case 4:
-					break; // test seqs state 5
-				case 5:
-					break; // test period state 6
-				case 6:
-					break; // test in period 7
-				case 7:
-					break; // test end period 8
-				case 8:
-					break; // test end period 7 or end seq 9
-				case 9:
-					break; // test end day 10 or seq
-				case 10:
-					break; // test end cycle 11 or day 3
-				case 11:
-					break; // test en tt
-				}
-				if (eventType == XMLStreamConstants.START_ELEMENT) {// &&
-					// xmlr.getLocalName().equals("Book")){
-					// get immutable XMLEvent
-					StartElement sEvent = getXMLEvent(xmlr).asStartElement();
-					System.out.println("EVENT sE: " + sEvent.toString());
-				}
-				chars(xmlr, eventType);
-				if (eventType == XMLStreamConstants.END_ELEMENT) {// &&
-					// xmlr.getLocalName().equals("Book")){
-					// get immutable XMLEvent
-					EndElement eEvent = getXMLEvent(xmlr).asEndElement();
-					System.out.println("EVENT eE: " + eEvent.toString());
-				}
-
+		int eventType = xmlr.getEventType();
+		int state = 0;
+		while (xmlr.hasNext()) {
+			eventType = xmlr.next();
+			// Get all "Book" elements as XMLEvent object
+			switch (state) {
+			case 0:
+				break; // test start state 1
+			case 1:
+				break; // test cycle state 2
+			case 2:
+				break; // test days state 3
+			case 3:
+				break; // test day state 4
+			case 4:
+				break; // test seqs state 5
+			case 5:
+				break; // test period state 6
+			case 6:
+				break; // test in period 7
+			case 7:
+				break; // test end period 8
+			case 8:
+				break; // test end period 7 or end seq 9
+			case 9:
+				break; // test end day 10 or seq
+			case 10:
+				break; // test end cycle 11 or day 3
+			case 11:
+				break; // test en tt
+			}
+			if (eventType == XMLStreamConstants.START_ELEMENT) {// &&
+				// xmlr.getLocalName().equals("Book")){
+				// get immutable XMLEvent
+				StartElement sEvent = getXMLEvent(xmlr).asStartElement();
+				System.out.println("EVENT sE: " + sEvent.toString());
+			}
+			chars(xmlr, eventType);
+			if (eventType == XMLStreamConstants.END_ELEMENT) {// &&
+				// xmlr.getLocalName().equals("Book")){
+				// get immutable XMLEvent
+				EndElement eEvent = getXMLEvent(xmlr).asEndElement();
+				System.out.println("EVENT eE: " + eEvent.toString());
 			}
 
-//		} catch (XMLStreamException ex) {
-//			ex.printStackTrace();
-//		} catch (Exception ex) {
-//			ex.printStackTrace();
-//		}
+		}
+
+		//		} catch (XMLStreamException ex) {
+		//			ex.printStackTrace();
+		//		} catch (Exception ex) {
+		//			ex.printStackTrace();
+		//		}
 	}
+
+	/**
+	 * it produces the SchemaFileName which is in the package
+	 * 
+	 * @return String SchemaFileName
+	 */
 
 	private String getSchemaFileName() {
 		String fullClassName = DxTTStructure.class.getCanonicalName();
 		String SimpleName = DxTTStructure.class.getSimpleName();
-		String str1 = fullClassName.replace('.', File.separatorChar);
+		fullClassName = fullClassName.replace('.', File.separatorChar);
 		int i = fullClassName.indexOf(SimpleName);
-		String middle = str1.substring(0, i - 1);
-
-//		String str = "file:./" + middle + "/DxTimetable.xsd";
-		return "file:./" + middle + "/DxTimetable.xsd";
+		String str = fullClassName.substring(0, i - 1);
+		return str + DXTTSTRUCTURE_SCHEMA_2_dot_2;
 	}
 
 	/**

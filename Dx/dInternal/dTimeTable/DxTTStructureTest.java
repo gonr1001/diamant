@@ -1,5 +1,5 @@
 /**
- * Created on 17-Dec-07
+ * Created on 10-Jan-08
  * 
  * 
  * Title: DxTTStructureTest.java
@@ -18,7 +18,8 @@
  * 
  */
 
-package dTest.dInternal.dTimeTable;
+package dInternal.dTimeTable;
+
 
 import java.io.FileNotFoundException;
 
