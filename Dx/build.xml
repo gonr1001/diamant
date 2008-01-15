@@ -64,6 +64,7 @@
 			<pathelement path="${localJars}/log4j-1.2.8.jar" />
 			<pathelement path="${localJars}/xml-api.jar" />
 			<pathelement path="${localJars}/jdom.jar" />
+			<pathelement path="${localJars}/sjsxp.jar" />
 			<pathelement path="${build}"/>
 		</path>
 	</target>
@@ -95,6 +96,7 @@
 			<pathelement path="${localJars}/log4j-1.2.8.jar" />
 			<pathelement path="${localJars}/xml-api.jar" />
 			<pathelement path="${localJars}/jdom.jar" />
+			<pathelement path="${localJars}/sjsxp.jar" />
 			<pathelement path="${dataTest}" />
 			<pathelement path="${build}" />
 		</path>
@@ -131,6 +133,9 @@
 	</target>
 	<target name="unjar4" depends="unjar3">
 		<unjar src="${localJars}/jdom.jar" dest="${build}" />
+	</target>
+	<target name="unjar5" depends="unjar4">
+		<unjar src="${localJars}/sjsxp.jar" dest="${build}" />
 	</target>
 	<target name="manifest" depends="unjar4" description="make the manifest">
 		<manifest file="${srcDir}/MANIFEST.MF">

@@ -27,12 +27,12 @@ public class DConst {
 
 	static ResourceBundle res = ResourceBundle.getBundle("dConstants.DStringFrRes");
 
-  	public final static String V_DATE = "v 2.1.11 20 nov 07";
+  	public final static String V_DATE = "v 2.2.0 14 jan 08";
   	/** The number format for Hours **/
     public final static NumberFormat HourFormat = NumberFormat.getIntegerInstance();
 
 	public final static String JVM = "1.6.0_03"; 
-//	public final static String JVM = "1.5.4_01";
+
 	public final static String INCORRECT_JVM = res.getString("incorrect_JVM");
 	
 	public final static String FILE_VER_NAME1_5 = res.getString("fileVerName1_5"); // "Diamant1.5" 
