@@ -19,6 +19,8 @@
 
 package dInternal.dData;
 
+import java.io.File;
+
 import dConstants.DConst;
 
 import dInternal.dData.dRooms.DxSetOfSites;
@@ -29,7 +31,6 @@ import dInternal.dData.dInstructors.DxSetOfInstructors;
 import dInternal.dData.dStudents.SetOfStuSites;
 
 import dInternal.dTimeTable.TTStructure;
-import dInternal.dUtil.DXToolsMethods;
 import eLib.exit.txt.FilterFile;
 
 public class DSaveData {
@@ -69,8 +70,7 @@ public class DSaveData {
 		tts.saveTTStructure(locaFileName + DConst.DOT_XML);
 		String diaData = _version + DConst.CR_LF;
 		diaData += DConst.SAVE_SEPARATOR + DConst.CR_LF;
-		diaData += DXToolsMethods
-				.getRelativeFileName(fileName + DConst.DOT_XML).trim()
+		diaData += getRelativeFileName(locaFileName + DConst.DOT_XML).trim()
 				+ DConst.CR_LF;
 		diaData += DConst.SAVE_SEPARATOR + DConst.CR_LF;
 		diaData += inst.size() + DConst.CR_LF;
@@ -86,7 +86,7 @@ public class DSaveData {
 		diaData += students.toWrite() + DConst.CR_LF;
 		diaData += DConst.SAVE_SEPARATOR;
 		filter = new FilterFile(diaData.getBytes(), "");
-		filter.saveFile(fileName + DConst.DOT_DIA);
+		filter.saveFile(locaFileName + DConst.DOT_DIA);
 		return error;
 	} //end saveTimeTable
 	
@@ -108,8 +108,7 @@ public class DSaveData {
 		tts.saveTTStructure(locaFileName + DConst.DOT_XML);
 		String diaData = _version + DConst.CR_LF;
 		diaData += DConst.SAVE_SEPARATOR + DConst.CR_LF;
-		diaData += DXToolsMethods
-				.getRelativeFileName(fileName + DConst.DOT_XML).trim()
+		diaData += getRelativeFileName(locaFileName + DConst.DOT_XML).trim()
 				+ DConst.CR_LF;
 		diaData += DConst.SAVE_SEPARATOR + DConst.CR_LF;
 		diaData += inst.size() + DConst.CR_LF;
@@ -125,7 +124,7 @@ public class DSaveData {
 		diaData += students.toWrite() + DConst.CR_LF;
 		diaData += DConst.SAVE_SEPARATOR;
 		filter = new FilterFile(diaData.getBytes(), "");
-		filter.saveFile(fileName + DConst.DOT_DIA);
+		filter.saveFile(locaFileName + DConst.DOT_DIA);
 		return error;
 	} //end saveTimeTable
 	
@@ -144,8 +143,7 @@ public class DSaveData {
 		tts.saveTTStructure(locaFileName + DConst.DOT_XML);
 		String diaData = _version + DConst.CR_LF;
 		diaData += DConst.SAVE_SEPARATOR + DConst.CR_LF;
-		diaData += DXToolsMethods
-				.getRelativeFileName(locaFileName + DConst.DOT_XML).trim()
+		diaData += getRelativeFileName(locaFileName + DConst.DOT_XML).trim()
 				+ DConst.CR_LF;
 		diaData += DConst.SAVE_SEPARATOR + DConst.CR_LF;
 		diaData += inst.size() + DConst.CR_LF;
@@ -161,7 +159,7 @@ public class DSaveData {
 		diaData += students.toWrite() + DConst.CR_LF;
 		diaData += DConst.SAVE_SEPARATOR;
 		filter = new FilterFile(diaData.getBytes(), "");
-		filter.saveFile(fileName + DConst.DOT_DIA);
+		filter.saveFile(locaFileName + DConst.DOT_DIA);
 		return error;
 	} //end saveTimeTable
 	
@@ -180,8 +178,7 @@ public class DSaveData {
 		tts.saveTTStructure(locaFileName + DConst.DOT_XML);
 		String diaData = _version + DConst.CR_LF;
 		diaData += DConst.SAVE_SEPARATOR + DConst.CR_LF;
-		diaData += DXToolsMethods
-				.getRelativeFileName(fileName + DConst.DOT_XML).trim()
+		diaData += getRelativeFileName(locaFileName + DConst.DOT_XML).trim()
 				+ DConst.CR_LF;
 		diaData += DConst.SAVE_SEPARATOR + DConst.CR_LF;
 		diaData += inst.size() + DConst.CR_LF;
@@ -197,9 +194,21 @@ public class DSaveData {
 		diaData += students.toWrite() + DConst.CR_LF;
 		diaData += DConst.SAVE_SEPARATOR;
 		filter = new FilterFile(diaData.getBytes(), "");
-		filter.saveFile(fileName + DConst.DOT_DIA);
+		filter.saveFile(locaFileName + DConst.DOT_DIA);
 		return error;
 	} //end saveTimeTable
+	
+	/**
+	 * give the relative path of a file
+	 * Exemple:
+	 * input of an absolute path is c:\developpement\DiaExtreme\DX\data\fgen\ete04.dia
+	 * the operation return: ete04.dia
+	 * @param str
+	 * @return
+	 */
+	private String getRelativeFileName(String str) {
+		return str.substring(str.lastIndexOf(File.separator) + 1, str.length());
+	} // end getRelativeFileName
 	
 	/**
 	 *
