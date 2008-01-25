@@ -152,14 +152,18 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		if (command.equals(ACTION_CB_ROOM)) {
 			actionCBRooms();
 		}
+		
+//		if (command.equals(DConst.STATE_AC)) {
+//			_applyPanel.setFirstEnable();
+//		}
 		if (command.equals(DConst.BUT_CLOSE)) {
 			dispose();
 		} 
 		if (command.equals(DConst.BUT_APPLY)) {
 			actionApply();
 		} 
-		if (/*command.equals("comboBoxChanged")
-				||*/ command.equals(DConst.BUT_PLACE)
+		if (command.equals("comboBoxChanged")
+				|| command.equals(DConst.BUT_PLACE)
 				|| command.equals(DConst.BUT_FIGE)) {
 			_applyPanel.setFirstEnable();
 		} 
@@ -168,6 +172,9 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		}
 	}
 
+	
+
+	
 	/**
 	 * 
 	 */
@@ -195,7 +202,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 			_dModel.changeInDModelByEditActivityDlg(this);
 		}
 	}
-
+	
 	/**
 	 * 
 	 */
