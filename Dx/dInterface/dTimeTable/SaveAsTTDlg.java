@@ -1,6 +1,6 @@
 /**
  *
- * Title: SaveAsTTDlg $Revision: 1.21 $  $Date: 2007-03-16 22:16:18 $
+ * Title: SaveAsTTDlg $Revision: 1.22 $  $Date: 2008-01-25 19:50:25 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.21 $
+ * @version $Revision: 1.22 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -52,13 +52,13 @@ public class SaveAsTTDlg extends SaveAsDlg {
 		saveAs(null, false); // no data, no report
 	} // end constructor
 
-	public void addInNewFile(String currentFile) {// , String data) {
+	public void addInNewFile(String currentFile) {
 		String error = _dApplic.saveCurrentDxDoc(currentFile);
 		if (error != "")
 			new DxExceptionDlg(error);
 	}
 
-	public void doSave(String fileName) { // . String str) {
+	public void doSave(String fileName) { 
 		String error = "";
 		error = _dApplic.saveCurrentDxDoc(fileName);
 		if (error.length() == 0)

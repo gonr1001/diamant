@@ -2,7 +2,7 @@ package dTest.dInternal.dData;
 
 /**
  *
- * Title: DSaveDataTest $Revision $  $Date: 2007-05-04 19:12:34 $
+ * Title: DSaveDataTest $Revision $  $Date: 2008-01-25 19:50:31 $
  * Description: DSaveDataTest is a class used to test the class 
  *              DSaveData
  *
@@ -42,7 +42,7 @@ public class DSaveDataTest extends TestCase {
 	DxDocument _dxDocument1;
 
 	DxDocument _dxDocument2;
-	
+
 	String _fileName1; // to read
 
 	String _fileName2; // to write and read
@@ -75,25 +75,23 @@ public class DSaveDataTest extends TestCase {
 				+ "downDataTTS.dia";
 		_type = 1;
 		try {
-				_dm1 = new DModel(_dxDocument1, _fileName1);
+			_dm1 = new DModel(_dxDocument1, _fileName1);
 		} catch (Exception e) {
-			System.out.println("Abnormal Exception: Should not fail in normal conditions");
+			System.out
+					.println("Abnormal Exception: Should not fail in normal conditions");
 		}
-//		if (DxFlags.newRooms) {
-			_error = _a.saveTimeTable(_dm1.getTTStructure(), _dm1
-					.getDxSetOfInstructors(), _dm1.getDxSetOfSites(), _dm1
-					.getSetOfActivitiesSites(), _dm1.getSetOfStuSites(),
-					_fileName2);
-//		} else {
-//			_error = _a.saveTimeTable(_dm1.getTTStructure(), _dm1
-//					.getDxSetOfInstructors(), _dm1.getSetOfSites(), _dm1
-//					.getSetOfActivitiesSites(), _dm1.getSetOfStuSites(),
-//					_fileName2);
-//		}
+
+		_error = _a
+				.saveTimeTable(_dm1.getTTStructure(), _dm1  
+						.getDxSetOfInstructors(), _dm1.getDxSetOfSites(), _dm1
+						.getSetOfActivitiesSites(), _dm1.getSetOfStuSites(),
+						_fileName2);
+
 		try {
-				_dm2 = new DModel(_dxDocument2, _fileName2);
+			_dm2 = new DModel(_dxDocument2, _fileName2);
 		} catch (Exception e) {
-			System.out.println("Abnormal Exception: Should not fail in normal conditions");
+			System.out
+					.println("Abnormal Exception: Should not fail in normal conditions");
 		}
 	}
 
@@ -130,13 +128,13 @@ public class DSaveDataTest extends TestCase {
 	 * test that check that the saved file is the same as the loaded file
 	 */
 	public void test_loadRooms() {
-//		if (DxFlags.newRooms) {
-			assertEquals("test4_saveTimeTable: assertEquals ", true, _dm1
-					.getDxSetOfSites().isEqual(_dm2.getDxSetOfSites()));
-//		} else {
-//			assertEquals("test4_saveTimeTable: assertEquals ", true, _dm1
-//					.getSetOfSites().isEquals(_dm2.getSetOfSites()));
-//		}
+		// if (DxFlags.newRooms) {
+		assertEquals("test4_saveTimeTable: assertEquals ", true, _dm1
+				.getDxSetOfSites().isEqual(_dm2.getDxSetOfSites()));
+		// } else {
+		// assertEquals("test4_saveTimeTable: assertEquals ", true, _dm1
+		// .getSetOfSites().isEquals(_dm2.getSetOfSites()));
+		// }
 	}
 
 	/**

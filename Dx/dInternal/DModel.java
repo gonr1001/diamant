@@ -885,12 +885,10 @@ public class DModel extends Observable {
 						_dxSetOfSites, _dxsoasSetOfAct, _setOfStuSites,
 						filename);
 			} else
-				// if (DxFlags.newRooms) {
 				error = saveD.saveTimeTable(_ttStruct, _dxSetOfInstructors,
 						_dxSetOfSites, _setOfActivitiesSites, _setOfStuSites,
 						filename);
 		}
-		// else
 		if (DxFlags.newActivity) {
 			error = saveD.saveTimeTable(_ttStruct, _dxSetOfInstructors,
 					_setOfSites, _dxsoasSetOfAct, _setOfStuSites, filename);
