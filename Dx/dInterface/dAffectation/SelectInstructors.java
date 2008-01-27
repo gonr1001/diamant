@@ -43,6 +43,7 @@ import javax.swing.JPanel;
 import dConstants.DConst;
 import dInterface.DApplication;
 import dInterface.dAssignementDlgs.DxEditEventDlg;
+import dInterface.dAssignementDlgs.EditEventDlg;
 //import dInterface.dAssignementDlgs.EditEventDlg;
 
 import dInterface.dUtil.ButtonsPanel;
@@ -74,6 +75,8 @@ public class SelectInstructors extends JDialog implements ActionListener {
 
 	private Vector<String> _rightVec;
 	private Vector<String> _leftVec;
+
+	private EditEventDlg _eEventDlg;
 
 	// private JList _leftVec;
 
@@ -157,26 +160,26 @@ public class SelectInstructors extends JDialog implements ActionListener {
 		setVisible(true);
 	}
 
-//	public SelectInstructors(EditEventDlg eEventDlg, Vector<String> leftVec,
-//			Vector<String> rightVec) {
-//
-//		super(eEventDlg, DConst.LISTS_INSTRUCTOR_TD, true); // true gives a
-//		// modal Dlg
-//		int FACTOR = 50;
-//		_eEventDlg = eEventDlg;
-//		_leftVec = leftVec;
-//		_rightVec = rightVec;
-//		for (int i = 0; i < _leftVec.size(); i++)
-//			_rightVec.remove(_leftVec.get(i).toString());
-//
-//		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-//		this.setBounds(screenSize.width / 6, screenSize.height / 4,
-//				screenSize.width / 3, screenSize.height / 2 + FACTOR);
-//		initialize();
-//		setLocationRelativeTo(eEventDlg);
-//
-//		setVisible(true);
-//	}
+	public SelectInstructors(EditEventDlg eEventDlg, Vector<String> leftVec,
+			Vector<String> rightVec) {
+
+		super(eEventDlg, DConst.LISTS_INSTRUCTOR_TD, true); // true gives a
+		// modal Dlg
+		int FACTOR = 50;
+		_eEventDlg = eEventDlg;
+		_leftVec = leftVec;
+		_rightVec = rightVec;
+		for (int i = 0; i < _leftVec.size(); i++)
+			_rightVec.remove(_leftVec.get(i).toString());
+
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		this.setBounds(screenSize.width / 6, screenSize.height / 4,
+				screenSize.width / 3, screenSize.height / 2 + FACTOR);
+		initialize();
+		setLocationRelativeTo(eEventDlg);
+
+		setVisible(true);
+	}
 
 	// /*
 	// * Constructeur

@@ -102,7 +102,7 @@ public class DxInstructorAvailabilityDlg extends JDialog implements
 	} // end DxInstructorAvailabilityDlg
 
 	/**
-	 * Component's initialisation and placement.
+	 * Component's initialization and placement.
 	 */
 	private void initialize() {
 		_chooserPanel = new JPanel();
@@ -127,9 +127,9 @@ public class DxInstructorAvailabilityDlg extends JDialog implements
 
 	public void actionPerformed(ActionEvent event) {
 		String command = event.getActionCommand();
-		if (command.equals(DConst.BUT_CLOSE)) { // close
+		if (command.equals(DConst.BUT_CLOSE)) { 
 			dispose();
-		} else if (command.equals(DConst.BUT_APPLY)) { // apply
+		} else if (command.equals(DConst.BUT_APPLY)) {
 			_applyPanel.setFirstDisable();
 			_currentInst = ((DxInstructor) _chooser.getSelectedItem());
 			_currentInst.setAvailability(_currentAvailbility);
@@ -151,7 +151,7 @@ public class DxInstructorAvailabilityDlg extends JDialog implements
 	}
 
 	/**
-	 * combobox item selected
+	 * JComboBox item selected
 	 */
 	public void itemStateChanged(ItemEvent event) {
 		_applyPanel.setFirstDisable();
@@ -188,41 +188,62 @@ public class DxInstructorAvailabilityDlg extends JDialog implements
 		_posVect = new Vector<JToggleButton>();
 		_posVect.setSize((nbOfPeriods + 1) * (nbOfDays + 1));
 		gridPanel.add(new JLabel("")); // top left corner
-		for (int i = 0; i < _days.length; i++)
+		for (int i = 0; i < _days.length; i++){
 			// first line : name of days
 			gridPanel.add(new JLabel(_days[i], SwingConstants.CENTER));
-
+		}
 		_currentAvailbility = _currentInst.getAvailability()
 				.getMatrixAvailability();
 
+		formatGrid(time, nbOfPeriods, nbOfDays, gridPanel);
+		return gridPanel;
+	}
+
+	/**
+	 * @param time
+	 * @param nbOfPeriods
+	 * @param nbOfDays
+	 * @param gridPanel
+	 */
+	private void formatGrid(String[] time, int nbOfPeriods, int nbOfDays,
+			JPanel gridPanel) {
 		for (int j = 0; j < nbOfPeriods; j++) {
 			// first column : the time of the period
 			gridPanel.add(new JLabel(time[j], SwingConstants.RIGHT));
 			// create a button for each day for the period
-			for (int i = 0; i < nbOfDays; i++) {
-				JToggleButton tBut = new JToggleButton();
-				if (_currentAvailbility[i][j] == 1) {
-					Vector<String> assignedSites = _currentInst.getAvailability()
-							.isAssignedInPeriod(i, j, _dmodel.getOtherSites());
-					if (assignedSites.size() != 0) {
-						Color col = this.getGridColor(assignedSites
-								.get(0));
-						if (col == Color.RED || col == Color.BLUE
-								|| col == Color.GREEN) {
-							tBut.setToolTipText(DConst.NOT_DISPO);
-						}
-						tBut.setBackground(col);
-						tBut.setEnabled(false);
-					} else
-						tBut.setSelected(_currentAvailbility[i][j] == 1);
-				}
-				tBut.addActionListener(this);
-				tBut.setPreferredSize(new Dimension(50, 12));
-				gridPanel.add(tBut);// , null);
-				_posVect.setElementAt(tBut, (i * nbOfPeriods) + j);
-			}
+			inFor(nbOfPeriods, nbOfDays, gridPanel, j);
 		}
-		return gridPanel;
+	}
+
+	/**
+	 * @param nbOfPeriods
+	 * @param nbOfDays
+	 * @param gridPanel
+	 * @param j
+	 */
+	private void inFor(int nbOfPeriods, int nbOfDays, JPanel gridPanel, int j) {
+		for (int i = 0; i < nbOfDays; i++) {
+			JToggleButton tBut = new JToggleButton();
+			if (_currentAvailbility[i][j] == 1) {
+				Vector<String> assignedSites = _currentInst.getAvailability()
+						.isAssignedInPeriod(i, j, _dmodel.getOtherSites());
+				if (assignedSites.size() != 0) {
+					Color col = this.getGridColor(assignedSites
+							.get(0));
+					if (col == Color.RED || col == Color.BLUE
+							|| col == Color.GREEN) {
+						tBut.setToolTipText(DConst.NOT_DISPO);
+					}
+					tBut.setBackground(col);
+					tBut.setEnabled(false);
+				} else
+					tBut.setSelected(_currentAvailbility[i][j] == 1);
+			}
+			tBut.addActionListener(this);
+			tBut.setPreferredSize(new Dimension(50, 12));
+			gridPanel.add(tBut);
+			_posVect.setElementAt(tBut, (i * nbOfPeriods) + j);
+		}
 	}
 
 	private Color getGridColor(String site) {

@@ -1,6 +1,6 @@
 /**
  *
- * Title: ConflictsOfAnEventDlg $Revision: 1.12 $  $Date: 2007-11-29 19:00:41 $
+ * Title: ConflictsOfAnEventDlg $Revision: 1.13 $  $Date: 2008-01-27 01:54:27 $
  * Description: ConflictsOfAnEventDlg is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -29,11 +29,13 @@ import dConstants.DConst;
 import dInterface.DToolBar; // import dInterface.dAffectation.EditEventDlg;
 import dInterface.dAffectation.EventsDlgInterface;
 import dInterface.dAssignementDlgs.DxEditEventDlg;
+import dInterface.dAssignementDlgs.EditEventDlg;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.TwoButtonsPanel;
 
 import dInternal.DModel;
 import dInternal.DResource;
+import developer.DxFlags;
 
 public class ConflictsOfAnEventDlg extends EventsDlgInterface {
 	private DModel _dm;
@@ -74,8 +76,15 @@ public class ConflictsOfAnEventDlg extends EventsDlgInterface {
 		if (command.equals(DConst.BUT_CLOSE))
 			dispose();
 		if ((command.equals(DConst.BUT_CHANGE)) && (selectedItems != null)) {
-			new DxEditEventDlg(_jDialog, _dModel, (String) selectedItems[0],
-					false);
+			
+			if(DxFlags.newDxEditEventDlg) {
+				new DxEditEventDlg(_jDialog, _dModel, (String) selectedItems[0],
+						false);
+			} else {
+				new EditEventDlg(_jDialog, _dModel, (String) selectedItems[0],
+						false);
+			}
+
 		}
 	}// end actionPerformed
 

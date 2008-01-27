@@ -147,15 +147,18 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 			actionCbSite();
 		}
 		if (command.equals(ACTION_CB_TYPE)) {
+			_applyPanel.setFirstDisable();
 			actionCBType();
+			_applyPanel.setFirstDisable();
 		}
 		if (command.equals(ACTION_CB_ROOM)) {
 			actionCBRooms();
 		}
 		
-//		if (command.equals(DConst.STATE_AC)) {
-//			_applyPanel.setFirstEnable();
-//		}
+		if (command.equals(DConst.STATE_AC)) {
+			_applyPanel.setFirstEnable();
+		}
+		
 		if (command.equals(DConst.BUT_CLOSE)) {
 			dispose();
 		} 
@@ -167,7 +170,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 				|| command.equals(DConst.BUT_FIGE)) {
 			_applyPanel.setFirstEnable();
 		} 
-		if (command.equals(DConst.BUT_CHANGE)) {// change instructors
+		if (command.equals(DConst.BUT_CHANGE)) {
 			actionInstructors();
 		}
 	}
@@ -264,7 +267,6 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	 * 
 	 */
 	private void actionCBType() {
-		_applyPanel.setFirstDisable();
 		JPanel tpane = (JPanel) _tabbedPane.getSelectedComponent();
 		String sSiteName = getSelectedSite(tpane);
 		String sTypeName = getSelectedType(tpane);
@@ -297,14 +299,13 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		cbRooms.addActionListener(this);
 		cbTypes.addActionListener(this);
 		this.repaint();
-		_applyPanel.setFirstEnable();
 	}
 
 	private void actionCbSite() {
 		_applyPanel.setFirstDisable();
 		//JPanel tpane = (JPanel) _tabbedPane.getSelectedComponent();
 		//String siteName = getSelectedSite(tpane);
-		_applyPanel.setFirstEnable();
+		//_applyPanel.setFirstEnable();
 	}
 
 	/**
