@@ -1,6 +1,6 @@
 /**
  *
- * Title: EditActivityDlg $Revision: 1.4 $  $Date: 2008-01-27 01:54:27 $
+ * Title: EditActivityDlg $Revision: 1.5 $  $Date: 2008-01-27 02:21:36 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -13,7 +13,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -879,11 +879,14 @@ public class EditEventDlg
   private String  getInstructorKeys(ListModel lm){
     String a =  "";
     for (int i = 0 ; i < lm.getSize(); i++) {
-      long key = _dApplic.getCurrentDModel().getDxSetOfInstructors().getResource((String) lm.getElementAt(i)).getKey();
+      long key = _dm.getDxSetOfInstructors().getResource((String) lm.getElementAt(i)).getKey();
       a+= key + ":";
     }
     return a;
   }
+  
+  
+  
   /**
    * get a resource key
    * @param soresc

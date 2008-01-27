@@ -49,6 +49,7 @@ import dInterface.dAssignementDlgs.EditEventDlg;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.DxTools;
 import dInterface.dUtil.TwoButtonsPanel;
+import developer.DxFlags;
 
 
 public class SelectInstructors extends JDialog implements ActionListener {
@@ -192,23 +193,23 @@ public class SelectInstructors extends JDialog implements ActionListener {
 	// * @param Vector rightVec est le vecteur contenant les enseignants de la
 	// liste droite
 	// */
-	public SelectInstructors(DApplication dApplic, Vector<String> leftVec,
-			Vector<String> rightVec) {
-		super(dApplic.getJFrame(), DConst.LISTS_INSTRUCTOR_TD, true); // true
-		// gives
-		// a
-		// modal
-		// Dlg
-		// _dApplic = dApplic;
-		// _eEventDlg = eEventd;
-		_leftVec = leftVec;
-		_rightVec = rightVec;
-		for (int i = 0; i < _leftVec.size(); i++)
-			_rightVec.remove(_leftVec.get(i).toString());
-		initialize();
-		setLocationRelativeTo(dApplic.getJFrame());
-		setVisible(true);
-	}
+//	public SelectInstructors(DApplication dApplic, Vector<String> leftVec,
+//			Vector<String> rightVec) {
+//		super(dApplic.getJFrame(), DConst.LISTS_INSTRUCTOR_TD, true); // true
+//		// gives
+//		// a
+//		// modal
+//		// Dlg
+//		// _dApplic = dApplic;
+//		// _eEventDlg = eEventd;
+//		_leftVec = leftVec;
+//		_rightVec = rightVec;
+//		for (int i = 0; i < _leftVec.size(); i++)
+//			_rightVec.remove(_leftVec.get(i).toString());
+//		initialize();
+//		setLocationRelativeTo(dApplic.getJFrame());
+//		setVisible(true);
+//	}
 
 	// public SelectInstructors(DApplication applic, EditEventDlg dlg, Vector
 	// vector, Vector vector2) {
@@ -283,11 +284,11 @@ public class SelectInstructors extends JDialog implements ActionListener {
 		if (command.equals(DConst.BUT_CLOSE))
 			dispose();
 		if (command.equals(DConst.BUT_VALIDATE)) {
-			if (_dxEEventDlg != null)
+			if (DxFlags.newDxEditEventDlg) {
 				_dxEEventDlg.updateInstructorList(_leftVec);
 		} else {
-//			if (_eEventDlg != null)
-//				_eEventDlg.updateInstructorList(_leftVec);
+				_eEventDlg.updateInstructorList(_leftVec);
+		}
 			_validatePanel.setFirstDisable();
 			dispose();
 
