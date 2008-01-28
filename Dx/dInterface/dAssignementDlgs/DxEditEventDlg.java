@@ -142,37 +142,39 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	 */
 	public void actionPerformed(ActionEvent e) {
 		String command = e.getActionCommand();
-
+		_applyPanel.setFirstDisable();
 		if (command.equals(ACTION_CB_SITE)) {
 			actionCbSite();
+			
 		}
 		if (command.equals(ACTION_CB_TYPE)) {
-			_applyPanel.setFirstDisable();
 			actionCBType();
-			_applyPanel.setFirstDisable();
 		}
 		if (command.equals(ACTION_CB_ROOM)) {
 			actionCBRooms();
 		}
 		
-		if (command.equals(DConst.STATE_AC)) {
-			_applyPanel.setFirstEnable();
-		}
+//		if (command.equals(DConst.STATE_AC)) {
+//			//_applyPanel.setFirstEnable();
+//		}
 		
 		if (command.equals(DConst.BUT_CLOSE)) {
 			dispose();
 		} 
-		if (command.equals(DConst.BUT_APPLY)) {
-			actionApply();
-		} 
+
 		if (command.equals("comboBoxChanged")
 				|| command.equals(DConst.BUT_PLACE)
 				|| command.equals(DConst.BUT_FIGE)) {
-			_applyPanel.setFirstEnable();
+			//_applyPanel.setFirstEnable()
 		} 
 		if (command.equals(DConst.BUT_CHANGE)) {
 			actionInstructors();
 		}
+		_applyPanel.setFirstEnable();
+		
+		if (command.equals(DConst.BUT_APPLY)) {
+			actionApply();
+		} 
 	}
 
 	
@@ -199,11 +201,13 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 			new DxExceptionDlg(this, "Valeur erronée");
 			// break;
 			// }
-			_applyPanel.setFirstDisable();
+
 		} // end for
 		if (apply) {
 			_dModel.changeInDModelByEditActivityDlg(this);
+			_applyPanel.setFirstDisable();
 		}
+		
 	}
 	
 	/**
@@ -211,7 +215,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	 */
 	private void actionCBRooms() {
 		DefaultComboBoxModel dcbmRooms;
-		_applyPanel.setFirstDisable();
+		//_applyPanel.setFirstDisable();
 		JPanel tpane = (JPanel) _tabbedPane.getSelectedComponent();
 		String sSiteName = getSelectedSite(tpane);
 		String roomName = getSelectedRoom(tpane);
@@ -260,7 +264,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 			cbTypes.addActionListener(this);
 		}
 		this.repaint();
-		_applyPanel.setFirstEnable();
+		//_applyPanel.setFirstEnable();
 	}
 
 	/**
@@ -302,10 +306,10 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	}
 
 	private void actionCbSite() {
-		_applyPanel.setFirstDisable();
+		//_applyPanel.setFirstDisable();
 		//JPanel tpane = (JPanel) _tabbedPane.getSelectedComponent();
 		//String siteName = getSelectedSite(tpane);
-		//_applyPanel.setFirstEnable();
+		
 	}
 
 	/**
@@ -351,9 +355,6 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		event.setRoomKey(Long.toString(_dModel.getDxSetOfRooms()
 				.getRoomKeyByName(room)));
 		event.setRoomName(room);
-		//System.out.println("DxE event1.1 room name: " + event.getRoomName());
-		//System.out.println("DxE event1.1 room key: " + event.getRoomKey());
-
 		event.setAssigned(assignBut);
 		event.setPermanentState(fixedBut);
 
@@ -418,7 +419,6 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	 * Initialize the dialog
 	 */
 	private void buildDlg(boolean canBeModified) {
-
 		_tabbedPane = buildTabbedPane(canBeModified);
 		this.getContentPane().setLayout(new BorderLayout());
 		this.getContentPane().add(_tabbedPane, BorderLayout.NORTH);
@@ -427,7 +427,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 
 		String[] a = { DConst.BUT_APPLY, DConst.BUT_CLOSE };
 		_applyPanel = new TwoButtonsPanel(this, a);
-		getContentPane().add(_applyPanel);
+		getContentPane().add(_applyPanel, BorderLayout.SOUTH);
 		_applyPanel.setFirstDisable();
 
 	} // end buildDlg
@@ -1018,7 +1018,6 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 					.getSelectedIndex());
 			int j = ((JTabbedPane) ce.getSource()).getSelectedIndex();
 			_tabbedPane.setSelectedIndex(j);
-
 		}
 	}// end state change
 }// end class
