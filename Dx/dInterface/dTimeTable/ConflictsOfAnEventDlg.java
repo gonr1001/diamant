@@ -1,6 +1,6 @@
 /**
  *
- * Title: ConflictsOfAnEventDlg $Revision: 1.13 $  $Date: 2008-01-27 01:54:27 $
+ * Title: ConflictsOfAnEventDlg $Revision: 1.14 $  $Date: 2008-01-29 21:30:58 $
  * Description: ConflictsOfAnEventDlg is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -75,8 +75,7 @@ public class ConflictsOfAnEventDlg extends EventsDlgInterface {
 		// if Button CLOSE is pressed
 		if (command.equals(DConst.BUT_CLOSE))
 			dispose();
-		if ((command.equals(DConst.BUT_CHANGE)) && (selectedItems != null)) {
-			
+		if ((command.equals(DConst.BUT_CHANGE)) && (selectedItems != null)) {			
 			if(DxFlags.newDxEditEventDlg) {
 				new DxEditEventDlg(_jDialog, _dModel, (String) selectedItems[0],
 						false);
@@ -84,7 +83,6 @@ public class ConflictsOfAnEventDlg extends EventsDlgInterface {
 				new EditEventDlg(_jDialog, _dModel, (String) selectedItems[0],
 						false);
 			}
-
 		}
 	}// end actionPerformed
 

@@ -155,10 +155,7 @@ public class DxEventsDlg extends EventsDlgInterface implements Observer, DlgIden
 	 * 
 	 */
 	protected void doubleClicMouseProcess() {
-		if (!_buttonsPanel.isFirstEnable()) {
-//			new DxEditEventDlg(_jDialog, _dApplic, (String) selectedItems[0],
-//					/*this,*/ false);
-			
+		if (!_buttonsPanel.isFirstEnable()) {			
 			if(DxFlags.newDxEditEventDlg) {
 				new DxEditEventDlg(_jDialog, _dModel, (String) selectedItems[0],
 						/*this,*/ false);
