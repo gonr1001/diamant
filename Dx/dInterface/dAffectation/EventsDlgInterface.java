@@ -55,7 +55,6 @@ import dInternal.dUtil.DXToolsMethods;
 public abstract class EventsDlgInterface extends JDialog implements
 		ActionListener {
 
-//	protected DApplication _dApplic;
 	protected JFrame _jFrame;
 
 	protected DxEvent _currEvent;

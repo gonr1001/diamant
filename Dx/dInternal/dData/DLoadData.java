@@ -621,7 +621,7 @@ public class DLoadData {
 				DSetOfResources rescCat = getRscCategory(rescSite, j);
 				// find resource in a category
 				for (int k = 0; k < rescCat.size(); k++) {
-					// current ressource
+					// current resource
 					DResource curResc = rescCat.getResourceAt(k);
 					if (getResource(newSites, curResc, rscSite, rscCat) == null) {
 						DValue error = new DValue();

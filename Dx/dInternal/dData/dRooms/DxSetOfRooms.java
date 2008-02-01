@@ -146,7 +146,7 @@ public class DxSetOfRooms extends DxSetOfResources {
 
     public String toWrite(String sSiteName, String sCatName) {
         StringBuffer sbReturn = new StringBuffer();
-        Iterator itRooms = this.iterator();
+        Iterator<DxResource> itRooms = this.iterator();
         while (itRooms.hasNext()) {
             sbReturn.append(((DxRoom) itRooms.next()).toWrite(sSiteName,
                     sCatName));

@@ -405,7 +405,7 @@ public class DxSetOfSites extends DxSetOfResources {
 	 **************************************************************************/
 	public String toWrite() {
 		StringBuffer sbReturn = new StringBuffer();
-		Iterator itSites = this.iterator();
+		Iterator<DxResource> itSites = this.iterator();
 
 		while (itSites.hasNext()) {
 			sbReturn.append(((DxSite) itSites.next()).toWrite());

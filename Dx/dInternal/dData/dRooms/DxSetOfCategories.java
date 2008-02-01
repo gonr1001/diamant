@@ -220,7 +220,7 @@ public class DxSetOfCategories extends DxSetOfResources {
 
     public String toWrite(String sSiteName) {
         StringBuffer sbReturn = new StringBuffer();
-        Iterator itCategories = this.iterator();
+        Iterator<DxResource> itCategories = this.iterator();
         while(itCategories.hasNext())
         {
             sbReturn.append(((DxCategory)itCategories.next()).toWrite(sSiteName));

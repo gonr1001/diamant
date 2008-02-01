@@ -1,6 +1,6 @@
 /**
  *
- * Title: ConflictsOfAnEventDlg $Revision: 1.14 $  $Date: 2008-01-29 21:30:58 $
+ * Title: ConflictsOfAnEventDlg $Revision: 1.15 $  $Date: 2008-02-01 13:50:22 $
  * Description: ConflictsOfAnEventDlg is a class used to
  *
  *
@@ -14,7 +14,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -47,8 +47,8 @@ public class ConflictsOfAnEventDlg extends EventsDlgInterface {
 	 * @param dApplic
 	 *            The application
 	 */
-	public ConflictsOfAnEventDlg(JFrame jFrame, DModel dModel, String title) {
-		super(jFrame, dModel, title);
+	public ConflictsOfAnEventDlg(JFrame jFrame, DModel dModel) {
+		super(jFrame,dModel, DConst.EVENTS_DLG_TITLE);
 		// @todo RGR _toolBar= dApplic.getToolBar();
 		_dm = dModel;
 		buildArrowButtons();// false);

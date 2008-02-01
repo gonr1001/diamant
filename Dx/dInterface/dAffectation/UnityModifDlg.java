@@ -23,7 +23,6 @@ import dInternal.DResource;
 import dInternal.dData.dActivities.Section;
 import developer.DxFlags;
 
-
 public class UnityModifDlg extends SetOfElementsInterface {
 
 	private String[] _buttonsNames = { DConst.BUT_ADD, DConst.BUT_REMOVE,
@@ -71,15 +70,13 @@ public class UnityModifDlg extends SetOfElementsInterface {
 	protected void doubleClicMouseProcess() {
 		DResource unity = _section.getSetOfUnities().getResource(
 				_listOfElements[_selectedPanel].getSelectedValue().toString());
-		
-		
-		if(DxFlags.newDxEditEventDlg) {
-		new DxEditEventDlg(this, _dModel, /* _dApplic, */
-		_title + unity.getID() + ".", true);
+
+		if (DxFlags.newDxEditEventDlg) {
+			new DxEditEventDlg(this, _dModel, _title + unity.getID() + ".",
+					true);
 		} else {
-			new EditEventDlg(this, _dModel, /* _dApplic, */
-					_title + unity.getID() + ".", true);
-			
+			new EditEventDlg(this, _dModel, _title + unity.getID() + ".", true);
+
 		}
 	}
 

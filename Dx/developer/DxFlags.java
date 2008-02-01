@@ -45,5 +45,7 @@ public class DxFlags {
 	public final static boolean newDxLoadData = false;
 	
 	public final static boolean newDxEditEventDlg = MASTER;
+	
+	public final static boolean newDxConflictsOfAnEventDlg = true;
 
 }

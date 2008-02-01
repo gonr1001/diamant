@@ -144,6 +144,9 @@ public class DxRoom extends DxResource implements AvailableResource {
 
     public String toWrite(String sSiteName, String sCatName) {
         String sReturn = new String();
+//        if(_sComment.compareToIgnoreCase("") == 0){
+//        	_sComment = "noComment";
+//        }
 
         sReturn = this.getName()
                 + DConst.ROOM_FIELD_SEPARATOR_TOKEN

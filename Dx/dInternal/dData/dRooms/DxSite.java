@@ -162,7 +162,6 @@ public class DxSite extends DxResource {
     }
 
     public String toWrite() {
-
         return _dxsocCat.toWrite(this.getName());
     }
 

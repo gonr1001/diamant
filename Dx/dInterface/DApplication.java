@@ -55,6 +55,7 @@ import dInterface.dAffectation.ActivityModifDlg;
 import dInterface.dAffectation.SectionDlg;
 import dInterface.dAlgorithms.PersonalizeMixingAlgorithmDlg;
 import dInterface.dAssignementDlgs.DxActivityDlg;
+import dInterface.dAssignementDlgs.DxConflictsOfAnEventDlg;
 import dInterface.dAssignementDlgs.DxEventsDlg;
 import dInterface.dAssignementDlgs.DxInstructorAvailabilityDlg;
 import dInterface.dAssignementDlgs.DxRoomAvailabilityDlg;
@@ -621,8 +622,12 @@ public class DApplication {
 	 * 
 	 */
 	public void conflictsOfAnEvent() {
-		new ConflictsOfAnEventDlg(this.getJFrame(), this.getCurrentDModel(),
-				DConst.CONFLICTS_OF_AN_EVENT_DLG_TITLE);
+		if(DxFlags.newDxConflictsOfAnEventDlg) {
+			new DxConflictsOfAnEventDlg(this.getJFrame(), this.getCurrentDModel());
+		} else {
+			new ConflictsOfAnEventDlg(this.getJFrame(), this.getCurrentDModel());
+		}
+		
 	}
 
 	/**
@@ -825,7 +830,7 @@ public class DApplication {
 				// filepath += "refFiles" + File.separator;
 				// filepath += "facs" + File.separator;
 				// filepath += "flsh2_1" + File.separator;
-				filepath += "test2.dia";
+				filepath += "HIVER2008examens.dia";
 				System.out.println("path: " + filepath);
 				_dMediator.addDxTTableDoc("", getCurrentDir() + filepath);
 
