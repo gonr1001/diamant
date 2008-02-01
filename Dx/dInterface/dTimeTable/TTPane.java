@@ -65,7 +65,7 @@ public abstract class TTPane {
   protected JScrollPane _jScrollPaneOne;
   protected JScrollPane _jScrollPaneTwo;
   protected JSplitPane _jSplitPane;
-  PeriodPanel _lastActivePanel = null;
+  private PeriodPanel _lastActivePanel = null;
 
   protected class RowRecord {
      int _n;

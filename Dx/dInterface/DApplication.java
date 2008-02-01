@@ -816,7 +816,7 @@ public class DApplication {
 			_dxMenuBar.afterInitialAssignment();
 
 		} else {
-			setCurrentDir(".\\dataTest\\");
+			//setCurrentDir(".\\dataTest\\");
 			// String fileName = "." + File.separator;
 			// fileName += "dataTest" + File.separator;
 			// fileName += "refFiles" + File.separator;
@@ -824,7 +824,7 @@ public class DApplication {
 			// fileName += "flsh2_1" + File.separator;
 			// fileName += "RoomAffContTT.dia";
 			try {
-				String filepath = "." + File.separator;
+				String filepath = File.separator +  "dataTest" + File.separator;
 				// filepath += "refFiles" + File.separator;
 				// filepath += "facs" + File.separator;
 				// filepath += "flsh2_1" + File.separator;

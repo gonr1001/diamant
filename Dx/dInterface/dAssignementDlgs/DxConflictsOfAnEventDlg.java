@@ -65,6 +65,7 @@ import dInterface.dUtil.TwoButtonsPanel;
 import dInternal.DModel;
 import dInternal.DResource;
 
+@SuppressWarnings("serial")
 public class DxConflictsOfAnEventDlg extends EventsDlgInterface implements
 		Observer, DlgIdentification {
 
@@ -97,13 +98,6 @@ public class DxConflictsOfAnEventDlg extends EventsDlgInterface implements
 		return _buttonsPanel;
 	}
 
-	// /**
-	// * build no arrows to use in the dialog
-	// */
-	// public void buildArrowButtons() {
-	// _leftArrowsPanel = new JPanel();
-	// _rightArrowsPanel = new JPanel();
-	// }
 
 	public void actionPerformed(ActionEvent e) {
 		// if Button CLOSE is pressed
@@ -128,9 +122,13 @@ public class DxConflictsOfAnEventDlg extends EventsDlgInterface implements
 	 * When double click in an event display ManualImprovmentDetailed
 	 */
 	protected void doubleClicMouseProcess() {
+//		DResource event = _dModel.getSetOfEvents().getResource(
+//				(String) selectedItems[0]);
+//		_dModel.deleteObserver(this);
 		DResource event = _dModel.getSetOfEvents().getResource(
 				(String) selectedItems[0]);
 		new ConflictsOfAnEventJDlg(this, event, _dModel);
+//		_dModel.addObserver(this);
 	}
 
 	public String idDlgToString() {
@@ -146,7 +144,7 @@ public class DxConflictsOfAnEventDlg extends EventsDlgInterface implements
 	/**
 	 * build button to use in the dialog
 	 */
-	public void buildArrowButtons() {// boolean enableArrows) {
+	public void buildArrowButtons() {
 		_leftArrowsPanel = new JPanel();
 		_rightArrowsPanel = new JPanel();
 	}

@@ -22,6 +22,7 @@ package dInternal;
 import java.util.Comparator;
 
 import dInternal.DObject;
+import dInternal.dOptimization.DxEvent;
 
 public class DResource {
 	/**
@@ -217,6 +218,21 @@ public class DResource {
 			return 0;
 		}
 	};
+	/**
+	 * Constructor
+	 * 
+	 * @param String
+	 *            the id of the Resource
+	 * @param DXObject
+	 *            the object to set in the _resourceAttach field
+	 */
+	public DResource clone() {	
+		String s = new String(_resourceID);
+		Object o = _resourceAttach;
+		DxEvent dxEvent = ((DxEvent) o).cloneEvent();
+		DResource r = new DResource(s, dxEvent);
+		return r;
+	}
 
 
 }

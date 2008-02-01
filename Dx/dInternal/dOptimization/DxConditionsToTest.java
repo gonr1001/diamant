@@ -197,8 +197,10 @@ public class DxConditionsToTest {
 						numberOfConflicts[k] += cond.addTest(newPerKey, per,
 								event.getID());
 					}// end for (int j=0; j< _testToRun.size(); j++)
-					((DxEvent) event.getAttach()).setInAPeriod(true);
-					((DxEvent) event.getAttach()).setAssigned(true);
+//					((DxEvent) event.getAttach()).setInAPeriod(true);
+//					((DxEvent) event.getAttach()).setAssigned(true);
+					((DxEvent) event.getAttach()).setInAPeriod(false);
+					((DxEvent) event.getAttach()).setAssigned(false);
 				}// end for (int j=0; j< ((EventAttach)event.getAttach())
 			} else {// end if (tts.getCurrentCycle().isPeriodContiguous(
 				((DxEvent) event.getAttach()).setInAPeriod(false);
@@ -451,10 +453,10 @@ public class DxConditionsToTest {
 	 */
 	public void addEventInAllPeriods(TTStructure improveTTStruct,
 			DResource event) {
-		DxEvent eventDx = ((DxEvent) event.getAttach()).cloneEvent();
-		eventDx.setAssigned(true);
-		DResource res = new DResource(event.getID(), eventDx);
-		eventDx.setDuration(improveTTStruct.getPeriodLenght());
+		DxEvent dxEvent = ((DxEvent) event.getAttach()).cloneEvent();
+		dxEvent.setAssigned(true);
+		DResource res = new DResource(event.getID(), dxEvent);
+		dxEvent.setDuration(improveTTStruct.getPeriodLenght());
 		for (int i = 0; i < improveTTStruct.getCurrentCycle().getSetOfDays()
 				.size(); i++) {
 			DResource day = improveTTStruct.getCurrentCycle().getSetOfDays()
@@ -472,7 +474,7 @@ public class DxConditionsToTest {
 
 					String periodKey = daytime[0] + "." + daytime[1] + "."
 							+ daytime[2];
-					eventDx.setKey(4, periodKey);
+					dxEvent.setKey(4, periodKey);
 					//						System.out.println(i + " " + j + " " + k);
 					addEventInTTs(improveTTStruct, res, false);
 

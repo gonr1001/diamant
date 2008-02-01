@@ -35,7 +35,7 @@ import dInternal.dUtil.DXToolsMethods;
 
 /**
  * 
- * DxEevnt is a class used to keep all informations conserning an Event.
+ * DxEvent is a class used to keep all informations concerning an Event.
  * 
  */
 

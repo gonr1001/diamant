@@ -1,6 +1,6 @@
 /**
  *
- * Title: ConflictsOfAnEventJDlg $Revision: 1.5 $  $Date: 2008-02-01 14:31:00 $
+ * Title: ConflictsOfAnEventJDlg $Revision: 1.6 $  $Date: 2008-02-01 19:50:43 $
  * Description: ConflictsOfAnEventJDlg is a class used to
  *              display the so called Conflicts Of An Event which
  *              gives the conflicts between an event and the others events
@@ -17,7 +17,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -36,13 +36,14 @@ import dInterface.DToolBar;
 
 import dInternal.DModel;
 import dInternal.DResource;
+import dInternal.dOptimization.DxEvent;
 import dInternal.dTimeTable.TTStructure;
 
 public class ConflictsOfAnEventJDlg extends JDialog implements ActionListener {
-	/* ADJUST_HEIGHT is needed to ajdust the screenSize
+	/* ADJUST_HEIGHT is needed to adjust the screenSize
 	 * minus the barSize (the value is a guess) at the bottom */
 	private final static int ADJUST_HEIGHT = 88;
-	/* ADJUST_WIDTH is needed to ajdust the screenSize
+	/* ADJUST_WIDTH is needed to adjust the screenSize
 	 * minus border pixels (the value is a guess) at each side of the screen */
 	private final static int ADJUST_WIDTH = 6;
 	private TTPane _ttPane;
@@ -56,8 +57,11 @@ public class ConflictsOfAnEventJDlg extends JDialog implements ActionListener {
 	}
 
 	public void initDlg(DResource event, DModel dm) {
-		TTStructure totalTTStruct = dm.getTTStructure();
-		_partialTTStruct = totalTTStruct.cloneCurrentTTS();
+//		TTStructure totalTTStruct = dm.getTTStructure();
+//		DObject rAt = (DxEvent)event.getAttach().cloneEvent();
+		DResource localEvent = event.clone();
+	
+		_partialTTStruct = dm.getTTStructure().cloneCurrentTTS();
 		dm.getConditionsToTest().buildAllConditions(_partialTTStruct);
 		_partialTTStruct.getCurrentCycle().resetAllNumberOfConflicts();
 
@@ -65,20 +69,18 @@ public class ConflictsOfAnEventJDlg extends JDialog implements ActionListener {
 		this.setSize(new Dimension(screenSize.width - ADJUST_WIDTH,
 				screenSize.height - ADJUST_HEIGHT));
 
-		_ttPane = new ConflictsOfAnEventTTPane(totalTTStruct, _partialTTStruct,
-				_toolBar, true, event);
-		dm.getConditionsToTest().addEventInAllPeriods(_partialTTStruct, event);
-
+		_ttPane = new ConflictsOfAnEventTTPane(dm.getTTStructure(), _partialTTStruct,
+				_toolBar, true, localEvent);
+		dm.getConditionsToTest().addEventInAllPeriods(_partialTTStruct, localEvent);
+		
 		_ttPane.updateTTPane(_partialTTStruct);
-
-
 		this.getContentPane().add(_ttPane.getPane());
-
 		this.setVisible(true);
 	}
 	public void actionPerformed(ActionEvent e) {
 		// if Button CLOSE is pressed
 		if (e.getActionCommand().equals(DConst.BUT_CLOSE)) {
+			_partialTTStruct = null;
 			dispose();
 		}
 
