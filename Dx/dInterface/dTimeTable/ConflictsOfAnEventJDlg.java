@@ -1,6 +1,6 @@
 /**
  *
- * Title: ConflictsOfAnEventJDlg $Revision: 1.4 $  $Date: 2008-02-01 13:50:22 $
+ * Title: ConflictsOfAnEventJDlg $Revision: 1.5 $  $Date: 2008-02-01 14:31:00 $
  * Description: ConflictsOfAnEventJDlg is a class used to
  *              display the so called Conflicts Of An Event which
  *              gives the conflicts between an event and the others events
@@ -17,7 +17,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -26,16 +26,19 @@ package dInterface.dTimeTable;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JDialog;
 
+import dConstants.DConst;
 import dInterface.DToolBar;
 
 import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.dTimeTable.TTStructure;
 
-public class ConflictsOfAnEventJDlg extends JDialog {
+public class ConflictsOfAnEventJDlg extends JDialog implements ActionListener {
 	/* ADJUST_HEIGHT is needed to ajdust the screenSize
 	 * minus the barSize (the value is a guess) at the bottom */
 	private final static int ADJUST_HEIGHT = 88;
@@ -44,21 +47,11 @@ public class ConflictsOfAnEventJDlg extends JDialog {
 	private final static int ADJUST_WIDTH = 6;
 	private TTPane _ttPane;
 	private TTStructure _partialTTStruct;
-	//private TTStructure _totalTTStruct;
 	private DToolBar _toolBar;
 
-	/**
-	 * constructor
-	 */
-	public ConflictsOfAnEventJDlg(JDialog jDialog, DToolBar toolbar,
-			DResource event, DModel dm) {
-		super(jDialog, "COAEJDLG : " + event.getID(), true);
-		_toolBar = toolbar;
-		initDlg(event, dm);
-	}
 
 	public ConflictsOfAnEventJDlg(JDialog jDialog, DResource event, DModel dm) {
-		super(jDialog, "COAEJDLG : " + event.getID(), true);
+		super(jDialog, DConst.CONFLICTS_OF_AN_EVENT_DLG_TITLE+ " " + event.getID(), true);
 		initDlg(event, dm);
 	}
 
@@ -71,18 +64,24 @@ public class ConflictsOfAnEventJDlg extends JDialog {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setSize(new Dimension(screenSize.width - ADJUST_WIDTH,
 				screenSize.height - ADJUST_HEIGHT));
-		//DResource event = dm.getSetOfEvents().getResource(eventName);
+
 		_ttPane = new ConflictsOfAnEventTTPane(totalTTStruct, _partialTTStruct,
 				_toolBar, true, event);
 		dm.getConditionsToTest().addEventInAllPeriods(_partialTTStruct, event);
 
 		_ttPane.updateTTPane(_partialTTStruct);
-		//setColorOfPanel(dayIndex,seqIndex,perIndex,duration,((EventAttach)event.getAttach()).isPlaceInAPeriod());
-		//end set colors;
+
 
 		this.getContentPane().add(_ttPane.getPane());
 
 		this.setVisible(true);
 	}
+	public void actionPerformed(ActionEvent e) {
+		// if Button CLOSE is pressed
+		if (e.getActionCommand().equals(DConst.BUT_CLOSE)) {
+			dispose();
+		}
 
+	}// end actionPerformed
+	
 }// end ManualImprovementDetailed

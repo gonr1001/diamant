@@ -67,7 +67,6 @@ import dInterface.dFileMenuDlgs.NewTimeTableDlg;
 import dInterface.dFileMenuDlgs.OpenTimeTableDlg;
 import dInterface.dMenus.DxMenuBar;
 import dInterface.dPreferencesDlgs.DxPLAFDlg;
-import dInterface.dTimeTable.ConflictsOfAnEventDlg;
 import dInterface.dTimeTable.OpenTTSDlg;
 import dInterface.dTimeTable.SaveAsTTDlg;
 import dInterface.dUtil.AboutDlg;
@@ -622,12 +621,11 @@ public class DApplication {
 	 * 
 	 */
 	public void conflictsOfAnEvent() {
-		if(DxFlags.newDxConflictsOfAnEventDlg) {
+//		if(DxFlags.newDxConflictsOfAnEventDlg) {
 			new DxConflictsOfAnEventDlg(this.getJFrame(), this.getCurrentDModel());
-		} else {
-			new ConflictsOfAnEventDlg(this.getJFrame(), this.getCurrentDModel());
-		}
-		
+//		} else {
+//			new ConflictsOfAnEventDlg(this.getJFrame(), this.getCurrentDModel());
+//		}		
 	}
 
 	/**

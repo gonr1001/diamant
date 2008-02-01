@@ -42,7 +42,6 @@ import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.DxTools;
 import dInterface.dUtil.TwoButtonsPanel;
 import dInternal.DModel;
-import developer.DxFlags;
 import eLib.exit.dialog.InformationDlg;
 
 public class DxEventsDlg extends EventsDlgInterface implements Observer, DlgIdentification {
@@ -156,14 +155,13 @@ public class DxEventsDlg extends EventsDlgInterface implements Observer, DlgIden
 	 */
 	protected void doubleClicMouseProcess() {
 		if (!_buttonsPanel.isFirstEnable()) {			
-			if(DxFlags.newDxEditEventDlg) {
+//			if(DxFlags.newDxEditEventDlg) {
 				new DxEditEventDlg(_jDialog, _dModel, (String) selectedItems[0],
-						/*this,*/ false);
-			} else {
-				new EditEventDlg(_jDialog, _dModel, (String) selectedItems[0],
-						/*this,*/ false);
-			}
-		
+						false);
+//			} else {
+//				new EditEventDlg(_jDialog, _dModel, (String) selectedItems[0],
+//						 false);
+//			}		
 			_buttonsPanel.setFirstDisable();
 		} else {
 			new InformationDlg(_jDialog, "Appliquer ou fermer pour continuer",
