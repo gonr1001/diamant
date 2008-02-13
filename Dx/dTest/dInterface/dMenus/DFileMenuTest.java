@@ -63,27 +63,29 @@ public class DFileMenuTest extends TestCase {
 //	}
 
 	public void tesIsDFileMenu() {
-		DApplication _da = new DApplication();
+		DApplication da = new DApplication();
 		String[] args = { "-d" };
-		_da.doIt(args);
-		DxMenuBar _dxmb = _da.getDxMenuBar();
+		da.doIt(args);
+		DxMenuBar _dxmb = da.getDxMenuBar();
 
 		JMenu dfm = (JMenu) _dxmb.getComponent(0);
 		assertEquals("testIsDFileMenu: assertEquals", true,
 				dfm instanceof DFileMenu);
+		da = null;
 	}
 
 	public void testNewTTable() {
-		DApplication _da = new DApplication();
+		DApplication da = new DApplication();
 		String[] args = { "-d" };
-		_da.doIt(args);
-		DxMenuBar _dxmb = _da.getDxMenuBar();
+		da.doIt(args);
+		DxMenuBar _dxmb = da.getDxMenuBar();
 
 		DFileMenu dfm = (DFileMenu) _dxmb.getComponent(0);
 		assertEquals("testNewTTable:", true, dfm
 				.getMenuComponent(0) instanceof JMenu);
 		JMenu jm = (JMenu) dfm.getMenuComponent(0);
 		assertEquals("testNewTTable1:", 0, jm.getText().compareToIgnoreCase(DConst.NEW_TT));
+		da = null;
 	}
 
 	public void testNewTTableCycle() {

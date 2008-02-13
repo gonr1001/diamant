@@ -63,10 +63,11 @@ public class DxEvent extends DObject {
 
 	private int _cLimit;// capacity limit for the event
 
-	private boolean _isPlaceInAPeriod;
+	private boolean _isPlacedInAPeriod;
 
 	/**
 	 * Constructor
+	 * 
 	 * 
 	 * @param princKey
 	 * @param key1
@@ -77,7 +78,7 @@ public class DxEvent extends DObject {
 			int cLimit) {
 		_fullName = actId;
 		_ttsKey = "";
-		_isPlaceInAPeriod = false;
+		_isPlacedInAPeriod = false;
 		_compositeKey = princKey;
 		_setInstructorKeys = inst;
 		_roomName = roomName;
@@ -182,13 +183,6 @@ public class DxEvent extends DObject {
 		return (((Unity) _unity.getAttach()).isAssign());
 	}
 
-	// public void setRoomFunction(int function) {
-	// _roomFunction = function;
-	// }
-
-	// public int getRoomFunction() {
-	// return _roomFunction;
-	// }
 
 	/**
 	 * check if event is already place in a period
@@ -196,7 +190,7 @@ public class DxEvent extends DObject {
 	 * @return
 	 */
 	public boolean isPlaceInAPeriod() {
-		return _isPlaceInAPeriod;
+		return _isPlacedInAPeriod;
 	}
 
 	public boolean isRoomFixed() {
@@ -221,7 +215,7 @@ public class DxEvent extends DObject {
 	 * @param isInPeriod
 	 */
 	public void setInAPeriod(boolean isInPeriod) {
-		_isPlaceInAPeriod = isInPeriod;
+		_isPlacedInAPeriod = isInPeriod;
 	}
 
 	public void setInstructorKey(String str) {
@@ -315,7 +309,7 @@ public class DxEvent extends DObject {
 		strB.append(" Limit ");
 		strB.append(this._cLimit);
 		strB.append(" isPlacedInAPeriod ");
-		strB.append(this._isPlaceInAPeriod);
+		strB.append(this._isPlacedInAPeriod);
 		strB.append(" room key ");
 		strB.append(this._roomKey);
 		strB.append(" roomName ");

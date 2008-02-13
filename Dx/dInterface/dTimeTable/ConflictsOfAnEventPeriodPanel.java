@@ -2,7 +2,7 @@ package dInterface.dTimeTable;
 
 /**
  *
- * Title: ConflictsOfAnEventPeriodPanel $Revision: 1.4 $  $Date: 2007-07-20 12:52:37 $
+ * Title: ConflictsOfAnEventPeriodPanel $Revision: 1.5 $  $Date: 2008-02-13 21:42:23 $
  *
  *
  * Copyright (c) 2001 by rgr.
@@ -15,7 +15,7 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  *
@@ -45,6 +45,7 @@ import dInternal.dTimeTable.Period;
 
 
 
+@SuppressWarnings("serial")
 public class ConflictsOfAnEventPeriodPanel extends PeriodPanel{
   
   private Vector<String> _vec;

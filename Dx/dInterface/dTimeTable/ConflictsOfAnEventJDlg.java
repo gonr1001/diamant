@@ -1,6 +1,6 @@
 /**
  *
- * Title: ConflictsOfAnEventJDlg $Revision: 1.6 $  $Date: 2008-02-01 19:50:43 $
+ * Title: ConflictsOfAnEventJDlg $Revision: 1.7 $  $Date: 2008-02-13 21:42:23 $
  * Description: ConflictsOfAnEventJDlg is a class used to
  *              display the so called Conflicts Of An Event which
  *              gives the conflicts between an event and the others events
@@ -17,7 +17,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.6 $
+ * @version $Revision: 1.7 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -36,9 +36,9 @@ import dInterface.DToolBar;
 
 import dInternal.DModel;
 import dInternal.DResource;
-import dInternal.dOptimization.DxEvent;
 import dInternal.dTimeTable.TTStructure;
 
+@SuppressWarnings("serial")
 public class ConflictsOfAnEventJDlg extends JDialog implements ActionListener {
 	/* ADJUST_HEIGHT is needed to adjust the screenSize
 	 * minus the barSize (the value is a guess) at the bottom */
@@ -47,7 +47,7 @@ public class ConflictsOfAnEventJDlg extends JDialog implements ActionListener {
 	 * minus border pixels (the value is a guess) at each side of the screen */
 	private final static int ADJUST_WIDTH = 6;
 	private TTPane _ttPane;
-	private TTStructure _partialTTStruct;
+	private TTStructure _tempTTStruct;
 	private DToolBar _toolBar;
 
 
@@ -61,26 +61,27 @@ public class ConflictsOfAnEventJDlg extends JDialog implements ActionListener {
 //		DObject rAt = (DxEvent)event.getAttach().cloneEvent();
 		DResource localEvent = event.clone();
 	
-		_partialTTStruct = dm.getTTStructure().cloneCurrentTTS();
-		dm.getConditionsToTest().buildAllConditions(_partialTTStruct);
-		_partialTTStruct.getCurrentCycle().resetAllNumberOfConflicts();
+		_tempTTStruct = dm.getTTStructure().cloneCurrentTTS();
+		dm.getConditionsToTest().buildAllConditions(_tempTTStruct);
+		_tempTTStruct.getCurrentCycle().resetAllNumberOfConflicts();
 
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setSize(new Dimension(screenSize.width - ADJUST_WIDTH,
 				screenSize.height - ADJUST_HEIGHT));
 
-		_ttPane = new ConflictsOfAnEventTTPane(dm.getTTStructure(), _partialTTStruct,
+		_ttPane = new ConflictsOfAnEventTTPane(dm.getTTStructure(), _tempTTStruct,
 				_toolBar, true, localEvent);
-		dm.getConditionsToTest().addEventInAllPeriods(_partialTTStruct, localEvent);
+		dm.getConditionsToTest().addEventInAllPeriods(_tempTTStruct, localEvent);
 		
-		_ttPane.updateTTPane(_partialTTStruct);
+		_ttPane.updateTTPane(_tempTTStruct);
 		this.getContentPane().add(_ttPane.getPane());
 		this.setVisible(true);
 	}
 	public void actionPerformed(ActionEvent e) {
 		// if Button CLOSE is pressed
 		if (e.getActionCommand().equals(DConst.BUT_CLOSE)) {
-			_partialTTStruct = null;
+			_tempTTStruct = null;
+			_ttPane = null;
 			dispose();
 		}
 

@@ -50,7 +50,7 @@ import eLib.exit.dialog.InformationDlg;
 // -------------------------------------------
 /**
  * 
- * DToolBar is a class used to display aad handle two toolbars with buttons and
+ * DToolBar is a class used to display and handle two toolbars with buttons and
  * JComboBoxes. One Toolbar is used to make changes in day and the other on
  * periods
  * 
