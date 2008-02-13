@@ -55,6 +55,7 @@ import eLib.exit.dialog.InformationDlg;
  * periods
  * 
  */
+@SuppressWarnings("serial")
 public class DToolBar extends JToolBar implements Observer, DlgIdentification {
 
 	private DApplication _dApplic;
@@ -98,7 +99,7 @@ public class DToolBar extends JToolBar implements Observer, DlgIdentification {
 		_lPeriodIndicator = new JLabel("Index Période ");
 		_lPeriodTypeSelector = new JLabel("Priorité Période ");
 
-		// JComboBox toolBarSelector initialisation
+		// JComboBox toolBarSelector initialization
 		_toolBarSelector = new JComboBox(_toolBarNames);
 		_toolBarSelector.setPreferredSize(new Dimension(200, DConst.NPT11 * c));
 		_toolBarSelector.setMaximumSize(new Dimension(200, DConst.NPT11 * c));
@@ -108,18 +109,18 @@ public class DToolBar extends JToolBar implements Observer, DlgIdentification {
 		_setNumberOfDays = new JTextField();
 		_setNumberOfDays.setMaximumSize(new Dimension(30, DConst.NPT11 * c));
 
-		// JComboBox daySelector initialisation
+		// JComboBox daySelector initialization
 		String[] daySelector = { "1", "2", "3", "4", "5", "6", "7" };
 		_daySelector = new DxJComboBox(daySelector);
 		_daySelector.setPreferredSize(new Dimension(50, DConst.NPT11 * c));
 		_daySelector.setMaximumSize(new Dimension(50, DConst.NPT11 * c));
 
-		// JComboBox dayNameSelector initialisation
+		// JComboBox dayNameSelector initialization
 		_dayNameSelector = new DxJComboBox(TTStructure._weekTable);
 		_dayNameSelector.setPreferredSize(new Dimension(50, DConst.NPT11 * c));
 		_dayNameSelector.setMaximumSize(new Dimension(50, DConst.NPT11 * c));
 
-		// JComboBox periodSelector initialisation
+		// JComboBox periodSelector initialization
 		String[] periodSelector = { "1", "2", "3", "4", "5", "6", "7" };
 		_periodSelector = new DxJComboBox(periodSelector);
 		_periodSelector.setPreferredSize(new Dimension(50, DConst.NPT11 * c));
@@ -133,10 +134,10 @@ public class DToolBar extends JToolBar implements Observer, DlgIdentification {
 		_periodTypeSelector
 				.setMaximumSize(new Dimension(100, DConst.NPT11 * c));
 
-		// The JButton Objects initialisation
+		// The JButton Objects initialization
 		_sameLine = new JButton("Toute la ligne");
 		_sameColumn = new JButton("Toute la journée");
-		// JComboBox periodTypeSelector initialisation
+		// JComboBox periodTypeSelector initialization
 		addBarOne();
 		addBarTwo();
 		_toolBarSelector.setSelectedIndex(0);
