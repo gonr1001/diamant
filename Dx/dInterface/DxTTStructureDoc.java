@@ -32,9 +32,12 @@ import javax.swing.event.InternalFrameEvent;
 
 import dConstants.DConst;
 import dInterface.dTimeTable.DetailedTTPane;
+import dInterface.dTimeTable.DxDetailedTTPane;
+import dInterface.dTimeTable.DxSimpleTTPane;
 import dInterface.dTimeTable.SimpleTTPane;
 import dInternal.DModel;
 import dInternal.dTimeTable.TTStructure;
+import developer.DxFlags;
 import eLib.exit.dialog.FatalProblemDlg;
 import eLib.exit.dialog.InformationDlg;
 
@@ -70,7 +73,12 @@ public class DxTTStructureDoc extends DxDocument {
 		// }
 		_documentName = modifiyDocumentName(fileName);
 		buidDocument(true, true);
-		_ttPane.updateTTPane(_ttStructure);
+		if(DxFlags.newDxTTPane) {
+			_dxTTPane.updateTTPane(_ttStructure);
+		} else {
+			_ttPane.updateTTPane(_ttStructure);
+		}
+//		_ttPane.updateTTPane(_ttStructure);
 	}
 
 	// -------------------------------------------
@@ -96,7 +104,12 @@ public class DxTTStructureDoc extends DxDocument {
 			if (component != null)
 			component.toString();
 		_dMediator.getDApplication().setCursorWait();
-		_ttPane.updateTTPane(_ttStructure);
+		if(DxFlags.newDxTTPane) {
+			_dxTTPane.updateTTPane(_ttStructure);
+		} else {
+			_ttPane.updateTTPane(_ttStructure);
+		}
+//		_ttPane.updateTTPane(_ttStructure);
 		// _stateBar.upDate();
 		_dMediator.getDApplication().setCursorDefault();
 		} else {
@@ -109,7 +122,12 @@ public class DxTTStructureDoc extends DxDocument {
 	public void displaySimple() {
 		close();
 		buidDocument(true, true);
-		_ttPane.updateTTPane(_ttStructure);
+		if(DxFlags.newDxTTPane) {
+			_dxTTPane.updateTTPane(_ttStructure);
+		} else {
+			_ttPane.updateTTPane(_ttStructure);
+		}
+//		_ttPane.updateTTPane(_ttStructure);
 		
 	}
 
@@ -117,14 +135,25 @@ public class DxTTStructureDoc extends DxDocument {
 	public void displayHorizontalSplit() {
 		close();
 		buidDocument(false, false);
-		_ttPane.updateTTPane(_ttStructure);
+		
+		if(DxFlags.newDxTTPane) {
+			_dxTTPane.updateTTPane(_ttStructure);
+		} else {
+			_ttPane.updateTTPane(_ttStructure);
+		}
+//		_ttPane.updateTTPane(_ttStructure);
 		
 	}
 
 	public void displayVericalSplit() {
 		close();
 		buidDocument(false, true);
-		_ttPane.updateTTPane(_ttStructure);
+		if(DxFlags.newDxTTPane) {
+			_dxTTPane.updateTTPane(_ttStructure);
+		} else {
+			_ttPane.updateTTPane(_ttStructure);
+		}
+//		_ttPane.updateTTPane(_ttStructure);
 		
 	}
 
@@ -161,13 +190,26 @@ public class DxTTStructureDoc extends DxDocument {
 		_jif.setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
 		_jif.setPreferredSize(new Dimension(MAX_WIDTH, MAX_HEIGHT));
 
-		if (simple) {
-			_ttPane = new SimpleTTPane(_ttStructure, _dMediator
-					.getDApplication().getToolBar());
+		if(DxFlags.newDxTTPane) {
+			if (simple) {
+				_dxTTPane = new DxSimpleTTPane(_ttStructure, _dMediator
+						.getDApplication().getToolBar());
+			} else {
+				_dxTTPane = new DxDetailedTTPane(_ttStructure, _dMediator
+						.getDApplication().getToolBar(), vertical);
+			}
 		} else {
-			_ttPane = new DetailedTTPane(_ttStructure, _dMediator
-					.getDApplication().getToolBar(), vertical);
+			if (simple) {
+				_ttPane = new SimpleTTPane(_ttStructure, _dMediator
+						.getDApplication().getToolBar());
+			} else {
+				_ttPane = new DetailedTTPane(_ttStructure, _dMediator
+						.getDApplication().getToolBar(), vertical);
+			}
 		}
+		
+		
+
 		_jif.getContentPane().add(_ttPane.getPane(), BorderLayout.CENTER);
 		_jif.pack();
 		// the 1 in Integer(1) could be any integer

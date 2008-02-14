@@ -1,0 +1,3 @@
+Total: Act:99 Ens:126 Loc:52 Etu:1329 Eve:255 Pla:246
+Conflits: 1068 C-Etu:845 C-Ens:89 C-Loc 134
+Après chargement des fichiers

@@ -1,6 +1,6 @@
 /**
  *
- * Title: ConflictsOfAnEventJDlg $Revision: 1.7 $  $Date: 2008-02-13 21:42:23 $
+ * Title: ConflictsOfAnEventJDlg $Revision: 1.8 $  $Date: 2008-02-14 17:54:32 $
  * Description: ConflictsOfAnEventJDlg is a class used to
  *              display the so called Conflicts Of An Event which
  *              gives the conflicts between an event and the others events
@@ -17,7 +17,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.7 $
+ * @version $Revision: 1.8 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -37,6 +37,7 @@ import dInterface.DToolBar;
 import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.dTimeTable.TTStructure;
+import developer.DxFlags;
 
 @SuppressWarnings("serial")
 public class ConflictsOfAnEventJDlg extends JDialog implements ActionListener {
@@ -47,6 +48,7 @@ public class ConflictsOfAnEventJDlg extends JDialog implements ActionListener {
 	 * minus border pixels (the value is a guess) at each side of the screen */
 	private final static int ADJUST_WIDTH = 6;
 	private TTPane _ttPane;
+	private DxTTPane _dxTTPane;
 	private TTStructure _tempTTStruct;
 	private DToolBar _toolBar;
 
@@ -68,9 +70,14 @@ public class ConflictsOfAnEventJDlg extends JDialog implements ActionListener {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setSize(new Dimension(screenSize.width - ADJUST_WIDTH,
 				screenSize.height - ADJUST_HEIGHT));
+		if (DxFlags.newDxTTPane) {
+			_dxTTPane = new DxConflictsOfAnEventTTPane(dm.getTTStructure(), _tempTTStruct,
+					_toolBar, true, localEvent);
+		} else {
+			_ttPane = new ConflictsOfAnEventTTPane(dm.getTTStructure(), _tempTTStruct,
+					_toolBar, true, localEvent);
+		}
 
-		_ttPane = new ConflictsOfAnEventTTPane(dm.getTTStructure(), _tempTTStruct,
-				_toolBar, true, localEvent);
 		dm.getConditionsToTest().addEventInAllPeriods(_tempTTStruct, localEvent);
 		
 		_ttPane.updateTTPane(_tempTTStruct);

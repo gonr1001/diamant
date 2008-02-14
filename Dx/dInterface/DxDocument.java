@@ -23,6 +23,8 @@ package dInterface;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JInternalFrame;
+
+import dInterface.dTimeTable.DxTTPane;
 import dInterface.dTimeTable.TTPane;
 import dInternal.DModel;
 import dInternal.dTimeTable.TTStructure;
@@ -49,6 +51,8 @@ public abstract class DxDocument implements Observer {
 	protected String _documentName;
 
 	protected TTPane _ttPane;
+	
+	protected DxTTPane _dxTTPane;
 
 	protected String _autoImportDIMFilePath;
 
@@ -89,6 +93,9 @@ public abstract class DxDocument implements Observer {
 		return _ttPane;
 	}
 
+	public final DxTTPane getDxTTPane() {
+		return _dxTTPane;
+	}
 	public void close() {
 		_jif.dispose();
 		//_dMediator.getDApplication().close();

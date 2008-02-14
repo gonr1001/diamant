@@ -1,0 +1,1366 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+  <testsuite errors="0" failures="0" hostname="ruben-vm-pc" id="0" name="DiamantTest" package="dmains" tests="327" time="22.36" timestamp="2008-02-05T16:06:46">
+      <properties>
+          <property name="java.vendor" value="Sun Microsystems Inc." />
+
+          <property name="sun.java.launcher" value="SUN_STANDARD" />
+
+          <property name="sun.management.compiler" value="HotSpot Client Compiler" />
+
+          <property name="lib" value="./classes/lib" />
+
+          <property name="os.name" value="Windows XP" />
+
+          <property name="sun.boot.class.path" value="D:\Program Files\Java\jdk1.6.0_03\jre\lib\resources.jar;D:\Program Files\Java\jdk1.6.0_03\jre\lib\rt.jar;D:\Program Files\Java\jdk1.6.0_03\jre\lib\sunrsasign.jar;D:\Program Files\Java\jdk1.6.0_03\jre\lib\jsse.jar;D:\Program Files\Java\jdk1.6.0_03\jre\lib\jce.jar;D:\Program Files\Java\jdk1.6.0_03\jre\lib\charsets.jar;D:\Program Files\Java\jdk1.6.0_03\jre\classes" />
+
+          <property name="TODAY" value="February 5 2008" />
+
+          <property name="sun.desktop" value="windows" />
+
+          <property name="java.vm.specification.vendor" value="Sun Microsystems Inc." />
+
+          <property name="ant.home" value="D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842" />
+
+          <property name="java.runtime.version" value="1.6.0_03-b05" />
+
+          <property name="distDir" value="./Diamant2.2.x/Diamant" />
+
+          <property name="user.name" value="Ruben" />
+
+          <property name="reports" value="./reports" />
+
+          <property name="user.language" value="en" />
+
+          <property name="build" value="./classes" />
+
+          <property name="sun.boot.library.path" value="D:\Program Files\Java\jdk1.6.0_03\jre\bin" />
+
+          <property name="srcDir" value="." />
+
+          <property name="ant.project.name" value="DiamantBuild" />
+
+          <property name="DSTAMP" value="20080205" />
+
+          <property name="java.version" value="1.6.0_03" />
+
+          <property name="user.timezone" value="" />
+
+          <property name="sun.arch.data.model" value="32" />
+
+          <property name="localJars" value="./jars" />
+
+          <property name="java.endorsed.dirs" value="D:\Program Files\Java\jdk1.6.0_03\jre\lib\endorsed" />
+
+          <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86" />
+
+          <property name="sun.jnu.encoding" value="Cp1252" />
+
+          <property name="file.encoding.pkg" value="sun.io" />
+
+          <property name="file.separator" value="\" />
+
+          <property name="java.specification.name" value="Java Platform API Specification" />
+
+          <property name="TTxmlFiles" value="./classes/dataTest/TTxmlFiles" />
+
+          <property name="java.class.version" value="50.0" />
+
+          <property name="user.country" value="CA" />
+
+          <property name="java.home" value="D:\Program Files\Java\jdk1.6.0_03\jre" />
+
+          <property name="tictacJar" value="./Diamant2.2.x/Diamant/tictac.jar" />
+
+          <property name="java.vm.info" value="mixed mode" />
+
+          <property name="setProps" value="true" />
+
+          <property name="ant.file" value="D:\workSpaceApplic\Diamant\build.xml" />
+
+          <property name="os.version" value="5.1" />
+
+          <property name="pref" value="./pref" />
+
+          <property name="ant.file.DiamantBuild" value="D:\workSpaceApplic\Diamant\build.xml" />
+
+          <property name="path.separator" value=";" />
+
+          <property name="java.vm.version" value="1.6.0_03-b05" />
+
+          <property name="distDirZip" value="./Diamant2.2.x" />
+
+          <property name="trace" value="./trace" />
+
+          <property name="user.variant" value="" />
+
+          <property name="ant.library.dir" value="D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib" />
+
+          <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob" />
+
+          <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
+
+          <property name="awt.toolkit" value="sun.awt.windows.WToolkit" />
+
+          <property name="user.home" value="C:\Documents and Settings\Ruben" />
+
+          <property name="java.specification.vendor" value="Sun Microsystems Inc." />
+
+          <property name="java.library.path" value="D:\Program Files\eclipse;.;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Java\jre1.6.0_03\bin\client;C:\Program Files\Java\jre1.6.0_03\bin;D:\Program Files\MiKTeX 2.5\miktex\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Program Files\Microsoft SQL Server\90\Tools\binn\;D:\Program Files\SSH Communications Security\SSH Secure Shell;D:\Program Files\eclipse\configuration\org.eclipse.osgi\bundles\115\1\.cp" />
+
+          <property name="java.vendor.url" value="http://java.sun.com/" />
+
+          <property name="java.vm.vendor" value="Sun Microsystems Inc." />
+
+          <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
+
+          <property name="origDist" value="./origDist" />
+
+          <property name="java.class.path" value="D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-antlr.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-apache-bcel.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-apache-bsf.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-apache-log4j.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-apache-oro.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-apache-regexp.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-apache-resolver.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-commons-logging.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-commons-net.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-jai.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-javamail.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-jdepend.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-jmf.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-jsch.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-junit.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-launcher.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-netrexx.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-nodeps.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-starteam.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-stylebook.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-swing.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-trax.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-weblogic.jar;D:\Program Files\eclipse\configuration\org.eclipse.osgi\bundles\17\1\.cp\lib\remoteAnt.jar;D:\Program Files\Java\jdk1.6.0_03\lib\tools.jar;D:\Program Files\eclipse\plugins\org.eclipse.swt.win32.win32.x86_3.3.2.v3347a.jar" />
+
+          <property name="ant.version" value="Apache Ant version 1.7.0 compiled on December 13 2006" />
+
+          <property name="TSTAMP" value="1106" />
+
+          <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+
+          <property name="java.vm.specification.version" value="1.0" />
+
+          <property name="sun.cpu.endian" value="little" />
+
+          <property name="sun.os.patch.level" value="Service Pack 2" />
+
+          <property name="java.io.tmpdir" value="C:\DOCUME~1\Ruben\LOCALS~1\Temp\" />
+
+          <property name="java.vendor.url.bug" value="http://java.sun.com/cgi-bin/bugreport.cgi" />
+
+          <property name="os.arch" value="x86" />
+
+          <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment" />
+
+          <property name="java.ext.dirs" value="D:\Program Files\Java\jdk1.6.0_03\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext" />
+
+          <property name="user.dir" value="D:\workSpaceApplic\Diamant" />
+
+          <property name="line.separator" value=" " />
+
+          <property name="java.vm.name" value="Java HotSpot(TM) Client VM" />
+
+          <property name="basedir" value="D:\workSpaceApplic\Diamant" />
+
+          <property name="ant.java.version" value="1.6" />
+
+          <property name="ant.core.lib" value="D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant.jar" />
+
+          <property name="file.encoding" value="Cp1252" />
+
+          <property name="dataTest" value="./classes/dataTest" />
+
+          <property name="java.specification.version" value="1.6" />
+
+      </properties>
+
+      <testcase classname="dInternal.dTimeTable.DxTTStructureTest" name="test_fileEmpty" time="0.016" />
+
+      <testcase classname="dInternal.dTimeTable.DxTTStructureTest" name="test_getSchemaFileName" time="0.0" />
+
+      <testcase classname="dInternal.dTimeTable.DxTTStructureTest" name="test_fileBadCloseTag" time="0.093" />
+
+      <testcase classname="dInternal.dTimeTable.DxTTStructureTest" name="test_fileNoOpenTag" time="0.0" />
+
+      <testcase classname="eTest.ByteInputFileTest" name="testFileNotExist" time="0.0" />
+
+      <testcase classname="eTest.ByteInputFileTest" name="testFileNameNull" time="0.0" />
+
+      <testcase classname="eTest.ByteInputFileTest" name="testFileEmpty" time="0.0" />
+
+      <testcase classname="eTest.ByteInputFileTest" name="testFileNonEmpty" time="0.0" />
+
+      <testcase classname="eTest.ByteInputFileTest" name="testFileCountLines" time="0.0" />
+
+      <testcase classname="eTest.ByteOutputFileTest" name="testReadWriteRead" time="0.0" />
+
+      <testcase classname="eTest.FilterFileTest" name="testSimple" time="0.016" />
+
+      <testcase classname="eTest.FilterFileTest" name="testEmptyCollection" time="0.0" />
+
+      <testcase classname="eTest.FilterFileTest" name="testSimple1" time="0.0" />
+
+      <testcase classname="eTest.FilterFileTest" name="testReadFile" time="0.0" />
+
+      <testcase classname="eTest.FilterFileTest" name="testAdjustingLinesLF" time="0.0" />
+
+      <testcase classname="eTest.FilterFileTest" name="testAdjustingLinesCR" time="0.0" />
+
+      <testcase classname="eTest.FilterFileTest" name="testAdjustingLines1" time="0.0" />
+
+      <testcase classname="eTest.FilterFileTest" name="testAdjustingLines2" time="0.0" />
+
+      <testcase classname="eTest.FilterFileTest" name="testAdjustingEndFileLF" time="0.0" />
+
+      <testcase classname="eTest.FilterFileTest" name="testAdjustingEndFileCR" time="0.0" />
+
+      <testcase classname="eTest.FilterFileTest" name="testAdjustingEndFile" time="0.0" />
+
+      <testcase classname="eTest.FilterFileTest" name="testAppendToCharKnown" time="0.0" />
+
+      <testcase classname="eTest.SemiExtendedAsciiFileTest" name="testReadFile" time="0.0" />
+
+      <testcase classname="eTest.SemiExtendedAsciiFileTest" name="testAdjustingLinesLF" time="0.0" />
+
+      <testcase classname="eTest.SemiExtendedAsciiFileTest" name="testAdjustingLinesCR" time="0.0" />
+
+      <testcase classname="eTest.SemiExtendedAsciiFileTest" name="testAdjustingEndFileLF" time="0.0" />
+
+      <testcase classname="eTest.SemiExtendedAsciiFileTest" name="testAdjustingEndFileCR" time="0.0" />
+
+      <testcase classname="eTest.SemiExtendedAsciiFileTest" name="testAdjustingEndFile" time="0.0" />
+
+      <testcase classname="eTest.SemiExtendedAsciiFileTest" name="testAppendToCharKnown" time="0.0" />
+
+      <testcase classname="eTest.SemiExtendedAsciiFileTest" name="testReadValidFile" time="0.0" />
+
+      <testcase classname="eTest.SemiExtendedAsciiFileTest" name="testCharNotValid" time="0.0" />
+
+      <testcase classname="eTest.SemiExtendedAsciiFileTest" name="testAdjustingLinesCRLF" time="0.0" />
+
+      <testcase classname="eTest.SemiExtendedAsciiFileTest" name="testAdjustingLinesManyCRLF" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.DxAvailabilityTest" name="test_setPeriodAvailability" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.DxAvailabilityTest" name="test1_setPeriodAvailability" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.DxAvailabilityTest" name="test_getDayAvailability" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.DxAvailabilityTest" name="test1_getDayAvailability" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.DxAvailabilityTest" name="test_getPeriodAvailability" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.DxAvailabilityTest" name="test1_getPeriodAvailability" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.DxAvailabilityTest" name="test2_getPeriodAvailability" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.DxAvailabilityTest" name="test3_getPeriodAvailability" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.DxAvailabilityTest" name="test_getDayCount" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.DxAvailabilityTest" name="test_getPeriodCount" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.DxAvailabilityTest" name="test1_getPeriodCount" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.DxAvailabilityTest" name="test2_getPeriodCount" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.DxAvailabilityTest" name="test_MatrixConstructor" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.DxAvailabilityTest" name="test_setAvailability" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dInstructors.DxInstructorTest" name="test_DxInstructor" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dInstructors.DxInstructorTest" name="test_setInstructors" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dInstructors.DxSetOfInstructorsTest" name="test_addremoveInstructor" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dInstructors.DxSetOfInstructorsTest" name="test_getInstructorAvailability" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dInstructors.DxSetOfInstructorsTest" name="test_instructorCount" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dInstructors.DxSetOfInstructorsTest" name="test_addSetOfInstructors" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dInstructors.DxInstructorsReaderTest" name="test_exceptionOnFirstLine" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dInstructors.DxInstructorsReaderTest" name="test1_exceptionOnName" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dInstructors.DxInstructorsReaderTest" name="test_numberOfInstructors" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dInstructors.DxInstructorsReaderTest" name="test_badAvailability6" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dInstructors.DxInstructorsReaderTest" name="test_badAvailability3" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dInstructors.DxInstructorsReaderTest" name="test_values" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dInstructors.DxInstructorsReaderTest" name="test_valuesOnDispoInst" time="0.016" />
+
+      <testcase classname="dTest.dInternal.dData.dRooms.DxSetOfSitesTest" name="test_getSetOfSitesSingleSite" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dRooms.DxSetOfSitesTest" name="test_getSetOfSitesMultiSite" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dRooms.DxSetOfSitesTest" name="test_getSetOfSitesMultiCat" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.DxAssignAllAlgTest" name="test_buildScNoAssigned" time="1.656" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.DxAssignAllAlgTest" name="test_buildGenNoAssigned" time="6.594" />
+
+      <testcase classname="dInternal.dOptimization.DxAssignRoomsAlgTest" name="test_basicData" time="1.578" />
+
+      <testcase classname="dInternal.dOptimization.DxAssignRoomsAlgTest" name="test_basicData2" time="0.843" />
+
+      <testcase classname="dInternal.dOptimization.DxAssignRoomsAlgTest" name="test_getNumberOfPeriods" time="0.079" />
+
+      <testcase classname="dInternal.dOptimization.DxAssignRoomsAlgTest" name="test_events" time="0.078" />
+
+      <testcase classname="dInternal.dOptimization.DxAssignRoomsAlgTest" name="test_getEvents" time="5.0" />
+
+      <testcase classname="dInternal.dOptimization.DxAssignRoomsAlgTest" name="test_Sort" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.RefinedStudMixAlgoTest" name="test_build" time="0.047" />
+
+      <testcase classname="dTest.dInternal.dDataTxt.ResourceTest" name="test_Resource" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dDataTxt.AssignmentTest" name="test_Assignment" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dDataTxt.UnityTest" name="test_Unity" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dDataTxt.SectionTest" name="test_Section" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dDataTxt.TypeTest" name="test_Type" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dDataTxt.ActivityTest" name="test_Activity" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dTimeTable.PeriodTest" name="test_readXMLtag" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dTimeTable.PeriodTest" name="test_eventsInPeriod" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dTimeTable.PeriodTest" name="test_getEndHour" time="0.015" />
+
+      <testcase classname="dTest.dInternal.dTimeTable.PeriodTest" name="test_writeXMLtag" time="0.016" />
+
+      <testcase classname="dTest.dInternal.dTimeTable.SequenceTest" name="test_readXMLtag" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dTimeTable.SequenceTest" name="test_writeXMLtag" time="0.015" />
+
+      <testcase classname="dTest.dInternal.dTimeTable.SequenceTest" name="test_cloneSequence" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dTimeTable.DayTest" name="test_readXMLtag" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dTimeTable.DayTest" name="test_writeXMLtag" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dTimeTable.DayTest" name="test_cloneDay" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dTimeTable.CycleTest" name="test_readXMLtag" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dTimeTable.CycleTest" name="test_writeXMLtag" time="0.016" />
+
+      <testcase classname="dTest.dInternal.dTimeTable.CycleTest" name="test_addDays" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dTimeTable.CycleTest" name="test_removeDays" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dTimeTable.CycleTest" name="test_previousPeriod_1" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dTimeTable.CycleTest" name="test_previousPeriod_2" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dTimeTable.CycleTest" name="test_previousPeriod_3" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dTimeTable.CycleTest" name="test_NextPeriod_1" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dTimeTable.CycleTest" name="test_NextPeriod_2" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dTimeTable.CycleTest" name="test_NextPeriod_3" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dTimeTable.TTStructureTest" name="test_readXMLtag" time="0.016" />
+
+      <testcase classname="dTest.dInternal.dTimeTable.TTStructureTest" name="test_writeXMLtag" time="0.015" />
+
+      <testcase classname="dTest.dInternal.dTimeTable.TTStructureTest" name="test_loadTTStructure" time="0.016" />
+
+      <testcase classname="dTest.dInternal.dTimeTable.TTStructureTest" name="test_CreateDefaultTT" time="0.062" />
+
+      <testcase classname="dTest.dInternal.dTimeTable.TTStructureTest" name="test_getFirstPeriod" time="0.016" />
+
+      <testcase classname="dTest.dInternal.dTimeTable.TTStructureTest" name="test_getLastPeriod" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dTimeTable.TTStructureTest" name="test_getMaxNumberOfPeriodsADay" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dTimeTable.TTStructureTest" name="test_getMaxNumberOfSeqs" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dTimeTable.TTStructureTest" name="test_getPeriod" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dTimeTable.TTStructureTest" name="test_saveTTStructure" time="0.25" />
+
+      <testcase classname="dTest.dInternal.dTimeTable.TTStructureTest" name="test_cloneCurrentTTS" time="0.109" />
+
+      <testcase classname="dTest.dInternal.dTimeTable.TTStructureTest" name="test1_cloneCurrentTTS" time="0.094" />
+
+      <testcase classname="dTest.dInternal.dUtil.DXToolsMethodsTest" name="test_resizeAvailability" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.SetOfEventsTest" name="testEvents_5j" time="0.031" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.SetOfEventsTest" name="test_addEvents_7j" time="0.438" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.ConflictsAttachTest" name="test_addConflicts" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.ConflictsAttachTest" name="test_numberOfConflicts" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.ConflictsAttachTest" name="test_mergeConflictsAttach" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.ConflictsAttachTest" name="test_getAllConflictsOfAnEvent" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.StudentsConflictsMatrixTest" name="test_SectionKeys" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.StudentsConflictsMatrixTest" name="test2_SectionKeys" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.StudentsConflictsMatrixTest" name="test1_Matrix" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.StudentsConflictsMatrixTest" name="test2_Matrix" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.StudentsConflictsMatrixTest" name="test3_Matrix" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.StudentsConflictsMatrixTest" name="test4_Matrix" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.StudentsConflictsMatrixTest" name="test5_Matrix" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.StudentsConflictsMatrixTest" name="test6_Matrix" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.InstructorsConditionsTest" name="test_Availability5j" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.InstructorsConditionsTest" name="test_2EventsConflicts5j" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.InstructorsConditionsTest" name="test_Availability7j" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.InstructorsConditionsTest" name="test_2EventsConflicts7j" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dRooms.DxSiteReaderTest" name="test2_readSetOfSites" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dRooms.DxSiteReaderTest" name="test1_readSetOfSites" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dRooms.DxSiteReaderTest" name="test3_readSetOfSites" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dRooms.DxSiteReaderTest" name="test4_readSetOfSites" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dRooms.DxSiteReaderTest" name="test1_readSetOfSitesMultiCat" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.RoomsConditionsTest" name="test_RoomConfInData5j" time="0.015" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.RoomsConditionsTest" name="test_EventsConflictsInData5j" time="0.031" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.RoomsConditionsTest" name="test_AvailabilityInData7j" time="0.032" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.RoomsConditionsTest" name="test_EventsConflictsData7j" time="0.031" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.StudentsConditionsTest" name="test_EventsConflicts" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.StudentsConditionsTest" name="test2_EventsConflicts" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.StudentsConditionsTest" name="test_periodVariationEventsPeriods" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.StudentsConditionsTest" name="test2_periodVariationEventsPeriods" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.StudentsConditionsTest" name="test3_periodVariationEventsPeriods" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.StudentsConditionsTest" name="test4_periodVariationEventsPeriods" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.StudentsConditionsTest" name="test5_periodVariationEventsPeriods" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.StudentsConditionsTest" name="test6_periodVariationEventsPeriods" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.StudentsConditionsTest" name="test7_periodVariationEventsPeriods" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.StudentsConditionsTest" name="test8_periodVariationEventsPeriods" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.ConditionsTest" name="test_initAllConditions5j" time="0.031" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.ConditionsTest" name="test_addEventInTTs_1_5j" time="0.031" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.ConditionsTest" name="test_removeEventInTTs_5j" time="0.032" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.ConditionsTest" name="test_buildAllConditionsDh" time="0.156" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.ConditionsTest" name="test_buildAllConditionsInCloneTTS" time="0.297" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.ConditionsTest" name="test_initAllConditions7j" time="0.031" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.ConditionsTest" name="test_addEventInTTs_1_7j" time="0.031" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.ConditionsTest" name="test_addEventInTTs_2_7j" time="0.032" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.ConditionsTest" name="test_removeEventInTTs_3_7j" time="0.031" />
+
+      <testcase classname="dTest.dmains.ScanFileTest" name="test_beginOfFile" time="0.0" />
+
+      <testcase classname="dTest.dmains.ScanFileTest" name="test_endOfFile" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test_analyseTokens1_5" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test1_analyseTokens1_5" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test1_analyseTokens1_6" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test2_analyseTokens1_6" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test3_analyseTokens1_6" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test4_analyseTokens1_6" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test5_analyseTokens1_6" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test6_analyseTokens1_6" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test7_analyseTokens1_6" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test8_analyseTokens1_6" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test9_analyseTokens1_6" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test10_analyseTokens1_6" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test2_analyseTokens1_5" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test3_analyseTokens1_5" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test4_analyseTokens1_5" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test5_analyseTokens1_5" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test6_analyseTokens1_5" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test7_analyseTokens1_5" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test1_buildSetOfResources1_6" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test_getStudentsByGroup" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test_toWrite" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dActivities.DSetOfActivitiesTest" name="test_analyseTokens" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dActivities.DSetOfActivitiesTest" name="test0_analyseTokens" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dActivities.DSetOfActivitiesTest" name="test00_analyseTokens" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dActivities.DSetOfActivitiesTest" name="test1_analyseTokens" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dActivities.DSetOfActivitiesTest" name="test2_analyseTokens" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dActivities.DSetOfActivitiesTest" name="test3_analyseTokens" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dActivities.DSetOfActivitiesTest" name="test4_analyseTokens" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dActivities.DSetOfActivitiesTest" name="test5_analyseTokens" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dActivities.DSetOfActivitiesTest" name="test6_analyseTokens" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dActivities.DSetOfActivitiesTest" name="test7_analyseTokens" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dActivities.DSetOfActivitiesTest" name="test8_analyseTokens" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dActivities.DSetOfActivitiesTest" name="test9_analyseTokens" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dActivities.DSetOfActivitiesTest" name="test10_analyseTokens" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dActivities.DSetOfActivitiesTest" name="test11_analyseTokens" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dActivities.DSetOfActivitiesTest" name="test12_analyseTokens" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dActivities.DSetOfActivitiesTest" name="test13_analyseTokens" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dActivities.DSetOfActivitiesTest" name="test14_analyseTokens" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dActivities.DSetOfActivitiesTest" name="test_addActivity" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dActivities.DSetOfActivitiesTest" name="test_addActivitDiffRooms" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dActivities.DSetOfActivitiesTest" name="test_nInstructorEqualsnBlocs" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dActivities.DSetOfActivitiesTest" name="test_nSetInstructorEqualsnBlocs" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dActivities.DSetOfActivitiesTest" name="test_nInstructorNoEqualsnBlocs" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dActivities.DSetOfActivitiesSitesTest" name="test_buildSetOfResources1_5" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dActivities.DSetOfActivitiesSitesTest" name="test_buildSetOfResources1_6" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DValueTest" name="testA_setRefNo" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DValueTest" name="testA_setBooleanValue" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DValueTest" name="testA_setIntValue" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DValueTest" name="testA_setObjectValue" time="0.015" />
+
+      <testcase classname="dTest.dInternal.DValueTest" name="testB_setRefNo" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DValueTest" name="testB_setBooleanValue" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DValueTest" name="testB_setIntValue" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DValueTest" name="testB_setObjectValue" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DObjectTest" name="testA_etSelectedField" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DObjectTest" name="testA_compareByField" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DObjectTest" name="testA_setField" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DObjectTest" name="testA_toWrite" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DObjectTest" name="testA_isEquals" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DObjectTest" name="testA_getMatrixAvailability" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DObjectTest" name="testA_setAvailability" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DxStateTest" name="testA_setColor" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DxStateTest" name="testA_setValue" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DxStateTest" name="testB_setColor" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DxStateTest" name="testB_setValue" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DxStateBarModelTest" name="testStateBarModel_5j" time="0.032" />
+
+      <testcase classname="dTest.dInternal.DxStateBarModelTest" name="testStateBarModel_7j" time="0.031" />
+
+      <testcase classname="dTest.dInternal.DataExchangeTest" name="testA_getContents" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DataExchangeTest" name="testA_getHeader" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DataExchangeTest" name="testA_setContents" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.ByteArrayMessageTest" name="test_getContents" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.ByteArrayMessageTest" name="test_getHeader" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.ByteArrayMessageTest" name="test_setContents" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.StandardCollectionTest" name="test_toWrite" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.StandardCollectionTest" name="test_getError" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.StandardCollectionTest" name="test_getSelectedField" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DResourceTest" name="testA_getKey" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DResourceTest" name="testA_getID" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DResourceTest" name="testA_getAttach" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DResourceTest" name="testA_setAttach" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DResourceTest" name="test_AsetIntValue" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DResourceTest" name="testA_setManuallyCreated" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DResourceTest" name="testB_toWrite" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DResourceTest" name="testB_isEquals" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test_loadTimeTable5j" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test1_loadTimeTable5j" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test2_loadTimeTable5j" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test3_loadTimeTable5j" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test4_loadTimeTable5j" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test5_loadTimeTable5j" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test1_ImportSelective5j" time="0.625" />
+
+      <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test_loadTimeTable7j" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test1_loadTimeTable7j" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test2_loadTimeTable7j" time="0.016" />
+
+      <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test3_loadTimeTable7j" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test4_loadTimeTable7j" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test5_loadTimeTable7j" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test1_ImportSelective7j" time="0.609" />
+
+      <testcase classname="dTest.dInternal.dData.DSaveDataTest" name="test_saveTTStructure" time="0.25" />
+
+      <testcase classname="dTest.dInternal.dData.DSaveDataTest" name="test_getVersion" time="0.125" />
+
+      <testcase classname="dTest.dInternal.dData.DSaveDataTest" name="test1_saveTimeTable" time="0.25" />
+
+      <testcase classname="dTest.dInternal.dData.DSaveDataTest" name="test2_saveTimeTable" time="0.125" />
+
+      <testcase classname="dTest.dInternal.dData.DSaveDataTest" name="test_loadInstructors" time="0.125" />
+
+      <testcase classname="dTest.dInternal.dData.DSaveDataTest" name="test_loadRooms" time="0.125" />
+
+      <testcase classname="dTest.dInternal.dData.DSaveDataTest" name="test_loadActivities" time="0.125" />
+
+      <testcase classname="dTest.dInternal.dData.DSaveDataTest" name="test_loadStudents" time="0.125" />
+
+      <testcase classname="dTest.dInternal.DSetOfResourcesTest" name="test_addResource" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DSetOfResourcesTest" name="test_setSetOfResources" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DSetOfResourcesTest" name="test_setSubsetOfResources" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DSetOfResourcesTest" name="test_getSetOfResources" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DSetOfResourcesTest" name="test_setCurrentKey" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DSetOfResourcesTest" name="test_removeResourceAt" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DSetOfResourcesTest" name="test_removeResourceString" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DSetOfResourcesTest" name="test_removeResourceLong" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DSetOfResourcesTest" name="test_getResourceString" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DSetOfResourcesTest" name="test_getResourceLong" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DSetOfResourcesTest" name="test_getResourceAt" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DSetOfResourcesTest" name="test_getIndexOfResourceLong" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DSetOfResourcesTest" name="test_getIndexOfResource" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DSetOfResourcesTest" name="test1_setResource" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DSetOfResourcesTest" name="test2_setResource" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DSetOfResourcesTest" name="test_sortSetOfResourcesByID" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DSetOfResourcesTest" name="test_sortSetOfResourcesByKey" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DSetOfResourcesTest" name="test_sortSetOfResourcesBySelectedAttachField" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DSetOfResourcesTest" name="test0_getNamesVector0" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DSetOfResourcesTest" name="test1_getNamesVector" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DSetOfResourcesTest" name="test_getNamesVector" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DSetOfResourcesTest" name="test_selectIDValue" time="0.0" />
+
+      <testcase classname="dTest.dInternal.DSetOfResourcesTest" name="test_getIDsByField" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.DStandardReportDataTest" name="test_getActivitiesReport" time="0.031" />
+
+      <testcase classname="dTest.dInternal.dData.DStandardReportDataTest" name="test_getConflictsReport" time="0.031" />
+
+      <testcase classname="dTest.dInternal.dData.DStandardReportDataTest" name="test_getStudentsReport" time="0.032" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test_analyseTokens1_5" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test1_analyseTokens1_5" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test1_analyseTokens1_6" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test2_analyseTokens1_6" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test3_analyseTokens1_6" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test4_analyseTokens1_6" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test5_analyseTokens1_6" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test6_analyseTokens1_6" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test7_analyseTokens1_6" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test8_analyseTokens1_6" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test9_analyseTokens1_6" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test10_analyseTokens1_6" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test2_analyseTokens1_5" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test3_analyseTokens1_5" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test4_analyseTokens1_5" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test5_analyseTokens1_5" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test6_analyseTokens1_5" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test7_analyseTokens1_5" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test1_buildSetOfResources1_6" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test_getStudentsByGroup" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.SetOfStuSitesTest" name="test_toWrite" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.StudentTest" name="test_addCourses" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.StudentTest" name="test_setSex" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.StudentTest" name="test_setAuxField" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.StudentTest" name="test_setSession" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.StudentTest" name="test_setStage" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.StudentTest" name="test_setArea" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.StudentTest" name="test_externalKey" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.StudentTest" name="test1_isInActivity" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.StudentTest" name="test2_isInActivity" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.StudentTest" name="test_setInGroup" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dStudents.StudentTest" name="test_getGroup" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dDataTxt.ResourceTest" name="test_Resource" time="0.0" />
+
+      <testcase classname="dTest.dInterface.dMenus.DFileMenuTest" name="testNewTTable" time="1.078" />
+
+      <testcase classname="dTest.dInterface.dMenus.DFileMenuTest" name="testNewTTableCycle" time="0.5" />
+
+      <testcase classname="dTest.dInterface.dAssignementDlgs.DxEditEventDlgTest" name="testCreationByJFrame" time="0.14" />
+
+      <testcase classname="dTest.dInterface.dAssignementDlgs.DxEditEventDlgTest" name="testCreationByJDialog" time="0.032" />
+
+      <system-out><![CDATA[Hello I am in Diamant tests
+Preference file is in :C:\Documents and Settings\Ruben\pref\pref.txt
+Bye I was in Diamant tests
+FACTORY: com.sun.xml.stream.ZephyrParserFactory@1ee40a4
+FACTORY: com.sun.xml.stream.ZephyrParserFactory@1c9d17e
+EVENT sE: <DXTimeTable>
+EVENT c: 
+	
+EVENT sE: <TTcycle>
+EVENT c: 
+		
+EVENT sE: <cycleID>
+EVENT c: 1
+EVENT eE: </cycleID>
+EVENT c: 
+		
+EVENT sE: <pLength>
+EVENT c: 60
+EVENT eE: </pLength>
+EVENT c: 
+		
+EVENT sE: <TTdays>
+EVENT c: 
+			
+EVENT sE: <TTday>
+EVENT c: 
+				
+EVENT sE: <TTsequences>
+EVENT c: 
+					
+EVENT sE: <TTsequence>
+EVENT c: 
+						
+EVENT sE: <sequenceID>
+EVENT c: AM
+EVENT eE: </sequenceID>
+EVENT c: 
+						
+EVENT sE: <TTperiods>
+EVENT c: 
+							
+FACTORY: com.sun.xml.stream.ZephyrParserFactory@183e895
+EVENT sE: <DXTimeTable>
+EVENT c: 
+	
+EVENT sE: <TTcycle>
+EVENT c: 
+		
+EVENT sE: <cycleID>
+EVENT c: 1
+EVENT eE: </cycleID>
+EVENT c: 
+		
+EVENT sE: <pLength>
+EVENT c: 60
+EVENT eE: </pLength>
+EVENT c: 
+		
+EVENT sE: <TTdays>
+EVENT c: 
+			
+EVENT sE: <TTday>
+EVENT c: 
+				
+EVENT sE: <TTsequences>
+EVENT c: 
+					
+EVENT sE: <TTsequence>
+EVENT c: 
+						
+EVENT sE: <sequenceID>
+EVENT c: AM
+EVENT eE: </sequenceID>
+EVENT c: 
+						
+EVENT sE: <TTperiods>
+EVENT c: 
+							
+								
+EVENT sE: <periodID>
+EVENT c: 1
+EVENT eE: </periodID>
+EVENT c: 
+								
+EVENT sE: <BeginTime>
+EVENT c: 8:15
+EVENT eE: </BeginTime>
+EVENT c: 
+								
+EVENT sE: <EndTime>
+EVENT c: 9:15
+EVENT eE: </EndTime>
+EVENT c: 
+								
+EVENT sE: <priority>
+EVENT c: 0
+EVENT eE: </priority>
+EVENT c: 
+							
+Preference file is in :C:\Documents and Settings\Ruben\pref\pref.txt
+I am in Mode Development
+Preference file is in :C:\Documents and Settings\Ruben\pref\pref.txt
+pref: javax.swing.plaf.metal.MetalLookAndFeel
+pref: javax.swing.plaf.metal.MetalLookAndFeel
+path: \dataTest\HIVER2008examens.dia
+Preference file is in :C:\Documents and Settings\Ruben\pref\pref.txt
+I am in Mode Development
+Preference file is in :C:\Documents and Settings\Ruben\pref\pref.txt
+pref: javax.swing.plaf.metal.MetalLookAndFeel
+pref: javax.swing.plaf.metal.MetalLookAndFeel
+path: \dataTest\HIVER2008examens.dia
+]]></system-out>
+
+      <system-err><![CDATA[]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="ruben-vm-pc" id="1" name="RgrTest" package="dmains" tests="85" time="19.172" timestamp="2008-02-05T16:07:09">
+      <properties>
+          <property name="java.vendor" value="Sun Microsystems Inc." />
+
+          <property name="sun.java.launcher" value="SUN_STANDARD" />
+
+          <property name="sun.management.compiler" value="HotSpot Client Compiler" />
+
+          <property name="lib" value="./classes/lib" />
+
+          <property name="os.name" value="Windows XP" />
+
+          <property name="sun.boot.class.path" value="D:\Program Files\Java\jdk1.6.0_03\jre\lib\resources.jar;D:\Program Files\Java\jdk1.6.0_03\jre\lib\rt.jar;D:\Program Files\Java\jdk1.6.0_03\jre\lib\sunrsasign.jar;D:\Program Files\Java\jdk1.6.0_03\jre\lib\jsse.jar;D:\Program Files\Java\jdk1.6.0_03\jre\lib\jce.jar;D:\Program Files\Java\jdk1.6.0_03\jre\lib\charsets.jar;D:\Program Files\Java\jdk1.6.0_03\jre\classes" />
+
+          <property name="TODAY" value="February 5 2008" />
+
+          <property name="sun.desktop" value="windows" />
+
+          <property name="java.vm.specification.vendor" value="Sun Microsystems Inc." />
+
+          <property name="ant.home" value="D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842" />
+
+          <property name="java.runtime.version" value="1.6.0_03-b05" />
+
+          <property name="distDir" value="./Diamant2.2.x/Diamant" />
+
+          <property name="user.name" value="Ruben" />
+
+          <property name="reports" value="./reports" />
+
+          <property name="user.language" value="en" />
+
+          <property name="build" value="./classes" />
+
+          <property name="sun.boot.library.path" value="D:\Program Files\Java\jdk1.6.0_03\jre\bin" />
+
+          <property name="srcDir" value="." />
+
+          <property name="ant.project.name" value="DiamantBuild" />
+
+          <property name="DSTAMP" value="20080205" />
+
+          <property name="java.version" value="1.6.0_03" />
+
+          <property name="user.timezone" value="" />
+
+          <property name="sun.arch.data.model" value="32" />
+
+          <property name="localJars" value="./jars" />
+
+          <property name="java.endorsed.dirs" value="D:\Program Files\Java\jdk1.6.0_03\jre\lib\endorsed" />
+
+          <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86" />
+
+          <property name="sun.jnu.encoding" value="Cp1252" />
+
+          <property name="file.encoding.pkg" value="sun.io" />
+
+          <property name="file.separator" value="\" />
+
+          <property name="java.specification.name" value="Java Platform API Specification" />
+
+          <property name="TTxmlFiles" value="./classes/dataTest/TTxmlFiles" />
+
+          <property name="java.class.version" value="50.0" />
+
+          <property name="user.country" value="CA" />
+
+          <property name="java.home" value="D:\Program Files\Java\jdk1.6.0_03\jre" />
+
+          <property name="tictacJar" value="./Diamant2.2.x/Diamant/tictac.jar" />
+
+          <property name="java.vm.info" value="mixed mode" />
+
+          <property name="setProps" value="true" />
+
+          <property name="ant.file" value="D:\workSpaceApplic\Diamant\build.xml" />
+
+          <property name="os.version" value="5.1" />
+
+          <property name="pref" value="./pref" />
+
+          <property name="ant.file.DiamantBuild" value="D:\workSpaceApplic\Diamant\build.xml" />
+
+          <property name="path.separator" value=";" />
+
+          <property name="java.vm.version" value="1.6.0_03-b05" />
+
+          <property name="distDirZip" value="./Diamant2.2.x" />
+
+          <property name="trace" value="./trace" />
+
+          <property name="user.variant" value="" />
+
+          <property name="ant.library.dir" value="D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib" />
+
+          <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob" />
+
+          <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
+
+          <property name="awt.toolkit" value="sun.awt.windows.WToolkit" />
+
+          <property name="user.home" value="C:\Documents and Settings\Ruben" />
+
+          <property name="java.specification.vendor" value="Sun Microsystems Inc." />
+
+          <property name="java.library.path" value="D:\Program Files\eclipse;.;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Java\jre1.6.0_03\bin\client;C:\Program Files\Java\jre1.6.0_03\bin;D:\Program Files\MiKTeX 2.5\miktex\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Program Files\Microsoft SQL Server\90\Tools\binn\;D:\Program Files\SSH Communications Security\SSH Secure Shell;D:\Program Files\eclipse\configuration\org.eclipse.osgi\bundles\115\1\.cp" />
+
+          <property name="java.vendor.url" value="http://java.sun.com/" />
+
+          <property name="java.vm.vendor" value="Sun Microsystems Inc." />
+
+          <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
+
+          <property name="origDist" value="./origDist" />
+
+          <property name="java.class.path" value="D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-antlr.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-apache-bcel.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-apache-bsf.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-apache-log4j.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-apache-oro.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-apache-regexp.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-apache-resolver.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-commons-logging.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-commons-net.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-jai.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-javamail.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-jdepend.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-jmf.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-jsch.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-junit.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-launcher.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-netrexx.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-nodeps.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-starteam.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-stylebook.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-swing.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-trax.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-weblogic.jar;D:\Program Files\eclipse\configuration\org.eclipse.osgi\bundles\17\1\.cp\lib\remoteAnt.jar;D:\Program Files\Java\jdk1.6.0_03\lib\tools.jar;D:\Program Files\eclipse\plugins\org.eclipse.swt.win32.win32.x86_3.3.2.v3347a.jar" />
+
+          <property name="ant.version" value="Apache Ant version 1.7.0 compiled on December 13 2006" />
+
+          <property name="TSTAMP" value="1106" />
+
+          <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+
+          <property name="java.vm.specification.version" value="1.0" />
+
+          <property name="sun.cpu.endian" value="little" />
+
+          <property name="sun.os.patch.level" value="Service Pack 2" />
+
+          <property name="java.io.tmpdir" value="C:\DOCUME~1\Ruben\LOCALS~1\Temp\" />
+
+          <property name="java.vendor.url.bug" value="http://java.sun.com/cgi-bin/bugreport.cgi" />
+
+          <property name="os.arch" value="x86" />
+
+          <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment" />
+
+          <property name="java.ext.dirs" value="D:\Program Files\Java\jdk1.6.0_03\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext" />
+
+          <property name="user.dir" value="D:\workSpaceApplic\Diamant" />
+
+          <property name="line.separator" value=" " />
+
+          <property name="java.vm.name" value="Java HotSpot(TM) Client VM" />
+
+          <property name="basedir" value="D:\workSpaceApplic\Diamant" />
+
+          <property name="ant.java.version" value="1.6" />
+
+          <property name="ant.core.lib" value="D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant.jar" />
+
+          <property name="file.encoding" value="Cp1252" />
+
+          <property name="dataTest" value="./classes/dataTest" />
+
+          <property name="java.specification.version" value="1.6" />
+
+      </properties>
+
+      <testcase classname="dInternal.dTimeTable.DxTTStructureTest" name="test_fileEmpty" time="0.0" />
+
+      <testcase classname="dInternal.dTimeTable.DxTTStructureTest" name="test_getSchemaFileName" time="0.0" />
+
+      <testcase classname="dInternal.dTimeTable.DxTTStructureTest" name="test_fileBadCloseTag" time="0.0" />
+
+      <testcase classname="dInternal.dTimeTable.DxTTStructureTest" name="test_fileNoOpenTag" time="0.0" />
+
+      <testcase classname="eTest.ByteInputFileTest" name="testFileNotExist" time="0.0" />
+
+      <testcase classname="eTest.ByteInputFileTest" name="testFileNameNull" time="0.0" />
+
+      <testcase classname="eTest.ByteInputFileTest" name="testFileEmpty" time="0.0" />
+
+      <testcase classname="eTest.ByteInputFileTest" name="testFileNonEmpty" time="0.0" />
+
+      <testcase classname="eTest.ByteInputFileTest" name="testFileCountLines" time="0.0" />
+
+      <testcase classname="eTest.ByteOutputFileTest" name="testReadWriteRead" time="0.0" />
+
+      <testcase classname="eTest.FilterFileTest" name="testSimple" time="0.0" />
+
+      <testcase classname="eTest.FilterFileTest" name="testEmptyCollection" time="0.0" />
+
+      <testcase classname="eTest.FilterFileTest" name="testSimple1" time="0.0" />
+
+      <testcase classname="eTest.FilterFileTest" name="testReadFile" time="0.0" />
+
+      <testcase classname="eTest.FilterFileTest" name="testAdjustingLinesLF" time="0.0" />
+
+      <testcase classname="eTest.FilterFileTest" name="testAdjustingLinesCR" time="0.0" />
+
+      <testcase classname="eTest.FilterFileTest" name="testAdjustingLines1" time="0.0" />
+
+      <testcase classname="eTest.FilterFileTest" name="testAdjustingLines2" time="0.0" />
+
+      <testcase classname="eTest.FilterFileTest" name="testAdjustingEndFileLF" time="0.0" />
+
+      <testcase classname="eTest.FilterFileTest" name="testAdjustingEndFileCR" time="0.0" />
+
+      <testcase classname="eTest.FilterFileTest" name="testAdjustingEndFile" time="0.0" />
+
+      <testcase classname="eTest.FilterFileTest" name="testAppendToCharKnown" time="0.0" />
+
+      <testcase classname="eTest.SemiExtendedAsciiFileTest" name="testReadFile" time="0.0" />
+
+      <testcase classname="eTest.SemiExtendedAsciiFileTest" name="testAdjustingLinesLF" time="0.0" />
+
+      <testcase classname="eTest.SemiExtendedAsciiFileTest" name="testAdjustingLinesCR" time="0.0" />
+
+      <testcase classname="eTest.SemiExtendedAsciiFileTest" name="testAdjustingEndFileLF" time="0.0" />
+
+      <testcase classname="eTest.SemiExtendedAsciiFileTest" name="testAdjustingEndFileCR" time="0.0" />
+
+      <testcase classname="eTest.SemiExtendedAsciiFileTest" name="testAdjustingEndFile" time="0.0" />
+
+      <testcase classname="eTest.SemiExtendedAsciiFileTest" name="testAppendToCharKnown" time="0.0" />
+
+      <testcase classname="eTest.SemiExtendedAsciiFileTest" name="testReadValidFile" time="0.0" />
+
+      <testcase classname="eTest.SemiExtendedAsciiFileTest" name="testCharNotValid" time="0.016" />
+
+      <testcase classname="eTest.SemiExtendedAsciiFileTest" name="testAdjustingLinesCRLF" time="0.0" />
+
+      <testcase classname="eTest.SemiExtendedAsciiFileTest" name="testAdjustingLinesManyCRLF" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.DxAssignAllAlgTest" name="test_buildScNoAssigned" time="1.547" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.DxAssignAllAlgTest" name="test_buildGenNoAssigned" time="6.546" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.RoomsConditionsTest" name="test_RoomConfInData5j" time="0.016" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.RoomsConditionsTest" name="test_EventsConflictsInData5j" time="0.031" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.RoomsConditionsTest" name="test_AvailabilityInData7j" time="0.032" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.RoomsConditionsTest" name="test_EventsConflictsData7j" time="0.031" />
+
+      <testcase classname="dInternal.dOptimization.DxAssignRoomsAlgTest" name="test_basicData" time="1.437" />
+
+      <testcase classname="dInternal.dOptimization.DxAssignRoomsAlgTest" name="test_basicData2" time="0.86" />
+
+      <testcase classname="dInternal.dOptimization.DxAssignRoomsAlgTest" name="test_getNumberOfPeriods" time="0.078" />
+
+      <testcase classname="dInternal.dOptimization.DxAssignRoomsAlgTest" name="test_events" time="0.078" />
+
+      <testcase classname="dInternal.dOptimization.DxAssignRoomsAlgTest" name="test_getEvents" time="5.0" />
+
+      <testcase classname="dInternal.dOptimization.DxAssignRoomsAlgTest" name="test_Sort" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test_loadTimeTable5j" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test1_loadTimeTable5j" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test2_loadTimeTable5j" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test3_loadTimeTable5j" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test4_loadTimeTable5j" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test5_loadTimeTable5j" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test1_ImportSelective5j" time="0.609" />
+
+      <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test_loadTimeTable7j" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test1_loadTimeTable7j" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test2_loadTimeTable7j" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test3_loadTimeTable7j" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test4_loadTimeTable7j" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test5_loadTimeTable7j" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test1_ImportSelective7j" time="0.594" />
+
+      <testcase classname="dTest.dInternal.dData.dInstructors.DxInstructorsReaderTest" name="test_exceptionOnFirstLine" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dInstructors.DxInstructorsReaderTest" name="test1_exceptionOnName" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dInstructors.DxInstructorsReaderTest" name="test_numberOfInstructors" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dInstructors.DxInstructorsReaderTest" name="test_badAvailability6" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dInstructors.DxInstructorsReaderTest" name="test_badAvailability3" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dInstructors.DxInstructorsReaderTest" name="test_values" time="0.0" />
+
+      <testcase classname="dTest.dInternal.dData.dInstructors.DxInstructorsReaderTest" name="test_valuesOnDispoInst" time="0.016" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.SetOfEventsTest" name="testEvents_5j" time="0.015" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.SetOfEventsTest" name="test_addEvents_7j" time="0.532" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.ConditionsTest" name="test_initAllConditions5j" time="0.031" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.ConditionsTest" name="test_addEventInTTs_1_5j" time="0.031" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.ConditionsTest" name="test_removeEventInTTs_5j" time="0.031" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.ConditionsTest" name="test_buildAllConditionsDh" time="0.172" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.ConditionsTest" name="test_buildAllConditionsInCloneTTS" time="0.266" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.ConditionsTest" name="test_initAllConditions7j" time="0.031" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.ConditionsTest" name="test_addEventInTTs_1_7j" time="0.031" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.ConditionsTest" name="test_addEventInTTs_2_7j" time="0.016" />
+
+      <testcase classname="dTest.dInternal.dOptimizationTest.ConditionsTest" name="test_removeEventInTTs_3_7j" time="0.031" />
+
+      <testcase classname="dTest.dInternal.dData.DSaveDataTest" name="test_saveTTStructure" time="0.188" />
+
+      <testcase classname="dTest.dInternal.dData.DSaveDataTest" name="test_getVersion" time="0.14" />
+
+      <testcase classname="dTest.dInternal.dData.DSaveDataTest" name="test1_saveTimeTable" time="0.125" />
+
+      <testcase classname="dTest.dInternal.dData.DSaveDataTest" name="test2_saveTimeTable" time="0.125" />
+
+      <testcase classname="dTest.dInternal.dData.DSaveDataTest" name="test_loadInstructors" time="0.11" />
+
+      <testcase classname="dTest.dInternal.dData.DSaveDataTest" name="test_loadRooms" time="0.14" />
+
+      <testcase classname="dTest.dInternal.dData.DSaveDataTest" name="test_loadActivities" time="0.125" />
+
+      <testcase classname="dTest.dInternal.dData.DSaveDataTest" name="test_loadStudents" time="0.125" />
+
+      <system-out><![CDATA[Hello I am rgr selected Tests
+Bye I was in rgr selected Tests
+FACTORY: com.sun.xml.stream.ZephyrParserFactory@152912f
+FACTORY: com.sun.xml.stream.ZephyrParserFactory@1609af9
+EVENT sE: <DXTimeTable>
+EVENT c: 
+	
+EVENT sE: <TTcycle>
+EVENT c: 
+		
+EVENT sE: <cycleID>
+EVENT c: 1
+EVENT eE: </cycleID>
+EVENT c: 
+		
+EVENT sE: <pLength>
+EVENT c: 60
+EVENT eE: </pLength>
+EVENT c: 
+		
+EVENT sE: <TTdays>
+EVENT c: 
+			
+EVENT sE: <TTday>
+EVENT c: 
+				
+EVENT sE: <TTsequences>
+EVENT c: 
+					
+EVENT sE: <TTsequence>
+EVENT c: 
+						
+EVENT sE: <sequenceID>
+EVENT c: AM
+EVENT eE: </sequenceID>
+EVENT c: 
+						
+EVENT sE: <TTperiods>
+EVENT c: 
+							
+FACTORY: com.sun.xml.stream.ZephyrParserFactory@1daca94
+EVENT sE: <DXTimeTable>
+EVENT c: 
+	
+EVENT sE: <TTcycle>
+EVENT c: 
+		
+EVENT sE: <cycleID>
+EVENT c: 1
+EVENT eE: </cycleID>
+EVENT c: 
+		
+EVENT sE: <pLength>
+EVENT c: 60
+EVENT eE: </pLength>
+EVENT c: 
+		
+EVENT sE: <TTdays>
+EVENT c: 
+			
+EVENT sE: <TTday>
+EVENT c: 
+				
+EVENT sE: <TTsequences>
+EVENT c: 
+					
+EVENT sE: <TTsequence>
+EVENT c: 
+						
+EVENT sE: <sequenceID>
+EVENT c: AM
+EVENT eE: </sequenceID>
+EVENT c: 
+						
+EVENT sE: <TTperiods>
+EVENT c: 
+							
+								
+EVENT sE: <periodID>
+EVENT c: 1
+EVENT eE: </periodID>
+EVENT c: 
+								
+EVENT sE: <BeginTime>
+EVENT c: 8:15
+EVENT eE: </BeginTime>
+EVENT c: 
+								
+EVENT sE: <EndTime>
+EVENT c: 9:15
+EVENT eE: </EndTime>
+EVENT c: 
+								
+EVENT sE: <priority>
+EVENT c: 0
+EVENT eE: </priority>
+EVENT c: 
+							
+]]></system-out>
+
+      <system-err><![CDATA[]]></system-err>
+
+  </testsuite>
+</testsuites>

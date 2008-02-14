@@ -1,0 +1,2185 @@
+2.1
+!!!!!!!!!!
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<DXTimeTable>
+     <TTcycle>
+        <TTdays>
+        <TTday>
+             <TTsequences>
+               <TTsequence><sequenceID>Séquence 1</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>08:50</BeginTime><EndTime>11:40</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>Séquence 2</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>13:00</BeginTime><EndTime>15:50</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>Séquence 3</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>16:00</BeginTime><EndTime>18:50</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>Séquence 4</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>19:00</BeginTime><EndTime>21:50</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+             </TTsequences>
+          <dayID>Lu</dayID><dayRef>1</dayRef>
+          </TTday>
+        <TTday>
+             <TTsequences>
+               <TTsequence><sequenceID>Séquence 1</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>08:50</BeginTime><EndTime>11:40</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>Séquence 2</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>13:00</BeginTime><EndTime>15:50</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>Séquence 3</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>16:00</BeginTime><EndTime>18:50</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>Séquence 4</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>19:00</BeginTime><EndTime>21:50</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+             </TTsequences>
+          <dayID>Ma</dayID><dayRef>2</dayRef>
+          </TTday>
+        <TTday>
+             <TTsequences>
+               <TTsequence><sequenceID>Séquence 1</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>08:50</BeginTime><EndTime>11:40</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>Séquence 2</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>13:00</BeginTime><EndTime>15:50</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>Séquence 3</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>16:00</BeginTime><EndTime>18:50</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>Séquence 4</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>19:00</BeginTime><EndTime>21:50</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+             </TTsequences>
+          <dayID>Me</dayID><dayRef>3</dayRef>
+          </TTday>
+        <TTday>
+             <TTsequences>
+               <TTsequence><sequenceID>Séquence 1</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>08:50</BeginTime><EndTime>11:40</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>Séquence 2</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>13:00</BeginTime><EndTime>15:50</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>Séquence 3</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>16:00</BeginTime><EndTime>18:50</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>Séquence 4</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>19:00</BeginTime><EndTime>21:50</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+             </TTsequences>
+          <dayID>Je</dayID><dayRef>4</dayRef>
+          </TTday>
+        <TTday>
+             <TTsequences>
+               <TTsequence><sequenceID>Séquence 1</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>08:50</BeginTime><EndTime>11:40</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>Séquence 2</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>13:00</BeginTime><EndTime>15:50</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>Séquence 3</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>16:00</BeginTime><EndTime>18:50</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>Séquence 4</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>19:00</BeginTime><EndTime>21:50</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+             </TTsequences>
+          <dayID>Ve</dayID><dayRef>5</dayRef>
+          </TTday>
+        </TTdays>
+<cycleID>1</cycleID><pLength>170</pLength>
+     </TTcycle>
+</DXTimeTable>
+!!!!!!!!!!
+99
+ALL101-1-01, ALL101-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ANS100-1-01, ANS100-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ANS200-1-01, ANS200-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ANS300-1-01, ANS300-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ANS320-1-01, ANS320-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ANS400-1-01, ANS400-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ANS420-1-01, ANS420-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ANS500-1-01, ANS500-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ANS505-1-01, ANS505-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ARA101-1-01, ARA101-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ART101-1-01, ART101-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ART111-1-01, ART111-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ART210-1-01, ART210-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ART213-1-01, ART213-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ART215-1-01, ART215-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ART219-1-01, ART219-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ART222-1-01, ART222-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ART242-1-01, ART242-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+Baillargeon, Dany
+5 1 1 1 
+1 1 1 1 
+1 5 1 1 
+1 1 5 1 
+1 1 1 5 
+Boisclair, Isabelle
+5 1 1 1 
+1 1 1 1 
+1 5 1 1 
+1 1 5 1 
+1 1 1 5 
+Bonneau, Julie
+5 1 1 1 
+1 1 1 1 
+1 5 1 1 
+1 1 5 1 
+1 1 1 5 
+Bélisle, Denis
+5 1 1 1 
+1 1 1 1 
+1 5 1 1 
+1 1 5 1 
+1 1 1 5 
+CRM010-1-01, CRM010-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CRM100-1-02, CRM100-1-02
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CRM101-1-20, CRM101-1-20
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CRM102-1-01, CRM102-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CRM102-1-02, CRM102-1-02
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CRM102-1-03, CRM102-1-03
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CRM103-1-01, CRM103-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CRM103-1-02, CRM103-1-02
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CRM103-1-20, CRM103-1-20
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CRM104-1-02, CRM104-1-02
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CRM104-1-03, CRM104-1-03
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CRM104-1-04, CRM104-1-04
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CRM110-1-20, CRM110-1-20
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CRM142-1-01, CRM142-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CRM142-1-02, CRM142-1-02
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CRM205-1-01, CRM205-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CRM205-1-02, CRM205-1-02
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CRM206-1-01, CRM206-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CRM207-1-01, CRM207-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CRM242-1-01, CRM242-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CRM262-1-01, CRM262-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CRM280-1-01, CRM280-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CRM281-1-01, CRM281-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CRM284-1-01, CRM284-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CRM300-1-01, CRM300-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+Collette, Karine
+5 1 1 1 
+1 1 1 1 
+1 5 1 1 
+1 1 5 1 
+1 1 1 5 
+Dostie, Gaétane
+5 1 1 1 
+1 1 1 1 
+1 5 1 1 
+1 1 5 1 
+1 1 1 5 
+Dubois, Caroline
+5 1 1 1 
+1 1 1 1 
+1 5 1 1 
+1 1 5 1 
+1 1 1 5 
+ELC100-1-02, ELC100-1-02
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ELC103-1-01, ELC103-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ELC107-1-01, ELC107-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ELC288-1-01, ELC288-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ELC500-1-01, ELC500-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ESP101-1-01, ESP101-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ESP201-1-01, ESP201-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ESP301-1-01, ESP301-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ESP310-1-01, ESP310-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ESP401-1-01, ESP401-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ESP414-1-01, ESP414-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+FLS101-1-01, FLS101-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+FLS102-1-01, FLS102-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+FRA101-1-01, FRA101-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+FRA150-1-01, FRA150-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+FRA553-1-01, FRA553-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+FRE101-1-01, FRE101-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+FRE102-1-01, FRE102-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+Forest, Jean
+5 1 1 1 
+1 1 1 1 
+1 5 1 1 
+1 1 5 1 
+1 1 1 5 
+Fournier, Richard
+5 1 1 1 
+1 1 1 1 
+1 5 1 1 
+1 1 5 1 
+1 1 1 5 
+GAE601-1-01, GAE601-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+GEO248-1-01, GEO248-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+GEO252-1-01, GEO252-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+GEO255-1-01, GEO255-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+Godbout, Patricia
+5 1 1 1 
+1 1 1 1 
+1 5 1 1 
+1 1 5 1 
+1 1 1 5 
+Goïta, Kalifa
+5 1 1 1 
+1 1 1 1 
+1 5 1 1 
+1 1 5 1 
+1 1 1 5 
+Granberg, Hardy Bengt
+5 1 1 1 
+1 1 1 1 
+1 5 1 1 
+1 1 5 1 
+1 1 1 5 
+He, Dong-Chen
+5 1 1 1 
+1 1 1 1 
+1 5 1 1 
+1 1 5 1 
+1 1 1 5 
+Hébert, Pierre
+5 1 1 1 
+1 1 1 1 
+1 5 1 1 
+1 1 5 1 
+1 1 1 5 
+ITL101-1-01, ITL101-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+LCR100-1-02, LCR100-1-02
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+LCR100-1-03, LCR100-1-03
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+LCR306-1-01, LCR306-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+Luneau, Marie-Pier
+5 1 1 1 
+1 1 1 1 
+1 5 1 1 
+1 1 5 1 
+1 1 1 5 
+Magagi, Ramata
+5 1 1 1 
+1 1 1 1 
+1 5 1 1 
+1 1 5 1 
+1 1 1 5 
+Marquis, André
+5 1 1 1 
+1 1 1 1 
+1 5 1 1 
+1 1 5 1 
+1 1 1 5 
+Mercier, Louis
+5 1 1 1 
+1 1 1 1 
+1 5 1 1 
+1 1 5 1 
+1 1 1 5 
+O Neill, Norman T.
+5 1 1 1 
+1 1 1 1 
+1 5 1 1 
+1 1 5 1 
+1 1 1 5 
+PRG100-1-01, PRG100-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+Piette, Jacques
+5 1 1 1 
+1 1 1 1 
+1 5 1 1 
+1 1 5 1 
+1 1 1 5 
+Pons, Christian-Marie
+5 1 1 1 
+1 1 1 1 
+1 5 1 1 
+1 1 5 1 
+1 1 1 5 
+Provencher, Léo
+5 1 1 1 
+1 1 1 1 
+1 5 1 1 
+1 1 5 1 
+1 1 1 5 
+Rajotte, Pierre
+5 1 1 1 
+1 1 1 1 
+1 5 1 1 
+1 1 5 1 
+1 1 1 5 
+Royer, Alain
+5 1 1 1 
+1 1 1 1 
+1 5 1 1 
+1 1 5 1 
+1 1 1 5 
+Saint-Jean, Armande
+5 1 1 1 
+1 1 1 1 
+1 5 1 1 
+1 1 5 1 
+1 1 1 5 
+Vinet, Marie-Thérèse
+5 1 1 1 
+1 1 1 1 
+1 5 1 1 
+1 1 5 1 
+1 1 1 5 
+Watteyne, Nathalie
+5 1 1 1 
+1 1 1 1 
+1 5 1 1 
+1 1 5 1 
+1 1 1 5 
+Yelle, François
+5 1 1 1 
+1 1 1 1 
+1 5 1 1 
+1 1 5 1 
+1 1 1 5 
+à DéTERMINER, à DéTERMINER
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+!!!!!!!!!!
+Diamant1.6
+A6-3005; 96; 0111; 11; SHE; Multi; Salle de classe; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
+A6-3003; 136; 0111; 11; SHE; Multi; Salle de classe; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
+A6-3001; 96; 0111; 11; SHE; Multi; Salle de classe; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
+A6-2029; 16; 0111; 11; SHE; Séminaire; Salle de classe; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
+A6-2004; 30; 0111; 11; SHE; Lab; Salle de classe; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
+A6-1013; 66; 0111; 11; SHE; Multi; Salle de classe; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
+A6-1010; 38; 0111; 11; SHE; Multi; Salle de classe; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
+A6-1002; 16; 0111; 11; SHE; Semi; Salle de classe; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
+A4-380; 22; 0111; 11; SHE; Semi; Salle de classe; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
+A4-377; 42; 0111; 11; SHE; Classe; Salle de classe; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
+A4-374; 22; 0111; 11; SHE; Semi; Salle de classe; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
+A4-372; 22; 0111; 11; SHE; Semi; Salle de classe; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
+A4-368; 42; 0111; 11; SHE; Classe; Salle de classe; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
+A4-367; 53; 0111; 11; SHE; Classe; Salle de classe; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
+A4-359; 79; 0111; 11; SHE; Classe; Salle de classe; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
+A4-274; 22; 0111; 11; SHE; Lab; Salle de classe; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
+A4-271; 42; 0111; 11; SHE; Classe; Salle de classe; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
+A4-268; 24; 0111; 11; SHE; Lab; Salle de classe; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
+A4-265; 42; 0111; 11; SHE; Classe; Salle de classe; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
+A4-262; 42; 0111; 11; SHE; Classe; Salle de classe; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
+A4-255; 60; 0111; 11; SHE; Lab; Salle de classe; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
+A4-246; 25; 0111; 11; SHE; Semi; Salle de classe; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
+A3-137; 16; 0111; 11; SHE; Semi; Salle de classe; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
+A3-136; 20; 0111; 11; SHE; Classe; Salle de classe; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
+A3-135; 12; 0111; 11; SHE; Semi; Salle de classe; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
+A3-134; 20; 0111; 11; SHE; Classe; Salle de classe; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
+A3-131; 12; 0111; 11; SHE; Semi; Salle de classe; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
+A3-113; 59; 0111; 11; SHE; Multi; Salle de classe; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
+A3-004; 46; 0111; 11; SHE; Classe; Salle de classe; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
+
+!!!!!!!!!!
+Diamant1.6
+ALL1011  01 SHE 30
+1
+1
+ALL101-1-01, ALL101-1-01 :  ;
+1
+ 1
+4.4.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ANS1001  01 SHE 30
+1
+1
+ANS100-1-01, ANS100-1-01 :  ;
+1
+ 1
+1.4.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ANS2001  01 SHE 30
+1
+1
+ANS200-1-01, ANS200-1-01 :  ;
+1
+ 1
+3.4.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ANS3001  01 SHE 30
+1
+1
+ANS300-1-01, ANS300-1-01 :  ;
+1
+ 1
+4.4.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ANS3201  01 SHE 30
+1
+1
+ANS320-1-01, ANS320-1-01 :  ;
+1
+ 1
+1.3.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ANS4001  01 SHE 30
+1
+1
+ANS400-1-01, ANS400-1-01 :  ;
+1
+ 1
+3.4.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ANS4201  01 SHE 30
+1
+1
+ANS420-1-01, ANS420-1-01 :  ;
+1
+ 1
+2.3.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ANS5001  01 SHE 30
+1
+1
+ANS500-1-01, ANS500-1-01 :  ;
+1
+ 1
+2.4.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ANS5051  01 SHE 30
+1
+1
+ANS505-1-01, ANS505-1-01 :  ;
+1
+ 1
+2.3.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ARA1011  01 SHE 30
+1
+1
+ARA101-1-01, ARA101-1-01 :  ;
+1
+ 1
+3.4.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ART1011  01 SHE 35
+1
+1
+ART101-1-01, ART101-1-01 :  ;
+1
+ 1
+2.3.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ART1111  01 SHE 25
+1
+1
+ART111-1-01, ART111-1-01 :  ;
+1
+ 1
+2.4.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ART2101  01 SHE 45
+1
+1
+ART210-1-01, ART210-1-01 :  ;
+1
+ 1
+3.3.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ART2131  01 SHE 25
+1
+1
+ART213-1-01, ART213-1-01 :  ;
+1
+ 1
+1.4.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ART2151  01 SHE 25
+1
+1
+ART215-1-01, ART215-1-01 :  ;
+1
+ 1
+3.4.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ART2191  01 SHE 25
+1
+1
+ART219-1-01, ART219-1-01 :  ;
+1
+ 1
+4.2.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ART2221  01 SHE 25
+1
+1
+ART222-1-01, ART222-1-01 :  ;
+1
+ 1
+5.1.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ART2421  01 SHE 45
+1
+1
+ART242-1-01, ART242-1-01 :  ;
+1
+ 1
+1.3.1 
+1
+ A4-255
+1
+1
+ 1 ; 1
+CRM0101  01 SHE 45
+1
+1
+CRM010-1-01, CRM010-1-01 :  ;
+1
+ 1
+1.3.1 
+0
+ ------
+1
+1
+ 1 ; 1
+CRM1001  01 SHE 45
+1
+1
+Bonneau, Julie :  ;
+1
+ 1
+4.1.1 
+0
+ ------
+1
+1
+ 1 ; 1
+CRM1001  02 SHE 45
+1
+1
+CRM100-1-02, CRM100-1-02 :  ;
+1
+ 1
+3.1.1 
+0
+ ------
+1
+1
+ 1 ; 1
+CRM1001  20 SHE 45
+1
+1
+Bonneau, Julie :  ;
+1
+ 1
+2.1.1 
+0
+ ------
+1
+1
+ 1 ; 1
+CRM1011  01 SHE 60
+1
+1
+Piette, Jacques :  ;
+1
+ 1
+1.2.1 
+0
+ ------
+1
+1
+ 1 ; 1
+CRM1011  20 SHE 60
+1
+1
+CRM101-1-20, CRM101-1-20 :  ;
+1
+ 1
+4.2.1 
+0
+ ------
+1
+1
+ 1 ; 1
+CRM1021  01 SHE 30
+1
+1
+CRM102-1-01, CRM102-1-01 :  ;
+1
+ 1
+3.4.1 
+0
+ ------
+1
+1
+ 1 ; 1
+CRM1021  02 SHE 30
+1
+1
+CRM102-1-02, CRM102-1-02 :  ;
+1
+ 1
+3.2.1 
+0
+ ------
+1
+1
+ 1 ; 1
+CRM1021  03 SHE 30
+1
+1
+CRM102-1-03, CRM102-1-03 :  ;
+1
+ 1
+4.1.1 
+0
+ ------
+1
+1
+ 1 ; 1
+CRM1031  01 SHE 45
+1
+1
+CRM103-1-01, CRM103-1-01 :  ;
+1
+ 1
+1.1.1 
+0
+ ------
+1
+1
+ 1 ; 1
+CRM1031  02 SHE 45
+1
+1
+CRM103-1-02, CRM103-1-02 :  ;
+1
+ 1
+1.2.1 
+0
+ ------
+1
+1
+ 1 ; 1
+CRM1031  20 SHE 45
+1
+1
+CRM103-1-20, CRM103-1-20 :  ;
+1
+ 1
+1.3.1 
+0
+ ------
+1
+1
+ 1 ; 1
+CRM1041  01 SHE 30
+1
+1
+Marquis, André :  ;
+1
+ 1
+3.1.1 
+0
+ ------
+1
+1
+ 1 ; 1
+CRM1041  02 SHE 30
+1
+1
+CRM104-1-02, CRM104-1-02 :  ;
+1
+ 1
+3.3.1 
+0
+ ------
+1
+1
+ 1 ; 1
+CRM1041  03 SHE 30
+1
+1
+CRM104-1-03, CRM104-1-03 :  ;
+1
+ 1
+3.2.1 
+0
+ ------
+1
+1
+ 1 ; 1
+CRM1041  04 SHE 30
+1
+1
+CRM104-1-04, CRM104-1-04 :  ;
+1
+ 1
+4.1.1 
+0
+ ------
+1
+1
+ 1 ; 1
+CRM1101  01 SHE 45
+1
+1
+Bélisle, Denis :  ;
+1
+ 1
+2.3.1 
+1
+ A4-255
+1
+1
+ 1 ; 1
+CRM1101  02 SHE 45
+1
+1
+Bélisle, Denis :  ;
+1
+ 1
+4.2.1 
+1
+ A4-255
+1
+1
+ 1 ; 1
+CRM1101  20 SHE 45
+1
+1
+CRM110-1-20, CRM110-1-20 :  ;
+1
+ 1
+3.4.1 
+1
+ A4-255
+1
+1
+ 1 ; 1
+CRM1231  01 SHE 30
+1
+1
+Collette, Karine :  ;
+1
+ 1
+3.2.1 
+0
+ ------
+1
+1
+ 1 ; 1
+CRM1401  01 SHE 60
+1
+1
+Piette, Jacques :  ;
+1
+ 1
+2.3.1 
+0
+ ------
+1
+1
+ 1 ; 1
+CRM1411  01 SHE 60
+1
+1
+Pons, Christian-Marie :  ;
+1
+ 1
+2.2.1 
+0
+ ------
+1
+1
+ 1 ; 1
+CRM1421  01 SHE 45
+1
+1
+CRM142-1-01, CRM142-1-01 :  ;
+1
+ 1
+5.1.1 
+1
+ A4-255
+1
+1
+ 1 ; 1
+CRM1421  02 SHE 45
+1
+1
+CRM142-1-02, CRM142-1-02 :  ;
+1
+ 1
+1.4.1 
+1
+ A4-255
+1
+1
+ 1 ; 1
+CRM1431  01 SHE 30
+1
+1
+Dubois, Caroline :  ;
+1
+ 1
+2.1.1 
+0
+ ------
+1
+1
+ 1 ; 1
+CRM1431  02 SHE 30
+1
+1
+Dubois, Caroline :  ;
+1
+ 1
+3.1.1 
+0
+ ------
+1
+1
+ 1 ; 1
+CRM1431  03 SHE 30
+1
+1
+Dubois, Caroline :  ;
+1
+ 1
+5.1.1 
+0
+ ------
+1
+1
+ 1 ; 1
+CRM2051  01 SHE 25
+1
+1
+CRM205-1-01, CRM205-1-01 :  ;
+1
+ 1
+3.2.1 
+1
+ A3-004
+1
+1
+ 1 ; 1
+CRM2051  02 SHE 25
+1
+1
+CRM205-1-02, CRM205-1-02 :  ;
+1
+ 1
+4.1.1 
+1
+ A3-004
+1
+1
+ 1 ; 1
+CRM2061  01 SHE 30
+1
+1
+CRM206-1-01, CRM206-1-01 :  ;
+1
+ 1
+4.2.1 
+0
+ ------
+1
+1
+ 1 ; 1
+CRM2071  01 SHE 30
+1
+1
+CRM207-1-01, CRM207-1-01 :  ;
+1
+ 1
+3.2.1 
+1
+ A4-255
+1
+1
+ 1 ; 1
+CRM2421  01 SHE 45
+1
+1
+CRM242-1-01, CRM242-1-01 :  ;
+1
+ 1
+1.2.1 
+1
+ A4-255
+1
+1
+ 1 ; 1
+CRM2621  01 SHE 30
+1
+1
+CRM262-1-01, CRM262-1-01 :  ;
+1
+ 1
+3.4.1 
+0
+ ------
+1
+1
+ 1 ; 1
+CRM2801  01 SHE 60
+1
+1
+CRM280-1-01, CRM280-1-01 :  ;
+1
+ 1
+2.4.1 
+0
+ ------
+1
+1
+ 1 ; 1
+CRM2811  01 SHE 30
+1
+1
+CRM281-1-01, CRM281-1-01 :  ;
+1
+ 1
+4.4.1 
+0
+ ------
+1
+1
+ 1 ; 1
+CRM2821  01 SHE 60
+1
+1
+Baillargeon, Dany :  ;
+1
+ 1
+4.4.1 
+0
+ ------
+1
+1
+ 1 ; 1
+CRM2841  01 SHE 60
+1
+1
+CRM284-1-01, CRM284-1-01 :  ;
+1
+ 1
+4.3.1 
+0
+ ------
+1
+1
+ 1 ; 1
+CRM3001  01 SHE 60
+1
+1
+CRM300-1-01, CRM300-1-01 :  ;
+1
+ 1
+2.1.1 
+0
+ ------
+1
+1
+ 1 ; 1
+CRM3271  01 SHE 60
+1
+1
+Saint-Jean, Armande :  ;
+1
+ 1
+3.2.1 
+0
+ ------
+1
+1
+ 1 ; 1
+CRM3301  01 SHE 60
+1
+1
+Yelle, François :  ;
+1
+ 1
+4.2.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ELC1001  01 SHE 60
+1
+1
+Luneau, Marie-Pier :  ;
+1
+ 1
+4.1.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ELC1001  02 SHE 60
+1
+1
+ELC100-1-02, ELC100-1-02 :  ;
+1
+ 1
+2.2.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ELC1031  01 SHE 60
+1
+1
+ELC103-1-01, ELC103-1-01 :  ;
+1
+ 1
+3.1.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ELC1071  01 SHE 60
+1
+1
+ELC107-1-01, ELC107-1-01 :  ;
+1
+ 1
+1.1.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ELC1091  01 SHE 60
+1
+1
+Forest, Jean :  ;
+1
+ 1
+1.2.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ELC1091  02 SHE 60
+1
+1
+Forest, Jean :  ;
+1
+ 1
+4.2.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ELC1101  01 SHE 30
+1
+1
+Rajotte, Pierre :  ;
+1
+ 1
+1.3.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ELC2261  01 SHE 40
+1
+1
+Hébert, Pierre :  ;
+1
+ 1
+2.1.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ELC2311  01 SHE 40
+1
+1
+Luneau, Marie-Pier :  ;
+1
+ 1
+2.2.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ELC2401  01 SHE 40
+1
+1
+Watteyne, Nathalie :  ;
+1
+ 1
+4.2.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ELC2571  01 SHE 40
+1
+1
+Boisclair, Isabelle :  ;
+1
+ 1
+1.2.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ELC2881  01 SHE 25
+1
+1
+ELC288-1-01, ELC288-1-01 :  ;
+1
+ 1
+3.3.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ELC5001  01 SHE 25
+1
+1
+ELC500-1-01, ELC500-1-01 :  ;
+1
+ 1
+2.3.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ESP1011  01 SHE 30
+1
+1
+ESP101-1-01, ESP101-1-01 :  ;
+1
+ 1
+3.2.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ESP1011  02 SHE 30
+1
+1
+à DéTERMINER, à DéTERMINER :  ;
+1
+ 1
+2.4.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ESP1011  03 SHE 30
+1
+1
+à DéTERMINER, à DéTERMINER :  ;
+1
+ 1
+2.4.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ESP2011  01 SHE 30
+1
+1
+ESP201-1-01, ESP201-1-01 :  ;
+1
+ 1
+1.4.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ESP3011  01 SHE 30
+1
+1
+ESP301-1-01, ESP301-1-01 :  ;
+1
+ 1
+1.4.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ESP3101  01 SHE 30
+1
+1
+ESP310-1-01, ESP310-1-01 :  ;
+1
+ 1
+2.4.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ESP4011  01 SHE 30
+1
+1
+ESP401-1-01, ESP401-1-01 :  ;
+1
+ 1
+3.4.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ESP4141  01 SHE 30
+1
+1
+ESP414-1-01, ESP414-1-01 :  ;
+1
+ 1
+2.4.1 
+0
+ ------
+1
+1
+ 1 ; 1
+FLS1011  01 SHE 30
+1
+1
+FLS101-1-01, FLS101-1-01 :  ;
+1
+ 1
+2.3.1 
+0
+ ------
+1
+1
+ 1 ; 1
+FLS1021  01 SHE 30
+1
+1
+FLS102-1-01, FLS102-1-01 :  ;
+1
+ 1
+2.3.1 
+0
+ ------
+1
+1
+ 1 ; 1
+FLS1031  01 SHE 30
+1
+1
+Vinet, Marie-Thérèse :  ;
+1
+ 1
+2.4.1 
+0
+ ------
+1
+1
+ 1 ; 1
+FRA1011  01 SHE 40
+1
+1
+FRA101-1-01, FRA101-1-01 :  ;
+1
+ 1
+3.4.1 
+0
+ ------
+1
+1
+ 1 ; 1
+FRA1501  01 SHE 50
+1
+1
+FRA150-1-01, FRA150-1-01 :  ;
+1
+ 1
+2.1.1 
+0
+ ------
+1
+1
+ 1 ; 1
+FRA5531  01 SHE 60
+1
+1
+FRA553-1-01, FRA553-1-01 :  ;
+1
+ 1
+2.3.1 
+0
+ ------
+1
+1
+ 1 ; 1
+FRE1011  01 SHE 30
+1
+1
+FRE101-1-01, FRE101-1-01 :  ;
+1
+ 1
+2.3.1 
+0
+ ------
+1
+1
+ 1 ; 1
+FRE1021  01 SHE 30
+1
+1
+FRE102-1-01, FRE102-1-01 :  ;
+1
+ 1
+2.3.1 
+0
+ ------
+1
+1
+ 1 ; 1
+FRE1031  01 SHE 30
+1
+1
+Vinet, Marie-Thérèse :  ;
+1
+ 1
+2.4.1 
+0
+ ------
+1
+1
+ 1 ; 1
+GAE6001  01 SHE 40
+1
+1
+Granberg, Hardy Bengt :  ;
+1
+ 1
+1.1.1 
+0
+ ------
+1
+1
+ 1 ; 1
+GAE6011  01 SHE 40
+1
+1
+GAE601-1-01, GAE601-1-01 :  ;
+1
+ 1
+3.1.1 
+0
+ ------
+1
+1
+ 1 ; 1
+GAE6021  01 SHE 40
+1
+1
+Fournier, Richard :  ;
+1
+ 1
+3.2.1 
+0
+ ------
+1
+1
+ 1 ; 1
+GEO2481  01 SHE 66
+1
+1
+GEO248-1-01, GEO248-1-01 :  ;
+1
+ 1
+4.1.1 
+0
+ ------
+1
+1
+ 1 ; 1
+GEO2521  01 SHE 30
+1
+1
+GEO252-1-01, GEO252-1-01 :  ;
+1
+ 1
+1.2.1 
+0
+ ------
+1
+1
+ 1 ; 1
+GEO2551  01 SHE 40
+1
+1
+GEO255-1-01, GEO255-1-01 :  ;
+1
+ 1
+3.1.1 
+1
+ A6-2004
+1
+1
+ 1 ; 1
+GEO4551  01 SHE 22
+1
+1
+Magagi, Ramata :  ;
+1
+ 1
+4.3.1 
+0
+ ------
+1
+1
+ 1 ; 1
+GMQ1031  01 SHE 40
+1
+1
+Goïta, Kalifa :  ;
+1
+ 1
+3.1.1 
+0
+ ------
+1
+1
+ 1 ; 1
+GMQ1041  01 SHE 40
+1
+1
+Goïta, Kalifa :  ;
+1
+ 1
+3.1.1 
+0
+ ------
+1
+1
+ 1 ; 1
+GMQ2021  01 SHE 40
+1
+1
+Magagi, Ramata : O Neill, Norman T. : Royer, Alain :  ;
+1
+ 1
+5.2.1 
+0
+ ------
+1
+1
+ 1 ; 1
+GMQ2031  01 SHE 22
+1
+1
+Magagi, Ramata : Royer, Alain :  ;
+1
+ 1
+3.3.1 
+0
+ ------
+1
+1
+ 1 ; 1
+GMQ2041  01 SHE 40
+1
+1
+Goïta, Kalifa :  ;
+1
+ 1
+5.2.1 
+0
+ ------
+1
+1
+ 1 ; 1
+GMQ2051  01 SHE 22
+1
+1
+Goïta, Kalifa :  ;
+1
+ 1
+3.2.1 
+1
+ A6-2004
+1
+1
+ 1 ; 1
+GMQ3051  01 SHE 22
+1
+1
+O Neill, Norman T. :  ;
+1
+ 1
+2.2.1 
+0
+ ------
+1
+1
+ 1 ; 1
+GMQ4001  01 SHE 40
+1
+1
+He, Dong-Chen : Fournier, Richard :  ;
+1
+ 1
+1.2.1 
+0
+ ------
+1
+1
+ 1 ; 1
+GMQ4011  01 SHE 22
+1
+1
+He, Dong-Chen : Fournier, Richard :  ;
+1
+ 1
+4.2.1 
+1
+ A6-2004
+1
+1
+ 1 ; 1
+GMQ4021  01 SHE 40
+1
+1
+Provencher, Léo :  ;
+1
+ 1
+2.2.1 
+0
+ ------
+1
+1
+ 1 ; 1
+GMQ4031  01 SHE 22
+1
+1
+Provencher, Léo :  ;
+1
+ 1
+1.1.1 
+1
+ A6-2004
+1
+1
+ 1 ; 1
+GMQ4031  02 SHE 22
+1
+1
+Provencher, Léo :  ;
+1
+ 1
+1.3.1 
+1
+ A6-2004
+1
+1
+ 1 ; 1
+GMQ6011  01 SHE 22
+1
+1
+Provencher, Léo :  ;
+1
+ 1
+4.1.1 
+1
+ A6-2004
+1
+1
+ 1 ; 1
+ITL1011  01 SHE 30
+1
+1
+ITL101-1-01, ITL101-1-01 :  ;
+1
+ 1
+1.4.1 
+0
+ ------
+1
+1
+ 1 ; 1
+LCR1001  01 SHE 60
+1
+1
+Mercier, Louis :  ;
+1
+ 1
+2.2.1 
+0
+ ------
+1
+1
+ 1 ; 1
+LCR1001  02 SHE 60
+1
+1
+LCR100-1-02, LCR100-1-02 :  ;
+1
+ 1
+4.3.1 
+0
+ ------
+1
+1
+ 1 ; 1
+LCR1001  03 SHE 60
+1
+1
+LCR100-1-03, LCR100-1-03 :  ;
+1
+ 1
+5.1.1 
+0
+ ------
+1
+1
+ 1 ; 1
+LCR3051  01 SHE 60
+1
+1
+Dostie, Gaétane :  ;
+1
+ 1
+2.1.1 
+0
+ ------
+1
+1
+ 1 ; 1
+LCR3061  01 SHE 60
+1
+1
+LCR306-1-01, LCR306-1-01 :  ;
+1
+ 1
+2.3.1 
+0
+ ------
+1
+1
+ 1 ; 1
+PRG1001  01 SHE 30
+1
+1
+PRG100-1-01, PRG100-1-01 :  ;
+1
+ 1
+2.4.1 
+0
+ ------
+1
+1
+ 1 ; 1
+TRA1331  01 SHE 30
+1
+1
+Godbout, Patricia :  ;
+1
+ 1
+4.1.1 
+0
+ ------
+1
+1
+ 1 ; 1
+TRA4011  01 SHE 45
+1
+1
+Godbout, Patricia :  ;
+1
+ 1
+2.1.1 
+0
+ ------
+1
+1
+ 1 ; 1
+
+!!!!!!!!!!
+Diamant1.6
+E 056590672343350620053 Carrier, Marie-Eve
+C CRM300100;0 SHE
+E 056756824270000120052 Castro, Maria Magaly
+C FLS101101;0 SHE
+E 055929222343350620053 Côté-Courtemanche, Vanessa
+C CRM300100;0 SHE
+E 056671832343350620053 Dufour, Barbara
+C CRM300100;0 SHE
+E 998239711150000320063 Fillion, Carl
+C ESP301101;0 SHE
+E 044868532343350520043 Letky, David
+C CRM300100;0 SHE
+!!!!!!!!!!

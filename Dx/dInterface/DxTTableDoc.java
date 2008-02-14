@@ -30,11 +30,14 @@ import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
 
 import dInterface.dTimeTable.DetailedTTPane;
+import dInterface.dTimeTable.DxDetailedTTPane;
+import dInterface.dTimeTable.DxSimpleTTPane;
 import dInterface.dTimeTable.SimpleTTPane;
 import dInternal.DModel;
 import dInternal.DxLoadData;
 import dInternal.DxStateBarModel;
 import dInternal.dTimeTable.TTStructure;
+import developer.DxFlags;
 import eLib.exit.dialog.DxExceptionDlg;
 import eLib.exit.dialog.InformationDlg;
 import eLib.exit.exception.DxException;
@@ -70,7 +73,12 @@ public class DxTTableDoc extends DxDocument {
 		_dm = new DModel(this, fileName, _type);
 		_documentName = fileName;
 		buidDocument(true, true);
-		_ttPane.updateTTPane(_dm.getTTStructure());
+		
+		if(DxFlags.newDxTTPane) {
+			_dxTTPane.updateTTPane(_dm.getTTStructure());
+		} else {
+			_ttPane.updateTTPane(_dm.getTTStructure());
+		}
 	}
 	
 	public DxTTableDoc(DMediator mediator, String fileName, int type) throws DxException, NullPointerException, IOException {
@@ -98,7 +106,13 @@ public class DxTTableDoc extends DxDocument {
 	private void initDxTTableDoc(DxLoadData dxLoadData) {
 		_dm = new DModel(this, dxLoadData, _type);
 		buidDocument(true, true);
-		_ttPane.updateTTPane(_dm.getTTStructure());
+		
+		if(DxFlags.newDxTTPane) {
+			_dxTTPane.updateTTPane(_dm.getTTStructure());
+		} else {
+			_ttPane.updateTTPane(_dm.getTTStructure());
+		}
+
 		
 	}
 
@@ -138,14 +152,30 @@ public class DxTTableDoc extends DxDocument {
 		_jif.setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
 		_jif.setPreferredSize(new Dimension(MAX_WIDTH, MAX_HEIGHT));
 
-		if (simple) {
-			_ttPane = new SimpleTTPane(_dm.getTTStructure(), _dMediator
-					.getDApplication().getToolBar());
+		if(DxFlags.newDxTTPane) {
+			if (simple) {
+				_dxTTPane = new DxSimpleTTPane(_dm.getTTStructure(), _dMediator
+						.getDApplication().getToolBar());
+			} else {
+				_dxTTPane = new DxDetailedTTPane(_dm.getTTStructure(), _dMediator
+						.getDApplication().getToolBar(), vertical);
+			}
 		} else {
-			_ttPane = new DetailedTTPane(_dm.getTTStructure(), _dMediator
-					.getDApplication().getToolBar(), vertical);
+			if (simple) {
+				_ttPane = new SimpleTTPane(_dm.getTTStructure(), _dMediator
+						.getDApplication().getToolBar());
+			} else {
+				_ttPane = new DetailedTTPane(_dm.getTTStructure(), _dMediator
+						.getDApplication().getToolBar(), vertical);
+			}
 		}
-		_jif.getContentPane().add(_ttPane.getPane(), BorderLayout.CENTER);
+		
+		if(DxFlags.newDxTTPane) {
+			_jif.getContentPane().add(_dxTTPane.getPane(), BorderLayout.CENTER);
+		} else {
+			_jif.getContentPane().add(_ttPane.getPane(), BorderLayout.CENTER);
+		}
+//		_jif.getContentPane().add(_ttPane.getPane(), BorderLayout.CENTER);
 		_jif.pack();
 		// the 1 in Integer(1) could be any integer
 		_dMediator.getDApplication().getDesktop().add(_jif, new Integer(1));
@@ -171,7 +201,13 @@ public class DxTTableDoc extends DxDocument {
 		if (component != null)
 			component.toString();
 		_dMediator.getDApplication().setCursorWait();
-		_ttPane.updateTTPane(_dm.getTTStructure());
+		
+		if(DxFlags.newDxTTPane) {
+			_dxTTPane.updateTTPane(_dm.getTTStructure());
+		} else {
+			_ttPane.updateTTPane(_dm.getTTStructure());
+		}
+//		_ttPane.updateTTPane(_dm.getTTStructure());
 		_stateBar.upDate();
 		_stateBar.upDate();
 		_dMediator.getDApplication().setCursorDefault();
@@ -208,7 +244,12 @@ public class DxTTableDoc extends DxDocument {
 	public void displaySimple() {
 		close();
 		buidDocument(true, true);
-		_ttPane.updateTTPane(_dm.getTTStructure());
+		if(DxFlags.newDxTTPane) {
+			_dxTTPane.updateTTPane(_dm.getTTStructure());
+		} else {
+			_ttPane.updateTTPane(_dm.getTTStructure());
+		}
+		
 		_stateBar.upDate();
 	}
 
@@ -216,7 +257,13 @@ public class DxTTableDoc extends DxDocument {
 	public void displayVericalSplit() {
 		 close();
 		 buidDocument(false, false);
-		 _ttPane.updateTTPane(_dm.getTTStructure());
+		 
+			if(DxFlags.newDxTTPane) {
+				_dxTTPane.updateTTPane(_dm.getTTStructure());
+			} else {
+				_ttPane.updateTTPane(_dm.getTTStructure());
+			}
+
 		 _stateBar.upDate();
 	}
 
@@ -224,7 +271,12 @@ public class DxTTableDoc extends DxDocument {
 	public void displayHorizontalSplit() {
 		 close();
 		 buidDocument(false, true);
-		 _ttPane.updateTTPane(_dm.getTTStructure());	
+			if(DxFlags.newDxTTPane) {
+				_dxTTPane.updateTTPane(_dm.getTTStructure());
+			} else {
+				_ttPane.updateTTPane(_dm.getTTStructure());
+			}
+		 	
 		 _stateBar.upDate();
 	}
 

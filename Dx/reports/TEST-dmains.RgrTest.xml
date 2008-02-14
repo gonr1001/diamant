@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="ruben-vm-pc" name="dmains.RgrTest" tests="85" time="19.172" timestamp="2008-02-05T16:07:09">
+  <properties>
+    <property name="java.vendor" value="Sun Microsystems Inc." />
+    <property name="sun.java.launcher" value="SUN_STANDARD" />
+    <property name="sun.management.compiler" value="HotSpot Client Compiler" />
+    <property name="lib" value="./classes/lib" />
+    <property name="os.name" value="Windows XP" />
+    <property name="sun.boot.class.path" value="D:\Program Files\Java\jdk1.6.0_03\jre\lib\resources.jar;D:\Program Files\Java\jdk1.6.0_03\jre\lib\rt.jar;D:\Program Files\Java\jdk1.6.0_03\jre\lib\sunrsasign.jar;D:\Program Files\Java\jdk1.6.0_03\jre\lib\jsse.jar;D:\Program Files\Java\jdk1.6.0_03\jre\lib\jce.jar;D:\Program Files\Java\jdk1.6.0_03\jre\lib\charsets.jar;D:\Program Files\Java\jdk1.6.0_03\jre\classes" />
+    <property name="TODAY" value="February 5 2008" />
+    <property name="sun.desktop" value="windows" />
+    <property name="java.vm.specification.vendor" value="Sun Microsystems Inc." />
+    <property name="ant.home" value="D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842" />
+    <property name="java.runtime.version" value="1.6.0_03-b05" />
+    <property name="distDir" value="./Diamant2.2.x/Diamant" />
+    <property name="user.name" value="Ruben" />
+    <property name="reports" value="./reports" />
+    <property name="user.language" value="en" />
+    <property name="build" value="./classes" />
+    <property name="sun.boot.library.path" value="D:\Program Files\Java\jdk1.6.0_03\jre\bin" />
+    <property name="srcDir" value="." />
+    <property name="ant.project.name" value="DiamantBuild" />
+    <property name="DSTAMP" value="20080205" />
+    <property name="java.version" value="1.6.0_03" />
+    <property name="user.timezone" value="" />
+    <property name="sun.arch.data.model" value="32" />
+    <property name="localJars" value="./jars" />
+    <property name="java.endorsed.dirs" value="D:\Program Files\Java\jdk1.6.0_03\jre\lib\endorsed" />
+    <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86" />
+    <property name="sun.jnu.encoding" value="Cp1252" />
+    <property name="file.encoding.pkg" value="sun.io" />
+    <property name="file.separator" value="\" />
+    <property name="java.specification.name" value="Java Platform API Specification" />
+    <property name="TTxmlFiles" value="./classes/dataTest/TTxmlFiles" />
+    <property name="java.class.version" value="50.0" />
+    <property name="user.country" value="CA" />
+    <property name="java.home" value="D:\Program Files\Java\jdk1.6.0_03\jre" />
+    <property name="tictacJar" value="./Diamant2.2.x/Diamant/tictac.jar" />
+    <property name="java.vm.info" value="mixed mode" />
+    <property name="setProps" value="true" />
+    <property name="ant.file" value="D:\workSpaceApplic\Diamant\build.xml" />
+    <property name="os.version" value="5.1" />
+    <property name="pref" value="./pref" />
+    <property name="ant.file.DiamantBuild" value="D:\workSpaceApplic\Diamant\build.xml" />
+    <property name="path.separator" value=";" />
+    <property name="java.vm.version" value="1.6.0_03-b05" />
+    <property name="distDirZip" value="./Diamant2.2.x" />
+    <property name="trace" value="./trace" />
+    <property name="user.variant" value="" />
+    <property name="ant.library.dir" value="D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib" />
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob" />
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit" />
+    <property name="user.home" value="C:\Documents and Settings\Ruben" />
+    <property name="java.specification.vendor" value="Sun Microsystems Inc." />
+    <property name="java.library.path" value="D:\Program Files\eclipse;.;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Java\jre1.6.0_03\bin\client;C:\Program Files\Java\jre1.6.0_03\bin;D:\Program Files\MiKTeX 2.5\miktex\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Program Files\Microsoft SQL Server\90\Tools\binn\;D:\Program Files\SSH Communications Security\SSH Secure Shell;D:\Program Files\eclipse\configuration\org.eclipse.osgi\bundles\115\1\.cp" />
+    <property name="java.vendor.url" value="http://java.sun.com/" />
+    <property name="java.vm.vendor" value="Sun Microsystems Inc." />
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
+    <property name="origDist" value="./origDist" />
+    <property name="java.class.path" value="D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-antlr.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-apache-bcel.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-apache-bsf.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-apache-log4j.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-apache-oro.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-apache-regexp.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-apache-resolver.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-commons-logging.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-commons-net.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-jai.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-javamail.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-jdepend.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-jmf.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-jsch.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-junit.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-launcher.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-netrexx.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-nodeps.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-starteam.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-stylebook.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-swing.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-trax.jar;D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant-weblogic.jar;D:\Program Files\eclipse\configuration\org.eclipse.osgi\bundles\17\1\.cp\lib\remoteAnt.jar;D:\Program Files\Java\jdk1.6.0_03\lib\tools.jar;D:\Program Files\eclipse\plugins\org.eclipse.swt.win32.win32.x86_3.3.2.v3347a.jar" />
+    <property name="ant.version" value="Apache Ant version 1.7.0 compiled on December 13 2006" />
+    <property name="TSTAMP" value="1106" />
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="java.vm.specification.version" value="1.0" />
+    <property name="sun.cpu.endian" value="little" />
+    <property name="sun.os.patch.level" value="Service Pack 2" />
+    <property name="java.io.tmpdir" value="C:\DOCUME~1\Ruben\LOCALS~1\Temp\" />
+    <property name="java.vendor.url.bug" value="http://java.sun.com/cgi-bin/bugreport.cgi" />
+    <property name="os.arch" value="x86" />
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment" />
+    <property name="java.ext.dirs" value="D:\Program Files\Java\jdk1.6.0_03\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext" />
+    <property name="user.dir" value="D:\workSpaceApplic\Diamant" />
+    <property name="line.separator" value="
+" />
+    <property name="java.vm.name" value="Java HotSpot(TM) Client VM" />
+    <property name="basedir" value="D:\workSpaceApplic\Diamant" />
+    <property name="ant.java.version" value="1.6" />
+    <property name="ant.core.lib" value="D:\Program Files\eclipse\plugins\org.apache.ant_1.7.0.v200706080842\lib\ant.jar" />
+    <property name="file.encoding" value="Cp1252" />
+    <property name="dataTest" value="./classes/dataTest" />
+    <property name="java.specification.version" value="1.6" />
+  </properties>
+  <testcase classname="dInternal.dTimeTable.DxTTStructureTest" name="test_fileEmpty" time="0.0" />
+  <testcase classname="dInternal.dTimeTable.DxTTStructureTest" name="test_getSchemaFileName" time="0.0" />
+  <testcase classname="dInternal.dTimeTable.DxTTStructureTest" name="test_fileBadCloseTag" time="0.0" />
+  <testcase classname="dInternal.dTimeTable.DxTTStructureTest" name="test_fileNoOpenTag" time="0.0" />
+  <testcase classname="eTest.ByteInputFileTest" name="testFileNotExist" time="0.0" />
+  <testcase classname="eTest.ByteInputFileTest" name="testFileNameNull" time="0.0" />
+  <testcase classname="eTest.ByteInputFileTest" name="testFileEmpty" time="0.0" />
+  <testcase classname="eTest.ByteInputFileTest" name="testFileNonEmpty" time="0.0" />
+  <testcase classname="eTest.ByteInputFileTest" name="testFileCountLines" time="0.0" />
+  <testcase classname="eTest.ByteOutputFileTest" name="testReadWriteRead" time="0.0" />
+  <testcase classname="eTest.FilterFileTest" name="testSimple" time="0.0" />
+  <testcase classname="eTest.FilterFileTest" name="testEmptyCollection" time="0.0" />
+  <testcase classname="eTest.FilterFileTest" name="testSimple1" time="0.0" />
+  <testcase classname="eTest.FilterFileTest" name="testReadFile" time="0.0" />
+  <testcase classname="eTest.FilterFileTest" name="testAdjustingLinesLF" time="0.0" />
+  <testcase classname="eTest.FilterFileTest" name="testAdjustingLinesCR" time="0.0" />
+  <testcase classname="eTest.FilterFileTest" name="testAdjustingLines1" time="0.0" />
+  <testcase classname="eTest.FilterFileTest" name="testAdjustingLines2" time="0.0" />
+  <testcase classname="eTest.FilterFileTest" name="testAdjustingEndFileLF" time="0.0" />
+  <testcase classname="eTest.FilterFileTest" name="testAdjustingEndFileCR" time="0.0" />
+  <testcase classname="eTest.FilterFileTest" name="testAdjustingEndFile" time="0.0" />
+  <testcase classname="eTest.FilterFileTest" name="testAppendToCharKnown" time="0.0" />
+  <testcase classname="eTest.SemiExtendedAsciiFileTest" name="testReadFile" time="0.0" />
+  <testcase classname="eTest.SemiExtendedAsciiFileTest" name="testAdjustingLinesLF" time="0.0" />
+  <testcase classname="eTest.SemiExtendedAsciiFileTest" name="testAdjustingLinesCR" time="0.0" />
+  <testcase classname="eTest.SemiExtendedAsciiFileTest" name="testAdjustingEndFileLF" time="0.0" />
+  <testcase classname="eTest.SemiExtendedAsciiFileTest" name="testAdjustingEndFileCR" time="0.0" />
+  <testcase classname="eTest.SemiExtendedAsciiFileTest" name="testAdjustingEndFile" time="0.0" />
+  <testcase classname="eTest.SemiExtendedAsciiFileTest" name="testAppendToCharKnown" time="0.0" />
+  <testcase classname="eTest.SemiExtendedAsciiFileTest" name="testReadValidFile" time="0.0" />
+  <testcase classname="eTest.SemiExtendedAsciiFileTest" name="testCharNotValid" time="0.016" />
+  <testcase classname="eTest.SemiExtendedAsciiFileTest" name="testAdjustingLinesCRLF" time="0.0" />
+  <testcase classname="eTest.SemiExtendedAsciiFileTest" name="testAdjustingLinesManyCRLF" time="0.0" />
+  <testcase classname="dTest.dInternal.dOptimizationTest.DxAssignAllAlgTest" name="test_buildScNoAssigned" time="1.547" />
+  <testcase classname="dTest.dInternal.dOptimizationTest.DxAssignAllAlgTest" name="test_buildGenNoAssigned" time="6.546" />
+  <testcase classname="dTest.dInternal.dOptimizationTest.RoomsConditionsTest" name="test_RoomConfInData5j" time="0.016" />
+  <testcase classname="dTest.dInternal.dOptimizationTest.RoomsConditionsTest" name="test_EventsConflictsInData5j" time="0.031" />
+  <testcase classname="dTest.dInternal.dOptimizationTest.RoomsConditionsTest" name="test_AvailabilityInData7j" time="0.032" />
+  <testcase classname="dTest.dInternal.dOptimizationTest.RoomsConditionsTest" name="test_EventsConflictsData7j" time="0.031" />
+  <testcase classname="dInternal.dOptimization.DxAssignRoomsAlgTest" name="test_basicData" time="1.437" />
+  <testcase classname="dInternal.dOptimization.DxAssignRoomsAlgTest" name="test_basicData2" time="0.86" />
+  <testcase classname="dInternal.dOptimization.DxAssignRoomsAlgTest" name="test_getNumberOfPeriods" time="0.078" />
+  <testcase classname="dInternal.dOptimization.DxAssignRoomsAlgTest" name="test_events" time="0.078" />
+  <testcase classname="dInternal.dOptimization.DxAssignRoomsAlgTest" name="test_getEvents" time="5.0" />
+  <testcase classname="dInternal.dOptimization.DxAssignRoomsAlgTest" name="test_Sort" time="0.0" />
+  <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test_loadTimeTable5j" time="0.0" />
+  <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test1_loadTimeTable5j" time="0.0" />
+  <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test2_loadTimeTable5j" time="0.0" />
+  <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test3_loadTimeTable5j" time="0.0" />
+  <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test4_loadTimeTable5j" time="0.0" />
+  <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test5_loadTimeTable5j" time="0.0" />
+  <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test1_ImportSelective5j" time="0.609" />
+  <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test_loadTimeTable7j" time="0.0" />
+  <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test1_loadTimeTable7j" time="0.0" />
+  <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test2_loadTimeTable7j" time="0.0" />
+  <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test3_loadTimeTable7j" time="0.0" />
+  <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test4_loadTimeTable7j" time="0.0" />
+  <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test5_loadTimeTable7j" time="0.0" />
+  <testcase classname="dTest.dInternal.dData.DLoadDataTest" name="test1_ImportSelective7j" time="0.594" />
+  <testcase classname="dTest.dInternal.dData.dInstructors.DxInstructorsReaderTest" name="test_exceptionOnFirstLine" time="0.0" />
+  <testcase classname="dTest.dInternal.dData.dInstructors.DxInstructorsReaderTest" name="test1_exceptionOnName" time="0.0" />
+  <testcase classname="dTest.dInternal.dData.dInstructors.DxInstructorsReaderTest" name="test_numberOfInstructors" time="0.0" />
+  <testcase classname="dTest.dInternal.dData.dInstructors.DxInstructorsReaderTest" name="test_badAvailability6" time="0.0" />
+  <testcase classname="dTest.dInternal.dData.dInstructors.DxInstructorsReaderTest" name="test_badAvailability3" time="0.0" />
+  <testcase classname="dTest.dInternal.dData.dInstructors.DxInstructorsReaderTest" name="test_values" time="0.0" />
+  <testcase classname="dTest.dInternal.dData.dInstructors.DxInstructorsReaderTest" name="test_valuesOnDispoInst" time="0.016" />
+  <testcase classname="dTest.dInternal.dOptimizationTest.SetOfEventsTest" name="testEvents_5j" time="0.015" />
+  <testcase classname="dTest.dInternal.dOptimizationTest.SetOfEventsTest" name="test_addEvents_7j" time="0.532" />
+  <testcase classname="dTest.dInternal.dOptimizationTest.ConditionsTest" name="test_initAllConditions5j" time="0.031" />
+  <testcase classname="dTest.dInternal.dOptimizationTest.ConditionsTest" name="test_addEventInTTs_1_5j" time="0.031" />
+  <testcase classname="dTest.dInternal.dOptimizationTest.ConditionsTest" name="test_removeEventInTTs_5j" time="0.031" />
+  <testcase classname="dTest.dInternal.dOptimizationTest.ConditionsTest" name="test_buildAllConditionsDh" time="0.172" />
+  <testcase classname="dTest.dInternal.dOptimizationTest.ConditionsTest" name="test_buildAllConditionsInCloneTTS" time="0.266" />
+  <testcase classname="dTest.dInternal.dOptimizationTest.ConditionsTest" name="test_initAllConditions7j" time="0.031" />
+  <testcase classname="dTest.dInternal.dOptimizationTest.ConditionsTest" name="test_addEventInTTs_1_7j" time="0.031" />
+  <testcase classname="dTest.dInternal.dOptimizationTest.ConditionsTest" name="test_addEventInTTs_2_7j" time="0.016" />
+  <testcase classname="dTest.dInternal.dOptimizationTest.ConditionsTest" name="test_removeEventInTTs_3_7j" time="0.031" />
+  <testcase classname="dTest.dInternal.dData.DSaveDataTest" name="test_saveTTStructure" time="0.188" />
+  <testcase classname="dTest.dInternal.dData.DSaveDataTest" name="test_getVersion" time="0.14" />
+  <testcase classname="dTest.dInternal.dData.DSaveDataTest" name="test1_saveTimeTable" time="0.125" />
+  <testcase classname="dTest.dInternal.dData.DSaveDataTest" name="test2_saveTimeTable" time="0.125" />
+  <testcase classname="dTest.dInternal.dData.DSaveDataTest" name="test_loadInstructors" time="0.11" />
+  <testcase classname="dTest.dInternal.dData.DSaveDataTest" name="test_loadRooms" time="0.14" />
+  <testcase classname="dTest.dInternal.dData.DSaveDataTest" name="test_loadActivities" time="0.125" />
+  <testcase classname="dTest.dInternal.dData.DSaveDataTest" name="test_loadStudents" time="0.125" />
+  <system-out><![CDATA[Hello I am rgr selected Tests
+Bye I was in rgr selected Tests
+FACTORY: com.sun.xml.stream.ZephyrParserFactory@152912f
+FACTORY: com.sun.xml.stream.ZephyrParserFactory@1609af9
+EVENT sE: <DXTimeTable>
+EVENT c: 
+	
+EVENT sE: <TTcycle>
+EVENT c: 
+		
+EVENT sE: <cycleID>
+EVENT c: 1
+EVENT eE: </cycleID>
+EVENT c: 
+		
+EVENT sE: <pLength>
+EVENT c: 60
+EVENT eE: </pLength>
+EVENT c: 
+		
+EVENT sE: <TTdays>
+EVENT c: 
+			
+EVENT sE: <TTday>
+EVENT c: 
+				
+EVENT sE: <TTsequences>
+EVENT c: 
+					
+EVENT sE: <TTsequence>
+EVENT c: 
+						
+EVENT sE: <sequenceID>
+EVENT c: AM
+EVENT eE: </sequenceID>
+EVENT c: 
+						
+EVENT sE: <TTperiods>
+EVENT c: 
+							
+FACTORY: com.sun.xml.stream.ZephyrParserFactory@1daca94
+EVENT sE: <DXTimeTable>
+EVENT c: 
+	
+EVENT sE: <TTcycle>
+EVENT c: 
+		
+EVENT sE: <cycleID>
+EVENT c: 1
+EVENT eE: </cycleID>
+EVENT c: 
+		
+EVENT sE: <pLength>
+EVENT c: 60
+EVENT eE: </pLength>
+EVENT c: 
+		
+EVENT sE: <TTdays>
+EVENT c: 
+			
+EVENT sE: <TTday>
+EVENT c: 
+				
+EVENT sE: <TTsequences>
+EVENT c: 
+					
+EVENT sE: <TTsequence>
+EVENT c: 
+						
+EVENT sE: <sequenceID>
+EVENT c: AM
+EVENT eE: </sequenceID>
+EVENT c: 
+						
+EVENT sE: <TTperiods>
+EVENT c: 
+							
+								
+EVENT sE: <periodID>
+EVENT c: 1
+EVENT eE: </periodID>
+EVENT c: 
+								
+EVENT sE: <BeginTime>
+EVENT c: 8:15
+EVENT eE: </BeginTime>
+EVENT c: 
+								
+EVENT sE: <EndTime>
+EVENT c: 9:15
+EVENT eE: </EndTime>
+EVENT c: 
+								
+EVENT sE: <priority>
+EVENT c: 0
+EVENT eE: </priority>
+EVENT c: 
+							
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

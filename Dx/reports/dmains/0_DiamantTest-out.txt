@@ -1,0 +1,112 @@
+Hello I am in Diamant tests
+Preference file is in :C:\Documents and Settings\Ruben\pref\pref.txt
+Bye I was in Diamant tests
+FACTORY: com.sun.xml.stream.ZephyrParserFactory@1ee40a4
+FACTORY: com.sun.xml.stream.ZephyrParserFactory@1c9d17e
+EVENT sE: <DXTimeTable>
+EVENT c: 
+	
+EVENT sE: <TTcycle>
+EVENT c: 
+		
+EVENT sE: <cycleID>
+EVENT c: 1
+EVENT eE: </cycleID>
+EVENT c: 
+		
+EVENT sE: <pLength>
+EVENT c: 60
+EVENT eE: </pLength>
+EVENT c: 
+		
+EVENT sE: <TTdays>
+EVENT c: 
+			
+EVENT sE: <TTday>
+EVENT c: 
+				
+EVENT sE: <TTsequences>
+EVENT c: 
+					
+EVENT sE: <TTsequence>
+EVENT c: 
+						
+EVENT sE: <sequenceID>
+EVENT c: AM
+EVENT eE: </sequenceID>
+EVENT c: 
+						
+EVENT sE: <TTperiods>
+EVENT c: 
+							
+FACTORY: com.sun.xml.stream.ZephyrParserFactory@183e895
+EVENT sE: <DXTimeTable>
+EVENT c: 
+	
+EVENT sE: <TTcycle>
+EVENT c: 
+		
+EVENT sE: <cycleID>
+EVENT c: 1
+EVENT eE: </cycleID>
+EVENT c: 
+		
+EVENT sE: <pLength>
+EVENT c: 60
+EVENT eE: </pLength>
+EVENT c: 
+		
+EVENT sE: <TTdays>
+EVENT c: 
+			
+EVENT sE: <TTday>
+EVENT c: 
+				
+EVENT sE: <TTsequences>
+EVENT c: 
+					
+EVENT sE: <TTsequence>
+EVENT c: 
+						
+EVENT sE: <sequenceID>
+EVENT c: AM
+EVENT eE: </sequenceID>
+EVENT c: 
+						
+EVENT sE: <TTperiods>
+EVENT c: 
+							
+								
+EVENT sE: <periodID>
+EVENT c: 1
+EVENT eE: </periodID>
+EVENT c: 
+								
+EVENT sE: <BeginTime>
+EVENT c: 8:15
+EVENT eE: </BeginTime>
+EVENT c: 
+								
+EVENT sE: <EndTime>
+EVENT c: 9:15
+EVENT eE: </EndTime>
+EVENT c: 
+								
+EVENT sE: <priority>
+EVENT c: 0
+EVENT eE: </priority>
+EVENT c: 
+							
+Preference file is in :C:\Documents and Settings\Ruben\pref\pref.txt
+I am in Mode Development
+Preference file is in :C:\Documents and Settings\Ruben\pref\pref.txt
+pref: javax.swing.plaf.metal.MetalLookAndFeel
+pref: javax.swing.plaf.metal.MetalLookAndFeel
+path: \dataTest\HIVER2008examens.dia
+Preference file is in :C:\Documents and Settings\Ruben\pref\pref.txt
+I am in Mode Development
+Preference file is in :C:\Documents and Settings\Ruben\pref\pref.txt
+pref: javax.swing.plaf.metal.MetalLookAndFeel
+pref: javax.swing.plaf.metal.MetalLookAndFeel
+path: \dataTest\HIVER2008examens.dia
+
