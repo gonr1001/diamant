@@ -1,6 +1,6 @@
 /**
  *
- * Title: ConflictsOfAnEventJDlg $Revision: 1.8 $  $Date: 2008-02-14 17:54:32 $
+ * Title: ConflictsOfAnEventJDlg $Revision: 1.9 $  $Date: 2008-02-15 21:11:32 $
  * Description: ConflictsOfAnEventJDlg is a class used to
  *              display the so called Conflicts Of An Event which
  *              gives the conflicts between an event and the others events
@@ -17,7 +17,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -72,17 +72,27 @@ public class ConflictsOfAnEventJDlg extends JDialog implements ActionListener {
 				screenSize.height - ADJUST_HEIGHT));
 		if (DxFlags.newDxTTPane) {
 			_dxTTPane = new DxConflictsOfAnEventTTPane(dm.getTTStructure(), _tempTTStruct,
-					_toolBar, true, localEvent);
+					/*_toolBar,*/ true, localEvent);
+			dm.getConditionsToTest().addEventInAllPeriods(_tempTTStruct, localEvent);
+			
+			_dxTTPane.updateTTPane(_tempTTStruct);
+			this.getContentPane().add(_dxTTPane.getPane());
+			this.setVisible(true);
 		} else {
 			_ttPane = new ConflictsOfAnEventTTPane(dm.getTTStructure(), _tempTTStruct,
 					_toolBar, true, localEvent);
+			dm.getConditionsToTest().addEventInAllPeriods(_tempTTStruct, localEvent);
+			
+			_ttPane.updateTTPane(_tempTTStruct);
+			this.getContentPane().add(_ttPane.getPane());
+			this.setVisible(true);
 		}
 
-		dm.getConditionsToTest().addEventInAllPeriods(_tempTTStruct, localEvent);
-		
-		_ttPane.updateTTPane(_tempTTStruct);
-		this.getContentPane().add(_ttPane.getPane());
-		this.setVisible(true);
+//		dm.getConditionsToTest().addEventInAllPeriods(_tempTTStruct, localEvent);
+//		
+//		_ttPane.updateTTPane(_tempTTStruct);
+//		this.getContentPane().add(_ttPane.getPane());
+//		this.setVisible(true);
 	}
 	public void actionPerformed(ActionEvent e) {
 		// if Button CLOSE is pressed

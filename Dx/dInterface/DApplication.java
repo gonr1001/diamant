@@ -25,6 +25,7 @@ package dInterface;
 import java.awt.BorderLayout;
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -85,8 +86,8 @@ import eLib.exit.exception.DxException;
 
 public class DApplication {
 
-	private static final String LOGO_PATH = "images/logoDia.gif";
-	private static final String LOGO_DESCRIPTION = "logoDiamant";
+	private static final String LOGO_PATH = "images/logoDia.jpg";
+	private static final String LOGO_DESCRIPTION = "logoDia";
 	// singleton: has only one instance
 	private static int instanceNumber = 0;
 	private static DApplication _instance = null;
@@ -204,7 +205,13 @@ public class DApplication {
 
 	// -------------------------------------------
 	private JFrame createFrame(String str) {
+		JFrame.setDefaultLookAndFeelDecorated(true);
 		JFrame jFrame = new JFrame(str + "   " + System.getProperty("user.dir"));
+		
+		Image diamantIcon = createImageIcon(LOGO_PATH);
+		if (diamantIcon != null) {
+			jFrame.setIconImage(diamantIcon);
+		}
 		jFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 
 		jFrame.addWindowListener(new WindowAdapter() {
@@ -246,10 +253,8 @@ public class DApplication {
 		}
 		/* Application Icon */
 		// ImageIcon iconeDiamant
-		ImageIcon diamantIcon = createImageIcon(LOGO_PATH, LOGO_DESCRIPTION);
-		if (diamantIcon != null) {
-			jFrame.setIconImage(diamantIcon.getImage());
-		}
+		
+
 		jFrame.pack();
 		jFrame.setVisible(true);
 		return jFrame;
@@ -1125,10 +1130,10 @@ public class DApplication {
 		this.setCursorDefault();
 	}
 
-	private ImageIcon createImageIcon(String path, String description) {
+	private static Image createImageIcon(String path) {
 		java.net.URL imgURL = DApplication.class.getResource(path);
 		if (imgURL != null) {
-			return new ImageIcon(imgURL, description);
+			return new ImageIcon(imgURL).getImage();
 		}
 		System.err.println("Couldn't find file: " + path);
 		return null;

@@ -24,7 +24,6 @@ import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 
-import dInterface.DToolBar;
 import dInternal.DResource;
 import dInternal.dTimeTable.Period;
 import dInternal.dTimeTable.TTStructure;
@@ -41,10 +40,10 @@ public class DxConflictsOfAnEventTTPane extends DxTTPane {
 		   * @param eventName
 		   */
 		  public DxConflictsOfAnEventTTPane(TTStructure totaltts, TTStructure partialtts, 
-		  							DToolBar toolBar, 
+		  							/*DToolBar toolBar, */
 									boolean vertical,
 									DResource event) {
-		    super(partialtts, toolBar);
+		    super(partialtts);
 		    _event = event;
 		    _totalTTStruct = totaltts;
 		    initDetailedTTPane(vertical); 
