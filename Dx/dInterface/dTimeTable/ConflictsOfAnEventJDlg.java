@@ -1,6 +1,6 @@
 /**
  *
- * Title: ConflictsOfAnEventJDlg $Revision: 1.9 $  $Date: 2008-02-15 21:11:32 $
+ * Title: ConflictsOfAnEventJDlg $Revision: 1.10 $  $Date: 2008-02-15 22:37:19 $
  * Description: ConflictsOfAnEventJDlg is a class used to
  *              display the so called Conflicts Of An Event which
  *              gives the conflicts between an event and the others events
@@ -17,7 +17,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -59,40 +59,32 @@ public class ConflictsOfAnEventJDlg extends JDialog implements ActionListener {
 	}
 
 	public void initDlg(DResource event, DModel dm) {
-//		TTStructure totalTTStruct = dm.getTTStructure();
-//		DObject rAt = (DxEvent)event.getAttach().cloneEvent();
-		DResource localEvent = event.clone();
+//		DResource localEvent = event.clone();
 	
 		_tempTTStruct = dm.getTTStructure().cloneCurrentTTS();
 		dm.getConditionsToTest().buildAllConditions(_tempTTStruct);
 		_tempTTStruct.getCurrentCycle().resetAllNumberOfConflicts();
 
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		this.setSize(new Dimension(screenSize.width - ADJUST_WIDTH,
-				screenSize.height - ADJUST_HEIGHT));
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); //nop
+		this.setSize(new Dimension(screenSize.width - ADJUST_WIDTH,         //nop
+				screenSize.height - ADJUST_HEIGHT));                        //nop
 		if (DxFlags.newDxTTPane) {
-			_dxTTPane = new DxConflictsOfAnEventTTPane(dm.getTTStructure(), _tempTTStruct,
-					/*_toolBar,*/ true, localEvent);
-			dm.getConditionsToTest().addEventInAllPeriods(_tempTTStruct, localEvent);
+			_dxTTPane = new DxConflictsOfAnEventTTPane(_tempTTStruct,
+					/*_toolBar,*/ true, event);
+			dm.getConditionsToTest().addEventInAllPeriods(_tempTTStruct, event);
 			
-			_dxTTPane.updateTTPane(_tempTTStruct);
-			this.getContentPane().add(_dxTTPane.getPane());
-			this.setVisible(true);
+			_dxTTPane.updateTTPane(_tempTTStruct);                          // nop
+			this.getContentPane().add(_dxTTPane.getPane());                 // nop
+			this.setVisible(true);                                          // nop
 		} else {
 			_ttPane = new ConflictsOfAnEventTTPane(dm.getTTStructure(), _tempTTStruct,
-					_toolBar, true, localEvent);
-			dm.getConditionsToTest().addEventInAllPeriods(_tempTTStruct, localEvent);
+					_toolBar, true, event);
+			dm.getConditionsToTest().addEventInAllPeriods(_tempTTStruct, event);
 			
 			_ttPane.updateTTPane(_tempTTStruct);
-			this.getContentPane().add(_ttPane.getPane());
-			this.setVisible(true);
+			this.getContentPane().add(_ttPane.getPane());                   
+			this.setVisible(true);                                          
 		}
-
-//		dm.getConditionsToTest().addEventInAllPeriods(_tempTTStruct, localEvent);
-//		
-//		_ttPane.updateTTPane(_tempTTStruct);
-//		this.getContentPane().add(_ttPane.getPane());
-//		this.setVisible(true);
 	}
 	public void actionPerformed(ActionEvent e) {
 		// if Button CLOSE is pressed
@@ -101,7 +93,6 @@ public class ConflictsOfAnEventJDlg extends JDialog implements ActionListener {
 			_ttPane = null;
 			dispose();
 		}
-
 	}// end actionPerformed
 	
 }// end ManualImprovementDetailed

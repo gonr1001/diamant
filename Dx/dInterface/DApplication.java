@@ -204,7 +204,6 @@ public class DApplication {
 
 	// -------------------------------------------
 	private JFrame createFrame(String str) {
-		JFrame.setDefaultLookAndFeelDecorated(true);
 		JFrame jFrame = new JFrame(str + "   " + System.getProperty("user.dir"));
 		
 		Image diamantIcon = createImageIcon(LOGO_PATH);

@@ -39,13 +39,13 @@ public class DxConflictsOfAnEventTTPane extends DxTTPane {
 		   * @param vertical
 		   * @param eventName
 		   */
-		  public DxConflictsOfAnEventTTPane(TTStructure totaltts, TTStructure partialtts, 
+		  public DxConflictsOfAnEventTTPane(TTStructure partialtts, 
 		  							/*DToolBar toolBar, */
 									boolean vertical,
 									DResource event) {
 		    super(partialtts);
 		    _event = event;
-		    _totalTTStruct = totaltts;
+		    _totalTTStruct = partialtts;
 		    initDetailedTTPane(vertical); 
 		  } // end  ConflictsOfAnEventTTPane
 		 //-------------------------------------------
