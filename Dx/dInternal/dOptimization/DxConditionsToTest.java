@@ -512,6 +512,7 @@ public class DxConditionsToTest {
 					dxEvent.setKey(4, periodKey);
 					//						System.out.println(i + " " + j + " " + k);
 					addFalseEventInTTs(improveTTStruct, res, false);
+					//addEventInTTs(improveTTStruct, res, false);
 
 				}// end for(int k=0; k< ((Sequence)seq.getAttach())
 			}// end for(int j=0; j<

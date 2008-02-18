@@ -59,6 +59,7 @@ public abstract class DxTTPane {
 	protected final int ROW_HEADER_WIDTH = 35;
 
 	protected TTStructure _tts;
+	
 	protected DToolBar _toolBar;
 	protected JScrollPane _jScrollPaneOne;
 	protected JScrollPane _jScrollPaneTwo;

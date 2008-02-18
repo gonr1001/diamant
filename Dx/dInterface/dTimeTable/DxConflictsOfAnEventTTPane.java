@@ -29,7 +29,9 @@ import dInternal.dTimeTable.Period;
 import dInternal.dTimeTable.TTStructure;
 
 public class DxConflictsOfAnEventTTPane extends DxTTPane {
+	
 		  TTStructure _totalTTStruct;
+		  
 		  DResource _event;
 		  
 		  /**
@@ -48,7 +50,13 @@ public class DxConflictsOfAnEventTTPane extends DxTTPane {
 		    _totalTTStruct = partialtts;
 		    initDetailedTTPane(vertical); 
 		  } // end  ConflictsOfAnEventTTPane
-		 //-------------------------------------------
+		  
+		  
+//		 public DxConflictsOfAnEventTTPane(TTStructure partialtts) {
+//			 super(partialtts);
+//			// TODO Auto-generated constructor stub
+//		}
+		//-------------------------------------------
 		  public JComponent getPane(){
 		    return _jSplitPane;
 		  }
@@ -69,7 +77,8 @@ public class DxConflictsOfAnEventTTPane extends DxTTPane {
 		  }
 		  //-------------------------------------------
 		   public PeriodPanel createPeriodPanel(int refNo, String str) {
-		   	Period totalPeriod= _totalTTStruct.getCurrentCycle().getPeriodByPeriodKey(str);
+			   	Period totalPeriod = _tts.getCurrentCycle().getPeriodByPeriodKey(str);		   	
+			   	//Period totalPeriod = _totalTTStruct.getCurrentCycle().getPeriodByPeriodKey(str);
 		   return new ConflictsOfAnEventPeriodPanel(refNo, str,totalPeriod, _event);
 		  }
 		 //-------------------------------------------

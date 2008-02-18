@@ -1,6 +1,6 @@
 /**
  *
- * Title: ConflictsOfAnEventJDlg $Revision: 1.10 $  $Date: 2008-02-15 22:37:19 $
+ * Title: ConflictsOfAnEventJDlg $Revision: 1.11 $  $Date: 2008-02-18 16:37:34 $
  * Description: ConflictsOfAnEventJDlg is a class used to
  *              display the so called Conflicts Of An Event which
  *              gives the conflicts between an event and the others events
@@ -17,7 +17,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -69,11 +69,12 @@ public class ConflictsOfAnEventJDlg extends JDialog implements ActionListener {
 		this.setSize(new Dimension(screenSize.width - ADJUST_WIDTH,         //nop
 				screenSize.height - ADJUST_HEIGHT));                        //nop
 		if (DxFlags.newDxTTPane) {
+//			_dxTTPane = new DxConflictsOfAnEventTTPane(_tempTTStruct);
 			_dxTTPane = new DxConflictsOfAnEventTTPane(_tempTTStruct,
 					/*_toolBar,*/ true, event);
 			dm.getConditionsToTest().addEventInAllPeriods(_tempTTStruct, event);
 			
-			_dxTTPane.updateTTPane(_tempTTStruct);                          // nop
+			_dxTTPane.updateTTPane(_tempTTStruct);                          // nop			
 			this.getContentPane().add(_dxTTPane.getPane());                 // nop
 			this.setVisible(true);                                          // nop
 		} else {
