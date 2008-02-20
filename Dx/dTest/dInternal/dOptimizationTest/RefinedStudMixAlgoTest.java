@@ -1,6 +1,6 @@
 /**
  * 
- * Title: RefinedStudMixAlgoTest $Revision: 1.10 $ $Date: 2007-06-07 18:00:53 $
+ * Title: RefinedStudMixAlgoTest $Revision: 1.11 $ $Date: 2008-02-20 16:58:30 $
  * Description: RefinedStudMixAlgoTest is a class used to test the class
  * 				RefinedStudMixAlgo 
  * 
@@ -56,12 +56,11 @@ public class RefinedStudMixAlgoTest extends TestCase {
 				+ "loadData5j.dia";
 		_type = 1;
 		try {
-
 			_dm1 = new DModel(_dxDocument1, _fileName.toString());
 		} catch (Exception e) {
 			// Should not fail in controled conditions
 		}
-		_dm1.getConditionsToTest().initAllConditions(); // Affectation initialle
+		_dm1.getConditionsToTest().initAllConditions(); // Affectation initialize
 		_dxDocument2 = new DxTTableDoc();
 		try {
 			// if (DxFlags.newDoc) {

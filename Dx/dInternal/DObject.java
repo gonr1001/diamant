@@ -111,5 +111,8 @@ public abstract class DObject extends Object {
 	int field) {
 		return 0;// XXXX Pascal: ?
 	}
+	
+//	public abstract DObject clone();
+
 
 }

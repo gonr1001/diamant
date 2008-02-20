@@ -51,7 +51,6 @@ public class Unity extends DObject {
 		_preferFunctionSetOfRooms = new StandardCollection();
 		_setOfAssignments = new StandardCollection();
 		_duration = 1;// ???
-//		_preferSequence = -1; // ???
 		_isCyclic = true; // ???
 	}
 
@@ -345,6 +344,9 @@ public class Unity extends DObject {
 		this.setDuration(event.getDuration());
 	}
 
-	
+	public Unity clone(){	
+		System.out.println("Unity");
+		return new Unity();
+	}
 
 }

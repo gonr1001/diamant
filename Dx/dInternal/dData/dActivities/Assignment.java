@@ -17,7 +17,6 @@ import dInternal.DSetOfResources;
 import dInternal.dData.StandardCollection;
 
 public class Assignment extends DObject {
-
 	
 	/** instructor name valid only for initialization */
 	private DSetOfResources _setInstructorNames;
@@ -104,6 +103,24 @@ public class Assignment extends DObject {
 	 *            the period complete key a.b.c where a= day key, b= sequence
 	 *            key c= period key
 	 */
+	
+	public Assignment clone(){	
+		Assignment r = new Assignment();
+		r._dateAndHour[0] = this._dateAndHour[0];
+		r._dateAndHour[1] = this._dateAndHour[1];
+		r._dateAndHour[2] = this._dateAndHour[2];
+		r._periodKey = new String(this._periodKey);
+		r._roomName = new String(this._roomName);;
+		r._roomFixed = this._roomFixed;
+		r._isRoom = this._isRoom;
+		r._isType = this._isType;
+		r._setInstructorNames = this._setInstructorNames.clone();
+		r._setInstructorKeys = this._setInstructorKeys.clone();
+		return r;
+	}
+	
+	
+	
 	public void setPeriodKey(String periodKey) {
 		_periodKey = periodKey;
 	}

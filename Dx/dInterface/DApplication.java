@@ -825,13 +825,14 @@ public class DApplication {
 			// fileName += "refFiles" + File.separator;
 			// fileName += "facs" + File.separator;
 			// fileName += "flsh2_1" + File.separator;
-			// fileName += "RoomAffContTT.dia";
+			// fileName += "RoomAffContTT.dia";		
 			try {
 				String filepath = File.separator +  "dataTest" + File.separator;
 				// filepath += "refFiles" + File.separator;
 				// filepath += "facs" + File.separator;
 				// filepath += "flsh2_1" + File.separator;
-				filepath += "HIVER2008examens.dia";
+				//filepath += "HIVER2008examens.dia";
+				filepath += "lData5j30min.dia";
 				System.out.println("path: " + filepath);
 				_dMediator.addDxTTableDoc("", getCurrentDir() + filepath);
 

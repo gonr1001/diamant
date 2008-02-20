@@ -51,7 +51,7 @@ public class SelectAlgorithm {
 	
 	/**
 	 * build Algorithm To Run
-	 * XXXX Pascal: case 0,1,2,3..... 
+	 * XXXX Pascal: case 0,1,2,3... 
 	 */
 	private void buildAlgorithmToRun(){
 		_algorithmToRun.removeAllElements();

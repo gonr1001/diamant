@@ -23,6 +23,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.Vector;
 import dInternal.DResource;
+import dInternal.dData.StandardCollection;
 
 public abstract class DSetOfResources extends DObject {
 
@@ -947,6 +948,23 @@ public abstract class DSetOfResources extends DObject {
 			if (!getResourceAt(i).isEquals(setOfRes.getResourceAt(i)))
 				return false;
 		return true;
+	}
+	
+	public DSetOfResources clone(){		
+		DSetOfResources r = new StandardCollection();
+		r._stateSort = this._stateSort;	
+		r._currentKey = this._currentKey;
+		r._resourceList = this.cloneRL();
+		return r;
+	}
+
+	private Vector<DResource> cloneRL() {
+		Vector<DResource> rl = new Vector<DResource>(1, 1); ;
+		for (int i = 0; i < _resourceList.size(); i++){
+			rl.add(_resourceList.elementAt(i));
+		}
+		
+		return rl;
 	}
 
 }

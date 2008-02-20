@@ -23,6 +23,7 @@ import java.util.Comparator;
 
 import dInternal.DObject;
 import dInternal.dOptimization.DxEvent;
+import developer.DxFlags;
 
 public class DResource {
 	/**
@@ -226,13 +227,26 @@ public class DResource {
 	 * @param DXObject
 	 *            the object to set in the _resourceAttach field
 	 */
-	public DResource clone() {	
-		String s = new String(_resourceID);
-		Object o = _resourceAttach;
-		DxEvent dxEvent = ((DxEvent) o).cloneEvent();
-		DResource r = new DResource(s, dxEvent);
-		return r;
-	}
+//	public DResource clone() {	
+//		String s = new String(_resourceID);
+//		Object o = _resourceAttach;
+//		DxEvent dxEvent = null;
+//		if (DxFlags.newEventClone) {
+//			dxEvent = ((DxEvent) o).eventClone();
+//		} else {
+//			dxEvent = ((DxEvent) o).oldEventClone();
+//		}		
+//		DResource r = new DResource(s, dxEvent);
+//		return r;
+//	}
+//	public DResource clone() {	
+//		String s = new String(_resourceID);
+//		DObject o = _resourceAttach;
+//		DObject co = (DObject)o.clone();
+//		
+//		return new DResource(s,co);
+//	}
+	
 
 
 }

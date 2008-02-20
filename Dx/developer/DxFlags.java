@@ -49,5 +49,7 @@ public class DxFlags {
 //	public final static boolean newDxConflictsOfAnEventDlg = MASTER;
 	
 	public final static boolean newDxTTPane = true;
+	
+	public final static boolean newEventClone = false;
 
 }

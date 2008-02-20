@@ -23,6 +23,7 @@ import dInternal.dData.dRooms.DxSite;
 import dInternal.dData.dStudents.Student;
 import dInternal.dTimeTable.Period;
 import dInternal.dUtil.DXToolsMethods;
+import developer.DxFlags;
 
 public class SetOfEvents extends DSetOfResources {
 
@@ -105,10 +106,25 @@ public class SetOfEvents extends DSetOfResources {
 							soImportErrors);
 					roomKey = oldAssignDxRooms(assignment, unityID,
 							soImportErrors);
-					DxEvent dxEvent = new DxEvent(activityResource.getID(),
-							compositeKey, assignment.getSetInstructorKeys(),
-							roomName, roomKey, unityResource, assignment,
-							cLimit);
+					DxEvent dxEvent  = null;
+					if (DxFlags.newEventClone) {
+						dxEvent = new DxEvent();
+						dxEvent.setID(activityResource.getID());
+						dxEvent.setCompositeKey(compositeKey);
+						dxEvent.setAssigment(assignment);
+						dxEvent.setIntructors(assignment.getSetInstructorKeys());						
+						dxEvent.setRoomName(roomName);
+						dxEvent.setRoomKeyWithKey(roomKey);
+						dxEvent.setUnit((Unity) unityResource
+								.getAttach());						
+						dxEvent.setCapacityLimit(cLimit);
+					} else {
+						dxEvent = new DxEvent(activityResource.getID(),
+								compositeKey, assignment.getSetInstructorKeys(),
+								roomName, roomKey, unityResource, assignment,
+								cLimit);
+					}	
+					
 					this.addResource(new DResource(unityID, dxEvent), 0);
 				}
 			}// end for(int l=0; l<
@@ -161,11 +177,11 @@ public class SetOfEvents extends DSetOfResources {
 			DValue error = new DValue();
 			String str = assignment.getRoomName();
 			if (str.equals("------")) // DConst.NO_ROOM_INTERNAL))
-				str = "......";// DConst.NO_ROOM_EXTERNAL;
+				str = "------";// DConst.NO_ROOM_EXTERNAL;
 			error.setStringValue(DConst.ERROR_TAG + unityID + ": "
 					+ DConst.NOT_ROOM + "« " + str + " »");
 			soImportErrors.addResource(new DResource("3", error), 0);
-			return "......"; // DConst.NO_ROOM_EXTERNAL;
+			return "------"; // DConst.NO_ROOM_EXTERNAL;
 			// if (str.equals(DConst.NO_ROOM_INTERNAL))
 			// str = DConst.NO_ROOM_EXTERNAL;
 			// error.setStringValue(DConst.ERROR_TAG + unityID + ": "
