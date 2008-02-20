@@ -44,7 +44,6 @@ public class Unity extends DObject {
 	 * Constructor
 	 * */
 	public Unity() {
-//		_preferFunctionSetOfRooms = new StandardCollection();
 		_setOfAssignments = new StandardCollection();
 		_duration = 1;// ???
 		_isCyclic = true; // ???
@@ -59,15 +58,7 @@ public class Unity extends DObject {
 		return _setOfAssignments.addResource(cycleAss, 1);
 	}
 
-//	/**
-//	 * add activity prefer function room
-//	 * @param String the room function
-//	 * @return boolean the operation result
-//	 * */
-//	public boolean addPreferFunctionRoom(String function) {
-//		return _preferFunctionSetOfRooms.addResource(new DResource(function,
-//				new DValue()), 1);
-//	}
+
 
 	/**
 	 * It compares a field with the value defined by the argument "value"
@@ -85,11 +76,7 @@ public class Unity extends DObject {
 			if (_duration == intValue)
 				return true;
 			break;
-//		case 1:
-//			intValue = Integer.parseInt(value);
-//			if (_preferSequence == intValue)
-//				return true;
-//			break;
+
 		case 2:
 			boolValue = Boolean.valueOf(value).booleanValue();
 			if (_assign == boolValue)
@@ -109,12 +96,9 @@ public class Unity extends DObject {
 		return false;
 	}
 
-//	public void setCyclic(boolean cyclic) {
-//		_isCyclic = cyclic;
-//	}
+
 
 	public boolean  compareToAssign(boolean value) {
-//		boolean  boolValue = Boolean.valueOf(value).booleanValue();
 			return _assign == value;
 	}
 
@@ -136,18 +120,7 @@ public class Unity extends DObject {
 	}
 
 
-//	/**
-//	 * get first index of the activity prefer function room
-//	 * @return int the function of the room
-//	 * */
-//	public int getFirstPreferFunctionRoom() {
-//		if (_preferFunctionSetOfRooms.size() >= 1) {
-//			String function = _preferFunctionSetOfRooms.getResourceAt(0)
-//					.getID();
-//			return Integer.parseInt(function);
-//		}
-//		return 0;
-//	}
+
 
 	/* (non-Javadoc)
 	 * @see dInternal.DObject#getSelectedField()
@@ -174,14 +147,7 @@ public class Unity extends DObject {
 		return _assign;
 	}
 
-//	/**
-//	 * get activity prefer function room
-//	 * @param String the room function
-//	 * @return boolean the operation result
-//	 * */
-//	public DSetOfResources getPreferFunctionRoom() {
-//		return _preferFunctionSetOfRooms;
-//	}
+
 
 	/**
 	 * compare this resource with the specified resource
@@ -213,25 +179,6 @@ public class Unity extends DObject {
 	public boolean isPermanent() {
 		return _permanent;
 	}
-
-//	/**
-//	 * set activity prefer function room
-//	 * @param String the room function
-//	 * @return boolean the operation result
-//	 * */
-//	public void setPreferFunctionRoom(DSetOfResources preferFuncList) {
-//		_preferFunctionSetOfRooms = preferFuncList;
-//	}
-
-
-//	/**
-//	 * remove a cycle from a bloc
-//	 * @param String the cycle ID
-//	 * @return boolean the operation result
-//	 * */
-//	public boolean removeCycleAssignment(String cycle) {
-//		return _setOfAssignments.removeResource(cycle);
-//	}
 
 	/**
 	 * set if bloc is fixed

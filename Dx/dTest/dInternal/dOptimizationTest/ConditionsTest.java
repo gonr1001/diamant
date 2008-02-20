@@ -328,37 +328,37 @@ public class ConditionsTest extends TestCase {
 			dmh.getConditionsToTest().addEventInTTs(cloneTTS,
 					new DResource("PED200.1.21.1.", eventClone), false);
 			per = cloneTTS.getCurrentCycle().getPeriodByKey(2, 1, 2);
-//			assertEquals(
-//					"test11_buildAllConditionsInCloneTTS : assertEquals 11",
-//					40, per.getNbStudConflict());
+			assertEquals(
+					"test11_buildAllConditionsInCloneTTS : assertEquals 11",
+					40, per.getNbStudConflict());
 			assertEquals(
 					"test12_buildAllConditionsInCloneTTS : assertEquals 12", 0,
 					per.getNbInstConflict());
 			assertEquals(
 					"test13_buildAllConditionsInCloneTTS : assertEquals 13", 0,
 					per.getNbRoomConflict());
-//			per = cloneTTS.getCurrentCycle().getPeriodByKey(2, 1, 3);
-//			assertEquals(
-//					"test14_buildAllConditionsInCloneTTS : assertEquals 12-1",
-//					1, per.getNbInstConflict());
-//			// set event key wedneday at 15h00
-//			eventClone.setKey(4, "3.3.5");
-//			dmh.getConditionsToTest().addEventInTTs(cloneTTS,
-//					new DResource("PED200.1.21.1.", eventClone), false);
-//			per = cloneTTS.getCurrentCycle().getPeriodByKey(3, 3, 5);
-//			assertEquals(
-//					"test15_buildAllConditionsInCloneTTS : assertEquals 14",
-//					20, per.getNbStudConflict());
-//			assertEquals(
-//					"test16_buildAllConditionsInCloneTTS : assertEquals 15", 0,
-//					per.getNbInstConflict());
-//			assertEquals(
-//					"test16_buildAllConditionsInCloneTTS : assertEquals 16", 0,
-//					per.getNbRoomConflict());
-//			per = cloneTTS.getCurrentCycle().getPeriodByKey(3, 3, 7);
-//			assertEquals(
-//					"test16_buildAllConditionsInCloneTTS : assertEquals 14", 0,
-//					per.getNbStudConflict());
+			per = cloneTTS.getCurrentCycle().getPeriodByKey(2, 1, 3);
+			assertEquals(
+					"test14_buildAllConditionsInCloneTTS : assertEquals 12-1",
+					1, per.getNbInstConflict());
+			// set event key wedneday at 15h00
+			eventClone.setKey(4, "3.3.5");
+			dmh.getConditionsToTest().addEventInTTs(cloneTTS,
+					new DResource("PED200.1.21.1.", eventClone), false);
+			per = cloneTTS.getCurrentCycle().getPeriodByKey(3, 3, 5);
+			assertEquals(
+					"test15_buildAllConditionsInCloneTTS : assertEquals 14",
+					20, per.getNbStudConflict());
+			assertEquals(
+					"test16_buildAllConditionsInCloneTTS : assertEquals 15", 0,
+					per.getNbInstConflict());
+			assertEquals(
+					"test16_buildAllConditionsInCloneTTS : assertEquals 16", 0,
+					per.getNbRoomConflict());
+			per = cloneTTS.getCurrentCycle().getPeriodByKey(3, 3, 7);
+			assertEquals(
+					"test16_buildAllConditionsInCloneTTS : assertEquals 14", 0,
+					per.getNbStudConflict());
 
 		} catch (Exception e) {
 			// Should not fail in tests
