@@ -10,7 +10,6 @@ import dConstants.DConst;
 import dInternal.DObject;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
-import dInternal.DValue;
 import dInternal.dData.StandardCollection;
 import dInternal.dOptimization.DxEvent;
 
@@ -37,9 +36,6 @@ public class Unity extends DObject {
 	
 	private boolean _isCyclic;
 
-	/**prefer function rooms of this bloc*/
-	private DSetOfResources _preferFunctionSetOfRooms;
-
 	/**all cycles where bloc is assigned*/
 	private DSetOfResources _setOfAssignments;
 
@@ -48,7 +44,7 @@ public class Unity extends DObject {
 	 * Constructor
 	 * */
 	public Unity() {
-		_preferFunctionSetOfRooms = new StandardCollection();
+//		_preferFunctionSetOfRooms = new StandardCollection();
 		_setOfAssignments = new StandardCollection();
 		_duration = 1;// ???
 		_isCyclic = true; // ???
@@ -63,15 +59,15 @@ public class Unity extends DObject {
 		return _setOfAssignments.addResource(cycleAss, 1);
 	}
 
-	/**
-	 * add activity prefer function room
-	 * @param String the room function
-	 * @return boolean the operation result
-	 * */
-	public boolean addPreferFunctionRoom(String function) {
-		return _preferFunctionSetOfRooms.addResource(new DResource(function,
-				new DValue()), 1);
-	}
+//	/**
+//	 * add activity prefer function room
+//	 * @param String the room function
+//	 * @return boolean the operation result
+//	 * */
+//	public boolean addPreferFunctionRoom(String function) {
+//		return _preferFunctionSetOfRooms.addResource(new DResource(function,
+//				new DValue()), 1);
+//	}
 
 	/**
 	 * It compares a field with the value defined by the argument "value"
@@ -140,18 +136,18 @@ public class Unity extends DObject {
 	}
 
 
-	/**
-	 * get first index of the activity prefer function room
-	 * @return int the function of the room
-	 * */
-	public int getFirstPreferFunctionRoom() {
-		if (_preferFunctionSetOfRooms.size() >= 1) {
-			String function = _preferFunctionSetOfRooms.getResourceAt(0)
-					.getID();
-			return Integer.parseInt(function);
-		}
-		return 0;
-	}
+//	/**
+//	 * get first index of the activity prefer function room
+//	 * @return int the function of the room
+//	 * */
+//	public int getFirstPreferFunctionRoom() {
+//		if (_preferFunctionSetOfRooms.size() >= 1) {
+//			String function = _preferFunctionSetOfRooms.getResourceAt(0)
+//					.getID();
+//			return Integer.parseInt(function);
+//		}
+//		return 0;
+//	}
 
 	/* (non-Javadoc)
 	 * @see dInternal.DObject#getSelectedField()
@@ -290,17 +286,17 @@ public class Unity extends DObject {
 		}
 	}
 
-	/*
-	 * set the first index of the activity prefer function room
-	 * @param int the function
-	 */
-	public void setFirstPreferFunctionRoom(int function) {
-		String func = String.valueOf(function);
-		if (_preferFunctionSetOfRooms.size() >= 1) {
-			_preferFunctionSetOfRooms.getResourceAt(0).setID(func);
-		} else
-			this.addPreferFunctionRoom(func);
-	}
+//	/*
+//	 * set the first index of the activity prefer function room
+//	 * @param int the function
+//	 */
+//	public void setFirstPreferFunctionRoom(int function) {
+//		String func = String.valueOf(function);
+//		if (_preferFunctionSetOfRooms.size() >= 1) {
+//			_preferFunctionSetOfRooms.getResourceAt(0).setID(func);
+//		} else
+//			this.addPreferFunctionRoom(func);
+//	}
 
 	/**
 	 * set if bloc is solidify
@@ -345,8 +341,16 @@ public class Unity extends DObject {
 	}
 
 	public Unity clone(){	
-		System.out.println("Unity");
-		return new Unity();
+		System.out.println("Unity");	
+			Unity u = new Unity();
+			u._duration = this._duration;
+			u._assign = this._assign;
+			u._permanent = this._permanent;
+			u._isCyclic = this._isCyclic;
+
+//			private DSetOfResources _preferFunctionSetOfRooms;
+//			u._setOfAssignments = this._setOfAssignments.clone();
+			return u;
 	}
 
 }

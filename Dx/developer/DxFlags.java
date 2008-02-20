@@ -50,6 +50,6 @@ public class DxFlags {
 	
 	public final static boolean newDxTTPane = true;
 	
-	public final static boolean newEventClone = false;
+	public final static boolean newEventClone = true;
 
 }

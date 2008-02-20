@@ -857,7 +857,6 @@ public class SetOfActivitiesSites extends DSetOfResources {
 				siteRsc = getSetOfResources().get(i);
 				soa = (SetOfActivities) siteRsc.getAttach();
 				reslist += soa.toWrite(siteRsc.getID()) + DConst.CR_LF;
-				// reslist+= siteRsc.toWrite(DConst.CR_LF)+DConst.CR_LF;
 			}
 			siteRsc = getSetOfResources().get(getSetOfResources().size() - 1);
 			soa = (SetOfActivities) siteRsc.getAttach();

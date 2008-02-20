@@ -264,7 +264,7 @@ public class SetOfActivities extends DSetOfResources {
 					unityResource = section.getUnity(Integer.toString(counter));
 					Unity bloc = (Unity) unityResource.getAttach();
 					String roomType = stLine.nextToken().trim();
-					bloc.addPreferFunctionRoom(roomType);
+//rgr					bloc.addPreferFunctionRoom(roomType);
 					counter++;
 				}// end while(stLine.hasMoreElements())
 				position = 13;
