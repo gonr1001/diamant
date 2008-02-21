@@ -419,6 +419,7 @@ public class DStringFrRes extends java.util.ListResourceBundle {
 
 			{ "notRoom", " Local inexistant " },
 			{ "notInstructor", " Enseignant(e) inexistant(e) " },
+			{ "noInstructor", "------" },
 			{ "notStudentActivity", " Activité Inexistante " },
 			{ "notStudentGroup", " Groupe Inexistente " },
 

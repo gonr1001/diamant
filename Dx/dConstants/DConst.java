@@ -514,6 +514,7 @@ public class DConst {
   public final static String NOT_ROOM = res.getString("notRoom"); // "Not room";
   public final static String NOT_INSTRUCTOR = res.getString("notInstructor"); // "Not instructor";
                       //"Not Student Activity";
+  public final static String NO_INSTRUCTOR = res.getString("noInstructor"); // "------"
   public final static String NOT_STUD_ACT = res.getString("notStudentActivity");
                       //"Not Student Group";
   public final static String NOT_STUD_GROUP = res.getString("notStudentGroup"); 

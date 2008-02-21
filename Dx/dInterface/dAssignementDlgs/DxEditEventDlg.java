@@ -566,7 +566,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		Vector<String> v = new Vector<String>();
 		DxSetOfInstructors dxsoi = _dModel.getDxSetOfInstructors();
 		v = dxsoi.getNamesVector();
-		v.add(DConst.NO_ROOM_INTERNAL);
+		v.add(DConst.NO_INSTRUCTOR);
 		return v;
 	}
 

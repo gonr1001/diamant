@@ -22,8 +22,7 @@ package dInternal;
 import java.util.Comparator;
 
 import dInternal.DObject;
-import dInternal.dOptimization.DxEvent;
-import developer.DxFlags;
+
 
 public class DResource {
 	/**

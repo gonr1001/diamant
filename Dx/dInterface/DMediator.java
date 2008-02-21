@@ -130,9 +130,8 @@ public class DMediator extends Object {
 	public String addDxTTableDoc(String ttName, String fileName)
 			throws DxException, NullPointerException, IOException {
 		DxDocument currentDoc = new DxTTableDoc(this, fileName);
-		currentDoc.setDocumentName(ttName);
+		//currentDoc.setDocumentName(ttName);
 		_dxDocuments.addElement(currentDoc);
-
 		return "";
 	}
 	
@@ -155,7 +154,7 @@ public class DMediator extends Object {
 	public String addDxTTableDoc(DxLoadData dxLoadData, String fileName){
 			//throws DxException, NullPointerException, IOException {
 		DxDocument currentDoc = new DxTTableDoc(this, dxLoadData, fileName);
-		currentDoc.setDocumentName(fileName);
+		//currentDoc.setDocumentName(fileName);
 		_dxDocuments.addElement(currentDoc);
 
 		return "";
@@ -175,7 +174,7 @@ public class DMediator extends Object {
 		//TODO review all this method
 		DApplication.getInstance().setCursorWait();
 		DxDocument currentDoc = new DxTTableDoc(this, fileName, type);
-		currentDoc.setDocumentName(ttName);
+		//currentDoc.setDocumentName(ttName);
 		_dxDocuments.addElement(currentDoc);
 		_dApplication.hideToolBar();
 		DApplication.getInstance().setCursorDefault();

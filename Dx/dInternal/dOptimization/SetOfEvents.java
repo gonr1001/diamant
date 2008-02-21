@@ -212,7 +212,7 @@ public class SetOfEvents extends DSetOfResources {
 	}
 
 	/**
-	 * get the complet activity name of an event
+	 * get the complete activity name of an event
 	 * 
 	 * @param eventKey
 	 * @param soa
@@ -306,7 +306,7 @@ public class SetOfEvents extends DSetOfResources {
 		if (key != -1) {
 			return soi.getInstructorName(key);
 		}
-		return DConst.NO_ROOM_INTERNAL;
+		return DConst.NO_INSTRUCTOR;
 	}
 
 	/**

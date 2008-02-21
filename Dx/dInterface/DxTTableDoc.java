@@ -152,6 +152,7 @@ public class DxTTableDoc extends DxDocument {
 		_jif.setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
 		_jif.setPreferredSize(new Dimension(MAX_WIDTH, MAX_HEIGHT));
 
+
 		if(DxFlags.newDxTTPane) {
 			if (simple) {
 				_dxTTPane = new DxSimpleTTPane(_dm.getTTStructure(), _dMediator
@@ -175,7 +176,6 @@ public class DxTTableDoc extends DxDocument {
 		} else {
 			_jif.getContentPane().add(_ttPane.getPane(), BorderLayout.CENTER);
 		}
-//		_jif.getContentPane().add(_ttPane.getPane(), BorderLayout.CENTER);
 		_jif.pack();
 		// the 1 in Integer(1) could be any integer
 		_dMediator.getDApplication().getDesktop().add(_jif, new Integer(1));

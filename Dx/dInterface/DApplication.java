@@ -827,14 +827,15 @@ public class DApplication {
 			// fileName += "flsh2_1" + File.separator;
 			// fileName += "RoomAffContTT.dia";		
 			try {
-				String filepath = File.separator +  "dataTest" + File.separator;
+			 String fileName = "." + File.separator;
+			 fileName = fileName +  "dataTest" + File.separator;
 				// filepath += "refFiles" + File.separator;
 				// filepath += "facs" + File.separator;
 				// filepath += "flsh2_1" + File.separator;
 				//filepath += "HIVER2008examens.dia";
-				filepath += "lData5j30min.dia";
-				System.out.println("path: " + filepath);
-				_dMediator.addDxTTableDoc("", getCurrentDir() + filepath);
+				fileName += "lData5j30min.dia";
+				System.out.println("filename: " + fileName);
+				_dMediator.addDxTTableDoc("", fileName);
 
 			} catch (Exception e) {
 				new DxExceptionDlg(e.getMessage(), e);

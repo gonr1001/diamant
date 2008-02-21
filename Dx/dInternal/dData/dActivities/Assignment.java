@@ -238,7 +238,7 @@ public class Assignment extends DObject {
 	 * @return String the instructor name
 	 */
 	public String[] getInstructorNames() {
-		String noNames[] = { DConst.NO_ROOM_INTERNAL };
+		String noNames[] = {DConst.NO_INSTRUCTOR };
 		String names[] = new String[_setInstructorNames.size()];
 		for (int i = 0; i < _setInstructorNames.size(); i++) {
 			names[i] = _setInstructorNames.getResourceAt(i).getID();
