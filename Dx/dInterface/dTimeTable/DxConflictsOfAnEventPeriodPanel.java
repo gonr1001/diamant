@@ -1,9 +1,8 @@
-package dInterface.dTimeTable;
-
 /**
- *
- * Title: ConflictsOfAnEventPeriodPanel $Revision: 1.6 $  $Date: 2008-02-21 21:48:13 $
- *
+ * Created on 21-Feb-08
+ * 
+ * 
+ * Title: DxConflictsOfAnEventPeriodPanel.java
  *
  * Copyright (c) 2001 by rgr.
  * All rights reserved.
@@ -15,20 +14,12 @@ package dInterface.dTimeTable;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.6 $
- * @author  $Author: gonzrubi $
- * @since JDK1.3
- *
- * Our convention is that: It's necessary to indicate explicitly
- * all Exceptions that a method can throw.
- * All Exceptions must be handled explicitly.
+ * 
+ * 
  */
 
+package dInterface.dTimeTable;
 
-/**
- * Description: DetailedPeriodPanel is a class used to
- *
- */
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -42,24 +33,21 @@ import javax.swing.JPanel;
 import dInternal.DResource;
 import dInternal.dTimeTable.Period;
 
-
-
-
 @SuppressWarnings("serial")
-public class ConflictsOfAnEventPeriodPanel extends PeriodPanel{
+public class DxConflictsOfAnEventPeriodPanel extends DxPeriodPanel {
   
   private Vector<String> _vec;
   private DResource _event;
   private String _shortEventName;
   private Period _totalPeriod;
   
-  public ConflictsOfAnEventPeriodPanel(){
+  public DxConflictsOfAnEventPeriodPanel(){
     super();
     this.setForeground(Color.WHITE);
     this.setBackground(Color.WHITE);
   }
 
-  public ConflictsOfAnEventPeriodPanel(int refNo, String str, Period totalPeriod, DResource eventRes) {
+  public DxConflictsOfAnEventPeriodPanel(int refNo, String str, Period totalPeriod, DResource eventRes) {
     super(refNo, str);
     _event = eventRes;
     StringTokenizer st = new StringTokenizer(eventRes.getID(), ".");
@@ -82,14 +70,13 @@ public class ConflictsOfAnEventPeriodPanel extends PeriodPanel{
     JPanel southPanel = new JPanel();
     miPanel.setLayout(new GridLayout(0,1));
     southPanel.setLayout(new GridLayout(0,1));
-    JLabel per = new JLabel (" Période "+ _panelRefNo + " ");
+    JLabel per = new JLabel (" Période "+ _panelRefNo + " ");  
     _vec = period.getConflictsEventsInPeriod(_event.getID()).getNamesVector(1);
     JLabel nbAct = new JLabel( "("+Integer.toString(period.getNumberOfEvents())+")");
     topPanel.add(per);
     topPanel.add(nbAct);
     // the events are displayed
     for(int i = 0; i < _vec.size(); i ++) {
-//        if ( ((String)_vec.get(i)).contains(_shortEventName) ){ // XXXX Pascal: lien inutile avec JDK 1.5
 		if ( (_vec.get(i)).matches(".*" + _shortEventName + ".*") ){
             JLabel jl = new JLabel(_vec.get(i));
             jl.setForeground(Color.BLUE);
@@ -123,5 +110,5 @@ public class ConflictsOfAnEventPeriodPanel extends PeriodPanel{
       return _totalPeriod.getEventsInPeriod().getResource(_event.getID())!= null;
   }
   
-} /* end ConflictsOfAnEventPeriodPanel */
+} /* end DxConflictsOfAnEventPeriodPanel */
 

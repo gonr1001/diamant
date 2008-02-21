@@ -1,11 +1,8 @@
 /**
- *
- * Title: ConflictsOfAnEventJDlg $Revision: 1.12 $  $Date: 2008-02-21 21:48:13 $
- * Description: ConflictsOfAnEventJDlg is a class used to
- *              display the so called Conflicts Of An Event which
- *              gives the conflicts between an event and the others events
- *              that are in the TTStructure
- *
+ * Created on 21-Feb-08
+ * 
+ * 
+ * Title: DxConflictsOfAnEventPanel.java
  *
  * Copyright (c) 2001 by rgr.
  * All rights reserved.
@@ -17,9 +14,8 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.12 $
- * @author  $Author: gonzrubi $
- * @since JDK1.3
+ * 
+ * 
  */
 
 package dInterface.dTimeTable;
@@ -32,14 +28,13 @@ import javax.swing.WindowConstants;
 
 import dConstants.DConst;
 import dInterface.DToolBar;
-
 import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.dTimeTable.TTStructure;
 import developer.DxFlags;
 
 @SuppressWarnings("serial")
-public class ConflictsOfAnEventJDlg extends JDialog { //implements ActionListener {
+public class DxConflictsOfAnEventPanel extends JDialog {
 	/* ADJUST_HEIGHT is needed to adjust the screenSize
 	 * minus the barSize (the value is a guess) at the bottom */
 	private final static int ADJUST_HEIGHT = 88;
@@ -51,7 +46,7 @@ public class ConflictsOfAnEventJDlg extends JDialog { //implements ActionListene
 	private TTStructure _tempTTStruct;
 	private DToolBar _toolBar;
 
-	public ConflictsOfAnEventJDlg(JDialog jDialog, DResource eventRes, DModel dm) {
+	public DxConflictsOfAnEventPanel(JDialog jDialog, DResource eventRes, DModel dm) {
 		super(jDialog, DConst.CONFLICTS_OF_AN_EVENT_DLG_TITLE + " "
 				+ eventRes.getID(), true);
 		initDlg(eventRes, dm);
@@ -74,7 +69,6 @@ public class ConflictsOfAnEventJDlg extends JDialog { //implements ActionListene
 			dm.getConditionsToTest().addEventInAllPeriods(_tempTTStruct,
 					eventRes);
 
-//			_dxTTPane.updateTTPane(_tempTTStruct);
 			this.getContentPane().add(_dxTTPane.getPane());
 			this.setVisible(true);
 		} else {
@@ -89,4 +83,5 @@ public class ConflictsOfAnEventJDlg extends JDialog { //implements ActionListene
 		}
 	}
 
-}// end ConflictsOfAnEventJDlg
+}// end DxConflictsOfAnEventPanel
+

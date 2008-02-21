@@ -75,7 +75,7 @@ public abstract class DxTTPane {
 			_str = str;
 		}
 	}
-
+	
 	protected RowRecord[] _rowHeaders;
 	protected DisplayAttributs[][] _toDisplay;
 
@@ -111,10 +111,10 @@ public abstract class DxTTPane {
 	protected abstract int getIpady(int i);
 
 	//-------------------------------------------
-	protected abstract PeriodPanel createPeriodPanel(int refNo, String str);
+	protected abstract DxPeriodPanel createPeriodPanel(int refNo, String str);
 
 	//-------------------------------------------
-	protected abstract PeriodPanel createEmptyPeriodPanel();
+	protected abstract DxPeriodPanel createEmptyPeriodPanel();
 
 	//-------------------------------------------
 	public JViewport getViewport() {
@@ -122,11 +122,11 @@ public abstract class DxTTPane {
 	}
 
 	//-------------------------------------------
-	public PeriodPanel getPeriodPanel(int ppRef) {
+	public DxPeriodPanel getPeriodPanel(int ppRef) {
 		JPanel thePanel = (JPanel) _jScrollPaneOne.getViewport()
 				.getComponent(0);
 		for (int i = 0; i < thePanel.getComponentCount(); i++) {
-			PeriodPanel ppanel = (PeriodPanel) thePanel.getComponent(i);
+			DxPeriodPanel ppanel = (DxPeriodPanel) thePanel.getComponent(i);
 			if (ppanel.getPanelRefNo() == ppRef)
 				return ppanel;
 		}
@@ -140,7 +140,6 @@ public abstract class DxTTPane {
 		jScrollPane.setViewportView(createViewPort());
 		jScrollPane.getViewport().setViewPosition(
 				jScrollPane.getViewport().getViewPosition());
-//		manageActions();
 	}
 
 	//-------------------------------------------
@@ -234,7 +233,7 @@ public abstract class DxTTPane {
 		panel.setBackground(SystemColor.window);
 		gridBC.fill = GridBagConstraints.BOTH;
 
-		PeriodPanel periodPanel = null;
+		DxPeriodPanel periodPanel = null;
 		//JLabel jLabel;
 		//int count = 1;
 		for (int i = 0; i < _toDisplay.length; i++) {
@@ -277,7 +276,6 @@ public abstract class DxTTPane {
 	}
 
 	public void manageActions() {
-		//JPanel ttPanel= (JPanel)this.getViewport().getComponent(0);
 		/*
 		 * Mouse listener for this Panel
 		 */

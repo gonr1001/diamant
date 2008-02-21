@@ -60,6 +60,7 @@ import dConstants.DConst;
 import dInterface.DlgIdentification;
 import dInterface.dAffectation.EventsDlgInterface;
 import dInterface.dTimeTable.ConflictsOfAnEventJDlg;
+import dInterface.dTimeTable.DxConflictsOfAnEventPanel;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.TwoButtonsPanel;
 import dInternal.DModel;
@@ -108,13 +109,8 @@ public class DxConflictsOfAnEventDlg extends EventsDlgInterface implements
 		}
 		if ((e.getActionCommand().equals(DConst.BUT_CHANGE))
 				&& (selectedItems != null)) {
-			// if(DxFlags.newDxEditEventDlg) {
 			new DxEditEventDlg(_jDialog, _dModel, (String) selectedItems[0],
 					false);
-			// } else {
-			// new EditEventDlg(_jDialog, _dModel, (String) selectedItems[0],
-			// false);
-			// }
 		}
 	}// end actionPerformed
 
@@ -122,13 +118,9 @@ public class DxConflictsOfAnEventDlg extends EventsDlgInterface implements
 	 * When double click in an event display ManualImprovmentDetailed
 	 */
 	protected void doubleClicMouseProcess() {
-//		DResource event = _dModel.getSetOfEvents().getResource(
-//				(String) selectedItems[0]);
-//		_dModel.deleteObserver(this);
-		DResource event = _dModel.getSetOfEvents().getResource(
+		DResource eventRes = _dModel.getSetOfEvents().getResource(
 				(String) selectedItems[0]);
-		new ConflictsOfAnEventJDlg(this, event, _dModel);
-//		_dModel.addObserver(this);
+		new DxConflictsOfAnEventPanel(this, eventRes, _dModel);
 	}
 
 	public String idDlgToString() {

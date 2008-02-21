@@ -61,14 +61,14 @@ public class DxDetailedMITTPane extends DxTTPane {
 	      return LINE_HEIGHT * 2;
 	    return (LINE_HEIGHT + 1) * (_rowHeaders[i]._n + 2);
 	  }
-	  //-------------------------------------------
-	   public PeriodPanel createPeriodPanel(int refNo, String str) {
-	   return new DetailedPeriodPanelMI(refNo, str, _eventName);
-	  }
-	 //-------------------------------------------
-	  public PeriodPanel createEmptyPeriodPanel() {
-	    return new DetailedPeriodPanelMI(); 
-	  }
+//	  //-------------------------------------------
+//	   public DxPeriodPanel createPeriodPanel(int refNo, String str) {
+//	   return new DxDetailedPeriodPanelMI(refNo, str, _eventName);
+//	  }
+//	 //-------------------------------------------
+//	  public DxPeriodPanel createEmptyPeriodPanel() {
+//	    return new DxDetailedPeriodPanelMI(); 
+//	  }
 	   //-------------------------------------------
 	  private void initDetailedTTPane(boolean vertical) { //, Dimension d) {
 	    _jScrollPaneOne = new JScrollPane();
@@ -89,4 +89,16 @@ public class DxDetailedMITTPane extends DxTTPane {
 	    _jSplitPane.setOneTouchExpandable(true);
 
 	  }  // end initDetailedTTPane
+
+	@Override
+	protected DxPeriodPanel createEmptyPeriodPanel() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected DxPeriodPanel createPeriodPanel(int refNo, String str) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	} // end DetailedTTPane

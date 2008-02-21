@@ -51,12 +51,12 @@ public class DxDetailedTTPane extends DxTTPane {
 	    return (LINE_HEIGHT + 1) * (_rowHeaders[i]._n + 2);
 	  }
 	  //-------------------------------------------
-	   public PeriodPanel createPeriodPanel(int refNo, String str) {
-	   return new DetailedPeriodPanel(refNo, str);
+	   public DxPeriodPanel createPeriodPanel(int refNo, String str) {
+	   return new DxDetailedPeriodPanel(refNo, str);
 	  }
 	 //-------------------------------------------
-	  public PeriodPanel createEmptyPeriodPanel() {
-	    return new DetailedPeriodPanel();
+	  public DxPeriodPanel createEmptyPeriodPanel() {
+	    return new DxDetailedPeriodPanel();
 	  }
 	   //-------------------------------------------
 	  private void initDetailedTTPane(boolean vertical) { //, Dimension d) {

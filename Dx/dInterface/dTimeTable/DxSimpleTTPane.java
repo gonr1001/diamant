@@ -50,12 +50,12 @@ public class DxSimpleTTPane extends DxTTPane {
 	   	return LINE_HEIGHT * 2;
 	   }
 	   //-------------------------------------------
-	   public PeriodPanel createPeriodPanel(int refNo, String str) {
-	    return new SimplePeriodPanel(refNo, str);
+	   public DxPeriodPanel createPeriodPanel(int refNo, String str) {
+	    return new DxSimplePeriodPanel(refNo, str);
 	   }
 	  //-------------------------------------------
-	   public PeriodPanel createEmptyPeriodPanel() {
-	    return new SimplePeriodPanel();
+	   public DxPeriodPanel createEmptyPeriodPanel() {
+	    return new DxSimplePeriodPanel();
 	   }
 	 //-------------------------------------------
 	  private void initSimpleTTPane() {

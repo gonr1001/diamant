@@ -156,6 +156,8 @@ public class DApplication {
 		String str = System.getProperty("user.home") + File.separator + "pref"
 				+ File.separator + "pref.txt";
 		System.out.println("Preference file is in :" + str);
+		Runtime runtime = Runtime.getRuntime();
+		System.out.println("allocated memory " + runtime.totalMemory()/1024);
 		_dxPreferences = new DxPreferences(str);
 		// _preferences = Preferences.userRoot().node("/com.dinc/exit/diamant");
 	}
@@ -832,8 +834,8 @@ public class DApplication {
 				// filepath += "refFiles" + File.separator;
 				// filepath += "facs" + File.separator;
 				// filepath += "flsh2_1" + File.separator;
-				//filepath += "HIVER2008examens.dia";
-				fileName += "lData5j30min.dia";
+			 fileName += "HIVER2008examens.dia";
+				//fileName += "lData5j30min.dia";
 				System.out.println("filename: " + fileName);
 				_dMediator.addDxTTableDoc("", fileName);
 
