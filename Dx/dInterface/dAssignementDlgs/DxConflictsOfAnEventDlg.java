@@ -77,7 +77,7 @@ public class DxConflictsOfAnEventDlg extends EventsDlgInterface implements
 	 * @param jFrame
 	 *            to place the dialogue
 	 * @param dModel
-	 *            to have acess to data
+	 *            to have access to data
 	 * 
 	 */
 	public DxConflictsOfAnEventDlg(JFrame jFrame, DModel dModel) {

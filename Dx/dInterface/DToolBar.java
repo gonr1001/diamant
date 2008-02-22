@@ -35,7 +35,7 @@ import javax.swing.JTextField;
 import javax.swing.JToolBar;
 
 import dConstants.DConst;
-import dInterface.dTimeTable.PeriodPanel;
+import dInterface.dTimeTable.DxPeriodPanel;
 import dInterface.dUtil.DxJComboBox;
 import dInternal.DResource;
 import dInternal.dTimeTable.Cycle;
@@ -237,8 +237,8 @@ public class DToolBar extends JToolBar implements Observer, DlgIdentification {
 			public void actionPerformed(ActionEvent e) {
 				e.toString();
 				String item = (String) _periodSelector.getSelectedItem();
-				PeriodPanel ppanel = null;
-				ppanel = _dApplic.getCurrentDxDoc().getTTPane().getPeriodPanel(
+				DxPeriodPanel ppanel = null;
+				ppanel = _dApplic.getCurrentDxDoc().getDxTTPane().getPeriodPanel(
 						Integer.parseInt(item));
 				Period period = _tts.getCurrentCycle().getPeriodByIndex(
 						ppanel.getPeriodRef()[0], ppanel.getPeriodRef()[1],
@@ -260,8 +260,8 @@ public class DToolBar extends JToolBar implements Observer, DlgIdentification {
 			public void actionPerformed(ActionEvent e) {
 				e.toString();
 				String item = (String) _periodSelector.getSelectedItem();
-				PeriodPanel ppanel = null;
-				ppanel = _dApplic.getCurrentDxDoc().getTTPane().getPeriodPanel(
+				DxPeriodPanel ppanel = null;
+				ppanel = _dApplic.getCurrentDxDoc().getDxTTPane().getPeriodPanel(
 						Integer.parseInt(item));
 				Cycle cycle = _tts.getCurrentCycle();
 				Period period;
@@ -284,8 +284,8 @@ public class DToolBar extends JToolBar implements Observer, DlgIdentification {
 			public void actionPerformed(ActionEvent e) {
 				e.toString();
 				String item = (String) _periodSelector.getSelectedItem();
-				PeriodPanel ppanel = null;
-				ppanel = _dApplic.getCurrentDxDoc().getTTPane().getPeriodPanel(
+				DxPeriodPanel ppanel = null;
+				ppanel = _dApplic.getCurrentDxDoc().getDxTTPane().getPeriodPanel(
 						Integer.parseInt(item));
 				int dayIndex = ppanel.getPeriodRef()[0];
 				Day day = _tts.getCurrentCycle().getDayByIndex(dayIndex);
@@ -315,7 +315,7 @@ public class DToolBar extends JToolBar implements Observer, DlgIdentification {
 	 */
 	public void setPeriodSelector(String item) {
 		if (DXToolsMethods.isIntValue(item)) {
-			PeriodPanel ppanel = _dApplic.getCurrentDxDoc().getTTPane()
+			DxPeriodPanel ppanel = _dApplic.getCurrentDxDoc().getDxTTPane()
 					.getPeriodPanel(Integer.parseInt(item));
 			Period period;
 			if (ppanel != null) {
@@ -399,11 +399,11 @@ public class DToolBar extends JToolBar implements Observer, DlgIdentification {
 		_periodSelector.disableActionListeners();
 		_comboBoxStatus = false;
 		JPanel thePane = null;
-		thePane = (JPanel) _dApplic.getCurrentDxDoc().getTTPane().getViewport()
+		thePane = (JPanel) _dApplic.getCurrentDxDoc().getDxTTPane().getViewport()
 				.getComponent(0);
 		_periodSelector.removeAllItems();
 		for (int i = 0; i < thePane.getComponentCount(); i++) {
-			PeriodPanel ppanel = (PeriodPanel) thePane.getComponent(i);
+			DxPeriodPanel ppanel = (DxPeriodPanel) thePane.getComponent(i);
 			if (ppanel.getPanelRefNo() != 0) {
 				_periodSelector.addItem(Integer
 						.toString(ppanel.getPanelRefNo()));

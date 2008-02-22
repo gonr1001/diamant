@@ -47,41 +47,43 @@ public class DxConflictsOfAnEventTTPane extends DxTTPane {
 		_totalTTStruct = totaltts;
 		initDetailedTTPane(vertical);
 
-	} // end  DxConflictsOfAnEventTTPane
+	} // end DxConflictsOfAnEventTTPane
 
-	//-------------------------------------------
-	public JComponent getPane() {
+	// -------------------------------------------
+	public JComponent getDxPane() {
 		return _jSplitPane;
 	}
 
-	//-------------------------------------------
-	public void updateTTPane(TTStructure ttp) {
+	// -------------------------------------------
+	@Override
+	public void updateDxTTPane(TTStructure ttp) {
 		_tts = ttp;
 		findRowHeaders();
 		initTTPane(_jScrollPaneTwo);
 		initTTPane(_jScrollPaneOne);
 	}
 
-	//-------------------------------------------
+	// -------------------------------------------
 	public int getIpady(int i) {
 		if (_rowHeaders[i]._n == -1 || _rowHeaders[i]._n == 0)
 			return LINE_HEIGHT * 2 + LINE_HEIGHT;
 		return (LINE_HEIGHT + 1) * (_rowHeaders[i]._n + 2) + LINE_HEIGHT;
 	}
 
-	//-------------------------------------------
+	// -------------------------------------------
 	public DxPeriodPanel createPeriodPanel(int refNo, String str) {
-		Period totalPeriod = _totalTTStruct.getCurrentCycle().getPeriodByPeriodKey(str);
+		Period totalPeriod = _totalTTStruct.getCurrentCycle()
+				.getPeriodByPeriodKey(str);
 		return new DxConflictsOfAnEventPeriodPanel(refNo, str, totalPeriod,
 				_eventRes);
 	}
 
-	//-------------------------------------------
+	// -------------------------------------------
 	public DxPeriodPanel createEmptyPeriodPanel() {
 		return new DxConflictsOfAnEventPeriodPanel();
 	}
 
-	//-------------------------------------------
+	// -------------------------------------------
 	private void initDetailedTTPane(boolean vertical) {
 		_jScrollPaneOne = new JScrollPane();
 		_jScrollPaneTwo = new JScrollPane();

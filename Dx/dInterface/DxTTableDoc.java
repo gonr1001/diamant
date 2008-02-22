@@ -29,10 +29,8 @@ import javax.swing.WindowConstants;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
 
-import dInterface.dTimeTable.DetailedTTPane;
 import dInterface.dTimeTable.DxDetailedTTPane;
 import dInterface.dTimeTable.DxSimpleTTPane;
-import dInterface.dTimeTable.SimpleTTPane;
 import dInternal.DModel;
 import dInternal.DxLoadData;
 import dInternal.DxStateBarModel;
@@ -63,25 +61,29 @@ public class DxTTableDoc extends DxDocument {
 		// for tests
 	}
 
-	public DxTTableDoc(DMediator mediator, String fileName) throws DxException, NullPointerException, IOException {
+	public DxTTableDoc(DMediator mediator, String fileName) throws DxException,
+			NullPointerException, IOException {
 		super(mediator);
 		_type = 0;
 		initDxTTableDoc(fileName);
 	}
 
-	private void initDxTTableDoc(String fileName) throws DxException, NullPointerException, IOException {
+	private void initDxTTableDoc(String fileName) throws DxException,
+			NullPointerException, IOException {
 		_dm = new DModel(this, fileName, _type);
 		_documentName = fileName;
 		buidDocument(true, true);
-		
-		if(DxFlags.newDxTTPane) {
-			_dxTTPane.updateTTPane(_dm.getTTStructure());
-		} else {
-			_ttPane.updateTTPane(_dm.getTTStructure());
-		}
+
+		if (DxFlags.newDxTTPane) {
+			_dxTTPane.updateDxTTPane(_dm.getTTStructure());
+		} 
+//			else {
+//			_ttPane.updateTTPane(_dm.getTTStructure());
+//		}
 	}
-	
-	public DxTTableDoc(DMediator mediator, String fileName, int type) throws DxException, NullPointerException, IOException {
+
+	public DxTTableDoc(DMediator mediator, String fileName, int type)
+			throws DxException, NullPointerException, IOException {
 		super(mediator);
 		_type = type;
 		initDxTTableDoc(fileName);
@@ -106,14 +108,14 @@ public class DxTTableDoc extends DxDocument {
 	private void initDxTTableDoc(DxLoadData dxLoadData) {
 		_dm = new DModel(this, dxLoadData, _type);
 		buidDocument(true, true);
-		
-		if(DxFlags.newDxTTPane) {
-			_dxTTPane.updateTTPane(_dm.getTTStructure());
-		} else {
-			_ttPane.updateTTPane(_dm.getTTStructure());
-		}
 
-		
+		if (DxFlags.newDxTTPane) {
+			_dxTTPane.updateDxTTPane(_dm.getTTStructure());
+		}
+//		} else {
+//			_ttPane.updateTTPane(_dm.getTTStructure());
+//		}
+
 	}
 
 	// -------------------------------------------
@@ -152,30 +154,30 @@ public class DxTTableDoc extends DxDocument {
 		_jif.setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
 		_jif.setPreferredSize(new Dimension(MAX_WIDTH, MAX_HEIGHT));
 
+		// if(DxFlags.newDxTTPane) {
+		if (simple) {
+			_dxTTPane = new DxSimpleTTPane(_dm.getTTStructure(), _dMediator
+					.getDApplication().getToolBar());
+		} else {
+			_dxTTPane = new DxDetailedTTPane(_dm.getTTStructure(), _dMediator
+					.getDApplication().getToolBar(), vertical);
+		}
+		// } else {
+		// if (simple) {
+		// _ttPane = new SimpleTTPane(_dm.getTTStructure(), _dMediator
+		// .getDApplication().getToolBar());
+		// } else {
+		// _ttPane = new DetailedTTPane(_dm.getTTStructure(), _dMediator
+		// .getDApplication().getToolBar(), vertical);
+		// }
+		// }
 
-		if(DxFlags.newDxTTPane) {
-			if (simple) {
-				_dxTTPane = new DxSimpleTTPane(_dm.getTTStructure(), _dMediator
-						.getDApplication().getToolBar());
-			} else {
-				_dxTTPane = new DxDetailedTTPane(_dm.getTTStructure(), _dMediator
-						.getDApplication().getToolBar(), vertical);
-			}
-		} else {
-			if (simple) {
-				_ttPane = new SimpleTTPane(_dm.getTTStructure(), _dMediator
-						.getDApplication().getToolBar());
-			} else {
-				_ttPane = new DetailedTTPane(_dm.getTTStructure(), _dMediator
-						.getDApplication().getToolBar(), vertical);
-			}
-		}
-		
-		if(DxFlags.newDxTTPane) {
-			_jif.getContentPane().add(_dxTTPane.getPane(), BorderLayout.CENTER);
-		} else {
-			_jif.getContentPane().add(_ttPane.getPane(), BorderLayout.CENTER);
-		}
+		if (DxFlags.newDxTTPane) {
+			_jif.getContentPane().add(_dxTTPane.getDxPane(), BorderLayout.CENTER);
+		} 
+//		else {
+//			_jif.getContentPane().add(_ttPane.getPane(), BorderLayout.CENTER);
+//		}
 		_jif.pack();
 		// the 1 in Integer(1) could be any integer
 		_dMediator.getDApplication().getDesktop().add(_jif, new Integer(1));
@@ -188,37 +190,39 @@ public class DxTTableDoc extends DxDocument {
 			// to be present when the _jif is resized
 		} catch (java.beans.PropertyVetoException pve) {
 			new DxExceptionDlg(
-					"I was in DDocument trying to make setMaximum!!!\n"+pve.getMessage());
+					"I was in DDocument trying to make setMaximum!!!\n"
+							+ pve.getMessage());
 			pve.printStackTrace();
 			System.exit(1); // end of execution abnormal
 		}
-		//	this.update(_dm, this);
+		// this.update(_dm, this);
 	} // end buidDocument
 
 	@Override
 	public void update(Observable md, Object component) {
-		if (md instanceof DModel){
-		if (component != null)
-			component.toString();
-		_dMediator.getDApplication().setCursorWait();
-		
-		if(DxFlags.newDxTTPane) {
-			_dxTTPane.updateTTPane(_dm.getTTStructure());
+		if (md instanceof DModel) {
+			if (component != null)
+				component.toString();
+			_dMediator.getDApplication().setCursorWait();
+
+			if (DxFlags.newDxTTPane) {
+				_dxTTPane.updateDxTTPane(_dm.getTTStructure());
+			} 
+//			else {
+//				_ttPane.updateTTPane(_dm.getTTStructure());
+//			}
+			// _ttPane.updateTTPane(_dm.getTTStructure());
+			_stateBar.upDate();
+			_stateBar.upDate();
+			_dMediator.getDApplication().setCursorDefault();
 		} else {
-			_ttPane.updateTTPane(_dm.getTTStructure());
+			new InformationDlg("I am in DxTTTableDoc.update \n"
+					+ "This message will never ocurrs in normal conditions");
 		}
-//		_ttPane.updateTTPane(_dm.getTTStructure());
-		_stateBar.upDate();
-		_stateBar.upDate();
-		_dMediator.getDApplication().setCursorDefault();
-		} else {
-		new InformationDlg("I am in DxTTTableDoc.update \n" 
-				+"This message will never ocurrs in normal conditions");
-		}	
 	}
 
 	@Override
-	public TTStructure getTTStructure() {		
+	public TTStructure getTTStructure() {
 		return _dm.getTTStructure();
 	}
 
@@ -226,64 +230,64 @@ public class DxTTableDoc extends DxDocument {
 		_dm.changeInDModel(str);
 	}// end changeInDModel
 
-
 	// -------------------------------------------
 	public DModel getCurrentDModel() {
 		return _dm;
 	} // end getDModel
-	
-	
+
 	// -------------------------------------------
 	@Override
 	public boolean isModified() {
 		return _dm.getModified();
 	} // end getDModel
 
-
 	@Override
 	public void displaySimple() {
 		close();
 		buidDocument(true, true);
-		if(DxFlags.newDxTTPane) {
-			_dxTTPane.updateTTPane(_dm.getTTStructure());
-		} else {
-			_ttPane.updateTTPane(_dm.getTTStructure());
-		}
-		
+		if (DxFlags.newDxTTPane) {
+			_dxTTPane.updateDxTTPane(_dm.getTTStructure());
+		} 
+//		else {
+//			_ttPane.updateTTPane(_dm.getTTStructure());
+//		}
+
 		_stateBar.upDate();
 	}
 
 	@Override
 	public void displayVericalSplit() {
-		 close();
-		 buidDocument(false, false);
-		 
-			if(DxFlags.newDxTTPane) {
-				_dxTTPane.updateTTPane(_dm.getTTStructure());
-			} else {
-				_ttPane.updateTTPane(_dm.getTTStructure());
-			}
+		close();
+		buidDocument(false, false);
 
-		 _stateBar.upDate();
+		if (DxFlags.newDxTTPane) {
+			_dxTTPane.updateDxTTPane(_dm.getTTStructure());
+		} 
+//		else {
+//			_ttPane.updateTTPane(_dm.getTTStructure());
+//		}
+
+		_stateBar.upDate();
 	}
 
 	@Override
 	public void displayHorizontalSplit() {
-		 close();
-		 buidDocument(false, true);
-			if(DxFlags.newDxTTPane) {
-				_dxTTPane.updateTTPane(_dm.getTTStructure());
-			} else {
-				_ttPane.updateTTPane(_dm.getTTStructure());
-			}
-		 	
-		 _stateBar.upDate();
+		close();
+		buidDocument(false, true);
+		if (DxFlags.newDxTTPane) {
+			_dxTTPane.updateDxTTPane(_dm.getTTStructure());
+		} 
+//		else {
+//			_ttPane.updateTTPane(_dm.getTTStructure());
+//		}
+
+		_stateBar.upDate();
 	}
 
 	@Override
 	public void saveDxDocument(String str) {
 		_dm.saveTimeTable(str);
-		
+
 	}
 
 	@Override

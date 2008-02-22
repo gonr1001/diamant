@@ -67,14 +67,14 @@ public class RgrTest {
 		TestSuite suite = new TestSuite("rgr selected Tests");
 		
 
-//		suite.addTest(DxTTStructureTest.suite());
-//		suite.addTest(ByteInputFileTest.suite());
-//		suite.addTest(ByteOutputFileTest.suite());
-//		suite.addTest(FilterFileTest.suite());
-//		suite.addTest(SemiExtendedAsciiFileTest.suite());
-//		
-//		suite.addTest(DxAssignAllAlgTest.suite());
-//		suite.addTest(RoomsConditionsTest.suite());
+		suite.addTest(DxTTStructureTest.suite());
+		suite.addTest(ByteInputFileTest.suite());
+		suite.addTest(ByteOutputFileTest.suite());
+		suite.addTest(FilterFileTest.suite());
+		suite.addTest(SemiExtendedAsciiFileTest.suite());
+		
+		suite.addTest(DxAssignAllAlgTest.suite());
+		suite.addTest(RoomsConditionsTest.suite());
 		if (DxFlags.newAlg) {
 			suite.addTest(DxAssignRoomsAlgTest.suite());
 		}

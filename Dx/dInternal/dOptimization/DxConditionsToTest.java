@@ -517,48 +517,48 @@ public class DxConditionsToTest {
 		return studTest.periodVariationEventsPeriods(perKey);
 	}
 
-	/**
-	 * @param improveTTStruct
-	 * @param event
-	 */
-	public void oldAddEventInAllPeriods(TTStructure improveTTStruct,
-			DResource event) {
-		DxEvent dxEvent = null;
-		if (DxFlags.newEventClone) {
-			dxEvent = ((DxEvent) event.getAttach()).eventClone();
-		} else {
-			dxEvent = ((DxEvent) event.getAttach()).oldEventClone();
-		}
-		dxEvent.setAssigned(true);
-		DResource res = new DResource(event.getID(), dxEvent);
-		dxEvent.setDuration(improveTTStruct.getPeriodLenght());
-		for (int i = 0; i < improveTTStruct.getCurrentCycle().getSetOfDays()
-				.size(); i++) {
-			DResource day = improveTTStruct.getCurrentCycle().getSetOfDays()
-					.getResourceAt(i);
-			for (int j = 0; j < ((Day) day.getAttach()).getSetOfSequences()
-					.size(); j++) {
-				DResource seq = ((Day) day.getAttach()).getSetOfSequences()
-						.getResourceAt(j);
-				for (int k = 0; k < ((Sequence) seq.getAttach())
-						.getSetOfPeriods().size(); k++) {
-					DResource per = ((Sequence) seq.getAttach())
-							.getSetOfPeriods().getResourceAt(k);
-					int[] daytime = { (int) day.getKey(), (int) seq.getKey(),
-							(int) per.getKey() };
-
-					String periodKey = daytime[0] + "." + daytime[1] + "."
-							+ daytime[2];
-					dxEvent.setKey(4, periodKey);
-					//						System.out.println(i + " " + j + " " + k);
-					//addFalseEventInTTs(improveTTStruct, res, false);
-					addEventInTTs(improveTTStruct, res, false);
-
-				}// end for(int k=0; k< ((Sequence)seq.getAttach())
-			}// end for(int j=0; j<
-		}// end for(int i=0; i< _newTTS.getCurrentCycle()
-
-	}
+//	/**
+//	 * @param improveTTStruct
+//	 * @param event
+//	 */
+//	public void oldAddEventInAllPeriods(TTStructure improveTTStruct,
+//			DResource event) {
+//		DxEvent dxEvent = null;
+//		if (DxFlags.newEventClone) {
+//			dxEvent = ((DxEvent) event.getAttach()).eventClone();
+//		} else {
+//			dxEvent = ((DxEvent) event.getAttach()).oldEventClone();
+//		}
+//		dxEvent.setAssigned(true);
+//		DResource res = new DResource(event.getID(), dxEvent);
+//		dxEvent.setDuration(improveTTStruct.getPeriodLenght());
+//		for (int i = 0; i < improveTTStruct.getCurrentCycle().getSetOfDays()
+//				.size(); i++) {
+//			DResource day = improveTTStruct.getCurrentCycle().getSetOfDays()
+//					.getResourceAt(i);
+//			for (int j = 0; j < ((Day) day.getAttach()).getSetOfSequences()
+//					.size(); j++) {
+//				DResource seq = ((Day) day.getAttach()).getSetOfSequences()
+//						.getResourceAt(j);
+//				for (int k = 0; k < ((Sequence) seq.getAttach())
+//						.getSetOfPeriods().size(); k++) {
+//					DResource per = ((Sequence) seq.getAttach())
+//							.getSetOfPeriods().getResourceAt(k);
+//					int[] daytime = { (int) day.getKey(), (int) seq.getKey(),
+//							(int) per.getKey() };
+//
+//					String periodKey = daytime[0] + "." + daytime[1] + "."
+//							+ daytime[2];
+//					dxEvent.setKey(4, periodKey);
+//					//						System.out.println(i + " " + j + " " + k);
+//					//addFalseEventInTTs(improveTTStruct, res, false);
+//					addEventInTTs(improveTTStruct, res, false);
+//
+//				}// end for(int k=0; k< ((Sequence)seq.getAttach())
+//			}// end for(int j=0; j<
+//		}// end for(int i=0; i< _newTTS.getCurrentCycle()
+//
+//	}
 	
 	
 	/**

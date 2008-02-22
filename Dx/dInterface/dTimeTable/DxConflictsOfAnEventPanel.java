@@ -30,21 +30,23 @@ import dConstants.DConst;
 import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.dTimeTable.TTStructure;
-import developer.DxFlags;
 
 @SuppressWarnings("serial")
 public class DxConflictsOfAnEventPanel extends JDialog {
-	/* ADJUST_HEIGHT is needed to adjust the screenSize
-	 * minus the barSize (the value is a guess) at the bottom */
+	/*
+	 * ADJUST_HEIGHT is needed to adjust the screenSize minus the barSize (the
+	 * value is a guess) at the bottom
+	 */
 	private final static int ADJUST_HEIGHT = 88;
-	/* ADJUST_WIDTH is needed to adjust the screenSize
-	 * minus border pixels (the value is a guess) at each side of the screen */
+	/*
+	 * ADJUST_WIDTH is needed to adjust the screenSize minus border pixels (the
+	 * value is a guess) at each side of the screen
+	 */
 	private final static int ADJUST_WIDTH = 6;
 
 	private DxTTPane _dxTTPane;
+	
 	private TTStructure _tempTTStruct;
-
-	//	private DToolBar _toolBar;
 
 	public DxConflictsOfAnEventPanel(JDialog jDialog, DResource eventRes,
 			DModel dm) {
@@ -55,25 +57,26 @@ public class DxConflictsOfAnEventPanel extends JDialog {
 
 	public void initDlg(DResource eventRes, DModel dm) {
 		Runtime runtime = Runtime.getRuntime();
-		System.out.println("free memory initDlg:   " + runtime.freeMemory() / 1024);
+		System.out.println("free memory initDlg:   " + runtime.freeMemory()
+				/ 1024);
 		this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setSize(new Dimension(screenSize.width - ADJUST_WIDTH,
 				screenSize.height - ADJUST_HEIGHT));
 
 		_tempTTStruct = dm.getTTStructure().cloneCurrentTTS();
-		//in a tt install all events and calculate conflicts
+		// in a tt install all events and calculate conflicts
 		dm.getConditionsToTest().buildAllConditions(_tempTTStruct);
-		//in a tt period by period set conflicts to zero
+		// in a tt period by period set conflicts to zero
 		_tempTTStruct.getCurrentCycle().resetAllNumberOfConflicts();
-		
-		//build the Pane to put in this Panel/JDialog
-		_dxTTPane = new DxConflictsOfAnEventTTPane(dm.getTTStructure(),_tempTTStruct, true,
-				eventRes);
-		//add the Event in each period the changes must be displayed
+
+		// build the Pane to put in this Panel/JDialog
+		_dxTTPane = new DxConflictsOfAnEventTTPane(dm.getTTStructure(),
+				_tempTTStruct, true, eventRes);
+		// add the Event in each period the changes must be displayed
 		dm.getConditionsToTest().addEventInAllPeriods(_tempTTStruct, eventRes);
-		_dxTTPane.updateTTPane(_tempTTStruct);
-		this.getContentPane().add(_dxTTPane.getPane());
+		_dxTTPane.updateDxTTPane(_tempTTStruct);
+		this.getContentPane().add(_dxTTPane.getDxPane());
 		this.setVisible(true);
 	}
 

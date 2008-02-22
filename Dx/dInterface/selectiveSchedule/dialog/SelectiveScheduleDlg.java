@@ -871,8 +871,8 @@ public class SelectiveScheduleDlg extends JDialog {
 		 * met a jour l'affichage de la grille horaire
 		 */
 		private void updateScheduleGUIAndDispose() {
-			DApplication.getInstance().getCurrentDxDoc().getTTPane()
-					.updateTTPane(
+			DApplication.getInstance().getCurrentDxDoc().getDxTTPane()
+					.updateDxTTPane(
 							DApplication.getInstance().getCurrentDxDoc()
 									.getCurrentDModel().getTTStructure());
 			SelectiveScheduleDlg.this.dispose();

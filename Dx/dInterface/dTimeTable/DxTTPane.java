@@ -64,7 +64,7 @@ public abstract class DxTTPane {
 	protected JScrollPane _jScrollPaneOne;
 	protected JScrollPane _jScrollPaneTwo;
 	protected JSplitPane _jSplitPane;
-	private PeriodPanel _lastActivePanel = null;
+	private DxPeriodPanel _lastActivePanel = null;
 
 	protected class RowRecord {
 		int _n;
@@ -102,10 +102,10 @@ public abstract class DxTTPane {
 	}
 
 	//-------------------------------------------
-	public abstract JComponent getPane(); //?
+	public abstract JComponent getDxPane(); //?
 
 	//-------------------------------------------
-	public abstract void updateTTPane(TTStructure ttp);
+	public abstract void updateDxTTPane(TTStructure ttp);
 
 	//-------------------------------------------
 	protected abstract int getIpady(int i);
@@ -283,7 +283,7 @@ public abstract class DxTTPane {
 			public void mouseClicked(MouseEvent e) {
 				if ((e.getClickCount() == 1) && (_toolBar != null)) {
 					System.out.println("trace");
-					PeriodPanel perpanel = (PeriodPanel) e.getSource();
+					DxPeriodPanel perpanel = (DxPeriodPanel) e.getSource();
 					if (_lastActivePanel != null)
 						_lastActivePanel.setPanelBackGroundColor(0);
 					_toolBar.setComboBoxStatus(false);

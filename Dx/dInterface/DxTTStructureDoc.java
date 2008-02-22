@@ -23,7 +23,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.io.File;
 import java.util.Observable;
-// import java.util.Observer;
+
 
 import javax.swing.JInternalFrame;
 import javax.swing.WindowConstants;
@@ -31,10 +31,8 @@ import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
 
 import dConstants.DConst;
-import dInterface.dTimeTable.DetailedTTPane;
 import dInterface.dTimeTable.DxDetailedTTPane;
 import dInterface.dTimeTable.DxSimpleTTPane;
-import dInterface.dTimeTable.SimpleTTPane;
 import dInternal.DModel;
 import dInternal.dTimeTable.TTStructure;
 import developer.DxFlags;
@@ -74,10 +72,11 @@ public class DxTTStructureDoc extends DxDocument {
 		_documentName = modifiyDocumentName(fileName);
 		buidDocument(true, true);
 		if(DxFlags.newDxTTPane) {
-			_dxTTPane.updateTTPane(_ttStructure);
-		} else {
-			_ttPane.updateTTPane(_ttStructure);
-		}
+			_dxTTPane.updateDxTTPane(_ttStructure);
+		} 
+//		else {
+//			_ttPane.updateTTPane(_ttStructure);
+//		}
 //		_ttPane.updateTTPane(_ttStructure);
 	}
 
@@ -105,10 +104,11 @@ public class DxTTStructureDoc extends DxDocument {
 			component.toString();
 		_dMediator.getDApplication().setCursorWait();
 		if(DxFlags.newDxTTPane) {
-			_dxTTPane.updateTTPane(_ttStructure);
-		} else {
-			_ttPane.updateTTPane(_ttStructure);
-		}
+			_dxTTPane.updateDxTTPane(_ttStructure);
+		} 
+//		else {
+//			_ttPane.updateTTPane(_ttStructure);
+//		}
 //		_ttPane.updateTTPane(_ttStructure);
 		// _stateBar.upDate();
 		_dMediator.getDApplication().setCursorDefault();
@@ -123,10 +123,11 @@ public class DxTTStructureDoc extends DxDocument {
 		close();
 		buidDocument(true, true);
 		if(DxFlags.newDxTTPane) {
-			_dxTTPane.updateTTPane(_ttStructure);
-		} else {
-			_ttPane.updateTTPane(_ttStructure);
-		}
+			_dxTTPane.updateDxTTPane(_ttStructure);
+		} 
+//		else {
+//			_ttPane.updateTTPane(_ttStructure);
+//		}
 //		_ttPane.updateTTPane(_ttStructure);
 		
 	}
@@ -137,10 +138,11 @@ public class DxTTStructureDoc extends DxDocument {
 		buidDocument(false, false);
 		
 		if(DxFlags.newDxTTPane) {
-			_dxTTPane.updateTTPane(_ttStructure);
-		} else {
-			_ttPane.updateTTPane(_ttStructure);
-		}
+			_dxTTPane.updateDxTTPane(_ttStructure);
+		} 
+//		else {
+//			_ttPane.updateTTPane(_ttStructure);
+//		}
 //		_ttPane.updateTTPane(_ttStructure);
 		
 	}
@@ -149,10 +151,11 @@ public class DxTTStructureDoc extends DxDocument {
 		close();
 		buidDocument(false, true);
 		if(DxFlags.newDxTTPane) {
-			_dxTTPane.updateTTPane(_ttStructure);
-		} else {
-			_ttPane.updateTTPane(_ttStructure);
-		}
+			_dxTTPane.updateDxTTPane(_ttStructure);
+		} 
+//		else {
+//			_ttPane.updateTTPane(_ttStructure);
+//		}
 //		_ttPane.updateTTPane(_ttStructure);
 		
 	}
@@ -190,7 +193,7 @@ public class DxTTStructureDoc extends DxDocument {
 		_jif.setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
 		_jif.setPreferredSize(new Dimension(MAX_WIDTH, MAX_HEIGHT));
 
-		if(DxFlags.newDxTTPane) {
+//		if(DxFlags.newDxTTPane) {
 			if (simple) {
 				_dxTTPane = new DxSimpleTTPane(_ttStructure, _dMediator
 						.getDApplication().getToolBar());
@@ -198,19 +201,19 @@ public class DxTTStructureDoc extends DxDocument {
 				_dxTTPane = new DxDetailedTTPane(_ttStructure, _dMediator
 						.getDApplication().getToolBar(), vertical);
 			}
-		} else {
-			if (simple) {
-				_ttPane = new SimpleTTPane(_ttStructure, _dMediator
-						.getDApplication().getToolBar());
-			} else {
-				_ttPane = new DetailedTTPane(_ttStructure, _dMediator
-						.getDApplication().getToolBar(), vertical);
-			}
-		}
+//		} else {
+//			if (simple) {
+//				_ttPane = new SimpleTTPane(_ttStructure, _dMediator
+//						.getDApplication().getToolBar());
+//			} else {
+//				_ttPane = new DetailedTTPane(_ttStructure, _dMediator
+//						.getDApplication().getToolBar(), vertical);
+//			}
+//		}
 		
 		
 
-		_jif.getContentPane().add(_ttPane.getPane(), BorderLayout.CENTER);
+		_jif.getContentPane().add(_dxTTPane.getDxPane(), BorderLayout.CENTER);
 		_jif.pack();
 		// the 1 in Integer(1) could be any integer
 		_dMediator.getDApplication().getDesktop().add(_jif, new Integer(1));

@@ -25,7 +25,6 @@ import java.util.Observer;
 import javax.swing.JInternalFrame;
 
 import dInterface.dTimeTable.DxTTPane;
-import dInterface.dTimeTable.TTPane;
 import dInternal.DModel;
 import dInternal.dTimeTable.TTStructure;
 
@@ -50,7 +49,7 @@ public abstract class DxDocument implements Observer {
 
 	protected String _documentName;
 
-	protected TTPane _ttPane;
+//	protected TTPane _ttPane;
 	
 	protected DxTTPane _dxTTPane;
 
@@ -89,9 +88,9 @@ public abstract class DxDocument implements Observer {
 		return _dMediator;
 	} // end getDMediator
 
-	public final TTPane getTTPane() {
-		return _ttPane;
-	}
+//	public final TTPane getTTPane() {
+//		return _ttPane;
+//	}
 
 	public final DxTTPane getDxTTPane() {
 		return _dxTTPane;
