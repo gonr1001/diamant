@@ -209,6 +209,41 @@ public class DxConditionsToTest {
 		}
 		return numberOfConflicts;
 	}
+	public int[] addEventInTTs(TTStructure tts, DxEvent dxEvent, String iD,
+			boolean usePriority) {
+
+		int[] numberOfConflicts = { 0, 0, 0 };
+		if ( dxEvent.isAssigned()) {
+			int[] perKey = dxEvent.getPeriodKeyTable();
+			int duration =  dxEvent.getDuration()
+					/ tts.getPeriodLenght();
+
+			if ((tts.getCurrentCycle().isPeriodContiguous(perKey[0], perKey[1],
+					perKey[2], duration, _avoidPriority, usePriority))
+					&& (duration > 0)) {
+
+				for (int j = 0; j < duration; j++) {
+					Period per = tts.getCurrentCycle().getPeriodByKey(
+							perKey[0], perKey[1], perKey[2] + j);
+					int[] newPerKey = { perKey[0], perKey[1], perKey[2] + j };
+
+					for (int k = 0; k < _conditionsToTest.size(); k++) {
+						DxCondition cond = _conditionsToTest.get(k);
+						numberOfConflicts[k] += cond.addTest(newPerKey, per,
+								iD);
+					}// end for (int j=0; j< _testToRun.size(); j++)
+					//rgr TODO here is the pb
+					dxEvent.setInAPeriod(true);
+					dxEvent.setAssigned(true);
+				}// end for (int j=0; j< ((EventAttach)event.getAttach())
+			} else {// end if (tts.getCurrentCycle().isPeriodContiguous(
+				dxEvent.setInAPeriod(false);
+				 dxEvent.setAssigned(false);
+				 dxEvent.setPermanentState(false);
+			}// end else if (tts.getCurrentCycle().isPeriodContiguous(
+		}
+		return numberOfConflicts;
+	}
 
 //	public int[] addFalseEventInTTs(TTStructure tts, DResource event,
 //			boolean usePriority) {
@@ -486,7 +521,7 @@ public class DxConditionsToTest {
 	 * @param improveTTStruct
 	 * @param event
 	 */
-	public void addEventInAllPeriods(TTStructure improveTTStruct,
+	public void oldAddEventInAllPeriods(TTStructure improveTTStruct,
 			DResource event) {
 		DxEvent dxEvent = null;
 		if (DxFlags.newEventClone) {
@@ -494,7 +529,6 @@ public class DxConditionsToTest {
 		} else {
 			dxEvent = ((DxEvent) event.getAttach()).oldEventClone();
 		}
-
 		dxEvent.setAssigned(true);
 		DResource res = new DResource(event.getID(), dxEvent);
 		dxEvent.setDuration(improveTTStruct.getPeriodLenght());
@@ -520,6 +554,46 @@ public class DxConditionsToTest {
 					//addFalseEventInTTs(improveTTStruct, res, false);
 					addEventInTTs(improveTTStruct, res, false);
 
+				}// end for(int k=0; k< ((Sequence)seq.getAttach())
+			}// end for(int j=0; j<
+		}// end for(int i=0; i< _newTTS.getCurrentCycle()
+
+	}
+	
+	
+	/**
+	 * @param improveTTStruct
+	 * @param eventRes
+	 */
+	public void addEventInAllPeriods(TTStructure improveTTStruct,
+			DResource eventRes) {
+		DxEvent dxEvent = null;
+		if (DxFlags.newEventClone) {
+			dxEvent = ((DxEvent) eventRes.getAttach()).eventClone();
+		} else {
+			dxEvent = ((DxEvent) eventRes.getAttach()).oldEventClone();
+		}
+		dxEvent.setAssigned(true);
+		dxEvent.setDuration(improveTTStruct.getPeriodLenght());
+		
+		for (int i = 0; i < improveTTStruct.getCurrentCycle().getSetOfDays()
+				.size(); i++) {
+			DResource day = improveTTStruct.getCurrentCycle().getSetOfDays()
+					.getResourceAt(i);
+			for (int j = 0; j < ((Day) day.getAttach()).getSetOfSequences()
+					.size(); j++) {
+				DResource seq = ((Day) day.getAttach()).getSetOfSequences()
+						.getResourceAt(j);
+				for (int k = 0; k < ((Sequence) seq.getAttach())
+						.getSetOfPeriods().size(); k++) {
+					DResource per = ((Sequence) seq.getAttach())
+							.getSetOfPeriods().getResourceAt(k);
+					int[] daytime = { (int) day.getKey(), (int) seq.getKey(),
+							(int) per.getKey() };
+					String periodKey = daytime[0] + "." + daytime[1] + "."
+							+ daytime[2];
+					dxEvent.setKey(4, periodKey);
+					addEventInTTs(improveTTStruct, dxEvent, eventRes.getID(), false);
 				}// end for(int k=0; k< ((Sequence)seq.getAttach())
 			}// end for(int j=0; j<
 		}// end for(int i=0; i< _newTTS.getCurrentCycle()

@@ -40,12 +40,13 @@ public class DxConflictsOfAnEventTTPane extends DxTTPane {
 	 * @param vertical
 	 * @param eventName
 	 */
-	public DxConflictsOfAnEventTTPane(TTStructure partialtts, boolean vertical,
-			DResource eventRes) {
+	public DxConflictsOfAnEventTTPane(TTStructure totaltts,
+			TTStructure partialtts, boolean vertical, DResource eventRes) {
 		super(partialtts);
 		_eventRes = eventRes;
-		_totalTTStruct = partialtts;
+		_totalTTStruct = totaltts;
 		initDetailedTTPane(vertical);
+
 	} // end  DxConflictsOfAnEventTTPane
 
 	//-------------------------------------------
@@ -70,8 +71,8 @@ public class DxConflictsOfAnEventTTPane extends DxTTPane {
 
 	//-------------------------------------------
 	public DxPeriodPanel createPeriodPanel(int refNo, String str) {
-		Period totalPeriod = _tts.getCurrentCycle().getPeriodByPeriodKey(str);
-		return new  DxConflictsOfAnEventPeriodPanel (refNo, str, totalPeriod,
+		Period totalPeriod = _totalTTStruct.getCurrentCycle().getPeriodByPeriodKey(str);
+		return new DxConflictsOfAnEventPeriodPanel(refNo, str, totalPeriod,
 				_eventRes);
 	}
 

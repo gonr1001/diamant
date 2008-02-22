@@ -1,6 +1,6 @@
 /**
  *
- * Title: ConflictsOfAnEventJDlg $Revision: 1.12 $  $Date: 2008-02-21 21:48:13 $
+ * Title: ConflictsOfAnEventJDlg $Revision: 1.13 $  $Date: 2008-02-22 16:01:59 $
  * Description: ConflictsOfAnEventJDlg is a class used to
  *              display the so called Conflicts Of An Event which
  *              gives the conflicts between an event and the others events
@@ -17,7 +17,7 @@
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -47,7 +47,6 @@ public class ConflictsOfAnEventJDlg extends JDialog { //implements ActionListene
 	 * minus border pixels (the value is a guess) at each side of the screen */
 	private final static int ADJUST_WIDTH = 6;
 	private TTPane _ttPane;
-	private DxTTPane _dxTTPane;
 	private TTStructure _tempTTStruct;
 	private DToolBar _toolBar;
 
@@ -68,25 +67,25 @@ public class ConflictsOfAnEventJDlg extends JDialog { //implements ActionListene
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setSize(new Dimension(screenSize.width - ADJUST_WIDTH,
 				screenSize.height - ADJUST_HEIGHT));
-		if (DxFlags.newDxTTPane) {
-			_dxTTPane = new DxConflictsOfAnEventTTPane(_tempTTStruct, true,
-					eventRes);
-			dm.getConditionsToTest().addEventInAllPeriods(_tempTTStruct,
-					eventRes);
-
-//			_dxTTPane.updateTTPane(_tempTTStruct);
-			this.getContentPane().add(_dxTTPane.getPane());
-			this.setVisible(true);
-		} else {
+//		if (DxFlags.newDxTTPane) {
+//			_dxTTPane = new ConflictsOfAnEventTTPane(_tempTTStruct, true,
+//					eventRes);
+//			dm.getConditionsToTest().addEventInAllPeriods(_tempTTStruct,
+//					eventRes);
+//
+////			_dxTTPane.updateTTPane(_tempTTStruct);
+//			this.getContentPane().add(_dxTTPane.getPane());
+//			this.setVisible(true);
+//		} else {
 			_ttPane = new ConflictsOfAnEventTTPane(dm.getTTStructure(),
 					_tempTTStruct, _toolBar, true, eventRes);
-			dm.getConditionsToTest().addEventInAllPeriods(_tempTTStruct,
+			dm.getConditionsToTest().oldAddEventInAllPeriods(_tempTTStruct,
 					eventRes);
 
 			_ttPane.updateTTPane(_tempTTStruct);
 			this.getContentPane().add(_ttPane.getPane());
 			this.setVisible(true);
-		}
+//		}
 	}
 
 }// end ConflictsOfAnEventJDlg

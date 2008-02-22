@@ -24,6 +24,7 @@ package developer;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.WindowConstants;
 
 /**
  * 
@@ -43,6 +44,7 @@ public class DoNothingDlg extends JDialog {
 	 * @since           JDK1.3
 	 */
 	public DoNothingDlg(JFrame jFrame, String str) {
+		this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		JOptionPane.showMessageDialog(jFrame, STR, str,
 				JOptionPane.INFORMATION_MESSAGE);
 	} // end constructor

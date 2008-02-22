@@ -293,9 +293,7 @@ public class SetOfEvents extends DSetOfResources {
 
 			// Here was mm instead of the room
 			assignment.setRoomName(event.getRoomName());
-
 			assignment.setPeriodKey(event.getPeriodKey());
-
 			unit.updateWith(event);
 			assignment.setRoomState(event.isRoomFixed());
 
@@ -349,7 +347,7 @@ public class SetOfEvents extends DSetOfResources {
 	public String getInstructorConflictDescriptions(DValue confAt) {
 		String res = "";
 		String str = "";
-		Vector insKeys = (Vector) (confAt).getObjectValue();
+		Vector insKeys = (Vector) confAt.getObjectValue();
 		for (int j = 0; j < insKeys.size(); j++) {
 			str = _dm.getDxSetOfInstructors().getInstructorName(
 					((Long) insKeys.get(j)).longValue());
@@ -378,7 +376,7 @@ public class SetOfEvents extends DSetOfResources {
 				DXToolsMethods.getToken(eventIDOne, ".", 0)
 						+ DXToolsMethods.getToken(eventIDOne, ".", 1),
 				DXToolsMethods.getToken(eventIDOne, ".", 2));
-		Vector studentTwoInSection = studentsInSection(studentTwo,
+		Vector  studentTwoInSection = studentsInSection(studentTwo,
 				DXToolsMethods.getToken(eventIDTwo, ".", 0)
 						+ DXToolsMethods.getToken(eventIDTwo, ".", 1),
 				DXToolsMethods.getToken(eventIDTwo, ".", 2));
@@ -409,7 +407,7 @@ public class SetOfEvents extends DSetOfResources {
 	 * @param section
 	 * @return
 	 */
-	public Vector studentsInSection(Vector students, String activityAndType,
+	public Vector<Object> studentsInSection(Vector students, String activityAndType,
 			String section) {
 		Vector<Object> res = new Vector<Object>();
 		for (int i = 0; i < students.size(); i++) {

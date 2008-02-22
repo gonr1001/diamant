@@ -59,7 +59,6 @@ import javax.swing.JPanel;
 import dConstants.DConst;
 import dInterface.DlgIdentification;
 import dInterface.dAffectation.EventsDlgInterface;
-import dInterface.dTimeTable.ConflictsOfAnEventJDlg;
 import dInterface.dTimeTable.DxConflictsOfAnEventPanel;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.TwoButtonsPanel;

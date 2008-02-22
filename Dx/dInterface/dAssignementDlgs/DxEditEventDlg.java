@@ -51,6 +51,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JToggleButton;
 import javax.swing.ListModel;
+import javax.swing.WindowConstants;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeEvent;
@@ -159,9 +160,9 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 //			//_applyPanel.setFirstEnable();
 //		}
 		
-		if (command.equals(DConst.BUT_CLOSE)) {
-			dispose();
-		} 
+//		if (command.equals(DConst.BUT_CLOSE)) {
+//			dispose();
+//		} 
 
 		if (command.equals("comboBoxChanged")
 				|| command.equals(DConst.BUT_PLACE)
@@ -420,6 +421,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	 * Initialize the dialog
 	 */
 	private void buildDlg(boolean canBeModified) {
+		this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		_tabbedPane = buildTabbedPane(canBeModified);
 		this.getContentPane().setLayout(new BorderLayout());
 		this.getContentPane().add(_tabbedPane, BorderLayout.NORTH);
