@@ -38,11 +38,11 @@ public abstract class ViewReport extends JPanel implements ActionListener {
 
 	JPanel _buttonsPanel;
 
-	Vector _allOptionsVec;
+	Vector <DValue>_allOptionsVec;
 
-	Vector _rightVec;
+	Vector <String> _rightVec;
 
-	Vector _options;
+	Vector <String>_options;
 
 	int _elements;
 
@@ -60,7 +60,7 @@ public abstract class ViewReport extends JPanel implements ActionListener {
 	public ViewReport(ReportsDlg parentDlg, DApplication dApplic, Dimension dim) {
 		_parentDlg = parentDlg;
 		_dApplic = dApplic;
-		_allOptionsVec = new Vector();
+		_allOptionsVec = new Vector<DValue>();
 		_jTextArea = new JTextArea();
 		this.setLayout(new BorderLayout());
 		// setImportReport(jta);
@@ -97,8 +97,8 @@ public abstract class ViewReport extends JPanel implements ActionListener {
 		_parentDlg.dispose();
 	}
 
-	protected Vector buildExternalOptions(Vector opt, Vector right) {
-		Vector res = new Vector();
+	protected Vector<String> buildExternalOptions(Vector <String>opt, Vector <String>right) {
+		Vector <String>res = new Vector<String>();
 		for (int i = 0; i < right.size(); i++) {
 			opt.remove(right.get(i));
 		}

@@ -2,7 +2,7 @@ package dInterface.dData;
 
 /**
  *
- * Title: ReportOptionsDlg $Revision: 1.31 $  $Date: 2007-12-07 01:19:18 $
+ * Title: ReportOptionsDlg $Revision: 1.32 $  $Date: 2008-02-22 20:17:02 $
  * Description: ReportOptionsDlg is a class used to display
  *              a dialog to chose the fields to include in a report
  *              also the order of fields can be defined by the dialog
@@ -18,7 +18,7 @@ package dInterface.dData;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.31 $
+ * @version $Revision: 1.32 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -45,7 +45,7 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
 
 	private JList _rightList, _leftList;
 
-	private Vector _rightVec, _leftVec;
+	private Vector <String> _rightVec, _leftVec;
 
 	//  private JPanel _centerPanel, _arrowsPanel;
 	private ButtonsPanel _applyPanel;
@@ -153,14 +153,14 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
 		return panel;
 	}
 
-	private void listTransfers(Object[] elementsToTransfer, Vector sourceIn,
-			JList s, Vector destinationIn, JList d, boolean left) {
-		Vector source = sourceIn;
-		Vector destination = destinationIn;
+	private void listTransfers(Object[] elementsToTransfer, Vector <String> sourceIn,
+			JList s, Vector <String> destinationIn, JList d, boolean left) {
+		Vector <String> source = sourceIn;
+		Vector <String> destination = destinationIn;
 		if (elementsToTransfer.length != 0) {
 			for (int i = 0; i < elementsToTransfer.length; i++) {
 				source.remove(elementsToTransfer[i]);
-				destination.add(elementsToTransfer[i]);
+				destination.add((String)elementsToTransfer[i]);
 			}
 			if (left)
 				destination = DxTools.sortVector(destination);
@@ -223,8 +223,8 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
 		}//end if (command.equals(_arrowsNames[2]) || command.equals(_arrowsNames[3]))
 	}
 
-	private void swap(Vector v, int s, int d) {
-		Object aux = v.get(s);
+	private void swap(Vector <String> v, int s, int d) {
+		String aux = v.get(s);
 		if (d >= 0 && d < v.size()) {
 			v.setElementAt(v.get(d), s);
 			v.setElementAt(aux, d);

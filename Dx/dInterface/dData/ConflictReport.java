@@ -63,7 +63,7 @@ public class ConflictReport extends ViewReport implements ActionListener {
   * 7= number of conflicts, 8= type of conflicts
   * 9= conflict description
   * */
-  private Vector buildAllOptionsVector() {
+  private Vector<DValue> buildAllOptionsVector() {
     Vector <DValue> v = new Vector <DValue>();
        v.add(new DValue(0,
               new FieldRecord(Integer.parseInt(DConst.R_DAY_NUMBER_L), DConst.R_DAY_NUMBER)));
@@ -136,7 +136,7 @@ public class ConflictReport extends ViewReport implements ActionListener {
     }//end if (e.getActionCommand().equals(_buttonsNames[0]))
   }//end method
 
-  public void doSave(Vector rigth) {
+  public void doSave(Vector <String>rigth) {
     _dApplic.getDxPreferences().setSelectedOptionsInConflictReport(rigth);
     _dApplic.getDxPreferences().save();
     _rightVec = rigth;
