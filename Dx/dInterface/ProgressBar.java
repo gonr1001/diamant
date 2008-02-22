@@ -25,6 +25,7 @@ import javax.swing.Timer;
 
 import dInterface.dUtil.LongTask;
 
+@SuppressWarnings("serial")
 public class ProgressBar extends JPanel implements ActionListener {
 	public final static int ONE_SECOND = 1000;
 

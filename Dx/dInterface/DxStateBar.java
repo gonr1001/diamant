@@ -34,6 +34,9 @@ import dInternal.DxStateBarModel;
  * <p> 
  * 
  */
+
+
+@SuppressWarnings("serial")
 public class DxStateBar extends JPanel {
 
 	private JLabel _theLabels[];
