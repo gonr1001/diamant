@@ -62,11 +62,7 @@ public class StaxTry {
     }
     
     public static void main(String[] args) throws Exception {
-//    	String RESOURCES_FOLDER = "pref";
-//		DxTTStructure tts = new DxTTStructure();
-//		try {
-//			tts.loadTTSFromFile(RESOURCES_FOLDER + "/ntest.xml" ); //"/StandardTTE.xml");
-//		} catch (FileNotFoundException e) {
+
         String filename = null; // RESOURCES_FOLDER + "/ntest.xml";
         
         try {
