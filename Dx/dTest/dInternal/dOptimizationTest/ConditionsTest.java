@@ -29,7 +29,7 @@ import dInternal.DResource;
 import dInternal.dOptimization.DxEvent;
 import dInternal.dTimeTable.Period;
 import dInternal.dTimeTable.TTStructure;
-import developer.DxFlags;
+
 
 public class ConditionsTest extends TestCase {
 
@@ -295,11 +295,11 @@ public class ConditionsTest extends TestCase {
 			
 			
 			DxEvent eventClone = null;
-			if (DxFlags.newEventClone) {
+//			if (DxFlags.newEventClone) {
 				eventClone = ((DxEvent) event.getAttach()).eventClone();
-			} else {
-				eventClone = ((DxEvent) event.getAttach()).oldEventClone();
-			}	
+//			} else {
+//				eventClone = ((DxEvent) event.getAttach()).oldEventClone();
+//			}	
 
 			eventClone.setAssigned(true);
 			// String
@@ -318,11 +318,11 @@ public class ConditionsTest extends TestCase {
 					per.getNbRoomConflict());
 
 			// set event key tuesday at 8h30
-			if (DxFlags.newEventClone) {
+//			if (DxFlags.newEventClone) {
 				eventClone = ((DxEvent) event.getAttach()).eventClone();
-			} else {
-				eventClone = ((DxEvent) event.getAttach()).oldEventClone();
-			}	
+//			} else {
+//				eventClone = ((DxEvent) event.getAttach()).oldEventClone();
+//			}	
 			eventClone.setAssigned(true);
 			eventClone.setKey(4, "2.1.2");
 			dmh.getConditionsToTest().addEventInTTs(cloneTTS,

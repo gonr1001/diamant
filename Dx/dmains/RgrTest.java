@@ -27,12 +27,12 @@ import dTest.dInternal.DxLoadDataTest;
 import dTest.dInternal.dData.DLoadDataTest;
 import dTest.dInternal.dData.DSaveDataTest;
 import dTest.dInternal.dData.dInstructors.DxInstructorsReaderTest;
+import dTest.dInternal.dData.dRooms.DxSiteReaderTest;
 import dTest.dInternal.dOptimizationTest.ConditionsTest;
 import dTest.dInternal.dOptimizationTest.DxAssignAllAlgTest;
 import dTest.dInternal.dOptimizationTest.RoomsConditionsTest;
 import dTest.dInternal.dOptimizationTest.SetOfEventsTest;   
 import developer.DxFlags;
-import eTest.ByteInputFileTest;
 import eTest.ByteOutputFileTest;
 import eTest.FilterFileTest;
 import eTest.SemiExtendedAsciiFileTest;
@@ -68,7 +68,7 @@ public class RgrTest {
 		
 
 		suite.addTest(DxTTStructureTest.suite());
-		suite.addTest(ByteInputFileTest.suite());
+		suite.addTest(DxSiteReaderTest.suite());
 		suite.addTest(ByteOutputFileTest.suite());
 		suite.addTest(FilterFileTest.suite());
 		suite.addTest(SemiExtendedAsciiFileTest.suite());

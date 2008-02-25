@@ -32,7 +32,7 @@ import dInternal.dData.dActivities.Assignment;
 import dInternal.dData.dActivities.Unity;
 import dInternal.dData.dRooms.DxSite;
 import dInternal.dUtil.DXToolsMethods;
-import developer.DxFlags;
+//import developer.DxFlags;
 
 /**
  * 
@@ -68,28 +68,7 @@ public class DxEvent extends DObject {
 
 	private boolean _isPlacedInAPeriod;
 
-	/**
-	 * Constructor
-	 * 
-	 * 
-	 * @param princKey
-	 * @param key1
-	 * @param key2
-	 */
-	public DxEvent(String actId, String princKey, DSetOfResources inst,
-			String roomName, long key, DResource unity, Assignment assignment,
-			int cLimit) {
-		_fullName = actId;		
-		_compositeKey = princKey;
-		_setInstructorKeys = inst;
-		_roomName = roomName;
-		_roomKey = key; // the room key
-		_unity = unity;
-		_assignment = assignment;		
-		_cLimit = cLimit;
-		_ttsKey = assignment.getPeriodKey();
-		_isPlacedInAPeriod = false;
-	}
+	
 
 	public DxEvent() {
 		_fullName = "";		
@@ -112,7 +91,7 @@ public class DxEvent extends DObject {
 		eA._assignment = cloneAssigment();
 		eA._ttsKey = new String(this._ttsKey);
 		eA.setRoomName(new String(this._roomName));
-		eA.setIntructors((DSetOfResources)this._setInstructorKeys.clone()); //it is necessary to cloner the set		
+		eA.setIntructors(this._setInstructorKeys.clone()); //it is necessary to cloner the set		
 		eA.setRoomKeyWithKey(this._roomKey);
 		eA.setUnit(this._bloc.clone()); // its is necessary to clone the unit
 		eA.setCapacityLimit(this._cLimit);
@@ -126,11 +105,11 @@ public class DxEvent extends DObject {
 
 
 
-	public DxEvent oldEventClone() {
-		DxEvent eA = new DxEvent(_fullName, _compositeKey, _setInstructorKeys,
-				_roomName, _roomKey, _unity, _assignment, _cLimit);
-		return eA;
-	}
+//	public DxEvent oldEventClone() {
+//		DxEvent eA = new DxEvent(_fullName, _compositeKey, _setInstructorKeys,
+//				_roomName, _roomKey, _unity, _assignment, _cLimit);
+//		return eA;
+//	}
 
 	public long getCapacityLimit() {
 		return _cLimit;
@@ -153,11 +132,11 @@ public class DxEvent extends DObject {
 	 * @return
 	 */
 	public int getDuration() {
-		if (DxFlags.newEventClone) {
+//		if (DxFlags.newEventClone) {
 			return _bloc.getDuration();
-		} else {
-			return ((Unity) _unity.getAttach()).getDuration();
-		}	
+//		} else {
+//			return ((Unity) _unity.getAttach()).getDuration();
+//		}	
 	}
 
 	public String getfullName() {
@@ -199,11 +178,11 @@ public class DxEvent extends DObject {
 //	}
 	
 	public boolean getPermanentState() {
-		if (DxFlags.newEventClone) {
+//		if (DxFlags.newEventClone) {
 			return _bloc.isPermanent();
-		} else {
-			return ((Unity) _unity.getAttach()).isPermanent();
-		}
+//		} else {
+//			return ((Unity) _unity.getAttach()).isPermanent();
+//		}
 		
 	}
 
@@ -233,15 +212,13 @@ public class DxEvent extends DObject {
 		return 0;
 	}
 
-//	public boolean oldisAssigned() {
-//		return (((Unity) _unity.getAttach()).isAssign());
-//	}
+
 	public boolean isAssigned() {
-		if (DxFlags.newEventClone) {
+//		if (DxFlags.newEventClone) {
 			return (_bloc.isAssign());
-		} else {
-			return (((Unity) _unity.getAttach()).isAssign());
-		}
+//		} else {
+//			return (((Unity) _unity.getAttach()).isAssign());
+//		}
 	}
 
 	/**
@@ -262,22 +239,22 @@ public class DxEvent extends DObject {
 //	}
 
 	public void setAssigned(boolean state) {
-		if (DxFlags.newEventClone) {
+//		if (DxFlags.newEventClone) {
 			_bloc.setAssign(state);
-		} else {
-			((Unity) _unity.getAttach()).setAssign(state);
-		}
+//		} else {
+//			((Unity) _unity.getAttach()).setAssign(state);
+//		}
 	}
 	/**
 	 * 
 	 * @return
 	 */
 	public void setDuration(int duration) {
-		if (DxFlags.newEventClone) {
+//		if (DxFlags.newEventClone) {
 			_bloc.setDuration(duration);
-		} else {
-			((Unity) _unity.getAttach()).setDuration(duration);
-		}
+//		} else {
+//			((Unity) _unity.getAttach()).setDuration(duration);
+//		}
 	}
 
 	/**
@@ -345,11 +322,11 @@ public class DxEvent extends DObject {
 	
 	
 	public void setPermanentState(boolean state) {
-		if (DxFlags.newEventClone) {
+//		if (DxFlags.newEventClone) {
 			_bloc.setPermanent(state);
-		} else {
-			((Unity) _unity.getAttach()).setPermanent(state);
-		}
+//		} else {
+//			((Unity) _unity.getAttach()).setPermanent(state);
+//		}
 	}
 
 	public void setRoomFixed(boolean state) {

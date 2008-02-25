@@ -2,7 +2,7 @@ package dInterface.dData;
 
 /**
  *
- * Title: ReportOptionsDlg $Revision: 1.32 $  $Date: 2008-02-22 20:17:02 $
+ * Title: ReportOptionsDlg $Revision: 1.33 $  $Date: 2008-02-25 00:23:33 $
  * Description: ReportOptionsDlg is a class used to display
  *              a dialog to chose the fields to include in a report
  *              also the order of fields can be defined by the dialog
@@ -18,7 +18,7 @@ package dInterface.dData;
  * it only in accordance with the terms of the license agreement
  * you entered into with rgr.
  *
- * @version $Revision: 1.32 $
+ * @version $Revision: 1.33 $
  * @author  $Author: gonzrubi $
  * @since JDK1.3
  */
@@ -64,7 +64,7 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
 	 * @param elements is the number of elements in the first half
 	 */
 	public ReportOptionsDlg(DApplication dApplic, ViewReport parentDlg,
-			Vector options, int elements) {
+			Vector <String> options, int elements) {
 		super(dApplic.getJFrame(), DConst.REPORT_OPTIONS_DLG_TITLE, true);
 		_parentDlg = parentDlg;
 		_leftVec = left(options, elements);
@@ -115,16 +115,16 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
 		getContentPane().add(_applyPanel, BorderLayout.SOUTH);
 	}//end method
 
-	private Vector rigth(Vector v, int e) {
-		Vector res = new Vector();
+	private Vector<String> rigth(Vector<String> v, int e) {
+		Vector <String>res = new Vector<String>();
 		for (int i = e; i < v.size(); i++) {
 			res.add(v.get(i));
 		}
 		return res;
 	}// end rigth
 
-	private Vector left(Vector v, int e) {
-		Vector res = new Vector();
+	private Vector <String> left(Vector <String> v, int e) {
+		Vector<String> res = new Vector<String>();
 		for (int i = 0; i < e; i++) {
 			res.add(v.get(i));
 		}

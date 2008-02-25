@@ -31,7 +31,7 @@ import java.util.Vector;
  * <p>
  * 
  */
-public abstract class DxSetOfResources implements Iterable {
+public abstract class DxSetOfResources implements Iterable <DxResource>{
 
 	private Vector<DxResource> _vResourceSortedByKey;
 
@@ -82,12 +82,12 @@ public abstract class DxSetOfResources implements Iterable {
 	 *            Resource that has to be added to the set
 	 */
 	protected final void addSetOfResources(DxSetOfResources dxsorNew) {
-		Iterator itNew = dxsorNew.iterator();
+		Iterator<DxResource> itNew = dxsorNew.iterator();
 		DxResource dxrNew;
 		DxResource dxrFound;
 
 		while (itNew.hasNext()) {
-			dxrNew = (DxResource) itNew.next();
+			dxrNew =  itNew.next();
 			dxrFound = this.findEquivalent(dxrNew);
 			if (dxrFound == null) {
 				this.addResource(dxrNew);
@@ -127,14 +127,14 @@ public abstract class DxSetOfResources implements Iterable {
 		if (this.size() != dxsorOther.size()) {
 			return false;
 		}
-		Iterator itThis = this._vResourceSortedByName.iterator();
-		Iterator itOther = dxsorOther._vResourceSortedByName.iterator();
+		Iterator<DxResource> itThis = this._vResourceSortedByName.iterator();
+		Iterator <DxResource>itOther = dxsorOther._vResourceSortedByName.iterator();
 		DxResource dxrThis;
 		DxResource dxrOther;
 
 		while (itThis.hasNext()) {
-			dxrThis = (DxResource) itThis.next();
-			dxrOther = (DxResource) itOther.next();
+			dxrThis = itThis.next();
+			dxrOther =  itOther.next();
 			if (!dxrThis.isEqual(dxrOther)) {
 				return false;
 			}
@@ -236,9 +236,9 @@ public abstract class DxSetOfResources implements Iterable {
 	public Vector<String> getNamesVector() {
 		sort();
 		Vector<String> vReturn = new Vector<String>();
-		Iterator itNames = _vResourceSortedByName.iterator();
+		Iterator<DxResource> itNames = _vResourceSortedByName.iterator();
 		while (itNames.hasNext()) {
-			vReturn.add(((DxResource) itNames.next()).toString());
+			vReturn.add(itNames.next().toString());
 		}
 
 		return vReturn;
@@ -330,10 +330,10 @@ public abstract class DxSetOfResources implements Iterable {
 	 */
 	private int getSortedNameIndex(long lKey) {
 		sort();
-		Iterator it = _vResourceSortedByName.iterator();
+		Iterator<DxResource> it = _vResourceSortedByName.iterator();
 
 		for (int i = 0; it.hasNext(); i++) {
-			if (((DxResource) it.next()).getKey() == lKey)
+			if (it.next().getKey() == lKey)
 				return i;
 		}
 		return -1;

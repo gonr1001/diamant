@@ -107,7 +107,7 @@ public class DxReadSitedotDia implements DxSiteReader {
 				// Room category
 				sRoomCat = stLineTokenizer.nextToken().trim();
 				// Room comment or note
-				sNote = stLineTokenizer.nextToken(); //.trim();
+				sNote = stLineTokenizer.nextToken(); //.trim(); notrim
 //				System.out.println("sNote " + sNote + "!");
 				// Room availability
 				sLineToken = stLineTokenizer.nextToken().trim();

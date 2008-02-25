@@ -107,7 +107,7 @@ public class SetOfEvents extends DSetOfResources {
 					roomKey = oldAssignDxRooms(assignment, unityID,
 							soImportErrors);
 					DxEvent dxEvent  = null;
-					if (DxFlags.newEventClone) {
+//					if (DxFlags.newEventClone) {
 						dxEvent = new DxEvent();
 						dxEvent.setID(activityResource.getID());
 						dxEvent.setCompositeKey(compositeKey);
@@ -118,12 +118,12 @@ public class SetOfEvents extends DSetOfResources {
 						dxEvent.setUnit((Unity) unityResource
 								.getAttach());						
 						dxEvent.setCapacityLimit(cLimit);
-					} else {
-						dxEvent = new DxEvent(activityResource.getID(),
-								compositeKey, assignment.getSetInstructorKeys(),
-								roomName, roomKey, unityResource, assignment,
-								cLimit);
-					}	
+//					} else {
+//						dxEvent = new DxEvent(activityResource.getID(),
+//								compositeKey, assignment.getSetInstructorKeys(),
+//								roomName, roomKey, unityResource, assignment,
+//								cLimit);
+//					}	
 					
 					this.addResource(new DResource(unityID, dxEvent), 0);
 				}
