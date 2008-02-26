@@ -160,9 +160,9 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 //			//_applyPanel.setFirstEnable();
 //		}
 		
-//		if (command.equals(DConst.BUT_CLOSE)) {
-//			dispose();
-//		} 
+		if (command.equals(DConst.BUT_CLOSE)) {
+			dispose();
+		} 
 
 		if (command.equals("comboBoxChanged")
 				|| command.equals(DConst.BUT_PLACE)
