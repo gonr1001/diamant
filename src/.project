@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>Dx</name>
+	<name>testEclipse</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -10,27 +10,8 @@
 			<arguments>
 			</arguments>
 		</buildCommand>
-		<buildCommand>
-			<name>net.sourceforge.metrics.builder</name>
-			<arguments>
-			</arguments>
-		</buildCommand>
-		<buildCommand>
-			<name>org.springframework.ide.eclipse.core.springbuilder</name>
-			<arguments>
-			</arguments>
-		</buildCommand>
 	</buildSpec>
 	<natures>
-		<nature>org.springframework.ide.eclipse.core.springnature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
-		<nature>net.sourceforge.metrics.nature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>DiamantClasses</name>
-			<type>2</type>
-			<location>D:/exitDev/DiamantClasses</location>
-		</link>
-	</linkedResources>
 </projectDescription>

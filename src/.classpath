@@ -8,5 +8,7 @@
 	<classpathentry kind="lib" path="jars/junit.jar"/>
 	<classpathentry kind="lib" path="jars/xercesImpl.jar"/>
 	<classpathentry kind="lib" path="jars/sjsxp.jar"/>
-	<classpathentry kind="output" path="DiamantClasses"/>
+	<classpathentry kind="output" path="bin"/>
 </classpath>
+
+
