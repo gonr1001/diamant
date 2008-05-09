@@ -2,5 +2,13 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="src/jars/ant-jsch.jar"/>
+	<classpathentry kind="lib" path="src/jars/jdom.jar"/>
+	<classpathentry kind="lib" path="src/jars/jsch.jar"/>
+	<classpathentry kind="lib" path="src/jars/junit.jar"/>
+	<classpathentry kind="lib" path="src/jars/log4j-1.2.8.jar"/>
+	<classpathentry kind="lib" path="src/jars/sjsxp.jar"/>
+	<classpathentry kind="lib" path="src/jars/xercesImpl.jar"/>
+	<classpathentry kind="lib" path="src/jars/xml-apis.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
