@@ -19,6 +19,8 @@
  */
 package dmains;
 
+import java.io.File;
+
 import junit.framework.Test;
 import junit.framework.TestSuite;
 import dInternal.dOptimization.DxAssignRoomsAlgTest;
@@ -55,6 +57,7 @@ public class RgrTest {
 	 */
 	public static void main(String[] args) {
 		junit.textui.TestRunner.run(suite());
+		
 	}
 
 	/**
@@ -64,29 +67,32 @@ public class RgrTest {
 	 */
 	public static Test suite() {
 		System.out.println("Hello I am rgr selected Tests");
+		
+		File forOutputTests = new File("."+File.separator+ "forOutputTests");
+		forOutputTests.mkdir();
 		TestSuite suite = new TestSuite("rgr selected Tests");
 		
 
 		suite.addTest(DxTTStructureTest.suite());
 		suite.addTest(DxSiteReaderTest.suite());
 		suite.addTest(ByteOutputFileTest.suite());
-		suite.addTest(FilterFileTest.suite());
-		suite.addTest(SemiExtendedAsciiFileTest.suite());
-		
-		suite.addTest(DxAssignAllAlgTest.suite());
-		suite.addTest(RoomsConditionsTest.suite());
-		if (DxFlags.newAlg) {
-			suite.addTest(DxAssignRoomsAlgTest.suite());
-		}
-		if (DxFlags.newDxLoadData) {
-			suite.addTest(DxLoadDataTest.suite());
-		} else {
-			suite.addTest(DLoadDataTest.suite());
-		}
-		suite.addTest(DxInstructorsReaderTest.suite());
-		suite.addTest(SetOfEventsTest.suite());
-		suite.addTest(ConditionsTest.suite());
-		suite.addTest(DSaveDataTest.suite());
+//		suite.addTest(FilterFileTest.suite());
+//		suite.addTest(SemiExtendedAsciiFileTest.suite());
+//		
+//		suite.addTest(DxAssignAllAlgTest.suite());
+//		suite.addTest(RoomsConditionsTest.suite());
+//		if (DxFlags.newAlg) {
+//			suite.addTest(DxAssignRoomsAlgTest.suite());
+//		}
+//		if (DxFlags.newDxLoadData) {
+//			suite.addTest(DxLoadDataTest.suite());
+//		} else {
+//			suite.addTest(DLoadDataTest.suite());
+//		}
+//		suite.addTest(DxInstructorsReaderTest.suite());
+//		suite.addTest(SetOfEventsTest.suite());
+//		suite.addTest(ConditionsTest.suite());
+//		suite.addTest(DSaveDataTest.suite());
 
 		System.out.println("Bye I was in rgr selected Tests");
 		return suite;
