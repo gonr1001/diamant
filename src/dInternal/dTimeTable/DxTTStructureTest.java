@@ -25,9 +25,6 @@ import java.io.FileNotFoundException;
 import java.util.StringTokenizer;
 
 import javax.xml.stream.XMLStreamException;
-
-import org.xml.sax.SAXException;
-
 import dConstants.DConst;
 
 import dInternal.dTimeTable.DxTTStructure;
