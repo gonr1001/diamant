@@ -76,7 +76,7 @@ public class RgrTest {
 		suite.addTest(DxTTStructureTest.suite());
 		suite.addTest(DxSiteReaderTest.suite());
 		suite.addTest(ByteOutputFileTest.suite());
-//		suite.addTest(FilterFileTest.suite());
+		suite.addTest(FilterFileTest.suite());
 //		suite.addTest(SemiExtendedAsciiFileTest.suite());
 //		
 //		suite.addTest(DxAssignAllAlgTest.suite());

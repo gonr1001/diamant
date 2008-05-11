@@ -25,6 +25,8 @@
  */
 package dmains;
 
+import java.io.File;
+
 import junit.framework.Test;
 import junit.framework.TestSuite;
 import developer.DxFlags;
@@ -100,6 +102,8 @@ public class DiamantTest {
 	public static Test suite() {
 		System.out.println("Hello I am in Diamant tests");
 		TestSuite suite = new TestSuite("Diamant Tests");
+		File forOutputTests = new File("."+File.separator+ "forOutputTests");
+		forOutputTests.mkdir();
 
 		suite.addTest(DxTTStructureTest.suite());
 		suite.addTest(ByteInputFileTest.suite());
