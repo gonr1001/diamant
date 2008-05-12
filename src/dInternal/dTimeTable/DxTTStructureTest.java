@@ -34,6 +34,12 @@ import junit.framework.TestSuite;
 
 public class DxTTStructureTest extends TestCase {
 
+	private final String _pathForFiles = "." + File.separator + "dataTest"
+			+ File.separator + "TTxmlFiles" + File.separator;
+
+	private final String _pathForSchemas = "dInternal" + File.separator
+			+ "dTimeTable" + File.separator + "schemas" + File.separator;
+
 	/**
 	 * 
 	 */
@@ -49,9 +55,9 @@ public class DxTTStructureTest extends TestCase {
 
 	public void test_fileEmpty() {
 		DxTTStructure dxTTS = new DxTTStructure();
-		String path = buildPathName();
+
 		try {
-			dxTTS.loadTTSFromFile(path + "noFile");
+			dxTTS.loadTTSFromFile(_pathForFiles + "noFile");
 			fail("Should raise a FileNotFoundException");
 		} catch (FileNotFoundException expected) {
 			assertEquals("test_fileEmpty: assertEquals", true, true);
@@ -63,16 +69,16 @@ public class DxTTStructureTest extends TestCase {
 
 	public void test_getSchemaFileName() {
 		DxTTStructure dxTTS = new DxTTStructure();
-		assertEquals("test_getSchemaFileName: equals",  buildShemaPathName()
-				+ "DxTimetable.xsd", dxTTS
-				.getSchemaFileName());
+
+		assertEquals("test_getSchemaFileName: equals", _pathForSchemas
+				+ "DxTimetable.xsd", dxTTS.getSchemaFileName());
 	}
 
 	public void test_fileBadCloseTag() {
 		DxTTStructure dxTTS = new DxTTStructure();
-		
+
 		try {
-			dxTTS.loadTTSFromFile(buildPathName() + "badClosedTag.xml");
+			dxTTS.loadTTSFromFile(_pathForFiles + "badClosedTag.xml");
 			fail("Should raise a XMLStreamException");
 		} catch (XMLStreamException xmlSE) {
 			StringTokenizer st = new StringTokenizer(xmlSE.getMessage(),
@@ -93,7 +99,7 @@ public class DxTTStructureTest extends TestCase {
 	public void test_fileNoOpenTag() {
 		DxTTStructure dxTTS = new DxTTStructure();
 		try {
-			dxTTS.loadTTSFromFile(buildPathName() + "noOpenTag.xml");
+			dxTTS.loadTTSFromFile(_pathForFiles + "noOpenTag.xml");
 			fail("Should raise a XMLStreamException");
 		} catch (XMLStreamException xmlSE) {
 			StringTokenizer st = new StringTokenizer(xmlSE.getMessage(),
@@ -110,12 +116,11 @@ public class DxTTStructureTest extends TestCase {
 			throw new RuntimeException("Problem in test_fileNoOpenTag");
 		}
 	}
-	
-	
+
 	public void test_fileNoCloseTags() {
 		DxTTStructure dxTTS = new DxTTStructure();
 		try {
-			dxTTS.loadTTSFromFile(buildPathName() + "noCloseTag.xml");
+			dxTTS.loadTTSFromFile(_pathForFiles + "noCloseTag.xml");
 			fail("Should raise a XMLStreamException");
 		} catch (XMLStreamException xmlSE) {
 			StringTokenizer st = new StringTokenizer(xmlSE.getMessage(),
@@ -123,36 +128,14 @@ public class DxTTStructureTest extends TestCase {
 			assertEquals("test_fileNoCloseTags: assertEquals", st.nextToken(),
 					"ParseError at [row,col]:[37,17]");
 			assertEquals(
-					"test_fileNoCloseTags: assertEquals",					
+					"test_fileNoCloseTags: assertEquals",
 					"Message: The end-tag for element type \"TTperiod\" must end with a '>' delimiter.",
 					st.nextToken());
-		
+
 		} catch (Exception e) {
 			System.out.println(e);
 			e.printStackTrace();
 			throw new RuntimeException("Problem in test_emptyElement");
 		}
 	}
-	
-	
-	private String buildPathName() {
-		StringBuffer path = new StringBuffer(".");
-		path.append(File.separator);
-		path.append("dataTest");
-		path.append(File.separator);
-		path.append("TTxmlFiles");
-		path.append(File.separator);
-		return path.toString();
-	}
-	
-	private String buildShemaPathName() {
-		StringBuffer path = new StringBuffer("dInternal");
-		path.append(File.separator);
-		path.append("dTimeTable");
-		path.append(File.separator);
-		path.append("schemas");
-		path.append(File.separator);
-		return path.toString();
-	}
-
 }

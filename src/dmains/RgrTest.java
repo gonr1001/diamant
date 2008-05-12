@@ -69,17 +69,19 @@ public class RgrTest {
 		System.out.println("Hello I am rgr selected Tests");
 		
 		File forOutputTests = new File("."+File.separator+ "forOutputTests");
-		forOutputTests.mkdir();
+		if (!forOutputTests.isDirectory()){
+			forOutputTests.mkdir();
+		}
+		
 		TestSuite suite = new TestSuite("rgr selected Tests");
 		
-
 		suite.addTest(DxTTStructureTest.suite());
 		suite.addTest(DxSiteReaderTest.suite());
 		suite.addTest(ByteOutputFileTest.suite());
 		suite.addTest(FilterFileTest.suite());
-//		suite.addTest(SemiExtendedAsciiFileTest.suite());
-//		
-//		suite.addTest(DxAssignAllAlgTest.suite());
+		suite.addTest(SemiExtendedAsciiFileTest.suite());
+		
+		suite.addTest(DxAssignAllAlgTest.suite());
 //		suite.addTest(RoomsConditionsTest.suite());
 //		if (DxFlags.newAlg) {
 //			suite.addTest(DxAssignRoomsAlgTest.suite());
