@@ -266,6 +266,7 @@ public class DModel extends Observable {
 		this.notifyObservers(this);
 	}
 
+
 	/**
 	 * 
 	 * @return

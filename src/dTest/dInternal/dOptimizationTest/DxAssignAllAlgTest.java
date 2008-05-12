@@ -42,14 +42,17 @@ import dInternal.dOptimization.DxAssignAllAlg;
  */
 public class DxAssignAllAlgTest extends TestCase {
 
-	/**
-	 * 
-	 * 
-	 */
-	public DxAssignAllAlgTest(String name) {
-		super(name);
-	}
-
+//	StringBuffer fileName = new StringBuffer("." + File.separator);
+//	fileName.append("dataTest" + File.separator);
+//	fileName.append("refFiles" + File.separator);
+//	fileName.append("facs" + File.separator);
+//	fileName.append("sciBase" + File.separator);
+//	fileName.append("scNoAssigned.dia");
+	private final String _pathForFiles = "." + File.separator + "dataTest"
+	+ File.separator + "refFiles" + File.separator + "facs" + File.separator + "sciBase" + File.separator;
+	
+	private final String _pathForOutputFiles = "." + File.separator + "forOutputTests"
+	+ File.separator;
 	/**
 	 * 
 	 * 
@@ -69,16 +72,12 @@ public class DxAssignAllAlgTest extends TestCase {
 		String str = "conflictLimits;0;0;0;0;30;0;100;";
 		dxCL.readLimits(str);
 		DxDocument dxDocument1 = new DxTTableDoc();
-		StringBuffer fileName = new StringBuffer("." + File.separator);
-		fileName.append("dataTest" + File.separator);
-		fileName.append("refFiles" + File.separator);
-		fileName.append("facs" + File.separator);
-		fileName.append("sciBase" + File.separator);
-		fileName.append("scNoAssigned.dia");
+	
 
 		try {
-			DModel dm1 = new DModel(dxDocument1, fileName.toString());
+			DModel dm1 = new DModel(dxDocument1, _pathForFiles + "scNoAssigned.dia");
 			dm1.changeInDModel(new String("DxAssign"));
+
 			assertEquals("test_buildScNoAssigned: activities size", 140, dm1
 					.getSetOfActivities().size());
 			assertEquals("test_buildScNoAssigned: events size", 275, dm1
@@ -88,7 +87,8 @@ public class DxAssignAllAlgTest extends TestCase {
 			assertEquals("test_buildScNoAssigned: number of Events", 254, dm1
 					.getSetOfEvents().getNumberOfEventToAssign());
 		} catch (Exception e) {
-			// Should not fail in tests
+			// Should not fail in tests, but if file not there gives a failure
+			assertEquals("test_buildScNoAssigned: exception", "nullPointer", e.toString());
 			System.out.println("Exception in: test_buildScNoAssigned");
 			e.printStackTrace();
 		}
@@ -104,15 +104,9 @@ public class DxAssignAllAlgTest extends TestCase {
 		dxCL.readLimits(str);
 
 		DxDocument dxDocument1 = new DxTTableDoc();
-		StringBuffer fileName = new StringBuffer("." + File.separator);
-		fileName.append("dataTest" + File.separator);
-		fileName.append("refFiles" + File.separator);
-		fileName.append("facs" + File.separator);
-		fileName.append("genAlgo" + File.separator);
-		fileName.append("genNoAssigned.dia");
 
 		try {
-			DModel dm1 = new DModel(dxDocument1, fileName.toString());
+			DModel dm1 = new DModel(dxDocument1,_pathForFiles + "genNoAssigned.dia");
 			dm1.changeInDModel(new Object());
 			assertEquals("test_buildScNoAssigned: activities size", 140, dm1
 					.getSetOfActivities().size());
@@ -123,7 +117,8 @@ public class DxAssignAllAlgTest extends TestCase {
 			assertEquals("test_buildScNoAssigned: number of Events", 245, dm1
 					.getSetOfEvents().getNumberOfEventToAssign());
 		} catch (Exception e) {
-			// Should not fail in tests
+			// Should not fail in tests, but if file not there gives a failure
+			assertEquals("test_buildScNoAssigned: exception", "nullPointer", e.toString());s
 			System.out.println("Exception in: test_buildGenNoAssigned");
 			e.printStackTrace();
 		}
