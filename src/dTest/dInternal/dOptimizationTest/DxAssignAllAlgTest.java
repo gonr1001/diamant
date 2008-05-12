@@ -44,10 +44,10 @@ public class DxAssignAllAlgTest extends TestCase {
 
 
 	private final String _pathForScFiles = "." + File.separator + "dataTest"
-	+ File.separator + "refFiles" + File.separator + "facs" + File.separator + "sciBase" + File.separator;
+	+ File.separator + "refFiles" + File.separator + "facs" + File.separator + "tAlgorithmes" + File.separator;
 	
 	private final String _pathForGenFiles = "." + File.separator + "dataTest"
-	+ File.separator + "refFiles" + File.separator + "facs" + File.separator + "genBase" + File.separator;
+	+ File.separator + "refFiles" + File.separator + "facs" + File.separator + "TAlgorithmes" + File.separator;
 	
 	/**
 	 * 
