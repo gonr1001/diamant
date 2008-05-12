@@ -83,9 +83,9 @@ public class RgrTest {
 		
 		suite.addTest(DxAssignAllAlgTest.suite());
 		suite.addTest(RoomsConditionsTest.suite());
-//		if (DxFlags.newAlg) {
-//			suite.addTest(DxAssignRoomsAlgTest.suite());
-//		}
+		if (DxFlags.newAlg) {
+			suite.addTest(DxAssignRoomsAlgTest.suite());
+		}
 //		if (DxFlags.newDxLoadData) {
 //			suite.addTest(DxLoadDataTest.suite());
 //		} else {

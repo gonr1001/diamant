@@ -54,10 +54,8 @@ import dInternal.dTimeTable.Period;
  */
 public class DxAssignRoomsAlgTest extends TestCase {
 
-	/**
-	 * 
-	 * 
-	 */
+	private final String _pathForFiles = "." + File.separator + "dataTest"
+	+ File.separator + "refFiles" + File.separator + "facs" + File.separator + "tAlgorithmes" + File.separator;
 	
 	private boolean _increase;
 
@@ -90,15 +88,10 @@ public class DxAssignRoomsAlgTest extends TestCase {
 		DModel dm1 = null;
 
 		DxDocument _dxDocument1 = new DxTTableDoc();
-		String fileName = "." + File.separator;
-		fileName += "dataTest" + File.separator;
-		fileName += "refFiles" + File.separator;
-		fileName += "facs" + File.separator;
-		fileName += "flsh2_1" + File.separator;
-		fileName += "RoomAffContTT.dia";
+
 
 		try {
-			dm1 = new DModel(_dxDocument1, fileName.toString());
+			dm1 = new DModel(_dxDocument1, _pathForFiles + "RoomAffContTT.dia");
 			dm1.changeInDModel(new Object());
 			assertEquals("test_basicData: activities size", 94, dm1
 					.getSetOfActivities().size());
@@ -111,7 +104,8 @@ public class DxAssignRoomsAlgTest extends TestCase {
 					.getSetOfEvents().getNumberOfEventToAssign());
 			dm1 = null;
 		} catch (Exception e) {
-			// Should not fail in tests
+			// Should not fail in tests, but if file not there gives a failure
+			assertEquals("test_basicData: exception", "nullPointer", e.toString());
 			System.out.println("Exception in: test_basicData");
 			e.printStackTrace();
 		}
@@ -127,15 +121,9 @@ public class DxAssignRoomsAlgTest extends TestCase {
 		dxCL.readLimits(str);
 		DModel dm1 = null;
 		DxDocument _dxDocument1 = new DxTTableDoc();
-		String fileName = "." + File.separator;
-		fileName += "dataTest" + File.separator;
-		fileName += "refFiles" + File.separator;
-		fileName += "facs" + File.separator;
-		fileName += "flsh2_1" + File.separator;
-		fileName += "Aut2006flsh170m.dia";
 
 		try {
-			dm1 = new DModel(_dxDocument1, fileName.toString());
+			dm1 = new DModel(_dxDocument1, _pathForFiles + "Aut2006flsh170m.dia");
 			dm1.changeInDModel(new Object());
 			assertEquals("test_basicData2: activities size", 199, dm1
 					.getSetOfActivities().size());
@@ -148,7 +136,8 @@ public class DxAssignRoomsAlgTest extends TestCase {
 					.getSetOfEvents().getNumberOfEventToAssign());
 			dm1 = null;
 		} catch (Exception e) {
-			// Should not fail in tests
+			// Should not fail in tests, but if file not there gives a failure
+			assertEquals("test_basicData: exception", "nullPointer", e.toString());
 			System.out.println("Exception in: test_basicData2");
 			e.printStackTrace();
 		}
@@ -165,14 +154,9 @@ public class DxAssignRoomsAlgTest extends TestCase {
 		DModel dm1 = null;
 
 		DxDocument _dxDocument1 = new DxTTableDoc();
-		String fileName = "." + File.separator;
-		fileName += "dataTest" + File.separator;
-		fileName += "refFiles" + File.separator;
-		fileName += "facs" + File.separator;
-		fileName += "flsh2_1" + File.separator;
-		fileName += "RoomAffTestsFlsh170min.dia";
+
 		try {
-			dm1 = new DModel(_dxDocument1, fileName.toString());
+			dm1 = new DModel(_dxDocument1, _pathForFiles + "RoomAffTestsFlsh170min.dia");
 			dm1.changeInDModel(new Object());
 
 			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL,
@@ -181,7 +165,8 @@ public class DxAssignRoomsAlgTest extends TestCase {
 					.getNumberOfPeriods());
 			dm1 = null;
 		} catch (Exception e) {
-			// Should not fail in tests
+			// Should not fail in tests, but if file not there gives a failure
+			assertEquals("test_basicData: exception", "nullPointer", e.toString());
 			System.out.println("Exception in: test_basicData2");
 			e.printStackTrace();
 		}
@@ -197,14 +182,9 @@ public class DxAssignRoomsAlgTest extends TestCase {
 		dxCL.readLimits(str);
 
 		DxDocument _dxDocument1 = new DxTTableDoc();
-		String fileName = "." + File.separator;
-		fileName += "dataTest" + File.separator;
-		fileName += "refFiles" + File.separator;
-		fileName += "facs" + File.separator;
-		fileName += "flsh2_1" + File.separator;
-		fileName += "RoomAffTestsFlsh170min.dia";
+
 		try {
-			DModel dm = new DModel(_dxDocument1, fileName.toString());
+			DModel dm = new DModel(_dxDocument1, _pathForFiles + "RoomAffTestsFlsh170min.dia");
 			dm.changeInDModel(new Object());
 
 			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm, dxCL,
@@ -322,7 +302,8 @@ public class DxAssignRoomsAlgTest extends TestCase {
 
 			dm = null;
 		} catch (Exception e) {
-			// Should not fail in controled conditions
+			// Should not fail in tests, but if file not there gives a failure
+			assertEquals("test_basicData: exception", "nullPointer", e.toString());
 			System.out.println(e.getStackTrace());
 		}
 	}
@@ -334,15 +315,9 @@ public class DxAssignRoomsAlgTest extends TestCase {
 		DModel dm1 = null;
 
 		DxDocument _dxDocument1 = new DxTTableDoc();
-		String fileName = "." + File.separator;
-		fileName += "dataTest" + File.separator;
-		fileName += "refFiles" + File.separator;
-		fileName += "facs" + File.separator;
-		fileName += "flsh2_1" + File.separator;
-		fileName += "testRoomAlg.dia";
 
 		try {
-			dm1 = new DModel(_dxDocument1, fileName.toString());
+			dm1 = new DModel(_dxDocument1, _pathForFiles + "testRoomAlg.dia");
 			dm1.changeInDModel(new Object());
 
 			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL,
@@ -756,7 +731,8 @@ public class DxAssignRoomsAlgTest extends TestCase {
 			}
 			dm1 = null;
 		} catch (Exception e) {
-			// Should not fail in controled conditions
+			// Should not fail in tests, but if file not there gives a failure
+			assertEquals("test_basicData: exception", "nullPointer", e.toString());
 			e.printStackTrace();
 			System.out.println(e.getStackTrace());
 		}
@@ -768,12 +744,12 @@ public class DxAssignRoomsAlgTest extends TestCase {
 		String str = "conflictLimits;0;0;0;0;30;0;100;";
 		dxCL.readLimits(str);
 
-		String fileName = "." + File.separator;
-		fileName += "dataTest" + File.separator;
-		fileName += "refFiles" + File.separator;
-		fileName += "facs" + File.separator;
-		fileName += "flsh2_1" + File.separator;
-		fileName += "RoomAffContTT.dia";
+//		String fileName = "." + File.separator;
+//		fileName += "dataTest" + File.separator;
+//		fileName += "refFiles" + File.separator;
+//		fileName += "facs" + File.separator;
+//		fileName += "flsh2_1" + File.separator;
+//		fileName += "RoomAffContTT.dia";
 
 		DxAssignRoomsAlg alg = new DxAssignRoomsAlg(null, null, true, true);
 		Vector<DxResource> v = new Vector<DxResource>();
