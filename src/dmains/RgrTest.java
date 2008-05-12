@@ -91,10 +91,10 @@ public class RgrTest {
 //		} else {
 //			suite.addTest(DLoadDataTest.suite());
 //		}
-//		suite.addTest(DxInstructorsReaderTest.suite());
-//		suite.addTest(SetOfEventsTest.suite());
-//		suite.addTest(ConditionsTest.suite());
-//		suite.addTest(DSaveDataTest.suite());
+		suite.addTest(DxInstructorsReaderTest.suite());
+		suite.addTest(SetOfEventsTest.suite());
+		suite.addTest(ConditionsTest.suite());
+		suite.addTest(DSaveDataTest.suite());
 
 		System.out.println("Bye I was in rgr selected Tests");
 		return suite;
