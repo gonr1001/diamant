@@ -33,13 +33,8 @@ import dInternal.dTimeTable.TTStructure;
 
 public class ConditionsTest extends TestCase {
 
-	/**
-	 * 
-	 * 
-	 */
-	public ConditionsTest(String name) {
-		super(name);
-	}
+	private final String _pathForFiles = "." + File.separator + "dataTest"
+	+ File.separator;
 
 	/**
 	 * 
@@ -52,12 +47,12 @@ public class ConditionsTest extends TestCase {
 	} // end suite
 
 	public void test_initAllConditions5j() {
-		StringBuffer fileName = new StringBuffer("." + File.separator);
-		fileName.append("dataTest" + File.separator);
-		fileName.append("loadData5j.dia");
+//		StringBuffer fileName = new StringBuffer("." + File.separator);
+//		fileName.append("dataTest" + File.separator);
+//		fileName.append("loadData5j.dia");
 
 		try {
-			DModel dm5j = new DModel(new DxTTableDoc(), fileName.toString());
+			DModel dm5j = new DModel(new DxTTableDoc(), _pathForFiles + "loadData5j.dia");
 			dm5j.getConditionsToTest().initAllConditions();
 			dm5j.getConditionsToTest().buildStudentConflictMatrix();
 			dm5j.getConditionsToTest()
@@ -87,7 +82,8 @@ public class ConditionsTest extends TestCase {
 			assertEquals("test4_getConflictsEventInTTs5j : assertEquals 4", 0,
 					period.getEventsInPeriod().size());
 		} catch (Exception e) {
-			// Should not fail in tests
+			// Should not fail in tests, but if file not there gives a failure
+			assertEquals("test_basicData: exception", "nullPointer", e.toString());
 			System.out.println("Exception in: test_initAllConditions5j");
 			e.printStackTrace();
 		}
@@ -128,7 +124,8 @@ public class ConditionsTest extends TestCase {
 			assertEquals("test4_addEventInTTs_1_5j : assertEquals 4", 1, period
 					.getEventsInPeriod().size());
 		} catch (Exception e) {
-			// Should not fail in tests
+			// Should not fail in tests, but if file not there gives a failure
+			assertEquals("test_basicData: exception", "nullPointer", e.toString());
 			System.out.println("Exception in: test_initAllConditions5j");
 			e.printStackTrace();
 		}
@@ -190,7 +187,8 @@ public class ConditionsTest extends TestCase {
 			assertEquals("test8_removeEventInTTs_3_5j : assertEquals 4", 1,
 					period.getEventsInPeriod().size());
 		} catch (Exception e) {
-			// Should not fail in tests
+			// Should not fail in tests, but if file not there gives a failure
+			assertEquals("test_basicData: exception", "nullPointer", e.toString());
 			System.out.println("Exception in: test_removeEventInTTs_3_5j");
 			e.printStackTrace();
 		}
@@ -235,7 +233,8 @@ public class ConditionsTest extends TestCase {
 					.getNbRoomConflict());
 
 		} catch (Exception e) {
-			// Should not fail in tests
+			// Should not fail in tests, but if file not there gives a failure
+			assertEquals("test_basicData: exception", "nullPointer", e.toString());
 			System.out.println("Exception in: test_buildAllConditionsDh");
 			e.printStackTrace();
 		}
@@ -361,7 +360,8 @@ public class ConditionsTest extends TestCase {
 					per.getNbStudConflict());
 
 		} catch (Exception e) {
-			// Should not fail in tests
+			// Should not fail in tests, but if file not there gives a failure
+			assertEquals("test_basicData: exception", "nullPointer", e.toString());
 			System.out
 					.println("Exception in: test_buildAllConditionsInCloneTTS()");
 			e.printStackTrace();
@@ -405,7 +405,8 @@ public class ConditionsTest extends TestCase {
 			assertEquals("test4_getConflictsEventInTTs7j : assertEquals 4", 0,
 					period.getEventsInPeriod().size());
 		} catch (Exception e) {
-			// Should not fail in tests
+			// Should not fail in tests, but if file not there gives a failure
+			assertEquals("test_basicData: exception", "nullPointer", e.toString());
 			System.out.println("Exception in: test_initAllConditions7j");
 			e.printStackTrace();
 		}
@@ -450,7 +451,8 @@ public class ConditionsTest extends TestCase {
 			assertEquals("test4_addEventInTTs_1_7j : assertEquals 4", 1, period
 					.getEventsInPeriod().size());
 		} catch (Exception e) {
-			// Should not fail in tests
+			// Should not fail in tests, but if file not there gives a failure
+			assertEquals("test_basicData: exception", "nullPointer", e.toString());
 			System.out.println("Exception in: test_addEventInTTs_1_7j");
 			e.printStackTrace();
 		}
@@ -503,7 +505,8 @@ public class ConditionsTest extends TestCase {
 			assertEquals("test5_addEventInTTs_2_7j : assertEquals 4", 2, period
 					.getConflictsEventsInPeriod(event.getID()).size());
 		} catch (Exception e) {
-			// Should not fail in tests
+			// Should not fail in tests, but if file not there gives a failure
+			assertEquals("test_basicData: exception", "nullPointer", e.toString());
 			System.out.println("Exception in: test_addEventInTTs_2_7j");
 			e.printStackTrace();
 		}
@@ -570,7 +573,8 @@ public class ConditionsTest extends TestCase {
 			assertEquals("test8_removeEventInTTs_3_5j : assertEquals 4", 1,
 					period.getEventsInPeriod().size());
 		} catch (Exception e) {
-			// Should not fail in tests
+			// Should not fail in tests, but if file not there gives a failure
+			assertEquals("test_basicData: exception", "nullPointer", e.toString());
 			System.out.println("Exception in: test_removeEventInTTs_3_7j");
 			e.printStackTrace();
 		}

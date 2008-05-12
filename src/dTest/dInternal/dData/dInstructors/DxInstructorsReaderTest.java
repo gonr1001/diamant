@@ -16,13 +16,8 @@ import eLib.exit.exception.DxException;
 
 public class DxInstructorsReaderTest extends TestCase {
 
-	/**
-	 * 
-	 * 
-	 */
-	public DxInstructorsReaderTest(String name) {
-		super(name);
-	}
+	private final String _pathForFiles = "." + File.separator + "dataTest"
+	+ File.separator;
 
 	/**
 	 * 
@@ -149,7 +144,7 @@ public class DxInstructorsReaderTest extends TestCase {
 		try {
 			DxSetOfInstructors dxsoi = dxriTest.readSetOfInstructors();
 			dxsoi.getClass(); // exception is throw before this line
-			assertFalse("test_badAvailability6: Shoudd have failed before",
+			assertFalse("test_badAvailability6: Should have failed before",
 					true);
 		} catch (Exception e) {
 			assertEquals("test_badAvailability6: ",
@@ -181,7 +176,7 @@ public class DxInstructorsReaderTest extends TestCase {
 		try {
 			DxSetOfInstructors dxsoi = dxriTest.readSetOfInstructors();
 			dxsoi.getClass(); // exception is throw before this line
-			assertFalse("test_badAvailability3: Shoudd have failed before",
+			assertFalse("test_badAvailability3: Should have failed before",
 					true);
 		} catch (Exception e) {
 			assertEquals("test_badAvailability3:",
@@ -231,16 +226,17 @@ public class DxInstructorsReaderTest extends TestCase {
 	public void test_valuesOnDispoInst() {
 		DxSetOfInstructors dxsoi = null;
 		
-		StringBuffer fileName = new StringBuffer("." + File.separator);
-		fileName.append("dataTest" + File.separator);
-		fileName.append("testDispoInst.sig");
+//		StringBuffer fileName = new StringBuffer("." + File.separator);
+//		fileName.append("dataTest" + File.separator);
+//		fileName.append("testDispoInst.sig");
 
 		DLoadData ld = new DLoadData();
 		byte[] dataloaded = null;
 		try {
-			dataloaded = ld.filterBadChars(fileName.toString());
+			dataloaded = ld.filterBadChars(_pathForFiles + "testDispoInst.sig");
 		} catch (Exception e) {
-			// Should not fail in tests
+			// Should not fail in tests, but if file not there gives a failure
+			assertEquals("test_basicData: exception", "nullPointer", e.toString());
 			System.out.println("Exception in: test_valuesOnDispoInst");
 			e.printStackTrace();
 		}
@@ -275,7 +271,8 @@ public class DxInstructorsReaderTest extends TestCase {
 //			assertEquals("test6_10_getSetOfInstructors: assertEquals", -1, dxsoi
 //					.getInstructorKeyByName("YAHIA, AMMAR"));
 		} catch (Exception e) {
-			// Should not fail in tests
+			// Should not fail in tests, but if file not there gives a failure
+			assertEquals("test_basicData: exception", "nullPointer", e.toString());
 			System.out.println("Exception in: test_valuesOnDispoInst");
 			e.printStackTrace();
 		}
