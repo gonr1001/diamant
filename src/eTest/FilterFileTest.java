@@ -17,7 +17,7 @@
  * 
  * 
  */
- package eTest;
+package eTest;
 
 /**
  * Ruben Gonzalez-Rubio
@@ -28,7 +28,6 @@
  * <p>
  * 
  */
-
 
 import java.io.File;
 import java.util.ArrayList;
@@ -43,9 +42,11 @@ import eLib.exit.txt.FilterFile;
 
 public class FilterFileTest extends TestCase {
 
-	public FilterFileTest(String name) {
-		super(name);
-	}
+	private final String _pathForFiles = "." + File.separator + "edataTest"
+			+ File.separator;
+
+	private final String _pathForOutputFiles = "." + File.separator
+			+ "forOutputTests" + File.separator;
 
 	public static Test suite() {
 		// the type safe way is in SimpleTest
@@ -56,9 +57,9 @@ public class FilterFileTest extends TestCase {
 	public void testSimple() throws Exception {
 		FilterFile filter = new FilterFile();
 		filter.setCharKnown("");
-		String str = "." + File.separator + "eDataTest" + File.separator
-				+ "Simple.txt";
-		assertEquals("testSimple assertEquals :", true, filter.validFile(str));
+
+		assertEquals("testSimple assertEquals :", true, filter
+				.validFile(_pathForFiles + "Simple.txt"));
 	}
 
 	public void testEmptyCollection() {
@@ -69,10 +70,9 @@ public class FilterFileTest extends TestCase {
 	public void testSimple1() {
 		FilterFile filter = new FilterFile();
 		filter.setCharKnown("");
-		String str = "." + File.separator + "eDataTest" + File.separator
-				+ "SimpleCharNotV.txt";
+
 		try {
-			filter.validFile(str);
+			filter.validFile(_pathForFiles + "SimpleCharNotV.txt");
 		} catch (DxException e) {
 			return;
 		}
@@ -82,9 +82,8 @@ public class FilterFileTest extends TestCase {
 	public void testReadFile() throws Exception {
 		FilterFile filter = new FilterFile();
 		filter.setCharKnown("");
-		String str = "." + File.separator + "eDataTest" + File.separator
-				+ "twoLines.txt";
-		filter.readFile(str);
+
+		filter.readFile(_pathForFiles + "twoLines.txt");
 		byte[] a = { (byte) 65, (byte) 13, (byte) 10, (byte) 66, (byte) 13,
 				(byte) 10 };
 		assertEquals("testReadFile assertEquals :", a.length, filter
@@ -189,11 +188,9 @@ public class FilterFileTest extends TestCase {
 		FilterFile filter = new FilterFile(a, "aeiou");
 		filter.appendToCharKnown("bc");
 
-		// byte [] b = {(byte)65, (byte)13,(byte)10, (byte)66};
 		assertEquals("testAppendToCharKnownassertEquals :", filter
 				.getCharKnown(), "aeioubc");
-		// assertEquals("testAdjustingEndFile assertEquals2 :", true,
-		// compareArrays(b, filter.getByteArray()));
+
 	}
 
 	private boolean compareArrays(byte[] a, byte[] b) {

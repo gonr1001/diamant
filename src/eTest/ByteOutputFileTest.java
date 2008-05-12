@@ -30,9 +30,11 @@ import eLib.exit.txt.ByteOutputFile;
 
 public class ByteOutputFileTest extends TestCase {
 
-	public ByteOutputFileTest(String name) {
-		super(name);
-	}
+	private final String _pathForFiles = "." + File.separator + "edataTest"
+	+ File.separator;
+	
+	private final String _pathForOutputFiles = "." + File.separator + "forOutputTests"
+	+ File.separator;
 
 	public static Test suite() {
 		// the type safe way is in SimpleTest
@@ -46,19 +48,16 @@ public class ByteOutputFileTest extends TestCase {
 		ByteInputFile bif;
 		ByteOutputFile bof;
 		try {
-			bif = new ByteInputFile("." + File.separator + "eDataTest"
-					+ File.separator + "nonEmpty.txt");
+			bif = new ByteInputFile(_pathForFiles + "nonEmpty.txt");
 			byte[] b = bif.readFileAsBytes();
 			assertEquals("Test File nonEmpty size :", 5, b.length);
 			assertEquals("Test File nonEmpty byte :", (byte)'1', b[0]);
 			assertEquals("Test File nonEmpty byte :", (byte)'5', b[4]);
 			bif.close();
-			bof = new ByteOutputFile("."+ File.separator + "forOutputTests"
-					+ File.separator + "testReadWriteRead.txt");
+			bof = new ByteOutputFile(_pathForOutputFiles + "testReadWriteRead.txt");
 			bof.writeFileFromBytes(b);
 			bof.close();
-			bif = new ByteInputFile("." + File.separator + "forOutputTests"
-					+ File.separator + "testReadWriteRead.txt");
+			bif = new ByteInputFile(_pathForOutputFiles + "testReadWriteRead.txt");
 			b = bif.readFileAsBytes();
 			assertEquals("Test File nonEmpty size :", 5, b.length);
 			assertEquals("Test File nonEmpty byte :", (byte)'1', b[0]);
