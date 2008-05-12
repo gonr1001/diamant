@@ -42,17 +42,13 @@ import dInternal.dOptimization.DxAssignAllAlg;
  */
 public class DxAssignAllAlgTest extends TestCase {
 
-//	StringBuffer fileName = new StringBuffer("." + File.separator);
-//	fileName.append("dataTest" + File.separator);
-//	fileName.append("refFiles" + File.separator);
-//	fileName.append("facs" + File.separator);
-//	fileName.append("sciBase" + File.separator);
-//	fileName.append("scNoAssigned.dia");
-	private final String _pathForFiles = "." + File.separator + "dataTest"
+
+	private final String _pathForScFiles = "." + File.separator + "dataTest"
 	+ File.separator + "refFiles" + File.separator + "facs" + File.separator + "sciBase" + File.separator;
 	
-	private final String _pathForOutputFiles = "." + File.separator + "forOutputTests"
-	+ File.separator;
+	private final String _pathForGenFiles = "." + File.separator + "dataTest"
+	+ File.separator + "refFiles" + File.separator + "facs" + File.separator + "genBase" + File.separator;
+	
 	/**
 	 * 
 	 * 
@@ -75,7 +71,7 @@ public class DxAssignAllAlgTest extends TestCase {
 	
 
 		try {
-			DModel dm1 = new DModel(dxDocument1, _pathForFiles + "scNoAssigned.dia");
+			DModel dm1 = new DModel(dxDocument1, _pathForScFiles + "scNoAssigned.dia");
 			dm1.changeInDModel(new String("DxAssign"));
 
 			assertEquals("test_buildScNoAssigned: activities size", 140, dm1
@@ -106,7 +102,7 @@ public class DxAssignAllAlgTest extends TestCase {
 		DxDocument dxDocument1 = new DxTTableDoc();
 
 		try {
-			DModel dm1 = new DModel(dxDocument1,_pathForFiles + "genNoAssigned.dia");
+			DModel dm1 = new DModel(dxDocument1,_pathForGenFiles + "genNoAssigned.dia");
 			dm1.changeInDModel(new Object());
 			assertEquals("test_buildScNoAssigned: activities size", 140, dm1
 					.getSetOfActivities().size());
