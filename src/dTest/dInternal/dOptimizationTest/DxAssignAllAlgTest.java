@@ -118,7 +118,7 @@ public class DxAssignAllAlgTest extends TestCase {
 					.getSetOfEvents().getNumberOfEventToAssign());
 		} catch (Exception e) {
 			// Should not fail in tests, but if file not there gives a failure
-			assertEquals("test_buildScNoAssigned: exception", "nullPointer", e.toString());s
+			assertEquals("test_buildScNoAssigned: exception", "nullPointer", e.toString());
 			System.out.println("Exception in: test_buildGenNoAssigned");
 			e.printStackTrace();
 		}
