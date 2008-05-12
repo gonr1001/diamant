@@ -86,15 +86,15 @@ public class RgrTest {
 		if (DxFlags.newAlg) {
 			suite.addTest(DxAssignRoomsAlgTest.suite());
 		}
-//		if (DxFlags.newDxLoadData) {
-//			suite.addTest(DxLoadDataTest.suite());
-//		} else {
-//			suite.addTest(DLoadDataTest.suite());
-//		}
+		if (DxFlags.newDxLoadData) {
+			suite.addTest(DxLoadDataTest.suite()); //TODO to review
+		} else {
+			suite.addTest(DLoadDataTest.suite()); //TODO to review
+		}
 		suite.addTest(DxInstructorsReaderTest.suite());
 		suite.addTest(SetOfEventsTest.suite());
 		suite.addTest(ConditionsTest.suite());
-		suite.addTest(DSaveDataTest.suite());
+		suite.addTest(DSaveDataTest.suite()); //TODO to review
 
 		System.out.println("Bye I was in rgr selected Tests");
 		return suite;
