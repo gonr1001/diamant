@@ -83,7 +83,7 @@ public class FilterFileTest extends TestCase {
 		FilterFile filter = new FilterFile();
 		filter.setCharKnown("");
 		String str = "." + File.separator + "eDataTest" + File.separator
-				+ "TwoLines.txt";
+				+ "twoLines.txt";
 		filter.readFile(str);
 		byte[] a = { (byte) 65, (byte) 13, (byte) 10, (byte) 66, (byte) 13,
 				(byte) 10 };
