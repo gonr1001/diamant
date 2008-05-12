@@ -82,7 +82,7 @@ public class RgrTest {
 		suite.addTest(SemiExtendedAsciiFileTest.suite());
 		
 		suite.addTest(DxAssignAllAlgTest.suite());
-//		suite.addTest(RoomsConditionsTest.suite());
+		suite.addTest(RoomsConditionsTest.suite());
 //		if (DxFlags.newAlg) {
 //			suite.addTest(DxAssignRoomsAlgTest.suite());
 //		}

@@ -12,13 +12,9 @@ import dInternal.dTimeTable.Period;
 
 public class RoomsConditionsTest extends TestCase {
 
-	/**
-	 * 
-	 * 
-	 */
-	public RoomsConditionsTest(String name) {
-		super(name);
-	}
+	private final String _pathForFiles = "." + File.separator + "dataTest"
+	+ File.separator;
+	
 
 	/**
 	 * 
@@ -39,7 +35,7 @@ public class RoomsConditionsTest extends TestCase {
 		fileName.append("dataTest" + File.separator);
 		fileName.append("loadData5j.dia");
 		try {
-			DModel dmData5j = new DModel(new DxTTableDoc(), fileName.toString());
+			DModel dmData5j = new DModel(new DxTTableDoc(), _pathForFiles + "loadData5j.dia");
 			dmData5j.getConditionsToTest().buildStudentConflictMatrix();
 			dmData5j.getConditionsToTest().buildAllConditions(
 					dmData5j.getTTStructure());
@@ -51,7 +47,8 @@ public class RoomsConditionsTest extends TestCase {
 			int nbConf = testRoom.getInfo(perKey, period, "AMC640.1.01.1.");
 			assertEquals("test_RoomConfInData5j : nbConflits", 1, nbConf);
 		} catch (Exception e) {
-			// Should not fail in tests
+			// Should not fail in tests, but if file not there gives a failure
+			assertEquals("test_RoomConfInData5j: exception", "nullPointer", e.toString());
 			System.out.println("Exception in: test_RoomConfInData5j");
 			e.printStackTrace();
 		}
@@ -62,11 +59,9 @@ public class RoomsConditionsTest extends TestCase {
 	 * 
 	 */
 	public void test_EventsConflictsInData5j() {
-		StringBuffer fileName = new StringBuffer("." + File.separator);
-		fileName.append("dataTest" + File.separator);
-		fileName.append("loadData5j.dia");
+
 		try {
-			DModel dmData5j = new DModel(new DxTTableDoc(), fileName.toString());
+			DModel dmData5j = new DModel(new DxTTableDoc(), _pathForFiles + "loadData5j.dia");
 			dmData5j.getConditionsToTest().buildStudentConflictMatrix();
 			dmData5j.getConditionsToTest().buildAllConditions(
 					dmData5j.getTTStructure());
@@ -83,7 +78,8 @@ public class RoomsConditionsTest extends TestCase {
 					"test_EventsConflictsInData5j : assertEquals nbConflits",
 					1, nbConf);
 		} catch (Exception e) {
-			// Should not fail in tests
+			// Should not fail in tests, but if file not there gives a failure
+			assertEquals("test_buildScNoAssigned: exception", "nullPointer", e.toString());
 			System.out.println("Exception in: test_EventsConflictsInData5j");
 			e.printStackTrace();
 		}
@@ -93,25 +89,26 @@ public class RoomsConditionsTest extends TestCase {
 	 * 
 	 * 
 	 */
-	public void test_AvailabilityInData7j() {
+	public void test_AvailabilityInData5j() {
 		StringBuffer fileName = new StringBuffer("." + File.separator);
 		fileName.append("dataTest" + File.separator);
 		fileName.append("loadData5j.dia");
 		try {
-			DModel dmData7j = new DModel(new DxTTableDoc(), fileName.toString());
-			dmData7j.getConditionsToTest().buildStudentConflictMatrix();
-			dmData7j.getConditionsToTest().buildAllConditions(
-					dmData7j.getTTStructure());
-			Period period = dmData7j.getTTStructure().getCurrentCycle()
+			DModel dmData5j = new DModel(new DxTTableDoc(), _pathForFiles + "loadData5j.dia");
+			dmData5j.getConditionsToTest().buildStudentConflictMatrix();
+			dmData5j.getConditionsToTest().buildAllConditions(
+					dmData5j.getTTStructure());
+			Period period = dmData5j.getTTStructure().getCurrentCycle()
 					.getFirstPeriod();
 			DxRoomsConditionsToTest testRoom = new DxRoomsConditionsToTest(
-					dmData7j);
+					dmData5j);
 			int[] perKey = { 1, 1, 1 };
 			int nbConf = testRoom.getInfo(perKey, period, "AMC640.1.01.1.");
 			assertEquals("test_AvailabilityInData7j: nbConflicts", 1, nbConf);
 
 		} catch (Exception e) {
-			// Should not fail in tests
+			// Should not fail in tests, but if file not there gives a failure
+			assertEquals("test_buildScNoAssigned: exception", "nullPointer", e.toString());
 			System.out.println("Exception in: test_AvailabilityInData7j");
 			e.printStackTrace();
 		}
@@ -122,11 +119,9 @@ public class RoomsConditionsTest extends TestCase {
 	 * 
 	 */
 	public void test_EventsConflictsData7j() {
-		StringBuffer fileName = new StringBuffer("." + File.separator);
-		fileName.append("dataTest" + File.separator);
-		fileName.append("loadData7j.dia");
+
 		try {
-			DModel dmData7j = new DModel(new DxTTableDoc(), fileName.toString());
+			DModel dmData7j = new DModel(new DxTTableDoc(), _pathForFiles + "loadData7j.dia");
 			dmData7j.getConditionsToTest().buildStudentConflictMatrix();
 			dmData7j.getConditionsToTest().buildAllConditions(
 					dmData7j.getTTStructure());
@@ -141,7 +136,8 @@ public class RoomsConditionsTest extends TestCase {
 			assertEquals("test_EventsConflictsData7j: nbConflicts", 1, nbConf);
 
 		} catch (Exception e) {
-			// Should not fail in tests
+			// Should not fail in tests, but if file not there gives a failure
+			assertEquals("test_buildScNoAssigned: exception", "nullPointer", e.toString());
 			System.out.println("Exception in: test_EventsConflictsData7j");
 			e.printStackTrace();
 		}
