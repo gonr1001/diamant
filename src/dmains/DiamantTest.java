@@ -104,22 +104,30 @@ public class DiamantTest {
 		TestSuite suite = new TestSuite("Diamant Tests");
 		File forOutputTests = new File("."+File.separator+ "forOutputTests");
 		forOutputTests.mkdir();
+		
+		
 
-		suite.addTest(DxTTStructureTest.suite());
-		suite.addTest(ByteInputFileTest.suite());
-		suite.addTest(ByteOutputFileTest.suite());
-		suite.addTest(FilterFileTest.suite());
-		suite.addTest(SemiExtendedAsciiFileTest.suite());
+
+		//suite.addTest(DxTTStructureTest.suite());
+		//suite.addTest(ByteInputFileTest.suite());
+		//suite.addTest(ByteOutputFileTest.suite());
+		//suite.addTest(FilterFileTest.suite());
+		//suite.addTest(SemiExtendedAsciiFileTest.suite());
+
 		
 		suite.addTest(DxAvailabilityTest.suite());
 		suite.addTest(DxInstructorTest.suite());
 		suite.addTest(DxSetOfInstructorsTest.suite());
-		suite.addTest(DxInstructorsReaderTest.suite());
+//		suite.addTest(DxInstructorsReaderTest.suite());
 		suite.addTest(DxSetOfSitesTest.suite());
-		suite.addTest(DxAssignAllAlgTest.suite());
-		if (DxFlags.newAlg) {
-			suite.addTest(DxAssignRoomsAlgTest.suite());
-		}
+//		suite.addTest(DxAssignAllAlgTest.suite());
+//		if (DxFlags.newAlg) {
+//			suite.addTest(DxAssignRoomsAlgTest.suite());
+//		}
+		
+		
+
+		
 		suite.addTest(RefinedStudMixAlgoTest.suite());
 		suite.addTest(ResourceTest.suite());
 		suite.addTest(AssignmentTest.suite());
@@ -133,17 +141,19 @@ public class DiamantTest {
 		suite.addTest(CycleTest.suite());
 		suite.addTest(TTStructureTest.suite());
 		suite.addTest(DXToolsMethodsTest.suite());
-		suite.addTest(SetOfEventsTest.suite());
+//		suite.addTest(SetOfEventsTest.suite());
 		suite.addTest(ConflictsAttachTest.suite());
 		suite.addTest(StudentsConflictsMatrixTest.suite());
 		suite.addTest(InstructorsConditionsTest.suite());
-		suite.addTest(DxSiteReaderTest.suite());
-		suite.addTest(RoomsConditionsTest.suite());
+//		suite.addTest(DxSiteReaderTest.suite());
+//		suite.addTest(RoomsConditionsTest.suite());
 		suite.addTest(StudentsConditionsTest.suite());
-		suite.addTest(ConditionsTest.suite());
+//		suite.addTest(ConditionsTest.suite());
 		suite.addTest(ScanFileTest.suite());
 		suite.addTest(SetOfStuSitesTest.suite());
 		suite.addTest(DSetOfActivitiesTest.suite());
+		
+
 		if (DxFlags.newActivity) {
 			suite.addTest(DxSetOfActivitiesSitesTest.suite());
 		} else {
@@ -157,12 +167,12 @@ public class DiamantTest {
 		suite.addTest(ByteArrayMessageTest.suite());
 		suite.addTest(StandardCollectionTest.suite());
 		suite.addTest(DResourceTest.suite());
-		if (DxFlags.newDxLoadData) {
-			suite.addTest(DxLoadDataTest.suite());
-		} else {
-			suite.addTest(DLoadDataTest.suite());
-		}	
-		suite.addTest(DSaveDataTest.suite());
+//		if (DxFlags.newDxLoadData) {
+//			suite.addTest(DxLoadDataTest.suite());
+//		} else {
+//			suite.addTest(DLoadDataTest.suite());
+//		}	
+//		suite.addTest(DSaveDataTest.suite());
 		suite.addTest(DSetOfResourcesTest.suite());
 		suite.addTest(DStandardReportDataTest.suite());
 		suite.addTest(SetOfStuSitesTest.suite());
