@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry exported="true" kind="lib" path="src/jars/ant-jsch.jar"/>
 	<classpathentry exported="true" kind="lib" path="src/jars/jdom.jar"/>
@@ -10,5 +9,6 @@
 	<classpathentry exported="true" kind="lib" path="src/jars/sjsxp.jar"/>
 	<classpathentry exported="true" kind="lib" path="src/jars/xercesImpl.jar"/>
 	<classpathentry exported="true" kind="lib" path="src/jars/xml-apis.jar"/>
+	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

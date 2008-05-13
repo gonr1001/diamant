@@ -43,6 +43,9 @@ import dInternal.dTimeTable.TTStructure;
 import eLib.exit.exception.DxException;
 
 public class DLoadDataTest extends TestCase {
+	
+//	private final String _pathForFiles = "." + File.separator + "dataTest"
+//	+ File.separator;
 
 	private DLoadData _loadData5j;
 
