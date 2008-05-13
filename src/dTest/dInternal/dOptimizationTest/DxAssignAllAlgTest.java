@@ -30,7 +30,6 @@ import dInternal.DModel;
 import dInternal.DxConflictLimits;
 import dInternal.dOptimization.DxAssignAllAlg;
 
-
 /**
  * Ruben Gonzalez-Rubio
  * 
@@ -42,12 +41,10 @@ import dInternal.dOptimization.DxAssignAllAlg;
  */
 public class DxAssignAllAlgTest extends TestCase {
 
-
 	private final String _pathForFiles = "." + File.separator + "dataTest"
-	+ File.separator + "refFiles" + File.separator + "facs" + File.separator + "tAlgorithmes" + File.separator;
-	
+			+ File.separator + "refFiles" + File.separator + "facs"
+			+ File.separator + "tAlgorithmes" + File.separator;
 
-	
 	/**
 	 * 
 	 * 
@@ -67,10 +64,10 @@ public class DxAssignAllAlgTest extends TestCase {
 		String str = "conflictLimits;0;0;0;0;30;0;100;";
 		dxCL.readLimits(str);
 		DxDocument dxDocument1 = new DxTTableDoc();
-	
 
 		try {
-			DModel dm1 = new DModel(dxDocument1, _pathForFiles + "scNoAssigned.dia");
+			DModel dm1 = new DModel(dxDocument1, _pathForFiles
+					+ "scNoAssigned.dia");
 			dm1.changeInDModel(new String("DxAssign"));
 
 			assertEquals("test_buildScNoAssigned: activities size", 140, dm1
@@ -83,7 +80,8 @@ public class DxAssignAllAlgTest extends TestCase {
 					.getSetOfEvents().getNumberOfEventToAssign());
 		} catch (Exception e) {
 			// Should not fail in tests, but if file not there gives a failure
-			assertEquals("test_buildScNoAssigned: exception", "nullPointer", e.toString());
+			assertEquals("test_buildScNoAssigned: exception", "nullPointer", e
+					.toString());
 			System.out.println("Exception in: test_buildScNoAssigned");
 			e.printStackTrace();
 		}
@@ -101,7 +99,8 @@ public class DxAssignAllAlgTest extends TestCase {
 		DxDocument dxDocument1 = new DxTTableDoc();
 
 		try {
-			DModel dm1 = new DModel(dxDocument1,_pathForFiles + "genNoAssigned.dia");
+			DModel dm1 = new DModel(dxDocument1, _pathForFiles
+					+ "genNoAssigned.dia");
 			dm1.changeInDModel(new Object());
 			assertEquals("test_buildScNoAssigned: activities size", 140, dm1
 					.getSetOfActivities().size());
@@ -113,7 +112,8 @@ public class DxAssignAllAlgTest extends TestCase {
 					.getSetOfEvents().getNumberOfEventToAssign());
 		} catch (Exception e) {
 			// Should not fail in tests, but if file not there gives a failure
-			assertEquals("test_buildScNoAssigned: exception", "nullPointer", e.toString());
+			assertEquals("test_buildScNoAssigned: exception", "nullPointer", e
+					.toString());
 			System.out.println("Exception in: test_buildGenNoAssigned");
 			e.printStackTrace();
 		}
