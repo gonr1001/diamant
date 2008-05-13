@@ -39,7 +39,7 @@ public class DSaveDataTest extends TestCase {
 	
 	private final String _pathForOutputFiles = "." + File.separator
 	+ "forOutputTests" + File.separator;
-	DSaveData _a;
+//	DSaveData _a;
 
 	DModel _dm1;
 
@@ -63,7 +63,7 @@ public class DSaveDataTest extends TestCase {
 	} // end suite
 
 	public void setUp() {
-		_a = new DSaveData("1.6");
+		DSaveData a = new DSaveData("1.6");
 		_dxDocument1 = new DxTTableDoc();
 		_dxDocument2 = new DxTTableDoc();
 //		_fileName1 = "." + File.separator + "dataTest" + File.separator
@@ -80,7 +80,7 @@ public class DSaveDataTest extends TestCase {
 					.println("Abnormal Exception: Should not fail in normal conditions");
 		}
 
-		_error = _a
+		_error = a
 				.saveTimeTable(_dm1.getTTStructure(), _dm1  
 						.getDxSetOfInstructors(), _dm1.getDxSetOfSites(), _dm1
 						.getSetOfActivitiesSites(), _dm1.getSetOfStuSites(),
@@ -95,7 +95,8 @@ public class DSaveDataTest extends TestCase {
 	}
 
 	public void test_getVersion() {
-		assertEquals("test_getVersion: assertEquals", "1.6", _a.getVersion());
+		DSaveData a = new DSaveData("1.6");
+		assertEquals("test_getVersion: assertEquals", "1.6", a.getVersion());
 	}
 
 	/**
@@ -156,7 +157,8 @@ public class DSaveDataTest extends TestCase {
 	 * test that check that the saved file is the same as the loaded file
 	 */
 	public void test_saveTTStructure() {
-		String error = _a.saveTTStructure(_dm1.getTTStructure(), _pathForOutputFiles + "downDataTTS.dia");
+		DSaveData a = new DSaveData("1.6");
+		String error = a.saveTTStructure(_dm1.getTTStructure(), _pathForOutputFiles + "downDataTTS.dia");
 		assertEquals("test_saveTTStructure: assertEquals", 0, error.length());
 	}
 }

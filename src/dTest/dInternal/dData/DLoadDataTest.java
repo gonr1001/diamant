@@ -176,7 +176,7 @@ public class DLoadDataTest extends TestCase {
 		try {
 			newStuSites = (SetOfStuSites) _loadData5j.selectiveImport(
 					_loadData5j.getSetofStuSites(), "." + File.separator
-							+ "dataTest" + File.separator + "ImportSTUDS.SIG");
+							+ "dataTest" + File.separator + "importSTUDS.SIG");
 			assertEquals("test1_ImportSelective : assertEquals: ", "",
 					newStuSites.getError());
 			if (newStuSites.getError() == "") {
