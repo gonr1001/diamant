@@ -64,9 +64,11 @@ public class ByteOutputFileTest extends TestCase {
 			assertEquals("Test File nonEmpty byte :", (byte)'5', b[4]);
 			bif.close();
 		} catch (Exception e) {
-			System.out.println(e);
+			// Should not fail in tests, but if file not there gives a failure
+			assertEquals("testReadWriteRead: exception", "nullPointer", e
+					.toString());
+			System.out.println("Exception in: testReadWriteRead");
 			e.printStackTrace();
-			throw new RuntimeException("Problem in testReadWriteRead");
 		}
 	}
 

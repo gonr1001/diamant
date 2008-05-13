@@ -40,13 +40,6 @@ public class DxTTStructureTest extends TestCase {
 	private final String _pathForSchemas = "dInternal" + File.separator
 			+ "dTimeTable" + File.separator + "schemas" + File.separator;
 
-	/**
-	 * 
-	 */
-	public DxTTStructureTest(String name) {
-		super(name);
-	}
-
 	public static Test suite() {
 		// the type safe way is in SimpleTest
 		// the dynamic way :
@@ -90,9 +83,11 @@ public class DxTTStructureTest extends TestCase {
 					st.nextToken(),
 					"Message: Element type \"TTperiod\" must be followed by either attribute specifications, \">\" or \"/>\".");
 		} catch (Exception e) {
-			System.out.println(e);
+			// Should not fail in tests, but if file not there gives a failure
+			assertEquals("test_fileBadCloseTag: exception", "nullPointer", e
+					.toString());
+			System.out.println("Exception in: test_fileBadCloseTag");
 			e.printStackTrace();
-			throw new RuntimeException("Problem in test_fileNBadCloseTag");
 		}
 	}
 
@@ -111,9 +106,11 @@ public class DxTTStructureTest extends TestCase {
 					st.nextToken(),
 					"Message: The element type \"TTperiods\" must be terminated by the matching end-tag \"</TTperiods>\".");
 		} catch (Exception e) {
-			System.out.println(e);
+			// Should not fail in tests, but if file not there gives a failure
+			assertEquals("test_fileNoOpenTag: exception", "nullPointer", e
+					.toString());
+			System.out.println("Exception in: test_fileNoOpenTag");
 			e.printStackTrace();
-			throw new RuntimeException("Problem in test_fileNoOpenTag");
 		}
 	}
 
@@ -133,9 +130,11 @@ public class DxTTStructureTest extends TestCase {
 					st.nextToken());
 
 		} catch (Exception e) {
-			System.out.println(e);
+			// Should not fail in tests, but if file not there gives a failure
+			assertEquals("test_fileNoCloseTags: exception", "nullPointer", e
+					.toString());
+			System.out.println("Exception in: test_fileNoCloseTags");
 			e.printStackTrace();
-			throw new RuntimeException("Problem in test_emptyElement");
 		}
 	}
 }

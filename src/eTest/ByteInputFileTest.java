@@ -29,9 +29,9 @@ import eLib.exit.txt.ByteInputFile;
 
 public class ByteInputFileTest extends TestCase {
 
-	public ByteInputFileTest(String name) {
-		super(name);
-	}
+	private final String _pathForFiles = "." + File.separator + "edataTest"
+	+ File.separator;
+	
 
 	public static Test suite() {
 		// the type safe way is in SimpleTest
@@ -68,8 +68,7 @@ public class ByteInputFileTest extends TestCase {
 	public void testFileEmpty() {
 		ByteInputFile bif;
 		try {
-			bif = new ByteInputFile("." + File.separator + "eDataTest"
-					+ File.separator + "empty.txt");
+			bif = new ByteInputFile(_pathForFiles + "empty.txt");
 			byte[] b = bif.readFileAsBytes();
 			assertEquals("Test File Empty :", null, b);
 			bif.close();
@@ -83,25 +82,25 @@ public class ByteInputFileTest extends TestCase {
 	public void testFileNonEmpty() {
 		ByteInputFile bif;
 		try {
-			bif = new ByteInputFile("." + File.separator + "eDataTest"
-					+ File.separator + "nonEmpty.txt");
+			bif = new ByteInputFile(_pathForFiles + "nonEmpty.txt");
 			byte[] b = bif.readFileAsBytes();
 			assertEquals("Test File nonEmpty size :", 5, b.length);
 			assertEquals("Test File nonEmpty byte :", (byte)'1', b[0]);
 			assertEquals("Test File nonEmpty byte :", (byte)'5', b[4]);
 			bif.close();
 		} catch (Exception e) {
-			System.out.println(e);
+			// Should not fail in tests, but if file not there gives a failure
+			assertEquals("testFileNonEmpty: exception", "nullPointer", e
+					.toString());
+			System.out.println("Exception in: testFileNonEmpty");
 			e.printStackTrace();
-			throw new RuntimeException("Problem in testFileNonEmpty");
 		}
 	}
 
 	public void testFileCountLines() {
 		ByteInputFile bif;
 		try {
-			bif = new ByteInputFile("." + File.separator + "eDataTest"
-					+ File.separator + "count3Lines.txt");
+			bif = new ByteInputFile(_pathForFiles + "count3Lines.txt");
 			byte[] b = bif.readFileAsBytes();
 			StringTokenizer dataTokens = new StringTokenizer(new String(b),
 					"=="); // the token separator is not in the file
@@ -110,9 +109,11 @@ public class ByteInputFileTest extends TestCase {
 					.countLines(str));
 			bif.close();
 		} catch (Exception e) {
-			System.out.println(e);
+			// Should not fail in tests, but if file not there gives a failure
+			assertEquals("testFileCountLines: exception", "nullPointer", e
+					.toString());
+			System.out.println("Exception in: testFileCountLines");
 			e.printStackTrace();
-			throw new RuntimeException("Problem in testFileCountLines");
 		}
 	}
 

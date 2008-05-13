@@ -35,6 +35,7 @@ import dTest.dInternal.dOptimizationTest.DxAssignAllAlgTest;
 import dTest.dInternal.dOptimizationTest.RoomsConditionsTest;
 import dTest.dInternal.dOptimizationTest.SetOfEventsTest;   
 import developer.DxFlags;
+import eTest.ByteInputFileTest;
 import eTest.ByteOutputFileTest;
 import eTest.FilterFileTest;
 import eTest.SemiExtendedAsciiFileTest;
@@ -77,6 +78,7 @@ public class RgrTest {
 		
 		suite.addTest(DxTTStructureTest.suite());
 		suite.addTest(DxSiteReaderTest.suite());
+		suite.addTest(ByteInputFileTest.suite());
 		suite.addTest(ByteOutputFileTest.suite());
 		suite.addTest(FilterFileTest.suite());
 		suite.addTest(SemiExtendedAsciiFileTest.suite());
