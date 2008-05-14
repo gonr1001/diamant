@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="src/jars/junit.jar"/>
 	<classpathentry exported="true" kind="lib" path="src/jars/ant-jsch.jar"/>
 	<classpathentry exported="true" kind="lib" path="src/jars/jdom.jar"/>
 	<classpathentry exported="true" kind="lib" path="src/jars/jsch.jar"/>
-	<classpathentry exported="true" kind="lib" path="src/jars/junit.jar"/>
 	<classpathentry exported="true" kind="lib" path="src/jars/log4j-1.2.8.jar"/>
 	<classpathentry exported="true" kind="lib" path="src/jars/sjsxp.jar"/>
 	<classpathentry exported="true" kind="lib" path="src/jars/xercesImpl.jar"/>

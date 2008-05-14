@@ -40,8 +40,9 @@ import eLib.exit.xml.output.XMLWriter;
 import eLib.exit.xml.output.XMLOutputFile;
 
 public class SequenceTest extends TestCase {
+	
 	private final String _pathForFiles = "." + File.separator + "dataTest"
-	+ File.separator;
+	+ File.separator + "TTxmlFiles" + File.separator;
 	
 	private final String _pathForOutputFiles = "." + File.separator
 	+ "forOutputTests" + File.separator;
@@ -66,12 +67,16 @@ public class SequenceTest extends TestCase {
 			XMLReader list = new XMLReader();
 			setOfPers = list.getRootElement(doc);
 			sequence.readXMLtag(setOfPers);
-			// _setOfCycles.readXMLtag(root);
+			assertEquals("test_readXMLtag : assertEquals 1(Number of periods):", 2,
+					sequence.getSetOfPeriods().size());
 		} catch (Exception e) {
-			System.out.println(e);
+			// Should not fail in tests, but if file not there gives a failure
+			assertEquals("test_readXMLtag: exception", "nullPointer", e
+					.toString());
+			System.out.println("Exception in: test_readXMLtag");
+			e.printStackTrace();
 		}
-		assertEquals("test_readXMLtag : assertEquals 1(Number of periods):", 2,
-				sequence.getSetOfPeriods().size());
+
 		// assertEquals("test_readXMLtag : assertEquals 2(Minute):",
 		// sequence.getSetOfPeriods().getResourceAt(0).getID(), "1");
 		// assertEquals("test_readXMLtag : assertEquals 2(Minute):",
