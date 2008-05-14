@@ -44,13 +44,7 @@ import dInterface.dMenus.DxMenuBar;
  * 
  */
 public class DFileMenuTest extends TestCase {
-//	DApplication _da;
-//
-//	DxMenuBar _dxmb;
 
-	public DFileMenuTest(String name) {
-		super(name);
-	}
 
 	public static Test suite() {
 		// the type safe way is in SimpleTest

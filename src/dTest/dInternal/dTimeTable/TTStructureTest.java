@@ -61,13 +61,33 @@ public class TTStructureTest extends TestCase {
 		assertEquals(
 				"test_CreateStandardTT : assertEquals 1 (number of cycles):",
 				3, tts.getSetOfCycles().size());
-		Period per = tts.getCurrentCycle().getFirstPeriod();
+		
+		Period period = tts.getCurrentCycle().getFirstPeriod();
 		assertEquals("test_getFirstPeriod : assertEquals 1 (begin hour):", 8,
-				per.getBeginHour()[0]);
+				period.getBeginHour()[0]);
 		assertEquals("test_getFirstPeriod : assertEquals 2 (begin minute):",
-				15, per.getBeginHour()[1]);
-		assertEquals("test_getFirstPeriod : assertEquals 3 (priority):", 0, per
+				15, period.getBeginHour()[1]);
+		assertEquals("test_getFirstPeriod : assertEquals 3 (priority):", 0, period
 				.getPriority());
+		
+		
+		period = tts.getCurrentCycle().getLastPeriod();
+		assertEquals("test_getLastPeriod : assertEquals 1 (begin hour):", 21,
+				period.getBeginHour()[0]);
+		assertEquals("test_getLastPeriod : assertEquals 2 (begin minute):", 0,
+				period.getBeginHour()[1]);
+		assertEquals("test_getLastPeriod : assertEquals 3 (priority):", 1, period
+				.getPriority());
+		
+		
+		period  = tts.getCurrentCycle().getPeriodByIndex(4, 2, 1);
+		assertEquals("test_getPeriod : assertEquals 1 (begin hour):", 20, period
+				.getBeginHour()[0]);
+		assertEquals("test_getPeriod : assertEquals 2 (begin minute):", 0, period
+				.getBeginHour()[1]);
+		assertEquals("test_getPeriod : assertEquals 3 (priority):", 1, period
+				.getPriority());
+
 	}
 
 	/**
@@ -84,230 +104,182 @@ public class TTStructureTest extends TestCase {
 				60, tts.getPeriodLenght());
 	}
 
-//	/**
-//	 * test that give the first period of the time table
-//	 */
-//	public void test_getFirstPeriod() {
-//		TTStructure tts = new TTStructure();
-//		tts.loadTTSFromFile(_path + "StandardTTC.xml");
-//		Period per = tts.getCurrentCycle().getFirstPeriod();
-//		assertEquals("test_getFirstPeriod : assertEquals 1 (begin hour):", 8,
-//				per.getBeginHour()[0]);
-//		assertEquals("test_getFirstPeriod : assertEquals 2 (begin minute):",
-//				15, per.getBeginHour()[1]);
-//		assertEquals("test_getFirstPeriod : assertEquals 3 (priority):", 0, per
-//				.getPriority());
-//	}
-//
-//	/**
-//	 * test that give the last period of the time table
-//	 */
-//	public void test_getLastPeriod() {
-//		TTStructure tts = new TTStructure();
-//		tts.loadTTSFromFile(_path + "StandardTTC.xml");
-//		Period per = tts.getCurrentCycle().getLastPeriod();
-//		assertEquals("test_getLastPeriod : assertEquals 1 (begin hour):", 21,
-//				per.getBeginHour()[0]);
-//		assertEquals("test_getLastPeriod : assertEquals 2 (begin minute):", 0,
-//				per.getBeginHour()[1]);
-//		assertEquals("test_getLastPeriod : assertEquals 3 (priority):", 1, per
-//				.getPriority());
-//	}
-//
-//	/**
-//	 * test that gives the maximal number of periods by day in a cycle
-//	 */
-//
-//	public void test_getMaxNumberOfPeriodsADay() {
-//		TTStructure tts = new TTStructure();
-//		tts.loadTTSFromFile(_path + "nonUniformTT.xml");
-//		int maxPer = tts.getCurrentCycle().getMaxNumberOfPeriodsADay();
-//		assertEquals("test_getMaxNumberOfPeriodsADay : assertEquals 1 :", 12,
-//				maxPer);
-//	}
-//
-//	/**
-//	 * test that gives the maximal number sequences in a cycle
-//	 */
-//
-//	public void test_getMaxNumberOfSeqs() {
-//		TTStructure tts = new TTStructure();
-//		tts.loadTTSFromFile(_path + "nonUniformTT.xml");
-//		int maxSeq = tts.getCurrentCycle().getMaxNumberOfSeqs();
-//		assertEquals("test_getMaxNumberOfSequences : assertEquals 1 :", 3,
-//				maxSeq);
-//	}
-//
-//	/**
-//	 * test that give a period of the time table
-//	 */
-//	public void test_getPeriod() {
-//		TTStructure tts = new TTStructure();
-//		tts.loadTTSFromFile(_path + "StandardTTC.xml");
-//		Period per = tts.getCurrentCycle().getPeriodByIndex(4, 2, 1);
-//		assertEquals("test_getPeriod : assertEquals 1 (begin hour):", 20, per
-//				.getBeginHour()[0]);
-//		assertEquals("test_getPeriod : assertEquals 2 (begin minute):", 0, per
-//				.getBeginHour()[1]);
-//		assertEquals("test_getPeriod : assertEquals 3 (priority):", 1, per
-//				.getPriority());
-//	}
-//
-//	/**
-//	 * test that save the ttstructure in a xml file
-//	 */
-//	public void test_saveTTStructure() {
-//		TTStructure tts = new TTStructure();
-//		tts.loadTTSFromFile(_path + "StandardTTC.xml");
-//		tts.saveTTStructure(_path + "SaveStandardTTC.xml");
-//		TTStructure newtts = new TTStructure();
-//		newtts.loadTTSFromFile(_path + "SaveStandardTTC.xml");
-//		Period lastPer = newtts.getCurrentCycle().getLastPeriod();
-//		assertEquals(
-//				"test_saveTTStructure : assertEquals 1 (number of cycles):", 3,
-//				newtts.getSetOfCycles().size());
-//		assertEquals("test_saveTTStructure : assertEquals 2 (PeriodLenght):",
-//				60, newtts.getPeriodLenght());
-//		assertEquals("test_saveTTStructure : assertEquals 3 (begin hour):", 21,
-//				lastPer.getBeginHour()[0]);
-//		assertEquals("test_saveTTStructure : assertEquals 4 (begin minute):",
-//				0, lastPer.getBeginHour()[1]);
-//		assertEquals("test_saveTTStructure : assertEquals 5 (priority):", 1,
-//				lastPer.getPriority());
-//	}
-//
-//	/**
-//	 * test that read the cycle xml tag
-//	 */
-//	public void test_readXMLtag() {
-//		XMLInputFile xmlFile;
-//		Element item;
-//		TTStructure tts = new TTStructure();
-//		// SetOfCycles setOfcycle= new SetOfCycles();
-//		try {
-//			xmlFile = new XMLInputFile();
-//			// System.out.println(path+"StandardTTC.xml");//debug
-//			Document doc = xmlFile.createDocument(_path + "StandardTTC.xml");
-//			XMLReader list = new XMLReader();
-//			item = list.getRootElement(doc);
-//			tts.readXMLtag(item);
-//			// _setOfCycles.readXMLtag(root);
-//		} catch (Exception e) {
-//			System.out.println(e);
-//		}
-//		assertEquals("test_readXMLtag : assertEquals 1 (number of cycles):",
-//				tts.getSetOfCycles().size(), 3);
-//		assertEquals("test_readXMLtag : assertEquals 2 (period length):", tts
-//				.getPeriodLenght(), 60);
-//	}
-//
-//	/**
-//	 * test that write the cycle xml tag
-//	 */
-//	public void test_writeXMLtag() {
-//		XMLInputFile xmlFile;
-//		Element item;
-//		TTStructure tts = new TTStructure();
-//		TTStructure newtts = new TTStructure();
-//		// SetOfCycles setOfcycle= new SetOfCycles();
-//		// SetOfCycles newSetOfcycle= new SetOfCycles();
-//		// Cycle newCycle= new Cycle();
-//		// cycle.getSetOfDays().addResource(new Resource("Ma",new Day()),0);
-//		// cycle.addDays(3);
-//
-//		Cycle cycle = new Cycle();
-//		cycle.getSetOfDays().addResource(new DResource("Ma", new Day()), 0);
-//		cycle.getDayByIndex(0).getSetOfSequences().addResource(
-//				new DResource("AM", new Sequence()), 0);
-//		cycle.getDayByIndex(0).getSequence(0).getSetOfPeriods().addResource(
-//				new DResource("1", new Period()), 0);
-//		cycle.addDays(3);
-//
-//		tts.getSetOfCycles().addResource(new DResource("1", cycle), 0);
-//		tts.getSetOfCycles().addResource(new DResource("2", cycle), 0);
-//		try {
-//			xmlFile = new XMLInputFile();
-//			// System.out.println(path+"cycle.xml");//debug
-//			Document doc;// = xmlFile.getDocumentFile(path+"cycle.xml");
-//			XMLWriter wr = new XMLWriter();
-//			doc = wr.getNewDocument();
-//			// write xml file
-//			Element ttCycle = tts.writeXMLtag(doc);
-//			doc = wr.buildDocument(doc, ttCycle);
-//			XMLOutputFile xmlOF = new XMLOutputFile();
-//			xmlOF.write(doc, _path + "SaveSetOfCycles.xml");
-//
-//			// read xml file
-//			doc = xmlFile.createDocument(_path + "SaveSetOfCycles.xml");
-//			XMLReader list = new XMLReader();
-//			item = list.getRootElement(doc);
-//			newtts.readXMLtag(item);
-//			// _setOfCycles.readXMLtag(root);
-//		} catch (Exception e) {
-//			System.out.println(e);
-//		}
-//		assertEquals("test_writeXMLtag : assertEquals 1 (number of cycles):",
-//				tts.getSetOfCycles().size(), newtts.getSetOfCycles().size());
-//		assertEquals("test_writeXMLtag : assertEquals 2 (period length):", tts
-//				.getPeriodLenght(), newtts.getPeriodLenght());
-//	}
 
-//	/**
-//	 * test that creates the standard xml timetable file
-//	 */
-//	public void test_cloneCurrentTTS() {
-//		TTStructure tts = new TTStructure();
-//		tts.loadTTSFromFile(_path + "5j27p.xml");
-//
-//		TTStructure cloneTTS = tts.cloneCurrentTTS();
-//		assertEquals(
-//				"test_cloneCurrentTTS1 : assertEquals 1 (number of cycles):",
-//				1, cloneTTS.getSetOfCycles().size());
-//		assertEquals(
-//				"test_cloneCurrentTTS2 : assertEquals 2 (number of days):", 5,
-//				cloneTTS.getCurrentCycle().getSetOfDays().size());
-//		assertEquals("test_cloneCurrentTTS3 : assertEquals 3 (PeriodLenght):",
-//				30, cloneTTS.getPeriodLenght());
-//		Period p = cloneTTS.getCurrentCycle().getFirstPeriod();
-//		int[] hour = p.getBeginHour();
-//		DResource r = cloneTTS.getCurrentCycle().getSetOfDays()
-//				.getResourceAt(0);
-//		assertEquals("test_cloneCurrentTTS4 : assertEquals 4 (hour):", 8,
-//				hour[0]);
-//		assertEquals("test_cloneCurrentTTS5 : assertEquals 5 (min):", 0,
-//				hour[1]);
-//		assertEquals("test_cloneCurrentTTS6 : assertEquals 6 (day):", "Lu", r
-//				.getID());
-//		p = cloneTTS.getCurrentCycle().getLastPeriod();
-//		hour = p.getBeginHour();
-//		r = cloneTTS.getCurrentCycle().getSetOfDays().getResourceAt(4);
-//		assertEquals("test_cloneCurrentTTS7 : assertEquals 4 (hour):", 21,
-//				hour[0]);
-//		assertEquals("test_cloneCurrentTTS8 : assertEquals 5 (min):", 30,
-//				hour[1]);
-//		assertEquals("test_cloneCurrentTTS9 : assertEquals 6 (day):", "Ve", r
-//				.getID());
-//
-//	}
-//
-//	/**
-//	 * test that clone the standard xml timetable file and test if it is equals
-//	 * to the original tt file
-//	 */
-//	public void test1_cloneCurrentTTS() {
-//		TTStructure tts = new TTStructure();
-//		tts.loadTTSFromFile(_path + "5j27p.xml");
-//
-//		TTStructure cloneTTS = tts.cloneCurrentTTS();
-//		boolean isEquals = tts.getCurrentCycle().isEquals(
-//				cloneTTS.getCurrentCycle());
-//		assertEquals("test_cloneCurrentTTS : assertEquals 1 :clone:", true,
-//				isEquals);
-//		DResource dayR = cloneTTS.getCurrentCycle().getSetOfDays()
-//				.getResourceAt(0);
-//		dayR.setID("Lun");
-//		isEquals = tts.getCurrentCycle().isEquals(cloneTTS.getCurrentCycle());
-//		assertEquals("test_cloneCurrentTTS : assertEquals 2 :clone:", false,
-//				isEquals);
-//	}
+
+	/**
+	 * test that gives the maximal number of periods by day in a cycle
+	 */
+
+	public void test_getMaxNumberOfPeriodsADay() {
+		TTStructure tts = new TTStructure();
+		tts.loadTTSFromFile(_pathForFiles + "nonUniformTT.xml");
+		int maxPer = tts.getCurrentCycle().getMaxNumberOfPeriodsADay();
+		assertEquals("test_getMaxNumberOfPeriodsADay : assertEquals 1 :", 12,
+				maxPer);
+		
+		
+		int maxSeq = tts.getCurrentCycle().getMaxNumberOfSeqs();
+		assertEquals("test_getMaxNumberOfSequences : assertEquals 1 :", 3,
+				maxSeq);
+	}
+
+
+
+	/**
+	 * test that save the ttstructure in a xml file
+	 */
+	public void test_saveTTStructure() {
+		TTStructure tts = new TTStructure();
+		tts.loadTTSFromFile(_pathForFiles + "StandardTTC.xml");
+		tts.saveTTStructure(_pathForOutputFiles + "SaveStandardTTC.xml");
+		TTStructure newtts = new TTStructure();
+		newtts.loadTTSFromFile(_pathForOutputFiles + "SaveStandardTTC.xml");
+		Period lastPer = newtts.getCurrentCycle().getLastPeriod();
+		assertEquals(
+				"test_saveTTStructure : assertEquals 1 (number of cycles):", 3,
+				newtts.getSetOfCycles().size());
+		assertEquals("test_saveTTStructure : assertEquals 2 (PeriodLenght):",
+				60, newtts.getPeriodLenght());
+		assertEquals("test_saveTTStructure : assertEquals 3 (begin hour):", 21,
+				lastPer.getBeginHour()[0]);
+		assertEquals("test_saveTTStructure : assertEquals 4 (begin minute):",
+				0, lastPer.getBeginHour()[1]);
+		assertEquals("test_saveTTStructure : assertEquals 5 (priority):", 1,
+				lastPer.getPriority());
+	}
+
+	/**
+	 * test that read the cycle xml tag
+	 */
+	public void test_readXMLtag() {
+		XMLInputFile xmlFile;
+		Element item;
+		TTStructure tts = new TTStructure();
+		// SetOfCycles setOfcycle= new SetOfCycles();
+		try {
+			xmlFile = new XMLInputFile();
+			// System.out.println(path+"StandardTTC.xml");//debug
+			Document doc = xmlFile.createDocument(_pathForFiles + "StandardTTC.xml");
+			XMLReader list = new XMLReader();
+			item = list.getRootElement(doc);
+			tts.readXMLtag(item);
+			// _setOfCycles.readXMLtag(root);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		assertEquals("test_readXMLtag : assertEquals 1 (number of cycles):",
+				tts.getSetOfCycles().size(), 3);
+		assertEquals("test_readXMLtag : assertEquals 2 (period length):", tts
+				.getPeriodLenght(), 60);
+	}
+
+	/**
+	 * test that write the cycle xml tag
+	 */
+	public void test_writeXMLtag() {
+		XMLInputFile xmlFile;
+		Element item;
+		TTStructure tts = new TTStructure();
+		TTStructure newtts = new TTStructure();
+		// SetOfCycles setOfcycle= new SetOfCycles();
+		// SetOfCycles newSetOfcycle= new SetOfCycles();
+		// Cycle newCycle= new Cycle();
+		// cycle.getSetOfDays().addResource(new Resource("Ma",new Day()),0);
+		// cycle.addDays(3);
+
+		Cycle cycle = new Cycle();
+		cycle.getSetOfDays().addResource(new DResource("Ma", new Day()), 0);
+		cycle.getDayByIndex(0).getSetOfSequences().addResource(
+				new DResource("AM", new Sequence()), 0);
+		cycle.getDayByIndex(0).getSequence(0).getSetOfPeriods().addResource(
+				new DResource("1", new Period()), 0);
+		cycle.addDays(3);
+
+		tts.getSetOfCycles().addResource(new DResource("1", cycle), 0);
+		tts.getSetOfCycles().addResource(new DResource("2", cycle), 0);
+		try {
+			xmlFile = new XMLInputFile();
+			// System.out.println(path+"cycle.xml");//debug
+			Document doc;// = xmlFile.getDocumentFile(path+"cycle.xml");
+			XMLWriter wr = new XMLWriter();
+			doc = wr.getNewDocument();
+			// write xml file
+			Element ttCycle = tts.writeXMLtag(doc);
+			doc = wr.buildDocument(doc, ttCycle);
+			XMLOutputFile xmlOF = new XMLOutputFile();
+			xmlOF.write(doc, _pathForOutputFiles + "SaveSetOfCycles.xml");
+
+			// read xml file
+			doc = xmlFile.createDocument(_pathForOutputFiles + "SaveSetOfCycles.xml");
+			XMLReader list = new XMLReader();
+			item = list.getRootElement(doc);
+			newtts.readXMLtag(item);
+			// _setOfCycles.readXMLtag(root);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		assertEquals("test_writeXMLtag : assertEquals 1 (number of cycles):",
+				tts.getSetOfCycles().size(), newtts.getSetOfCycles().size());
+		assertEquals("test_writeXMLtag : assertEquals 2 (period length):", tts
+				.getPeriodLenght(), newtts.getPeriodLenght());
+	}
+
+	/**
+	 * test that creates the standard xml timetable file
+	 */
+	public void test_cloneCurrentTTS() {
+		TTStructure tts = new TTStructure();
+		tts.loadTTSFromFile(_pathForFiles + "5j27p.xml");
+
+		TTStructure cloneTTS = tts.cloneCurrentTTS();
+		assertEquals(
+				"test_cloneCurrentTTS1 : assertEquals 1 (number of cycles):",
+				1, cloneTTS.getSetOfCycles().size());
+		assertEquals(
+				"test_cloneCurrentTTS2 : assertEquals 2 (number of days):", 5,
+				cloneTTS.getCurrentCycle().getSetOfDays().size());
+		assertEquals("test_cloneCurrentTTS3 : assertEquals 3 (PeriodLenght):",
+				30, cloneTTS.getPeriodLenght());
+		Period p = cloneTTS.getCurrentCycle().getFirstPeriod();
+		int[] hour = p.getBeginHour();
+		DResource r = cloneTTS.getCurrentCycle().getSetOfDays()
+				.getResourceAt(0);
+		assertEquals("test_cloneCurrentTTS4 : assertEquals 4 (hour):", 8,
+				hour[0]);
+		assertEquals("test_cloneCurrentTTS5 : assertEquals 5 (min):", 0,
+				hour[1]);
+		assertEquals("test_cloneCurrentTTS6 : assertEquals 6 (day):", "Lu", r
+				.getID());
+		p = cloneTTS.getCurrentCycle().getLastPeriod();
+		hour = p.getBeginHour();
+		r = cloneTTS.getCurrentCycle().getSetOfDays().getResourceAt(4);
+		assertEquals("test_cloneCurrentTTS7 : assertEquals 4 (hour):", 21,
+				hour[0]);
+		assertEquals("test_cloneCurrentTTS8 : assertEquals 5 (min):", 30,
+				hour[1]);
+		assertEquals("test_cloneCurrentTTS9 : assertEquals 6 (day):", "Ve", r
+				.getID());
+
+	}
+
+	/**
+	 * test that clone the standard xml timetable file and test if it is equals
+	 * to the original tt file
+	 */
+	public void test1_cloneCurrentTTS() {
+		TTStructure tts = new TTStructure();
+		tts.loadTTSFromFile(_pathForFiles + "5j27p.xml");
+
+		TTStructure cloneTTS = tts.cloneCurrentTTS();
+		boolean isEquals = tts.getCurrentCycle().isEquals(
+				cloneTTS.getCurrentCycle());
+		assertEquals("test_cloneCurrentTTS : assertEquals 1 :clone:", true,
+				isEquals);
+		DResource dayR = cloneTTS.getCurrentCycle().getSetOfDays()
+				.getResourceAt(0);
+		dayR.setID("Lun");
+		isEquals = tts.getCurrentCycle().isEquals(cloneTTS.getCurrentCycle());
+		assertEquals("test_cloneCurrentTTS : assertEquals 2 :clone:", false,
+				isEquals);
+	}
 }
