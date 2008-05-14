@@ -40,12 +40,12 @@ import eLib.exit.xml.output.XMLWriter;
 import eLib.exit.xml.output.XMLOutputFile;
 
 public class SequenceTest extends TestCase {
-	
+
 	private final String _pathForFiles = "." + File.separator + "dataTest"
-	+ File.separator + "TTxmlFiles" + File.separator;
-	
+			+ File.separator + "TTxmlFiles" + File.separator;
+
 	private final String _pathForOutputFiles = "." + File.separator
-	+ "forOutputTests" + File.separator;
+			+ "forOutputTests" + File.separator;
 
 	public static Test suite() {
 		// the type safe way is in SimpleTest
@@ -62,13 +62,19 @@ public class SequenceTest extends TestCase {
 		Sequence sequence = new Sequence();
 		try {
 			xmlFile = new XMLInputFile();
-			// System.out.println(path+"period.xml");//debug
-			Document doc = xmlFile.createDocument(_pathForFiles + "sequence.xml");
+			Document doc = xmlFile.createDocument(_pathForFiles
+					+ "sequence.xml");
 			XMLReader list = new XMLReader();
 			setOfPers = list.getRootElement(doc);
 			sequence.readXMLtag(setOfPers);
-			assertEquals("test_readXMLtag : assertEquals 1(Number of periods):", 2,
+			assertEquals(
+					"test_readXMLtag : assertEquals 1(Number of periods):", 2,
 					sequence.getSetOfPeriods().size());
+
+			assertEquals("test_readXMLtag : assertEquals 2(Minute):", sequence
+					.getSetOfPeriods().getResourceAt(0).getID(), "1");
+			assertEquals("test_readXMLtag : assertEquals 2(Minute):", sequence
+					.getSetOfPeriods().getResourceAt(1).getID(), "2");
 		} catch (Exception e) {
 			// Should not fail in tests, but if file not there gives a failure
 			assertEquals("test_readXMLtag: exception", "nullPointer", e
@@ -77,16 +83,10 @@ public class SequenceTest extends TestCase {
 			e.printStackTrace();
 		}
 
-		// assertEquals("test_readXMLtag : assertEquals 2(Minute):",
-		// sequence.getSetOfPeriods().getResourceAt(0).getID(), "1");
-		// assertEquals("test_readXMLtag : assertEquals 2(Minute):",
-		// sequence.getSetOfPeriods().getResourceAt(1).getID(), "2");
-		// assertEquals("test_readXMLtag : assertEquals 3(priotity):",
-		// period.getPriority(), 0);
 	}
 
 	/**
-	 * test to generate a clon of a sequence
+	 * test to generate a clone of a sequence
 	 */
 
 	public void test_cloneSequence() {
@@ -111,7 +111,6 @@ public class SequenceTest extends TestCase {
 		assertEquals("test_cloneSequence : assertEquals 3 (ID of period 2):",
 				firstSequence.getSetOfPeriods().getResourceAt(1).getID(),
 				clonedSequence.getSetOfPeriods().getResourceAt(1).getID());
-
 	}
 
 	/**
@@ -139,26 +138,30 @@ public class SequenceTest extends TestCase {
 			xmlOF.write(doc, _pathForOutputFiles + "SavedSequence.xml");
 
 			// read xml file
-			doc = xmlFile.createDocument(_pathForOutputFiles + "SavedSequence.xml");
+			doc = xmlFile.createDocument(_pathForOutputFiles
+					+ "SavedSequence.xml");
 			XMLReader list = new XMLReader();
 			eSetOfPers = list.getRootElement(doc);
 			savedSequence = new Sequence();
 			savedSequence.readXMLtag(eSetOfPers);
+			assertEquals(
+					"test_writeXMLtag : assertEquals 1 (Size of setOfPeriods):",
+					firstSequence.getSetOfPeriods().size(), savedSequence
+							.getSetOfPeriods().size());
+			assertEquals("test_writeXMLtag : assertEquals 2 (ID of period 1):",
+					firstSequence.getSetOfPeriods().getResourceAt(0).getID(),
+					savedSequence.getSetOfPeriods().getResourceAt(0).getID());
+			assertEquals("test_writeXMLtag : assertEquals 2 (ID of period 1):",
+					firstSequence.getSetOfPeriods().getResourceAt(1).getID(),
+					savedSequence.getSetOfPeriods().getResourceAt(1).getID());
 
 		} catch (Exception e) {
-			System.out.println(e);
+			// Should not fail in tests, but if file not there gives a failure
+			assertEquals("test_writeXMLtag: exception", "nullPointer", e
+					.toString());
+			System.out.println("Exception in: test_writeXMLtag");
+			e.printStackTrace();
 		}
-		assertEquals(
-				"test_writeXMLtag : assertEquals 1 (Size of setOfPeriods):",
-				firstSequence.getSetOfPeriods().size(), savedSequence
-						.getSetOfPeriods().size());
-		assertEquals("test_writeXMLtag : assertEquals 2 (ID of period 1):",
-				firstSequence.getSetOfPeriods().getResourceAt(0).getID(),
-				savedSequence.getSetOfPeriods().getResourceAt(0).getID());
-		assertEquals("test_writeXMLtag : assertEquals 2 (ID of period 1):",
-				firstSequence.getSetOfPeriods().getResourceAt(1).getID(),
-				savedSequence.getSetOfPeriods().getResourceAt(1).getID());
-
 	}
 
 }
