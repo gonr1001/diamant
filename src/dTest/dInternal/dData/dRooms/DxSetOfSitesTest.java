@@ -30,12 +30,15 @@ public class DxSetOfSitesTest extends TestCase {
 	} // end suite
 
 	public void test_getSetOfSitesSingleSite() {
-		DLoadData ld = new DLoadData();
-		byte[] dataloaded = null;
+//		DLoadData ld = new DLoadData();
+//		byte[] dataloaded = null;
 		try {
-			dataloaded = ld.filterBadChars(_pathForFiles + "locaux.txt");
-			DataExchange de = ld.buildDataExchange(dataloaded);
+			DLoadData ld = new DLoadData();
+			byte[] dataloaded = ld.filterBadChars(_pathForFiles + "locaux.txt");
+			
+			DataExchange de = ld.buildDataExchange(dataloaded);			
 			DxSiteReader dxsr = new DxReadSite1dot5(de);
+			
 			DxSetOfSites dxsosSingle = dxsr.readSetOfSites();
 
 			assertEquals("test_1_getSetOfSitesSingleSite: asserEquals", 1,

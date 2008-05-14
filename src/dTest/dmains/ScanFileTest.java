@@ -33,18 +33,23 @@ import eLib.exit.txt.ByteInputFile;
 
 public class ScanFileTest extends TestCase {
 
+	private final String _pathForFiles = "." + File.separator + "dataTest"
+			+ File.separator + "scanFileDataTest" + File.separator;
+
+	private final String _pathForOutputFiles = "." + File.separator
+			+ "forOutputTests" + File.separator;
+
 	public ScanFileTest(String name) {
 		super(name);
-		String path = System.getProperty("user.dir") + File.separator
-				+ "scanFileDataTest" + File.separator + "testFile.txt";
+		String path = _pathForFiles + "testFile.txt";
 		String[] args = new String[1];
 		args[0] = path;
 		ScanFile scan = new ScanFile();
 		if (scan.fileNameExists(args)) {
 			String inputFileName = scan.getFileName();
-			String outFileName = inputFileName.replaceFirst(".txt", "") + "OUT"
-					+ ".txt";
-			scan.doIt(inputFileName, outFileName);
+//			String outFileName = inputFileName.replaceFirst(".txt", "") + "OUT"
+//					+ ".txt";
+			scan.doIt(inputFileName, _pathForOutputFiles + "testFileOUT.txt");
 			if (scan.getError() != "")
 				System.out.println("Error in main : " + scan.getError());
 		}
@@ -67,21 +72,22 @@ public class ScanFileTest extends TestCase {
 		byte[] a = s.getBytes();
 		byte[] b = null;
 		byte[] c = new byte[a.length];
-		String str = System.getProperty("user.dir") + File.separator
-				+ "scanFileDataTest" + File.separator + "testFileOUT.txt";
+		String str = _pathForOutputFiles + "testFileOUT.txt";
 		try {
 			ByteInputFile bif = new ByteInputFile(str);
 			b = bif.readFileAsBytes();
 			for (int i = 0; i < c.length; i++) {
 				c[i] = b[i];
 			}
+			
+			assertEquals("test_endOfFile : assertEquals: ", true, compareArrays(a,
+					c));
 		} catch (Exception e) {
 			System.out.println(e);
 			e.printStackTrace();
 		}
 
-		assertEquals("test_endOfFile : assertEquals: ", true, compareArrays(a,
-				c));
+
 	}
 
 	public void test_endOfFile() {
@@ -92,22 +98,23 @@ public class ScanFileTest extends TestCase {
 		byte[] a = s.getBytes();
 		byte[] b = null;
 		byte[] c = new byte[a.length];
-		String str = System.getProperty("user.dir") + File.separator
-				+ "scanFileDataTest" + File.separator + "testFileOUT.txt";
+		String str = _pathForOutputFiles + "testFileOUT.txt";
 		int offset = 759;
 		try {
 			ByteInputFile bif = new ByteInputFile(str);
 			b = bif.readFileAsBytes();
 			for (int i = 0; i < c.length; i++) {
 				c[i] = b[offset + i];
+				
+				assertEquals("test_endOfFile : assertEquals: ", true, compareArrays(a,
+						c));
 			}
 		} catch (Exception e) {
 			System.out.println(e);
 			e.printStackTrace();
 		}
 
-		assertEquals("test_endOfFile : assertEquals: ", true, compareArrays(a,
-				c));
+
 	}
 
 	private boolean compareArrays(byte[] a, byte[] b) {
