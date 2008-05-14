@@ -127,12 +127,12 @@ public class DiamantTest {
 //		suite.addTest(TypeTest.suite());
 //		suite.addTest(ActivityTest.suite());
 //		suite.addTest(PeriodTest.suite());
-		suite.addTest(SequenceTest.suite()); //TODO verify
+//		suite.addTest(SequenceTest.suite()); 
 		suite.addTest(DayTest.suite());
 		suite.addTest(CycleTest.suite());
-		suite.addTest(TTStructureTest.suite());
-//		suite.addTest(DXToolsMethodsTest.suite());
-//		suite.addTest(SetOfEventsTest.suite());
+		suite.addTest(TTStructureTest.suite()); //TODO verify
+		suite.addTest(DXToolsMethodsTest.suite());
+		suite.addTest(SetOfEventsTest.suite());
 //		suite.addTest(ConflictsAttachTest.suite());
 //		suite.addTest(StudentsConflictsMatrixTest.suite());
 //		suite.addTest(InstructorsConditionsTest.suite());

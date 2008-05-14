@@ -18,9 +18,8 @@ import java.io.File;
 
 public class DXToolsMethodsTest extends TestCase{
 
-  public DXToolsMethodsTest(String name) {
-    super(name);
-  }
+	private final String _pathForFiles = "." + File.separator + "dataTest"
+	 + File.separator;
 
   public static Test suite() {
    // the type safe way is in SimpleTest
@@ -36,7 +35,7 @@ public class DXToolsMethodsTest extends TestCase{
       initialAvail[i] = line;
     }
     TTStructure tts = new TTStructure();
-    tts.loadTTSFromFile("."+ File.separator + "dataTest"+ File.separator +"DXToolsMethodsTest_resizeAvailability.xml");
+    tts.loadTTSFromFile(_pathForFiles + "DXToolsMethodsTest_resizeAvailability.xml");
     finalAvail = DXToolsMethods.resizeAvailability(initialAvail, tts);
 
     assertEquals("test_resizeAvailability finalAvail.length : assertEquals", 8, finalAvail.length);
