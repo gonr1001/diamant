@@ -105,15 +105,15 @@ public class DiamantTest {
 		File forOutputTests = new File("."+File.separator+ "forOutputTests");
 		forOutputTests.mkdir();
 		
-		suite.addTest(DxTTStructureTest.suite());
-		suite.addTest(ByteInputFileTest.suite());
-		suite.addTest(ByteOutputFileTest.suite());
-		suite.addTest(FilterFileTest.suite());
-		suite.addTest(SemiExtendedAsciiFileTest.suite());	
-		suite.addTest(DxAvailabilityTest.suite());
-		suite.addTest(DxInstructorTest.suite());
-		suite.addTest(DxSetOfInstructorsTest.suite());
-		suite.addTest(DxInstructorsReaderTest.suite());
+//		suite.addTest(DxTTStructureTest.suite());
+//		suite.addTest(ByteInputFileTest.suite());
+//		suite.addTest(ByteOutputFileTest.suite());
+//		suite.addTest(FilterFileTest.suite());
+//		suite.addTest(SemiExtendedAsciiFileTest.suite());	
+//		suite.addTest(DxAvailabilityTest.suite());
+//		suite.addTest(DxInstructorTest.suite());
+//		suite.addTest(DxSetOfInstructorsTest.suite());
+//		suite.addTest(DxInstructorsReaderTest.suite());
 		suite.addTest(DxSetOfSitesTest.suite());
 		suite.addTest(DxAssignAllAlgTest.suite());
 		if (DxFlags.newAlg) {

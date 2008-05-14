@@ -72,9 +72,9 @@ public class ScanFileTest extends TestCase {
 		byte[] a = s.getBytes();
 		byte[] b = null;
 		byte[] c = new byte[a.length];
-		String str = _pathForOutputFiles + "testFileOUT.txt";
+//		String str = _pathForOutputFiles + "testFileOUT.txt";
 		try {
-			ByteInputFile bif = new ByteInputFile(str);
+			ByteInputFile bif = new ByteInputFile(_pathForOutputFiles + "testFileOUT.txt");
 			b = bif.readFileAsBytes();
 			for (int i = 0; i < c.length; i++) {
 				c[i] = b[i];
@@ -83,7 +83,10 @@ public class ScanFileTest extends TestCase {
 			assertEquals("test_endOfFile : assertEquals: ", true, compareArrays(a,
 					c));
 		} catch (Exception e) {
-			System.out.println(e);
+			// Should not fail in tests, but if file not there gives a failure
+			assertEquals("test_beginOfFile: exception", "nullPointer", e
+					.toString());
+			System.out.println("Exception in: test_beginOfFile");
 			e.printStackTrace();
 		}
 
@@ -104,16 +107,18 @@ public class ScanFileTest extends TestCase {
 			ByteInputFile bif = new ByteInputFile(str);
 			b = bif.readFileAsBytes();
 			for (int i = 0; i < c.length; i++) {
-				c[i] = b[offset + i];
-				
+				c[i] = b[offset + i];		
+			}
 				assertEquals("test_endOfFile : assertEquals: ", true, compareArrays(a,
 						c));
-			}
+			
 		} catch (Exception e) {
-			System.out.println(e);
+			// Should not fail in tests, but if file not there gives a failure
+			assertEquals("test_endOfFile: exception", "nullPointer", e
+					.toString());
+			System.out.println("Exception in: test_endOfFile");
 			e.printStackTrace();
 		}
-
 
 	}
 
