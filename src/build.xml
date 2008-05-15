@@ -1,29 +1,31 @@
 <project name="DiamantBuild" basedir="." default="all">
 	<target name="setDirs" unless="setDirs" description="setup the properites.">
-		<tstamp />
-		<property name="distDirZip" value="./Diamant2.2.x" />
+		<tstamp />		
+		<property name="AntWorkSpace" value="../AntWorkSpace" />
+		<property name="dataTest" value="../dataTest" />
 		<property name="srcDir" value="." />
 		<property name="localJars" value="${srcDir}/jars" />
-		<property name="build" value="${srcDir}/classes" />
-		<property name="reports" value="${srcDir}/reports" />
-		<property name="pref" value="${srcDir}/pref" />
-		<property name="trace" value="${srcDir}/trace" />
-		<property name="dataTest" value="${build}/dataTest" />
-		<property name="TTxmlFiles" value="${dataTest}/TTxmlFiles" />
-		<property name="lib" value="${build}/lib" />
+		<property name="build" value="${AntWorkSpace}/classes" />
+		<property name="AntDataTest" value="{AntWorkSpace}/AntDataTest" />
+		<property name="reports" value="${AntWorkSpace}/reports" />
+		<property name="pref" value="${AntWorkSpace}/pref" />
+		<property name="trace" value="${AntWorkSpace}/trace" />
+		<property name="TTxmlFiles" value="${AntDataTest}/TTxmlFiles" />
+		<property name="lib" value="${AntWorkSpace}/lib" />
+		<property name="distDirZip" value="${AntWorkSpace}/Diamant2.2.x" />
 		<property name="distDir" value="${distDirZip}/Diamant" />
 		<property name="origDist" value="${srcDir}/origDist" />
 		<property name="tictacJar" value="${distDir}/tictac.jar" />
-		<property name="setProps" value="true" />
+		<property name="setProps" value="true" />		
 	</target>
 	<target name="clean" depends="setDirs" description="clean up the output directories.">
-		<delete dir="${distDirZip}" />
-		<delete dir="${build}" />
+		<delete dir="${AntWorkSpace}" />
 	</target>
 	<target name="prepare" depends="clean" description="prepare the output directories.">
+		<mkdir dir="${AntWorkSpace}" />
 		<mkdir dir="${build}" />
 		<mkdir dir="${reports}" />
-		<mkdir dir="${dataTest}" />
+		<mkdir dir="${AntDataTest}" />
 		<mkdir dir="${lib}" />
 		<mkdir dir="${distDirZip}" />
 		<mkdir dir="${distDir}" />
@@ -45,15 +47,15 @@
 		<mkdir dir="${distDir}/facs/medInf/exemple" />
 		<mkdir dir="${distDir}/facs/sciences" />
 		<mkdir dir="${distDir}/facs/sciences/exemple" />
-		<copy todir="${dataTest}">
-			<fileset dir="${srcDir}/dataTest">
-				<exclude name="**/CVS" />
+		<copy todir="${AntDataTest}">
+			<fileset dir="dataTest">
+				<exclude name="**/svn" />
 				<exclude name="**/*.txvpck" />
 			</fileset>
 		</copy>
 		<copy todir="${TTxmlFiles}">
-			<fileset dir="${srcDir}/dataTest/TTxmlFiles">
-				<exclude name="**/CVS" />
+			<fileset dir="${dataTest}/TTxmlFiles">
+				<exclude name="**/svn" />
 				<exclude name="**/*.txvpck" />
 			</fileset>
 		</copy>
@@ -101,6 +103,7 @@
 			<pathelement path="${build}" />
 		</path>
 	</target>
+	
 	<target name="unitTest" depends="compile, testpath" description="test the java sources">
 		<junit printsummary="false" haltonfailure="true">
 			<classpath refid="t.classpath" />
@@ -117,6 +120,7 @@
 			<report format="frames" todir="${reports}" />
 		</junitreport>
 	</target>
+	
 	<target name="exe" depends="unitTest" description="execute the java sources.">
 		<java classname="dmains.Diamant">
 			<classpath refid="c.classpath" />
