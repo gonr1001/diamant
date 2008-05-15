@@ -214,14 +214,17 @@ public class TTStructureTest extends TestCase {
 			XMLReader list = new XMLReader();
 			item = list.getRootElement(doc);
 			newtts.readXMLtag(item);
-			// _setOfCycles.readXMLtag(root);
+			assertEquals("test_writeXMLtag : assertEquals 1 (number of cycles):",
+					tts.getSetOfCycles().size(), newtts.getSetOfCycles().size());
+			assertEquals("test_writeXMLtag : assertEquals 2 (period length):", tts
+					.getPeriodLenght(), newtts.getPeriodLenght());
 		} catch (Exception e) {
-			System.out.println(e);
-		}
-		assertEquals("test_writeXMLtag : assertEquals 1 (number of cycles):",
-				tts.getSetOfCycles().size(), newtts.getSetOfCycles().size());
-		assertEquals("test_writeXMLtag : assertEquals 2 (period length):", tts
-				.getPeriodLenght(), newtts.getPeriodLenght());
+			// Should not fail in tests, but if file not there gives a failure
+			assertEquals("test_writeXMLtag: exception", "nullPointer", e
+					.toString());
+			System.out.println("Exception in: test_writeXMLtag");
+			e.printStackTrace();
+		}		
 	}
 
 	/**

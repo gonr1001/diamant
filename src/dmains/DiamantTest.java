@@ -105,35 +105,41 @@ public class DiamantTest {
 		File forOutputTests = new File("."+File.separator+ "forOutputTests");
 		forOutputTests.mkdir();
 		
-//		suite.addTest(DxTTStructureTest.suite());
-//		suite.addTest(ByteInputFileTest.suite());
-//		suite.addTest(ByteOutputFileTest.suite());
-//		suite.addTest(FilterFileTest.suite());
-//		suite.addTest(SemiExtendedAsciiFileTest.suite());	
-//		suite.addTest(DxAvailabilityTest.suite());
-//		suite.addTest(DxInstructorTest.suite());
-//		suite.addTest(DxSetOfInstructorsTest.suite());
-//		suite.addTest(DxInstructorsReaderTest.suite());
+		// Using files	
+		suite.addTest(DxTTStructureTest.suite());
+		suite.addTest(ByteInputFileTest.suite());
+		suite.addTest(ByteOutputFileTest.suite());
+		suite.addTest(FilterFileTest.suite());
+		suite.addTest(SemiExtendedAsciiFileTest.suite());	
+		suite.addTest(DxInstructorsReaderTest.suite());
 		suite.addTest(DxSetOfSitesTest.suite());
 		suite.addTest(DxAssignAllAlgTest.suite());
 		if (DxFlags.newAlg) {
 			suite.addTest(DxAssignRoomsAlgTest.suite());
 		}		
-		suite.addTest(RefinedStudMixAlgoTest.suite());
+		suite.addTest(RefinedStudMixAlgoTest.suite()); //TODO to be changed 
+		suite.addTest(PeriodTest.suite());
+		suite.addTest(SequenceTest.suite()); 
+		suite.addTest(DayTest.suite());
+		suite.addTest(CycleTest.suite());
+		suite.addTest(TTStructureTest.suite()); 		
+		suite.addTest(SetOfEventsTest.suite());
+
+		
+		// Not using files
+		suite.addTest(DxAvailabilityTest.suite());
+		suite.addTest(DxInstructorTest.suite());
+		suite.addTest(DxSetOfInstructorsTest.suite());
 		suite.addTest(ResourceTest.suite());
 		suite.addTest(AssignmentTest.suite());
 		suite.addTest(UnityTest.suite());
 		suite.addTest(SectionTest.suite());
 		suite.addTest(TypeTest.suite());
 		suite.addTest(ActivityTest.suite());
-		suite.addTest(PeriodTest.suite());
-		suite.addTest(SequenceTest.suite()); 
-		suite.addTest(DayTest.suite());
-		suite.addTest(CycleTest.suite());
-		suite.addTest(TTStructureTest.suite()); 
 		suite.addTest(DXToolsMethodsTest.suite());
-		suite.addTest(SetOfEventsTest.suite());
 		suite.addTest(ConflictsAttachTest.suite());
+		
+		//to be classed 		
 		suite.addTest(StudentsConflictsMatrixTest.suite());
 		suite.addTest(InstructorsConditionsTest.suite());
 		suite.addTest(DxSiteReaderTest.suite());
@@ -169,6 +175,7 @@ public class DiamantTest {
 		suite.addTest(ResourceTest.suite());
 		suite.addTest(DFileMenuTest.suite());
 		suite.addTest(DxEditEventDlgTest.suite());
+		
 		System.out.println("Bye I was in Diamant tests");
 		return suite;
 	}

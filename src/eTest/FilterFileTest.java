@@ -45,8 +45,6 @@ public class FilterFileTest extends TestCase {
 	private final String _pathForFiles = "." + File.separator + "edataTest"
 			+ File.separator;
 
-
-
 	public static Test suite() {
 		// the type safe way is in SimpleTest
 		// the dynamic way :

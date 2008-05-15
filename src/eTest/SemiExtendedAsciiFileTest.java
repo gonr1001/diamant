@@ -33,10 +33,9 @@ import eLib.exit.txt.SemiExtendedAsciiFile;
 
 public class SemiExtendedAsciiFileTest extends TestCase {
 
-	public SemiExtendedAsciiFileTest(String name) {
-		super(name);
-	}
-
+	private final String _pathForFiles = "." + File.separator + "edataTest"
+	+ File.separator;
+	
 	public static Test suite() {
 		// the type safe way is in SimpleTest
 		// the dynamic way :
@@ -47,9 +46,7 @@ public class SemiExtendedAsciiFileTest extends TestCase {
 		try {
 			SemiExtendedAsciiFile seaf = new SemiExtendedAsciiFile();
 			seaf.setCharKnown("");
-			String str = "." + File.separator + "eDataTest" + File.separator
-					+ "Simple.txt";
-			assertEquals("testSimple assertEquals :", true, seaf.validFile(str));
+			assertEquals("testSimple assertEquals :", true, seaf.validFile(_pathForFiles + "Simple.txt"));
 		} catch (Exception e) {
 			// Should not fail in tests
 			System.out.println("Exception in: testReadValidFile");
@@ -61,9 +58,7 @@ public class SemiExtendedAsciiFileTest extends TestCase {
 		try {
 			SemiExtendedAsciiFile seaf = new SemiExtendedAsciiFile();
 			seaf.setCharKnown("");
-			String str = "." + File.separator + "eDataTest" + File.separator
-					+ "SimpleCharNotV.txt";
-			seaf.validFile(str);
+			seaf.validFile(_pathForFiles + "SimpleCharNotV.txt");
 		} catch (NullPointerException e) {
 			// Should not fail in tests
 			System.out.println(e);
@@ -95,9 +90,8 @@ public class SemiExtendedAsciiFileTest extends TestCase {
 		try {
 			SemiExtendedAsciiFile seaf = new SemiExtendedAsciiFile();
 			seaf.setCharKnown("");
-			String str = "." + File.separator + "eDataTest" + File.separator
-					+ "TwoLines.txt";
-			seaf.readFile(str);
+
+			seaf.readFile(_pathForFiles +  "TwoLines.txt");
 			byte[] a = { (byte) 65, (byte) 13, (byte) 10, (byte) 66, (byte) 13,
 					(byte) 10 };
 			assertEquals("testReadFile assertEquals :", a.length, seaf

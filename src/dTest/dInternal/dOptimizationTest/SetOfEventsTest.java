@@ -50,9 +50,6 @@ public class SetOfEventsTest extends TestCase {
 	 * test the principal key of the first event of the set of events
 	 */
 	public void testEvents_5j() {
-//		StringBuffer fileName = new StringBuffer("." + File.separator);
-//		fileName.append("dataTest" + File.separator);
-//		fileName.append("loadData5j.dia");
 		try {
 			DModel _dmData5j = new DModel(new DxTTableDoc(), 
 					_pathForFiles + "loadData5j.dia");
@@ -113,9 +110,6 @@ public class SetOfEventsTest extends TestCase {
 	 * test the principal key of the first event of the set of events
 	 */
 	public void test_addEvents_7j() {
-//		StringBuffer fileName = new StringBuffer("." + File.separator);
-//		fileName.append("dataTest" + File.separator);
-//		fileName.append("assignRooms.dia");
 		try {
 			DModel dmData7j = new DModel(new DxTTableDoc(), _pathForFiles + "assignRooms.dia");
 			SetOfEvents soe = dmData7j.getSetOfEvents();

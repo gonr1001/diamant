@@ -32,5 +32,4 @@ public class ResourceTest extends TestCase {
     assertEquals("No test is required: : assertEquals", true, true);
   }
 
-
 }

@@ -64,30 +64,6 @@ public class CycleTest extends TestCase {
 	private final String _pathForOutputFiles = "." + File.separator
 			+ "forOutputTests" + File.separator;
 
-	// Cycle _cycle;
-
-//	public CycleTest(String name) {
-//		super(name);
-//		_path = "." + File.separator + "dataTest" + File.separator
-//				+ "TTxmlFiles" + File.separator;
-//
-//		XMLInputFile xmlFile;
-//		Element item;
-//		_cycle = new Cycle();
-//		try {
-//
-//			xmlFile = new XMLInputFile();
-//			// System.out.println(path+"cycle.xml");//debug
-//			Document doc = xmlFile.createDocument(_path + "cycle.xml");
-//			XMLReader list = new XMLReader();
-//			item = list.getRootElement(doc);
-//			_cycle.readXMLtag(item);
-//			// _setOfCycles.readXMLtag(root);
-//		} catch (Exception e) {
-//			System.out.println(e);
-//		}
-//		//
-//	}
 
 	public static Test suite() {
 		// the type safe way is in SimpleTest

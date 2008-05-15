@@ -39,9 +39,6 @@ public class DxAvailabilityTest extends TestCase {
 
 	DxAvailability _aTest;
 
-	public DxAvailabilityTest(String name) {
-		super(name);
-	}
 
 	public static Test suite() {
 		// the type safe way is in SimpleTest
@@ -51,14 +48,14 @@ public class DxAvailabilityTest extends TestCase {
 
 	public void setUp() {
 		_aTest = new DxAvailability();
-		// Add availabilites that will be parsed with tokenizer
+		// Add availabilities that will be parsed with tokenizer
 		for (int i = 0; i < 3; i++) {
 			_aTest.addDayAvailability("1 1 5 5 1 1 5 5 5 5 1 1 1");
 		}
 		
 		_aTest.addDayAvailability("");
 
-		// Add availibility item by item
+		// Add availability item by item
 		_aTest.addDayAvailability("5 5 5 5 5 5 5 5 5 5 5 5 5 5 5");
 		
 		// Change availability item by item

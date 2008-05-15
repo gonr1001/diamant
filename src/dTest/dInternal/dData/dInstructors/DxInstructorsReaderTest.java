@@ -225,11 +225,6 @@ public class DxInstructorsReaderTest extends TestCase {
 	 */
 	public void test_valuesOnDispoInst() {
 		DxSetOfInstructors dxsoi = null;
-		
-//		StringBuffer fileName = new StringBuffer("." + File.separator);
-//		fileName.append("dataTest" + File.separator);
-//		fileName.append("testDispoInst.sig");
-
 		DLoadData ld = new DLoadData();
 		byte[] dataloaded = null;
 		try {

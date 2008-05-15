@@ -35,12 +35,6 @@ import junit.framework.TestSuite;
  * 
  */
 public class DxInstructorTest extends TestCase {
-	/**
-	 * @param args
-	 */
-	public DxInstructorTest(String name) {
-		super(name);
-	}
 
 	public static Test suite() {
 		// the type safe way is in SimpleTest
