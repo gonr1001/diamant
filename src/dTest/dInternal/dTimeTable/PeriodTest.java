@@ -32,6 +32,9 @@ public class PeriodTest extends TestCase {
 
 	private final String _pathForFiles = "." + File.separator + "dataTest"
 			+ File.separator + "TTxmlFiles" + File.separator;
+	
+	private final String _pathForOutputFiles = "." + File.separator
+	+ "forOutputTests" + File.separator;
 
 	public static Test suite() {
 		// the type safe way is in SimpleTest
@@ -150,10 +153,10 @@ public class PeriodTest extends TestCase {
 			Element ttPeriod = period.writeXMLtag(doc);
 			doc = wr.buildDocument(doc, ttPeriod);
 			XMLOutputFile xmlOF = new XMLOutputFile();
-			xmlOF.write(doc, "SavePeriod.xml");
+			xmlOF.write(doc, _pathForOutputFiles + "SavePeriod.xml");
 
 			// read xml file
-			doc = xmlFile.createDocument("SavePeriod.xml");
+			doc = xmlFile.createDocument(_pathForOutputFiles + "SavePeriod.xml");
 
 			XMLReader list = new XMLReader();
 			item = list.getRootElement(doc);
