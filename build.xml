@@ -68,6 +68,8 @@
 				<exclude name="**/*.txvpck" />
 			</fileset>
 		</copy>
+		<copy todir="${AntWorkSpace}"  file="${srcDir}/MANIFEST.MF" />
+		
 	</target>
 
 	<target name="compilepath" depends="prepare" description="compile path classpath.">
@@ -152,6 +154,7 @@
 	<target name="unjar5" depends="unjar4">
 		<unjar src="${localJars}/sjsxp.jar" dest="${build}" />
 	</target>
+			
 	<target name="manifest" depends="unjar4" description="make the manifest">
 		<manifest file="${srcDir}/MANIFEST.MF">
 			<attribute name="Built-By" value="${user.name}" />
@@ -175,7 +178,7 @@
 				<exclude name="**/*.txvpck" />
 			</fileset>
 		</copy>
-		<jar jarfile="${distDir}/tictac.jar" index="true" manifest="${srcDir}/MANIFEST.MF">
+		<jar jarfile="${distDir}/tictac.jar" index="true" manifest="${AntWorkSpace}/MANIFEST.MF">
 			<fileset dir="${build}" />
 		</jar>
 	</target>
@@ -204,14 +207,17 @@
 		</copy>
 	</target>
 
-	<target name="signjar" depends="zip" description="Signs the jar for WebStart deployment">
+	<!-- performs the jar signature -->
+	<target name="signjar" depends="zip" description="performs the jar signature">
 		<signjar jar="${AntWorkSpace}/tictac.jar" keystore="${AntWorkSpace}/eXitStore" signedjar="${distDir}/stictac.jar" alias="signer" keypass="Diamant" storepass="Diamant" />
 	</target>
 
-	<target name="zip" depends="completepackage" description="performs theZip">
+	<!-- performs zipping -->
+	<target name="zip" depends="completepackage" description="performs zipping">
 		<zip basedir="${distDirZip}" destfile="${AntWorkSpace}/Diamant.zip" />
 	</target>
-	<!--signjar,-->
+						
+	<!-- performs all targets -->
 	<target name="all" depends="clean, package, zip" description="performs all targets">
 	</target>
 </project>
