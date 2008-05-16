@@ -42,8 +42,8 @@ import eLib.exit.txt.FilterFile;
 
 public class FilterFileTest extends TestCase {
 
-	private final String _pathForFiles = "." + File.separator + "edataTest"
-			+ File.separator;
+	private final String _pathForFiles = "." + File.separator + "dataTest" 
+	+ File.separator + "edataTest" + File.separator;
 
 	public static Test suite() {
 		// the type safe way is in SimpleTest
@@ -54,7 +54,9 @@ public class FilterFileTest extends TestCase {
 	public void testSimple() throws Exception {
 		FilterFile filter = new FilterFile();
 		filter.setCharKnown("");
-
+		String str = System.getProperty("user.dir");
+		System.out.println("User Dir here  :" + str);
+		System.out.println(str+_pathForFiles + "Simple.txt");
 		assertEquals("testSimple assertEquals :", true, filter
 				.validFile(_pathForFiles + "Simple.txt"));
 	}
@@ -83,9 +85,9 @@ public class FilterFileTest extends TestCase {
 		filter.readFile(_pathForFiles + "twoLines.txt");
 		byte[] a = { (byte) 65, (byte) 13, (byte) 10, (byte) 66, (byte) 13,
 				(byte) 10 };
-		assertEquals("testReadFile assertEquals :", a.length, filter
+		assertEquals("testReadFile assertEquals 6 :", a.length, filter
 				.getByteArray().length);
-		assertEquals("testReadFile assertEquals :", true, compareArrays(a,
+		assertEquals("testReadFile assertEquals true:", true, compareArrays(a,
 				filter.getByteArray()));
 	}
 

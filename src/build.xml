@@ -1,31 +1,43 @@
 <project name="DiamantBuild" basedir="." default="all">
 	<target name="setDirs" unless="setDirs" description="setup the properites.">
-		<tstamp />		
-		<property name="AntWorkSpace" value="../AntWorkSpace" />
-		<property name="dataTest" value="../dataTest" />
+		<tstamp />						
 		<property name="srcDir" value="." />
+		<property name="exeJUnitDir" value="..\AntWorkSpace" />
+		<property name="orgDataTest" value="../dataTest" />		
+		<property name="AntWorkSpace" value="../AntWorkSpace" />
 		<property name="localJars" value="${srcDir}/jars" />
 		<property name="build" value="${AntWorkSpace}/classes" />
-		<property name="AntDataTest" value="{AntWorkSpace}/AntDataTest" />
+		<property name="AntDataTest" value="${AntWorkSpace}/dataTest" />
+		<property name="AntOutputFiles" value="${AntWorkSpace}/dataOutputFiles" />
 		<property name="reports" value="${AntWorkSpace}/reports" />
 		<property name="pref" value="${AntWorkSpace}/pref" />
-		<property name="trace" value="${AntWorkSpace}/trace" />
-		<property name="TTxmlFiles" value="${AntDataTest}/TTxmlFiles" />
+		<property name="trace" value="${AntWorkSpace}/trace" />		
 		<property name="lib" value="${AntWorkSpace}/lib" />
+		<property name="orgTTxmlFiles" value="${orgDataTest}/TTxmlFiles" />
+		<property name="TTxmlFiles" value="${AntDataTest}/TTxmlFiles" />
 		<property name="distDirZip" value="${AntWorkSpace}/Diamant2.2.x" />
 		<property name="distDir" value="${distDirZip}/Diamant" />
 		<property name="origDist" value="${srcDir}/origDist" />
 		<property name="tictacJar" value="${distDir}/tictac.jar" />
-		<property name="setProps" value="true" />		
+		<property name="setProps" value="true" />	
+		
+		<property name="test.dir" location="${AntWorkSpace}" />
+		<property name="test.classes.dir" location="${test.dir}/classes" />
+		<property name="test.data.dir" location="${AntWorkSpace}/dataTest" />
+	
 	</target>
+	
+	
 	<target name="clean" depends="setDirs" description="clean up the output directories.">
 		<delete dir="${AntWorkSpace}" />
 	</target>
+	
 	<target name="prepare" depends="clean" description="prepare the output directories.">
 		<mkdir dir="${AntWorkSpace}" />
 		<mkdir dir="${build}" />
 		<mkdir dir="${reports}" />
 		<mkdir dir="${AntDataTest}" />
+		<mkdir dir="${AntOutputFiles}" />
 		<mkdir dir="${lib}" />
 		<mkdir dir="${distDirZip}" />
 		<mkdir dir="${distDir}" />
@@ -48,18 +60,13 @@
 		<mkdir dir="${distDir}/facs/sciences" />
 		<mkdir dir="${distDir}/facs/sciences/exemple" />
 		<copy todir="${AntDataTest}">
-			<fileset dir="dataTest">
-				<exclude name="**/svn" />
-				<exclude name="**/*.txvpck" />
-			</fileset>
-		</copy>
-		<copy todir="${TTxmlFiles}">
-			<fileset dir="${dataTest}/TTxmlFiles">
+			<fileset dir="${orgDataTest}">
 				<exclude name="**/svn" />
 				<exclude name="**/*.txvpck" />
 			</fileset>
 		</copy>
 	</target>
+	
 	<target name="compilepath" depends="prepare" description="compile path classpath.">
 		<path id="c.classpath">
 			<pathelement path="${localJars}/junit.jar" />
@@ -70,6 +77,7 @@
 			<pathelement path="${build}"/>
 		</path>
 	</target>
+	
 	<target name="compile" depends="compilepath" description="compile the java sources.">
 		<javac srcdir="${srcDir}" destdir="${build}" source="1.5">
 			<compilerarg value="-Xlint" />
@@ -80,13 +88,13 @@
 	<target name="addToClasses" depends="prepare,compile" description="add files to classes.">
 		<copy todir="${build}/eLib/exit/txt/data">
 			<fileset dir="${srcDir}/eLib/exit/txt/data">
-				<exclude name="**/CVS" />
+				<exclude name="**/svn" />
 				<exclude name="**/*.txvpck" />
 			</fileset>
 		</copy>
 		<copy todir="${build}/dInterface/images">
 					<fileset dir="${srcDir}/dInterface/images">
-						<exclude name="**/CVS" />
+						<exclude name="**/svn" />
 						<exclude name="**/*.txvpck" />
 					</fileset>
 				</copy>
@@ -98,15 +106,16 @@
 			<pathelement path="${localJars}/log4j-1.2.8.jar" />
 			<pathelement path="${localJars}/xml-api.jar" />
 			<pathelement path="${localJars}/jdom.jar" />
-			<pathelement path="${localJars}/sjsxp.jar" />
-			<pathelement path="${dataTest}" />
+			<pathelement path="${localJars}/sjsxp.jar" />			
 			<pathelement path="${build}" />
+			<pathelement location="${test.dir.classes}" />
 		</path>
 	</target>
 	
 	<target name="unitTest" depends="compile, testpath" description="test the java sources">
 		<junit printsummary="false" haltonfailure="true">
 			<classpath refid="t.classpath" />
+			<sysproperty key="user.dir" value="${exeJUnitDir}"/>
 			<formatter type="brief" usefile="false" />
 			<formatter type="xml" />
 			<batchtest todir="${reports}">
