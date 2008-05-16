@@ -1,0 +1,3106 @@
+Diamant1.6
+
+ADM1111  61 SHE 99999
+1
+1
+ADM111-61
+
+
+ 1
+ 3
+ 1 12
+0
+xxxxxx
+1
+1
+0
+
+AMC6451  01 SHE 99999
+1
+1
+AMC645
+
+
+ 1
+ 2
+ 1  3
+0
+xxxxxx
+1
+1
+1
+
+AMC6501  01 SHE 99999
+1
+1
+BERTRAND, PIERRE
+
+
+ 1
+ 4
+ 4  1
+0
+xxxxxx
+1
+1
+1
+
+AMC9071  01 SHE 99999
+1
+1
+MERCADIER, YVES
+
+
+ 4
+ 4  3  4  3
+ 2  1  2  6  5  1  5  6
+1  1  1  1
+C1-5012    C1-5012    C1-5012    C1-5012
+0  0  0  0
+0  0  0  0
+1  1  1  1
+
+BGE3011  01 SHE 99999
+1
+1
+BGE301
+
+
+ 4
+ 3  3  3  3
+ 1  1  2  1  4  1  5  1
+1  1  1  1
+D7-3007    D7-3007    D7-3007    D7-2018
+0  0  0  0
+0  0  0  0
+1  1  1  1
+
+BGE3021  01 SHE 99999
+1
+1
+SMEESTERS, CÉCILE
+
+
+ 4
+ 3  3  3  3
+ 1  1  2  1  4  1  5  1
+1  1  1  1
+D7-2018    D7-2018    D7-2018    C1-2038
+0  0  0  0
+0  0  0  0
+1  1  1  1
+
+BGM2011  01 SHE 99999
+1
+1
+SMEESTERS, CÉCILE
+
+
+ 4
+ 3  3  3  3
+ 1  1  2  1  4  1  5  1
+1  1  1  1
+D7-3015    D7-3015    D7-3015    D7-2018
+0  0  0  0
+0  0  0  0
+1  1  1  1
+
+BGM2021  01 SHE 99999
+1
+1
+SMEESTERS, CÉCILE
+
+
+ 4
+ 3  3  3  3
+ 1  1  2  1  4  1  5  1
+1  1  1  1
+D7-2018    D7-2018    D7-2018    D7-2018
+0  0  0  0
+0  0  0  0
+1  1  1  1
+
+BGM4001  01 SHE 99999
+1
+1
+LANGELIER, ÈVE
+
+
+ 4
+ 3  3  3  3
+ 2  1  1  1  4  1  5  1
+1  1  1  1
+D7-3007    D7-3007    D7-3007    D7-2018
+0  0  0  0
+0  0  0  0
+1  1  1  1
+
+BGM9001  01 SHE 99999
+1
+1
+VANHOENACKER, YVES
+
+
+ 2
+ 4  4
+ 3  1  3  6
+1  1
+C1-5012    C1-5012
+0  0
+0  0
+1  1
+
+BGM9071  01 SHE 99999
+1
+1
+DESBIENS, JEAN-PHILIPPE
+
+
+ 2
+ 4  3
+ 2  1  2  6
+1  1
+C1-5012    C1-5012
+0  0
+0  0
+1  1
+
+GBT1011  01 SHE 99999
+1
+1
+VERMETTE, PATRICK
+
+
+ 1
+ 3
+ 1  2
+0
+xxxxxx
+1
+1
+1
+
+GBT1012  01 SHE 99999
+1
+1
+VERMETTE, PATRICK
+
+
+ 1
+ 3
+ 4  6
+0
+xxxxxx
+1
+1
+1
+
+GBT1081  01 SHE 99999
+1
+1
+GBT108
+
+
+ 1
+ 3
+ 1 12
+1
+C1-5001
+0
+0
+1
+
+GBT1201  01 SHE 99999
+1
+1
+FAUCHEUX, NATHALIE
+
+
+ 2
+ 1  2
+ 1  1  3  3
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+GBT1202  01 SHE 99999
+1
+1
+FAUCHEUX, NATHALIE
+
+
+ 1
+ 3
+ 1  6
+1
+C2-2068
+0
+0
+1
+
+GBT1202  02 SHE 99999
+1
+1
+FAUCHEUX, NATHALIE
+
+
+ 1
+ 3
+ 2  6
+1
+C2-2068
+0
+0
+1
+
+GBT2001  01 SHE 99999
+1
+1
+PROULX, PIERRE
+
+
+ 2
+ 2  2
+ 2  6  3  6
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+GBT2002  01 SHE 99999
+1
+1
+PROULX, PIERRE
+
+
+ 1
+ 2
+ 4  6
+0
+xxxxxx
+1
+1
+1
+
+GBT3021  01 SHE 99999
+1
+1
+BIBEAU, LOUISE
+
+
+ 2
+ 2  1
+ 1  1  2  1
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+GBT3022  01 SHE 99999
+1
+1
+BIBEAU, LOUISE
+
+
+ 1
+ 3
+ 4  1
+0
+xxxxxx
+1
+1
+1
+
+GBT4151  01 SHE 99999
+1
+1
+VERMETTE, PATRICK
+
+
+ 2
+ 1  3
+ 4  3  5  6
+1  1
+C1-5140    C1-5140
+0  0
+0  0
+1  1
+
+GCH1011  01 SHE 99999
+1
+1
+HEITZ, MICHÈLE
+
+
+ 2
+ 2  1
+ 4  2  4  6
+1  1
+C1-4016    C1-4016
+0  0
+0  0
+1  1
+
+GCH1012  01 SHE 99999
+1
+1
+HEITZ, MICHÈLE
+
+
+ 1
+ 3
+ 4  7
+1
+C1-4016
+0
+0
+1
+
+GCH1031  01 SHE 99999
+1
+1
+MARCOS, BERNARD
+
+
+ 2
+ 2  1
+ 1  3  1  6
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+GCH1032  01 SHE 99999
+1
+1
+MARCOS, BERNARD
+
+
+ 1
+ 3
+ 2  6
+1
+C1-5020
+0
+0
+1
+
+GCH1071  01 SHE 99999
+1
+1
+TIGHIOUART, BRAHIM
+
+
+ 2
+ 2  1
+ 1  1  2  4
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+GCH1072  01 SHE 99999
+1
+1
+TIGHIOUART, BRAHIM
+
+
+ 1
+ 2
+ 3  1
+0
+xxxxxx
+1
+1
+1
+
+GCH1081  01 SHE 99999
+1
+1
+DOUVILLE, SERGE
+
+
+ 1
+ 3
+ 1 12
+1
+C1-5001
+0
+0
+1
+
+GCH1161  01 SHE 99999
+1
+1
+MARCOS, BERNARD
+
+
+ 1
+ 3
+ 2  1
+0
+xxxxxx
+1
+1
+1
+
+GCH1162  01 SHE 99999
+1
+1
+MARCOS, BERNARD
+
+
+ 1
+ 3
+ 4  1
+1
+C1-5020
+0
+0
+1
+
+GCH1201  01 SHE 99999
+1
+1
+FAUCHEUX, NATHALIE
+
+
+ 2
+ 1  2
+ 1  2  2  1
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+GCH1202  01 SHE 99999
+1
+1
+FAUCHEUX, NATHALIE
+
+
+ 1
+ 3
+ 3  6
+1
+C2-2068
+0
+0
+1
+
+GCH1202  02 SHE 99999
+1
+1
+FAUCHEUX, NATHALIE
+
+
+ 1
+ 3
+ 5  2
+1
+C2-2068
+0
+0
+1
+
+GCH2001  01 SHE 99999
+1
+1
+PROULX, PIERRE
+
+
+ 2
+ 2  2
+ 2  6  3  6
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+GCH2002  01 SHE 99999
+1
+1
+PROULX, PIERRE
+
+
+ 1
+ 2
+ 4  6
+0
+xxxxxx
+1
+1
+1
+
+GCH2031  01 SHE 99999
+1
+1
+GCH203
+
+
+ 1
+ 2
+ 3  1
+1
+C1-5028
+0
+0
+1
+
+GCH2032  01 SHE 99999
+1
+1
+GCH203
+
+
+ 1
+ 2
+ 3  3
+1
+C1-5028
+0
+0
+1
+
+GCH2131  01 SHE 99999
+1
+1
+MERCIER, SIMON
+
+
+ 1
+ 2
+ 1  6
+0
+xxxxxx
+1
+1
+1
+
+GCH2132  01 SHE 99999
+1
+1
+MERCIER, SIMON
+
+
+ 1
+ 2
+ 3  8
+1
+C1-5026
+0
+0
+1
+
+GCH3011  01 SHE 99999
+1
+1
+GRAVELLE, DENIS
+
+
+ 2
+ 2  2
+ 1  3  3  3
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+GCH3012  01 SHE 99999
+1
+1
+GRAVELLE, DENIS
+
+
+ 1
+ 3
+ 5  2
+1
+C1-5006
+0
+0
+1
+
+GCH3231  01 SHE 99999
+1
+1
+GODIN, STEEVE
+
+
+ 1
+ 2
+ 5  6
+0
+xxxxxx
+1
+1
+1
+
+GCH3232  01 SHE 99999
+1
+1
+GODIN, STEEVE
+
+
+ 1
+ 2
+ 1  7
+1
+C1-3007
+0
+0
+1
+
+GCH3501  01 SHE 99999
+1
+1
+MARTIN, YVES
+
+
+ 1
+ 3
+ 1  1
+0
+xxxxxx
+1
+1
+1
+
+GCH4151  01 SHE 99999
+1
+1
+HEITZ, MICHÈLE
+
+
+ 2
+ 1  2
+ 4  1  2  3
+1  1
+C1-5140    C1-5140
+0  0
+0  0
+1  1
+
+GCH4261  01 SHE 99999
+1
+1
+ABATZOGLOU, NICOLAS
+
+
+ 1
+ 3
+ 1  6
+1
+C1-2038
+0
+0
+1
+
+GCH4262  01 SHE 99999
+1
+1
+GCH426
+
+
+ 3
+ 3  3  3
+ 2  6  4  1  4  6
+1  1  1
+C1-5024    C1-5024    C1-5024
+0  0  0
+0  0  0
+1  1  1
+
+GCH4321  01 SHE 99999
+1
+1
+GCH432
+
+
+ 1
+ 3
+ 3  6
+0
+xxxxxx
+1
+1
+1
+
+GCH5511  01 SHE 99999
+1
+1
+LARAMÉE, LUCIE
+
+
+ 1
+ 3
+ 3  2
+0
+xxxxxx
+1
+1
+1
+
+GCI1001  01 SHE 99999
+1
+1
+YAHIA, AMMAR
+
+
+ 1
+ 3
+ 1  2
+1
+C1-3007
+0
+0
+1
+
+GCI1002  01 SHE 99999
+1
+1
+YAHIA, AMMAR
+
+
+ 1
+ 3
+ 4  2
+1
+C1-5001
+0
+0
+1
+
+GCI1031  01 SHE 99999
+1
+1
+GCI103
+
+
+ 2
+ 2  2
+ 4  3  2  3
+1  0
+D7-3016    xxxxxx
+0  1
+0  1
+1  1
+
+GCI1032  01 SHE 99999
+1
+1
+GCI103
+
+
+ 1
+ 2
+ 4  6
+1
+D7-3016
+0
+0
+1
+
+GCI1051  01 SHE 99999
+1
+1
+GCI105
+
+
+ 2
+ 1  2
+ 1  6  3  1
+1  1
+D7-3016    D7-3016
+0  0
+0  0
+1  1
+
+GCI1052  01 SHE 99999
+1
+1
+GCI105
+
+
+ 1
+ 2
+ 1  7
+1
+D7-3016
+0
+0
+1
+
+GCI1071  01 SHE 99999
+1
+1
+PROULX, JEAN
+
+
+ 1
+ 3
+ 3  6
+1
+C1-5028
+0
+0
+1
+
+GCI1072  01 SHE 99999
+1
+1
+PROULX, JEAN
+
+
+ 1
+ 3
+ 4  6
+1
+C1-5026
+0
+0
+1
+
+GCI1081  01 SHE 99999
+1
+1
+GAGNÉ, RICHARD
+
+
+ 2
+ 1  2
+ 1  6  3  1
+1  1
+C1-3007    C1-3007
+0  0
+0  0
+1  1
+
+GCI1082  01 SHE 99999
+1
+1
+GAGNÉ, RICHARD
+
+
+ 1
+ 3
+ 2  8
+1
+C2-2038
+0
+0
+1
+
+GCI1082  02 SHE 99999
+1
+1
+GAGNÉ, RICHARD
+
+
+ 1
+ 3
+ 3  6
+1
+C2-2038
+0
+0
+1
+
+GCI1111  01 SHE 99999
+1
+1
+BOURGEOIS, LINDA
+
+
+ 1
+ 3
+ 2  6
+1
+D7-3016
+0
+0
+1
+
+GCI1112  01 SHE 99999
+1
+1
+GCI111
+
+
+ 2
+ 4  4
+ 5  1  5  6
+1  1
+D7-3016    D7-3016
+0  0
+0  0
+1  1
+
+GCI1121  01 SHE 99999
+1
+1
+GODIN, STEEVE
+
+
+ 1
+ 2
+ 5  1
+1
+C1-3007
+0
+0
+1
+
+GCI1122  01 SHE 99999
+1
+1
+GODIN, STEEVE
+
+
+ 1
+ 2
+ 1  7
+1
+C1-3007
+0
+0
+1
+
+GCI1151  01 SHE 99999
+1
+1
+RIVARD, PATRICE
+
+
+ 2
+ 2  1
+ 1  3  2  1
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+GCI1152  01 SHE 99999
+1
+1
+RIVARD, PATRICE
+
+
+ 1
+ 3
+ 3  6
+1
+C2-1004
+0
+0
+1
+
+GCI1152  02 SHE 99999
+1
+1
+RIVARD, PATRICE
+
+
+ 1
+ 3
+ 4  8
+1
+C2-1004
+0
+0
+1
+
+GCI2251  01 SHE 99999
+1
+1
+PAULTRE, PATRICK
+
+
+ 1
+ 3
+ 1  2
+0
+xxxxxx
+1
+1
+1
+
+GCI2252  01 SHE 99999
+1
+1
+PAULTRE, PATRICK
+
+
+ 1
+ 3
+ 5  2
+1
+C2-2034
+0
+0
+1
+
+GCI3301  01 SHE 99999
+1
+1
+BARBER, PATRICK
+
+
+ 2
+ 2  1
+ 4  3  4  6
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+GCI3302  01 SHE 99999
+1
+1
+BARBER, PATRICK
+
+
+ 1
+ 2
+ 4  7
+0
+xxxxxx
+1
+1
+1
+
+GCI4001  01 SHE 99999
+1
+1
+CÔTÉ, BERTRAND
+
+
+ 2
+ 2  2
+ 2  6  3  3
+1  1
+C1-3007    D7-3016
+0  0
+0  0
+1  1
+
+GCI4002  01 SHE 99999
+1
+1
+CÔTÉ, BERTRAND
+
+
+ 1
+ 2
+ 5  3
+1
+C1-3007
+0
+0
+1
+
+GCI4351  01 SHE 99999
+1
+1
+LEMIEUX, PIERRE
+
+
+ 2
+ 2  1
+ 4  1  5  2
+1  1
+D7-3007    D7-3015
+0  0
+0  0
+1  1
+
+GCI4352  01 SHE 99999
+1
+1
+LEMIEUX, PIERRE
+
+
+ 1
+ 2
+ 5  3
+1
+D7-3015
+0
+0
+1
+
+GCI6051  01 SHE 99999
+1
+1
+JOHNS, KENNETH C.
+
+
+ 2
+ 2  2
+ 2  3  3  3
+1  1
+C1-3007    C1-3007
+0  0
+0  0
+1  1
+
+GCI7331  01 SHE 99999
+1
+1
+CABRAL, ALEXANDRE
+
+
+ 1
+ 3
+ 1  6
+0
+xxxxxx
+1
+1
+1
+
+GCI9001  01 SHE 99999
+1
+1
+ÉTHIER, YANNIC
+
+
+ 3
+ 4  4  4
+ 2  1  2  6  3  1
+1  1  1
+C2-2034    C2-2034    C2-2034
+0  0  0
+0  0  0
+1  1  1
+
+GCI9051  01 SHE 99999
+1
+1
+ÉTHIER, YANNIC
+
+
+ 3
+ 4  4  4
+ 2  1  2  6  3  1
+1  1  1
+C2-2034    C2-2034    C2-2034
+0  0  0
+0  0  0
+1  1  1
+
+GEI1451  01 SHE 99999
+1
+1
+IGEE
+
+
+ 1
+ 3
+ 5  6
+0
+xxxxxx
+1
+1
+1
+
+GEI1501  01 SHE 99999
+1
+1
+IGEE
+
+
+ 1
+ 3
+ 5  1
+0
+xxxxxx
+1
+1
+1
+
+GEL3001  01 SHE 99999
+1
+1
+PROFESSEUR, GEL300
+
+
+ 1
+ 1
+ 1  1
+0
+xxxxxx
+1
+1
+1
+
+GEL3101  01 SHE 99999
+1
+1
+PROFESSEUR, GEL310
+
+
+ 1
+ 1
+ 2  1
+0
+xxxxxx
+1
+1
+1
+
+GEL3201  01 SHE 99999
+1
+1
+PROFESSEUR, GEL320
+
+
+ 1
+ 1
+ 3  1
+0
+xxxxxx
+1
+1
+1
+
+GEL3401  01 SHE 99999
+1
+1
+PROFESSEUR, GEL340
+
+
+ 1
+ 1
+ 4  1
+0
+xxxxxx
+1
+1
+1
+
+GEL3501  01 SHE 99999
+1
+1
+PROFESSEUR, GEL350
+
+
+ 1
+ 1
+ 5  1
+0
+xxxxxx
+1
+1
+1
+
+GEL3601  01 SHE 99999
+1
+1
+PROFESSEUR, GEL360
+
+
+ 1
+ 1
+ 1  6
+0
+xxxxxx
+1
+1
+1
+
+GEL3701  01 SHE 99999
+1
+1
+PROFESSEUR, GEL370
+
+
+ 1
+ 1
+ 2  6
+0
+xxxxxx
+1
+1
+1
+
+GEL5001  01 SHE 99999
+1
+1
+PROFESSEUR, GEL500
+
+
+ 1
+ 1
+ 1  1
+0
+xxxxxx
+1
+1
+1
+
+GEL5101  01 SHE 99999
+1
+1
+PROFESSEUR, GEL510
+
+
+ 1
+ 1
+ 2  1
+0
+xxxxxx
+1
+1
+1
+
+GEL5201  01 SHE 99999
+1
+1
+PROFESSEUR, GEL520
+
+
+ 1
+ 1
+ 3  1
+0
+xxxxxx
+1
+1
+1
+
+GEL5301  01 SHE 99999
+1
+1
+PROFESSEUR, GEL530
+
+
+ 1
+ 1
+ 4  1
+0
+xxxxxx
+1
+1
+1
+
+GEL6011  01 SHE 99999
+1
+1
+PROFESSEUR, GEL601
+
+
+ 1
+ 1
+ 2  3
+0
+xxxxxx
+1
+1
+1
+
+GEL6101  01 SHE 99999
+1
+1
+PROFESSEUR, GEL610
+
+
+ 1
+ 1
+ 3  3
+0
+xxxxxx
+1
+1
+1
+
+GEL6201  01 SHE 99999
+1
+1
+PROFESSEUR, GEL620
+
+
+ 1
+ 1
+ 4  3
+0
+xxxxxx
+1
+1
+1
+
+GEL6301  01 SHE 99999
+1
+1
+PROFESSEUR, GEL630
+
+
+ 1
+ 1
+ 5  3
+0
+xxxxxx
+1
+1
+1
+
+GEL6411  01 SHE 99999
+1
+1
+PROFESSEUR, GEL641
+
+
+ 1
+ 1
+ 2  8
+0
+xxxxxx
+1
+1
+1
+
+GEL6601  01 SHE 99999
+1
+1
+PROFESSEUR, GEL660
+
+
+ 1
+ 1
+ 3  8
+0
+xxxxxx
+1
+1
+1
+
+GEN1001  01 SHE 99999
+1
+1
+PROFESSEUR, GEN100
+
+
+ 1
+ 1
+ 1  1
+0
+xxxxxx
+1
+1
+1
+
+GEN1101  01 SHE 99999
+1
+1
+PROFESSEUR, GEN110
+
+
+ 1
+ 1
+ 2  1
+0
+xxxxxx
+1
+1
+1
+
+GEN1211  01 SHE 99999
+1
+1
+PROFESSEUR, GEN121
+
+
+ 1
+ 1
+ 3  1
+0
+xxxxxx
+1
+1
+1
+
+GEN1221  01 SHE 99999
+1
+1
+PROFESSEUR, GEN122
+
+
+ 1
+ 1
+ 4  1
+0
+xxxxxx
+1
+1
+1
+
+GEN1301  01 SHE 99999
+1
+1
+PROFESSEUR, GEN130
+
+
+ 1
+ 1
+ 5  1
+0
+xxxxxx
+1
+1
+1
+
+GEN1411  01 SHE 99999
+1
+1
+PROFESSEUR, GEN141
+
+
+ 1
+ 1
+ 1  6
+0
+xxxxxx
+1
+1
+1
+
+GEN1421  01 SHE 99999
+1
+1
+PROFESSEUR, GEN142
+
+
+ 1
+ 1
+ 2  6
+0
+xxxxxx
+1
+1
+1
+
+GEN5011  01 SHE 99999
+1
+1
+PROFESSEUR, GEN501
+
+
+ 1
+ 1
+ 5  1
+0
+xxxxxx
+1
+1
+1
+
+GEN5021  01 SHE 99999
+1
+1
+PROFESSEUR, GEN502
+
+
+ 1
+ 1
+ 5  3
+0
+xxxxxx
+1
+1
+1
+
+GEN6001  01 SHE 99999
+1
+1
+PROFESSEUR, GEN600
+
+
+ 1
+ 1
+ 1  1
+0
+xxxxxx
+1
+1
+1
+
+GEN6501  01 SHE 99999
+1
+1
+PROFESSEUR, GEN650
+
+
+ 1
+ 1
+ 1  6
+0
+xxxxxx
+1
+1
+1
+
+GEN8011  01 SHE 99999
+1
+1
+PROFESSEUR, GEN801
+
+
+ 1
+ 1
+ 1  1
+0
+xxxxxx
+1
+1
+1
+
+GIF3001  01 SHE 99999
+1
+1
+PROFESSEUR, GIF300
+
+
+ 1
+ 1
+ 1  2
+0
+xxxxxx
+1
+1
+1
+
+GIF3101  01 SHE 99999
+1
+1
+PROFESSEUR, GIF310
+
+
+ 1
+ 1
+ 2  2
+0
+xxxxxx
+1
+1
+1
+
+GIF3201  01 SHE 99999
+1
+1
+PROFESSEUR, GIF320
+
+
+ 1
+ 1
+ 3  2
+0
+xxxxxx
+1
+1
+1
+
+GIF3301  01 SHE 99999
+1
+1
+PROFESSEUR, GIF330
+
+
+ 1
+ 1
+ 4  2
+0
+xxxxxx
+1
+1
+1
+
+GIF3401  01 SHE 99999
+1
+1
+PROFESSEUR, GIF340
+
+
+ 1
+ 1
+ 5  2
+0
+xxxxxx
+1
+1
+1
+
+GIF3601  01 SHE 99999
+1
+1
+PROFESSEUR, GIF360
+
+
+ 1
+ 1
+ 1  7
+0
+xxxxxx
+1
+1
+1
+
+GIF5001  01 SHE 99999
+1
+1
+PROFESSEUR, GIF500
+
+
+ 1
+ 1
+ 1  6
+0
+xxxxxx
+1
+1
+1
+
+GIF5101  01 SHE 99999
+1
+1
+PROFESSEUR, GIF510
+
+
+ 1
+ 1
+ 2  6
+0
+xxxxxx
+1
+1
+1
+
+GIF5201  01 SHE 99999
+1
+1
+PROFESSEUR, GIF520
+
+
+ 1
+ 1
+ 3  6
+0
+xxxxxx
+1
+1
+1
+
+GIF5301  01 SHE 99999
+1
+1
+PROFESSEUR, GIF530
+
+
+ 1
+ 1
+ 4  6
+0
+xxxxxx
+1
+1
+1
+
+GIF5401  01 SHE 99999
+1
+1
+PROFESSEUR, GIF540
+
+
+ 1
+ 1
+ 2  3
+0
+xxxxxx
+1
+1
+1
+
+GIF5501  01 SHE 99999
+1
+1
+PROFESSEUR, GIF550
+
+
+ 1
+ 1
+ 2  3
+0
+xxxxxx
+1
+1
+1
+
+GIF5601  01 SHE 99999
+1
+1
+PROFESSEUR, GIF560
+
+
+ 1
+ 1
+ 3  3
+0
+xxxxxx
+1
+1
+1
+
+GIF6001  01 SHE 99999
+1
+1
+PROFESSEUR, GIF600
+
+
+ 1
+ 1
+ 2  1
+0
+xxxxxx
+1
+1
+1
+
+GIF6111  01 SHE 99999
+1
+1
+PROFESSEUR, GIF611
+
+
+ 1
+ 1
+ 3  1
+0
+xxxxxx
+1
+1
+1
+
+GIF6201  01 SHE 99999
+1
+1
+PROFESSEUR, GIF620
+
+
+ 1
+ 1
+ 4  1
+0
+xxxxxx
+1
+1
+1
+
+GIF6301  01 SHE 99999
+1
+1
+PROFESSEUR, GIF630
+
+
+ 1
+ 1
+ 2  6
+0
+xxxxxx
+1
+1
+1
+
+GIF6501  01 SHE 99999
+1
+1
+PROFESSEUR, GIF650
+
+
+ 1
+ 1
+ 5  1
+0
+xxxxxx
+1
+1
+1
+
+GIF6551  01 SHE 99999
+1
+1
+PROFESSEUR, GIF655
+
+
+ 1
+ 1
+ 3  6
+0
+xxxxxx
+1
+1
+1
+
+GIF6601  01 SHE 99999
+1
+1
+PROFESSEUR, GIF660
+
+
+ 1
+ 1
+ 5  6
+0
+xxxxxx
+1
+1
+1
+
+GIN1021  01 SHE 99999
+1
+1
+LEMIEUX, PIERRE
+
+
+ 2
+ 2  1
+ 2  1  3  6
+1  1
+D7-3007    D7-3007
+0  0
+0  0
+1  1
+
+GIN1022  01 SHE 99999
+1
+1
+LEMIEUX, PIERRE
+
+
+ 1
+ 2
+ 3  7
+1
+D7-3007
+0
+0
+1
+
+GIN2051  01 SHE 99999
+1
+1
+CLOUTIER, LOUIS
+
+
+ 2
+ 1  2
+ 1  1  5  1
+1  1
+C2-1003    D7-3007
+0  0
+0  0
+1  1
+
+GIN2052  01 SHE 99999
+1
+1
+CLOUTIER, LOUIS
+
+
+ 1
+ 2
+ 5  3
+1
+D7-3007
+0
+0
+1
+
+GIN5201  01 SHE 99999
+1
+1
+GRÉGOIRE, DANIEL
+
+
+ 1
+ 3
+ 1  8
+1
+D7-2018
+0
+0
+1
+
+GIN5211  01 SHE 99999
+1
+1
+GRÉGOIRE, DANIEL
+
+
+ 1
+ 2
+ 2  9
+0
+xxxxxx
+1
+1
+1
+
+GIN6011  01 SHE 99999
+1
+1
+YAHIA, AMMAR
+
+
+ 1
+ 3
+ 1  2
+1
+C1-3007
+0
+0
+1
+
+GIN6012  01 SHE 99999
+1
+1
+YAHIA, AMMAR
+
+
+ 1
+ 3
+ 4  2
+1
+C1-5001
+0
+0
+1
+
+GLO8001  01 SHE 99999
+1
+1
+PROFESSEUR, GLO800
+
+
+ 1
+ 1
+ 5  1
+0
+xxxxxx
+1
+1
+1
+
+GMB8101  01 SHE 99999
+1
+1
+PROFESSEUR, GMB810
+
+
+ 1
+ 1
+ 3  8
+0
+xxxxxx
+1
+1
+1
+
+GMB8201  01 SHE 99999
+1
+1
+PROFESSEUR, GMB820
+
+
+ 1
+ 1
+ 4  8
+0
+xxxxxx
+1
+1
+1
+
+GMC2501  01 SHE 99999
+1
+1
+GMC250
+
+
+ 2
+ 2  2
+ 2  6  5  3
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+0  0
+
+GMC2502  01 SHE 99999
+1
+1
+GMC250
+
+
+ 1
+ 2
+ 5  6
+0
+xxxxxx
+1
+1
+0
+
+GMC4041  01 SHE 99999
+1
+1
+NICOLE, MAXIME
+
+
+ 1
+ 3
+ 2  1
+1
+C1-4021
+0
+0
+0
+
+GMC4051  01 SHE 99999
+1
+1
+DESROCHERS, ALAIN
+
+
+ 1
+ 3
+ 4  6
+0
+xxxxxx
+1
+1
+0
+
+GMC4052  01 SHE 99999
+1
+1
+DESROCHERS, ALAIN
+
+
+ 1
+ 3
+ 5  1
+1
+C1-4021
+0
+0
+0
+
+GMC4401  01 SHE 99999
+1
+1
+ROY, ALAIN U.
+
+
+ 1
+ 3
+ 1 12
+0
+xxxxxx
+1
+1
+0
+
+GMC4431  01 SHE    54
+1
+1
+BRÉZINA, MILAN
+
+
+ 2
+ 3  3
+ 3  1  4  1
+0  1
+xxxxxx     C2-1039
+1  0
+1  0
+1  1
+
+GMC4432  01 SHE    18
+1
+1
+BRÉZINA, MILAN
+
+
+ 1
+ 3
+ 4  6
+1
+C2-1039
+0
+0
+1
+
+GMC4432  02 SHE    18
+1
+1
+BRÉZINA, MILAN
+
+
+ 1
+ 3
+ 5  1
+1
+C2-1039
+0
+0
+1
+
+GMC5401  01 SHE 99999
+1
+1
+VEILLEUX, LYNE
+
+
+ 1
+ 3
+ 2  1
+0
+xxxxxx
+1
+1
+0
+
+GMC5501  01 SHE 99999
+1
+1
+TURCOTTE, MICHEL R.
+
+
+ 1
+ 3
+ 2  1
+0
+xxxxxx
+1
+1
+0
+
+GMC5601  01 SHE 99999
+1
+1
+GMC560
+
+
+ 1
+ 3
+ 3 12
+0
+xxxxxx
+1
+1
+0
+
+GRO8101  01 SHE 99999
+1
+1
+PROFESSEUR, GRO810
+
+
+ 1
+ 1
+ 1  3
+0
+xxxxxx
+1
+1
+1
+
+GRO8201  01 SHE 99999
+1
+1
+PROFESSEUR, GRO820
+
+
+ 1
+ 1
+ 4  6
+0
+xxxxxx
+1
+1
+1
+
+GRO8301  01 SHE 99999
+1
+1
+PROFESSEUR, GRO830
+
+
+ 1
+ 1
+ 3  6
+0
+xxxxxx
+1
+1
+1
+
+GRT8101  01 SHE 99999
+1
+1
+PROFESSEUR, GRT810
+
+
+ 1
+ 1
+ 3  3
+0
+xxxxxx
+1
+1
+1
+
+GRT8201  01 SHE 99999
+1
+1
+PROFESSEUR, GRT820
+
+
+ 1
+ 1
+ 3  1
+0
+xxxxxx
+1
+1
+1
+
+GRT8301  01 SHE 99999
+1
+1
+PROFESSEUR, GRT830
+
+
+ 1
+ 1
+ 4  1
+0
+xxxxxx
+1
+1
+1
+
+GTA8101  01 SHE 99999
+1
+1
+PROFESSEUR, GTA810
+
+
+ 1
+ 1
+ 5  3
+0
+xxxxxx
+1
+1
+1
+
+GTA8201  01 SHE 99999
+1
+1
+PROFESSEUR, GTA820
+
+
+ 1
+ 1
+ 5  6
+0
+xxxxxx
+1
+1
+1
+
+IMC1001  01 SHE 99999
+1
+1
+IMC100
+
+
+ 3
+ 2  2  2
+ 4  1  2  1  3  1
+1  1  1
+C1-4023    C1-4023    C1-4023
+0  0  0
+0  0  0
+1  1  1
+
+IMC1051  01 SHE 99999
+1
+1
+DROUET, JEAN-MARC
+
+
+ 2
+ 2  2
+ 4  3  2  3
+1  1
+C1-4023    C1-4023
+0  0
+0  0
+1  1
+
+IMC1052  01 SHE 99999
+1
+1
+DROUET, JEAN-MARC
+
+
+ 2
+ 3  2
+ 4  6  1  1
+1  1
+C1-4023    C1-4023
+0  0
+0  0
+1  1
+
+IMC1501  01 SHE 99999
+1
+1
+IMC150
+
+
+ 1
+ 2
+ 2  8
+0
+xxxxxx
+1
+1
+1
+
+IMC1502  01 SHE 99999
+1
+1
+IMC150
+
+
+ 1
+ 2
+ 3  8
+0
+xxxxxx
+1
+1
+1
+
+IMC1561  01 SHE 99999
+1
+1
+PROULX, DENIS
+
+
+ 1
+ 3
+ 2  1
+0
+xxxxxx
+1
+1
+1
+
+IMC1562  01 SHE 99999
+1
+1
+PROULX, DENIS
+
+
+ 1
+ 2
+ 4  6
+1
+C1-5012
+0
+0
+1
+
+IMC1562  02 SHE 99999
+1
+1
+PROULX, DENIS
+
+
+ 1
+ 2
+ 4  8
+1
+C1-5012
+0
+0
+1
+
+IMC2201  01 SHE 99999
+1
+1
+LACROIX, MARCEL
+
+
+ 2
+ 2  2
+ 2  6  3  6
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+IMC4001  01 SHE 99999
+1
+1
+BRÉZINA, MILAN
+
+
+ 1
+ 1
+ 1  1
+1
+C1-5001
+0
+0
+1
+
+IMC4002  01 SHE 99999
+1
+1
+BRÉZINA, MILAN
+
+
+ 3
+ 4  4  4
+ 1  6  2  6  3  6
+1  1  1
+C2-1041    C2-1041    C2-1041
+0  0  0
+0  0  0
+1  1  1
+
+IMC4051  01 SHE 99999
+1
+1
+MASLOUHI, AHMED
+
+
+ 2
+ 2  1
+ 5  1  4  4
+1  1
+C1-4008    C1-4008
+0  0
+0  0
+1  1
+
+IMC4052  01 SHE 99999
+1
+1
+MASLOUHI, AHMED
+
+
+ 1
+ 2
+ 5  6
+1
+C1-4008
+0
+0
+1
+
+IMC4501  01 SHE 99999
+1
+1
+MICHEAU, PHILIPPE
+
+
+ 2
+ 2  1
+ 1  3  3  1
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+IMC4502  01 SHE 99999
+1
+1
+MICHEAU, PHILIPPE
+
+
+ 1
+ 3
+ 3  2
+1
+C1-4028
+0
+0
+1
+
+IMC4502  02 SHE 99999
+1
+1
+MICHEAU, PHILIPPE
+
+
+ 1
+ 3
+ 4  1
+1
+C1-4028
+0
+0
+1
+
+IMC4551  01 SHE 99999
+1
+1
+MICHEAU, PHILIPPE
+
+
+ 2
+ 1  2
+ 1  6  2  6
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+IMC4552  01 SHE 99999
+1
+1
+MICHEAU, PHILIPPE
+
+
+ 1
+ 3
+ 2  1
+1
+C1-4028
+0
+0
+1
+
+IMC4552  02 SHE 99999
+1
+1
+MICHEAU, PHILIPPE
+
+
+ 1
+ 3
+ 5  1
+1
+C1-4028
+0
+0
+1
+
+IMC4552  03 SHE 99999
+1
+1
+MICHEAU, PHILIPPE
+
+
+ 1
+ 3
+ 5  6
+1
+C1-4028
+0
+0
+1
+
+IMC9001  01 SHE 99999
+1
+1
+VANHOENACKER, YVES
+
+
+ 2
+ 4  4
+ 3  1  3  6
+1  1
+C1-5012    C1-5012
+0  0
+0  0
+1  1
+
+IMC9071  01 SHE 99999
+1
+1
+IMC907
+
+
+ 4
+ 4  3  4  3
+ 2  1  2  6  5  1  5  6
+1  1  1  1
+C1-5012    C1-5012    C1-5012    C1-5012
+0  0  0  0
+0  0  0  0
+1  1  1  1
+
+ING1001  01 SHE 99999
+1
+1
+ING100
+
+
+ 2
+ 2  1
+ 4  7  1  3
+1  1
+C1-5001    C1-5001
+0  0
+0  0
+1  1
+
+ING1002  01 SHE 99999
+1
+1
+ING100
+
+
+ 2
+ 4  4
+ 2  6  3  6
+1  1
+C1-5026    D7-3001
+0  0
+0  0
+1  1
+
+ING1101  01 SHE 99999
+1
+1
+BERRY, ALAIN
+
+
+ 3
+ 1  1  1
+ 4  6  1  4  5  3
+1  1  1
+C1-5001    C1-5001    C1-5001
+0  0  0
+0  0  0
+1  1  1
+
+ING1102  01 SHE 99999
+1
+1
+BERRY, ALAIN
+
+
+ 2
+ 4  4
+ 2  6  3  6
+1  1
+C1-5026    D7-3001
+0  0
+0  0
+1  1
+
+ING2001  01 SHE 99999
+1
+1
+LAPOINTE, JEAN
+
+
+ 1
+ 4
+ 4  1
+1
+C1-5026
+0
+0
+1
+
+ING2002  01 SHE 99999
+1
+1
+LAPOINTE, JEAN
+
+
+ 1
+ 4
+ 1  6
+1
+C1-5026
+0
+0
+1
+
+ING3101  01 SHE 99999
+1
+1
+BROUILLETTE, MARTIN
+
+
+ 3
+ 1  2  2
+ 1  2  3  1  5  1
+1  1  1
+C1-5001    C1-5001    C1-5001
+0  0  0
+0  0  0
+1  1  1
+
+ING3102  01 SHE 99999
+1
+1
+BROUILLETTE, MARTIN
+
+
+ 3
+ 4  4  4
+ 1  6  2  6  3  6
+1  1  1
+D7-3012    D7-3012    D7-3012
+0  0  0
+0  0  0
+1  1  1
+
+ING3201  01 SHE 99999
+1
+1
+MAZOUZI, ABDELKRIM
+
+
+ 3
+ 2  2  2
+ 4  1  2  1  3  1
+1  1  1
+C1-4023    C1-4023    C1-4023
+0  0  0
+0  0  0
+1  1  1
+
+ING3202  01 SHE 99999
+1
+1
+MAZOUZI, ABDELKRIM
+
+
+ 2
+ 4  4
+ 2  6  3  6
+1  1
+C1-4028    C1-4028
+0  0
+0  0
+1  1
+
+ING4001  01 SHE 99999
+1
+1
+ING400
+
+
+ 2
+ 2  2
+ 1  3  5  3
+1  1
+C1-4023    C1-4023
+0  0
+0  0
+1  1
+
+ING4002  01 SHE 99999
+1
+1
+ING400ED
+
+
+ 2
+ 2  2
+ 5  1  3  3
+1  1
+C1-4023    C1-4023
+0  0
+0  0
+1  1
+
+ING5101  01 SHE 99999
+1
+1
+ING510
+
+
+ 2
+ 3  3
+ 4 12  2 12
+0  0
+xxxxxx     xxxxxx
+1  1
+1  1
+1  1
+
+ING5151  01 SHE 99999
+1
+1
+GUINAN, DANIEL
+
+
+ 1
+ 2
+ 3  8
+0
+xxxxxx
+1
+1
+1
+
+ING5251  01 SHE 99999
+1
+1
+DOUVILLE, SERGE
+
+
+ 1
+ 2
+ 1  6
+0
+xxxxxx
+1
+1
+1
+
+ING6001  01 SHE 99999
+1
+1
+PROULX, DENIS
+
+
+ 1
+ 2
+ 3  3
+1
+C1-5001
+0
+0
+1
+
+ING6151  01 SHE 99999
+1
+1
+ING615
+
+
+ 1
+ 3
+ 5  6
+0
+xxxxxx
+1
+1
+1
+
+ING6261  01 SHE 99999
+1
+1
+PROULX, DENIS
+
+
+ 1
+ 2
+ 1  7
+0
+xxxxxx
+1
+1
+1
+
+ING6262  01 SHE 99999
+1
+1
+PROULX, DENIS
+
+
+ 1
+ 2
+ 2  8
+0
+xxxxxx
+1
+1
+1
+
+ING6701  01 SHE 99999
+1
+1
+VANHOENACKER, YVES
+
+
+ 1
+ 2
+ 1  1
+0
+xxxxxx
+1
+1
+1
+
+ING6702  01 SHE 99999
+1
+1
+VANHOENACKER, YVES
+
+
+ 1
+ 2
+ 1  6
+1
+C1-4030
+0
+0
+1
+
+ING6702  02 SHE 99999
+1
+1
+VANHOENACKER, YVES
+
+
+ 1
+ 2
+ 1  8
+1
+C1-4030
+0
+0
+1
+
+INS1241  01 SHE 99999
+1
+1
+INS124
+
+
+ 1
+ 3
+ 3 12
+0
+xxxxxx
+1
+1
+0

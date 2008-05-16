@@ -1,0 +1,57 @@
+Faculté de génie 
+Liste des locaux pour réservation
+
+Nom du local ; Capacité ; Fonction ; Liste des caractéristiques ; Notes ;
+
+C2-1007      ; 21       ; 0212     ;  11                   ; Grand                    ;
+C1-2018      ; 10       ; 0212     ;     11                        ; Matériaux composites     ;
+C1-2055      ; 24       ; 0211     ;      11                        ; xyz ;
+C1-3014      ; 25       ; 0211     ;  11                         ; Laboratoire mécatronique ;
+C1-3027      ; 15       ; 0211     ;     11                         ; Petit laboratoire de communication pour élect ;
+C1-3016      ; 50       ; 0210     ;      11                        ; xyz ;
+C1-3018      ; 50       ; 0211     ;         11                     ; xyz ;
+C1-3024      ; 50       ; 0211     ;         11                     ; xyz ;
+C1-3035      ; 50       ; 0210     ;  11                       ; xyz ;
+C1-3041      ; 50       ; 0210     ;  11                      ; xyz ;
+C1-3007      ; 106      ; 0620     ; 11,14             ; Avec console multi-média ;
+C1-3010      ; 30       ; 0211     ;     11                       ; Laboratoire de conception VLSI ;
+C1-4016      ; 91       ; 0620     ; 11,14             ; xyz ;
+C1-4018      ; 10       ; 0212     ;   11                         ; Métallurgie              ;
+C1-4019      ; 8        ; 0212     ;     11                       ; Laboratoire accessoire - Atelier ;
+C1-4021      ; 28       ; 0210     ; 14                        ; xyz ;
+C1-4023      ; 108      ; 0620     ; 11,14            ; xyz ;
+C1-4030      ; 25       ; 0211     ;       11                   ; Équipement pour photoélasticité ;
+C1-4028      ; 14       ; 0210     ;11                         ; xyz ;
+C1-4008      ; 106      ; 0620     ; 11,14            ; xyz ;
+C1-5012      ; 35       ; 0121     ;  11                          ; 8 cubicules avec 1 ordinateur pour chacun ;
+C1-5026      ; 38       ; 0210     ; 11,14                   ; Ordinateurs (à l'interne seulement) ;
+C1-5028      ; 50       ; 0210     ; 11                 ; Ordinateurs (à l'interne seulement) ;
+C1-5001      ; 198      ; 0620     ; 11,14           ; Avec console multi-média ;
+C1-5009      ; 50       ; 0111     ; 11,14            ; Avec console multi-média ;
+C1-5006      ; 110      ; 0620     ; 11,14             ; Avec console multi-média ;
+C2-0009      ; 100      ; 0214     ;   11                         ; Grand et équipé                       ;
+C2-1004      ; 30       ; 0212     ;14                        ; Atelier pour géologie avec équipement ;
+C2-1015      ; 40       ; 0211     ;      11                       ; Laboratoire d'hydraulique             ;
+C2-1042      ; 21       ; 0211     ;      11                       ; Laboratoire spécialisé chimie-physique ;
+C2-2040      ; 40       ; 0211     ;       11                      ; Laboratoire de projet sans instrumentation ;
+C2-2038      ; 40       ; 0211     ;      11                       ; Laboratoire d'instrumentation ;
+C2-2026      ; 45       ; 0214     ;     11                        ; Laboratoire pour mécanique des sols ;
+C2-2044      ; 30       ; 0210     ;     11                        ; xyz ;
+C2-2065      ; 3        ; 0211     ;      11                       ; Laboratoire absorption atomique ;
+C2-2068      ; 27       ; 0212     ;  11                        ; Génie chimique ;
+C2-251-4     ; 10       ; 0211     ;    11                         ; xyz ;
+D7-2018      ; 57       ; 0111     ;  11               ; xyz ;
+D7-3001      ; 35       ; 0110     ;  11                   ; xyz ;
+D7-3002      ; 22       ; 0110     ;  11                  ; xyz ;
+D7-3007      ; 54       ; 0110     ;  11                      ; xyz ;
+D7-3009      ; 45       ; 0110     ;  11                      ; xyz ;
+D7-3010      ; 21       ; 0110     ;  11                  ; xyz ;
+D7-3011      ; 50       ; 0110     ;  11                  ; xyz ;
+D7-3012      ; 54       ; 0110     ;  11                   ; xyz ;
+D7-3013      ; 44       ; 0110     ;  11                   ; xyz ;
+D7-3014      ; 40       ; 0110     ;  11                   ; xyz ;
+D7-3015      ; 48       ; 0110     ;  11                      ; xyz ;
+D7-3016      ; 125      ; 0620     ;  11             ; Avec console multi-média ;
+D7-3017      ; 45       ; 0110     ;  11                   ; xyz ;
+D7-3019      ; 48       ; 0110     ;  11                   ; xyz ;
+D7-3020      ; 35       ; 0110     ;  11               ; Un mur est en fenêtre ;

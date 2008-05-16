@@ -1,0 +1,30 @@
+<project name="DiamantClean" basedir="." default="all">
+	<target name="setDirs" unless="setDirs" description="setup the properites.">
+		<tstamp />						
+		<property name="srcDir" value="." />
+		<property name="orgDataTest" value="../dataTest" />		
+		<property name="AntWorkSpace" value="../AntWorkSpace" />
+		<property name="localJars" value="${srcDir}/jars" />
+		<property name="build" value="${AntWorkSpace}/classes" />
+		<property name="AntDataTest" value="${AntWorkSpace}/dataTest" />
+		<property name="AntOutputFiles" value="${AntWorkSpace}/dataOutputFiles" />
+		<property name="reports" value="${AntWorkSpace}/reports" />
+		<property name="pref" value="${AntWorkSpace}/pref" />
+		<property name="trace" value="${AntWorkSpace}/trace" />		
+		<property name="lib" value="${AntWorkSpace}/lib" />
+		<property name="TTxmlFiles" value="${AntDataTest}/TTxmlFiles" />
+		<property name="distDirZip" value="${AntWorkSpace}/Diamant2.2.x" />
+		<property name="distDir" value="${distDirZip}/Diamant" />
+		<property name="origDist" value="${srcDir}/origDist" />
+		<property name="tictacJar" value="${distDir}/tictac.jar" />
+		<property name="setProps" value="true" />		
+	</target>
+	
+	<target name="clean" depends="setDirs" description="clean up the output directories.">
+		<delete dir="${AntWorkSpace}" />
+	</target>
+	
+	
+	<target name="all" depends="clean" description="performs all targets">
+    </target>
+</project>

@@ -1,0 +1,221 @@
+***** Rapport ««Complet»»          Produit en Thursday-November-15-2007:11:12 *****
+
+JNum |  Jour  |  Début |  Acti   |  Grp  |  Blc  |  Nomb É |  Enseignant          |  Local       |  
+--------------------------------------------------------------------------------------------------
+01   |  Lu    |  08h50 |  CRM103 |  01   |  1    |  045    |  CRM103-1-01  CRM103-|  A3-004      |  
+01   |  Lu    |  08h50 |  CRM204 |  01   |  1    |  030    |  CRM204-1-01  CRM204-|  A4-262      |  
+01   |  Lu    |  08h50 |  ELC262 |  01   |  1    |  037    |  ELC262-1-01  ELC262-|  A4-265      |  
+01   |  Lu    |  08h50 |  GEO453 |  01   |  1    |  035    |  Magagi  Ramata      |  
+                                                              Royer  Alain        |  A3-113      |  
+01   |  Lu    |  08h50 |  GMQ201 |  01   |  1    |  035    |  Benie  Goze Bertin  |  A6-2004     |  
+01   |  Lu    |  08h50 |  HST248 |  01   |  1    |  020    |  Cormier  Sophie     |  A4-380      |  
+01   |  Lu    |  08h50 |  POL202 |  01   |  1    |  050    |  Chainey  Vicky      |  A6-1013     |  
+01   |  Lu    |  08h50 |  POL212 |  01   |  1    |  096    |  POL212-1-01  POL212-|  ------      |  
+01   |  Lu    |  08h50 |  PSY335 |  01   |  1    |  080    |  PSY335-1-01  PSY335-|  A6-3001     |  
+01   |  Lu    |  08h50 |  PSY437 |  01   |  1    |  080    |  Bergeron  Jean-Serge|  A6-3003     |  
+01   |  Lu    |  08h50 |  SES340 |  01   |  1    |  083    |  Molina  Ernesto     |  A6-3005     |  
+01   |  Lu    |  13h00 |  ANG388 |  01   |  1    |  040    |  Scowcroft  Ann      |  A3-004      |  
+01   |  Lu    |  13h00 |  CRM144 |  03   |  1    |  030    |  Collette  Karine    |  A4-262      |  
+01   |  Lu    |  13h00 |  CRM283 |  01   |  1    |  030    |  Baillargeon  Dany   |  A6-3001     |  
+01   |  Lu    |  13h00 |  CRM300 |  03   |  1    |  060    |  CRM300-1-03  CRM300-|  ------      |  
+01   |  Lu    |  13h00 |  CRM737 |  01   |  1    |  015    |  Beaudet  Céline     |  A3-113      |  
+01   |  Lu    |  13h00 |  ELC266 |  01   |  1    |  040    |  ELC266-1-01  ELC266-|  A4-359      |  
+01   |  Lu    |  13h00 |  ELC269 |  01   |  1    |  040    |  Forest  Jean        |  A6-3005     |  
+01   |  Lu    |  13h00 |  GEO552 |  01   |  1    |  035    |  GEO552-1-01  GEO552-|  A4-265      |  
+01   |  Lu    |  13h00 |  GMQ100 |  01   |  1    |  035    |  Magagi  Ramata      |  A6-2004     |  
+01   |  Lu    |  13h00 |  HST239 |  01   |  1    |  036    |  Paquin  René        |  A4-377      |  
+01   |  Lu    |  13h00 |  HST412 |  01   |  1    |  015    |  Lanthier  Stéphanie |  A6-1013     |  
+01   |  Lu    |  13h00 |  HST779 |  01   |  1    |  020    |  Cormier  Sophie     |  A4-372      |  
+01   |  Lu    |  13h00 |  POL138 |  01   |  1    |  096    |  Paquin  Stéphane    |  ------      |  
+01   |  Lu    |  13h00 |  POL161 |  01   |  1    |  040    |  Venne  Jules-Pascal |  A4-367      |  
+01   |  Lu    |  13h00 |  PSY345 |  01   |  1    |  080    |  Paquet  François    |  A6-3003     |  
+01   |  Lu    |  13h00 |  SES335 |  01   |  1    |  083    |  SES335-1-01  SES335-|  ------      |  
+01   |  Lu    |  16h00 |  ANG426 |  01   |  1    |  025    |  ANG426-1-01  ANG426-|  A4-246      |  
+01   |  Lu    |  16h00 |  ART217 |  01   |  1    |  025    |  Boudreault  Diane   |  A3-004      |  
+01   |  Lu    |  16h00 |  CRM110 |  01   |  1    |  045    |  CRM110-1-01  CRM110-|  A4-255      |  
+01   |  Lu    |  16h00 |  CRM140 |  01   |  1    |  060    |  Piette  Jacques     |  A3-113      |  
+01   |  Lu    |  16h00 |  ELC256 |  01   |  1    |  040    |  Lahaie  Christiane  |  A6-2004     |  
+01   |  Lu    |  16h00 |  PSY545 |  01   |  1    |  080    |  Paquet  François    |  A6-3001     |  
+01   |  Lu    |  16h00 |  REL259 |  01   |  1    |  060    |  REL259-1-01  REL259-|  A6-1013     |  
+01   |  Lu    |  19h00 |  ANS100 |  01   |  1    |  030    |  ANS100-1-01  ANS100-|  A4-262      |  
+01   |  Lu    |  19h00 |  ART214 |  01   |  1    |  025    |  ART214-1-01  ART214-|  A3-004      |  
+01   |  Lu    |  19h00 |  CRM282 |  01   |  1    |  060    |  CRM282-1-01  CRM282-|  A6-1013     |  
+01   |  Lu    |  19h00 |  ESP101 |  03   |  1    |  030    |  ESP101-1-03  ESP101-|  A6-2004     |  
+01   |  Lu    |  19h00 |  ESP101 |  04   |  1    |  030    |  ESP101-1-04  ESP101-|  A3-113      |  
+01   |  Lu    |  19h00 |  ESP201 |  01   |  1    |  030    |  ESP201-1-01  ESP201-|  A4-265      |  
+01   |  Lu    |  19h00 |  ESP301 |  01   |  1    |  030    |  ESP301-1-01  ESP301-|  A6-1010     |  
+01   |  Lu    |  19h00 |  FLS060 |  01   |  1    |  010    |  FLS060-1-01  FLS060-|  A4-377      |  
+01   |  Lu    |  19h00 |  ITL101 |  01   |  1    |  030    |  ITL101-1-01  ITL101-|  A4-271      |  
+01   |  Lu    |  19h00 |  PSY441 |  01   |  1    |  080    |  Bergeron  Jean-Serge|  A6-3005     |  
+02   |  Ma    |  08h50 |  ANG310 |  01   |  1    |  060    |  ANG310-1-01  ANG310-|  A4-359      |  
+02   |  Ma    |  08h50 |  CRM141 |  20   |  1    |  060    |  Pons  Christian-Mari|  A6-3003     |  
+02   |  Ma    |  08h50 |  CRM143 |  01   |  1    |  030    |  Dubois  Caroline    |  A6-2004     |  
+02   |  Ma    |  08h50 |  CRM245 |  01   |  1    |  045    |  Bélisle  Denis      |  A4-255      |  
+02   |  Ma    |  08h50 |  CRM300 |  01   |  1    |  060    |  CRM300-1-01  CRM300-|  ------      |  
+02   |  Ma    |  08h50 |  ELC152 |  01   |  1    |  040    |  ELC152-1-01  ELC152-|  A4-271      |  
+02   |  Ma    |  08h50 |  GAE502 |  01   |  1    |  035    |  Morin  Denis        |  A4-262      |  
+02   |  Ma    |  08h50 |  GMQ200 |  01   |  1    |  035    |  Benie  Goze Bertin  |  A4-265      |  
+02   |  Ma    |  08h50 |  HST106 |  01   |  1    |  096    |  Dramé  Patrick      |  A6-3005     |  
+02   |  Ma    |  08h50 |  LCR301 |  01   |  1    |  060    |  Dostie  Gaétane     |  ------      |  
+02   |  Ma    |  08h50 |  PSY483 |  01   |  1    |  030    |  Roy  Francine       |  A3-113      |  
+02   |  Ma    |  08h50 |  PSY615 |  01   |  1    |  066    |  Curadeau  Steve     |  A6-3001     |  
+02   |  Ma    |  08h50 |  REL129 |  01   |  1    |  136    |  Binette  Pierre     |  ------      |  
+02   |  Ma    |  08h50 |  REL335 |  01   |  1    |  040    |  Granger  Serge      |  A4-368      |  
+02   |  Ma    |  08h50 |  SES382 |  01   |  1    |  045    |  Côté  Richard       |  A6-1013     |  
+02   |  Ma    |  13h00 |  ANG350 |  01   |  1    |  060    |  Siemerling  Winfried|  A6-1013     |  
+02   |  Ma    |  13h00 |  ANG722 |  01   |  1    |  015    |  Godbout  Patricia   |  A6-1002     |  
+02   |  Ma    |  13h00 |  CRM223 |  01   |  1    |  030    |  Marquis  André      |  A6-2004     |  
+02   |  Ma    |  13h00 |  CRM280 |  01   |  1    |  060    |  David  Marc D.      |  A4-255      |  
+02   |  Ma    |  13h00 |  ELC102 |  01   |  1    |  060    |  Boisclair  Isabelle |  A4-359      |  
+02   |  Ma    |  13h00 |  GAE603 |  01   |  1    |  035    |  Magagi  Ramata      |  A4-262      |  
+02   |  Ma    |  13h00 |  HST103 |  01   |  1    |  136    |  Renaud  Alain       |  ------      |  
+02   |  Ma    |  13h00 |  HST600 |  01   |  1    |  015    |  Granger  Serge      |  A3-137      |  
+02   |  Ma    |  13h00 |  POL108 |  01   |  1    |  136    |  Guay  Jean Herman   |  ------      |  
+02   |  Ma    |  13h00 |  PSY347 |  01   |  1    |  079    |  Brault-Labbé  Anne  |  A6-3001     |  
+02   |  Ma    |  13h00 |  PSY371 |  01   |  1    |  080    |  Brassard  Audrey    |  A6-3005     |  
+02   |  Ma    |  13h00 |  REL307 |  01   |  1    |  096    |  Landry  Rémi        |  A6-3003     |  
+02   |  Ma    |  13h00 |  SES384 |  01   |  1    |  045    |  Lenoir  Annick      |  A3-113      |  
+02   |  Ma    |  16h00 |  ART111 |  01   |  1    |  025    |  ART111-1-01  ART111-|  A3-004      |  
+02   |  Ma    |  16h00 |  CRM144 |  01   |  1    |  030    |  Bonneau  Julie      |  A4-265      |  
+02   |  Ma    |  16h00 |  CRM207 |  01   |  1    |  030    |  CRM207-1-01  CRM207-|  A4-255      |  
+02   |  Ma    |  16h00 |  ELC290 |  01   |  1    |  025    |  ELC290-1-01  ELC290-|  A4-262      |  
+02   |  Ma    |  16h00 |  ESP213 |  01   |  1    |  030    |  ESP213-1-01  ESP213-|  A6-1010     |  
+02   |  Ma    |  16h00 |  FLS102 |  01   |  1    |  010    |  FLS102-1-01  FLS102-|  A3-135      |  
+02   |  Ma    |  16h00 |  FRA554 |  01   |  1    |  050    |  FRA554-1-01  FRA554-|  A4-367      |  
+02   |  Ma    |  16h00 |  HST419 |  01   |  1    |  050    |  Charbonneau  Sophie |  A3-113      |  
+02   |  Ma    |  16h00 |  LIT747 |  01   |  1    |  015    |  Michon  Jacques     |  A3-137      |  
+02   |  Ma    |  16h00 |  PSY131 |  10   |  1    |  079    |  Deschênes  Geneviève|  A6-3005     |  
+02   |  Ma    |  16h00 |  PSY672 |  01   |  1    |  042    |  PSY672-1-01  PSY672-|  A4-271      |  
+02   |  Ma    |  16h00 |  REL122 |  01   |  1    |  060    |  Chainey  Vicky      |  A6-1013     |  
+02   |  Ma    |  16h00 |  REL258 |  01   |  1    |  024    |  Martineau  Raymonde |  A4-246      |  
+02   |  Ma    |  16h00 |  SES110 |  01   |  1    |  075    |  Boucher  Diane      |  A6-3001     |  
+02   |  Ma    |  19h00 |  ANG110 |  01   |  1    |  060    |  ANG110-1-01  ANG110-|  A6-1013     |  
+02   |  Ma    |  19h00 |  ANS500 |  01   |  1    |  030    |  ANS500-1-01  ANS500-|  A6-1010     |  
+02   |  Ma    |  19h00 |  ART310 |  01   |  1    |  025    |  Boudreault  Diane   |  A3-004      |  
+02   |  Ma    |  19h00 |  CRM010 |  01   |  1    |  045    |  CRM010-1-01  CRM010-|  ......      |  
+02   |  Ma    |  19h00 |  CRM202 |  01   |  1    |  060    |  CRM202-1-01  CRM202-|  A4-359      |  
+02   |  Ma    |  19h00 |  ESP101 |  02   |  1    |  030    |  ESP101-1-02  ESP101-|  A4-271      |  
+02   |  Ma    |  19h00 |  ESP414 |  01   |  1    |  030    |  ESP414-1-01  ESP414-|  A4-265      |  
+02   |  Ma    |  19h00 |  FLS055 |  01   |  1    |  010    |  FLS055-1-01  FLS055-|  A4-377      |  
+02   |  Ma    |  19h00 |  FLS103 |  01   |  1    |  010    |  FLS103-1-01  FLS103-|  A3-135      |  
+02   |  Ma    |  19h00 |  GEO251 |  01   |  1    |  035    |  GEO251-1-01  GEO251-|  A3-113      |  
+02   |  Ma    |  19h00 |  GMQ600 |  01   |  1    |  035    |  GMQ600-1-01  GMQ600-|  A6-2004     |  
+02   |  Ma    |  19h00 |  TRA314 |  01   |  1    |  030    |  Fortier  Shirley    |  A4-262      |  
+03   |  Me    |  08h50 |  ANG132 |  01   |  1    |  030    |  ANG132-1-01  ANG132-|  A6-2004     |  
+03   |  Me    |  08h50 |  CRM101 |  01   |  1    |  060    |  CRM101-1-01  CRM101-|  A6-3005     |  
+03   |  Me    |  08h50 |  CRM102 |  20   |  1    |  030    |  CRM102-1-20  CRM102-|  A4-377      |  
+03   |  Me    |  08h50 |  CRM243 |  01   |  1    |  045    |  Masson  Chantal-Édit|  A4-255      |  
+03   |  Me    |  08h50 |  CRM300 |  02   |  1    |  060    |  CRM300-1-02  CRM300-|  ------      |  
+03   |  Me    |  08h50 |  ELC246 |  01   |  1    |  040    |  ELC246-1-01  ELC246-|  A3-004      |  
+03   |  Me    |  08h50 |  GEO551 |  01   |  1    |  035    |  Magagi  Ramata      |  A3-113      |  
+03   |  Me    |  08h50 |  GMQ603 |  01   |  1    |  035    |  GMQ603-1-01  GMQ603-|  A4-262      |  
+03   |  Me    |  08h50 |  HST246 |  01   |  1    |  050    |  Dumas  Geneviève    |  
+                                                              Fournier  Jonathan  |  A4-367      |  
+03   |  Me    |  08h50 |  HST267 |  01   |  1    |  070    |  Dramé  Patrick      |  A6-3003     |  
+03   |  Me    |  08h50 |  LIN747 |  01   |  1    |  015    |  Dostie  Gaétane     |  A3-137      |  
+03   |  Me    |  08h50 |  POL205 |  01   |  1    |  050    |  Venne  Jules-Pascal |  A4-359      |  
+03   |  Me    |  08h50 |  PSY423 |  01   |  1    |  099    |  Courcy  François    |  Multimédia  |  
+03   |  Me    |  08h50 |  PSY555 |  01   |  1    |  030    |  Proulx  Jacques     |  A4-265      |  
+03   |  Me    |  08h50 |  SES103 |  01   |  1    |  075    |  Beauchamp  Jean-Jacq|  ------      |  
+03   |  Me    |  08h50 |  SES385 |  01   |  1    |  045    |  Beaulieu  Marie     |  A6-1013     |  
+03   |  Me    |  13h00 |  CRM144 |  02   |  1    |  030    |  CRM144-1-02  CRM144-|  A6-2004     |  
+03   |  Me    |  13h00 |  CRM220 |  01   |  1    |  030    |  Beaudet  Céline     |  A3-113      |  
+03   |  Me    |  13h00 |  CRM735 |  01   |  1    |  015    |  Marquis  André      |  A3-137      |  
+03   |  Me    |  13h00 |  ELC105 |  01   |  1    |  060    |  ELC105-1-01  ELC105-|  A4-255      |  
+03   |  Me    |  13h00 |  ELC501 |  01   |  1    |  020    |  Luneau  Marie-Pier  |  A3-136      |  
+03   |  Me    |  13h00 |  ESP101 |  01   |  1    |  030    |  ESP101-1-01  ESP101-|  ......      |  
+03   |  Me    |  13h00 |  ESP401 |  01   |  1    |  030    |  ESP401-1-01  ESP401-|  A6-1013     |  
+03   |  Me    |  13h00 |  GEO249 |  01   |  1    |  060    |  GEO249-1-01  GEO249-|  A6-3005     |  
+03   |  Me    |  13h00 |  GEP205 |  01   |  1    |  015    |  Gaudreau  Serge     |  A6-1002     |  
+03   |  Me    |  13h00 |  HST247 |  01   |  1    |  040    |  Robichaud  Léon     |  A4-265      |  
+03   |  Me    |  13h00 |  HST448 |  01   |  1    |  040    |  Dumas  Geneviève    |  A6-3001     |  
+03   |  Me    |  13h00 |  HST748 |  01   |  1    |  020    |  Métayer  Christine  |  A4-374      |  
+03   |  Me    |  13h00 |  LIT703 |  01   |  1    |  015    |  Watteyne  Nathalie  |  A6-2029     |  
+03   |  Me    |  13h00 |  PSY130 |  10   |  1    |  060    |  Bolduc  Marc        |  A4-359      |  
+03   |  Me    |  13h00 |  PSY546 |  01   |  1    |  080    |  Couture  Mélanie    |  A6-3003     |  
+03   |  Me    |  13h00 |  PSY555 |  01   |  2    |  030    |  Proulx  Jacques     |  A4-262      |  
+03   |  Me    |  13h00 |  REL251 |  01   |  1    |  136    |  Aoun  Sami          |  ------      |  
+03   |  Me    |  13h00 |  SES240 |  01   |  1    |  075    |  SES240-1-01  SES240-|  ------      |  
+03   |  Me    |  16h00 |  ANG584 |  01   |  1    |  060    |  ANG584-1-01  ANG584-|  A4-255      |  
+03   |  Me    |  16h00 |  ANS315 |  01   |  1    |  030    |  ANS315-1-01  ANS315-|  A4-265      |  
+03   |  Me    |  16h00 |  ART311 |  01   |  1    |  045    |  ART311-1-01  ART311-|  A3-113      |  
+03   |  Me    |  16h00 |  CRM281 |  01   |  1    |  030    |  CRM281-1-01  CRM281-|  A6-1010     |  
+03   |  Me    |  16h00 |  ELC110 |  01   |  1    |  030    |  Rajotte  Pierre     |  A4-262      |  
+03   |  Me    |  16h00 |  HST217 |  01   |  1    |  070    |  Vandal  Gilles      |  A4-359      |  
+03   |  Me    |  16h00 |  POL107 |  01   |  1    |  096    |  Patsias  Caroline   |  A6-3003     |  
+03   |  Me    |  16h00 |  PSY111 |  01   |  1    |  080    |  Gagnon  Jean        |  A6-3001     |  
+03   |  Me    |  16h00 |  SES413 |  01   |  1    |  083    |  Ouellet  Mylène     |  A6-3005     |  
+03   |  Me    |  16h00 |  TRA110 |  01   |  1    |  030    |  Fortier  Shirley    |  A4-271      |  
+03   |  Me    |  16h00 |  TRA110 |  02   |  1    |  030    |  TRA110-1-02  TRA110-|  A4-368      |  
+03   |  Me    |  19h00 |  ALL112 |  01   |  1    |  030    |  ALL112-1-01  ALL112-|  A6-2004     |  
+03   |  Me    |  19h00 |  ANS200 |  01   |  1    |  030    |  ANS200-1-01  ANS200-|  A6-1010     |  
+03   |  Me    |  19h00 |  ANS400 |  01   |  1    |  030    |  ANS400-1-01  ANS400-|  A4-262      |  
+03   |  Me    |  19h00 |  ART216 |  01   |  1    |  025    |  ART216-1-01  ART216-|  A3-004      |  
+03   |  Me    |  19h00 |  CRM200 |  01   |  1    |  060    |  Yelle  François     |  A4-255      |  
+03   |  Me    |  19h00 |  FLS042 |  01   |  1    |  010    |  FLS042-1-01  FLS042-|  A4-377      |  
+03   |  Me    |  19h00 |  FRE042 |  01   |  1    |  020    |  FRE042-1-01  FRE042-|  A4-377      |  
+03   |  Me    |  19h00 |  PRG100 |  01   |  1    |  030    |  PRG100-1-01  PRG100-|  A4-265      |  
+03   |  Me    |  19h00 |  PSY440 |  01   |  1    |  080    |  Boucher  Diane      |  A6-3001     |  
+04   |  Je    |  08h50 |  ANG271 |  01   |  1    |  025    |  ANG271-1-01  ANG271-|  A4-246      |  
+04   |  Je    |  08h50 |  CRM115 |  01   |  1    |  045    |  CRM115-1-01  CRM115-|  A4-255      |  
+04   |  Je    |  08h50 |  CRM205 |  01   |  1    |  025    |  CRM205-1-01  CRM205-|  A3-004      |  
+04   |  Je    |  08h50 |  CRM222 |  01   |  1    |  030    |  Dubois  Caroline    |  A4-271      |  
+04   |  Je    |  08h50 |  ELC104 |  01   |  1    |  060    |  ELC104-1-01  ELC104-|  A4-359      |  
+04   |  Je    |  08h50 |  FRA352 |  01   |  1    |  060    |  FRA352-1-01  FRA352-|  ------      |  
+04   |  Je    |  08h50 |  GEO456 |  01   |  1    |  035    |  Morin  Denis        |  A6-2004     |  
+04   |  Je    |  08h50 |  GEP360 |  01   |  1    |  025    |  Vandal  Gilles      |  A4-265      |  
+04   |  Je    |  08h50 |  HST556 |  01   |  1    |  030    |  Fournier  Jonathan  |  A4-368      |  
+04   |  Je    |  08h50 |  LIT782 |  01   |  1    |  015    |  LIT782-1-01  LIT782-|  A3-137      |  
+04   |  Je    |  08h50 |  PSY321 |  01   |  1    |  080    |  Deschênes  Geneviève|  A6-3003     |  
+04   |  Je    |  08h50 |  PSY346 |  01   |  1    |  080    |  Gagnon  Lise        |  Multimédia  |  
+04   |  Je    |  08h50 |  PSY617 |  01   |  1    |  042    |  Papineau  Marie     |  A6-1013     |  
+04   |  Je    |  08h50 |  SES253 |  01   |  1    |  075    |  Dallaire  Nicole    |  A6-3005     |  
+04   |  Je    |  08h50 |  SES386 |  01   |  1    |  045    |  Lenoir  Annick      |  A6-3001     |  
+04   |  Je    |  08h50 |  TRA401 |  01   |  1    |  045    |  Godbout  Patricia   |  A4-367      |  
+04   |  Je    |  13h00 |  ANG271 |  02   |  1    |  025    |  ANG271-1-02  ANG271-|  A4-246      |  
+04   |  Je    |  13h00 |  ANG650 |  01   |  1    |  060    |  Siemerling  Winfried|  A6-3001     |  
+04   |  Je    |  13h00 |  ANG723 |  01   |  1    |  015    |  Reid  Gregory       |  A3-137      |  
+04   |  Je    |  13h00 |  CRM104 |  01   |  1    |  030    |  Collette  Karine    |  A4-262      |  
+04   |  Je    |  13h00 |  CRM115 |  02   |  1    |  045    |  CRM115-1-02  CRM115-|  A4-255      |  
+04   |  Je    |  13h00 |  CRM122 |  01   |  1    |  060    |  Forest  Jean        |  A6-1013     |  
+04   |  Je    |  13h00 |  CRM260 |  01   |  1    |  030    |  CRM260-1-01  CRM260-|  A4-271      |  
+04   |  Je    |  13h00 |  ELC106 |  01   |  1    |  060    |  ELC106-1-01  ELC106-|  A4-359      |  
+04   |  Je    |  13h00 |  GEO652 |  01   |  1    |  035    |  Granberg  Hardy Beng|  A4-368      |  
+04   |  Je    |  13h00 |  HST411 |  01   |  1    |  015    |  Paquin  René        |  A6-1002     |  
+04   |  Je    |  13h00 |  HST557 |  01   |  1    |  030    |  Sawaya  Jean-Pierre |  A4-265      |  
+04   |  Je    |  13h00 |  HST594 |  01   |  1    |  096    |  Adnane  Khalid      |  A6-3003     |  
+04   |  Je    |  13h00 |  HST730 |  01   |  1    |  020    |  Dumas  Geneviève    |  A3-113      |  
+04   |  Je    |  13h00 |  LIT730 |  01   |  1    |  015    |  Boisclair  Isabelle |  A6-2029     |  
+04   |  Je    |  13h00 |  POL128 |  01   |  1    |  096    |  POL128-1-01  POL128-|  ------      |  
+04   |  Je    |  13h00 |  PSY485 |  01   |  1    |  030    |  Migneault  Chantal  |  A6-3005     |  
+04   |  Je    |  13h00 |  SES263 |  01   |  1    |  075    |  SES263-1-01  SES263-|  ......      |  
+04   |  Je    |  13h00 |  TRA412 |  01   |  1    |  030    |  TRA412-1-01  TRA412-|  A6-2004     |  
+04   |  Je    |  16h00 |  ANG560 |  01   |  1    |  060    |  ANG560-1-01  ANG560-|  A3-113      |  
+04   |  Je    |  16h00 |  ART244 |  01   |  1    |  045    |  ART244-1-01  ART244-|  A4-255      |  
+04   |  Je    |  16h00 |  CRM121 |  01   |  1    |  060    |  Pons  Christian-Mari|  A6-1013     |  
+04   |  Je    |  16h00 |  ESP305 |  01   |  1    |  030    |  ESP305-1-01  ESP305-|  A6-1010     |  
+04   |  Je    |  16h00 |  HST479 |  01   |  1    |  096    |  Poulin  André       |  A6-3001     |  
+04   |  Je    |  16h00 |  LCR313 |  01   |  1    |  060    |  LCR313-1-01  LCR313-|  A4-359      |  
+04   |  Je    |  16h00 |  SES387 |  01   |  1    |  045    |  Caillouette  Jacques|  A3-004      |  
+04   |  Je    |  19h00 |  ALL101 |  01   |  1    |  030    |  ALL101-1-01  ALL101-|  A6-1010     |  
+04   |  Je    |  19h00 |  ANS300 |  01   |  1    |  030    |  ANS300-1-01  ANS300-|  A6-2004     |  
+04   |  Je    |  19h00 |  FLS053 |  01   |  1    |  010    |  FLS053-1-01  FLS053-|  A4-377      |  
+04   |  Je    |  19h00 |  FRA101 |  01   |  1    |  040    |  FRA101-1-01  FRA101-|  A4-265      |  
+04   |  Je    |  19h00 |  ITL201 |  01   |  1    |  030    |  ITL201-1-01  ITL201-|  A4-262      |  
+05   |  Ve    |  08h50 |  CRM104 |  20   |  1    |  030    |  CRM104-1-20  CRM104-|  A6-1010     |  
+05   |  Ve    |  08h50 |  CRM141 |  01   |  1    |  060    |  Yelle  François     |  A4-359      |  
+05   |  Ve    |  08h50 |  CRM144 |  20   |  1    |  030    |  Bonneau  Julie      |  A6-2004     |  
+05   |  Ve    |  08h50 |  CRM145 |  01   |  1    |  045    |  Bélisle  Denis      |  A4-255      |  
+05   |  Ve    |  08h50 |  ELC106 |  02   |  1    |  060    |  ELC106-1-02  ELC106-|  A3-113      |  
+05   |  Ve    |  08h50 |  ELC120 |  01   |  1    |  060    |  ELC120-1-01  ELC120-|  ------      |  
+05   |  Ve    |  08h50 |  GEP111 |  01   |  1    |  050    |  Adnane  Khalid      |  A4-367      |  
+05   |  Ve    |  08h50 |  GEP111 |  02   |  1    |  050    |  Adnane  Khalid      |  A6-3003     |  
+05   |  Ve    |  08h50 |  HST105 |  01   |  1    |  136    |  Fournier  Jonathan  |  Multimédia  |  
+05   |  Ve    |  08h50 |  LCR100 |  01   |  1    |  060    |  Dubois  Caroline    |  ------      |  
+05   |  Ve    |  08h50 |  PSY426 |  01   |  1    |  080    |  Boucher  Diane      |  A6-3001     |  
+05   |  Ve    |  08h50 |  PSY450 |  01   |  1    |  080    |  Proulx  Chantal     |  A6-3005     |  
+05   |  Ve    |  13h00 |  GEP111 |  01   |  2    |  050    |  Adnane  Khalid      |  A4-255      |  
+05   |  Ve    |  13h00 |  GEP111 |  02   |  2    |  050    |  Adnane  Khalid      |  A6-3003     |  
+05   |  Ve    |  13h00 |  HST221 |  01   |  1    |  070    |  Carrier  Marc       |  A6-3001     |  
+05   |  Ve    |  13h00 |  PSY133 |  10   |  1    |  080    |  Proulx  Chantal     |  A6-3005     |  
+06   |  Sa    |  08h50 |  FLS101 |  01   |  1    |  010    |  FLS101-1-01  FLS101-|  A3-135      |  

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TTsequences>
+	<TTsequence>
+		<sequenceID>AM</sequenceID>
+		<TTperiods>
+			<TTperiod>
+				<periodID>1</periodID>
+				<BeginTime>8:15</BeginTime>
+				<EndTime>9:15</EndTime>
+				<priority>0</priority>
+			</TTperiod>
+		</TTperiods>
+	</TTsequence>
+	<TTsequence>
+		<sequenceID>PM</sequenceID>
+		<TTperiods>
+			<TTperiod>
+				<periodID>1</periodID>
+				<BeginTime>13:30</BeginTime>
+				<EndTime>14:30</EndTime>
+				<priority>0</priority>
+			</TTperiod>
+		</TTperiods>
+	</TTsequence>
+	<TTsequence>
+		<sequenceID>EM</sequenceID>
+		<TTperiods>
+			<TTperiod>
+				<periodID>1</periodID>
+				<BeginTime>13:30</BeginTime>
+				<EndTime>14:30</EndTime>
+				<priority>0</priority>
+			</TTperiod>
+		</TTperiods>
+	</TTsequence>
+</TTsequences>
