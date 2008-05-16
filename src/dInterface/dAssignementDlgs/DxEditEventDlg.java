@@ -497,7 +497,6 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		assigned.setSelected(event.isAssigned());
 		assigned.addActionListener(this);
 		JToggleButton fixed = new JToggleButton(DConst.BUT_FIGE);
-
 		fixed.setSelected(event.getPermanentState());
 		fixed.addActionListener(this);
 
