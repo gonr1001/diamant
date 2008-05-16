@@ -2,7 +2,7 @@
 	<target name="setDirs" unless="setDirs" description="setup the properites.">
 		<tstamp />						
 		<property name="srcDir" value="." />
-		<property name="exeJUnitDir" value="..\AntWorkSpace" />
+		<property name="exeJUnitDir" value="../AntWorkSpace" />
 		<property name="orgDataTest" value="../dataTest" />		
 		<property name="AntWorkSpace" value="../AntWorkSpace" />
 		<property name="localJars" value="${srcDir}/jars" />
@@ -49,6 +49,8 @@
 		<mkdir dir="${distDir}/facs/admin/exemple" />
 		<mkdir dir="${distDir}/facs/education" />
 		<mkdir dir="${distDir}/facs/education/exemple" />
+		<mkdir dir="${distDir}/facs/flsh" />
+		<mkdir dir="${distDir}/facs/flsh/exemple" />
 		<mkdir dir="${distDir}/facs/eduPh" />
 		<mkdir dir="${distDir}/facs/eduPh/exemple" />
 		<mkdir dir="${distDir}/facs/genie" />
@@ -81,7 +83,7 @@
 	<target name="compile" depends="compilepath" description="compile the java sources.">
 		<javac srcdir="${srcDir}" destdir="${build}" source="1.5">
 			<compilerarg value="-Xlint" />
-			<classpath refid="jj.classpath" />
+			<classpath refid="c.classpath" />
 		</javac>
 	</target>
 	
