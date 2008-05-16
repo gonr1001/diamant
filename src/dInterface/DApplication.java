@@ -834,7 +834,8 @@ public class DApplication {
 				// filepath += "refFiles" + File.separator;
 				// filepath += "facs" + File.separator;
 				// filepath += "flsh2_1" + File.separator;
-			 fileName += "HIVER2008examens.dia";
+			// fileName += "HIVER2008examens.dia";
+			 fileName += "Cours_ETE2008_Horaire_Cours_4_periodes.dia";
 			 //fileName += "test1.dia";
 				//fileName += "lData5j30min.dia";
 				System.out.println("filename: " + fileName);
