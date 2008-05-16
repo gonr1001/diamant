@@ -1,42 +1,43 @@
 <project name="DiamantBuild" basedir="." default="all">
 	<target name="setDirs" unless="setDirs" description="setup the properites.">
-		<tstamp />						
-		<property name="srcDir" value="." />
-		<property name="exeJUnitDir" value="${srcDir}/./AntWorkSpace" />
-		<property name="orgDataTest" value="../dataTest" />		
-		<property name="AntWorkSpace" value="../AntWorkSpace" />
+		<tstamp />
+		<property name="srcDir" value="./src" />
 		<property name="localJars" value="${srcDir}/jars" />
+			
+		<property name="orgDataTest" value="./dataTest" />
+			
+		<property name="AntWorkSpace" value="./AntWorkSpace" />
 		<property name="build" value="${AntWorkSpace}/classes" />
 		<property name="AntDataTest" value="${AntWorkSpace}/dataTest" />
 		<property name="AntOutputFiles" value="${AntWorkSpace}/dataOutputFiles" />
 		<property name="reports" value="${AntWorkSpace}/reports" />
 		<property name="pref" value="${AntWorkSpace}/pref" />
-		<property name="trace" value="${AntWorkSpace}/trace" />		
+		<property name="trace" value="${AntWorkSpace}/trace" />
 		<property name="lib" value="${AntWorkSpace}/lib" />
-		<property name="orgTTxmlFiles" value="${orgDataTest}/TTxmlFiles" />
-		<property name="TTxmlFiles" value="${AntDataTest}/TTxmlFiles" />
 		<property name="distDirZip" value="${AntWorkSpace}/Diamant2.2.x" />
+			
 		<property name="distDir" value="${distDirZip}/Diamant" />
 		<property name="origDist" value="${srcDir}/origDist" />
 		<property name="tictacJar" value="${distDir}/tictac.jar" />
-		<property name="setProps" value="true" />	
 		
 		<property name="test.dir" location="${AntWorkSpace}" />
 		<property name="test.classes.dir" location="${test.dir}/classes" />
 		<property name="test.data.dir" location="${AntWorkSpace}/dataTest" />
-	
+			
+		<property name="setProps" value="true" />
+
 	</target>
-	
-	
+
+
 	<target name="clean" depends="setDirs" description="clean up the output directories.">
 		<delete dir="${AntWorkSpace}" />
 	</target>
-	
+
 	<target name="prepare" depends="clean" description="prepare the output directories.">
 		<mkdir dir="${AntWorkSpace}" />
 		<mkdir dir="${build}" />
 		<mkdir dir="${reports}" />
-		<mkdir dir="${AntDataTest}" />
+		<mkdir dir="${AntDataTest}"/>
 		<mkdir dir="${AntOutputFiles}" />
 		<mkdir dir="${lib}" />
 		<mkdir dir="${distDirZip}" />
@@ -68,7 +69,7 @@
 			</fileset>
 		</copy>
 	</target>
-	
+
 	<target name="compilepath" depends="prepare" description="compile path classpath.">
 		<path id="c.classpath">
 			<pathelement path="${localJars}/junit.jar" />
@@ -79,14 +80,14 @@
 			<pathelement path="${build}"/>
 		</path>
 	</target>
-	
+
 	<target name="compile" depends="compilepath" description="compile the java sources.">
 		<javac srcdir="${srcDir}" destdir="${build}" source="1.5">
 			<compilerarg value="-Xlint" />
 			<classpath refid="c.classpath" />
 		</javac>
 	</target>
-	
+
 	<target name="addToClasses" depends="prepare,compile" description="add files to classes.">
 		<copy todir="${build}/eLib/exit/txt/data">
 			<fileset dir="${srcDir}/eLib/exit/txt/data">
@@ -95,25 +96,24 @@
 			</fileset>
 		</copy>
 		<copy todir="${build}/dInterface/images">
-					<fileset dir="${srcDir}/dInterface/images">
-						<exclude name="**/svn" />
-						<exclude name="**/*.txvpck" />
-					</fileset>
-				</copy>
+			<fileset dir="${srcDir}/dInterface/images">
+				<exclude name="**/svn" />
+				<exclude name="**/*.txvpck" />
+			</fileset>
+		</copy>
 	</target>
-	
+
 	<target name="testpath" depends="prepare,compile,addToClasses " description="test path classpath.">
 		<path id="t.classpath">
 			<pathelement path="${localJars}/junit.jar" />
 			<pathelement path="${localJars}/log4j-1.2.8.jar" />
 			<pathelement path="${localJars}/xml-api.jar" />
 			<pathelement path="${localJars}/jdom.jar" />
-			<pathelement path="${localJars}/sjsxp.jar" />			
+			<pathelement path="${localJars}/sjsxp.jar" />
 			<pathelement path="${build}" />
-			<pathelement location="${test.dir.classes}" />
 		</path>
 	</target>
-	
+
 	<target name="unitTest" depends="compile, testpath" description="test the java sources">
 		<junit printsummary="false" haltonfailure="true">
 			<classpath refid="t.classpath" />
@@ -131,7 +131,7 @@
 			<report format="frames" todir="${reports}" />
 		</junitreport>
 	</target>
-	
+
 	<target name="exe" depends="unitTest" description="execute the java sources.">
 		<java classname="dmains.Diamant">
 			<classpath refid="c.classpath" />
@@ -159,9 +159,9 @@
 			<attribute name="Main-Class" value="dmains.Diamant" />
 		</manifest>
 	</target>
-	
-	
-	
+
+
+
 	<target name="package" depends="manifest">
 		<copy todir="${build}/pref">
 			<fileset dir="${srcDir}/pref">
@@ -205,11 +205,11 @@
 	</target>
 
 	<target name="signjar" depends="zip" description="Signs the jar for WebStart deployment">
-		<signjar jar="${srcDir}/tictac.jar" keystore="${srcDir}/eXitStore" signedjar="${distDir}/stictac.jar" alias="signer" keypass="Diamant" storepass="Diamant" />
+		<signjar jar="${AntWorkSpace}/tictac.jar" keystore="${AntWorkSpace}/eXitStore" signedjar="${distDir}/stictac.jar" alias="signer" keypass="Diamant" storepass="Diamant" />
 	</target>
 
 	<target name="zip" depends="completepackage" description="performs theZip">
-		<zip basedir="${distDirZip}" destfile="${srcDir}/Diamant.zip" />
+		<zip basedir="${distDirZip}" destfile="${AntWorkSpace}/Diamant.zip" />
 	</target>
 	<!--signjar,-->
 	<target name="all" depends="clean, package, zip" description="performs all targets">
