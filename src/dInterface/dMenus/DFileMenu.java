@@ -104,7 +104,7 @@ public class DFileMenu extends JMenu implements MenuStates {
 		_newTTable = new JMenu(DConst.NEW_TT);
 		_newTTable.setFont(DxMenuBar.DxMB_FONT);
 
-		// Horaire cycle
+		// timetable for a cycle
 		_newTTableCycle = new JMenuItem(DConst.NTT_CY);
 		_newTTableCycle.setFont(DxMenuBar.DxMB_FONT);
 		class NewTTableCycleListener implements ActionListener {
@@ -117,7 +117,7 @@ public class DFileMenu extends JMenu implements MenuStates {
 		_newTTableCycle.addActionListener(newTTableCycleListener);
 		_newTTable.add(_newTTableCycle);
 
-		// Horaire examen
+		// timetable for an exam
 		_newTTableExam = new JMenuItem(DConst.NTT_EX);
 		_newTTableExam.setFont(DxMenuBar.DxMB_FONT);
 		class NewTTableExamListener implements ActionListener {
@@ -406,7 +406,7 @@ public class DFileMenu extends JMenu implements MenuStates {
 		_saveAs.setEnabled(true);
 		_defineFiles.setEnabled(true);
 		_import.setEnabled(false);
-		_export.setEnabled(false);
+		_export.setEnabled(true);
 		_exit.setEnabled(true);
 	}
 
@@ -452,7 +452,7 @@ public class DFileMenu extends JMenu implements MenuStates {
 		_saveAs.setEnabled(true);
 		_defineFiles.setEnabled(true);
 		_import.setEnabled(false);
-		_export.setEnabled(false);
+		_export.setEnabled(true);
 		_exit.setEnabled(true);
 	}
 
