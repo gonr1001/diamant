@@ -1,0 +1,7282 @@
+2.1
+!!!!!!!!!!
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<DXTimeTable>
+     <TTcycle>
+        <TTdays>
+        <TTday>
+             <TTsequences>
+               <TTsequence><sequenceID>AM</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>08:30</BeginTime><EndTime>11:30</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>PM1</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>12:30</BeginTime><EndTime>15:30</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>PM2</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>15:45</BeginTime><EndTime>18:45</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>SOIR</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>19:00</BeginTime><EndTime>22:00</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+             </TTsequences>
+          <dayID>Lu</dayID><dayRef>1</dayRef>
+          </TTday>
+        <TTday>
+             <TTsequences>
+               <TTsequence><sequenceID>AM</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>08:30</BeginTime><EndTime>11:30</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>PM1</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>12:30</BeginTime><EndTime>15:30</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>PM2</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>15:45</BeginTime><EndTime>18:45</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>SOIR</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>19:00</BeginTime><EndTime>22:00</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+             </TTsequences>
+          <dayID>Ma</dayID><dayRef>2</dayRef>
+          </TTday>
+        <TTday>
+             <TTsequences>
+               <TTsequence><sequenceID>AM</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>08:30</BeginTime><EndTime>11:30</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>PM1</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>12:30</BeginTime><EndTime>15:30</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>PM2</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>15:45</BeginTime><EndTime>18:45</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>SOIR</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>19:00</BeginTime><EndTime>22:00</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+             </TTsequences>
+          <dayID>Me</dayID><dayRef>3</dayRef>
+          </TTday>
+        <TTday>
+             <TTsequences>
+               <TTsequence><sequenceID>AM</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>08:30</BeginTime><EndTime>11:30</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>PM1</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>12:30</BeginTime><EndTime>15:30</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>PM2</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>15:45</BeginTime><EndTime>18:45</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>SOIR</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>19:00</BeginTime><EndTime>22:00</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+             </TTsequences>
+          <dayID>Je</dayID><dayRef>4</dayRef>
+          </TTday>
+        <TTday>
+             <TTsequences>
+               <TTsequence><sequenceID>AM</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>08:30</BeginTime><EndTime>11:30</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>PM1</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>12:30</BeginTime><EndTime>15:30</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>PM2</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>15:45</BeginTime><EndTime>18:45</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>SOIR</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>19:00</BeginTime><EndTime>22:00</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+             </TTsequences>
+          <dayID>Ve</dayID><dayRef>5</dayRef>
+          </TTday>
+        </TTdays>
+<cycleID>1</cycleID><pLength>180</pLength>
+     </TTcycle>
+</DXTimeTable>
+!!!!!!!!!!
+130
+ADM101-1-01, ADM101-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ADM101-1-02, ADM101-1-02
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ADM111-1-09, ADM111-1-09
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ADM111-1-10, ADM111-1-10
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ADM111-1-20, ADM111-1-20
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ADM445-1-01, ADM445-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ADM556-1-01, ADM556-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ADM556-1-02, ADM556-1-02
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ADM661-1-01, ADM661-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ADM661-1-02, ADM661-1-02
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ADM661-1-03, ADM661-1-03
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ADM661-1-04, ADM661-1-04
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ADM661-1-05, ADM661-1-05
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ADM661-1-06, ADM661-1-06
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CTB113-1-09, CTB113-1-09
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CTB113-1-10, CTB113-1-10
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CTB213-1-01, CTB213-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CTB213-1-02, CTB213-1-02
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CTB301-1-01, CTB301-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CTB301-1-02, CTB301-1-02
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CTB304-1-01, CTB304-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CTB304-1-02, CTB304-1-02
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CTB304-1-03, CTB304-1-03
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CTB313-1-01, CTB313-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CTB313-1-02, CTB313-1-02
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CTB314-1-01, CTB314-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CTB314-1-02, CTB314-1-02
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CTB331-1-01, CTB331-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CTB331-1-02, CTB331-1-02
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CTB333-1-01, CTB333-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CTB333-1-02, CTB333-1-02
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CTB333-1-03, CTB333-1-03
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CTB334-1-01, CTB334-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CTB334-1-02, CTB334-1-02
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CTB341-1-01, CTB341-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CTB341-1-02, CTB341-1-02
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CTB413-1-01, CTB413-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CTB413-1-02, CTB413-1-02
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CTB443-1-10, CTB443-1-10
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CTB453-1-01, CTB453-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CTB453-1-02, CTB453-1-02
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CTB453-1-03, CTB453-1-03
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CTB465-1-01, CTB465-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CTB466-1-01, CTB466-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CTB561-1-01, CTB561-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CTB561-1-02, CTB561-1-02
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CTB564-1-01, CTB564-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CTB564-1-02, CTB564-1-02
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CTB565-1-01, CTB565-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CTB566-1-01, CTB566-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CTB566-1-02, CTB566-1-02
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CTB666-1-01, CTB666-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+CTB666-1-02, CTB666-1-02
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ECN117-1-01, ECN117-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ECN117-1-02, ECN117-1-02
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ECN117-1-03, ECN117-1-03
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ECN117-1-10, ECN117-1-10
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ECN218-1-01, ECN218-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ECN219-1-01, ECN219-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ECN219-1-02, ECN219-1-02
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ECN315-1-01, ECN315-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ECN323-1-01, ECN323-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ECN430-1-01, ECN430-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ECN454-1-01, ECN454-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ECN455-1-10, ECN455-1-10
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ECN530-1-01, ECN530-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ECN551-1-01, ECN551-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ECN558-1-01, ECN558-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ECN562-1-01, ECN562-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ECN640-1-01, ECN640-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ECN654-1-01, ECN654-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ECN660-1-01, ECN660-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ECN669-1-01, ECN669-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+ECN671-1-01, ECN671-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+FEC222-1-09, FEC222-1-09
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+FEC222-1-10, FEC222-1-10
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+FEC333-1-01, FEC333-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+FEC333-1-02, FEC333-1-02
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+FEC333-1-03, FEC333-1-03
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+FEC443-1-01, FEC443-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+FEC444-1-01, FEC444-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+FEC444-1-02, FEC444-1-02
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+FEC451-1-01, FEC451-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+FEC565-1-01, FEC565-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+FEC566-1-01, FEC566-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+FEC566-1-08, FEC566-1-08
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+GIS113-1-09, GIS113-1-09
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+GIS114-1-01, GIS114-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+GIS114-1-02, GIS114-1-02
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+GIS137-1-01, GIS137-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+GIS139-1-01, GIS139-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+GIS358-1-10, GIS358-1-10
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+GIS371-1-01, GIS371-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+GIS390-1-01, GIS390-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+GRH111-1-01, GRH111-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+GRH111-1-02, GRH111-1-02
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+GRH111-1-03, GRH111-1-03
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+GRH111-1-10, GRH111-1-10
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+GRH221-1-01, GRH221-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+GRH221-1-02, GRH221-1-02
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+GRH221-1-03, GRH221-1-03
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+GRH221-1-10, GRH221-1-10
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+GRH343-1-01, GRH343-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+GRH343-1-10, GRH343-1-10
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+GRH453-1-01, GRH453-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+GRH462-1-01, GRH462-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+GRH566-1-01, GRH566-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+MAR221-1-09, MAR221-1-09
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+MAR331-1-01, MAR331-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+MAR433-1-01, MAR433-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+MAR433-1-10, MAR433-1-10
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+MAR444-1-01, MAR444-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+MAR455-1-01, MAR455-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+MAR455-1-02, MAR455-1-02
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+MAR464-1-01, MAR464-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+MAR664-1-01, MAR664-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+MAR664-1-20, MAR664-1-20
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+MQG101-1-10, MQG101-1-10
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+MQG222-1-01, MQG222-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+MQG222-1-02, MQG222-1-02
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+MQG332-1-01, MQG332-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+MQG332-1-02, MQG332-1-02
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+MQG332-1-03, MQG332-1-03
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+MQG332-1-04, MQG332-1-04
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+MQG342-1-01, MQG342-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+MQG342-1-02, MQG342-1-02
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+MQG342-1-03, MQG342-1-03
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+MQG542-1-01, MQG542-1-01
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+SST203-1-10, SST203-1-10
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+SST313-1-50, SST313-1-50
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+1 1 1 1 
+!!!!!!!!!!
+Diamant1.6
+K1-2046; 59; 110; 3,11,14,15,24,43 ; SHE; CAT 1; gradins tables parallèles et cloison mitoyenne coulissante; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
+K1-2045; 59; 110; 3,11,14,15,24,43; SHE; CAT 1; gradins tables parallèles et cloison mitoyenne coulissante; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
+K1-2044; 55; 110; 3,11,14,15,24,43; SHE; CAT 1; gradins en U  ; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
+K1-2043; 59; 110; 3,11,14,15,24,43  ; SHE; CAT 1; gradins en U; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
+K1-2010; 70; 110; 7,11,14,16,24,43 ; SHE; CAT 1; tables et chaises ; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
+K1-2024; 69; 110; 7,11,14,16,24,43   ; SHE; CAT 1; gradins en L ; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
+K1-2028; 65; 110; 7,11,14,16,24,43; SHE; CAT 1; gradins en L ; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
+K1-2009; 78; 110; 3,11,14,15,24,43; SHE; CAT 1; gradins en U    ; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
+K1-2008; 70; 110; 7,11,14,16,24,43 ; SHE; CAT 1; tables et chaises  ; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
+K1-2007; 80; 110; 3,11,14,15,24,43; SHE; CAT 1; gradins en U ; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
+K1-2006; 74; 110; 7,11,14,16,24,43 ; SHE; CAT 1; tables et chaises  ; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
+K1-2004; 74; 110; 7,11,14,16,24,43 ; SHE; CAT 1; tables et chaises ; 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 , 1 1 1 1 ;
+
+!!!!!!!!!!
+Diamant1.6
+ADM1011  01 SHE 50
+1
+1
+ADM101-1-01, ADM101-1-01 :  ;
+1
+ 1
+2.2.1 
+0
+ ------
+1
+1
+ 0 ; 0
+ADM1011  02 SHE 50
+1
+1
+ADM101-1-02, ADM101-1-02 :  ;
+1
+ 1
+2.1.1 
+1
+ K1-2008
+1
+1
+ 0 ; 0
+ADM1111  09 SHE 50
+1
+1
+ADM111-1-09, ADM111-1-09 :  ;
+1
+ 1
+5.2.1 
+0
+ ------
+1
+1
+ 0 ; 0
+ADM1111  10 SHE 50
+1
+1
+ADM111-1-10, ADM111-1-10 :  ;ADM111-1-10, ADM111-1-10 :  ;
+2
+ 1 1
+1.4.1 3.4.1 
+0
+ ------ ------
+1
+1
+ 1 1 ; 1 1
+ADM1111  20 SHE 50
+1
+1
+ADM111-1-20, ADM111-1-20 :  ;
+1
+ 1
+3.1.1 
+0
+ ------
+1
+1
+ 0 ; 0
+ADM4451  01 SHE 50
+1
+1
+ADM445-1-01, ADM445-1-01 :  ;
+1
+ 1
+3.1.1 
+0
+ ------
+1
+1
+ 0 ; 0
+ADM5561  01 SHE 50
+1
+1
+ADM556-1-01, ADM556-1-01 :  ;
+1
+ 1
+5.1.1 
+1
+ K1-2004
+1
+1
+ 0 ; 0
+ADM5561  02 SHE 50
+1
+1
+ADM556-1-02, ADM556-1-02 :  ;
+1
+ 1
+5.1.1 
+0
+ ------
+1
+1
+ 0 ; 0
+ADM6611  01 SHE 50
+1
+1
+ADM661-1-01, ADM661-1-01 :  ;
+1
+ 1
+1.2.1 
+1
+ K1-2004
+1
+1
+ 0 ; 0
+ADM6611  02 SHE 50
+1
+1
+ADM661-1-02, ADM661-1-02 :  ;
+1
+ 1
+2.2.1 
+1
+ K1-2004
+1
+1
+ 0 ; 0
+ADM6611  03 SHE 50
+1
+1
+ADM661-1-03, ADM661-1-03 :  ;
+1
+ 1
+3.1.1 
+1
+ K1-2008
+1
+1
+ 0 ; 0
+ADM6611  04 SHE 50
+1
+1
+ADM661-1-04, ADM661-1-04 :  ;
+1
+ 1
+4.2.1 
+1
+ K1-2008
+1
+1
+ 0 ; 0
+ADM6611  05 SHE 50
+1
+1
+ADM661-1-05, ADM661-1-05 :  ;
+1
+ 1
+5.1.1 
+1
+ K1-2006
+1
+1
+ 0 ; 0
+ADM6611  06 SHE 50
+1
+1
+ADM661-1-06, ADM661-1-06 :  ;
+1
+ 1
+5.1.1 
+0
+ ------
+1
+1
+ 0 ; 0
+CTB1131  09 SHE 50
+1
+1
+CTB113-1-09, CTB113-1-09 :  ;
+1
+ 1
+4.2.1 
+0
+ ------
+1
+1
+ 0 ; 0
+CTB1131  10 SHE 50
+1
+1
+CTB113-1-10, CTB113-1-10 :  ;CTB113-1-10, CTB113-1-10 :  ;
+2
+ 1 1
+2.4.1 4.4.1 
+0
+ ------ ------
+1
+1
+ 1 1 ; 1 1
+CTB2131  01 SHE 50
+1
+1
+CTB213-1-01, CTB213-1-01 :  ;
+1
+ 1
+1.1.1 
+1
+ K1-2004
+1
+1
+ 0 ; 0
+CTB2131  02 SHE 50
+1
+1
+CTB213-1-02, CTB213-1-02 :  ;
+1
+ 1
+2.2.1 
+1
+ K1-2045-46
+1
+1
+ 0 ; 0
+CTB3011  01 SHE 50
+1
+1
+CTB301-1-01, CTB301-1-01 :  ;
+1
+ 1
+2.3.1 
+1
+ K1-2024
+1
+1
+ 0 ; 0
+CTB3011  02 SHE 50
+1
+1
+CTB301-1-02, CTB301-1-02 :  ;
+1
+ 1
+3.4.1 
+1
+ K1-2024
+1
+1
+ 0 ; 0
+CTB3041  01 SHE 50
+1
+1
+CTB304-1-01, CTB304-1-01 :  ;
+1
+ 1
+5.2.1 
+1
+ K1-2045-46
+1
+1
+ 0 ; 0
+CTB3041  02 SHE 50
+1
+1
+CTB304-1-02, CTB304-1-02 :  ;
+1
+ 1
+2.2.1 
+1
+ K1-2007
+1
+1
+ 0 ; 0
+CTB3041  03 SHE 50
+1
+1
+CTB304-1-03, CTB304-1-03 :  ;
+1
+ 1
+1.1.1 
+1
+ K1-2006
+1
+1
+ 0 ; 0
+CTB3131  01 SHE 50
+1
+1
+CTB313-1-01, CTB313-1-01 :  ;
+1
+ 1
+5.1.1 
+1
+ K1-2007
+1
+1
+ 0 ; 0
+CTB3131  02 SHE 50
+1
+1
+CTB313-1-02, CTB313-1-02 :  ;
+1
+ 1
+4.2.1 
+1
+ K1-2043
+1
+1
+ 0 ; 0
+CTB3141  01 SHE 50
+1
+1
+CTB314-1-01, CTB314-1-01 :  ;
+1
+ 1
+5.2.1 
+1
+ K1-2006
+1
+1
+ 0 ; 0
+CTB3141  02 SHE 50
+1
+1
+CTB314-1-02, CTB314-1-02 :  ;
+1
+ 1
+5.1.1 
+1
+ K1-2009
+1
+1
+ 0 ; 0
+CTB3311  01 SHE 50
+1
+1
+CTB331-1-01, CTB331-1-01 :  ;
+1
+ 1
+1.1.1 
+1
+ K1-2008
+1
+1
+ 0 ; 0
+CTB3311  02 SHE 50
+1
+1
+CTB331-1-02, CTB331-1-02 :  ;
+1
+ 1
+2.1.1 
+1
+ K1-2004
+1
+1
+ 0 ; 0
+CTB3331  01 SHE 50
+1
+1
+CTB333-1-01, CTB333-1-01 :  ;
+1
+ 1
+2.1.1 
+1
+ K1-2043
+1
+1
+ 0 ; 0
+CTB3331  02 SHE 50
+1
+1
+CTB333-1-02, CTB333-1-02 :  ;
+1
+ 1
+5.1.1 
+1
+ K1-2028
+1
+1
+ 0 ; 0
+CTB3331  03 SHE 50
+1
+1
+CTB333-1-03, CTB333-1-03 :  ;
+1
+ 1
+4.1.1 
+1
+ K1-2007
+1
+1
+ 0 ; 0
+CTB3341  01 SHE 50
+1
+1
+CTB334-1-01, CTB334-1-01 :  ;
+1
+ 1
+4.1.1 
+1
+ K1-2028
+1
+1
+ 0 ; 0
+CTB3341  02 SHE 50
+1
+1
+CTB334-1-02, CTB334-1-02 :  ;
+1
+ 1
+4.2.1 
+1
+ K1-2004
+1
+1
+ 0 ; 0
+CTB3411  01 SHE 50
+1
+1
+CTB341-1-01, CTB341-1-01 :  ;
+1
+ 1
+4.1.1 
+1
+ K1-2004
+1
+1
+ 0 ; 0
+CTB3411  02 SHE 50
+1
+1
+CTB341-1-02, CTB341-1-02 :  ;
+1
+ 1
+3.1.1 
+1
+ K1-2028
+1
+1
+ 0 ; 0
+CTB4131  01 SHE 50
+1
+1
+CTB413-1-01, CTB413-1-01 :  ;
+1
+ 1
+5.2.1 
+1
+ K1-2008
+1
+1
+ 0 ; 0
+CTB4131  02 SHE 50
+1
+1
+CTB413-1-02, CTB413-1-02 :  ;
+1
+ 1
+1.3.1 
+1
+ K1-2006
+1
+1
+ 0 ; 0
+CTB4431  10 SHE 50
+1
+1
+CTB443-1-10, CTB443-1-10 :  ;
+1
+ 1
+2.4.1 
+0
+ ------
+1
+1
+ 1 ; 1
+CTB4531  01 SHE 50
+1
+1
+CTB453-1-01, CTB453-1-01 :  ;
+1
+ 1
+1.2.1 
+1
+ K1-2045-46
+1
+1
+ 0 ; 0
+CTB4531  02 SHE 50
+1
+1
+CTB453-1-02, CTB453-1-02 :  ;
+1
+ 1
+4.2.1 
+1
+ K1-2045-46
+1
+1
+ 0 ; 0
+CTB4531  03 SHE 50
+1
+1
+CTB453-1-03, CTB453-1-03 :  ;
+1
+ 1
+4.1.1 
+0
+ ------
+1
+1
+ 0 ; 0
+CTB4651  01 SHE 50
+1
+1
+CTB465-1-01, CTB465-1-01 :  ;CTB465-1-01, CTB465-1-01 :  ;
+2
+ 1 1
+1.1.1 1.2.1 
+1
+ K1-2009 K1-2006
+1
+1
+ 0 0 ; 0 0
+CTB4661  01 SHE 50
+1
+1
+CTB466-1-01, CTB466-1-01 :  ;CTB466-1-01, CTB466-1-01 :  ;
+2
+ 1 1
+2.1.1 2.2.1 
+1
+ K1-2009 K1-2009
+1
+1
+ 0 0 ; 0 0
+CTB5611  01 SHE 50
+1
+1
+CTB561-1-01, CTB561-1-01 :  ;
+1
+ 1
+1.2.1 
+1
+ K1-2010
+1
+1
+ 0 ; 0
+CTB5611  02 SHE 50
+1
+1
+CTB561-1-02, CTB561-1-02 :  ;
+1
+ 1
+1.1.1 
+1
+ K1-2006
+1
+1
+ 0 ; 0
+CTB5641  01 SHE 50
+1
+1
+CTB564-1-01, CTB564-1-01 :  ;
+1
+ 1
+4.1.1 
+1
+ K1-2043
+1
+1
+ 0 ; 0
+CTB5641  02 SHE 50
+1
+1
+CTB564-1-02, CTB564-1-02 :  ;
+1
+ 1
+5.1.1 
+0
+ ------
+1
+1
+ 0 ; 0
+CTB5651  01 SHE 50
+1
+1
+CTB565-1-01, CTB565-1-01 :  ;CTB565-1-01, CTB565-1-01 :  ;CTB565-1-01, CTB565-1-01 :  ;
+3
+ 1 1 1
+1.1.1 3.1.1 2.2.1 
+1
+ K1-2009 K1-2009 K1-2009
+1
+1
+ 0 0 0 ; 0 0 0
+CTB5661  01 SHE 50
+1
+1
+CTB566-1-01, CTB566-1-01 :  ;
+1
+ 1
+5.1.1 
+1
+ K1-2045-46
+1
+1
+ 0 ; 0
+CTB5661  02 SHE 50
+1
+1
+CTB566-1-02, CTB566-1-02 :  ;
+1
+ 1
+2.1.1 
+0
+ ------
+1
+1
+ 0 ; 0
+CTB6661  01 SHE 50
+1
+1
+CTB666-1-01, CTB666-1-01 :  ;
+1
+ 1
+1.4.1 
+1
+ K1-2006
+1
+1
+ 0 ; 0
+CTB6661  02 SHE 50
+1
+1
+CTB666-1-02, CTB666-1-02 :  ;
+1
+ 1
+4.1.1 
+0
+ ------
+1
+1
+ 0 ; 0
+ECN1171  01 SHE 50
+1
+1
+ECN117-1-01, ECN117-1-01 :  ;
+1
+ 1
+1.1.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ECN1171  02 SHE 50
+1
+1
+ECN117-1-02, ECN117-1-02 :  ;
+1
+ 1
+2.1.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ECN1171  03 SHE 50
+1
+1
+ECN117-1-03, ECN117-1-03 :  ;
+1
+ 1
+2.1.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ECN1171  10 SHE 50
+1
+1
+ECN117-1-10, ECN117-1-10 :  ;ECN117-1-10, ECN117-1-10 :  ;
+2
+ 1 1
+2.4.1 4.4.1 
+0
+ ------ ------
+1
+1
+ 1 1 ; 1 1
+ECN2181  01 SHE 50
+1
+1
+ECN218-1-01, ECN218-1-01 :  ;
+1
+ 1
+5.1.1 
+0
+ ------
+1
+1
+ 0 ; 0
+ECN2191  01 SHE 50
+1
+1
+ECN219-1-01, ECN219-1-01 :  ;
+1
+ 1
+1.1.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ECN2191  02 SHE 50
+1
+1
+ECN219-1-02, ECN219-1-02 :  ;
+1
+ 1
+5.1.1 
+0
+ ------
+1
+1
+ 1 ; 1
+ECN3151  01 SHE 50
+1
+1
+ECN315-1-01, ECN315-1-01 :  ;
+1
+ 1
+3.1.1 
+0
+ ------
+1
+1
+ 0 ; 0
+ECN3231  01 SHE 50
+1
+1
+ECN323-1-01, ECN323-1-01 :  ;
+1
+ 1
+3.1.1 
+0
+ ------
+1
+1
+ 0 ; 0
+ECN4301  01 SHE 50
+1
+1
+ECN430-1-01, ECN430-1-01 :  ;
+1
+ 1
+1.2.1 
+1
+ K12044
+1
+1
+ 1 ; 1
+ECN4541  01 SHE 50
+1
+1
+ECN454-1-01, ECN454-1-01 :  ;
+1
+ 1
+3.1.1 
+1
+ K1-2024
+1
+1
+ 1 ; 1
+ECN4551  10 SHE 50
+1
+1
+ECN455-1-10, ECN455-1-10 :  ;
+1
+ 1
+1.4.1 
+1
+ K1-2004
+1
+1
+ 1 ; 1
+ECN5301  01 SHE 50
+1
+1
+ECN530-1-01, ECN530-1-01 :  ;
+1
+ 1
+2.3.1 
+1
+ K1-2008
+1
+1
+ 1 ; 1
+ECN5511  01 SHE 50
+1
+1
+ECN551-1-01, ECN551-1-01 :  ;
+1
+ 1
+4.1.1 
+0
+ ------
+1
+1
+ 0 ; 0
+ECN5581  01 SHE 50
+1
+1
+ECN558-1-01, ECN558-1-01 :  ;
+1
+ 1
+2.1.1 
+0
+ ------
+1
+1
+ 0 ; 0
+ECN5621  01 SHE 50
+1
+1
+ECN562-1-01, ECN562-1-01 :  ;
+1
+ 1
+2.2.1 
+1
+ K1-2043
+1
+1
+ 1 ; 1
+ECN6401  01 SHE 50
+1
+1
+ECN640-1-01, ECN640-1-01 :  ;
+1
+ 1
+1.1.1 
+1
+ K12043
+1
+1
+ 1 ; 1
+ECN6541  01 SHE 50
+1
+1
+ECN654-1-01, ECN654-1-01 :  ;
+1
+ 1
+1.1.1 
+0
+ ------
+1
+1
+ 0 ; 0
+ECN6601  01 SHE 50
+1
+1
+ECN660-1-01, ECN660-1-01 :  ;
+1
+ 1
+5.1.1 
+0
+ ------
+1
+1
+ 0 ; 0
+ECN6691  01 SHE 50
+1
+1
+ECN669-1-01, ECN669-1-01 :  ;
+1
+ 1
+3.1.1 
+0
+ ------
+1
+1
+ 0 ; 0
+ECN6711  01 SHE 50
+1
+1
+ECN671-1-01, ECN671-1-01 :  ;
+1
+ 1
+4.1.1 
+1
+ K1-2044
+1
+1
+ 1 ; 1
+FEC2221  09 SHE 50
+1
+1
+FEC222-1-09, FEC222-1-09 :  ;
+1
+ 1
+3.1.1 
+0
+ ------
+1
+1
+ 0 ; 0
+FEC2221  10 SHE 50
+1
+1
+FEC222-1-10, FEC222-1-10 :  ;
+1
+ 1
+2.4.1 
+0
+ ------
+1
+1
+ 1 ; 1
+FEC3331  01 SHE 50
+1
+1
+FEC333-1-01, FEC333-1-01 :  ;
+1
+ 1
+1.3.1 
+1
+ K1-2043
+1
+1
+ 0 ; 0
+FEC3331  02 SHE 50
+1
+1
+FEC333-1-02, FEC333-1-02 :  ;
+1
+ 1
+2.3.1 
+1
+ K1-2009
+1
+1
+ 0 ; 0
+FEC3331  03 SHE 50
+1
+1
+FEC333-1-03, FEC333-1-03 :  ;
+1
+ 1
+3.1.1 
+0
+ ------
+1
+1
+ 0 ; 0
+FEC4431  01 SHE 50
+1
+1
+FEC443-1-01, FEC443-1-01 :  ;
+1
+ 1
+4.1.1 
+0
+ ------
+1
+1
+ 0 ; 0
+FEC4441  01 SHE 50
+1
+1
+FEC444-1-01, FEC444-1-01 :  ;
+1
+ 1
+2.1.1 
+1
+ K1-2028
+1
+1
+ 0 ; 0
+FEC4441  02 SHE 50
+1
+1
+FEC444-1-02, FEC444-1-02 :  ;
+1
+ 1
+2.3.1 
+1
+ K1-2006
+1
+1
+ 0 ; 0
+FEC4511  01 SHE 50
+1
+1
+FEC451-1-01, FEC451-1-01 :  ;
+1
+ 1
+4.1.1 
+1
+ K1-2008
+1
+1
+ 0 ; 0
+FEC5651  01 SHE 50
+1
+1
+FEC565-1-01, FEC565-1-01 :  ;
+1
+ 1
+3.1.1 
+1
+ K1-3308
+1
+1
+ 0 ; 0
+FEC5661  01 SHE 50
+1
+1
+FEC566-1-01, FEC566-1-01 :  ;
+1
+ 1
+2.2.1 
+1
+ K1-2010
+1
+1
+ 0 ; 0
+FEC5661  08 SHE 50
+1
+1
+FEC566-1-08, FEC566-1-08 :  ;
+1
+ 1
+2.1.1 
+0
+ ------
+1
+1
+ 0 ; 0
+GIS1131  09 SHE 50
+1
+1
+GIS113-1-09, GIS113-1-09 :  ;
+1
+ 1
+3.1.1 
+0
+ ------
+1
+1
+ 0 ; 0
+GIS1141  01 SHE 50
+1
+1
+GIS114-1-01, GIS114-1-01 :  ;
+1
+ 1
+1.2.1 
+1
+ K1-2009
+1
+1
+ 0 ; 0
+GIS1141  02 SHE 50
+1
+1
+GIS114-1-02, GIS114-1-02 :  ;
+1
+ 1
+5.2.1 
+0
+ ------
+1
+1
+ 0 ; 0
+GIS1371  01 SHE 50
+1
+1
+GIS137-1-01, GIS137-1-01 :  ;
+1
+ 1
+4.1.1 
+0
+ ------
+1
+1
+ 0 ; 0
+GIS1391  01 SHE 50
+1
+1
+GIS139-1-01, GIS139-1-01 :  ;
+1
+ 1
+2.1.1 
+0
+ ------
+1
+1
+ 0 ; 0
+GIS3581  10 SHE 50
+1
+1
+GIS358-1-10, GIS358-1-10 :  ;
+1
+ 1
+1.4.1 
+0
+ ------
+1
+1
+ 1 ; 1
+GIS3711  01 SHE 50
+1
+1
+GIS371-1-01, GIS371-1-01 :  ;GIS371-1-01, GIS371-1-01 :  ;
+2
+ 1 1
+3.1.1 3.2.1 
+0
+ ------ ------
+1
+1
+ 0 0 ; 0 0
+GIS3901  01 SHE 50
+1
+1
+GIS390-1-01, GIS390-1-01 :  ;
+1
+ 1
+2.1.1 
+0
+ ------
+1
+1
+ 0 ; 0
+GRH1111  01 SHE 50
+1
+1
+GRH111-1-01, GRH111-1-01 :  ;
+1
+ 1
+3.1.1 
+1
+ K1-2044
+1
+1
+ 0 ; 0
+GRH1111  02 SHE 50
+1
+1
+GRH111-1-02, GRH111-1-02 :  ;
+1
+ 1
+1.1.1 
+1
+ K1-2044
+1
+1
+ 0 ; 0
+GRH1111  03 SHE 50
+1
+1
+GRH111-1-03, GRH111-1-03 :  ;
+1
+ 1
+5.1.1 
+1
+ K1-2008
+1
+1
+ 0 ; 0
+GRH1111  10 SHE 50
+1
+1
+GRH111-1-10, GRH111-1-10 :  ;GRH111-1-10, GRH111-1-10 :  ;
+2
+ 1 1
+1.4.1 3.4.1 
+0
+ ------ ------
+1
+1
+ 1 1 ; 1 1
+GRH2211  01 SHE 50
+1
+1
+GRH221-1-01, GRH221-1-01 :  ;
+1
+ 1
+2.2.1 
+1
+ K1-2044
+1
+1
+ 0 ; 0
+GRH2211  02 SHE 50
+1
+1
+GRH221-1-02, GRH221-1-02 :  ;
+1
+ 1
+4.2.1 
+1
+ K1-2044
+1
+1
+ 0 ; 0
+GRH2211  03 SHE 50
+1
+1
+GRH221-1-03, GRH221-1-03 :  ;
+1
+ 1
+5.1.1 
+0
+ ------
+1
+1
+ 0 ; 0
+GRH2211  10 SHE 50
+1
+1
+GRH221-1-10, GRH221-1-10 :  ;GRH221-1-10, GRH221-1-10 :  ;
+2
+ 1 1
+2.4.1 4.4.1 
+0
+ ------ ------
+1
+1
+ 1 1 ; 1 1
+GRH3431  01 SHE 50
+1
+1
+GRH343-1-01, GRH343-1-01 :  ;
+1
+ 1
+5.2.1 
+1
+ K1-2009
+1
+1
+ 0 ; 0
+GRH3431  10 SHE 50
+1
+1
+GRH343-1-10, GRH343-1-10 :  ;
+1
+ 1
+1.4.1 
+0
+ ------
+1
+1
+ 1 ; 1
+GRH4531  01 SHE 50
+1
+1
+GRH453-1-01, GRH453-1-01 :  ;
+1
+ 1
+1.1.1 
+1
+ K1-2028
+1
+1
+ 0 ; 0
+GRH4621  01 SHE 50
+1
+1
+GRH462-1-01, GRH462-1-01 :  ;
+1
+ 1
+2.1.1 
+0
+ ------
+1
+1
+ 0 ; 0
+GRH5661  01 SHE 50
+1
+1
+GRH566-1-01, GRH566-1-01 :  ;
+1
+ 1
+3.1.1 
+1
+ K1-3084
+1
+1
+ 0 ; 0
+MAR2211  09 SHE 50
+1
+1
+MAR221-1-09, MAR221-1-09 :  ;
+1
+ 1
+5.1.1 
+0
+ ------
+1
+1
+ 0 ; 0
+MAR3311  01 SHE 50
+1
+1
+MAR331-1-01, MAR331-1-01 :  ;
+1
+ 1
+3.1.1 
+1
+ K1-2004
+1
+1
+ 0 ; 0
+MAR4331  01 SHE 50
+1
+1
+MAR433-1-01, MAR433-1-01 :  ;
+1
+ 1
+3.1.1 
+0
+ ------
+1
+1
+ 0 ; 0
+MAR4331  10 SHE 50
+1
+1
+MAR433-1-10, MAR433-1-10 :  ;
+1
+ 1
+2.4.1 
+0
+ ------
+1
+1
+ 0 ; 0
+MAR4441  01 SHE 50
+1
+1
+MAR444-1-01, MAR444-1-01 :  ;
+1
+ 1
+5.1.1 
+0
+ ------
+1
+1
+ 0 ; 0
+MAR4551  01 SHE 50
+1
+1
+MAR455-1-01, MAR455-1-01 :  ;
+1
+ 1
+1.1.1 
+1
+ K1-2045-46
+1
+1
+ 0 ; 0
+MAR4551  02 SHE 50
+1
+1
+MAR455-1-02, MAR455-1-02 :  ;
+1
+ 1
+5.2.1 
+1
+ K1-2010
+1
+1
+ 0 ; 0
+MAR4641  01 SHE 50
+1
+1
+MAR464-1-01, MAR464-1-01 :  ;
+1
+ 1
+5.2.1 
+1
+ K1-2010
+1
+1
+ 0 ; 0
+MAR6641  01 SHE 50
+1
+1
+MAR664-1-01, MAR664-1-01 :  ;
+1
+ 1
+2.1.1 
+1
+ K1-2010
+1
+1
+ 0 ; 0
+MAR6641  20 SHE 50
+1
+1
+MAR664-1-20, MAR664-1-20 :  ;
+1
+ 1
+5.1.1 
+0
+ ------
+1
+1
+ 0 ; 0
+MQG1011  10 SHE 50
+1
+1
+MQG101-1-10, MQG101-1-10 :  ;MQG101-1-10, MQG101-1-10 :  ;
+2
+ 1 1
+1.4.1 3.4.1 
+0
+ ------ ------
+1
+1
+ 1 1 ; 1 1
+MQG2221  01 SHE 50
+1
+1
+MQG222-1-01, MQG222-1-01 :  ;
+1
+ 1
+2.1.1 
+1
+ K1-2044
+1
+1
+ 0 ; 0
+MQG2221  02 SHE 50
+1
+1
+MQG222-1-02, MQG222-1-02 :  ;
+1
+ 1
+5.1.1 
+1
+ K1-2024
+1
+1
+ 0 ; 0
+MQG3321  01 SHE 50
+1
+1
+MQG332-1-01, MQG332-1-01 :  ;
+1
+ 1
+1.1.1 
+1
+ K1-2024
+1
+1
+ 0 ; 0
+MQG3321  02 SHE 50
+1
+1
+MQG332-1-02, MQG332-1-02 :  ;
+1
+ 1
+2.1.1 
+1
+ K1-2024
+1
+1
+ 0 ; 0
+MQG3321  03 SHE 50
+1
+1
+MQG332-1-03, MQG332-1-03 :  ;
+1
+ 1
+3.1.1 
+1
+ K1-2045-46
+1
+1
+ 0 ; 0
+MQG3321  04 SHE 50
+1
+1
+MQG332-1-04, MQG332-1-04 :  ;
+1
+ 1
+4.1.1 
+1
+ K1-2024
+1
+1
+ 0 ; 0
+MQG3421  01 SHE 50
+1
+1
+MQG342-1-01, MQG342-1-01 :  ;
+1
+ 1
+4.2.1 
+1
+ K1-2024
+1
+1
+ 0 ; 0
+MQG3421  02 SHE 50
+1
+1
+MQG342-1-02, MQG342-1-02 :  ;
+1
+ 1
+1.2.1 
+1
+ K1-2024
+1
+1
+ 0 ; 0
+MQG3421  03 SHE 50
+1
+1
+MQG342-1-03, MQG342-1-03 :  ;
+1
+ 1
+2.2.1 
+1
+ K1-2024
+1
+1
+ 0 ; 0
+MQG5421  01 SHE 50
+1
+1
+MQG542-1-01, MQG542-1-01 :  ;
+1
+ 1
+3.3.1 
+1
+ K1-
+1
+1
+ 0 ; 0
+SST2031  10 SHE 50
+1
+1
+SST203-1-10, SST203-1-10 :  ;
+1
+ 1
+3.4.1 
+1
+ K1-2008
+1
+1
+ 1 ; 1
+SST3131  50 SHE 50
+1
+1
+SST313-1-50, SST313-1-50 :  ;
+1
+ 1
+3.4.1 
+0
+ ------
+1
+1
+ 1 ; 1
+
+!!!!!!!!!!
+Diamant1.6
+E 068904021290000520063 Acheffan, Nadya
+C ADM101100;0 SHE
+C CTB213100;0 SHE
+C FEC333100;0 SHE
+C GRH221100;0 SHE
+C MAR221109;0 SHE
+C MQG222100;0 SHE
+E 071674242035021020073 Ahmetovic, Elvis
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C ECN219100;0 SHE
+C FEC444100;0 SHE
+C GRH221100;0 SHE
+E 067684652080140420063 Akplogan, Noël Kevin
+C CTB331100;0 SHE
+C ECN430100;0 SHE
+C ECN660100;0 SHE
+C FEC444100;0 SHE
+E 072032332085030520073 Akue-Atsa, Kpakpo Rodrigue
+C ECN218100;0 SHE
+C ECN315100;0 SHE
+C ECN323100;0 SHE
+C ECN430100;0 SHE
+C ECN530100;0 SHE
+C GIS114100;0 SHE
+E 068996352035021020071 Allard, Laurence
+C CTB333100;0 SHE
+C ECN219100;0 SHE
+C FEC566108;0 SHE
+C GRH111100;0 SHE
+C MQG332100;0 SHE
+E 068535131290000520073 Allard, Marc-André
+C FEC222110;0 SHE
+C GRH111110;0 SHE
+E 056445732035211020053 Allard, Mathieu
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+C MQG342100;0 SHE
+E 071664162035041020073 Allard Giguère, Emmie
+C GRH343100;0 SHE
+E 072027511290000520073 Allard-Bélanger, Francis
+C GRH221110;0 SHE
+E 056672632035411020053 Allie, Sandra
+C ADM661100;0 SHE
+C CTB465100;0 SHE
+C CTB466100;0 SHE
+C CTB565100;0 SHE
+C FEC444100;0 SHE
+E 056138102030210920063 Amjahdi, Mohamed
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB566100;0 SHE
+C MAR221109;0 SHE
+E 072457691290000520073 Amraoui, Mustapha
+C CTB113109;0 SHE
+C FEC222110;0 SHE
+C GIS114100;0 SHE
+E 072458121290000520081 Amzil, Hamid
+C CTB213100;0 SHE
+C ECN117100;0 SHE
+C FEC222109;0 SHE
+C GRH221100;0 SHE
+E 068308512035210920063 Arbour, Catherine
+C CTB314100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+C MQG342100;0 SHE
+E 068201302030061020081 Archambault, Stefany
+C CTB331100;0 SHE
+C MAR433100;0 SHE
+C MAR455100;0 SHE
+C MQG332100;0 SHE
+E 056160692035010920053 Argeris Nadeau, Maude
+C ADM661100;0 SHE
+C CTB465100;0 SHE
+C CTB466100;0 SHE
+C CTB565100;0 SHE
+C GRH111100;0 SHE
+E 068013112035310920063 Arsenault-Roy, Maxime
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+E 067464712030211020061 Asselin, Frédéric
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB666100;0 SHE
+E 056408352035311020053 Asselin, Marie-Eve
+C CTB443110;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB666100;0 SHE
+C MQG342100;0 SHE
+E 056608212035211020053 Asselin, Raphaël
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+C MQG342100;0 SHE
+E 071839321290000520082 Audet, Claudia
+C ECN117110;0 SHE
+E 056386972035030920053 Audet, Jean
+C ADM661100;0 SHE
+C GIS358110;0 SHE
+C GIS371100;0 SHE
+C GIS390100;0 SHE
+E 071797692035011020073 Audet, Vanessa
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 071954482035021020073 Auger, Gabriel
+C CTB334100;0 SHE
+C CTB341100;0 SHE
+C FEC444100;0 SHE
+C FEC565100;0 SHE
+C GRH221100;0 SHE
+E 071631884140000120073 Auger, Ève-Marie
+C GRH111100;0 SHE
+C MAR331100;0 SHE
+E 056283962035211020053 Auger, Évelyne
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB666100;0 SHE
+E 045233311130000420073 Austin, Bruno
+C GRH343100;0 SHE
+C GRH462100;0 SHE
+E 068829742080640520073 Avegnon, Ayawa Essenam
+C CTB341100;0 SHE
+C ECN323100;0 SHE
+C ECN430100;0 SHE
+C ECN530100;0 SHE
+E 068120782035040920063 Bachand, Stéphane
+C CTB301100;0 SHE
+C GRH343100;0 SHE
+C GRH453100;0 SHE
+C GRH462100;0 SHE
+C MQG332100;0 SHE
+E 056305972035050920061 Bacon, Marc-Antoine
+C ADM445100;0 SHE
+C CTB301100;0 SHE
+C CTB331100;0 SHE
+C MQG332100;0 SHE
+E 072085682035031020081 Banville, Carl
+C CTB213100;0 SHE
+C GIS114100;0 SHE
+C GIS139100;0 SHE
+C MQG222100;0 SHE
+E 071090502035211020071 Barbeau, Valérie
+C CTB314100;0 SHE
+C CTB334100;0 SHE
+C CTB413100;0 SHE
+C CTB453100;0 SHE
+E 072672631290000520081 Barouti, Mohamed
+C ADM111100;0 SHE
+C CTB213100;0 SHE
+C GIS114100;0 SHE
+C GRH111100;0 SHE
+C MQG222100;0 SHE
+E 068206932080140420063 Barry, Saikou Almamy Aguibo
+C CTB331100;0 SHE
+C ECN430100;0 SHE
+C ECN530100;0 SHE
+C ECN660100;0 SHE
+C MAR221109;0 SHE
+E 056563282030060920053 Barry-Cossette, Pascale
+C ADM661100;0 SHE
+C CTB301100;0 SHE
+C MAR433100;0 SHE
+C MAR664100;0 SHE
+E 068236902035040920063 Bastien, Pascal
+C CTB301100;0 SHE
+C GRH343100;0 SHE
+C GRH453100;0 SHE
+C MQG332100;0 SHE
+C MQG342100;0 SHE
+E 068177142035060920063 Bastonnais, Mylène
+C FEC333100;0 SHE
+C MAR433100;0 SHE
+C MAR455100;0 SHE
+C MQG332100;0 SHE
+E 878646721290000520081 Beauchemin, Benoît
+C GRH343110;0 SHE
+E 056633292035050920053 Beauchesne, Mathieu
+C ADM556100;0 SHE
+C ADM661100;0 SHE
+C MQG542100;0 SHE
+E 045310642035411020043 Beauchesne, Simon
+C ADM661100;0 SHE
+C CTB465100;0 SHE
+C CTB466100;0 SHE
+C CTB565100;0 SHE
+E 068039432035310920063 Beaudette, Pascale
+C CTB313100;0 SHE
+C CTB333100;0 SHE
+C CTB341100;0 SHE
+C FEC222109;0 SHE
+C GRH111100;0 SHE
+E 056761642035010920053 Beaudoin, Benoît
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB666100;0 SHE
+C FEC444100;0 SHE
+C MQG342100;0 SHE
+E 056950272035050920061 Beaudoin, Cynthia
+C ADM556100;0 SHE
+C ADM661100;0 SHE
+C FEC451100;0 SHE
+C MAR444100;0 SHE
+C MQG542100;0 SHE
+E 056693872035311020053 Beaudoin, Magalie
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB666100;0 SHE
+C MQG342100;0 SHE
+E 056445282035060920053 Beaudoin-Gamache, Alexandre
+C ADM661100;0 SHE
+C MAR433100;0 SHE
+C MAR455100;0 SHE
+C MAR464100;0 SHE
+C MAR664100;0 SHE
+E 056210532035211020053 Beaulieu, Annie
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+C MQG342100;0 SHE
+E 068367842035060920063 Beaulieu, Hélène
+C CTB331100;0 SHE
+C MAR433110;0 SHE
+C MAR455100;0 SHE
+C MQG332100;0 SHE
+E 056250682085030520073 Beaulieu, Jean-François
+C ECN218100;0 SHE
+C ECN315100;0 SHE
+C ECN323100;0 SHE
+C ECN430100;0 SHE
+C ECN530100;0 SHE
+E 056524662035060920053 Beaulieu, Jennifer
+C ADM101100;0 SHE
+C ADM661100;0 SHE
+C MAR455100;0 SHE
+C MQG342100;0 SHE
+E 056056962030061020081 Beaulieu, Louis
+C MAR433100;0 SHE
+C MAR455100;0 SHE
+C MAR464100;0 SHE
+C MAR664100;0 SHE
+E 083050784140000120081 Beaulieu, Patrick
+C CTB213100;0 SHE
+C CTB304100;0 SHE
+C FEC222109;0 SHE
+C MAR221109;0 SHE
+E 071372344140000120073 Beaulieu, Éric
+C CTB113110;0 SHE
+E 033953922030411020071 Beaulieu-Gravel, Martin
+C ADM661100;0 SHE
+C CTB465100;0 SHE
+C CTB466100;0 SHE
+C CTB565100;0 SHE
+E 045103182030210920053 Beauregard, Keven
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+C MQG342100;0 SHE
+E 056796062035211020053 Beauregard, Marie-Josée
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB666100;0 SHE
+E 067917052035210920063 Beauregard, Mélissa
+C CTB314100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+C MQG342100;0 SHE
+E 068200322035310920063 Beauregard, Sophie
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+E 068209602035040920063 Beauvais, Axelle
+C CTB301100;0 SHE
+C ECN117100;0 SHE
+C GRH343100;0 SHE
+C GRH453100;0 SHE
+C MQG332100;0 SHE
+E 965734341290000520081 Bekrek, Halil
+C FEC222110;0 SHE
+E 022159711290000520071 Bellavance, Pierre-Luc
+C CTB113110;0 SHE
+E 071555432035021020073 Belleville, Guillaume
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C ECN219100;0 SHE
+C FEC444100;0 SHE
+C GRH221100;0 SHE
+E 071662832035011020073 Bellingham, Matthew
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 068456852035061020073 Belliveau, Michel
+C GRH343110;0 SHE
+E 943379262030411020072 Beloin, Annie
+C CTB341100;0 SHE
+C CTB466100;0 SHE
+C FEC444100;0 SHE
+E 067953282035410920063 Beloin, Maxime
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+E 068748761290000520071 Benachenhou, Souheyla
+C GIS113100;0 SHE
+E 057175202035411020073 Benmessaoud, Salaheddine
+C CTB304100;0 SHE
+C CTB314100;0 SHE
+C CTB466100;0 SHE
+C MQG332100;0 SHE
+E 067962562035410920063 Benny, Samuel
+C CTB304100;0 SHE
+C CTB314100;0 SHE
+C CTB413100;0 SHE
+C CTB443110;0 SHE
+C MQG332100;0 SHE
+E 071743904140000120072 Benoit, Jonathan
+C CTB113110;0 SHE
+E 056153822030021020062 Benoît, Martin
+C ADM661100;0 SHE
+C ECN455110;0 SHE
+C FEC565100;0 SHE
+C FEC566100;0 SHE
+E 072709631290000520081 Benziane, Ahmed
+C CTB213100;0 SHE
+C CTB333100;0 SHE
+C FEC222109;0 SHE
+C GRH221110;0 SHE
+C MAR331100;0 SHE
+E 071058842035211020071 Bergeron, Hugo
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB413100;0 SHE
+C CTB453100;0 SHE
+C GRH111100;0 SHE
+E 071268342035021020073 Bergeron, Marie-Claude
+C CTB341100;0 SHE
+C FEC333100;0 SHE
+C FEC451100;0 SHE
+C GRH111100;0 SHE
+C MQG332100;0 SHE
+E 071509772035031020073 Bergeron, Michael
+C CTB334100;0 SHE
+C FEC333100;0 SHE
+C GIS137100;0 SHE
+C GIS139100;0 SHE
+C GRH111100;0 SHE
+E 068328134140000120081 Bergeron, Mireille
+C FEC222110;0 SHE
+C GIS114100;0 SHE
+C MAR221109;0 SHE
+E 044827042035060920053 Bergeron, Mélissa
+C ADM661100;0 SHE
+C MAR664100;0 SHE
+C MQG332100;0 SHE
+E 071095772035021020071 Berlinguet, Simon
+C ECN219100;0 SHE
+C FEC443100;0 SHE
+C FEC566108;0 SHE
+C GRH111100;0 SHE
+C MQG332100;0 SHE
+E 057076571430000220063 Bernard, Josyane
+C CTB301100;0 SHE
+C GIS371100;0 SHE
+E 045020412035060920053 Bernard, Sophie
+C ADM661100;0 SHE
+C MAR664100;0 SHE
+C MQG342100;0 SHE
+E 071398112035061020081 Bernatchez, Nicolas
+C CTB213100;0 SHE
+C GIS114100;0 SHE
+C GRH221100;0 SHE
+C MAR331100;0 SHE
+C MQG222100;0 SHE
+E 068600422030021020081 Bernier, Annie
+C ADM661100;0 SHE
+C ECN455110;0 SHE
+C FEC565100;0 SHE
+C MQG332100;0 SHE
+C MQG342100;0 SHE
+E 068066732035061020073 Bernier, Dany-Pier
+C CTB331100;0 SHE
+C MAR433100;0 SHE
+C MAR444100;0 SHE
+C MAR464100;0 SHE
+C MQG332100;0 SHE
+E 071775562035031020081 Berthiaume, Kevin
+C CTB213100;0 SHE
+C GIS114100;0 SHE
+C GIS139100;0 SHE
+C MQG222100;0 SHE
+E 068345802035210920063 Berthiaume, Mathieu
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+E 056376072035041020071 Bessette, Dominique
+C ECN117100;0 SHE
+C GIS114100;0 SHE
+C GRH343100;0 SHE
+C GRH453100;0 SHE
+C GRH462100;0 SHE
+E 072696264140000120081 Bibeau, Christine
+C ECN117110;0 SHE
+C GRH111110;0 SHE
+E 071581942085140520073 Bibeau-Desmarais, Sophie
+C ECN315100;0 SHE
+C ECN323100;0 SHE
+C ECN430100;0 SHE
+C ECN530100;0 SHE
+C FEC333100;0 SHE
+E 056370732035060920053 Billette, Virginie
+C ADM661100;0 SHE
+C GRH111100;0 SHE
+C MAR664100;0 SHE
+C MQG342100;0 SHE
+E 068225482035411020063 Bilodeau, Jacinthe
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB413100;0 SHE
+C CTB443110;0 SHE
+C FEC444100;0 SHE
+E 067880142030041020073 Bilodeau, Nathalie
+C ADM661100;0 SHE
+C GRH462100;0 SHE
+C MQG342100;0 SHE
+E 072044652035011020073 Binette, Simon
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 056416472035211020053 Biron, Olivier
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+C MQG342100;0 SHE
+E 056154442035411020071 Bisson, Nancy
+C CTB314100;0 SHE
+C CTB413100;0 SHE
+C CTB443110;0 SHE
+C CTB466100;0 SHE
+C FEC444100;0 SHE
+E 056535352080010520073 Bisson, Pierre
+C ECN558100;0 SHE
+C ECN562100;0 SHE
+C ECN654100;0 SHE
+C ECN660100;0 SHE
+C FEC222109;0 SHE
+E 022150982035020920053 Bissou Bilong, Ernestine
+C CTB333100;0 SHE
+C ECN455110;0 SHE
+C FEC444100;0 SHE
+C FEC451100;0 SHE
+C MQG332100;0 SHE
+E 071754332080640520073 Bitwa, Aimé
+C CTB213100;0 SHE
+C CTB331100;0 SHE
+C ECN315100;0 SHE
+C ECN323100;0 SHE
+C ECN530100;0 SHE
+E 033661192035060920063 Blackburn, David
+C ADM661100;0 SHE
+C CTB301100;0 SHE
+C MAR455100;0 SHE
+C MQG332100;0 SHE
+C MQG342100;0 SHE
+E 068453282030021020073 Blain, Pierre-Antoine
+C ADM661100;0 SHE
+C CTB333100;0 SHE
+C ECN455110;0 SHE
+C FEC565100;0 SHE
+C FEC566100;0 SHE
+E 056279672035060920053 Blais, Marilie
+C ADM101100;0 SHE
+C ADM661100;0 SHE
+C CTB301100;0 SHE
+C GRH111100;0 SHE
+C MAR664100;0 SHE
+E 056649072035020920061 Blais, Steve
+C ADM661100;0 SHE
+C FEC566108;0 SHE
+C MQG332100;0 SHE
+E 067946682035040920063 Blais, Valérie
+C CTB301100;0 SHE
+C ECN117100;0 SHE
+C GRH343100;0 SHE
+C GRH453100;0 SHE
+C MQG332100;0 SHE
+E 071799102035011020073 Blanchard, Geneviève
+C CTB304100;0 SHE
+C CTB333100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 072731852035021020081 Blanchard, Manuel
+C CTB213100;0 SHE
+C FEC333100;0 SHE
+C GIS114100;0 SHE
+C GRH221100;0 SHE
+C MQG222100;0 SHE
+E 071534842035021020073 Blanchet, Philippe-Olivier
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C ECN219100;0 SHE
+C FEC444100;0 SHE
+C GRH221100;0 SHE
+E 057126322030051020081 Blanchet-Brisson, Jérôme
+C GRH566100;0 SHE
+E 067965042035060920063 Blanchette, Samuel
+C CTB331100;0 SHE
+C MAR433100;0 SHE
+C MAR455100;0 SHE
+C MAR464100;0 SHE
+C MQG332100;0 SHE
+E 023073822035031020081 Blouin, François
+C CTB334100;0 SHE
+C ECN117100;0 SHE
+C GIS139100;0 SHE
+C GIS358110;0 SHE
+C GIS371100;0 SHE
+E 056281452030051020073 Bobo, Steve-Carol
+C ADM556100;0 SHE
+C ADM661100;0 SHE
+C CTB331100;0 SHE
+C MQG222100;0 SHE
+E 067591992035310920063 Boies Papillon, Julie
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB341100;0 SHE
+C GRH111100;0 SHE
+E 071637122035021020073 Boisclair-Vandal, Roxane
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C ECN219100;0 SHE
+C FEC444100;0 SHE
+C GRH221100;0 SHE
+E 044882901200000220081 Boissonneault, Julie
+C SST203110;0 SHE
+E 068029262035210920063 Boisvert, Louis-Philippe
+C CTB314100;0 SHE
+C CTB413100;0 SHE
+C CTB443110;0 SHE
+C CTB453100;0 SHE
+C GRH111100;0 SHE
+E 071119841290000520072 Boisvert, Mathieu
+C CTB304100;0 SHE
+C CTB314100;0 SHE
+C CTB413100;0 SHE
+C CTB453100;0 SHE
+C FEC333100;0 SHE
+E 067686972035040920063 Boisvert, Sarah
+C CTB301100;0 SHE
+C ECN117100;0 SHE
+C GRH343100;0 SHE
+C GRH453100;0 SHE
+C MQG332100;0 SHE
+E 068178942035410920063 Boisvert, Élisabeth
+C CTB314100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C CTB443110;0 SHE
+C FEC444100;0 SHE
+E 009691981410000220051 Boivin, Christine
+C GRH111110;0 SHE
+E 071479002035021020073 Bolduc, Guyaume
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C ECN219100;0 SHE
+C FEC444100;0 SHE
+C GRH221100;0 SHE
+E 067873192035060920063 Bolduc, Marilène
+C CTB331100;0 SHE
+C MAR433110;0 SHE
+C MAR455100;0 SHE
+C MQG332100;0 SHE
+E 071003712035211020073 Bolduc, Philippe
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C MQG332100;0 SHE
+E 068201581290000520081 Bossé, Line
+C ECN117110;0 SHE
+E 068793184140000120073 Bossé, Marie-Ève
+C GRH111110;0 SHE
+E 056509212035040920053 Botran, Magalie
+C ADM661100;0 SHE
+C GRH462100;0 SHE
+C GRH566100;0 SHE
+C SST203110;0 SHE
+E 072118581290000520081 Bouassida, Khalil
+C CTB213100;0 SHE
+C ECN117100;0 SHE
+C FEC222109;0 SHE
+C GIS114100;0 SHE
+C MQG222100;0 SHE
+E 045603711440000220073 Bouchard, Audrey
+C MQG332100;0 SHE
+E 033816641290000520082 Bouchard-Gosselin, Francis
+C ECN117100;0 SHE
+C FEC222109;0 SHE
+C GIS114100;0 SHE
+C GRH111110;0 SHE
+E 044503012035011020081 Boucher, Mélanie
+C CTB213100;0 SHE
+C CTB304100;0 SHE
+C FEC333100;0 SHE
+C GRH221100;0 SHE
+C MQG332100;0 SHE
+E 068105602035210920063 Boucher, Olivier
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+C MQG342100;0 SHE
+E 067995742035210920063 Boucher, Stéphanie
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+C MQG342100;0 SHE
+E 071916012035011020081 Boucher Allard, Marie-Christine
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB334100;0 SHE
+C CTB453100;0 SHE
+C MQG332100;0 SHE
+E 044930512030050920053 Boucher Bélair, Francis
+C ADM556100;0 SHE
+C ADM661100;0 SHE
+C CTB301100;0 SHE
+C GIS137100;0 SHE
+C GIS139100;0 SHE
+E 067349382030311020081 Boudom Simo, Linda Gaëlle
+C CTB304100;0 SHE
+C CTB341100;0 SHE
+C CTB453100;0 SHE
+C MQG342100;0 SHE
+E 067981562035060920063 Boudreau-Couture, Veronik
+C CTB331100;0 SHE
+C MAR433110;0 SHE
+C MAR444100;0 SHE
+C MQG332100;0 SHE
+E 044869972035010820043 Boulanger, Emilie
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+E 068217542035210920063 Boulanger, Jean-Sébastien
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+E 056224272035211020053 Boulanger, Marie-Pier
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+C MQG342100;0 SHE
+E 072565692035061020081 Boulet, Catherine
+C CTB213100;0 SHE
+C GIS114100;0 SHE
+C GRH221100;0 SHE
+C MAR331100;0 SHE
+C MQG222100;0 SHE
+E 044691221290000520063 Boulet, Emilie
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+E 068920084140000120081 Boulet-Carpentier, Vanessa
+C ADM101100;0 SHE
+C ECN117100;0 SHE
+C FEC222109;0 SHE
+C GRH221100;0 SHE
+C MAR221109;0 SHE
+E 071750591290000520072 Bouliane-Blais, Jean Sébastien
+C CTB213100;0 SHE
+C ECN117100;0 SHE
+C GIS113100;0 SHE
+C MAR331100;0 SHE
+E 067943922035210920063 Bourbeau, François
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+E 056372242035060920053 Bourbeau Bergeron, Samuel
+C ADM661100;0 SHE
+C MAR444100;0 SHE
+C MAR455100;0 SHE
+C MAR664100;0 SHE
+E 067843302030031020081 Bourgeois, Guillaume
+C GIS137100;0 SHE
+C GIS139100;0 SHE
+C GIS358110;0 SHE
+C GIS371100;0 SHE
+C GRH343100;0 SHE
+E 056290642035060920053 Bourgouin, Nakoma
+C ADM661100;0 SHE
+C CTB301100;0 SHE
+C GRH111100;0 SHE
+C MAR455100;0 SHE
+C MAR664100;0 SHE
+E 056202052035040920053 Bourguignon, Michel
+C ADM661100;0 SHE
+C GRH462100;0 SHE
+C MAR331100;0 SHE
+C SST203110;0 SHE
+E 056596732030411020072 Boutin, Louison
+C ADM661100;0 SHE
+C CTB465100;0 SHE
+C CTB466100;0 SHE
+C CTB565100;0 SHE
+E 068197492035210920063 Brassard-Dion, Léa
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+E 056578262035311020053 Bray, Hugo
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB666100;0 SHE
+C FEC444100;0 SHE
+E 034441061290000520061 Breault, Chantal
+C ECN117110;0 SHE
+E 056675752035211020053 Breault, Maxime
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+C MQG342100;0 SHE
+E 044939431290000520081 Breton, Michèle
+C GRH111110;0 SHE
+E 072504864140000120081 Breton, Patrice
+C CTB213100;0 SHE
+C FEC222109;0 SHE
+C GRH221100;0 SHE
+C MAR221109;0 SHE
+E 056149532035050920063 Brien, Nancy
+C CTB341100;0 SHE
+C ECN117100;0 SHE
+C FEC451100;0 SHE
+C GRH343100;0 SHE
+E 067783832030061020063 Brisebois Boucher, Étienne
+C CTB301100;0 SHE
+C MAR433100;0 SHE
+C MAR444100;0 SHE
+C MAR455100;0 SHE
+E 071048302035051020071 Brière, Mélanie
+C ADM556100;0 SHE
+C FEC451100;0 SHE
+C MQG332100;0 SHE
+C MQG342100;0 SHE
+C MQG542100;0 SHE
+E 998014961410000220072 Brodeur, Alexis
+C CTB561100;0 SHE
+C CTB666100;0 SHE
+E 055929862030051020073 Brodeur, Patricia
+C GRH343100;0 SHE
+C GRH453100;0 SHE
+C MAR444100;0 SHE
+C MAR455100;0 SHE
+E 056628832035040920053 Brouillard, Mylène
+C ADM556100;0 SHE
+C ADM661100;0 SHE
+C GRH462100;0 SHE
+E 068153422035061020063 Brouillette, Lydia
+C CTB331100;0 SHE
+C MAR433100;0 SHE
+C MAR455100;0 SHE
+C MAR464100;0 SHE
+C MQG332100;0 SHE
+E 056509302035050920063 Bruneau, David
+C ADM445100;0 SHE
+C CTB301100;0 SHE
+C FEC444100;0 SHE
+C GRH111100;0 SHE
+C MQG332100;0 SHE
+E 068374532035210920063 Brunelle, Alexandre
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+E 071750042035031020073 Brunelle-Turcotte, Lili
+C CTB334100;0 SHE
+C ECN117100;0 SHE
+C FEC333100;0 SHE
+C GIS137100;0 SHE
+C GIS139100;0 SHE
+E 071549372035011020073 Brus Peterson, Lindsey
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 067997252035060920063 Burns, Maxime
+C CTB331100;0 SHE
+C GIS114100;0 SHE
+C MAR433110;0 SHE
+C MAR464100;0 SHE
+C MQG332100;0 SHE
+E 068714322080140520073 Byll, Attia
+C ECN315100;0 SHE
+C ECN323100;0 SHE
+C ECN430100;0 SHE
+C ECN530100;0 SHE
+C FEC444100;0 SHE
+E 072568274140000120081 Bédard O Malley, David
+C GIS113100;0 SHE
+C MQG101110;0 SHE
+E 071568552035021020073 Bélair, Mélanie
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C ECN219100;0 SHE
+C FEC444100;0 SHE
+C GRH221100;0 SHE
+E 011510961430000220082 Bélanger, Alexandre
+C GIS114100;0 SHE
+C GIS358110;0 SHE
+E 068041212035060920063 Bélanger, Claudie
+C CTB301100;0 SHE
+C CTB331100;0 SHE
+C ECN117100;0 SHE
+C GRH111100;0 SHE
+C MAR433100;0 SHE
+E 071671202035051020081 Bélanger, Simon
+C ADM101100;0 SHE
+C CTB213100;0 SHE
+C GIS114100;0 SHE
+C GRH221100;0 SHE
+C MQG222100;0 SHE
+E 072602422035061020081 Bélisle, Julien
+C CTB213100;0 SHE
+C GIS114100;0 SHE
+C GRH221100;0 SHE
+C MAR331100;0 SHE
+C MQG222100;0 SHE
+E 056555882030061020081 Béliveau, Justin
+C ADM661100;0 SHE
+C MAR664100;0 SHE
+C MQG342100;0 SHE
+E 045376742035050820043 Bérard, Jimmy
+C ADM556100;0 SHE
+E 056551142035020920053 Bérubé, Marie-Pier
+C ADM556100;0 SHE
+C ADM661100;0 SHE
+C FEC443100;0 SHE
+C FEC566100;0 SHE
+C MAR331100;0 SHE
+E 071755852035031020073 C.Dufresne, Ariane
+C CTB334100;0 SHE
+C ECN117100;0 SHE
+C FEC333100;0 SHE
+C GIS137100;0 SHE
+C GIS139100;0 SHE
+E 068306002085030520073 Campeau, Ariane
+C ECN315100;0 SHE
+C ECN323100;0 SHE
+C ECN430100;0 SHE
+C ECN530100;0 SHE
+C FEC333100;0 SHE
+E 067566192035411020071 Caouette, Jean-François
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB341100;0 SHE
+C FEC333100;0 SHE
+C GRH221110;0 SHE
+E 044773004140000120071 Caron, Jean-Étienne
+C CTB334100;0 SHE
+C ECN117110;0 SHE
+E 072344691290000520081 Caron, Mélissa
+C CTB213100;0 SHE
+C GRH111100;0 SHE
+C MAR331100;0 SHE
+C MQG222100;0 SHE
+E 068053622035040920063 Caron, Thérèse
+C CTB301100;0 SHE
+C ECN117100;0 SHE
+C GRH343100;0 SHE
+C GRH453100;0 SHE
+C MQG332100;0 SHE
+E 056437702035050920053 Carpentier, Mathieu
+C ADM556100;0 SHE
+C FEC443100;0 SHE
+C GIS139100;0 SHE
+C MAR455100;0 SHE
+C MQG542100;0 SHE
+E 071179152035021020073 Carpinisan, Bogdan
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C CTB341100;0 SHE
+C ECN219100;0 SHE
+C FEC444100;0 SHE
+E 071184152035021020073 Carpinisan, Vlad
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C ECN219100;0 SHE
+C FEC444100;0 SHE
+C MQG332100;0 SHE
+E 931233011290000520072 Carrier, Carline
+C ECN117110;0 SHE
+E 056394552035060920053 Carrier, Karine
+C ADM661100;0 SHE
+C MAR464100;0 SHE
+C MAR664100;0 SHE
+E 056579422030040920063 Carrier, Krystheen
+C CTB213100;0 SHE
+C GRH343100;0 SHE
+C GRH453100;0 SHE
+C GRH462100;0 SHE
+C MQG332100;0 SHE
+E 071415134140000120081 Castonguay, Simon
+C FEC222109;0 SHE
+C GRH221110;0 SHE
+C MAR221109;0 SHE
+E 072699482035021020081 Cathcart, Christina
+C CTB333100;0 SHE
+C ECN219100;0 SHE
+C FEC333100;0 SHE
+C FEC444100;0 SHE
+C GIS114100;0 SHE
+E 071459932035011020073 Caux, Samuel
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB333100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 056455272035411020053 Chainé, Marilyne
+C ADM661100;0 SHE
+C CTB465100;0 SHE
+C CTB466100;0 SHE
+C CTB565100;0 SHE
+E 045373712035020920061 Chajar, Maryem
+C ADM101100;0 SHE
+C ADM661100;0 SHE
+C CTB333100;0 SHE
+C ECN455110;0 SHE
+C FEC443100;0 SHE
+E 068404672035060920063 Chalifoux, Guillaume
+C CTB301100;0 SHE
+C CTB331100;0 SHE
+C MAR433100;0 SHE
+C MQG332100;0 SHE
+E 056399182030211020073 Champagne, Emilie
+C ADM661100;0 SHE
+C CTB443110;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+E 068544062030411020081 Champoux, Claudy
+C CTB465100;0 SHE
+C CTB466100;0 SHE
+C FEC333100;0 SHE
+C MQG332100;0 SHE
+C MQG342100;0 SHE
+E 056600002035211020061 Charbonneau, Claudia-Marie
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+C FEC444100;0 SHE
+E 056255762035040920053 Charest, Miria
+C ADM101100;0 SHE
+C ADM556100;0 SHE
+C ADM661100;0 SHE
+C GRH462100;0 SHE
+C SST203110;0 SHE
+E 071891152035031020073 Charest, Olivier
+C CTB334100;0 SHE
+C ECN117100;0 SHE
+C FEC333100;0 SHE
+C GIS137100;0 SHE
+C GIS139100;0 SHE
+E 067969422035060920063 Charette, Louis-Philippe
+C CTB331100;0 SHE
+C MAR433100;0 SHE
+C MAR444100;0 SHE
+C MAR464100;0 SHE
+C MQG332100;0 SHE
+E 071123592035211020071 Charron, Marie-Lyne
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB413100;0 SHE
+C CTB453100;0 SHE
+C MQG342100;0 SHE
+E 068893071290000520073 Chartier, Sylvain
+C GIS114100;0 SHE
+C GRH111110;0 SHE
+E 057071122030031020081 Charuest-Bonhomme, Guy
+C FEC451100;0 SHE
+C GIS137100;0 SHE
+C GIS139100;0 SHE
+C GIS358110;0 SHE
+C GIS371100;0 SHE
+E 071531991290000520073 Chaussé, Michel
+C CTB304100;0 SHE
+C CTB314100;0 SHE
+C CTB413100;0 SHE
+C CTB453100;0 SHE
+C GRH111100;0 SHE
+E 068531762030061020081 Chazot, Florian
+C ADM661100;0 SHE
+C CTB331100;0 SHE
+C MAR433110;0 SHE
+C MAR455100;0 SHE
+C MAR664100;0 SHE
+E 068845341420000220081 Cheb, Hatim Abdeljaouad
+C CTB341100;0 SHE
+C FEC451100;0 SHE
+C GIS114100;0 SHE
+C MQG342100;0 SHE
+E 067346162035211020061 Chevrier, Jason
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+C MQG342100;0 SHE
+E 072726032035021020081 Chihab, Meryem
+C CTB213100;0 SHE
+C FEC333100;0 SHE
+C FEC444100;0 SHE
+C GIS114100;0 SHE
+C MQG222100;0 SHE
+E 071657382035021020073 Chin, Ricky
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C ECN219100;0 SHE
+C FEC444100;0 SHE
+C GRH221100;0 SHE
+E 044989022030021020071 Choquette, Jean-François
+C FEC566108;0 SHE
+E 072583444140000120073 Chouinard, Adam
+C ECN117110;0 SHE
+C GRH221100;0 SHE
+E 056364122035020920053 Chouinard, Dave-Jung
+C CTB313100;0 SHE
+C ECN455110;0 SHE
+E 055912552035050920063 Clairoux, Estelle
+C ADM556100;0 SHE
+E 056689212030061020081 Cloutier, David
+C ADM661100;0 SHE
+C MAR455100;0 SHE
+C MAR464100;0 SHE
+C MAR664100;0 SHE
+E 072066312035011020073 Cloutier, Philippe
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB333100;0 SHE
+C FEC333100;0 SHE
+C MQG332100;0 SHE
+E 068537822035010920063 Clément, Dominic
+C CTB314100;0 SHE
+C CTB413100;0 SHE
+C CTB443110;0 SHE
+C CTB453100;0 SHE
+E 072752631290000520081 Codey, Alexandra
+C GRH111100;0 SHE
+C MAR331100;0 SHE
+E 744736461420000220071 Codère, Martine
+C ECN117110;0 SHE
+E 056385352035211020053 Collard, Olivier
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+C MQG342100;0 SHE
+E 072103142035021020081 Collin, Rudy
+C CTB213100;0 SHE
+C CTB334100;0 SHE
+C ECN117100;0 SHE
+C FEC333100;0 SHE
+C GIS114100;0 SHE
+E 056724622035060920053 Comeau, Louis-Philippe
+C CTB301100;0 SHE
+C FEC333100;0 SHE
+C MAR433100;0 SHE
+C MAR444100;0 SHE
+E 056800332035210920053 Compagnat, Anne-Marie
+C ADM661100;0 SHE
+C CTB413100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+E 071742474140000120081 Cordeau, Bianca
+C ECN117110;0 SHE
+C GRH111110;0 SHE
+E 071081592035411020071 Cormier, Anthony
+C CTB314100;0 SHE
+C CTB413100;0 SHE
+C CTB443110;0 SHE
+C FEC444100;0 SHE
+C GRH111100;0 SHE
+E 071240511420000220081 Couet Morin, Laelia
+C CTB443110;0 SHE
+C FEC443100;0 SHE
+C FEC451100;0 SHE
+E 056795802030211020061 Coulombe, Marc-Olivier
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+E 071639632035011020073 Coulombe, Sarah
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 072641592035011020081 Courcelles, Annie
+C CTB213100;0 SHE
+C CTB304100;0 SHE
+C FEC333100;0 SHE
+C GRH221100;0 SHE
+C MQG222100;0 SHE
+E 044615672035210920063 Courtemanche, Audrey
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C CTB453100;0 SHE
+E 072576754140000120081 Cousineau, Simon
+C CTB213100;0 SHE
+C FEC222109;0 SHE
+C GRH111100;0 SHE
+C MAR221109;0 SHE
+C MQG222100;0 SHE
+E 067999032035060920063 Coussa-Jandl, Léa
+C CTB331100;0 SHE
+C MAR433100;0 SHE
+C MAR444100;0 SHE
+C MAR464100;0 SHE
+C MQG332100;0 SHE
+E 012078932030021020081 Couture, Francis
+C ECN219100;0 SHE
+C FEC443100;0 SHE
+C FEC566100;0 SHE
+C MQG342100;0 SHE
+E 044899852035020920053 Couture, Guillaume
+C ADM661100;0 SHE
+C FEC443100;0 SHE
+C FEC565100;0 SHE
+C FEC566100;0 SHE
+E 071841012035021020073 Couture, Jean-François
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C ECN219100;0 SHE
+C FEC444100;0 SHE
+C GRH221100;0 SHE
+E 071403822035021020073 Couture, Marie-Ève
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C ECN219100;0 SHE
+C FEC444100;0 SHE
+C GRH221100;0 SHE
+E 056234262035020920053 Couture, Mélissa
+C ADM661100;0 SHE
+C CTB313100;0 SHE
+C CTB561100;0 SHE
+C FEC443100;0 SHE
+C FEC566108;0 SHE
+E 056707852035020920053 Couture-Lafontaine, Karine
+C ADM661100;0 SHE
+C ECN455110;0 SHE
+C FEC565100;0 SHE
+E 068460052035061020071 Craig Duchesne, Charles
+C CTB331100;0 SHE
+C FEC333100;0 SHE
+C MAR433100;0 SHE
+C MQG332100;0 SHE
+E 056369022035411020053 Crête-Couture, Marie-Ève
+C ADM661100;0 SHE
+C CTB465100;0 SHE
+C CTB466100;0 SHE
+C CTB565100;0 SHE
+C MQG342100;0 SHE
+E 068351881290000520073 Cuevas Rivera, Marta Alejandra
+C GIS114100;0 SHE
+C GRH111100;0 SHE
+C GRH221100;0 SHE
+C MQG222100;0 SHE
+E 072069082035021020073 Curadeau, Maxime
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C ECN219100;0 SHE
+C FEC444100;0 SHE
+C GRH221100;0 SHE
+E 068395491290000520073 Custeau, Craig
+C CTB341100;0 SHE
+C FEC333100;0 SHE
+C MQG342100;0 SHE
+E 072483741290000520081 Custodio Barrios, Marcelo
+C CTB113109;0 SHE
+C FEC222109;0 SHE
+C MAR221109;0 SHE
+E 067485582030051020073 Cyr, Audrey
+C ADM556100;0 SHE
+C ADM661100;0 SHE
+C CTB301100;0 SHE
+C MQG542100;0 SHE
+E 056836002035030920061 Cyr, Guillaume
+C CTB331100;0 SHE
+C GIS137100;0 SHE
+C GIS358110;0 SHE
+C GIS371100;0 SHE
+C MQG342100;0 SHE
+E 071635252035011020073 Cyr, Marie-Josée
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 056469282035060920053 Côté, Lysanne
+C ADM661100;0 SHE
+C GRH111100;0 SHE
+C MAR664100;0 SHE
+C MQG342100;0 SHE
+E 056623392085140420053 Côté, Marc-Antoine
+C CTB333100;0 SHE
+C CTB341100;0 SHE
+C ECN660100;0 SHE
+C FEC566100;0 SHE
+E 067800762035210920063 Côté, Marie-Christine
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+C MQG332100;0 SHE
+E 009484072030311020071 Côté, Marie-Eve
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+E 056649982035060920053 Côté, Marie-Hélène
+C ADM101100;0 SHE
+C ADM661100;0 SHE
+C MAR664100;0 SHE
+C MQG342100;0 SHE
+E 068442122035020920063 Côté, Mathieu
+C ADM101100;0 SHE
+C ADM661100;0 SHE
+C ECN455110;0 SHE
+C FEC443100;0 SHE
+C FEC566108;0 SHE
+E 068242612035210920063 Côté, Véronique
+C CTB314100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+C MQG342100;0 SHE
+E 071105102035021020071 D Astous, Philippe
+C FEC451100;0 SHE
+C FEC565100;0 SHE
+C FEC566100;0 SHE
+C GRH111100;0 SHE
+C MQG332100;0 SHE
+E 056382322035061020081 D.Gauthier, Emilie
+C CTB213100;0 SHE
+C GIS114100;0 SHE
+C GRH221100;0 SHE
+C MAR331100;0 SHE
+C MQG222100;0 SHE
+E 056539282030211020053 Daigle, Anne-Marie
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+E 071519034140000120081 Daigle, Josiane
+C ADM101100;0 SHE
+C ECN117100;0 SHE
+C FEC222109;0 SHE
+C GRH221100;0 SHE
+C MAR331100;0 SHE
+E 056416922035210920053 Daigle, Kevin
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB666100;0 SHE
+E 056290822035211020053 Daigle, Pascal
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+C MQG342100;0 SHE
+E 068801001290000520082 Daigneault, Brigitte
+C GIS114100;0 SHE
+C GRH111100;0 SHE
+C GRH343100;0 SHE
+C MQG222100;0 SHE
+E 068248042035210920063 Daigneault, Marie-Josée
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+E 056387042030211020053 Dandenault, Milaine
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB666100;0 SHE
+E 056732012035050920053 Daudelin, Yann
+C ADM445100;0 SHE
+C ADM556100;0 SHE
+C ADM661100;0 SHE
+C GRH453100;0 SHE
+C MAR433100;0 SHE
+E 044919362035210920063 Davignon, Katy
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+E 068264102035061020071 De Beaumont, Philippe
+C ECN117100;0 SHE
+C FEC333100;0 SHE
+C GRH111100;0 SHE
+C MAR433100;0 SHE
+C MQG342100;0 SHE
+E 067719412030020920063 De Grandpré-Leclerc, Katrine
+C CTB304100;0 SHE
+C ECN455110;0 SHE
+C FEC565100;0 SHE
+C GIS137100;0 SHE
+C MQG342100;0 SHE
+E 067828592035050920063 Decubber, Jonathan
+C CTB331100;0 SHE
+C FEC451100;0 SHE
+C GRH343110;0 SHE
+C MAR331100;0 SHE
+C MQG332100;0 SHE
+E 071093542035411020071 Defoy, Marianne
+C CTB314100;0 SHE
+C CTB413100;0 SHE
+C CTB443110;0 SHE
+C GRH111100;0 SHE
+C MQG332100;0 SHE
+E 045176052035041020071 Dekeuster, Isabelle
+C CTB331100;0 SHE
+C GRH343110;0 SHE
+C MAR433100;0 SHE
+C MAR464100;0 SHE
+C MAR664100;0 SHE
+C MQG342100;0 SHE
+E 071998361290000520073 Delafontaine, Bruno
+C FEC333100;0 SHE
+C GIS137100;0 SHE
+C GIS139100;0 SHE
+C MQG332100;0 SHE
+E 067474432030211020081 Demers, Jean-François
+C CTB413100;0 SHE
+C CTB453100;0 SHE
+C CTB561100;0 SHE
+E 071954022035011020073 Demers-Lafontaine, Alexandre
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 056410682035310920063 Demers-Mathieu, Nicolas
+C CTB304100;0 SHE
+C CTB453100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+E 072031712035011020073 Demeule, Samuel
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 055899542035020920053 Denis, Gabriel
+C ADM661100;0 SHE
+C FEC565100;0 SHE
+C FEC566100;0 SHE
+C GIS137100;0 SHE
+E 071963852035031020073 Depelteau, Martin
+C CTB334100;0 SHE
+C ECN117100;0 SHE
+C FEC333100;0 SHE
+C GIS137100;0 SHE
+C GIS139100;0 SHE
+E 056267712035050920053 Descheneaux, Fabienne
+C ADM556100;0 SHE
+C ADM661100;0 SHE
+C CTB443110;0 SHE
+C GRH566100;0 SHE
+C MQG542100;0 SHE
+E 034342791430000220081 Desgagné, Pierre
+C GIS358110;0 SHE
+E 068437761290000520072 Desjardins, Farrah
+C ECN117100;0 SHE
+C GIS114100;0 SHE
+C GRH111110;0 SHE
+E 071621612035021020073 Desjardins, Olivier
+C CTB333100;0 SHE
+C ECN219100;0 SHE
+C FEC444100;0 SHE
+C GIS114100;0 SHE
+C GRH221100;0 SHE
+E 067873732035040920063 Desjardins, Vickie
+C CTB301100;0 SHE
+C ECN117100;0 SHE
+C GRH343110;0 SHE
+C GRH453100;0 SHE
+C MQG332100;0 SHE
+E 071886331290000520073 Desmarais, Charles
+C CTB213100;0 SHE
+C FEC333100;0 SHE
+C GIS114100;0 SHE
+C GRH221100;0 SHE
+C MAR221109;0 SHE
+E 033918592035020920053 Desmeules, François
+C ADM661100;0 SHE
+C FEC443100;0 SHE
+C FEC565100;0 SHE
+C MQG342100;0 SHE
+E 067972462035210920063 Desnoyers, Guillaume
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+E 057089411290000520063 Desparts, Lyne
+C ECN117110;0 SHE
+E 068889501290000520071 Després-Arnold, Karine
+C GRH221110;0 SHE
+E 072547034140000120073 Desrochers, Geneviève
+C FEC222109;0 SHE
+C GRH111100;0 SHE
+C MAR221109;0 SHE
+C MQG222100;0 SHE
+E 068890941440000220081 Desroches, Katy
+C ADM445100;0 SHE
+C GRH111100;0 SHE
+C GRH343110;0 SHE
+C MQG332100;0 SHE
+E 067400931290000520073 Desruisseaux, Yannick
+C MAR331100;0 SHE
+E 044912402035211020043 Dextradeur, Céline
+C ADM661100;0 SHE
+C CTB341100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+E 056674872030061020053 Di Stasio, Pascale
+C MAR433100;0 SHE
+C MAR444100;0 SHE
+C MAR664100;0 SHE
+E 072669051290000520081 Dimassi, Sami
+C ADM111110;0 SHE
+C ECN117110;0 SHE
+C FEC222109;0 SHE
+C MAR331100;0 SHE
+E 068398612035060920063 Dion, Andréanne
+C CTB331100;0 SHE
+C MAR433100;0 SHE
+C MAR444100;0 SHE
+C MQG332100;0 SHE
+E 071612062035011020073 Dion, Danny
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 067780252030041020073 Dion, Eugènie
+C ADM661100;0 SHE
+C GRH462100;0 SHE
+C MQG342100;0 SHE
+E 045254192030021020072 Dion, Jean-François
+C ADM661100;0 SHE
+C ECN455110;0 SHE
+E 071589512035011020073 Dion, Philip
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 068470952085020520073 Dionne, Amélie
+C ECN218100;0 SHE
+C ECN315100;0 SHE
+C ECN323100;0 SHE
+C ECN430100;0 SHE
+C ECN530100;0 SHE
+E 071604122035011020073 Dionne, Isabelle
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 071586112035011020073 Dionne, Marika
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 056004141420000220072 Diop, Yaye Cathy
+C FEC566108;0 SHE
+E 071006012080030520073 Dogbe, Ayawavi Mawunyo
+C ECN218100;0 SHE
+C ECN315100;0 SHE
+C ECN323100;0 SHE
+C ECN430100;0 SHE
+C ECN530100;0 SHE
+E 072643462035031020081 Dolas, Zarko
+C CTB213100;0 SHE
+C GIS114100;0 SHE
+C GIS139100;0 SHE
+C MQG222100;0 SHE
+E 068327244140000120081 Dolbec-Dumontet, Jean-François
+C MQG101110;0 SHE
+E 068008932035210920063 Domingue, Marie-Pier
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+E 068165282030050920063 Domingue-Poirier, Michael
+C ADM556100;0 SHE
+C CTB301100;0 SHE
+C ECN117100;0 SHE
+C MAR331100;0 SHE
+C MQG542100;0 SHE
+E 067941232035211020063 Donahue, Stéphanie
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB413100;0 SHE
+C MQG332100;0 SHE
+C MQG342100;0 SHE
+E 067829572085640520073 Dorisme, Jean-Ismon
+C CTB341100;0 SHE
+C ECN315100;0 SHE
+C ECN323100;0 SHE
+C ECN430100;0 SHE
+C ECN530100;0 SHE
+E 072776441290000520081 Doyon, Geneviève
+C FEC222110;0 SHE
+E 056582822035010920053 Doyon, Jean-François
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB666100;0 SHE
+C MQG342100;0 SHE
+E 056130352035211020053 Doyon, Sarah Mary
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+E 071485252035021020073 Doyon, Valérie
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C ECN219100;0 SHE
+C FEC444100;0 SHE
+C GRH221100;0 SHE
+E 071618852035011020073 Doyon, William
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 068893161410000220082 Drapeau, Christine
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117110;0 SHE
+E 022930572030051020073 Drolet, Lydia
+C ADM556100;0 SHE
+C CTB331100;0 SHE
+C MAR331100;0 SHE
+E 072076582035021020073 Drouin-Gagné, Olivier
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C ECN219100;0 SHE
+C FEC444100;0 SHE
+C GRH221100;0 SHE
+E 045251242035211020061 Dubeau-Marcoux, Maxime
+C CTB314100;0 SHE
+C CTB413100;0 SHE
+C CTB443110;0 SHE
+C CTB666100;0 SHE
+C MQG342100;0 SHE
+E 072725411290000520081 Dubois, Stéphane
+C CTB213100;0 SHE
+C CTB304100;0 SHE
+C MAR221109;0 SHE
+C MQG222100;0 SHE
+E 022335311410000220073 Dubois, Valérie
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB666100;0 SHE
+E 068331712035020920063 Dubreuil, David
+C CTB341100;0 SHE
+C FEC451100;0 SHE
+C FEC565100;0 SHE
+C GRH111100;0 SHE
+C MQG332100;0 SHE
+E 072080694140000120073 Dubuisson-Lebon, Philippe
+C ADM111100;0 SHE
+C CTB334100;0 SHE
+C ECN117100;0 SHE
+C GIS113100;0 SHE
+E 033710872035411020043 Dubé, Maxime
+C ADM661100;0 SHE
+C CTB465100;0 SHE
+C CTB466100;0 SHE
+C CTB565100;0 SHE
+E 068164761200000220073 Dubé, Ève-Marie
+C SST203110;0 SHE
+E 071657012035021020073 Ducharme, Jonathan
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C ECN219100;0 SHE
+C FEC444100;0 SHE
+C GRH221100;0 SHE
+E 071680672035021020073 Duff, Philippe
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C ECN219100;0 SHE
+C FEC444100;0 SHE
+C GRH221100;0 SHE
+E 072389462085000520073 Duhaime, Marc-André
+C ECN218100;0 SHE
+C ECN315100;0 SHE
+C ECN323100;0 SHE
+C ECN430100;0 SHE
+C ECN530100;0 SHE
+E 071054472035211020071 Duhamel, Marc Olivier
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB413100;0 SHE
+C CTB453100;0 SHE
+C GRH111100;0 SHE
+E 068090732035210920063 Dumas, Jean-François
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+E 056305422035210920053 Dumas, Mathieu
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+C MQG342100;0 SHE
+E 068234132035210920063 Dumont-Perreault, Carl
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+E 056400962035211020061 Dumoulin, Esther
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+C MQG342100;0 SHE
+E 071905312035021020073 Dumoulin, Marc-André
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C ECN219100;0 SHE
+C FEC444100;0 SHE
+C GRH221100;0 SHE
+E 056763972030020920061 Dumoulin, Olivier
+C ECN219100;0 SHE
+C FEC565100;0 SHE
+C MQG342100;0 SHE
+E 942680461290000520081 Duplessis, Stéphane
+C GIS358110;0 SHE
+C GRH221110;0 SHE
+E 881654081410000220072 Dupont, Chantal
+C CTB443110;0 SHE
+E 056386152035211020053 Duquet, Guylaine
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+C MQG342100;0 SHE
+E 072056052035021020081 Duquette, Francis
+C CTB213100;0 SHE
+C FEC333100;0 SHE
+C FEC444100;0 SHE
+C GIS114100;0 SHE
+C MQG222100;0 SHE
+E 072112062035031020073 Duquette, François
+C CTB334100;0 SHE
+C ECN117100;0 SHE
+C FEC333100;0 SHE
+C GIS137100;0 SHE
+C GIS139100;0 SHE
+E 056827272035210920053 Durand, Jean-Philippe
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+E 056775552035060920053 Durand, Mélissa
+C CTB301100;0 SHE
+C CTB331100;0 SHE
+C MAR433100;0 SHE
+C MAR464100;0 SHE
+C MQG222100;0 SHE
+E 071445742035011020073 Dussault, Karine
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB333100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 072703112035011020081 Dustin-Jacques, Natacha
+C CTB213100;0 SHE
+C CTB304100;0 SHE
+C FEC333100;0 SHE
+C GRH221100;0 SHE
+C MQG222100;0 SHE
+E 056406572035211020053 Dépôt, Karine
+C CTB443110;0 SHE
+C CTB564100;0 SHE
+C CTB666100;0 SHE
+C MQG342100;0 SHE
+E 072556771420000220081 Ed-Daoudi, Youssef
+C CTB213100;0 SHE
+C FEC333100;0 SHE
+C FEC444100;0 SHE
+C FEC451100;0 SHE
+C FEC565100;0 SHE
+E 068836332030021020073 El Idrissi, Souad
+C FEC443100;0 SHE
+C FEC565100;0 SHE
+C FEC566100;0 SHE
+C GRH111100;0 SHE
+C MAR221109;0 SHE
+E 068218252035210920063 Emard, Alexandre
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+E 072322474140000120082 Ennajime, Omar
+C ADM111100;0 SHE
+C CTB113109;0 SHE
+C GIS113100;0 SHE
+C MQG101110;0 SHE
+E 056607872030311020053 Esper, Leila
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB666100;0 SHE
+E 068329482035060920063 Essiembre, Pierre-André
+C CTB301100;0 SHE
+C GRH111100;0 SHE
+C MAR433110;0 SHE
+C MAR455100;0 SHE
+C MQG332100;0 SHE
+E 068283652035011020073 F.Brousseau, Sandra
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 071908171290000520073 Fabi, Marc-André
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C GRH221100;0 SHE
+C MQG332100;0 SHE
+E 056607412030211020053 Fafard, Marie-Eve
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+E 057118022030010920061 Fafard, Suzanne
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB666100;0 SHE
+E 071218752080640520073 Falade, Rihane
+C ECN530100;0 SHE
+C FEC222109;0 SHE
+C GIS114100;0 SHE
+E 072059542080140520073 Fankam, Georges Yves
+C ECN323100;0 SHE
+C ECN430100;0 SHE
+C ECN530100;0 SHE
+C FEC333100;0 SHE
+C GIS114100;0 SHE
+E 072715062035021020081 Faucher, Guillaume
+C CTB213100;0 SHE
+C FEC333100;0 SHE
+C FEC444100;0 SHE
+C GIS114100;0 SHE
+C MQG222100;0 SHE
+E 045226171290000520063 Faucher-Charbonneau, Olivier
+C CTB113109;0 SHE
+C MAR433100;0 SHE
+C MAR444100;0 SHE
+C MAR455100;0 SHE
+E 071788402035021020073 Fauteux, Jean-Christophe
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C ECN219100;0 SHE
+C FEC444100;0 SHE
+C GRH221100;0 SHE
+E 033117671410000220053 Fauteux, Véronique
+C CTB443110;0 SHE
+E 068999752035021020071 Favreau, Keven
+C CTB333100;0 SHE
+C FEC451100;0 SHE
+C FEC566100;0 SHE
+C GRH111100;0 SHE
+C MQG332100;0 SHE
+E 071514862035011020073 Fecteau, Yannick
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 056379382035211020053 Ferland, Andréane
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB443110;0 SHE
+C GRH111100;0 SHE
+E 072187711290000520081 Ferland, Mélanie
+C ADM101100;0 SHE
+C CTB331100;0 SHE
+E 056804712035011020081 Fillion, Karoline
+C CTB304100;0 SHE
+C CTB333100;0 SHE
+C CTB341100;0 SHE
+C ECN117100;0 SHE
+C FEC333100;0 SHE
+E 056427172035211020053 Fillion-Fecteau, Vanessa
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB666100;0 SHE
+E 071673082035011020073 Fleury, Marie-Pier
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 987653211430000220073 Flibotte, Mario
+C GIS137100;0 SHE
+C GIS358110;0 SHE
+E 056840112035020920053 Flibotte, Renaud
+C ADM661100;0 SHE
+C ECN315100;0 SHE
+C ECN323100;0 SHE
+C FEC565100;0 SHE
+C FEC566108;0 SHE
+E 056350662035050920053 Foisy Lapointe, Jules
+C ADM556100;0 SHE
+C ADM661100;0 SHE
+C CTB301100;0 SHE
+C MAR331100;0 SHE
+C MQG542100;0 SHE
+E 044837942030051020072 Foley, Éric
+C ECN455110;0 SHE
+C FEC222109;0 SHE
+C FEC444100;0 SHE
+C FEC565100;0 SHE
+C FEC566100;0 SHE
+E 056533032035050920053 Fontaine, David
+C ADM556100;0 SHE
+C ADM661100;0 SHE
+C GIS137100;0 SHE
+C GRH343110;0 SHE
+C MQG542100;0 SHE
+E 072732924140000120081 Fontaine, Jo-Annie
+C MQG101110;0 SHE
+E 072360474140000120073 Fontaine, Sylvain
+C FEC222110;0 SHE
+C GRH111110;0 SHE
+E 071595032035011020073 Forcier, Sandryne
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB333100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 072019851410000220073 Forero Meléndez, Evelin Del Carmen
+C CTB113110;0 SHE
+E 068409662035210920063 Forget-Proulx, Marie-Christelle
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+E 056370002030211020053 Fortier, Alexandre
+C CTB413100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+E 056241851290000520072 Fortier, Julie-Soleil
+C GRH111110;0 SHE
+E 068431062035210920063 Fortier, Vincent
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+C MQG342100;0 SHE
+E 056337542035211020053 Fortin, André
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+C MQG342100;0 SHE
+E 011470661290000520072 Fortin, Marc-Antoine
+C FEC222110;0 SHE
+C GRH343110;0 SHE
+E 071826662035021020073 Fortin Sullivan, Corinne
+C CTB333100;0 SHE
+C ECN219100;0 SHE
+C FEC444100;0 SHE
+C GIS114100;0 SHE
+C GRH221100;0 SHE
+E 056509942030211020072 Fotsing, Yannick Ndeffeu
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+E 071646402035011020073 Fournier, Jonathan
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB341100;0 SHE
+C CTB453100;0 SHE
+C MQG332100;0 SHE
+E 067780432035410920063 Fournier, Stéphanie
+C CTB341100;0 SHE
+C CTB443110;0 SHE
+C FEC444100;0 SHE
+C GRH111100;0 SHE
+E 056502712035411020053 Fournier Murray, Jazz
+C ADM661100;0 SHE
+C CTB465100;0 SHE
+C CTB466100;0 SHE
+C CTB565100;0 SHE
+C GRH111100;0 SHE
+E 071773152035011020073 Fournier-Langis, Virginie
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 056798482035050920053 Francoeur, Annie-Claude
+C ADM556100;0 SHE
+C ADM661100;0 SHE
+C MQG542100;0 SHE
+E 071877142035011020073 Francoeur, Steve
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 068410911140000420081 Fredette, Pascal
+C ADM661100;0 SHE
+C CTB301100;0 SHE
+C MAR433100;0 SHE
+C MAR664100;0 SHE
+E 068570564140000120081 Fréchette, Anik
+C CTB113109;0 SHE
+C GIS113100;0 SHE
+E 067429921410000220071 Fréchette, Roxanne
+C CTB443110;0 SHE
+C CTB453100;0 SHE
+E 056246202035211020053 Gadbois Nadeau, Hélène
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+E 056478742035040920053 Gagnon, Daniel
+C ADM556100;0 SHE
+C ADM661100;0 SHE
+C GIS139100;0 SHE
+C GRH462100;0 SHE
+C MQG542100;0 SHE
+E 044993312035310920051 Gagnon, Marc-Olivier
+C CTB413100;0 SHE
+C CTB443110;0 SHE
+C CTB453100;0 SHE
+C FEC444100;0 SHE
+C GRH111100;0 SHE
+E 056892121290000520073 Gagné, Marie-Stéfanie
+C FEC222109;0 SHE
+C MAR433100;0 SHE
+C MQG222100;0 SHE
+E 068268842035040920063 Gagné, Marie-Ève
+C CTB301100;0 SHE
+C ECN117100;0 SHE
+C GRH343100;0 SHE
+C GRH453100;0 SHE
+C MQG332100;0 SHE
+E 056572922035411020053 Gagné, Sébastien
+C ADM661100;0 SHE
+C CTB465100;0 SHE
+C CTB466100;0 SHE
+C CTB565100;0 SHE
+C GRH111100;0 SHE
+E 071577381290000520081 Gagné, Vincent
+C CTB304100;0 SHE
+C CTB314100;0 SHE
+C CTB453100;0 SHE
+C CTB561100;0 SHE
+C FEC333100;0 SHE
+C MAR221109;0 SHE
+E 068523552080140420063 Gambi, Nouhoum
+C CTB331100;0 SHE
+C ECN430100;0 SHE
+C ECN530100;0 SHE
+C ECN660100;0 SHE
+E 071330692080030520073 Garba, Latifatou Ryhanatou
+C ECN218100;0 SHE
+C ECN315100;0 SHE
+C ECN323100;0 SHE
+C ECN430100;0 SHE
+C ECN530100;0 SHE
+E 071683431290000520073 Gaudette, Daniel
+C FEC333100;0 SHE
+E 056474192035060920053 Gaudreau, Nicolas
+C ADM445100;0 SHE
+C ADM661100;0 SHE
+C MAR444100;0 SHE
+C MAR455100;0 SHE
+C MAR664100;0 SHE
+E 072593702035021020081 Gaudreault-Giardina, Stéphanie
+C CTB213100;0 SHE
+C FEC333100;0 SHE
+C GIS114100;0 SHE
+C GRH221100;0 SHE
+C MQG222100;0 SHE
+E 071716322035011020073 Gauron, Cindy
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 009367131290000520063 Gauthier, Dany
+C ADM661100;0 SHE
+E 033873101410000220071 Gauthier, Geneviève
+C CTB314100;0 SHE
+E 056625892035040920053 Gauthier, Joanie
+C ADM101100;0 SHE
+C ADM661100;0 SHE
+C GRH462100;0 SHE
+C GRH566100;0 SHE
+C MQG542100;0 SHE
+E 068020432035210920063 Gauthier, Marie-Hélène
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+E 044858542035050820051 Gauthier, Martin
+C ADM556100;0 SHE
+C CTB443110;0 SHE
+C FEC451100;0 SHE
+C GRH343100;0 SHE
+C MQG342100;0 SHE
+E 045461012035031020073 Gauthier, Maxime
+C CTB334100;0 SHE
+C ECN117100;0 SHE
+C FEC333100;0 SHE
+C GIS137100;0 SHE
+C GIS139100;0 SHE
+E 056500662035211020053 Gauthier-Morin, Guillaume
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+C MQG342100;0 SHE
+E 068613632030021020073 Gautier, Nathalie
+C ECN455110;0 SHE
+C FEC443100;0 SHE
+C FEC565100;0 SHE
+C FEC566100;0 SHE
+C MAR331100;0 SHE
+E 056450642030060920053 Gauvin, Benoît
+C ADM661100;0 SHE
+C GRH453100;0 SHE
+C MAR433110;0 SHE
+C MAR444100;0 SHE
+E 072687522035021020081 Gemme, Raphaël
+C CTB213100;0 SHE
+C FEC333100;0 SHE
+C GIS114100;0 SHE
+C GRH221100;0 SHE
+C MQG222100;0 SHE
+E 056601622035060920053 Gendron, Marie-Line
+C ADM661100;0 SHE
+C CTB301100;0 SHE
+C MQG342100;0 SHE
+E 022730601410000220043 Genest, Marie-France
+C CTB314100;0 SHE
+C CTB413100;0 SHE
+C FEC333100;0 SHE
+C MQG332100;0 SHE
+C MQG342100;0 SHE
+E 045285772085020420053 Germain, Benoît
+C ECN562100;0 SHE
+C ECN640100;0 SHE
+C ECN654100;0 SHE
+C ECN660100;0 SHE
+E 071506731290000520073 Gervais, Simon
+C ADM101100;0 SHE
+C CTB333100;0 SHE
+C ECN219100;0 SHE
+C FEC333100;0 SHE
+C GIS114100;0 SHE
+E 068350712035210920063 Giguère, Benoît
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+E 867883832030310920061 Giguère, Daniel
+C CTB564100;0 SHE
+C CTB666100;0 SHE
+E 072486591590000120081 Giguère, Nathalie
+C ECN323100;0 SHE
+C ECN454100;0 SHE
+C ECN530100;0 SHE
+E 071877232035011020073 Gingras, Catherine
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB333100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 068104272030061020081 Gingras, Chloe
+C CTB331100;0 SHE
+C MAR433100;0 SHE
+C MAR444100;0 SHE
+C MQG332100;0 SHE
+E 072490884140000120081 Gingras, Didier
+C ADM111100;0 SHE
+C MQG101110;0 SHE
+E 056558192035211020071 Girouard, Jean-Simon
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB413100;0 SHE
+C CTB453100;0 SHE
+C GRH111100;0 SHE
+E 056939481440000220081 Giroux, Stéphanie
+C FEC451100;0 SHE
+C GRH111100;0 SHE
+C GRH343100;0 SHE
+E 068964332035061020071 Gladu-Léger, Carl
+C CTB331100;0 SHE
+C GRH111100;0 SHE
+C MAR433100;0 SHE
+C MAR455100;0 SHE
+E 068353664140000120063 Gonzalez-Rubio, Florence
+C CTB113110;0 SHE
+C ECN117100;0 SHE
+C GRH343100;0 SHE
+C GRH453100;0 SHE
+E 068227622035040920063 Gosselin, Geneviève
+C CTB301100;0 SHE
+C ECN117100;0 SHE
+C GRH343100;0 SHE
+C GRH453100;0 SHE
+C MQG332100;0 SHE
+E 034240201290000520043 Gosselin, Julie
+C ECN117110;0 SHE
+E 056654432035030920053 Gosselin, Mathieu
+C ADM661100;0 SHE
+C GIS358110;0 SHE
+C GIS371100;0 SHE
+C GIS390100;0 SHE
+C MQG342100;0 SHE
+E 878970121130000420081 Gosselin, Nancy
+C GRH343110;0 SHE
+E 071124752035041020072 Gosselin, Stéphanie
+C ECN117100;0 SHE
+C GRH343100;0 SHE
+C GRH453100;0 SHE
+C GRH462100;0 SHE
+C MAR464100;0 SHE
+E 067978162035210920063 Gosselin, Thomas
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+E 071632862085140520073 Gosselin Dupasquier, Michael
+C ECN315100;0 SHE
+C ECN323100;0 SHE
+C ECN430100;0 SHE
+C ECN530100;0 SHE
+C FEC333100;0 SHE
+E 068200502035040920063 Gosselin-Proulx, Raphaël
+C ECN117100;0 SHE
+C FEC333100;0 SHE
+C GRH343100;0 SHE
+C GRH453100;0 SHE
+C MAR331100;0 SHE
+E 071052962035211020071 Goulet, Michael
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB413100;0 SHE
+C CTB453100;0 SHE
+C GRH111100;0 SHE
+E 056441182035060920053 Goupil, Marie-Pier
+C ADM661100;0 SHE
+C MAR433100;0 SHE
+C MAR455100;0 SHE
+C MAR664100;0 SHE
+E 056499892035020920053 Gourdes, Valérie
+C ADM661100;0 SHE
+C FEC443100;0 SHE
+C FEC565100;0 SHE
+C FEC566100;0 SHE
+E 068054421290000520081 Goyette, Jean-François
+C ADM101100;0 SHE
+C GIS114100;0 SHE
+C GRH111110;0 SHE
+C MAR331100;0 SHE
+E 072188974140000120072 Grandbois, Geneviève
+C CTB113110;0 SHE
+E 045089732035010820043 Granger-Trahan, Roxane
+C ADM661100;0 SHE
+C CTB413100;0 SHE
+C CTB443110;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+E 056526162035060920053 Gravel, François
+C ADM661100;0 SHE
+C MAR433100;0 SHE
+C MAR455100;0 SHE
+C MAR464100;0 SHE
+E 072676371290000520081 Grekou, Dimitri Hugues
+C CTB213100;0 SHE
+C ECN117100;0 SHE
+C GRH111100;0 SHE
+C GRH221100;0 SHE
+E 068323872035060920063 Grenon, Marie-Ève
+C CTB331100;0 SHE
+C MAR433110;0 SHE
+C MAR455100;0 SHE
+C MQG332100;0 SHE
+E 071875721290000520073 Grenon-Raymond, Manuel
+C CTB304100;0 SHE
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C FEC333100;0 SHE
+C MQG332100;0 SHE
+E 056355832035060920053 Grondin, Julie
+C ADM661100;0 SHE
+C MAR444100;0 SHE
+C MAR455100;0 SHE
+C MAR664100;0 SHE
+E 071814802035031020073 Grégoire, Martin
+C CTB334100;0 SHE
+C ECN117100;0 SHE
+C FEC333100;0 SHE
+C GIS137100;0 SHE
+C GIS139100;0 SHE
+E 071875542085640520073 Guay, Alexandre
+C ECN315100;0 SHE
+C ECN323100;0 SHE
+C ECN430100;0 SHE
+C ECN530100;0 SHE
+C FEC222109;0 SHE
+E 067509912030031020072 Guillemette, Patrick
+C GIS137100;0 SHE
+C GIS139100;0 SHE
+E 071584612035021020073 Guilmain-Langelier, Louis
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C ECN219100;0 SHE
+C FEC444100;0 SHE
+C GRH221100;0 SHE
+E 072001922035011020073 Guimond - Audy, Francis
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 071767442035031020073 Guimond Prévost, Gabriel
+C CTB334100;0 SHE
+C ECN117100;0 SHE
+C FEC333100;0 SHE
+C GIS137100;0 SHE
+C GIS139100;0 SHE
+E 068094572030411020071 Guinois-Charbonneau, Martin
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C CTB443110;0 SHE
+C FEC444100;0 SHE
+C MQG342100;0 SHE
+E 056725502035020920053 Guérette, Cédric
+C ADM661100;0 SHE
+C CTB301100;0 SHE
+C CTB313100;0 SHE
+C FEC443100;0 SHE
+E 033370171440000220081 Guérin, Lucie
+C ADM101100;0 SHE
+C ADM556100;0 SHE
+C CTB331100;0 SHE
+C FEC443100;0 SHE
+C FEC451100;0 SHE
+C MQG332100;0 SHE
+E 056702222035030920053 Guérin, Steven
+C CTB333100;0 SHE
+C GIS358110;0 SHE
+C GIS371100;0 SHE
+C GIS390100;0 SHE
+C MQG342100;0 SHE
+E 071866352035031020073 Guévin, Alexandra
+C CTB334100;0 SHE
+C ECN117100;0 SHE
+C FEC333100;0 SHE
+C GIS137100;0 SHE
+C GIS139100;0 SHE
+E 072569431290000520081 Habineza, Jean Bosco
+C ECN117100;0 SHE
+C GRH111100;0 SHE
+E 071789842035011020073 Hacala, Debby
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB333100;0 SHE
+C GRH221100;0 SHE
+C MQG332100;0 SHE
+E 068101232035310920063 Haché, Liette
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+E 067457842030011020081 Hamel, Nancy
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+E 044977162030060920061 Harris-Furlong, Marie-Pier
+C ADM101100;0 SHE
+C ADM661100;0 SHE
+C MAR664100;0 SHE
+C MQG342100;0 SHE
+E 071446722035021020073 Hauben, Christine
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C ECN117100;0 SHE
+C FEC444100;0 SHE
+C GRH453100;0 SHE
+C MQG332100;0 SHE
+E 056584882035041020071 Hautcoeur-Robitaille, Maude
+C ECN117100;0 SHE
+C FEC333100;0 SHE
+C GRH343100;0 SHE
+C GRH453100;0 SHE
+C GRH462100;0 SHE
+E 072673704140000120081 Hebri, Yasmine
+C ECN117110;0 SHE
+C GRH111110;0 SHE
+E 056747902035060920053 Hervieux, Janie
+C ADM661100;0 SHE
+C GIS137100;0 SHE
+C MAR455100;0 SHE
+C MAR464100;0 SHE
+E 072489711290000520073 Hissein Warimi, Ahmed Kochi
+C ADM111110;0 SHE
+C CTB113110;0 SHE
+E 083048634140000120081 Houde, Annie
+C ADM111110;0 SHE
+E 056475982035060920053 Houde, Robert
+C ADM661100;0 SHE
+C ECN117100;0 SHE
+C MAR664100;0 SHE
+E 011558952030021020073 Houle, Mathieu
+C ADM661100;0 SHE
+E 034255822030041020072 Huard, Nancy
+C GRH343100;0 SHE
+C GRH462100;0 SHE
+E 068117742035041020073 Hudon, Louis-Olivier
+C CTB331100;0 SHE
+C GRH111100;0 SHE
+C GRH453100;0 SHE
+C GRH462100;0 SHE
+C MQG332100;0 SHE
+E 068854901140000420073 Hue, Clémence
+C FEC333100;0 SHE
+C GRH343100;0 SHE
+C MAR455100;0 SHE
+C MAR664100;0 SHE
+C MQG342100;0 SHE
+E 056378302035211020053 Huot, Audrey
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+E 056424502030040920053 Hurteau, Magalie
+C GRH462100;0 SHE
+C GRH566100;0 SHE
+E 057041511130000420081 Husson, Julien
+C CTB213100;0 SHE
+C GRH343100;0 SHE
+C GRH453100;0 SHE
+C GRH462100;0 SHE
+C GRH566100;0 SHE
+E 068912872030051020081 Hébert, Frédéric
+C ADM556100;0 SHE
+C ADM661100;0 SHE
+C FEC451100;0 SHE
+E 056199302035060920053 Hébert, Mélissa
+C ADM661100;0 SHE
+C CTB301100;0 SHE
+C MAR455100;0 SHE
+C MAR464100;0 SHE
+C MQG342100;0 SHE
+E 067948462035021020073 Iglesias-Girard, David
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C ECN219100;0 SHE
+C FEC444100;0 SHE
+C GRH221100;0 SHE
+E 056402292035020920053 Ingham, Philippe
+C ADM661100;0 SHE
+C FEC443100;0 SHE
+C FEC565100;0 SHE
+E 067799252035311020071 Jacques, Marie-Pier
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+E 072229532035011020073 Janelle, Véronique
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 071845752035011020073 Jauron, Dominic
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 071716782035011020073 Jean, Alexandra
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 056340942080140420053 Jean, Marie-Claude
+C CTB331100;0 SHE
+C ECN660100;0 SHE
+C FEC443100;0 SHE
+E 044980382035210920043 Jean, Samuel
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+E 942744771440000220062 Jean-Marie, Sandrine
+C ADM556100;0 SHE
+C CTB443110;0 SHE
+C GRH343110;0 SHE
+C MQG542100;0 SHE
+E 068485752035060920063 Jolicoeur, Maxime
+C CTB331100;0 SHE
+C MAR433100;0 SHE
+C MAR444100;0 SHE
+C MAR464100;0 SHE
+C MQG332100;0 SHE
+E 071895432035011020073 Jolin-Dahel, Samia
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 071221331290000520073 Joncas-Rousseau, Mathieu
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C FEC444100;0 SHE
+C MQG332100;0 SHE
+E 071834422035011020073 Jones, Kevin
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 071066872035021020072 Joseph, Gevany
+C CTB333100;0 SHE
+C CTB341100;0 SHE
+C FEC444100;0 SHE
+C FEC451100;0 SHE
+C FEC565100;0 SHE
+E 072681551290000520081 Joyal, Gabriel
+C CTB213100;0 SHE
+C CTB304100;0 SHE
+C FEC333100;0 SHE
+C GIS113100;0 SHE
+C MQG222100;0 SHE
+E 056409972030061020072 Juarez, Stéphane
+C MAR433100;0 SHE
+C MAR455100;0 SHE
+C MAR464100;0 SHE
+C MQG342100;0 SHE
+E 044751422035411020063 Jutras, Marc-Olivier
+C CTB314100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C CTB443110;0 SHE
+C FEC444100;0 SHE
+E 071040552030041020081 Kabore, Amelie
+C CTB113109;0 SHE
+C GIS114100;0 SHE
+C GRH111100;0 SHE
+C MQG222100;0 SHE
+E 068436321290000520071 Kayem Tuessindo, Yonou
+C FEC222109;0 SHE
+C GRH343100;0 SHE
+C MQG342100;0 SHE
+E 068894052080000520073 Keita, Ismael
+C ECN430100;0 SHE
+C ECN530100;0 SHE
+E 072227112030061020081 Khanchouch, Badis
+C CTB113109;0 SHE
+C FEC222109;0 SHE
+C MAR433100;0 SHE
+C MQG222100;0 SHE
+E 071295001410000220081 Kongue Djiendeu, Yannick
+C CTB304100;0 SHE
+C CTB314100;0 SHE
+C CTB443110;0 SHE
+C CTB453100;0 SHE
+E 068982171140000420071 Kossaka, Celso
+C CTB113109;0 SHE
+C MAR433100;0 SHE
+E 071185582035011020073 Kouevi, Folly Mario
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C MQG342100;0 SHE
+E 057222202030021020073 Koung A Bitcheki, Franck
+C FEC566108;0 SHE
+E 067359641420000220082 Kourouma, Lamine
+C CTB565100;0 SHE
+E 976757691440000220071 Kpomblekou, Gagnon Kouamivi
+C ECN219100;0 SHE
+C ECN430100;0 SHE
+C ECN530100;0 SHE
+C FEC333100;0 SHE
+E 056369752085010420053 L Espérance, Charles
+C ECN558100;0 SHE
+C ECN562100;0 SHE
+C ECN640100;0 SHE
+C ECN660100;0 SHE
+E 056155142035211020053 Labbé, Joanie
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+C MQG342100;0 SHE
+E 045189082030040920061 Labbé, Pierre-Luc
+C GRH343110;0 SHE
+E 056626692035211020053 Labbé, Étienne
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+C MQG342100;0 SHE
+E 056201612035060920053 Laberge, Anne-Sophie
+C ADM661100;0 SHE
+C MAR433100;0 SHE
+C MAR455100;0 SHE
+E 056388752035020920053 Lachance, Amélie
+C ADM661100;0 SHE
+C FEC443100;0 SHE
+C FEC565100;0 SHE
+C FEC566100;0 SHE
+E 071830311290000520081 Lachance, Claudia
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB413100;0 SHE
+C CTB453100;0 SHE
+C FEC222109;0 SHE
+C GRH111100;0 SHE
+E 068028642035210920063 Lachance, Dave
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+E 067874802035210920063 Lachance, Marie
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+E 071683342035011020073 Lachance, René
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 045241522035050920053 Lachance-Paquette, Jean-Nicolas
+C ADM556100;0 SHE
+C ADM661100;0 SHE
+C GIS139100;0 SHE
+C MQG542100;0 SHE
+E 067908682035060920063 Lachapelle, Marie-Ève
+C CTB331100;0 SHE
+C MAR433100;0 SHE
+C MAR444100;0 SHE
+C MAR455100;0 SHE
+C MQG332100;0 SHE
+E 071498372080030520073 Lacombe, Alexis
+C ECN218100;0 SHE
+C ECN315100;0 SHE
+C ECN323100;0 SHE
+C ECN430100;0 SHE
+C ECN530100;0 SHE
+E 071784672035021020073 Lacroix, Erik
+C CTB333100;0 SHE
+C ECN117100;0 SHE
+C FEC444100;0 SHE
+C GIS114100;0 SHE
+C GRH111100;0 SHE
+E 071927994140000120081 Lacroix, Francis
+C ECN117100;0 SHE
+C FEC222109;0 SHE
+C GRH221100;0 SHE
+C MAR221109;0 SHE
+E 072180302030211020073 Lacroix, Yannick
+C ADM661100;0 SHE
+C CTB304100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB666100;0 SHE
+E 056584242035060920063 Lacroix-Vézina, Pascale
+C CTB331100;0 SHE
+C MAR433100;0 SHE
+C MAR444100;0 SHE
+C MAR464100;0 SHE
+C MQG332100;0 SHE
+E 056691452035060920053 Laflamme-Breault, Sandrine
+C ADM101100;0 SHE
+C ADM661100;0 SHE
+C MAR664100;0 SHE
+C MQG342100;0 SHE
+E 068062902030061020073 Laforge, Mathieu
+C CTB331100;0 SHE
+C FEC566108;0 SHE
+C MAR455100;0 SHE
+C MAR464100;0 SHE
+C MAR664100;0 SHE
+E 068972091440000220081 Lafrance, Anne
+C CTB301100;0 SHE
+C ECN117110;0 SHE
+C GRH343110;0 SHE
+C MQG332100;0 SHE
+E 033785982030010820033 Lafrance, Matthieu
+C CTB453100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+E 071978382035021020073 Lajeunesse, Joanie
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C ECN219100;0 SHE
+C FEC444100;0 SHE
+C GRH221100;0 SHE
+E 067856052035210920063 Lajeunesse, Krystel
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+E 068194002035210920063 Lajeunesse-Pagé, Bruno
+C CTB314100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C CTB453100;0 SHE
+C GRH111100;0 SHE
+E 072727382035011020081 Lamarre, Sarah-Josée
+C CTB213100;0 SHE
+C CTB304100;0 SHE
+C FEC333100;0 SHE
+C GRH221100;0 SHE
+C MQG222100;0 SHE
+E 056771274140000120072 Lambert, Karine
+C CTB113110;0 SHE
+C CTB213100;0 SHE
+C MAR331100;0 SHE
+E 067321911290000520053 Lambert, Luc
+C GRH221110;0 SHE
+C MQG222100;0 SHE
+E 068751611410000220081 Lambert-Pageau, Yan
+C CTB304100;0 SHE
+C CTB413100;0 SHE
+C CTB443110;0 SHE
+C ECN117100;0 SHE
+C FEC222109;0 SHE
+E 071394742035021020081 Lamine, Ali
+C CTB334100;0 SHE
+C ECN219100;0 SHE
+C FEC444100;0 SHE
+C GRH221100;0 SHE
+E 072371174140000120073 Lamontagne, Emilie
+C GIS113100;0 SHE
+E 067789352035060920063 Lamothe, Pierre-Maxime
+C CTB331100;0 SHE
+C MAR433110;0 SHE
+C MAR444100;0 SHE
+C MAR464100;0 SHE
+C MQG332100;0 SHE
+E 071704472035021020073 Lamoureux, David
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C ECN219100;0 SHE
+C FEC444100;0 SHE
+C GRH221100;0 SHE
+E 056568632035050920053 Lamoureux, Marie-Christine
+C ADM556100;0 SHE
+C ADM661100;0 SHE
+E 071779852085030520073 Lamoureux, Marie-Ève
+C ECN218100;0 SHE
+C ECN315100;0 SHE
+C ECN323100;0 SHE
+C ECN430100;0 SHE
+C ECN530100;0 SHE
+E 068999202035061020071 Lamoureux-Levasseur, Geneviève
+C CTB331100;0 SHE
+C GRH111100;0 SHE
+C MAR433100;0 SHE
+C MAR444100;0 SHE
+C MAR455100;0 SHE
+E 071455462035031020073 Landreville-Audette, Marissa
+C CTB334100;0 SHE
+C FEC333100;0 SHE
+C GIS137100;0 SHE
+C GIS139100;0 SHE
+C GRH111100;0 SHE
+E 071587552035011020073 Landry, Catherine
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB333100;0 SHE
+C FEC333100;0 SHE
+C MQG332100;0 SHE
+E 072359944140000120073 Landry, David
+C CTB113110;0 SHE
+E 071650154140000120072 Landry, Isabelle
+C CTB113109;0 SHE
+C GIS113100;0 SHE
+E 067971112035020920063 Landry, Olivia
+C CTB341100;0 SHE
+C FEC443100;0 SHE
+C FEC565100;0 SHE
+C FEC566100;0 SHE
+C MQG342100;0 SHE
+E 068335632035060920063 Landry, Éric
+C CTB331100;0 SHE
+C MAR433100;0 SHE
+C MAR444100;0 SHE
+C MAR455100;0 SHE
+C MQG332100;0 SHE
+E 033737714140000120072 Langdeau McGee, Dominic
+C ADM101100;0 SHE
+C CTB113109;0 SHE
+C MAR221109;0 SHE
+E 056479092035050920061 Langevin, Guillaume
+C ADM556100;0 SHE
+C ADM661100;0 SHE
+C FEC451100;0 SHE
+C MAR433100;0 SHE
+C MAR664100;0 SHE
+E 071385182035011020073 Langlois, Claudia
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 068991902035061020071 Lanoie, Philippe
+C CTB301100;0 SHE
+C CTB331100;0 SHE
+C GRH111100;0 SHE
+C MAR433110;0 SHE
+C MQG342100;0 SHE
+E 056365642035040920061 Lanoix, Kevin
+C ADM661100;0 SHE
+C CTB301100;0 SHE
+C CTB331100;0 SHE
+C ECN117100;0 SHE
+C MQG342100;0 SHE
+E 056474372030411020053 Lantin, Marc-André
+C ADM661100;0 SHE
+C CTB465100;0 SHE
+C CTB466100;0 SHE
+C CTB565100;0 SHE
+E 071394382035011020073 Lapalme, Mylène
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 072758424140000120081 Lapierre, Christine
+C CTB213100;0 SHE
+C FEC222109;0 SHE
+C GRH221100;0 SHE
+C MAR221109;0 SHE
+E 068060032035210920063 Lapierre, Marjolaine
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+E 071686732085020520073 Lapierre, Stéphanie
+C ECN218100;0 SHE
+C ECN315100;0 SHE
+C ECN323100;0 SHE
+C ECN430100;0 SHE
+C ECN530100;0 SHE
+E 056828342080030420063 Laplante, Maryse
+C ECN454100;0 SHE
+C ECN551100;0 SHE
+C ECN558100;0 SHE
+C ECN640100;0 SHE
+C ECN660100;0 SHE
+E 071891062035011020073 Laporte, Alexandre
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 068338852035211020071 Laporte, Patricia Véronique
+C CTB304100;0 SHE
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB413100;0 SHE
+C CTB453100;0 SHE
+E 067954712035210920063 Laprise-Lachance, Sandrine
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+E 067859452035210920063 Larivière, Caroline
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+E 056529012035030920053 Laroche, Maxime
+C ADM661100;0 SHE
+C GIS358110;0 SHE
+C GIS371100;0 SHE
+C GRH111100;0 SHE
+C MQG342100;0 SHE
+E 056854672035050920053 Larose, Cynthia
+C ADM556100;0 SHE
+C ADM661100;0 SHE
+C MQG332100;0 SHE
+C MQG542100;0 SHE
+E 068392002035060920063 Larouche Labonté, Gabrielle
+C CTB331100;0 SHE
+C MAR433100;0 SHE
+C MAR444100;0 SHE
+C MAR464100;0 SHE
+C MQG332100;0 SHE
+E 071932352035021020073 Lassonde, Dominique
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C ECN219100;0 SHE
+C FEC444100;0 SHE
+C GRH221100;0 SHE
+E 056599862035060920053 Latendresse, Alexandra
+C ADM101100;0 SHE
+C ADM661100;0 SHE
+C GRH343100;0 SHE
+C MAR664100;0 SHE
+C MQG342100;0 SHE
+E 071920302035011020073 Latour, Julie
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB333100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 009994232030311020072 Laurendeau-Rastoll, Julie
+C ADM661100;0 SHE
+C CTB666100;0 SHE
+E 068156632035021020073 Laurin, Geneviève
+C CTB341100;0 SHE
+C ECN219100;0 SHE
+C FEC451100;0 SHE
+C GIS114100;0 SHE
+C MQG342100;0 SHE
+E 068642802030031020081 Lauzon, Philippe
+C FEC333100;0 SHE
+C GIS137100;0 SHE
+C GIS139100;0 SHE
+C GIS358110;0 SHE
+C GIS371100;0 SHE
+E 056562932085140420053 Lavallée, Guy
+C CTB331100;0 SHE
+C CTB341100;0 SHE
+C ECN654100;0 SHE
+C ECN660100;0 SHE
+C FEC566100;0 SHE
+E 998563832030041020073 Laventure, Annie
+C SST203110;0 SHE
+E 071920762035021020073 Laverdière, Alex
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C ECN219100;0 SHE
+C FEC444100;0 SHE
+C MQG222100;0 SHE
+E 072508964140000120081 Lavigne, Dominic
+C ADM111110;0 SHE
+E 068581531290000520072 Lavigne, François
+C ECN117110;0 SHE
+C FEC333100;0 SHE
+E 067790791290000520071 Lavoie, Christian
+C FEC222110;0 SHE
+E 071891792035011020073 Le Pabic, Vincent
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG342100;0 SHE
+E 072266644140000120081 Leal, José Gustavo Jardim
+C CTB113109;0 SHE
+C GIS113100;0 SHE
+E 034005181200000220081 Lebel, Benoit
+C SST203110;0 SHE
+E 056645232035020920053 Lebel, Patrick
+C ADM661100;0 SHE
+C FEC443100;0 SHE
+C FEC565100;0 SHE
+C FEC566100;0 SHE
+C MQG542100;0 SHE
+E 056521992035050920053 Leblanc, Hubert
+C ADM445100;0 SHE
+C ADM556100;0 SHE
+C ADM661100;0 SHE
+C FEC451100;0 SHE
+C GRH343100;0 SHE
+E 072773964140000120081 Leblanc, Johanna
+C ADM111110;0 SHE
+E 068304502035410920063 Leblanc, Marie-Christine
+C CTB314100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C CTB443110;0 SHE
+C FEC444100;0 SHE
+E 072695464140000120081 Leblanc, Marie-Ève
+C ADM111110;0 SHE
+E 022180312035060920053 Leblanc, Éric
+C ADM661100;0 SHE
+C MAR444100;0 SHE
+E 071856902035031020073 Leclair-Esteves, Andréa
+C FEC333100;0 SHE
+C GIS137100;0 SHE
+C GIS139100;0 SHE
+E 083095551290000520081 Leclerc, François
+C ECN117100;0 SHE
+C FEC222110;0 SHE
+E 071969912035021020073 Leclerc, Isabelle
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C ECN219100;0 SHE
+C FEC444100;0 SHE
+C GRH221110;0 SHE
+E 068392192035021020073 Leclerc, Myriam
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C ECN219100;0 SHE
+C FEC444100;0 SHE
+C GRH221100;0 SHE
+E 071933062035011020073 Leclerc, Stéphanie
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 056402922035060920053 Leduc, Philippe
+C ADM661100;0 SHE
+C ECN117100;0 SHE
+C MAR664100;0 SHE
+E 072671474140000120081 Leduc, Syndie
+C FEC222110;0 SHE
+C MAR221109;0 SHE
+E 068150932035210920063 Lefebvre, Marie-Pier
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+E 067443752030411020073 Lefebvre, Valérie
+C ADM661100;0 SHE
+C CTB465100;0 SHE
+C CTB466100;0 SHE
+C CTB565100;0 SHE
+C GRH111100;0 SHE
+E 056550432035060920061 Lefebvre-Cloutier, Sarah
+C ADM661100;0 SHE
+C MAR664100;0 SHE
+C MQG342100;0 SHE
+E 056857792035211020071 Legault, Élise
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C FEC333100;0 SHE
+E 056596462035020920053 Legault Bélanger, Simon
+C ADM661100;0 SHE
+C FEC566108;0 SHE
+E 056459562035011020073 Legendre, Mathieu
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 067954442035061020071 Lemaire, Sarah-Ève
+C CTB331100;0 SHE
+C GRH111100;0 SHE
+C MAR433100;0 SHE
+C MAR444100;0 SHE
+C MAR455100;0 SHE
+E 056378852035211020053 Lemay, Marie-Christine
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+C MQG342100;0 SHE
+E 071558562035021020073 Lemay - Crilly, Maxime
+C CTB333100;0 SHE
+C ECN219100;0 SHE
+C FEC444100;0 SHE
+C GIS114100;0 SHE
+C GRH221100;0 SHE
+E 056334972035211020053 Lemieux-Hudon, Alexandre
+C ADM661100;0 SHE
+C CTB341100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+C MQG342100;0 SHE
+E 071494812035011020073 Lemire, Pierre-Luc
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 072484901290000520081 Lemseffer, Oussama
+C CTB213100;0 SHE
+C ECN117100;0 SHE
+C FEC222109;0 SHE
+C GIS114100;0 SHE
+C MQG222100;0 SHE
+E 072645692035041020081 Leroux, Marie-Ève
+C CTB213100;0 SHE
+C GIS114100;0 SHE
+C GRH111100;0 SHE
+C GRH221100;0 SHE
+C MQG222100;0 SHE
+E 056626962035010920053 Leroux, Édith
+C ADM661100;0 SHE
+C CTB465100;0 SHE
+C CTB466100;0 SHE
+C CTB565100;0 SHE
+E 072633742035051020081 Lespérance, Catherine
+C CTB213100;0 SHE
+C GIS114100;0 SHE
+C GRH221100;0 SHE
+C MAR331100;0 SHE
+C MQG222100;0 SHE
+E 068008752035210920063 Lessard, Jean-François
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+E 072355564140000120073 Lessard, Marie
+C GRH221110;0 SHE
+E 056526342035050920053 Lessard, Simon-Pier
+C ADM556100;0 SHE
+C ECN117100;0 SHE
+E 056418702035211020053 Letarte, Annemarie
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+E 068012682035060920063 Letendre Lapointe, Marie-Ève
+C CTB331100;0 SHE
+C GIS114100;0 SHE
+C MAR433100;0 SHE
+C MAR455100;0 SHE
+C MQG332100;0 SHE
+E 045024702035060920053 Lettre-Mathieu, Louis-Philippe
+C ADM661100;0 SHE
+C MAR444100;0 SHE
+C MAR455100;0 SHE
+C MAR664100;0 SHE
+E 071429052035011020073 Levac-Joubert, Emilie
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB333100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 083110074140000120081 Levasseur, Chantal
+C GRH111100;0 SHE
+C GRH221100;0 SHE
+E 056527782035010920053 Lizotte, Christine
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB666100;0 SHE
+C MQG342100;0 SHE
+E 068210132035410920063 Loignon-Houle, Geneviève
+C CTB314100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C CTB443110;0 SHE
+C FEC444100;0 SHE
+E 068030792035060920063 Lorange, Nina
+C CTB331100;0 SHE
+C MAR433100;0 SHE
+C MAR444100;0 SHE
+C MQG332100;0 SHE
+E 056799192035211020053 Loranger, Patrick
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+E 056508232035020920053 Lord, Claudia
+C ADM101100;0 SHE
+C ADM556100;0 SHE
+C ADM661100;0 SHE
+C FEC443100;0 SHE
+C MQG342100;0 SHE
+E 953537441430000220081 Lord, Étienne
+C GIS113100;0 SHE
+E 056525542030060920053 Lord Dextradeur, Vanessa
+C ADM556100;0 SHE
+C ADM661100;0 SHE
+C GRH566100;0 SHE
+C MAR664100;0 SHE
+C MQG342100;0 SHE
+E 056353242030041020073 Lortie, Jean-François
+C ADM661100;0 SHE
+C GRH343100;0 SHE
+C GRH453100;0 SHE
+C GRH462100;0 SHE
+C GRH566100;0 SHE
+E 071818092035011020073 Lussier, Alexandre
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 071434962035011020081 Lussier, Amélie
+C CTB213100;0 SHE
+C CTB304100;0 SHE
+C FEC333100;0 SHE
+C GRH221100;0 SHE
+C MQG222100;0 SHE
+E 068167602035210920063 Lussier, François
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+E 045175702035210920053 Lussier, Pascal
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+E 068396292035410920063 Lussier, Philippe-Alexandre
+C CTB314100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C CTB443110;0 SHE
+C FEC444100;0 SHE
+E 056552942035211020053 Lussier, Véronique
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+C MQG342100;0 SHE
+E 067464992035410920063 Légaré, Jonathan
+C CTB314100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C CTB443110;0 SHE
+C MQG342100;0 SHE
+E 799252931440000220063 Léger, Carole
+C MQG542100;0 SHE
+E 071522162035031020081 Léger, Marc-Denis
+C CTB213100;0 SHE
+C GIS114100;0 SHE
+C GIS139100;0 SHE
+C MQG222100;0 SHE
+E 056160782035050920053 Lépine, Myriam
+C ADM556100;0 SHE
+C ADM661100;0 SHE
+C CTB331100;0 SHE
+C FEC451100;0 SHE
+E 044987881410000220081 Létourneau, Hubert
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB331100;0 SHE
+C CTB333100;0 SHE
+C CTB341100;0 SHE
+E 068000272035040920063 Lévesque, Benoît
+C CTB301100;0 SHE
+C ECN117100;0 SHE
+C GRH343110;0 SHE
+C GRH453100;0 SHE
+C MQG332100;0 SHE
+E 045234752035211020071 Lévesque Rousseau, Vincent
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB413100;0 SHE
+C CTB453100;0 SHE
+C GRH111100;0 SHE
+E 071035281290000520073 Madaga, Moïse
+C ADM101100;0 SHE
+C ADM111100;0 SHE
+C FEC222109;0 SHE
+C GIS113100;0 SHE
+E 068238322035021020071 Madi, Ghaazee
+C CTB333100;0 SHE
+C ECN219100;0 SHE
+C FEC566108;0 SHE
+C GRH111100;0 SHE
+C MQG332100;0 SHE
+E 034472012035061020071 Magne, Gaëlle
+C CTB331100;0 SHE
+C MAR433110;0 SHE
+C MAR444100;0 SHE
+C MAR455100;0 SHE
+C MQG332100;0 SHE
+E 067536672035050920063 Maheu, Cynthia
+C ADM445100;0 SHE
+C CTB341100;0 SHE
+C ECN117100;0 SHE
+C FEC451100;0 SHE
+E 071057952035011020073 Maheu, Francis
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB333100;0 SHE
+C GRH221100;0 SHE
+C MQG332100;0 SHE
+E 068193662035210920063 Maheux, Daisy
+C CTB304100;0 SHE
+C CTB314100;0 SHE
+C CTB413100;0 SHE
+C CTB453100;0 SHE
+E 071837452035031020073 Maheux, Vincent
+C CTB334100;0 SHE
+C ECN117100;0 SHE
+C FEC333100;0 SHE
+C GIS137100;0 SHE
+C GIS139100;0 SHE
+E 045366752030051020072 Mailhot, Claudia
+C GRH343110;0 SHE
+E 056628382035060920053 Mailloux, Claudie
+C CTB334100;0 SHE
+C ECN117100;0 SHE
+C MAR664100;0 SHE
+E 067747061290000520072 Major, Christine
+C GRH111110;0 SHE
+E 056791521290000520081 Marceau, Dave
+C CTB331100;0 SHE
+C FEC222109;0 SHE
+C GIS114100;0 SHE
+E 071635612085020520073 Marceau, Michael
+C ECN218100;0 SHE
+C ECN315100;0 SHE
+C ECN323100;0 SHE
+C ECN430100;0 SHE
+C ECN530100;0 SHE
+E 068236181290000520073 Marcotte, Nadia
+C CTB304100;0 SHE
+C CTB314100;0 SHE
+C CTB413100;0 SHE
+C CTB453100;0 SHE
+C FEC333100;0 SHE
+E 009200432035040920053 Marcouiller, Annick
+C ADM661100;0 SHE
+C GRH462100;0 SHE
+E 056357892035040920053 Marcoux, Edith
+C ADM661100;0 SHE
+C ECN117100;0 SHE
+C GRH462100;0 SHE
+E 056791432035011020081 Marcoux, Patrick
+C CTB213100;0 SHE
+C CTB304100;0 SHE
+C FEC333100;0 SHE
+C GRH221100;0 SHE
+C MQG222100;0 SHE
+E 072566671130000420081 Marin, Viviana
+C GRH111100;0 SHE
+C MQG222100;0 SHE
+E 072664332035011020081 Marjanovic, Danijela
+C CTB213100;0 SHE
+C CTB304100;0 SHE
+C FEC333100;0 SHE
+C GRH221100;0 SHE
+C MQG222100;0 SHE
+E 056741932035041020071 Martel, Philippe
+C CTB331100;0 SHE
+C FEC333100;0 SHE
+C GIS114100;0 SHE
+C GRH343100;0 SHE
+C MQG222100;0 SHE
+E 022847622030211020073 Martic, Marijana
+C CTB443110;0 SHE
+C CTB453100;0 SHE
+E 056645412035411020053 Martin, Marie-Eve
+C ADM661100;0 SHE
+C CTB465100;0 SHE
+C CTB466100;0 SHE
+C CTB565100;0 SHE
+E 072757992035041020081 Massari, Marie-Josée
+C CTB213100;0 SHE
+C GIS114100;0 SHE
+C GRH111100;0 SHE
+C GRH221100;0 SHE
+C MQG222100;0 SHE
+E 071219372035011020073 Massé, Nicolas
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 056745942035020920053 Massé-Simard, Jonathan
+C ADM661100;0 SHE
+C FEC443100;0 SHE
+C FEC565100;0 SHE
+C FEC566100;0 SHE
+E 067904762035211020071 Mathieu, Maxime
+C CTB314100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C CTB453100;0 SHE
+C GRH111100;0 SHE
+E 068471392080140420063 Mbounga Tchouake, Raoul
+C CTB331100;0 SHE
+C ECN430100;0 SHE
+C ECN660100;0 SHE
+C MAR221109;0 SHE
+E 045376921440000220063 Mc Neil, Jessy
+C ADM556100;0 SHE
+C ADM661100;0 SHE
+C CTB301100;0 SHE
+C CTB331100;0 SHE
+C FEC451100;0 SHE
+C MQG342100;0 SHE
+E 068210952035060920063 McKenna, Stéphanie
+C CTB331100;0 SHE
+C MAR433100;0 SHE
+C MAR455100;0 SHE
+C MAR464100;0 SHE
+C MQG332100;0 SHE
+E 068171442035210920063 McKeown, Miguel
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+E 068240382035211020063 Men, Francis
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+E 033420831410000220071 Meslin, Christine
+C CTB304100;0 SHE
+C CTB465100;0 SHE
+C CTB466100;0 SHE
+C CTB565100;0 SHE
+E 072316851290000520073 Messier, Julie
+C GRH111110;0 SHE
+E 067526222080030420063 Michaud, Francis
+C ECN640100;0 SHE
+C ECN654100;0 SHE
+C ECN660100;0 SHE
+C ECN669100;0 SHE
+E 071663902035011020073 Michaud, Marie Josée
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 056207862035060920053 Michaud, Marie-Josée
+C ADM101100;0 SHE
+C ADM661100;0 SHE
+C CTB301100;0 SHE
+C MAR664100;0 SHE
+E 067910641290000520072 Millette-Aubert, Marie-Josianne
+C ECN117110;0 SHE
+E 044698272080140420063 Minthe, Lansana
+C CTB331100;0 SHE
+C ECN315100;0 SHE
+C ECN430100;0 SHE
+C ECN660100;0 SHE
+E 071829882035021020073 Miquelon, Mathieu
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C ECN219100;0 SHE
+C FEC444100;0 SHE
+C GRH221100;0 SHE
+E 067959342035210920063 Mireault, Marc-André
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+E 056615992085000420053 Moffette, Fanny
+C ECN640100;0 SHE
+C ECN654100;0 SHE
+C ECN660100;0 SHE
+E 068175902035040920063 Mongeau, Danika
+C CTB301100;0 SHE
+C ECN117100;0 SHE
+C GRH343100;0 SHE
+C GRH453100;0 SHE
+C MQG332100;0 SHE
+E 056299832035211020053 Morin, Annie-Claude
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB666100;0 SHE
+E 067910282035040920063 Morin, Audrey
+C ECN117100;0 SHE
+C GRH343100;0 SHE
+C GRH453100;0 SHE
+C MQG332100;0 SHE
+E 056715242035020920053 Morin, Michel
+C ADM661100;0 SHE
+C FEC443100;0 SHE
+C FEC565100;0 SHE
+C FEC566100;0 SHE
+E 033157451290000520062 Morin, Steve
+C CTB113109;0 SHE
+C ECN117100;0 SHE
+C GIS114100;0 SHE
+C MAR331100;0 SHE
+E 068656351290000520073 Morin, Véronique
+C GRH343100;0 SHE
+C GRH453100;0 SHE
+E 068096252035210920063 Morissette, Andréanne
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+E 943066921290000520073 Morissette, Chantal
+C GRH343110;0 SHE
+E 068096432035011020073 Morissette, Kristina
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB333100;0 SHE
+C CTB453100;0 SHE
+E 034177332030311020073 Morissette, Valérie
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB666100;0 SHE
+C MQG342100;0 SHE
+E 071776542085030520073 Munoz Alvarez, Diego Antonio
+C ECN315100;0 SHE
+C ECN323100;0 SHE
+C ECN430100;0 SHE
+C ECN530100;0 SHE
+C ECN660100;0 SHE
+E 068361322085030520073 Muvunyi, Éric
+C ADM111100;0 SHE
+C ECN530100;0 SHE
+C ECN640100;0 SHE
+C ECN660100;0 SHE
+C GIS114100;0 SHE
+E 033371421440000220081 Ménard, Jason
+C ADM445100;0 SHE
+C FEC451100;0 SHE
+C MQG332100;0 SHE
+C MQG342100;0 SHE
+E 071661212035011020073 Ménard, Pierre-Alexandre
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 072643192035011020081 Ménard, Véronique
+C CTB213100;0 SHE
+C CTB304100;0 SHE
+C FEC333100;0 SHE
+C GRH221100;0 SHE
+C MQG222100;0 SHE
+E 067463912035060920063 Naaman Lamarche, Laura
+C CTB331100;0 SHE
+C MAR433100;0 SHE
+C MAR455100;0 SHE
+C MAR464100;0 SHE
+C MQG332100;0 SHE
+E 072590762035211020081 Nachi, Malek
+C CTB213100;0 SHE
+C CTB304100;0 SHE
+C FEC333100;0 SHE
+C GRH221100;0 SHE
+C MQG222100;0 SHE
+E 071622412035021020073 Nadeau, Nicolas
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C ECN219100;0 SHE
+C FEC444100;0 SHE
+C GRH221100;0 SHE
+E 071876522035021020073 Nadeau Vallières, Jean
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C ECN219100;0 SHE
+C FEC444100;0 SHE
+C GRH221100;0 SHE
+E 056187172035411020053 Nault, Gabrielle
+C ADM661100;0 SHE
+C CTB465100;0 SHE
+C CTB466100;0 SHE
+C CTB565100;0 SHE
+E 056527322035050920061 Nault, Louis-Philippe
+C ADM556100;0 SHE
+C ADM661100;0 SHE
+C FEC444100;0 SHE
+C GIS139100;0 SHE
+E 067481202035211020061 Nault, Marie-Ève
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+C MQG342100;0 SHE
+E 072309801290000520082 Ndayiraje, Ibrahim
+C ADM101100;0 SHE
+C ECN117110;0 SHE
+C GRH111110;0 SHE
+C MAR331100;0 SHE
+C MQG222100;0 SHE
+E 057156571290000520072 Nene, Lou Gisèle Alexandra
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C FEC222109;0 SHE
+E 067322354140000120072 Neveu, Diane
+C CTB113110;0 SHE
+E 072723002035011020081 Ngo, Si Bao Chuong
+C CTB213100;0 SHE
+C CTB304100;0 SHE
+C FEC333100;0 SHE
+C GRH221100;0 SHE
+C MQG222100;0 SHE
+E 072499521290000520073 Nguyen, Minh-Tu Linda
+C CTB213100;0 SHE
+C ECN117100;0 SHE
+C MAR433110;0 SHE
+C MQG222100;0 SHE
+E 071133122030021020071 Nichols, Alexandre
+C ADM661100;0 SHE
+C FEC443100;0 SHE
+C FEC565100;0 SHE
+C FEC566108;0 SHE
+E 067941962080030420063 Nken, Moïse Junior
+C ECN323100;0 SHE
+C ECN430100;0 SHE
+C ECN640100;0 SHE
+C ECN660100;0 SHE
+C ECN669100;0 SHE
+E 068012402035020920063 Nolet-Godbout, Maxime
+C CTB333100;0 SHE
+C ECN117100;0 SHE
+C FEC443100;0 SHE
+C FEC444100;0 SHE
+C FEC451100;0 SHE
+E 072793304140000120081 Northrup-Lemire, Sabrina
+C CTB213100;0 SHE
+C FEC222109;0 SHE
+C GRH221110;0 SHE
+E 067440082035030920061 Noël, Maxime
+C CTB331100;0 SHE
+C GIS137100;0 SHE
+C GIS371100;0 SHE
+C GRH111100;0 SHE
+C MQG342100;0 SHE
+E 056140892085140420053 Nyiramisago, Rosine
+C CTB331100;0 SHE
+C CTB341100;0 SHE
+C ECN430100;0 SHE
+C ECN660100;0 SHE
+C FEC566100;0 SHE
+C MAR221109;0 SHE
+E 056113401290000520081 Olivier, Thierry
+C ADM111110;0 SHE
+C FEC222109;0 SHE
+C GIS114100;0 SHE
+E 072544731290000520081 Ondzounga Epanza, Ravella
+C ADM111110;0 SHE
+C ECN117110;0 SHE
+E 056641682035020920053 Otis, Maxime
+C ADM661100;0 SHE
+C FEC443100;0 SHE
+C FEC565100;0 SHE
+C FEC566100;0 SHE
+E 072611431130000420081 Ouar, Madjid
+C GRH343100;0 SHE
+C GRH453100;0 SHE
+C GRH462100;0 SHE
+E 072611431200000220081 Ouar, Madjid
+C SST203110;0 SHE
+E 072111352080040520073 Ouardani, Kais
+C ECN315100;0 SHE
+C ECN323100;0 SHE
+C ECN430100;0 SHE
+C ECN530100;0 SHE
+E 045005242030030920061 Ouellet, Amélie
+C ADM661100;0 SHE
+C CTB301100;0 SHE
+C GIS137100;0 SHE
+C GIS371100;0 SHE
+C GIS390100;0 SHE
+E 057298482030021020081 Ouinaksi, Basma
+C ADM661100;0 SHE
+C ECN455110;0 SHE
+C FEC443100;0 SHE
+C FEC566100;0 SHE
+C GRH111100;0 SHE
+E 071618762085030520073 Ouk, Phon-Sothearath
+C ECN218100;0 SHE
+C ECN315100;0 SHE
+C ECN323100;0 SHE
+C ECN430100;0 SHE
+C ECN530100;0 SHE
+E 071673532035021020073 Ouzilleau, Élie
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C ECN219100;0 SHE
+C FEC444100;0 SHE
+C GRH221100;0 SHE
+E 009330572030021020081 Palin, Daniel
+C FEC566100;0 SHE
+E 056643912035060920053 Paquette, Annie
+C ADM101100;0 SHE
+C ADM661100;0 SHE
+C MAR664100;0 SHE
+E 071354142035031020073 Paquette, Marie-Ève
+C CTB334100;0 SHE
+C ECN117100;0 SHE
+C FEC222109;0 SHE
+C GIS137100;0 SHE
+C GIS139100;0 SHE
+E 056521532035040920053 Paquette, Vicki
+C ADM661100;0 SHE
+C GRH462100;0 SHE
+C GRH566100;0 SHE
+C SST203110;0 SHE
+E 071387962035031020073 Paquette Dussault, Alexandre
+C CTB334100;0 SHE
+C ECN117100;0 SHE
+C FEC333100;0 SHE
+C GIS137100;0 SHE
+C GIS139100;0 SHE
+E 067428032035030920061 Paquette Poirier, Maitee
+C CTB331100;0 SHE
+C GIS137100;0 SHE
+C GIS358110;0 SHE
+C GIS371100;0 SHE
+C MQG342100;0 SHE
+E 071718832035021020081 Paquin, David
+C CTB213100;0 SHE
+C FEC333100;0 SHE
+C FEC444100;0 SHE
+C GRH221100;0 SHE
+E 067428762030061020061 Paradis, Andréanne
+C ADM661100;0 SHE
+C CTB301100;0 SHE
+C MAR664100;0 SHE
+E 056458582035040920053 Paradis, Dave
+C ADM101100;0 SHE
+C ADM556100;0 SHE
+C ADM661100;0 SHE
+C GRH462100;0 SHE
+C SST203110;0 SHE
+E 034335911200000220071 Paradis, Karine
+C SST203110;0 SHE
+E 072483831290000520081 Pardinas Basso, Alexandra
+C CTB213100;0 SHE
+C FEC222109;0 SHE
+C GIS113100;0 SHE
+C MQG222100;0 SHE
+E 072031802035011020073 Parent, Sonia
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB333100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 056804991290000520081 Parent Guillemette, Caroline
+C CTB301100;0 SHE
+C GIS114100;0 SHE
+C GRH111100;0 SHE
+C GRH343100;0 SHE
+E 067854192035061020081 Parnia, Kelly
+C CTB213100;0 SHE
+C GIS114100;0 SHE
+C GRH221100;0 SHE
+C MAR331100;0 SHE
+C MQG222100;0 SHE
+E 083002971290000520081 Parra Agudelo, Jonathan Fernell
+C ADM111100;0 SHE
+C FEC333100;0 SHE
+C GIS113100;0 SHE
+C GRH111100;0 SHE
+E 067846882035210920063 Paré, Kathy
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+E 068201492035060920063 Paré, Sébastien
+C CTB331100;0 SHE
+C MAR433100;0 SHE
+C MAR444100;0 SHE
+C MAR455100;0 SHE
+C MQG332100;0 SHE
+E 071587822035011020073 Paulhus, Dominic
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 055962322035011020073 Payette, Isabelle
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117110;0 SHE
+C MQG332100;0 SHE
+E 056362702035020920053 Payette, Marie-Christine
+C ADM661100;0 SHE
+C ECN219100;0 SHE
+C FEC566100;0 SHE
+C GRH111100;0 SHE
+C MAR331100;0 SHE
+E 801789091290000520033 Payeur, Lucie
+C CTB301100;0 SHE
+C FEC222109;0 SHE
+C GIS114100;0 SHE
+C GRH462100;0 SHE
+C SST203110;0 SHE
+E 071851732035011020073 Pelchat, Martial
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG342100;0 SHE
+E 056627122035010920053 Pellerin, Rémi
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB666100;0 SHE
+C MQG342100;0 SHE
+E 056232482035020920053 Pelletier, Andréanne
+C ADM661100;0 SHE
+C ECN455110;0 SHE
+C FEC443100;0 SHE
+C FEC566100;0 SHE
+E 928369802030211020072 Pelletier, Benoît
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+C FEC444100;0 SHE
+E 068122562035410920063 Pelletier, Mathieu
+C CTB314100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C CTB443110;0 SHE
+C FEC444100;0 SHE
+E 071979632035011020073 Pelletier, Nathalie
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 072685102035011020081 Pelletier, Samanta
+C CTB213100;0 SHE
+C CTB304100;0 SHE
+C FEC333100;0 SHE
+C GRH221100;0 SHE
+C MQG222100;0 SHE
+E 976605882030011020071 Perreault, Annie
+C CTB465100;0 SHE
+E 056660402030040920053 Perreault, Caroline
+C GRH462100;0 SHE
+C GRH566100;0 SHE
+E 033841622035411020053 Perreault, Isabelle
+C ADM661100;0 SHE
+C CTB465100;0 SHE
+C CTB466100;0 SHE
+C CTB565100;0 SHE
+C GRH111100;0 SHE
+E 072640791290000520081 Perreault, Jonathan
+C CTB213100;0 SHE
+C ECN117100;0 SHE
+C GRH221100;0 SHE
+C MAR221109;0 SHE
+E 056772522035060920063 Perron, Marie-Pier
+C CTB331100;0 SHE
+C MAR433100;0 SHE
+C MAR444100;0 SHE
+C MAR464100;0 SHE
+C MQG332100;0 SHE
+E 056367882035010920053 Petit-Dumont, Andréanne
+C ADM661100;0 SHE
+C CTB465100;0 SHE
+C CTB466100;0 SHE
+C CTB565100;0 SHE
+C GRH111100;0 SHE
+E 045040032030021020081 Petitclerc-Toupin, François
+C ADM661100;0 SHE
+C ECN219100;0 SHE
+C ECN455110;0 SHE
+C GRH111100;0 SHE
+C MQG332100;0 SHE
+E 072680572035011020081 Phaneuf, Emeric
+C CTB213100;0 SHE
+C CTB304100;0 SHE
+C FEC333100;0 SHE
+C GRH221100;0 SHE
+C MQG222100;0 SHE
+E 056260942035040920053 Philippon-Blais, Martine
+C ADM661100;0 SHE
+C GRH462100;0 SHE
+C GRH566100;0 SHE
+C MQG542100;0 SHE
+C SST203110;0 SHE
+E 071677092035011020073 Picard, Audrey
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 071831664140000120072 Picard, Nathalie
+C GIS113100;0 SHE
+C GRH111100;0 SHE
+C GRH343100;0 SHE
+E 068956932035211020071 Piché, Philippe-David
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C CTB341100;0 SHE
+C GRH111100;0 SHE
+C MQG332100;0 SHE
+E 071985512080030520073 Pierre, Euphigenie Fedia
+C ADM111100;0 SHE
+C ECN218100;0 SHE
+C ECN323100;0 SHE
+C ECN530100;0 SHE
+E 068333772035011020073 Piette, Joany
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB333100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 056773502030050920053 Pinard, Karyne
+C ADM556100;0 SHE
+C GIS139100;0 SHE
+C MAR455100;0 SHE
+E 067713804140000120071 Piol Phan, Ninia
+C CTB113109;0 SHE
+C ECN117100;0 SHE
+C GIS114100;0 SHE
+E 071458592035011020073 Pitre, Marc-Olivier
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 067806372035021020071 Plante, Emmanuelle
+C CTB333100;0 SHE
+C ECN117100;0 SHE
+C FEC451100;0 SHE
+C FEC566100;0 SHE
+C MQG342100;0 SHE
+E 067780522035210920063 Plante, Jasmin
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+E 056533122035211020053 Plante, Mélissa
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+E 068266152035060920063 Poirier, Amélie
+C CTB331100;0 SHE
+C MAR433100;0 SHE
+C MAR444100;0 SHE
+C MAR464100;0 SHE
+C MQG332100;0 SHE
+E 044964052035040920053 Poirier, Audrey
+C GRH566100;0 SHE
+E 056386792035060920053 Poirier-Guay, Marie-Claude
+C ADM661100;0 SHE
+C CTB301100;0 SHE
+C MAR455100;0 SHE
+C MAR464100;0 SHE
+C MQG342100;0 SHE
+E 056715792035211020053 Poisson, Marilou
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+C MQG342100;0 SHE
+E 071657472035021020073 Pomerleau, Christiane
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C ECN219100;0 SHE
+C FEC333100;0 SHE
+C GRH221110;0 SHE
+E 056778592030411020072 Potvin, Jean-Philippe
+C ADM661100;0 SHE
+C CTB465100;0 SHE
+C CTB466100;0 SHE
+C CTB565100;0 SHE
+E 056388112035040920053 Poulin, Anne-Marie
+C ADM661100;0 SHE
+C GRH462100;0 SHE
+C GRH566100;0 SHE
+C MQG542100;0 SHE
+C SST203110;0 SHE
+E 071851462035011020073 Poulin, Marc-André
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 072088172035031020073 Poulin, Marc-André
+C CTB334100;0 SHE
+C ECN117100;0 SHE
+C FEC333100;0 SHE
+C GIS137100;0 SHE
+C GIS139100;0 SHE
+E 056594502035211020053 Poulin, Samuel
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+C MQG342100;0 SHE
+E 068883992035011020081 Pouliot, Emilie
+C CTB213100;0 SHE
+C CTB304100;0 SHE
+C FEC333100;0 SHE
+C GRH221100;0 SHE
+C MQG222100;0 SHE
+E 033728072035030920053 Pratte, Marc-Olivier
+C ADM661100;0 SHE
+C GIS358110;0 SHE
+C GIS371100;0 SHE
+C GRH111100;0 SHE
+E 071779942035021020073 Primeau-Ferraro, Rafaël
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C ECN219100;0 SHE
+C FEC444100;0 SHE
+C GRH221100;0 SHE
+E 056347804140000120073 Prince, Emily
+C GRH111110;0 SHE
+E 056641312035060920063 Pronovost, Michael
+C CTB331100;0 SHE
+C MAR433110;0 SHE
+C MAR444100;0 SHE
+C MAR455100;0 SHE
+C MQG332100;0 SHE
+E 072165594140000120073 Proulx, Louis-Simon
+C MQG101110;0 SHE
+E 071569352035021020073 Proulx-Chouinard, Maude
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C ECN219100;0 SHE
+C FEC444100;0 SHE
+C GRH221100;0 SHE
+E 055858692035030920061 Provençal, Christopher
+C CTB331100;0 SHE
+C GIS137100;0 SHE
+C GIS358110;0 SHE
+C GIS371100;0 SHE
+C MQG342100;0 SHE
+E 056554272035211020053 Provost-Ethier, Joanie
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+C MQG342100;0 SHE
+E 071028502035211020071 Prud Homme, Isabelle
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB413100;0 SHE
+C CTB453100;0 SHE
+C MQG342100;0 SHE
+E 067994952030051020081 Prévost-Cloutier, Marie-Christine
+C CTB301100;0 SHE
+C ECN117100;0 SHE
+C FEC451100;0 SHE
+C MQG332100;0 SHE
+E 954362372030411020072 Pépin, Annie
+C CTB465100;0 SHE
+C CTB565100;0 SHE
+E 071518412035011020073 Pépin, Johannie
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 068059322035021020073 Pépin Beaudet, Mikael
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C ECN219100;0 SHE
+C FEC444100;0 SHE
+C GRH221100;0 SHE
+E 067816721290000520072 Qu, Hui
+C CTB333100;0 SHE
+C ECN117110;0 SHE
+C GRH111110;0 SHE
+E 068429912035060920063 Quimper, Julie
+C CTB331100;0 SHE
+C MAR433100;0 SHE
+C MAR444100;0 SHE
+C MQG332100;0 SHE
+E 056415212035211020053 Quirion, Mélanie
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+E 071523411290000520073 Racicot, Anne
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB413100;0 SHE
+C CTB453100;0 SHE
+E 045198632035060920053 Racine, Charles-David
+C ADM101100;0 SHE
+C ADM661100;0 SHE
+C MAR664100;0 SHE
+E 067744492035060920063 Racine, Gabriel
+C MAR444100;0 SHE
+C MAR455100;0 SHE
+C MAR464100;0 SHE
+E 056698772035030920061 Racine, Jean-Louis
+C ECN117100;0 SHE
+C GIS358110;0 SHE
+C GIS371100;0 SHE
+C GRH111100;0 SHE
+C MQG342100;0 SHE
+E 068149592035050920063 Racine Desourdy, Nicolas
+C CTB313100;0 SHE
+C CTB333100;0 SHE
+C FEC444100;0 SHE
+C FEC451100;0 SHE
+E 056020382035411020053 Rainville, Jonathan
+C ADM661100;0 SHE
+C CTB465100;0 SHE
+C CTB466100;0 SHE
+C CTB565100;0 SHE
+E 068235562030021020081 Rajamason, Rojo Natacha
+C FEC443100;0 SHE
+C FEC565100;0 SHE
+C FEC566100;0 SHE
+C MQG342100;0 SHE
+E 068965762080030520073 Rakotomaharo, Miary Ny Aina
+C ECN315100;0 SHE
+C ECN323100;0 SHE
+C ECN430100;0 SHE
+C ECN530100;0 SHE
+E 055815052030061020081 Ramalingom, Nelly
+C CTB301100;0 SHE
+C CTB331100;0 SHE
+C MAR433100;0 SHE
+C MAR464100;0 SHE
+C MQG332100;0 SHE
+E 068475942035061020073 Ratthé, Nicolas
+C CTB213100;0 SHE
+C MAR433100;0 SHE
+C MAR444100;0 SHE
+C MAR464100;0 SHE
+C MQG222100;0 SHE
+E 071960542085020520081 Raymond, Isabelle
+C ECN218100;0 SHE
+C ECN315100;0 SHE
+C ECN323100;0 SHE
+C ECN430100;0 SHE
+C ECN530100;0 SHE
+E 056708472035211020053 Raymond, Julie
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+E 953739371290000520081 Razafindrakoto, Anjarasoa
+C ADM101100;0 SHE
+C FEC222109;0 SHE
+C GRH111100;0 SHE
+E 011391822030041020081 Renaud, Dominic
+C CTB301100;0 SHE
+C GRH343100;0 SHE
+C GRH453100;0 SHE
+C MQG332100;0 SHE
+E 068245912030021020081 Rhéaume, Pierre-Marc
+C CTB341100;0 SHE
+C ECN455110;0 SHE
+C FEC443100;0 SHE
+E 072570232035011020081 Richard, Gabriel
+C CTB213100;0 SHE
+C CTB304100;0 SHE
+C FEC333100;0 SHE
+C GRH221100;0 SHE
+C MQG222100;0 SHE
+E 072414601290000520073 Richard, Josée
+C CTB314100;0 SHE
+C CTB443110;0 SHE
+E 045225732035211020051 Richard, Steve
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+E 071711062080540520073 Rinaldi, Anthony
+C CTB331100;0 SHE
+C ECN315100;0 SHE
+E 071084172035011020071 Ritchie, Jean-Pascal
+C CTB313100;0 SHE
+C CTB341100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 071780011290000520081 Rivard-Haustrate, Guillaume
+C ECN117100;0 SHE
+C FEC333100;0 SHE
+C GRH111110;0 SHE
+C MQG222100;0 SHE
+E 067943382035210920063 Robert, Josianne
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB341100;0 SHE
+C GRH111100;0 SHE
+C MQG342100;0 SHE
+E 072659241290000520081 Robert, Nancy
+C ADM101100;0 SHE
+C CTB334100;0 SHE
+C MAR221109;0 SHE
+E 045372552035010820043 Robert-Turcotte, Philippe
+C ADM661100;0 SHE
+C CTB314100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+E 072040812035021020073 Robillard, Odrey
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C ECN219100;0 SHE
+C FEC444100;0 SHE
+C FEC566108;0 SHE
+E 071098802035211020071 Robinette, Karine
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB413100;0 SHE
+C CTB453100;0 SHE
+C MQG342100;0 SHE
+E 056899442030041020073 Robitaille, Mélissa
+C ADM661100;0 SHE
+C GRH343100;0 SHE
+C GRH453100;0 SHE
+C GRH462100;0 SHE
+C GRH566100;0 SHE
+E 056367152035211020053 Rodrigue, Marie-Eve
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+C MQG342100;0 SHE
+E 987483872030041020072 Rodrigue, Marie-Josée
+C ADM101100;0 SHE
+C ADM556100;0 SHE
+C GRH343100;0 SHE
+C GRH462100;0 SHE
+C GRH566100;0 SHE
+C MQG542100;0 SHE
+E 056321582035020920053 Rodrigue, Vincent
+C ADM445100;0 SHE
+C ADM661100;0 SHE
+C FEC443100;0 SHE
+C FEC565100;0 SHE
+C FEC566100;0 SHE
+E 045381472035411020061 Rodriguez, Marisol
+C ADM661100;0 SHE
+C CTB465100;0 SHE
+C CTB466100;0 SHE
+C CTB565100;0 SHE
+C FEC444100;0 SHE
+E 071779032035031020073 Rouillard, Stéphanie
+C CTB334100;0 SHE
+C ECN117100;0 SHE
+C FEC333100;0 SHE
+C GIS137100;0 SHE
+C GIS139100;0 SHE
+E 045222432035211020053 Rousseau, Cristelle
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+C MQG342100;0 SHE
+E 068104182035050920063 Roy, Louis-Olivier
+C CTB301100;0 SHE
+C ECN117100;0 SHE
+C FEC333100;0 SHE
+C FEC444100;0 SHE
+C MQG342100;0 SHE
+E 056520282035020920053 Roy, Marie-Pierre
+C ADM661100;0 SHE
+C FEC443100;0 SHE
+C FEC565100;0 SHE
+C FEC566100;0 SHE
+E 056257362035411020053 Roy, Maxime
+C ADM661100;0 SHE
+C CTB465100;0 SHE
+C CTB466100;0 SHE
+C CTB565100;0 SHE
+C GRH111100;0 SHE
+E 071130181140000420081 Roy, Monika
+C ADM661100;0 SHE
+C MAR433100;0 SHE
+C MAR444100;0 SHE
+C MAR464100;0 SHE
+E 072453862035011020081 Rozan, Kevin-Martel
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 056379922035211020053 Rozon, François
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB666100;0 SHE
+E 045511214140000120061 Saint-Phard, Johnly
+C FEC222109;0 SHE
+C GIS114100;0 SHE
+C MQG222100;0 SHE
+E 044752311290000520053 Sakhir, Leila
+C CTB304100;0 SHE
+C CTB314100;0 SHE
+C CTB413100;0 SHE
+C CTB453100;0 SHE
+C GRH221100;0 SHE
+C MQG332100;0 SHE
+E 072716314140000120082 Sandoval Guarin, Andréa Del Pilar
+C ADM111100;0 SHE
+C CTB113109;0 SHE
+C GIS113100;0 SHE
+C MQG101110;0 SHE
+E 045611291290000520081 Saoud, Siham
+C CTB213100;0 SHE
+C ECN117100;0 SHE
+C FEC333100;0 SHE
+C MAR221109;0 SHE
+C MQG222100;0 SHE
+E 068177232035051020071 Sarrazin, Danny
+C ADM556100;0 SHE
+C FEC451100;0 SHE
+C GIS114100;0 SHE
+C MQG332100;0 SHE
+C MQG342100;0 SHE
+C MQG542100;0 SHE
+E 068022762035021020081 Savard, Michael
+C CTB213100;0 SHE
+C FEC333100;0 SHE
+C GIS114100;0 SHE
+C GRH221100;0 SHE
+C MQG222100;0 SHE
+E 068241902035060920063 Savard, Philippe
+C CTB301100;0 SHE
+C MAR433100;0 SHE
+C MAR444100;0 SHE
+C MAR455100;0 SHE
+C MQG332100;0 SHE
+E 072265751140000420081 Silva, Eloy Matos da Junior
+C MAR444100;0 SHE
+C MAR464100;0 SHE
+E 072495784140000120073 Simard, Janie
+C GRH111110;0 SHE
+E 071629372035011020073 Simard, Kathleen
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB333100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 072010841290000520081 Simard, Sébastien
+C CTB331100;0 SHE
+C ECN117110;0 SHE
+C FEC333100;0 SHE
+C GRH111110;0 SHE
+C MAR433100;0 SHE
+E 056174602035210920053 Simard-Dubé, Simon
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+E 071513602035021020073 Sirois, Steven
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C ECN219100;0 SHE
+C FEC444100;0 SHE
+C GRH221100;0 SHE
+E 057232011290000520061 Sirois, Véronique
+C GRH221110;0 SHE
+E 056491312030041020073 Smith-Letellier, Claudia
+C ADM556100;0 SHE
+C CTB331100;0 SHE
+C GRH462100;0 SHE
+C MQG342100;0 SHE
+E 045300382035020920063 St-Cyr, Jacques
+C FEC443100;0 SHE
+C FEC451100;0 SHE
+C FEC565100;0 SHE
+C MQG342100;0 SHE
+E 068220302035040920063 St-François, Marie-Ève
+C CTB301100;0 SHE
+C GRH343110;0 SHE
+C GRH453100;0 SHE
+C MQG332100;0 SHE
+E 056301962030411020053 St-Germain, Vicky
+C CTB465100;0 SHE
+C CTB466100;0 SHE
+C CTB565100;0 SHE
+E 068283742035040920063 St-Jean, Alexandre
+C CTB301100;0 SHE
+C ECN117100;0 SHE
+C GRH343110;0 SHE
+C GRH453100;0 SHE
+C MQG332100;0 SHE
+E 056270392035040920053 St-Martin, Marie-Laurence
+C ADM556100;0 SHE
+C ADM661100;0 SHE
+C CTB331100;0 SHE
+C GRH462100;0 SHE
+C MQG542100;0 SHE
+E 011508092035011020073 St-Pierre, Marie-Josée
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 071847082035031020073 Ste-Marie, Benoît
+C CTB334100;0 SHE
+C ECN117100;0 SHE
+C FEC333100;0 SHE
+C GIS137100;0 SHE
+C GIS139100;0 SHE
+E 056618572035211020053 Surprenant, Cathrine
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+E 056535712035020920053 Sévigny, Marie-Pier
+C ADM101100;0 SHE
+C ADM556100;0 SHE
+C ADM661100;0 SHE
+C FEC443100;0 SHE
+C MQG342100;0 SHE
+E 068960311290000520071 Tall, Fatoumata
+C ADM101100;0 SHE
+C ADM111100;0 SHE
+C FEC222109;0 SHE
+C MAR331100;0 SHE
+E 071513422035021020073 Tardif, Derek
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C ECN219100;0 SHE
+C FEC444100;0 SHE
+C GRH221100;0 SHE
+E 071475082035011020073 Tardif, Francis
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB333100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 056617041290000520071 Tardif, Geneviève
+C CTB413100;0 SHE
+C CTB453100;0 SHE
+C FEC333100;0 SHE
+C MQG222100;0 SHE
+E 067856322030211020073 Tchana, Yves Patrice
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+E 023084981420000220071 Tejada Flores, Franklin
+C FEC444100;0 SHE
+E 067538812035210920063 Tessier, Jonathan
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+E 068295962035060920063 Tessier, Roxane
+C CTB331100;0 SHE
+C MAR433100;0 SHE
+C MAR444100;0 SHE
+C MAR455100;0 SHE
+C MQG332100;0 SHE
+E 068178582035210920063 Therrien, Joannie
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+E 072642482035011020081 Therrien, Valérie
+C CTB213100;0 SHE
+C CTB304100;0 SHE
+C FEC333100;0 SHE
+C GRH221100;0 SHE
+C MQG222100;0 SHE
+E 067972552035010920063 Thibault, Kim
+C CTB314100;0 SHE
+C CTB333100;0 SHE
+C CTB413100;0 SHE
+C GRH111100;0 SHE
+E 071404532085140520073 Thibault, Sara
+C ECN315100;0 SHE
+C ECN323100;0 SHE
+C ECN430100;0 SHE
+C ECN530100;0 SHE
+C FEC333100;0 SHE
+E 071675852035021020073 Thibault-Caya, Maxime
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C ECN117100;0 SHE
+C FEC333100;0 SHE
+C FEC444100;0 SHE
+E 056739242035060920053 Thivierge-Lortie, Jérémie
+C ADM661100;0 SHE
+C MAR464100;0 SHE
+C MAR664100;0 SHE
+E 067751622035041020081 Thomas, Sabrina
+C CTB213100;0 SHE
+C FEC333100;0 SHE
+C GIS114100;0 SHE
+C MQG222100;0 SHE
+E 056322292035311020053 Théoret, Marie-Eve
+C CTB304100;0 SHE
+C CTB314100;0 SHE
+C CTB413100;0 SHE
+C CTB453100;0 SHE
+C GIS358110;0 SHE
+C GIS371100;0 SHE
+E 056328082035211020053 Tojcic, Aleksandra
+C ADM661100;0 SHE
+C CTB314100;0 SHE
+C CTB443110;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+E 068268572035060920063 Toupin, Marie-Josée
+C CTB331100;0 SHE
+C MAR433100;0 SHE
+C MAR455100;0 SHE
+C MAR464100;0 SHE
+C MQG332100;0 SHE
+E 071692262035011020073 Tousignant, Miguel
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 068259742035060920063 Tousignant-Lévesque, Yan
+C CTB301100;0 SHE
+C CTB331100;0 SHE
+C MAR433100;0 SHE
+C MQG332100;0 SHE
+E 056683882035211020053 Toussaint, Isaac
+C CTB564100;0 SHE
+C CTB666100;0 SHE
+E 071547951290000520081 Trachy, Patrick
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB334100;0 SHE
+C CTB453100;0 SHE
+C GRH111100;0 SHE
+E 067848572030060920063 Tremblay, Aurélie
+C CTB331100;0 SHE
+C GRH343100;0 SHE
+C MAR433100;0 SHE
+C MAR444100;0 SHE
+C MAR455100;0 SHE
+E 056372972035050920053 Tremblay, Daniel
+C ADM556100;0 SHE
+C ADM661100;0 SHE
+C GIS139100;0 SHE
+C GRH343100;0 SHE
+C MQG542100;0 SHE
+E 071866621290000520073 Tremblay, Marc-André
+C ECN117110;0 SHE
+C GRH111110;0 SHE
+C MAR331100;0 SHE
+C MQG332100;0 SHE
+E 072597532035041020081 Tremblay, Marie-Philippe
+C CTB213100;0 SHE
+C GIS114100;0 SHE
+C GRH111100;0 SHE
+C GRH221100;0 SHE
+C MQG222100;0 SHE
+E 056194592035050920053 Tremblay, Ricardo
+C ADM556100;0 SHE
+C ADM661100;0 SHE
+C CTB331100;0 SHE
+C MQG542100;0 SHE
+E 056446352035010920053 Tremblay-Pedneault, Stevens
+C ADM661100;0 SHE
+C CTB465100;0 SHE
+C CTB466100;0 SHE
+C CTB565100;0 SHE
+C GRH111100;0 SHE
+E 072454661130000420081 Trepichio, Edgardo Antonio
+C GRH343100;0 SHE
+C GRH453100;0 SHE
+E 011203612035040920063 Trudeau, Emilie
+C GRH343110;0 SHE
+E 033883734140000120081 Trudel, David
+C ADM101100;0 SHE
+C ADM111100;0 SHE
+C CTB213100;0 SHE
+C GIS114100;0 SHE
+C GRH221100;0 SHE
+E 083043551290000520081 Trudel Hudon, Corinne
+C CTB213100;0 SHE
+C ECN117100;0 SHE
+C FEC222109;0 SHE
+C GRH221100;0 SHE
+E 056718642030411020053 Trépanier, Virginie
+C CTB465100;0 SHE
+C CTB466100;0 SHE
+C CTB565100;0 SHE
+E 011342851440000220081 Trépanier-Bisson, Francis
+C ADM556100;0 SHE
+C CTB301100;0 SHE
+C FEC451100;0 SHE
+C GIS137100;0 SHE
+E 071121801290000520081 Tsafack Tchamba, Lynn Danielle
+C CTB213100;0 SHE
+C FEC333100;0 SHE
+C GRH221110;0 SHE
+E 071754152035411020073 Turcot-Monette, Maxime
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB333100;0 SHE
+C CTB334100;0 SHE
+C MQG332100;0 SHE
+E 067433031410000220081 Turcotte, Jean
+C CTB304100;0 SHE
+C CTB314100;0 SHE
+C CTB413100;0 SHE
+C CTB453100;0 SHE
+E 071865822035011020073 Turcotte, Jérémie
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB333100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 068282492035060920063 Turcotte, Vicky
+C CTB331100;0 SHE
+C MAR433110;0 SHE
+C MAR444100;0 SHE
+C MAR464100;0 SHE
+C MQG332100;0 SHE
+E 071131161290000520081 Turgeon, Geneviève
+C CTB213100;0 SHE
+E 056234442035211020053 Turgeon, Kathleen
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+C MQG342100;0 SHE
+E 056626872035211020053 Turmel, Mathieu
+C CTB453100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+E 071592642035011020073 Tétreault, Josée
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 072514942080030520073 Uwamahoro, Évelyne
+C ECN218100;0 SHE
+C ECN315100;0 SHE
+C ECN323100;0 SHE
+C ECN430100;0 SHE
+C ECN530100;0 SHE
+E 056779662035411020081 Uwambajimana, Philomène
+C CTB213100;0 SHE
+C CTB304100;0 SHE
+C FEC333100;0 SHE
+C MAR221109;0 SHE
+C MQG222100;0 SHE
+E 056835842035050920053 Vachon, Louis-Philippe
+C ADM556100;0 SHE
+C ADM661100;0 SHE
+C CTB301100;0 SHE
+E 056548832035060920053 Vachon, Myriam
+C ADM661100;0 SHE
+C MAR664100;0 SHE
+E 056849852035040920063 Vachon Croteau, Corinne
+C CTB301100;0 SHE
+C GRH343100;0 SHE
+C GRH453100;0 SHE
+C GRH462100;0 SHE
+C MQG332100;0 SHE
+E 055907461290000520063 Vallée, Nathalie
+C CTB113110;0 SHE
+E 056612502035060920053 Van Houtte St-Gelais, Janick
+C ADM101100;0 SHE
+C ADM661100;0 SHE
+C MAR664100;0 SHE
+C MQG342100;0 SHE
+E 068308062035060920063 Vanasse, Pierre-Marc
+C CTB331100;0 SHE
+C MAR433100;0 SHE
+C MAR444100;0 SHE
+C MAR455100;0 SHE
+C MQG332100;0 SHE
+E 071059642080140520073 Vannier, Jérémie
+C ECN315100;0 SHE
+C ECN323100;0 SHE
+C ECN430100;0 SHE
+C ECN530100;0 SHE
+C FEC333100;0 SHE
+E 071629732035011020073 Veillette, Audrey
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG342100;0 SHE
+E 056724262030021020081 Veillette Rocheleau, Hugo
+C CTB341100;0 SHE
+C FEC451100;0 SHE
+C GRH111100;0 SHE
+E 071810882035011020073 Veilleux, Emilie
+C CTB304100;0 SHE
+C CTB313100;0 SHE
+C CTB453100;0 SHE
+C ECN117100;0 SHE
+C MQG332100;0 SHE
+E 056787872035050920053 Veniere Cyr, Mathieu
+C ADM445100;0 SHE
+C ADM556100;0 SHE
+C ADM661100;0 SHE
+C GRH343100;0 SHE
+C MQG542100;0 SHE
+E 067788282035031020073 Viens, Mathieu
+C CTB213100;0 SHE
+C CTB334100;0 SHE
+C ECN117100;0 SHE
+C FEC333100;0 SHE
+C GIS137100;0 SHE
+C GIS139100;0 SHE
+E 056611522030060920053 Viger, Kathy
+C ADM101100;0 SHE
+C ADM661100;0 SHE
+C MAR664100;0 SHE
+C MQG342100;0 SHE
+E 068348112035060920063 Vigneault, Pierre-André
+C CTB331100;0 SHE
+C MAR433100;0 SHE
+C MAR444100;0 SHE
+C MAR464100;0 SHE
+C MQG332100;0 SHE
+E 056577912030020920053 Villemure, Philippe
+C ADM661100;0 SHE
+C FEC565100;0 SHE
+C FEC566100;0 SHE
+E 056405682030311020073 Villeneuve, Francis
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB666100;0 SHE
+E 056329792035211020053 Vincent, Dany
+C ADM661100;0 SHE
+C CTB561100;0 SHE
+C CTB564100;0 SHE
+C CTB566100;0 SHE
+C CTB666100;0 SHE
+C MQG342100;0 SHE
+E 056198782035020920053 Vincent, Marc-André
+C ADM661100;0 SHE
+C ECN455110;0 SHE
+C FEC443100;0 SHE
+C FEC565100;0 SHE
+C FEC566100;0 SHE
+E 057260111290000520063 Vincent-Douville, Kristalna Louna
+C GRH221100;0 SHE
+E 068092062035410920063 Vouligny, Alexandre
+C CTB314100;0 SHE
+C CTB341100;0 SHE
+C CTB413100;0 SHE
+C CTB443110;0 SHE
+C FEC444100;0 SHE
+E 071419971290000520081 Wade, Gagnessiry
+C CTB113109;0 SHE
+C FEC333100;0 SHE
+C GRH221100;0 SHE
+E 068313882035060920063 Williams, Jessika
+C CTB331100;0 SHE
+C MAR433110;0 SHE
+C MAR444100;0 SHE
+C MAR464100;0 SHE
+C MQG332100;0 SHE
+E 071134832035051020071 Yargeau, Philippe
+C ADM445100;0 SHE
+C ADM556100;0 SHE
+C FEC333100;0 SHE
+C FEC451100;0 SHE
+C MQG332100;0 SHE
+E 068154681140000420071 Yee Gomez, Harlyn
+C MAR221109;0 SHE
+C MAR433100;0 SHE
+E 057254141430000220081 Yuzgulec, Mehmet
+C GIS137100;0 SHE
+C GIS139100;0 SHE
+C GIS358110;0 SHE
+C GIS371100;0 SHE
+C GIS390100;0 SHE
+C MQG342100;0 SHE
+E 072019941410000220073 Zabaleta Perez, Jesus Manuel
+C CTB113110;0 SHE
+!!!!!!!!!!
