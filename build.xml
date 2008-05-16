@@ -2,7 +2,7 @@
 	<target name="setDirs" unless="setDirs" description="setup the properites.">
 		<tstamp />						
 		<property name="srcDir" value="." />
-		<property name="exeJUnitDir" value="../AntWorkSpace" />
+		<property name="exeJUnitDir" value="${srcDir}/./AntWorkSpace" />
 		<property name="orgDataTest" value="../dataTest" />		
 		<property name="AntWorkSpace" value="../AntWorkSpace" />
 		<property name="localJars" value="${srcDir}/jars" />
@@ -117,7 +117,7 @@
 	<target name="unitTest" depends="compile, testpath" description="test the java sources">
 		<junit printsummary="false" haltonfailure="true">
 			<classpath refid="t.classpath" />
-			<sysproperty key="user.dir" value="${exeJUnitDir}"/>
+
 			<formatter type="brief" usefile="false" />
 			<formatter type="xml" />
 			<batchtest todir="${reports}">
