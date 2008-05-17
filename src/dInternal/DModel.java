@@ -974,7 +974,7 @@ public class DModel extends Observable {
 		changeInDModel(obj);
 	}// end changeInDModelByBuildMatrixConflicts
 
-	public void changeInDModelByEditActivityDlg(Object obj) {
+	public void changeInDModelByDxEditEventDlg(Object obj) {
 		this.setChanged();
 		this.setModified();
 		// this.setStateBarComponent();

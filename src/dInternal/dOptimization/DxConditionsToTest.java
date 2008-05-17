@@ -567,12 +567,7 @@ public class DxConditionsToTest {
 	 */
 	public void addEventInAllPeriods(TTStructure improveTTStruct,
 			DResource eventRes) {
-		DxEvent dxEvent = null;
-//		if (DxFlags.newEventClone) {
-			dxEvent = ((DxEvent) eventRes.getAttach()).eventClone();
-//		} else {
-//			dxEvent = ((DxEvent) eventRes.getAttach()).oldEventClone();
-//		}
+		DxEvent dxEvent = ((DxEvent) eventRes.getAttach()).eventClone();
 		dxEvent.setAssigned(true);
 		dxEvent.setDuration(improveTTStruct.getPeriodLenght());
 		

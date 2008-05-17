@@ -108,9 +108,7 @@ public class SetOfEvents extends DSetOfResources {
 							soImportErrors);
 					DxEvent dxEvent = createEvent(activityResource,
 							compositeKey, roomKey, unityResource, assignment,
-							cLimit, roomName);
-
-					
+							cLimit, roomName);					
 					this.addResource(new DResource(unityID, dxEvent), 0);
 				}
 			}// end for(int l=0; l<
@@ -296,7 +294,11 @@ public class SetOfEvents extends DSetOfResources {
 			// Here was mm instead of the room
 			assignment.setRoomName(event.getRoomName());
 			assignment.setPeriodKey(event.getPeriodKey());
-			unit.updateWith(event);
+			if (true){
+				unit.updateWith(event);
+			} else {
+				unit.updateWithOld(event);
+			}
 			assignment.setRoomState(event.isRoomFixed());
 
 		}// end for (int i=0; i< eventsToUpdate.size(); i++)

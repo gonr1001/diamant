@@ -206,7 +206,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 
 		} // end for
 		if (apply) {
-			_dModel.changeInDModelByEditActivityDlg(this);
+			_dModel.changeInDModelByDxEditEventDlg(this);
 			_applyPanel.setFirstDisable();
 		}
 		

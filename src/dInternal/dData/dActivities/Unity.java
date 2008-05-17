@@ -281,6 +281,13 @@ public class Unity extends DObject {
 		return "";
 	}
 
+	public void updateWithOld(DxEvent event) {
+		this.setAssign(event.isAssigned());
+		this.setPermanent(event.getPermanentState());
+		
+		this.setDuration(event.getDuration());
+	}
+	
 	public void updateWith(DxEvent event) {
 		this.setAssign(event.isAssigned());
 		this.setPermanent(event.getPermanentState());
