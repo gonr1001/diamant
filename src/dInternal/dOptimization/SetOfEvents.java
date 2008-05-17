@@ -106,29 +106,31 @@ public class SetOfEvents extends DSetOfResources {
 							soImportErrors);
 					roomKey = oldAssignDxRooms(assignment, unityID,
 							soImportErrors);
-					DxEvent dxEvent  = null;
-//					if (DxFlags.newEventClone) {
-						dxEvent = new DxEvent();
-						dxEvent.setID(activityResource.getID());
-						dxEvent.setCompositeKey(compositeKey);
-						dxEvent.setAssigment(assignment);
-						dxEvent.setIntructors(assignment.getSetInstructorKeys());						
-						dxEvent.setRoomName(roomName);
-						dxEvent.setRoomKeyWithKey(roomKey);
-						dxEvent.setUnit((Unity) unityResource
-								.getAttach());						
-						dxEvent.setCapacityLimit(cLimit);
-//					} else {
-//						dxEvent = new DxEvent(activityResource.getID(),
-//								compositeKey, assignment.getSetInstructorKeys(),
-//								roomName, roomKey, unityResource, assignment,
-//								cLimit);
-//					}	
+					DxEvent dxEvent = createEvent(activityResource,
+							compositeKey, roomKey, unityResource, assignment,
+							cLimit, roomName);
+
 					
 					this.addResource(new DResource(unityID, dxEvent), 0);
 				}
 			}// end for(int l=0; l<
 		}// end for(int k=0; k<
+	}
+
+	private DxEvent createEvent(DResource activityResource,
+			String compositeKey, long roomKey, DResource unityResource,
+			Assignment assignment, int cLimit, String roomName) {
+		DxEvent dxEvent = new DxEvent();
+			dxEvent.setID(activityResource.getID());
+			dxEvent.setCompositeKey(compositeKey);
+			dxEvent.setAssigment(assignment);
+			dxEvent.setIntructors(assignment.getSetInstructorKeys());						
+			dxEvent.setRoomName(roomName);
+			dxEvent.setRoomKeyWithKey(roomKey);
+			dxEvent.setUnit((Unity) unityResource
+					.getAttach());						
+			dxEvent.setCapacityLimit(cLimit);
+		return dxEvent;
 	}
 
 	private String buildUnityID(DResource activityResource,
