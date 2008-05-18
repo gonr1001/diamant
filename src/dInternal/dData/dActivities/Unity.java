@@ -15,24 +15,24 @@ import dInternal.dOptimization.DxEvent;
 
 public class Unity extends DObject {
 
-	/* Each field is linked to an index who serves for filtring and for selecting
-	 * an object.
-	 * Indexes :
-	 * _duration -> 0
-	 * _preferSequence -> 1
-	 * _assign -> 2
-	 * _permanent -> 3
-	 * _isCyclic -> 4
-	 */
+//	/* Each field is linked to an index who serves for filtring and for selecting
+//	 * an object.
+//	 * Indexes :
+//	 * _duration -> 0
+//	 * _preferSequence -> 1
+//	 * _assign -> 2
+//	 * _permanent -> 3
+//	 * _isCyclic -> 4
+//	 */
 
 	/** duration of the bloc (in minutes)*/
 	private int _duration;
 
-	/**if bloc is assigned in a period*/
+	/** flag to indicate the bloc is assigned in a period*/
 	private boolean _assign;
 
-	/**if bloc is permanent assigned in a period*/
-	private boolean _permanent;
+	/** flag to indicate if the bloc is fixed in a period*/
+	private boolean _fixed;
 	
 	private boolean _isCyclic;
 
@@ -60,41 +60,41 @@ public class Unity extends DObject {
 
 
 
-	/**
-	 * It compares a field with the value defined by the argument "value"
-	 * @param fieldIndex the index of the field
-	 * @param value the value to be compared
-	 * @return true if the attribute value is equal to the argument "value"
-	 */
-
-	public boolean compareByField(int fieldIndex, String value) {
-		boolean boolValue;
-		int intValue;
-		switch (fieldIndex) {
-		case 0:
-			intValue = Integer.parseInt(value);
-			if (_duration == intValue)
-				return true;
-			break;
-
-		case 2:
-			boolValue = Boolean.valueOf(value).booleanValue();
-			if (_assign == boolValue)
-				return true;
-			break;
-		case 3:
-			boolValue = Boolean.valueOf(value).booleanValue();
-			if (_permanent == boolValue)
-				return true;
-			break;
-		case 4:
-			boolValue = Boolean.valueOf(value).booleanValue();
-			if (_isCyclic == boolValue)
-				return true;
-			break;
-		}
-		return false;
-	}
+//	/**
+//	 * It compares a field with the value defined by the argument "value"
+//	 * @param fieldIndex the index of the field
+//	 * @param value the value to be compared
+//	 * @return true if the attribute value is equal to the argument "value"
+//	 */
+//
+//	public boolean compareByField(int fieldIndex, String value) {
+//		boolean boolValue;
+//		int intValue;
+//		switch (fieldIndex) {
+//		case 0:
+//			intValue = Integer.parseInt(value);
+//			if (_duration == intValue)
+//				return true;
+//			break;
+//
+//		case 2:
+//			boolValue = Boolean.valueOf(value).booleanValue();
+//			if (_assign == boolValue)
+//				return true;
+//			break;
+//		case 3:
+//			boolValue = Boolean.valueOf(value).booleanValue();
+//			if (_fixed == boolValue)
+//				return true;
+//			break;
+//		case 4:
+//			boolValue = Boolean.valueOf(value).booleanValue();
+//			if (_isCyclic == boolValue)
+//				return true;
+//			break;
+//		}
+//		return false;
+//	}
 
 
 
@@ -113,7 +113,7 @@ public class Unity extends DObject {
 
 	/**
 	 * get duration
-	 * @return int the duration in hour
+	 * @return int the duration in minutes
 	 * */
 	public int getDuration() {
 		return _duration;
@@ -138,11 +138,18 @@ public class Unity extends DObject {
 		return _setOfAssignments;
 	}
 
+	/**
+	 * 
+	 * 
+	 */
+	public boolean isFixed(){
+		return _fixed;		
+	}
 
 	/**
-	 * get fixed state of the bloc
-	 * @param boolean the bloc state
-	 * */
+	 * 
+	 * 
+	 */
 	public boolean isAssign() {
 		return _assign;
 	}
@@ -172,13 +179,13 @@ public class Unity extends DObject {
 		return true;
 	}
 
-	/**
-	 * is permanent state of the bloc
-	 * @param boolean the bloc state
-	 * */
-	public boolean isPermanent() {
-		return _permanent;
-	}
+//	/**
+//	 * is permanent state of the bloc
+//	 * @param boolean the bloc state
+//	 * */
+//	public boolean isPermanent() {
+//		return _fixed;
+//	}
 
 	/**
 	 * set if bloc is fixed
@@ -188,10 +195,10 @@ public class Unity extends DObject {
 		_assign = assign;
 	}
 
-	public void setAssign(String value) {
-		boolean boolValue = Boolean.valueOf(value).booleanValue();
-		setAssign(boolValue);
-	}
+//	public void setAssign(String value) {
+//		boolean boolValue = Boolean.valueOf(value).booleanValue();
+//		setAssign(boolValue);
+//	}
 
 	/**
 	 * set duration
@@ -218,13 +225,13 @@ public class Unity extends DObject {
 //			intValue = Integer.parseInt(value);
 //			setPreferSequence(intValue);
 			break;
-		case 2:
-			boolValue = Boolean.valueOf(value).booleanValue();
-			setAssign(boolValue);
-			break;
+//		case 2:
+//			boolValue = Boolean.valueOf(value).booleanValue();
+//			setAssign(boolValue);
+//			break;
 //		case 3:
 //			boolValue = Boolean.valueOf(value).booleanValue();
-//			setPermanent(boolValue);
+//			setFixed(boolValue);
 //			break;
 //		case 4:
 //			boolValue = Boolean.valueOf(value).booleanValue();
@@ -246,11 +253,11 @@ public class Unity extends DObject {
 //	}
 
 	/**
-	 * set if bloc is solidify
+	 * it sets this state
 	 * @param boolean the bloc state
 	 * */
-	public void setPermanent(boolean permanent) {
-		_permanent = permanent;
+	public void setFixed(boolean fixed) {
+		_fixed = fixed;
 	}
 	
 	public String toString(){
@@ -264,7 +271,7 @@ public class Unity extends DObject {
 		strB.append(" isCyclic ");
 		strB.append(this._isCyclic);
 		strB.append(" isPermanent  ");
-		strB.append(this._permanent);
+		strB.append(this._fixed);
 //		strB.append(" functionSetOfRooms ");
 //		strB.append(this._preferFunctionSetOfRooms.toString());
 //		strB.append(" set of assignments ");
@@ -281,16 +288,9 @@ public class Unity extends DObject {
 		return "";
 	}
 
-	public void updateWithOld(DxEvent event) {
-		this.setAssign(event.isAssigned());
-		this.setPermanent(event.getPermanentState());
-		
-		this.setDuration(event.getDuration());
-	}
-	
 	public void updateWith(DxEvent event) {
 		this.setAssign(event.isAssigned());
-		this.setPermanent(event.getPermanentState());
+		this.setFixed(event.getPermanentState());
 		this.setDuration(event.getDuration());
 	}
 
@@ -299,7 +299,7 @@ public class Unity extends DObject {
 			Unity u = new Unity();
 			u._duration = this._duration;
 			u._assign = this._assign;
-			u._permanent = this._permanent;
+			u._fixed = this._fixed;
 			u._isCyclic = this._isCyclic;
 
 //			private DSetOfResources _preferFunctionSetOfRooms;

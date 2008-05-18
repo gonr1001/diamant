@@ -32,6 +32,7 @@ import dInternal.dData.dActivities.Assignment;
 import dInternal.dData.dActivities.Unity;
 import dInternal.dData.dRooms.DxSite;
 import dInternal.dUtil.DXToolsMethods;
+
 //import developer.DxFlags;
 
 /**
@@ -45,7 +46,7 @@ public class DxEvent extends DObject {
 	private Assignment _assignment;
 
 	private DResource _unity;
-	
+
 	private Unity _bloc;
 
 	private DSetOfResources _setInstructorKeys;
@@ -68,30 +69,27 @@ public class DxEvent extends DObject {
 
 	private boolean _isPlacedInAPeriod;
 
-	
-
 	public DxEvent() {
-		_fullName = "";		
+		_fullName = "";
 		_compositeKey = "";
 		_roomName = "";
 		_roomKey = -1; // the room key
 		_cLimit = -1;
-		_setInstructorKeys = null;				
+		_setInstructorKeys = null;
 		_unity = null;
-		_assignment = null;				
+		_assignment = null;
 		_ttsKey = null; //assignment.getPeriodKey();
 		_isPlacedInAPeriod = false;
 	}
-	
-	
+
 	public DxEvent eventClone() {
 		DxEvent eA = new DxEvent();
-		eA.setID(new String(this._fullName));		
-		eA.setCompositeKey(new String(this._compositeKey));		
+		eA.setID(new String(this._fullName));
+		eA.setCompositeKey(new String(this._compositeKey));
 		eA._assignment = cloneAssigment();
 		eA._ttsKey = new String(this._ttsKey);
 		eA.setRoomName(new String(this._roomName));
-		eA.setIntructors(this._setInstructorKeys.clone()); //it is necessary to cloner the set		
+		eA.setIntructors(this._setInstructorKeys.clone()); //it is necessary to clone the set		
 		eA.setRoomKeyWithKey(this._roomKey);
 		eA.setUnit(this._bloc.clone()); // its is necessary to clone the unit
 		eA.setCapacityLimit(this._cLimit);
@@ -103,14 +101,6 @@ public class DxEvent extends DObject {
 		return _assignment.clone();
 	}
 
-
-
-//	public DxEvent oldEventClone() {
-//		DxEvent eA = new DxEvent(_fullName, _compositeKey, _setInstructorKeys,
-//				_roomName, _roomKey, _unity, _assignment, _cLimit);
-//		return eA;
-//	}
-
 	public long getCapacityLimit() {
 		return _cLimit;
 	}
@@ -119,24 +109,12 @@ public class DxEvent extends DObject {
 		return dxsCurrentSite.getCatNameOfRoom(_assignment.getRoomName());
 	}
 
-//	/**
-//	 * 
-//	 * @return
-//	 */
-//	public int oldgetDuration() {
-//		return ((Unity) _unity.getAttach()).getDuration();
-//	}
-	
 	/**
 	 * 
 	 * @return
 	 */
 	public int getDuration() {
-//		if (DxFlags.newEventClone) {
-			return _bloc.getDuration();
-//		} else {
-//			return ((Unity) _unity.getAttach()).getDuration();
-//		}	
+		return _bloc.getDuration();
 	}
 
 	public String getfullName() {
@@ -150,7 +128,6 @@ public class DxEvent extends DObject {
 		}
 		return keys;
 	}
-
 
 	/**
 	 * 
@@ -173,17 +150,9 @@ public class DxEvent extends DObject {
 		return perKey;
 	}
 
-//	public boolean oldgetPermanentState() {
-//		return ((Unity) _unity.getAttach()).isPermanent();
-//	}
-	
 	public boolean getPermanentState() {
-//		if (DxFlags.newEventClone) {
-			return _bloc.isPermanent();
-//		} else {
-//			return ((Unity) _unity.getAttach()).isPermanent();
-//		}
-		
+		return _bloc.isFixed(); //isPermanent();
+
 	}
 
 	public String getPrincipalRescKey() {
@@ -193,10 +162,6 @@ public class DxEvent extends DObject {
 	public long getRoomKey() {
 		return _roomKey;
 	}
-
-	// public String getRoomName() {
-	// return _roomName;
-	// }
 
 	public String getRoomName() {
 		return _assignment.getRoomName();
@@ -212,13 +177,8 @@ public class DxEvent extends DObject {
 		return 0;
 	}
 
-
 	public boolean isAssigned() {
-//		if (DxFlags.newEventClone) {
-			return (_bloc.isAssign());
-//		} else {
-//			return (((Unity) _unity.getAttach()).isAssign());
-//		}
+		return _bloc.isAssign();
 	}
 
 	/**
@@ -234,27 +194,16 @@ public class DxEvent extends DObject {
 		return _assignment.getRoomState();
 	}
 
-//	public void oldsetAssigned(boolean state) {
-//		((Unity) _unity.getAttach()).setAssign(state);
-//	}
-
 	public void setAssigned(boolean state) {
-//		if (DxFlags.newEventClone) {
-			_bloc.setAssign(state);
-//		} else {
-//			((Unity) _unity.getAttach()).setAssign(state);
-//		}
+		_bloc.setAssign(state);
 	}
+
 	/**
 	 * 
 	 * @return
 	 */
 	public void setDuration(int duration) {
-//		if (DxFlags.newEventClone) {
-			_bloc.setDuration(duration);
-//		} else {
-//			((Unity) _unity.getAttach()).setDuration(duration);
-//		}
+		_bloc.setDuration(duration);
 	}
 
 	/**
@@ -314,19 +263,9 @@ public class DxEvent extends DObject {
 	public void setPeriodKey(String str) {
 		_ttsKey = str;
 	}
-	
 
-//	public void oldsetPermanentState(boolean state) {
-//		((Unity) _unity.getAttach()).setPermanent(state);
-//	}
-	
-	
-	public void setPermanentState(boolean state) {
-//		if (DxFlags.newEventClone) {
-			_bloc.setPermanent(state);
-//		} else {
-//			((Unity) _unity.getAttach()).setPermanent(state);
-//		}
+	public void setFixed(boolean state) {
+		_bloc.setFixed(state);
 	}
 
 	public void setRoomFixed(boolean state) {
@@ -336,15 +275,17 @@ public class DxEvent extends DObject {
 	public void setRoomKey(String str) {
 		_roomKey = Long.parseLong(str);
 	}
+
 	/**
 	 * @param name
 	 */
 	public void setRoomKeyWithKey(long key) {
-		_roomKey = key;		
+		_roomKey = key;
 	}
+
 	public void setRoomName(String str) {
 		_assignment.setRoomName(str);
-		_roomName=str;
+		_roomName = str;
 	}
 
 	/**
@@ -378,39 +319,33 @@ public class DxEvent extends DObject {
 		strB.append(this._assignment.toString());
 		strB.append(this._unity.getAttach().toString());
 		strB.append(DConst.CR_LF);
-//		strB.append(this._setInstructorKeys.toString());
+		//		strB.append(this._setInstructorKeys.toString());
 		return strB.toString();
 	}
 
 	public void setID(String id) {
-		_fullName = id;		
+		_fullName = id;
 	}
 
 	public void setCompositeKey(String compositeKey) {
-		_compositeKey = compositeKey;		
+		_compositeKey = compositeKey;
 	}
 
 	public void setCapacityLimit(int limit) {
-		_cLimit = limit;		
+		_cLimit = limit;
 	}
 
 	public void setIntructors(DSetOfResources setInstructorKeys) {
-		_setInstructorKeys = setInstructorKeys;		
+		_setInstructorKeys = setInstructorKeys;
 	}
 
-//	public void oldsetUnit(DResource unityResource) {
-//		_unity = unityResource;	
-//	}
-	
 	public void setUnit(Unity unit) {
-		_bloc = unit;	
+		_bloc = unit;
 	}
 
 	public void setAssigment(Assignment assignment) {
 		_assignment = assignment;
 		_ttsKey = _assignment.getPeriodKey();
 	}
-
-
 
 }

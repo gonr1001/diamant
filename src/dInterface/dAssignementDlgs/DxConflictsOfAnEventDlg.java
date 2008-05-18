@@ -65,7 +65,7 @@ import dInterface.dUtil.TwoButtonsPanel;
 import dInternal.DModel;
 import dInternal.DResource;
 
-@SuppressWarnings("serial")
+
 public class DxConflictsOfAnEventDlg extends EventsDlgInterface implements
 		Observer, DlgIdentification {
 

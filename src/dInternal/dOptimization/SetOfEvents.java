@@ -54,7 +54,7 @@ public class SetOfEvents extends DSetOfResources {
 
 	private void forEachActivity(DResource activityResource, Activity activity,
 			DSetOfResources soImportErrors) {
-		if (activity.isActivityVisible()) {
+		if (activity.isActivityActive()) {
 			for (int j = 0; j < activity.getSetOfTypes().size(); j++) {
 				DResource typeResource = activity.getSetOfTypes()
 						.getResourceAt(j);
@@ -294,11 +294,9 @@ public class SetOfEvents extends DSetOfResources {
 			// Here was mm instead of the room
 			assignment.setRoomName(event.getRoomName());
 			assignment.setPeriodKey(event.getPeriodKey());
-			if (true){
+
 				unit.updateWith(event);
-			} else {
-				unit.updateWithOld(event);
-			}
+
 			assignment.setRoomState(event.isRoomFixed());
 
 		}// end for (int i=0; i< eventsToUpdate.size(); i++)

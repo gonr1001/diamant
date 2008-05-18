@@ -62,19 +62,19 @@ public class SetOfActivities extends DSetOfResources {
 		_periodLength = periodLength;
 	}
 
-	//    /**
-	//     * analyse activities data by a finite states machine
-	//     * 
-	//     * @param integer
-	//     *            the beginPosition (start position of the finished states
-	//     *            machine)
-	//     * @return boolean "true" if the analysis proceeded successfully and false
-	//     *         otherwise
-	//     */
-	//    public boolean analyseTokens(DataExchange de, int beginPosition) {
-	//        de.toString();
-	//        return false;
-	//    }
+	// /**
+	// * analyse activities data by a finite states machine
+	// *
+	// * @param integer
+	// * the beginPosition (start position of the finished states
+	// * machine)
+	// * @return boolean "true" if the analysis proceeded successfully and false
+	// * otherwise
+	// */
+	// public boolean analyseTokens(DataExchange de, int beginPosition) {
+	// de.toString();
+	// return false;
+	// }
 
 	public void buildSetOfResources(DataExchange de, int beginPosition) {
 		if (de.getHeader().equalsIgnoreCase(DConst.FILE_VER_NAME1_6)) {
@@ -176,7 +176,7 @@ public class SetOfActivities extends DSetOfResources {
 					Unity unity = (Unity) unityResource.getAttach();
 					unity.setDuration(Integer.parseInt(stLine.nextToken()
 							.trim())
-							* _periodLength)/*RGRRGRRGR was60 */;
+							* _periodLength)/* RGRRGRRGR was60 */;
 					unityResource.setAttach(unity);
 					section.setUnity(unityResource);
 					counter++;
@@ -264,7 +264,7 @@ public class SetOfActivities extends DSetOfResources {
 					unityResource = section.getUnity(Integer.toString(counter));
 					Unity bloc = (Unity) unityResource.getAttach();
 					String roomType = stLine.nextToken().trim();
-//rgr					bloc.addPreferFunctionRoom(roomType);
+					// rgr bloc.addPreferFunctionRoom(roomType);
 					counter++;
 				}// end while(stLine.hasMoreElements())
 				position = 13;
@@ -283,10 +283,17 @@ public class SetOfActivities extends DSetOfResources {
 				if (nbTokens == 2)
 					assignLine = new StringTokenizer(visiToken.nextToken());
 				counter = 1;
+
+				/*
+				 * TODO to fix there is one flag (fixed) and the other flag
+				 * (assigned) f a 0 0 not-fixed not assigned 0 1 not-fixed
+				 * assigned 1 0 not allowed 1 1 fixed and assigned
+				 * 
+				 */
 				while (stLine.hasMoreElements()) {
 					int fix = Integer.parseInt(stLine.nextToken().trim());
 					unityResource = section.getUnity(Integer.toString(counter));
-					((Unity) unityResource.getAttach()).setPermanent(fix == 1);
+					((Unity) unityResource.getAttach()).setFixed(fix == 1);
 					if ((nbTokens == 2) && (assignLine.hasMoreElements())) {
 						int fix1 = Integer.parseInt(assignLine.nextToken()
 								.trim());
@@ -303,7 +310,7 @@ public class SetOfActivities extends DSetOfResources {
 
 			}// end switch (position)
 
-		}// end while (st.hasMoreElements())
+		}// end while
 
 	}
 
@@ -394,7 +401,7 @@ public class SetOfActivities extends DSetOfResources {
 							.getID();// write group and go to line
 					actlist += " " + site + " " + DConst.ACT_DEFAULT_CAPACITY
 							+ DConst.CR_LF;// write site and capacity of course
-					if (activity.isActivityVisible())
+					if (activity.isActivityActive())
 						actlist += 1 + DConst.CR_LF;
 					else
 						actlist += 0 + DConst.CR_LF;// write visibility of
@@ -427,25 +434,18 @@ public class SetOfActivities extends DSetOfResources {
 						 */
 						lineTime += firstCycAss.getPeriodKey() + " ";
 						lineRoomName += firstCycAss.getRoomName() + " ";//
-						if (firstCycAss.getRoomState())
+						if (firstCycAss.getRoomState()) {
 							lineRoomFixed += "1 ";
-						else
+						} else {
 							lineRoomFixed += "0 ";
-//						DSetOfResources pfunctionRoom = bloc
-//								.getPreferFunctionRoom();
-//						if (pfunctionRoom.size() > 0)
-//							lineRoomType += pfunctionRoom.getResourceAt(0)
-//									.getID()
-//									+ " ";
-//						else
-							lineRoomType += "0 ";
+						}
+						lineRoomType += "0 ";
 
-						if (bloc.isPermanent()) {
+						if (bloc.isFixed()) { // isPermanent()) {
 							LineActFixed += "1 ";
 						} else {
 							LineActFixed += "0 ";
 						}
-
 						if (bloc.isAssign()) {
 							LineActAssign += "1 ";
 						} else {
@@ -637,27 +637,6 @@ public class SetOfActivities extends DSetOfResources {
 		return result;
 	}
 
-	// /**
-	// * Sets a field belonging a Unity
-	// * @param actKey the activity key
-	// * @param typeKey the type key
-	// * @param secKey the section key
-	// * @param unitKey the unity key
-	// * @param fieldIndex The index identifaying the field
-	// * @param fieldValue The value to be setted in the field
-	// */
-	// private void setUnityField(long actKey, long typeKey, long secKey, long
-	// unitKey, int fieldIndex, String fieldValue){
-	// DResource a = getResource(actKey);
-	// DResource t =
-	// ((Activity)a.getAttach()).getSetOfTypes().getResource(typeKey);
-	// DResource s =
-	// ((Type)t.getAttach()).getSetOfSections().getResource(secKey);
-	// DResource u =
-	// ((Section)s.getAttach()).getSetOfUnities().getResource(unitKey);
-	// u.getAttach().setField(fieldIndex, fieldValue);
-	// }
-
 	/**
 	 * 
 	 * @param actID
@@ -667,8 +646,8 @@ public class SetOfActivities extends DSetOfResources {
 	 * @param fieldIndex
 	 * @param fieldValue
 	 */
-	public void setUnityField(String actID, String typeID, String secID,
-			String unitID, int fieldIndex, String fieldValue) {
+	public void setUnityFix(String actID, String typeID, String secID,
+			String unitID,  boolean value) {
 		DResource a = getResource(actID);
 		DResource t = ((Activity) a.getAttach()).getSetOfTypes().getResource(
 				typeID);
@@ -676,7 +655,65 @@ public class SetOfActivities extends DSetOfResources {
 				secID);
 		DResource u = ((Section) s.getAttach()).getSetOfUnities().getResource(
 				unitID);
-		u.getAttach().setField(fieldIndex, fieldValue);
+		//u.getAttach().setField(fieldIndex, fieldValue);
+		((Unity) u.getAttach()).setFixed(value);
+	}
+	
+	/**
+	 * 
+	 * @param actID
+	 * @param typeID
+	 * @param secID
+	 * @param unitID
+	 * @param fieldIndex
+	 * @param fieldValue
+	 */
+	public void setUnityAssign(String actID, String typeID, String secID,
+			String unitID,  boolean value) {
+		DResource a = getResource(actID);
+		DResource t = ((Activity) a.getAttach()).getSetOfTypes().getResource(
+				typeID);
+		DResource s = ((Type) t.getAttach()).getSetOfSections().getResource(
+				secID);
+		DResource u = ((Section) s.getAttach()).getSetOfUnities().getResource(
+				unitID);
+		//u.getAttach().setField(fieldIndex, fieldValue);
+		((Unity) u.getAttach()).setAssign(value);
+	}
+
+	/**
+	 * Creates a Vector containing only the Activities which are active
+	 * 
+	 * @return a vector containing the IDs of the selected resources
+	 */
+	public Vector<String> getOnlyActive() {
+		return getActive(true);
+	}
+
+	/**
+	 * Creates a Vector containing only the Activities which are active
+	 * 
+	 * @return a vector containing the IDs of the selected resources
+	 */
+	public Vector<String> getOnlyNotActive() {
+		return getActive(false);
+	}
+
+	private Vector<String> getActive(boolean active) {
+		Vector<String> idVector = new Vector<String>();
+		DResource res = null;
+		Vector<DResource> sor = this.getSetOfResources();
+		for (int i = 0; i < size(); i++) {
+			res = sor.get(i);
+			if (active) {
+				if (((Activity) res.getAttach()).isActivityActive())
+					idVector.add(res.getID());
+			} else {
+				if (!((Activity) res.getAttach()).isActivityActive())
+					idVector.add(res.getID());
+			}
+		}
+		return idVector;
 	}
 
 	/**
@@ -699,41 +736,4 @@ public class SetOfActivities extends DSetOfResources {
 		return null;
 	}
 
-//	public void fixTypeOrRoom(DxSetOfSites sites) {
-//		// change room assign to room or type 
-//		for (int i = 0; i < this.size(); i++) {
-//			//			System.out.println("act " + i);
-//			DResource r = this.getResourceAt(i);
-//			Activity a = (Activity) r.getAttach();
-//			DSetOfResources sot = a.getSetOfTypes();
-//			for (int j = 0; j < sot.size(); j++) {
-//				DResource rr = sot.getResourceAt(j);
-//				Type t = (Type) rr.getAttach();
-//				DSetOfResources sos = t.getSetOfSections();
-//				for (int k = 0; k < sos.size(); k++) {
-//					DResource rrr = sos.getResourceAt(k);
-//					Section ss = (Section) rrr.getAttach();
-//					DSetOfResources b = ss.getSetOfUnities();
-//					for (int m = 0; m < b.size(); m++) {
-//						DResource rrrr = b.getResourceAt(m);
-//						Unity s = (Unity) rrrr.getAttach();
-//						DSetOfResources aa = s.getSetOfAssignments();
-//						for (int n = 0; n < aa.size(); n++) {
-//							DResource rrrrr = aa.getResourceAt(n);
-//							Assignment ass = (Assignment) rrrrr.getAttach();
-//							String str = ass.getRoomName();
-//							Vector<String> v = sites.getNamesVector();
-//							if (v.indexOf(str) != -1)
-//								str += "";
-//
-//							//								System.out.println("room Name "+ str );
-//							//						System.out.println("room Name "+ str );
-//						}
-//
-//					}
-//
-//				}
-//			}
-//		}
-//	}
 }

@@ -175,10 +175,9 @@ public class Activity extends DObject {
 	 * 
 	 * @return boolean the activity visibility
 	 */
-	public boolean isActivityVisible() {
+	public boolean isActivityActive() {
 		return _activityVisible;
 	}
-
 	// /**
 	// * set activity Department
 	// *

@@ -327,7 +327,8 @@ public abstract class EventsDlgInterface extends JDialog implements
 			if (_currUnity.compareToAssign(false)) {
 				_rightVector.add(_eventFullID);
 			} else {
-				if (_currUnity.compareByField(3, "true")) {
+//				if (_currUnity.compareByField(3, "true")) {
+				if (_currUnity.isFixed()) {
 					_leftVector.add(_eventFullID);
 				} else {
 					_centerVector.add(_eventFullID);
@@ -378,37 +379,37 @@ public abstract class EventsDlgInterface extends JDialog implements
 		String str = null;
 		for (int i = 0; i < _leftVector.size(); i++) {
 			str = _leftVector.elementAt(i);
-			_activities.setUnityField(DXToolsMethods.getToken(str, ".", 0),
+			_activities.setUnityFix(DXToolsMethods.getToken(str, ".", 0),
 					DXToolsMethods.getToken(str, ".", 1), DXToolsMethods
 							.getToken(str, ".", 2), DXToolsMethods.getToken(
-							str, ".", 3), 3, "true");
-			_activities.setUnityField(DXToolsMethods.getToken(str, ".", 0),
+							str, ".", 3), true);
+			_activities.setUnityAssign(DXToolsMethods.getToken(str, ".", 0),
 					DXToolsMethods.getToken(str, ".", 1), DXToolsMethods
 							.getToken(str, ".", 2), DXToolsMethods.getToken(
-							str, ".", 3), 2, "true");
+							str, ".", 3), true);
 		}//end for
 		for (int i = 0; i < _centerVector.size(); i++) {
 			str = _centerVector.elementAt(i);
-			_activities.setUnityField(DXToolsMethods.getToken(str, ".", 0),
+			_activities.setUnityFix(DXToolsMethods.getToken(str, ".", 0),
 					DXToolsMethods.getToken(str, ".", 1), DXToolsMethods
 							.getToken(str, ".", 2), DXToolsMethods.getToken(
-							str, ".", 3), 3, "false");
-			_activities.setUnityField(DXToolsMethods.getToken(str, ".", 0),
+							str, ".", 3),  false);
+			_activities.setUnityAssign(DXToolsMethods.getToken(str, ".", 0),
 					DXToolsMethods.getToken(str, ".", 1), DXToolsMethods
 							.getToken(str, ".", 2), DXToolsMethods.getToken(
-							str, ".", 3), 2, "true");
+							str, ".", 3),  true);
 		}//end for
 		for (int i = 0; i < _rightVector.size(); i++) {
 
 			str = _rightVector.elementAt(i);
-			_activities.setUnityField(DXToolsMethods.getToken(str, ".", 0),
+			_activities.setUnityFix(DXToolsMethods.getToken(str, ".", 0),
 					DXToolsMethods.getToken(str, ".", 1), DXToolsMethods
 							.getToken(str, ".", 2), DXToolsMethods.getToken(
-							str, ".", 3), 3, "false");
-			_activities.setUnityField(DXToolsMethods.getToken(str, ".", 0),
+							str, ".", 3),  false);
+			_activities.setUnityAssign(DXToolsMethods.getToken(str, ".", 0),
 					DXToolsMethods.getToken(str, ".", 1), DXToolsMethods
 							.getToken(str, ".", 2), DXToolsMethods.getToken(
-							str, ".", 3), 2, "false");
+							str, ".", 3),  false);
 		}//end for
 	}
 

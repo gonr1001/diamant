@@ -358,8 +358,8 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 				.getRoomKeyByName(room)));
 		event.setRoomName(room);
 		event.setAssigned(assignBut);
-		event.setPermanentState(fixedBut);
-
+		event.setFixed(fixedBut);
+		
 		Vector<DResource> vect = new Vector<DResource>();
 		vect.add(_events.get(_tabbedPane.getSelectedIndex()));
 
