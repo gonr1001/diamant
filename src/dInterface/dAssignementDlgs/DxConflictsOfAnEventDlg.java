@@ -104,7 +104,6 @@ public class DxConflictsOfAnEventDlg extends EventsDlgInterface implements
 		if (e.getActionCommand().equals(DConst.BUT_CLOSE)) {
 			_dModel.deleteObserver(this);
 			dispose();
-
 		}
 		if ((e.getActionCommand().equals(DConst.BUT_CHANGE))
 				&& (selectedItems != null)) {
