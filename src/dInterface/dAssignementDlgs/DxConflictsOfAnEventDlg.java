@@ -58,7 +58,6 @@ import javax.swing.JPanel;
 
 import dConstants.DConst;
 import dInterface.DlgIdentification;
-import dInterface.dAffectation.EventsDlgInterface;
 import dInterface.dTimeTable.DxConflictsOfAnEventPanel;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.TwoButtonsPanel;
@@ -106,8 +105,8 @@ public class DxConflictsOfAnEventDlg extends EventsDlgInterface implements
 			dispose();
 		}
 		if ((e.getActionCommand().equals(DConst.BUT_CHANGE))
-				&& (selectedItems != null)) {
-			new DxEditEventDlg(_jDialog, _dModel, (String) selectedItems[0],
+				&& (_selectedItems.length >= 1)) {
+			new DxEditEventDlg(_jDialog, _dModel, (String) _selectedItems[0],
 					false);
 		}
 	}// end actionPerformed
@@ -117,7 +116,7 @@ public class DxConflictsOfAnEventDlg extends EventsDlgInterface implements
 	 */
 	protected void doubleClicMouseProcess() {
 		DResource eventRes = _dModel.getSetOfEvents().getResource(
-				(String) selectedItems[0]);
+				(String) _selectedItems[0]);
 		new DxConflictsOfAnEventPanel(this, eventRes, _dModel);
 	}
 

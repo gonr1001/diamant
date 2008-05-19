@@ -37,7 +37,6 @@ import javax.swing.JFrame;
 
 import dConstants.DConst;
 import dInterface.DlgIdentification;
-import dInterface.dAffectation.EventsDlgInterface;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.DxTools;
 import dInterface.dUtil.TwoButtonsPanel;
@@ -96,13 +95,13 @@ public class DxEventsDlg extends EventsDlgInterface implements Observer,
 				|| (e.getActionCommand().equalsIgnoreCase("left"
 						+ _arrowsNames[1]))) {
 			// if "toRight" button
-			if (e.getActionCommand().equalsIgnoreCase("left" + _arrowsNames[0]))
+			if (e.getActionCommand().equalsIgnoreCase("left" + _arrowsNames[0])) {
 				DxTools.listTransfers(_leftList, _centerList, _leftVector,
 						_centerVector, 1);
-			else
+			} else {
 				DxTools.listTransfers(_centerList, _leftList, _centerVector,
 						_leftVector, 1);
-
+			}
 			_leftLabel.setText(String.valueOf(_leftVector.size()));
 			_centerLabel.setText(String.valueOf(_centerVector.size()));
 			_buttonsPanel.setFirstEnable();
@@ -114,12 +113,13 @@ public class DxEventsDlg extends EventsDlgInterface implements Observer,
 						+ _arrowsNames[1]))) {
 			// if "toRight" button
 			if (e.getActionCommand()
-					.equalsIgnoreCase("right" + _arrowsNames[0]))
+					.equalsIgnoreCase("right" + _arrowsNames[0])) {
 				DxTools.listTransfers(_centerList, _rightList, _centerVector,
 						_rightVector, 1);
-			else
+			} else {
 				DxTools.listTransfers(_rightList, _centerList, _rightVector,
 						_centerVector, 1);
+			}
 			_rightLabel.setText(String.valueOf(_rightVector.size()));
 			_centerLabel.setText(String.valueOf(_centerVector.size()));
 			_buttonsPanel.setFirstEnable();
@@ -128,7 +128,6 @@ public class DxEventsDlg extends EventsDlgInterface implements Observer,
 		if (e.getActionCommand().equals(DConst.BUT_CLOSE)) {
 			_dModel.deleteObserver(this);
 			dispose();
-
 		}
 		// if Button APPLY is pressed
 		if (e.getActionCommand().equals(DConst.BUT_APPLY)) {
@@ -142,14 +141,9 @@ public class DxEventsDlg extends EventsDlgInterface implements Observer,
 	 * 
 	 */
 	protected void doubleClicMouseProcess() {
-		if (!_buttonsPanel.isFirstEnable()) {
-			//			if(DxFlags.newDxEditEventDlg) {
-			new DxEditEventDlg(_jDialog, _dModel, (String) selectedItems[0],
-					false);
-			//			} else {
-			//				new EditEventDlg(_jDialog, _dModel, (String) selectedItems[0],
-			//						 false);
-			//			}		
+		if (!_buttonsPanel.isFirstEnable()) {			
+			new DxEditEventDlg(_jDialog, _dModel, (String) _selectedItems[0],
+					false);		
 			_buttonsPanel.setFirstDisable();
 		} else {
 			new InformationDlg(_jDialog, "Appliquer ou fermer pour continuer",

@@ -23,7 +23,7 @@
  * Description: EventsDlgInterface is a class used to
  *  
  */
-package dInterface.dAffectation;
+package dInterface.dAssignementDlgs;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -74,7 +74,7 @@ public abstract class EventsDlgInterface extends JDialog implements
 
 	protected ButtonsPanel _buttonsPanel;
 
-	protected Object[] selectedItems;
+	protected Object[] _selectedItems;
 
 	protected SetOfActivities _activities;
 
@@ -320,17 +320,17 @@ public abstract class EventsDlgInterface extends JDialog implements
 			if (e.getSource().equals(_leftList)) {
 				_centerList.clearSelection();
 				_rightList.clearSelection();
-				selectedItems = _leftList.getSelectedValues();
+				_selectedItems = _leftList.getSelectedValues();
 			}//end if (e.getSource().equals(_leftList))
 			if (e.getSource().equals(_centerList)) {
 				_leftList.clearSelection();
 				_rightList.clearSelection();
-				selectedItems = _centerList.getSelectedValues();
+				_selectedItems = _centerList.getSelectedValues();
 			}//end if (e.getSource().equals(_centerList))
 			if (e.getSource().equals(_rightList)) {
 				_centerList.clearSelection();
 				_leftList.clearSelection();
-				selectedItems = _rightList.getSelectedValues();
+				_selectedItems = _rightList.getSelectedValues();
 			}//end if (e.getSource().equals(_rightList))
 			if (e.getClickCount() == 2) {
 				doubleClicMouseProcess();
