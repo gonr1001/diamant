@@ -82,8 +82,6 @@ public abstract class EventsDlgInterface extends JDialog implements
 
 	protected String _eventFullKey;
 
-	protected Unity _currUnity;
-
 	protected DModel _dModel;
 
 	/**
@@ -106,34 +104,17 @@ public abstract class EventsDlgInterface extends JDialog implements
 	/**
 	 * Constructor
 	 * 
-	 * @param dApplic
-	 *            The application
-	 * @param title
-	 *            the title of the dialog
+	 *
 	 */
-//	public EventsDlgInterface(DApplication dApplic, String title) {
-//		super(dApplic.getJFrame(), title + " rgrEDL", true);
-//		_dApplic = dApplic;
-//		_jDialog = this;
-//		if (dApplic.getCurrentDxDoc() == null)
-//			return;
-//		_dModel = dApplic.getCurrentDxDoc().getCurrentDModel();
-//		_activities = _dModel.getSetOfActivities();
-//		_events = _dModel.getSetOfEvents();
-//	}//end method
-	
+
 	public EventsDlgInterface(JFrame jFrame, DModel dModel, String title) {
-//		super(jFrame, title + " rgrEDL", true);
 		super(jFrame, title, true);
 		_jFrame = jFrame;
 		_jDialog = this;
-//		if (dApplic.getCurrentDxDoc() == null)
-//			return;
 		_dModel = dModel;
 		_activities = _dModel.getSetOfActivities();
 		_events = _dModel.getSetOfEvents();
 	}//end method
-	
 
 	public abstract void actionPerformed(ActionEvent e);
 
@@ -142,7 +123,7 @@ public abstract class EventsDlgInterface extends JDialog implements
 	public abstract ButtonsPanel setButtons();
 
 	/**
-	 * Initialise the dialog
+	 * Initialize the dialog
 	 */
 	protected void initialize() {
 		this.getContentPane().setLayout(new BorderLayout());
@@ -201,10 +182,6 @@ public abstract class EventsDlgInterface extends JDialog implements
 	}
 
 	/**
-	 * build buttom to use in the dialog
-	 */
-
-	/**
 	 * Sets the _centerPanel, the panel containing the _centerList and the
 	 * arrows panels
 	 */
@@ -245,7 +222,7 @@ public abstract class EventsDlgInterface extends JDialog implements
 	}//end method
 
 	/**
-	 * initRightPanel
+	 * initLeftPanel
 	 */
 	private JPanel initLeftPanel() {
 		_leftList = new JList(_leftVector);
@@ -272,7 +249,7 @@ public abstract class EventsDlgInterface extends JDialog implements
 	}//end initLeftPanel
 
 	/**
-	 * Sets the _initLeftPanel
+	 * Sets the _initRigthPanel
 	 */
 	private JPanel initRightPanel() {
 		_rightList = new JList(_rightVector);
@@ -310,13 +287,10 @@ public abstract class EventsDlgInterface extends JDialog implements
 		String _eventFullID;
 		StringTokenizer stk;
 		for (int i = 0; i < _events.size(); i++) {
-
-				_eventFullKey = ((DxEvent) _events.getResourceAt(i).getAttach())
-				.getPrincipalRescKey();
-
-
+			_eventFullKey = ((DxEvent) _events.getResourceAt(i).getAttach())
+					.getPrincipalRescKey();
 			stk = new StringTokenizer(_eventFullKey, ".");
-			_currUnity = _activities.getUnity(Long.parseLong(stk.nextToken()),
+			Unity currUnity = _activities.getUnity(Long.parseLong(stk.nextToken()),
 					Long.parseLong(stk.nextToken()), Long.parseLong(stk
 							.nextToken()), Long.parseLong(stk.nextToken()));
 			stk = new StringTokenizer(_eventFullKey, ".");
@@ -324,11 +298,10 @@ public abstract class EventsDlgInterface extends JDialog implements
 					.nextToken()), Long.parseLong(stk.nextToken()), Long
 					.parseLong(stk.nextToken()), Long
 					.parseLong(stk.nextToken()));
-			if (_currUnity.compareToAssign(false)) {
+			if (currUnity.compareToAssign(false)) {
 				_rightVector.add(_eventFullID);
 			} else {
-//				if (_currUnity.compareByField(3, "true")) {
-				if (_currUnity.isFixed()) {
+				if (currUnity.isFixed()) {
 					_leftVector.add(_eventFullID);
 				} else {
 					_centerVector.add(_eventFullID);
@@ -393,11 +366,11 @@ public abstract class EventsDlgInterface extends JDialog implements
 			_activities.setUnityFix(DXToolsMethods.getToken(str, ".", 0),
 					DXToolsMethods.getToken(str, ".", 1), DXToolsMethods
 							.getToken(str, ".", 2), DXToolsMethods.getToken(
-							str, ".", 3),  false);
+							str, ".", 3), false);
 			_activities.setUnityAssign(DXToolsMethods.getToken(str, ".", 0),
 					DXToolsMethods.getToken(str, ".", 1), DXToolsMethods
 							.getToken(str, ".", 2), DXToolsMethods.getToken(
-							str, ".", 3),  true);
+							str, ".", 3), true);
 		}//end for
 		for (int i = 0; i < _rightVector.size(); i++) {
 
@@ -405,11 +378,11 @@ public abstract class EventsDlgInterface extends JDialog implements
 			_activities.setUnityFix(DXToolsMethods.getToken(str, ".", 0),
 					DXToolsMethods.getToken(str, ".", 1), DXToolsMethods
 							.getToken(str, ".", 2), DXToolsMethods.getToken(
-							str, ".", 3),  false);
+							str, ".", 3), false);
 			_activities.setUnityAssign(DXToolsMethods.getToken(str, ".", 0),
 					DXToolsMethods.getToken(str, ".", 1), DXToolsMethods
 							.getToken(str, ".", 2), DXToolsMethods.getToken(
-							str, ".", 3),  false);
+							str, ".", 3), false);
 		}//end for
 	}
 

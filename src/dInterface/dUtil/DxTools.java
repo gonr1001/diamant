@@ -352,9 +352,7 @@ public class DxTools {
 	 */
 	public static JPanel listPanel(JList theList) {
 		JPanel panel = new JPanel(new BorderLayout());
-		//panel.setPreferredSize(new Dimension(panelWidth, panelHeight));
 		JScrollPane scrollPane = new JScrollPane();
-		//scrollPane.setPreferredSize(new Dimension(panelWidth,panelHeight));
 		scrollPane.getViewport().add(theList);
 		panel.add(scrollPane);
 		return panel;
