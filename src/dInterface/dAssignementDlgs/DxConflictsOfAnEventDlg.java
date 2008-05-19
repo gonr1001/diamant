@@ -65,7 +65,7 @@ import dInternal.DModel;
 import dInternal.DResource;
 
 
-public class DxConflictsOfAnEventDlg extends EventsDlgInterface implements
+public class DxConflictsOfAnEventDlg extends EventsGUIDialog implements
 		Observer, DlgIdentification {
 
 	private String[] _arrowsNames;

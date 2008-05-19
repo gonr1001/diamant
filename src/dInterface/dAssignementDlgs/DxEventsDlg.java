@@ -43,7 +43,7 @@ import dInterface.dUtil.TwoButtonsPanel;
 import dInternal.DModel;
 import eLib.exit.dialog.InformationDlg;
 
-public class DxEventsDlg extends EventsDlgInterface implements Observer,
+public class DxEventsDlg extends EventsGUIDialog implements Observer,
 		DlgIdentification {
 
 	private String[] _arrowsNames;
