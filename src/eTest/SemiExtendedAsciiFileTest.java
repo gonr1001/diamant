@@ -33,8 +33,8 @@ import eLib.exit.txt.SemiExtendedAsciiFile;
 
 public class SemiExtendedAsciiFileTest extends TestCase {
 
-	private final String _pathForFiles = "." + File.separator + "edataTest"
-	+ File.separator;
+	private final String _pathForFiles = "." + File.separator + "dataTest" 
+	+ File.separator + "edataTest" + File.separator;
 	
 	public static Test suite() {
 		// the type safe way is in SimpleTest

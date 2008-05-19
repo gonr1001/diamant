@@ -30,8 +30,8 @@ import eLib.exit.txt.ByteOutputFile;
 
 public class ByteOutputFileTest extends TestCase {
 
-	private final String _pathForFiles = "." + File.separator + "edataTest"
-	+ File.separator;
+	private final String _pathForFiles = "." + File.separator + "dataTest" 
+	+ File.separator + "edataTest" + File.separator;
 	
 	private final String _pathForOutputFiles = "." + File.separator + "forOutputTests"
 	+ File.separator;

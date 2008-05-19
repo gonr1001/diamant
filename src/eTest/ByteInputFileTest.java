@@ -29,8 +29,8 @@ import eLib.exit.txt.ByteInputFile;
 
 public class ByteInputFileTest extends TestCase {
 
-	private final String _pathForFiles = "." + File.separator + "edataTest"
-	+ File.separator;
+	private final String _pathForFiles = "." + File.separator + "dataTest" 
+	+ File.separator + "edataTest" + File.separator;
 	
 
 	public static Test suite() {
