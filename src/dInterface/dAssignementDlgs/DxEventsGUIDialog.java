@@ -40,6 +40,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -58,7 +59,7 @@ import dInternal.dUtil.DXToolsMethods;
 
 
 public abstract class DxEventsGUIDialog extends JDialog implements
-		ActionListener, MouseListener, ListSelectionListener {
+		ActionListener, ListSelectionListener {
 
 	protected JFrame _jFrame;
 
@@ -147,7 +148,9 @@ public abstract class DxEventsGUIDialog extends JDialog implements
 		this.getContentPane().add(_buttonsPanel, BorderLayout.SOUTH);
 		this.pack();
 		this.setLocationRelativeTo(_jFrame);
-		
+		_leftList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		_centerList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		_rightList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.setResizable(false);
 		this.setVisible(true);
 	}
@@ -175,6 +178,8 @@ public abstract class DxEventsGUIDialog extends JDialog implements
 		_centerList.setListData(_centerVector);
 		_rightLabel.setText(String.valueOf(_rightVector.size()));
 		_rightList.setListData(_rightVector);
+		
+	
 	}
 
 	/**
@@ -183,7 +188,7 @@ public abstract class DxEventsGUIDialog extends JDialog implements
 	 */
 	private JPanel initCenterPanel() {
 		_centerList = new JList(_centerVector);
-		_centerList.addMouseListener(this);
+//		_centerList.addMouseListener(this);
 		_centerList.addListSelectionListener(this);
 		JLabel titleLabel = new JLabel(DConst.EVENTS_PLACED + " ");
 		_centerLabel = new JLabel(String.valueOf(_centerVector.size()));
@@ -223,7 +228,8 @@ public abstract class DxEventsGUIDialog extends JDialog implements
 	 */
 	private JPanel initLeftPanel() {
 		_leftList = new JList(_leftVector);
-		_leftList.addMouseListener(mouseListenerLists);
+		//_leftList.addMouseListener(mouseListenerLists);
+		_leftList.addListSelectionListener(this);
 		JLabel titleLabel = new JLabel(DConst.EVENTS_FIXED + " ");
 		_leftLabel = new JLabel(String.valueOf(_leftVector.size()));
 		_leftLabel.setForeground(DConst.COLOR_QUANTITY_DLGS);
@@ -250,7 +256,8 @@ public abstract class DxEventsGUIDialog extends JDialog implements
 	 */
 	private JPanel initRightPanel() {
 		_rightList = new JList(_rightVector);
-		_rightList.addMouseListener(mouseListenerLists);
+		//_rightList.addMouseListener(mouseListenerLists);
+		_rightList.addListSelectionListener(this);
 		JLabel titleLabel = new JLabel(DConst.EVENTS_NOT_PLACED + " ");
 		_rightLabel = new JLabel(String.valueOf(_rightVector.size()));
 		_rightLabel.setForeground(DConst.COLOR_QUANTITY_DLGS);
@@ -383,8 +390,32 @@ public abstract class DxEventsGUIDialog extends JDialog implements
 	}
 
 	
-	public void ValueChanged(ListSelectionEvent lse) {
-		
-	}
+//	public void ValueChanged(ListSelectionEvent lse) {
+//		if (lse.getSource().equals(_leftList)) {
+//			if( !lse.getValueIsAdjusting()){
+//			_centerList.clearSelection();
+//			_rightList.clearSelection();
+//			String selectedItem = (String)_leftList.getSelectedValue();
+//			System.out.println(_selectedItems);
+//			}
+//		}//end if (e.getSource().equals(_leftList))
+//		if (lse.getSource().equals(_centerList)) {
+//			if( !lse.getValueIsAdjusting()){
+//				_leftList.clearSelection();
+//				_rightList.clearSelection();
+//				String selectedItem = (String)_centerList.getSelectedValue();
+//				System.out.println(_selectedItems);
+//				}
+//
+//		}//end if (e.getSource().equals(_centerList))
+//		if (lse.getSource().equals(_rightList)) {
+//			if( !lse.getValueIsAdjusting()){
+//				_centerList.clearSelection();
+//				_leftList.clearSelection();
+//				String selectedItem = (String)_leftList.getSelectedValue();
+//				System.out.println(_selectedItems);
+//				}
+//		}//end if (e.getSource().equals(_rightList))
+//	}
 }//end EventsDlgInterface
 
