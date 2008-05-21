@@ -40,8 +40,6 @@ import java.util.Observer;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
-import javax.swing.JDialog;
-
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
@@ -62,17 +60,9 @@ import dInternal.dData.dActivities.SetOfActivities;
 import dInternal.dData.dActivities.Unity;
 import dInternal.dOptimization.DxEvent;
 
-public class DxConflictsOfAnEventDlg extends JDialog implements ActionListener,
-		Observer, DlgIdentification {
+public class DxConflictsOfAnEventDlg extends DxEventsGUIforDlg implements
+		ActionListener, Observer, DlgIdentification {
 
-	private final int WIDTH_DLG = 700; 
-	
-	private final int HEIGHT_DLG = 420; 
-	
-	private final int WIDTH_PANE = 150; 
-	
-	private final int HEIGHT_PANE = 280; 
-	
 	private JLabel _leftLabel, _centerLabel, _rightLabel;
 
 	private JList _leftList;
@@ -109,8 +99,6 @@ public class DxConflictsOfAnEventDlg extends JDialog implements ActionListener,
 		initialize(dApplic);
 	}// end DxConflictsOfAnEventDlg
 
-
-
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().equals(DConst.BUT_CLOSE)) {
 			_dModel.deleteObserver(this);
@@ -123,11 +111,10 @@ public class DxConflictsOfAnEventDlg extends JDialog implements ActionListener,
 		}
 	}// end actionPerformed
 
-
 	/**
 	 * Initialize the dialog
 	 */
-	protected void initialize(DApplication dApplic) {
+	private void initialize(DApplication dApplic) {
 		this.getContentPane().setLayout(new BorderLayout());
 		setResizable(false);
 		buildVectors();
@@ -147,17 +134,14 @@ public class DxConflictsOfAnEventDlg extends JDialog implements ActionListener,
 		this.setVisible(true);
 	}
 
-
 	public Dimension getPreferredSize() {
 		return new Dimension(WIDTH_DLG, HEIGHT_DLG);
 	}
 
-
-
 	/**
 	 * initialize label in each panel
 	 */
-	private void initializePanel() {
+	void initializePanel() {
 		buildVectors();
 		_leftLabel.setText(String.valueOf(_leftVector.size()));
 		_centerLabel.setText(String.valueOf(_centerVector.size()));
@@ -210,9 +194,9 @@ public class DxConflictsOfAnEventDlg extends JDialog implements ActionListener,
 		_centerLabel.setForeground(DConst.COLOR_QUANTITY_DLGS);
 		// The listContainerPanel
 		JPanel listPanel = DxTools.listPanel(_centerList);
-//		listPanel.setMinimumSize(new Dimension(150, 100));
-		listPanel.setPreferredSize(new Dimension(WIDTH_PANE,HEIGHT_PANE));
-//		listPanel.setMaximumSize(new Dimension(150, 400));
+		//		listPanel.setMinimumSize(new Dimension(150, 100));
+		listPanel.setPreferredSize(new Dimension(WIDTH_PANE, HEIGHT_PANE));
+		//		listPanel.setMaximumSize(new Dimension(150, 400));
 		JPanel listContainerPanel = new JPanel();
 
 		listContainerPanel.add(titleLabel);
@@ -278,9 +262,9 @@ public class DxConflictsOfAnEventDlg extends JDialog implements ActionListener,
 		_leftLabel.setForeground(DConst.COLOR_QUANTITY_DLGS);
 
 		JPanel listPanel = DxTools.listPanel(_leftList);
-//		listPanel.setMinimumSize(new Dimension(150, 100));
-		listPanel.setPreferredSize(new Dimension(WIDTH_PANE,HEIGHT_PANE));
-//		listPanel.setMaximumSize(new Dimension(150, 400));
+		//		listPanel.setMinimumSize(new Dimension(150, 100));
+		listPanel.setPreferredSize(new Dimension(WIDTH_PANE, HEIGHT_PANE));
+		//		listPanel.setMaximumSize(new Dimension(150, 400));
 		// the _leftPanel
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout());
@@ -339,9 +323,9 @@ public class DxConflictsOfAnEventDlg extends JDialog implements ActionListener,
 		_rightLabel.setForeground(DConst.COLOR_QUANTITY_DLGS);
 
 		JPanel listPanel = DxTools.listPanel(_rightList);
-//		listPanel.setMinimumSize(new Dimension(150, 100));
-		listPanel.setPreferredSize(new Dimension(WIDTH_PANE,HEIGHT_PANE));
-//		listPanel.setMaximumSize(new Dimension(150, 400));
+		//		listPanel.setMinimumSize(new Dimension(150, 100));
+		listPanel.setPreferredSize(new Dimension(WIDTH_PANE, HEIGHT_PANE));
+		//		listPanel.setMaximumSize(new Dimension(150, 400));
 		// the _rightPanel
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout());
@@ -390,13 +374,12 @@ public class DxConflictsOfAnEventDlg extends JDialog implements ActionListener,
 		}// end for
 	}// end method
 
-	
-	private  ButtonsPanel setButtons() {
+	private ButtonsPanel setButtons() {
 		String[] a = { DConst.BUT_CHANGE, DConst.BUT_CLOSE };
 		_buttonsPanel = new TwoButtonsPanel(this, a);
 		return _buttonsPanel;
 	}
-		
+
 	/**
 	 * 
 	 */
@@ -406,7 +389,6 @@ public class DxConflictsOfAnEventDlg extends JDialog implements ActionListener,
 		new DxConflictsOfAnEventPanel(this, eventRes, _dModel);
 	}
 
-	
 	private JList getSelectedValue() {
 		if (_leftList.getSelectedValue() != null)
 			return _leftList;
@@ -417,18 +399,10 @@ public class DxConflictsOfAnEventDlg extends JDialog implements ActionListener,
 		return null;
 	}
 
-	public String idDlgToString() {
-		return this.getClass().toString();
-	}
-
 	public void update(@SuppressWarnings("unused")
 	Observable o, @SuppressWarnings("unused")
 	Object arg) {
 		this.initializePanel();
-	}
-
-	private void saySomething(String str, MouseEvent e) {
-		System.out.println(str + e.toString());
 	}
 
 }// end EventsDlg

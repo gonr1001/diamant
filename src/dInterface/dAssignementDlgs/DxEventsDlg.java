@@ -39,7 +39,6 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.StringTokenizer;
 import java.util.Vector;
-import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
@@ -58,16 +57,8 @@ import dInternal.dOptimization.DxEvent;
 import dInternal.dUtil.DXToolsMethods;
 import eLib.exit.dialog.InformationDlg;
 
-public class DxEventsDlg extends JDialog implements ActionListener, Observer,
+public class DxEventsDlg extends DxEventsGUIforDlg  implements ActionListener, Observer,
 		DlgIdentification {
-
-	private final int WIDTH_DLG = 700;
-
-	private final int HEIGHT_DLG = 420;
-
-	private final int WIDTH_PANE = 150;
-
-	private final int HEIGHT_PANE = 280; 
 
 	private JLabel _leftLabel, _centerLabel, _rightLabel;
 
@@ -537,18 +528,10 @@ public class DxEventsDlg extends JDialog implements ActionListener, Observer,
 				enableArrows);
 	}
 
-	public String idDlgToString() {
-		return this.getClass().toString();
-	}
-
 	public void update(@SuppressWarnings("unused")
 	Observable o, @SuppressWarnings("unused")
 	Object arg) {
 		this.initializePanel();
-	}
-
-	private void saySomething(String str, MouseEvent e) {
-		System.out.println(str + e.toString());
 	}
 
 }// end EventsDlg
