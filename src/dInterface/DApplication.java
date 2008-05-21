@@ -615,7 +615,7 @@ public class DApplication {
 	 */
 	public void assignEvents() {
 		if(DxFlags.newDxConflictsOfAnEventDlg) {
-			new DxEventsDlg(this.getJFrame(), this.getCurrentDModel());
+			new DxEventsDlg(this);
 		} else {
 			new DxEventsDlgOld(this.getJFrame(), this.getCurrentDModel());
 		}		
@@ -885,7 +885,7 @@ public class DApplication {
 	 * 
 	 */
 	public void eventAssignment() {
-		new DxEventsDlg(this.getJFrame(), this.getCurrentDModel());
+		new DxEventsDlg(this);
 	}
 
 	/**
