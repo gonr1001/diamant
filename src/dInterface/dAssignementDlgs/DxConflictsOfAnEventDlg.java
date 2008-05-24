@@ -143,9 +143,16 @@ public class DxConflictsOfAnEventDlg extends DxEventsGUIforDlg implements
 	 */
 	void initializePanel() {
 		buildVectors();
+//		_leftLabel.setText(String.valueOf(_leftVector.size()));
+//		_centerLabel.setText(String.valueOf(_centerVector.size()));
+//		_rightLabel.setText(String.valueOf(_rightVector.size()));
+		
 		_leftLabel.setText(String.valueOf(_leftVector.size()));
+		_leftList.setListData(_leftVector);
 		_centerLabel.setText(String.valueOf(_centerVector.size()));
+		_centerList.setListData(_centerVector);
 		_rightLabel.setText(String.valueOf(_rightVector.size()));
+		_rightList.setListData(_rightVector);
 	}
 
 	/**
@@ -250,8 +257,8 @@ public class DxConflictsOfAnEventDlg extends DxEventsGUIforDlg implements
 				if (!lse.getValueIsAdjusting()) {
 					_centerList.clearSelection();
 					_rightList.clearSelection();
-					String selectedItem = (String) _leftList.getSelectedValue();
-					System.out.println("left" + selectedItem);
+//					String selectedItem = (String) _leftList.getSelectedValue();
+//					System.out.println("left" + selectedItem);
 				}
 			}
 		}
@@ -347,7 +354,7 @@ public class DxConflictsOfAnEventDlg extends DxEventsGUIforDlg implements
 		_leftVector = new Vector<String>();
 		_centerVector = new Vector<String>();
 		_rightVector = new Vector<String>();
-		String _eventFullID;
+		String eventFullID;
 		StringTokenizer stk;
 		for (int i = 0; i < _dModel.getSetOfEvents().size(); i++) {
 			String eventFullKey = ((DxEvent) _dModel.getSetOfEvents()
@@ -358,21 +365,23 @@ public class DxConflictsOfAnEventDlg extends DxEventsGUIforDlg implements
 					.parseLong(stk.nextToken()), Long
 					.parseLong(stk.nextToken()));
 			stk = new StringTokenizer(eventFullKey, ".");
-			_eventFullID = _activities.getUnityCompleteName(Long.parseLong(stk
+			eventFullID = _activities.getUnityCompleteName(Long.parseLong(stk
 					.nextToken()), Long.parseLong(stk.nextToken()), Long
 					.parseLong(stk.nextToken()), Long
 					.parseLong(stk.nextToken()));
 			if (currUnity.compareToAssign(false)) {
-				_rightVector.add(_eventFullID);
+				_rightVector.add(eventFullID);
 			} else {
 				if (currUnity.isFixed()) {
-					_leftVector.add(_eventFullID);
+					_leftVector.add(eventFullID);
 				} else {
-					_centerVector.add(_eventFullID);
+					_centerVector.add(eventFullID);
 				}
 			}// end else if (_currUnity.compareByField(2, "false"))
 		}// end for
 	}// end method
+
+
 
 	private ButtonsPanel setButtons() {
 		String[] a = { DConst.BUT_CHANGE, DConst.BUT_CLOSE };

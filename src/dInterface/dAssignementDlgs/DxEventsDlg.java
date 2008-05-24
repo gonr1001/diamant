@@ -75,8 +75,6 @@ public class DxEventsDlg extends DxEventsGUIforDlg  implements ActionListener, O
 
 	private SetOfActivities _activities;
 
-	private String _eventFullKey;
-
 	private DModel _dModel;
 
 	private Vector<String> _leftVector;
@@ -483,28 +481,28 @@ public class DxEventsDlg extends DxEventsGUIforDlg  implements ActionListener, O
 		_leftVector = new Vector<String>();
 		_centerVector = new Vector<String>();
 		_rightVector = new Vector<String>();
-		String _eventFullID;
+		String eventFullID;
 		StringTokenizer stk;
 		for (int i = 0; i < _dModel.getSetOfEvents().size(); i++) {
-			_eventFullKey = ((DxEvent) _dModel.getSetOfEvents()
+			String eventFullKey = ((DxEvent) _dModel.getSetOfEvents()
 					.getResourceAt(i).getAttach()).getPrincipalRescKey();
-			stk = new StringTokenizer(_eventFullKey, ".");
+			stk = new StringTokenizer(eventFullKey, ".");
 			Unity currUnity = _activities.getUnity(Long.parseLong(stk
 					.nextToken()), Long.parseLong(stk.nextToken()), Long
 					.parseLong(stk.nextToken()), Long
 					.parseLong(stk.nextToken()));
-			stk = new StringTokenizer(_eventFullKey, ".");
-			_eventFullID = _activities.getUnityCompleteName(Long.parseLong(stk
+			stk = new StringTokenizer(eventFullKey, ".");
+			eventFullID = _activities.getUnityCompleteName(Long.parseLong(stk
 					.nextToken()), Long.parseLong(stk.nextToken()), Long
 					.parseLong(stk.nextToken()), Long
 					.parseLong(stk.nextToken()));
 			if (currUnity.compareToAssign(false)) {
-				_rightVector.add(_eventFullID);
+				_rightVector.add(eventFullID);
 			} else {
 				if (currUnity.isFixed()) {
-					_leftVector.add(_eventFullID);
+					_leftVector.add(eventFullID);
 				} else {
-					_centerVector.add(_eventFullID);
+					_centerVector.add(eventFullID);
 				}
 			}// end else if (_currUnity.compareByField(2, "false"))
 		}// end for
