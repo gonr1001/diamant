@@ -143,9 +143,6 @@ public class DxConflictsOfAnEventDlg extends DxEventsGUIforDlg implements
 	 */
 	void initializePanel() {
 		buildVectors();
-//		_leftLabel.setText(String.valueOf(_leftVector.size()));
-//		_centerLabel.setText(String.valueOf(_centerVector.size()));
-//		_rightLabel.setText(String.valueOf(_rightVector.size()));
 		
 		_leftLabel.setText(String.valueOf(_leftVector.size()));
 		_leftList.setListData(_leftVector);
