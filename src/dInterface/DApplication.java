@@ -57,9 +57,9 @@ import dInterface.dAffectation.SectionDlg;
 import dInterface.dAlgorithms.PersonalizeMixingAlgorithmDlg;
 import dInterface.dAssignementDlgs.DxActivityDlg;
 import dInterface.dAssignementDlgs.DxConflictsOfAnEventDlg;
-import dInterface.dAssignementDlgs.DxConflictsOfAnEventDlgOld;
+//import dInterface.dAssignementDlgs.DxConflictsOfAnEventDlgOld;
 import dInterface.dAssignementDlgs.DxEventsDlg;
-import dInterface.dAssignementDlgs.DxEventsDlgOld;
+//import dInterface.dAssignementDlgs.DxEventsDlgOld;
 import dInterface.dAssignementDlgs.DxInstructorAvailabilityDlg;
 import dInterface.dAssignementDlgs.DxRoomAvailabilityDlg;
 import dInterface.dData.DefFilesToImportDlg;
@@ -614,11 +614,11 @@ public class DApplication {
 	 * 
 	 */
 	public void assignEvents() {
-		if(DxFlags.newDxConflictsOfAnEventDlg) {
+//		if(DxFlags.newDxConflictsOfAnEventDlg) {
 			new DxEventsDlg(this);
-		} else {
-			new DxEventsDlgOld(this.getJFrame(), this.getCurrentDModel());
-		}		
+//		} else {
+//			new DxEventsDlgOld(this.getJFrame(), this.getCurrentDModel());
+//		}		
 	}
 
 	/**
@@ -632,11 +632,11 @@ public class DApplication {
 	 * 
 	 */
 	public void conflictsOfAnEvent() {
-		if(DxFlags.newDxConflictsOfAnEventDlg) {
+//		if(DxFlags.newDxConflictsOfAnEventDlg) {
 			new DxConflictsOfAnEventDlg(this);
-		} else {
-			new DxConflictsOfAnEventDlgOld(this.getJFrame(), this.getCurrentDModel());
-		}		
+//		} else {
+//			new DxConflictsOfAnEventDlgOld(this.getJFrame(), this.getCurrentDModel());
+//		}		
 	}
 
 	/**

@@ -157,18 +157,18 @@ public class DxConflictsOfAnEventDlg extends DxEventsGUIforDlg implements
 		class CenterMouseListener extends MouseAdapter {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				saySomething("Mouse clicked (# of clicks: " + e.getClickCount()
-						+ ")", e);
+//				saySomething("Mouse clicked (# of clicks: " + e.getClickCount()
+//						+ ")", e);
 				if (e.getClickCount() == 2) {
-					int index = _centerList.locationToIndex(e.getPoint());
-					saySomething("Selected Item index " + index + " "
-							+ _centerList.getSelectedValue(), e);
+//					int index = _centerList.locationToIndex(e.getPoint());
+//					saySomething("Selected Item index " + index + " "
+//							+ _centerList.getSelectedValue(), e);
 					doubleClicMouseProcess(_centerList);
 				}// end if
 				if (e.getClickCount() == 1) {
 					int index = _centerList.locationToIndex(e.getPoint());
-					saySomething("Selected Item index " + index + " "
-							+ _centerList.getSelectedValue(), e);
+//					saySomething("Selected Item index " + index + " "
+//							+ _centerList.getSelectedValue(), e);
 					_centerList.setSelectedIndex(index);
 				}// end if
 			}
@@ -226,18 +226,18 @@ public class DxConflictsOfAnEventDlg extends DxEventsGUIforDlg implements
 		class LeftMouseListener extends MouseAdapter {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				saySomething("Mouse clicked (# of clicks: " + e.getClickCount()
-						+ ")", e);
+//				saySomething("Mouse clicked (# of clicks: " + e.getClickCount()
+//						+ ")", e);
 				if (e.getClickCount() == 2) {
-					int index = _leftList.locationToIndex(e.getPoint());
-					saySomething("Selected Item index " + index + " "
-							+ _leftList.getSelectedValue(), e);
+//					int index = _leftList.locationToIndex(e.getPoint());
+//					saySomething("Selected Item index " + index + " "
+//							+ _leftList.getSelectedValue(), e);
 					doubleClicMouseProcess(_leftList);
 				}// end if
 				if (e.getClickCount() == 1) {
 					int index = _leftList.locationToIndex(e.getPoint());
-					saySomething("Selected Item index " + index + " "
-							+ _leftList.getSelectedValue(), e);
+//					saySomething("Selected Item index " + index + " "
+//							+ _leftList.getSelectedValue(), e);
 					_leftList.setSelectedIndex(index);
 				}// end if
 			}
@@ -286,18 +286,18 @@ public class DxConflictsOfAnEventDlg extends DxEventsGUIforDlg implements
 		class RightMouseListener extends MouseAdapter {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				saySomething("Mouse clicked (# of clicks: " + e.getClickCount()
-						+ ")", e);
+//				saySomething("Mouse clicked (# of clicks: " + e.getClickCount()
+//						+ ")", e);
 				if (e.getClickCount() == 2) {
-					int index = _rightList.locationToIndex(e.getPoint());
-					saySomething("Selected Item index " + index + " "
-							+ _rightList.getSelectedValue(), e);
+//					int index = _rightList.locationToIndex(e.getPoint());
+//					saySomething("Selected Item index " + index + " "
+//							+ _rightList.getSelectedValue(), e);
 					doubleClicMouseProcess(_rightList);
 				}// end if
 				if (e.getClickCount() == 1) {
 					int index = _rightList.locationToIndex(e.getPoint());
-					saySomething("Selected Item index " + index + " "
-							+ _rightList.getSelectedValue(), e);
+//					saySomething("Selected Item index " + index + " "
+//							+ _rightList.getSelectedValue(), e);
 					_rightList.setSelectedIndex(index);
 				}// end if
 			}

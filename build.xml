@@ -2,8 +2,7 @@
 	<target name="setDirs" unless="setDirs" description="setup the properites.">
 		<tstamp />
 		<property name="srcDir" value="./src" />
-		<property name="localJars" value="${srcDir}/jars" />
-			
+		<property name="localJars" value="${srcDir}/jars" />			
 		<property name="orgDataTest" value="./dataTest" />
 			
 		<property name="AntWorkSpace" value="./AntWorkSpace" />
@@ -12,7 +11,7 @@
 		<property name="AntOutputFiles" value="${AntWorkSpace}/dataOutputFiles" />
 		<property name="reports" value="${AntWorkSpace}/reports" />
 		<property name="pref" value="${AntWorkSpace}/pref" />
-		<property name="trace" value="${AntWorkSpace}/trace" />
+		<property name="trace" value="./trace" />
 		<property name="lib" value="${AntWorkSpace}/lib" />
 		<property name="distDirZip" value="${AntWorkSpace}/Diamant2.2.x" />
 			
@@ -172,8 +171,8 @@
 				<exclude name="**/*.txvpck" />
 			</fileset>
 		</copy>
-		<copy todir="${build}/trace">
-			<fileset dir="${srcDir}/trace">
+		<copy todir="${distDir}/trace">
+			<fileset dir="${trace}">
 				<exclude name="**/CVS" />
 				<exclude name="**/*.txvpck" />
 			</fileset>
@@ -192,7 +191,7 @@
 				<exclude name="**/*.txvpck" />
 			</fileset>
 		</copy>
-		<copy file="${srcDir}/trace/log4j.conf" todir="${distDir}/trace" />
+		<copy file="${trace}/log4j.conf" todir="${distDir}/trace" />
 		<copy todir="${distDir}/qVerif">
 			<fileset dir="${origDist}/qVerif">
 				<exclude name="**/CVS" />
