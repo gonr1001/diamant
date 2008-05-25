@@ -32,4 +32,5 @@ import eLib.exit.exception.DxException;
  */
 public interface DxSiteReader {
     public DxSetOfSites readSetOfSites()throws DxException;
+    public DxSetOfSites readSetOfSitesNew()throws DxException;
 }

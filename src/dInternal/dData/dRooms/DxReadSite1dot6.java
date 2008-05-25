@@ -171,4 +171,10 @@ public class DxReadSite1dot6 implements DxSiteReader {
         return new DxAvailability(nTemp);
     }
 
+	@Override
+	public DxSetOfSites readSetOfSitesNew() throws DxException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

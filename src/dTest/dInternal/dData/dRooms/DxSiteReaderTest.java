@@ -31,13 +31,11 @@ import dInternal.dData.dRooms.DxReadSitedotDia;
 import dInternal.dData.dRooms.DxSetOfRooms;
 import dInternal.dData.dRooms.DxSetOfSites;
 import dInternal.dData.dRooms.DxSiteReader;
+import developer.DxFlags;
 import eLib.exit.exception.DxException;
 
 public class DxSiteReaderTest extends TestCase {
 
-	public DxSiteReaderTest(String name) {
-		super(name);
-	}
 
 	public static Test suite() {
 		return new TestSuite(DxSiteReaderTest.class);
@@ -59,10 +57,13 @@ public class DxSiteReaderTest extends TestCase {
 		DxSiteReader dxSites = new DxReadSitedotDia(ld.buildDataExchange(tokens
 				.getBytes()), 5, 12);
 		try {
-			@SuppressWarnings("unused")
-			DxSetOfSites dxsor = dxSites.readSetOfSites();
+			if(DxFlags.newReadSetOfSites) {
+				DxSetOfSites dxsor = dxSites.readSetOfSitesNew();
+			} else {
+				DxSetOfSites dxsor = dxSites.readSetOfSites();
+			}
 			assertFalse("test2_readSetOfSites: Should have failed before", true);
-		} catch (DxException e) {
+		} catch (Exception e) {
 			assertEquals("test2_readSetOfSites: assertEquals",
 					DConst.INVALID_AVAILABILITY_AT + "2", e.getMessage());
 		}
@@ -91,6 +92,7 @@ public class DxSiteReaderTest extends TestCase {
 				.getBytes()), 5, 12);
 		try {
 			@SuppressWarnings("unused")
+			
 			DxSetOfSites dxsor = dxSites.readSetOfSites();
 			assertFalse("test1_readSetOfSites: Should have failed before", true);
 		} catch (DxException e) {
@@ -208,12 +210,12 @@ public class DxSiteReaderTest extends TestCase {
 				+ "1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,"
 				+ "1 1 1 1 1 1 1 1 1 1 1 1;"
 				+ "\r\n"
-				+ "C1-2019;10;212;11;SHE;CAT 1; ;"
+				+ "C1-2019;10;212;11;SHE;"
 				+ "1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,"
 				+ "1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,"
 				+ "1 1 1 1 1 1 1 1 1 1 1 1;"
 				+ "\r\n"
-				+ "C1-4030;25;211;11;SHE;CAT 1; ;"
+				+ "C1-4030;25;211;11;SHE;CAT 1;;"
 				+ "1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,"
 				+ "1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,"
 				+ "1 1 1 1 1 1 1 1 1 1 1 1;" 
