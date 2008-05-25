@@ -24,7 +24,9 @@ package dInterface.dAssignementDlgs;
  * 
  * Description: DxEventsDlg is a class used to:
  * <p>
- * TODO:insert comments
+ * Display the dialog showing the events,
+ * The events are in three JLists 
+ * fixed, assigned or no-assigned
  * <p>
  * 
  */
@@ -50,8 +52,6 @@ import dInterface.DlgIdentification;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.DxTools;
 import dInterface.dUtil.TwoButtonsPanel;
-import dInternal.DModel;
-import dInternal.dData.dActivities.SetOfActivities;
 import dInternal.dData.dActivities.Unity;
 import dInternal.dOptimization.DxEvent;
 import dInternal.dUtil.DXToolsMethods;
@@ -60,52 +60,36 @@ import eLib.exit.dialog.InformationDlg;
 public class DxEventsDlg extends DxEventsGUIforDlg  implements ActionListener, Observer,
 		DlgIdentification {
 
-	private JLabel _leftLabel, _centerLabel, _rightLabel;
+	private JLabel _labelForFixed; 	
+	
+	private JLabel _labelForAssigned;
+	
+	private JLabel _labelForNoAssigned;
 
-	private JList _leftList;
+	private JList _fixedList;
+	
+	private JList _assignedList;
+	
+	private JList _noAssignedList;
+	
+	private Vector<String> _fixedVector;
 
-	private JList _centerList;
+	private Vector<String> _assignedVector;
 
-	private JList _rightList;
+	private Vector<String> _noAssignedtVector;
 
-	protected JPanel _leftPanel, _centerPanel, _rightPanel, _rightArrowsPanel,
-			_leftArrowsPanel;
-
-	private ButtonsPanel _buttonsPanel;
-
-	private SetOfActivities _activities;
-
-	private DModel _dModel;
-
-	private Vector<String> _leftVector;
-
-	private Vector<String> _centerVector;
-
-	private Vector<String> _rightVector;
-
+	private JPanel _rightArrowsPanel;
+	
+	private JPanel _leftArrowsPanel;
+	
 	private String[] _arrowsNames;
 
-	// /**
-	// * Constructor
-	// *
-	// * @param dApplic
-	// * The application
-	// * @param String
-	// * the title of the dialog
-	// * @boolean if false use EditActivityDld (the old dialog without room
-	// * function and room state) else if true use EditEventDlg (the new
-	// * dialog with room function and room state)
-	// */
-	// public DxEventsDlg(JFrame jFrame, DModel dModel) {
-	// super(jFrame, dModel, DConst.EVENTS_DLG_TITLE);
-	// _dModel = dModel;
-	// _arrowsNames = new String[2];
-	// _arrowsNames[0] = DConst.TO_RIGHT;
-	// _arrowsNames[1] = DConst.TO_LEFT;
-	// buildArrowButtons(); //true);
-	// _dModel.addObserver(this);
-	// initialize();
-	// }// end method
+//	private ButtonsPanel _buttonsPanel;
+//
+//	private SetOfActivities _activities;
+//
+//	private DModel _dModel;
+
 
 	public DxEventsDlg(DApplication dApplic) {
 		super(dApplic.getJFrame(), DConst.EVENTS_DLG_TITLE, true);
@@ -120,20 +104,22 @@ public class DxEventsDlg extends DxEventsGUIforDlg  implements ActionListener, O
 		initialize(dApplic);
 	}// end DxConflictsOfAnEventDlg
 
+	
+	
 	public void actionPerformed(ActionEvent e) {
 		if ((e.getActionCommand().equalsIgnoreCase("left" + _arrowsNames[0]))
 				|| (e.getActionCommand().equalsIgnoreCase("left"
 						+ _arrowsNames[1]))) {
 			// if "toRight" button
 			if (e.getActionCommand().equalsIgnoreCase("left" + _arrowsNames[0])) {
-				DxTools.listTransfers(_leftList, _centerList, _leftVector,
-						_centerVector, 1);
+				DxTools.listTransfers(_fixedList, _assignedList, _fixedVector,
+						_assignedVector, 1);
 			} else {
-				DxTools.listTransfers(_centerList, _leftList, _centerVector,
-						_leftVector, 1);
+				DxTools.listTransfers(_assignedList, _fixedList, _assignedVector,
+						_fixedVector, 1);
 			}
-			_leftLabel.setText(String.valueOf(_leftVector.size()));
-			_centerLabel.setText(String.valueOf(_centerVector.size()));
+			_labelForFixed.setText(String.valueOf(_fixedVector.size()));
+			_labelForAssigned.setText(String.valueOf(_assignedVector.size()));
 			_buttonsPanel.setFirstEnable();
 		}// end if (
 
@@ -144,25 +130,28 @@ public class DxEventsDlg extends DxEventsGUIforDlg  implements ActionListener, O
 			// if "toRight" button
 			if (e.getActionCommand()
 					.equalsIgnoreCase("right" + _arrowsNames[0])) {
-				DxTools.listTransfers(_centerList, _rightList, _centerVector,
-						_rightVector, 1);
+				DxTools.listTransfers(_assignedList, _noAssignedList, _assignedVector,
+						_noAssignedtVector, 1);
 			} else {
-				DxTools.listTransfers(_rightList, _centerList, _rightVector,
-						_centerVector, 1);
+				DxTools.listTransfers(_noAssignedList, _assignedList, _noAssignedtVector,
+						_assignedVector, 1);
 			}
-			_rightLabel.setText(String.valueOf(_rightVector.size()));
-			_centerLabel.setText(String.valueOf(_centerVector.size()));
+			_labelForNoAssigned.setText(String.valueOf(_noAssignedtVector.size()));
+			_labelForAssigned.setText(String.valueOf(_assignedVector.size()));
 			_buttonsPanel.setFirstEnable();
 		}// end if (
-		// if Button CLOSE is pressed
+		
 		if (e.getActionCommand().equals(DConst.BUT_CLOSE)) {
 			_dModel.deleteObserver(this);
 			dispose();
 		}
-		// if Button APPLY is pressed
+	
 		if (e.getActionCommand().equals(DConst.BUT_APPLY)) {
 			setUnities();
 			_dModel.changeInDModel(this.idDlgToString());
+			_fixedList.clearSelection();
+			_noAssignedList.clearSelection();
+			_assignedList.clearSelection();
 			_buttonsPanel.setFirstDisable();
 		}// end if Button APPLY
 	}// end method
@@ -172,9 +161,11 @@ public class DxEventsDlg extends DxEventsGUIforDlg  implements ActionListener, O
 	 */
 	protected void initialize(DApplication dApplic) {
 		this.getContentPane().setLayout(new BorderLayout());
+		
 		setResizable(false);
 		buildVectors();
 
+		
 		JPanel leftPanel = initLeftPanel();
 		JPanel centerPanel = initCenterPanel();
 		JPanel rightPanel = initRightPanel();
@@ -184,13 +175,11 @@ public class DxEventsDlg extends DxEventsGUIforDlg  implements ActionListener, O
 		this.getContentPane().add(leftPanel, BorderLayout.WEST);
 		this.getContentPane().add(rightPanel, BorderLayout.EAST);
 		this.getContentPane().add(centerPanel, BorderLayout.CENTER);
+
 		this.getContentPane().add(_buttonsPanel, BorderLayout.SOUTH);
 		this.pack();
 		this.setLocationRelativeTo(dApplic.getJFrame());
 
-		// _leftList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-		// _centerList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-		// _rightList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		this.setResizable(false);
 		this.setVisible(true);
 	}
@@ -200,74 +189,48 @@ public class DxEventsDlg extends DxEventsGUIforDlg  implements ActionListener, O
 	 * arrows panels
 	 */
 	private JPanel initCenterPanel() {
-		_centerList = new JList(_centerVector);
+		_assignedList = new JList(_assignedVector);
 		class CenterMouseListener extends MouseAdapter {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-//				saySomething("Mouse clicked (# of clicks: " + e.getClickCount()
-//						+ ")", e);
 				if (e.getClickCount() == 2) {
-//					int index = _centerList.locationToIndex(e.getPoint());
-//					saySomething("Selected Item index " + index + " "
-//							+ _centerList.getSelectedValue(), e);
-					doubleClicMouseProcess(_centerList);
+					doubleClicMouseProcess(_assignedList);
 				}// end if
 				if (e.getClickCount() == 1) {
-					_leftList.clearSelection();
-					_rightList.clearSelection();
-					// int index = _centerList.locationToIndex(e.getPoint());
-					// saySomething("Selected Item index " + index + " "
-					// + _centerList.getSelectedValue(), e);
-					// _centerList.setSelectedIndex(index);
+					_fixedList.clearSelection();
+					_noAssignedList.clearSelection();
 				}// end if
 			}
 		}
 		MouseAdapter CenterMouseListener = new CenterMouseListener();
-		_centerList.addMouseListener(CenterMouseListener);
-		// _centerList.addMouseListener(mouseListenerLists);
-		_centerList
+		_assignedList.addMouseListener(CenterMouseListener);
+		_assignedList
 				.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-		// class CenterSelectedItemListener implements ListSelectionListener {
-		// public void valueChanged(ListSelectionEvent lse) {
-		// if (!lse.getValueIsAdjusting()) {
-		// _leftList.clearSelection();
-		// _rightList.clearSelection();
-		// String selectedItem = (String) _centerList
-		// .getSelectedValue();
-		// System.out.println("center" + selectedItem);
-		// }
-		// }
-		// }
-		// ListSelectionListener CenterSelectedItemListener = new
-		// CenterSelectedItemListener();
-		// _centerList.addListSelectionListener(CenterSelectedItemListener);
 
 		JLabel titleLabel = new JLabel(DConst.EVENTS_PLACED + " ");
-		_centerLabel = new JLabel(String.valueOf(_centerVector.size()));
-		_centerLabel.setForeground(DConst.COLOR_QUANTITY_DLGS);
+		_labelForAssigned = new JLabel(String.valueOf(_assignedVector.size()));
+		_labelForAssigned.setForeground(DConst.COLOR_QUANTITY_DLGS);
 		// The listContainerPanel
-		JPanel listPanel = DxTools.listPanel(_centerList);
-		// listPanel.setMinimumSize(new Dimension(150, 100));
+		JPanel listPanel = DxTools.listPanel(_assignedList);
 		listPanel.setPreferredSize(new Dimension(WIDTH_PANE, HEIGHT_PANE));
-		// listPanel.setMaximumSize(new Dimension(150, 400));
 		JPanel listContainerPanel = new JPanel();
 
 		listContainerPanel.add(titleLabel);
-		listContainerPanel.add(_centerLabel);
+		listContainerPanel.add(_labelForAssigned);
 		listContainerPanel.add(listPanel);
 
 		// the _centerPanel
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout());
-		// _centerPanel.setPreferredSize(panelDim);
+		
 		JPanel miPanel = new JPanel();
-		miPanel.add(_leftArrowsPanel);// , BorderLayout.EAST);
-		miPanel.add(listContainerPanel);// , BorderLayout.CENTER);
-		miPanel.add(_rightArrowsPanel);// , BorderLayout.WEST);
+		miPanel.add(_leftArrowsPanel);
+		miPanel.add(listContainerPanel);
+		miPanel.add(_rightArrowsPanel);
 
 		JPanel centerPanelTop = new JPanel();
 		centerPanelTop.add(titleLabel);
-		centerPanelTop.add(_centerLabel);
+		centerPanelTop.add(_labelForAssigned);
 		panel.add(centerPanelTop, BorderLayout.NORTH);
 		panel.add(miPanel, BorderLayout.CENTER);
 		return panel;
@@ -277,59 +240,35 @@ public class DxEventsDlg extends DxEventsGUIforDlg  implements ActionListener, O
 	 * initLeftPanel
 	 */
 	private JPanel initLeftPanel() {
-		_leftList = new JList(_leftVector);
+		_fixedList = new JList(_fixedVector);
 		class LeftMouseListener extends MouseAdapter {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-//				saySomething("Mouse clicked (# of clicks: " + e.getClickCount()
-//						+ ")", e);
 				if (e.getClickCount() == 2) {
-//					int index = _leftList.locationToIndex(e.getPoint());
-//					saySomething("Selected Item index " + index + " "
-//							+ _leftList.getSelectedValue(), e);
-					doubleClicMouseProcess(_leftList);
+					doubleClicMouseProcess(_fixedList);
 				}// end if
 				 if (e.getClickCount() == 1) {
-						 _centerList.clearSelection();
-						 _rightList.clearSelection();
-				// int index = _leftList.locationToIndex(e.getPoint());
-				// saySomething("Selected Item index " + index + " "
-				// + _leftList.getSelectedValue(), e);
-				// _leftList.setSelectedIndex(index);
+						 _assignedList.clearSelection();
+						 _noAssignedList.clearSelection();
 				 }// end if
 			}
 		}
 		MouseAdapter LeftMouseListener = new LeftMouseListener();
-		_leftList.addMouseListener(LeftMouseListener);
-		_leftList
+		_fixedList.addMouseListener(LeftMouseListener);
+		_fixedList
 				.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-		// class LeftSelectedItemListener implements ListSelectionListener {
-		// public void valueChanged(ListSelectionEvent lse) {
-		// if (!lse.getValueIsAdjusting()) {
-		// _centerList.clearSelection();
-		// _rightList.clearSelection();
-		// String selectedItem = (String) _leftList.getSelectedValue();
-		// System.out.println("left" + selectedItem);
-		// }
-		// }
-		// }
-		// ListSelectionListener LeftSelectedItemListener = new
-		// LeftSelectedItemListener();
-		// _leftList.addListSelectionListener(LeftSelectedItemListener);
 		JLabel titleLabel = new JLabel(DConst.EVENTS_FIXED + " ");
-		_leftLabel = new JLabel(String.valueOf(_leftVector.size()));
-		_leftLabel.setForeground(DConst.COLOR_QUANTITY_DLGS);
+		_labelForFixed = new JLabel(String.valueOf(_fixedVector.size()));
+		_labelForFixed.setForeground(DConst.COLOR_QUANTITY_DLGS);
 
-		JPanel listPanel = DxTools.listPanel(_leftList);
-		// listPanel.setMinimumSize(new Dimension(150, 100));
+		JPanel listPanel = DxTools.listPanel(_fixedList);
 		listPanel.setPreferredSize(new Dimension(WIDTH_PANE, HEIGHT_PANE));
-		// listPanel.setMaximumSize(new Dimension(150, 400));
 		// the _leftPanel
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout());
 		JPanel panelTop = new JPanel();
 		panelTop.add(titleLabel);
-		panelTop.add(_leftLabel);
+		panelTop.add(_labelForFixed);
 
 		panel.add(panelTop, BorderLayout.NORTH);
 		panel.add(listPanel, BorderLayout.CENTER);
@@ -341,61 +280,37 @@ public class DxEventsDlg extends DxEventsGUIforDlg  implements ActionListener, O
 	 * Sets the _initRigthPanel
 	 */
 	private JPanel initRightPanel() {
-		_rightList = new JList(_rightVector);
-		_rightList
+		_noAssignedList = new JList(_noAssignedtVector);
+		_noAssignedList
 				.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		class RightMouseListener extends MouseAdapter {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-//				saySomething("Mouse clicked (# of clicks: " + e.getClickCount()
-//						+ ")", e);
 				if (e.getClickCount() == 2) {
-//					// int index = _rightList.locationToIndex(e.getPoint());
-//					saySomething("Selected Item  " + " "
-//							+ _rightList.getSelectedValue(), e);
-					doubleClicMouseProcess(_rightList);
+					doubleClicMouseProcess(_noAssignedList);
 				}// end if
 				 if (e.getClickCount() == 1) {
-						 _centerList.clearSelection();
-						 _leftList.clearSelection();
-				// int index = _rightList.locationToIndex(e.getPoint());
-				// saySomething("Selected Item index " + index + " "
-				// + _rightList.getSelectedValue(), e);
-				// _rightList.setSelectedIndex(index);
+						 _assignedList.clearSelection();
+						 _fixedList.clearSelection();
 				 }// end if
 			}
 		}
 		MouseAdapter RightMouseListener = new RightMouseListener();
-		_rightList.addMouseListener(RightMouseListener);
+		_noAssignedList.addMouseListener(RightMouseListener);
 
-		// class RightSelectedItemListener implements ListSelectionListener {
-		// public void valueChanged(ListSelectionEvent lse) {
-		// if (!lse.getValueIsAdjusting()) {
-		// _centerList.clearSelection();
-		// _leftList.clearSelection();
-		// String selectedItem = (String) _rightList
-		// .getSelectedValue();
-		// System.out.println("right " + selectedItem);
-		// }
-		// }
-		// }
-		// ListSelectionListener RightSelectedItemListener = new
-		// RightSelectedItemListener();
-		// _rightList.addListSelectionListener(RightSelectedItemListener);
 		JLabel titleLabel = new JLabel(DConst.EVENTS_NOT_PLACED + " ");
-		_rightLabel = new JLabel(String.valueOf(_rightVector.size()));
-		_rightLabel.setForeground(DConst.COLOR_QUANTITY_DLGS);
+		_labelForNoAssigned = new JLabel(String.valueOf(_noAssignedtVector.size()));
+		_labelForNoAssigned.setForeground(DConst.COLOR_QUANTITY_DLGS);
 
-		JPanel listPanel = DxTools.listPanel(_rightList);
-		// listPanel.setMinimumSize(new Dimension(150, 100));
+		JPanel listPanel = DxTools.listPanel(_noAssignedList);
 		listPanel.setPreferredSize(new Dimension(WIDTH_PANE, HEIGHT_PANE));
-		// listPanel.setMaximumSize(new Dimension(150, 400));
+	
 		// the _rightPanel
 		JPanel panel = new JPanel();
 		panel.setLayout(new BorderLayout());
 		JPanel panelTop = new JPanel();
 		panelTop.add(titleLabel);
-		panelTop.add(_rightLabel);
+		panelTop.add(_labelForNoAssigned);
 
 		panel.add(panelTop, BorderLayout.NORTH);
 		panel.add(listPanel, BorderLayout.CENTER);
@@ -411,9 +326,8 @@ public class DxEventsDlg extends DxEventsGUIforDlg  implements ActionListener, O
 	 * 
 	 */
 	private void doubleClicMouseProcess(JList aList) {
-		String selectedItem = (String) aList.getSelectedValues()[0];// getSelectedValue();
-		// DResource eventRes =
-		// _dModel.getSetOfEvents().getResource(selectedItem);
+		String selectedItem = (String) aList.getSelectedValues()[0];
+
 		if (!_buttonsPanel.isFirstEnable()) {
 			new DxEditEventDlg(this, _dModel, selectedItem, false);
 			_buttonsPanel.setFirstDisable();
@@ -426,11 +340,17 @@ public class DxEventsDlg extends DxEventsGUIforDlg  implements ActionListener, O
 	/**
 	 * initialize label in each panel
 	 */
-	private void initializePanel() {
+	void initializePanel() {
 		buildVectors();
-		_leftLabel.setText(String.valueOf(_leftVector.size()));
-		_centerLabel.setText(String.valueOf(_centerVector.size()));
-		_rightLabel.setText(String.valueOf(_rightVector.size()));
+		_labelForFixed.setText(String.valueOf(_fixedVector.size()));
+		_fixedList.setListData(_fixedVector);
+		_labelForAssigned.setText(String.valueOf(_assignedVector.size()));
+		_assignedList.setListData(_assignedVector);
+		_labelForNoAssigned.setText(String.valueOf(_noAssignedtVector.size()));
+		_noAssignedList.setListData(_noAssignedtVector);
+		_fixedList.clearSelection();
+		_noAssignedList.clearSelection();
+		_assignedList.clearSelection();
 	}
 
 	/**
@@ -438,8 +358,8 @@ public class DxEventsDlg extends DxEventsGUIforDlg  implements ActionListener, O
 	 */
 	protected void setUnities() {
 		String str = null;
-		for (int i = 0; i < _leftVector.size(); i++) {
-			str = _leftVector.elementAt(i);
+		for (int i = 0; i < _fixedVector.size(); i++) {
+			str = _fixedVector.elementAt(i);
 			_activities.setUnityFix(DXToolsMethods.getToken(str, ".", 0),
 					DXToolsMethods.getToken(str, ".", 1), DXToolsMethods
 							.getToken(str, ".", 2), DXToolsMethods.getToken(
@@ -449,8 +369,8 @@ public class DxEventsDlg extends DxEventsGUIforDlg  implements ActionListener, O
 							.getToken(str, ".", 2), DXToolsMethods.getToken(
 							str, ".", 3), true);
 		}// end for
-		for (int i = 0; i < _centerVector.size(); i++) {
-			str = _centerVector.elementAt(i);
+		for (int i = 0; i < _assignedVector.size(); i++) {
+			str = _assignedVector.elementAt(i);
 			_activities.setUnityFix(DXToolsMethods.getToken(str, ".", 0),
 					DXToolsMethods.getToken(str, ".", 1), DXToolsMethods
 							.getToken(str, ".", 2), DXToolsMethods.getToken(
@@ -460,8 +380,8 @@ public class DxEventsDlg extends DxEventsGUIforDlg  implements ActionListener, O
 							.getToken(str, ".", 2), DXToolsMethods.getToken(
 							str, ".", 3), true);
 		}// end for
-		for (int i = 0; i < _rightVector.size(); i++) {
-			str = _rightVector.elementAt(i);
+		for (int i = 0; i < _noAssignedtVector.size(); i++) {
+			str = _noAssignedtVector.elementAt(i);
 			_activities.setUnityFix(DXToolsMethods.getToken(str, ".", 0),
 					DXToolsMethods.getToken(str, ".", 1), DXToolsMethods
 							.getToken(str, ".", 2), DXToolsMethods.getToken(
@@ -478,9 +398,9 @@ public class DxEventsDlg extends DxEventsGUIforDlg  implements ActionListener, O
 	 * first display
 	 */
 	private void buildVectors() {
-		_leftVector = new Vector<String>();
-		_centerVector = new Vector<String>();
-		_rightVector = new Vector<String>();
+		_fixedVector = new Vector<String>();
+		_assignedVector = new Vector<String>();
+		_noAssignedtVector = new Vector<String>();
 		String eventFullID;
 		StringTokenizer stk;
 		for (int i = 0; i < _dModel.getSetOfEvents().size(); i++) {
@@ -497,12 +417,12 @@ public class DxEventsDlg extends DxEventsGUIforDlg  implements ActionListener, O
 					.parseLong(stk.nextToken()), Long
 					.parseLong(stk.nextToken()));
 			if (currUnity.compareToAssign(false)) {
-				_rightVector.add(eventFullID);
+				_noAssignedtVector.add(eventFullID);
 			} else {
 				if (currUnity.isFixed()) {
-					_leftVector.add(eventFullID);
+					_fixedVector.add(eventFullID);
 				} else {
-					_centerVector.add(eventFullID);
+					_assignedVector.add(eventFullID);
 				}
 			}// end else if (_currUnity.compareByField(2, "false"))
 		}// end for
