@@ -55,8 +55,8 @@ public class FullReport extends ViewReport implements ActionListener {
     showReport();
   } //FullReport
 
-  private void showReport() {
-  	
+  @Override
+  public void showReport() {
     _elements = _options.size() - _rightVec.size();
     _options = buildExternalOptions(_options, _rightVec);
     int firstField = 0;

@@ -32,6 +32,8 @@ package dInterface.dData;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JDialog;
 import javax.swing.JTabbedPane;
@@ -40,7 +42,7 @@ import dConstants.DConst;
 import dInterface.DApplication;
 import dInternal.dData.DStandardReportData;
 
-public class ReportsDlg extends JDialog {// implements ActionListener{
+public class ReportsDlg extends JDialog implements Observer{// implements ActionListener{
 	/* ADJUST_HEIGHT is needed to ajdust the screenSize
 	 * minus the barSize (the value is a guess) at the bottom */
 	private final static int ADJUST_HEIGHT = 100;
@@ -69,6 +71,7 @@ public class ReportsDlg extends JDialog {// implements ActionListener{
 		DApplication.getInstance().setCursorWait();
 		//pBar.execute();
 		_srd = new DStandardReportData(_dApplic.getCurrentDModel());
+		_dApplic.getCurrentDModel().addObserver(this);
 		DApplication.getInstance().setCursorDefault();
 		//System.out.println("Génération de rapports terminé");
 		//pBar.close();
@@ -115,7 +118,12 @@ public class ReportsDlg extends JDialog {// implements ActionListener{
 		return _srd;
 	}
 
-	//public void actionPerformed(ActionEvent e){
-	//}
+	@Override
+	public void update(@SuppressWarnings("unused")
+			Observable o, @SuppressWarnings("unused")
+			Object arg) {
+		System.out.println("Updating ReportsDlg");
+				this.initReportDlg();
+			}
 
 } /* end ReportsDlg */

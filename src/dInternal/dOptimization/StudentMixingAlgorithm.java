@@ -21,7 +21,6 @@ package dInternal.dOptimization;
 
 import java.util.Vector;
 
-import developer.DxFlags;
 import dInterface.dUtil.DxTools;
 import dInternal.DModel;
 import dInternal.dData.StandardCollection;
@@ -129,13 +128,13 @@ public class StudentMixingAlgorithm implements Algorithm {
 				allConvexGroups.add(convGroup);
 				//
 			}// end
-			if (DxFlags.newPartitionAlg) {
+//			if (DxFlags.newPartitionAlg) {
 				RefinedStudMixAlgo newAlgo = new RefinedStudMixAlgo(_dm,
 						getAcceptableVariation());
 				newAlgo.build(actID, typeID, allConvexGroups);
-			} else {
-				setStudentsInGroup(actID, typeID, allConvexGroups); //old algo ysyam
-			}
+//			} else {
+//				setStudentsInGroup(actID, typeID, allConvexGroups); //old algo ysyam
+//			}
 		}//end for(int i=0; i< _eventsRescList.size(); i++)
 		_dm.getConditionsToTest().setMatrixBuilded(false, false);
 		_dm.getTTStructure().getCurrentCycle().getAttributesToDisplay();//_dm.getTTStructure().getPeriodLenght());
@@ -314,43 +313,43 @@ public class StudentMixingAlgorithm implements Algorithm {
 		return convexGroup;
 	}
 
-	/**
-	 *
-	 * @param activityID
-	 * @param typeID
-	 * @param allConvGroup
-	 */
-	private void setStudentsInGroup(String activityID, String typeID,
-			Vector allConvGroup) {
-		DValue value = new DValue();
-		value.setIntValue(0);
-		DValue size;
-		Vector<DValue> sizeOfGroups = new Vector<DValue>();
-		Type type = _dm.getSetOfActivities().getType(activityID, typeID);
-		for (int i = 0; i < allConvGroup.size(); i++) {
-			size = new DValue();
-			int group = DxTools.STIConvertGroupToInt(type.getSetOfSections()
-					.getResourceAt(i).getID());//int group= i+1;
-			size.setIntValue(_dm.getSetOfStudents().getStudentsByGroup(
-					activityID, typeID, group).size());
-			//size.setIntValue(0);
-			sizeOfGroups.add(size);
-		}
-		DResource newStudentGroup = getStudent(allConvGroup, value,
-				sizeOfGroups);
-		while (newStudentGroup != null) {
-			//StudentAttach student= (StudentAttach)_dm.getSetOfStudents().getResource(newStudentGroup.getKey()).getAttach();
-			Student student = _dm.getSetOfStudents().getStudent(
-					newStudentGroup.getKey());
-			int group = DxTools.STIConvertGroupToInt(type.getSetOfSections()
-					.getResourceAt(
-							((DValue) newStudentGroup.getAttach())
-									.getIntValue()).getID());//int group= i+1;
-			//student.setInGroup(activityID+typeID, ((DXValue)newStudentGroup.getAttach()).getIntValue(),false);
-			student.setInGroup(activityID + typeID, group, false);
-			newStudentGroup = getStudent(allConvGroup, value, sizeOfGroups);
-		}
-	}
+//	/**
+//	 *
+//	 * @param activityID
+//	 * @param typeID
+//	 * @param allConvGroup
+//	 */
+//	private void setStudentsInGroup(String activityID, String typeID,
+//			Vector allConvGroup) {
+//		DValue value = new DValue();
+//		value.setIntValue(0);
+//		DValue size;
+//		Vector<DValue> sizeOfGroups = new Vector<DValue>();
+//		Type type = _dm.getSetOfActivities().getType(activityID, typeID);
+//		for (int i = 0; i < allConvGroup.size(); i++) {
+//			size = new DValue();
+//			int group = DxTools.STIConvertGroupToInt(type.getSetOfSections()
+//					.getResourceAt(i).getID());//int group= i+1;
+//			size.setIntValue(_dm.getSetOfStudents().getStudentsByGroup(
+//					activityID, typeID, group).size());
+//			//size.setIntValue(0);
+//			sizeOfGroups.add(size);
+//		}
+//		DResource newStudentGroup = getStudent(allConvGroup, value,
+//				sizeOfGroups);
+//		while (newStudentGroup != null) {
+//			//StudentAttach student= (StudentAttach)_dm.getSetOfStudents().getResource(newStudentGroup.getKey()).getAttach();
+//			Student student = _dm.getSetOfStudents().getStudent(
+//					newStudentGroup.getKey());
+//			int group = DxTools.STIConvertGroupToInt(type.getSetOfSections()
+//					.getResourceAt(
+//							((DValue) newStudentGroup.getAttach())
+//									.getIntValue()).getID());//int group= i+1;
+//			//student.setInGroup(activityID+typeID, ((DXValue)newStudentGroup.getAttach()).getIntValue(),false);
+//			student.setInGroup(activityID + typeID, group, false);
+//			newStudentGroup = getStudent(allConvGroup, value, sizeOfGroups);
+//		}
+//	}
 
 	/**
 	 * get the student from allConvexGroup depending of the mixingType

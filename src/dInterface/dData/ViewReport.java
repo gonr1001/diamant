@@ -135,6 +135,7 @@ public abstract class ViewReport extends JPanel implements ActionListener {
 	}
 
 	public abstract void doSave(Vector <String>rigth);
+	public abstract void showReport();
 
 	public abstract void actionPerformed(ActionEvent e);
 

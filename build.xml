@@ -1,32 +1,26 @@
 <project name="DiamantBuild" basedir="." default="all">
-	<target name="setDirs" unless="setDirs" description="setup the properites.">
+	<target name="setDirs" unless="setDirs" description="setup the properites for dirs.">
 		<tstamp />
 		<property name="srcDir" value="./src" />
-		<property name="localJars" value="${srcDir}/jars" />			
-		<property name="orgDataTest" value="./dataTest" />
-			
+		<property name="localJars" value="./jars" />			
+		<property name="orgDataTest" value="./dataTest" />	
+		<property name="trace" value="./trace" />
+		<property name="origDist" value="./origDist" />
+		
 		<property name="AntWorkSpace" value="./AntWorkSpace" />
 		<property name="build" value="${AntWorkSpace}/classes" />
-		<property name="AntDataTest" value="${AntWorkSpace}/dataTest" />
-		<property name="AntOutputFiles" value="${AntWorkSpace}/dataOutputFiles" />
+		<property name="dataTest" value="${AntWorkSpace}/dataTest" />
+		<property name="dataOutputFiles" value="${AntWorkSpace}/dataOutputFiles" />
 		<property name="reports" value="${AntWorkSpace}/reports" />
 		<property name="pref" value="${AntWorkSpace}/pref" />
-		<property name="trace" value="./trace" />
 		<property name="lib" value="${AntWorkSpace}/lib" />
-		<property name="distDirZip" value="${AntWorkSpace}/Diamant2.2.x" />
-			
-		<property name="distDir" value="${distDirZip}/Diamant" />
-		<property name="origDist" value="${srcDir}/origDist" />
-		<property name="tictacJar" value="${distDir}/tictac.jar" />
+		<property name="distDirZip" value="${AntWorkSpace}/Diamant2.2.x" />	
 		
-		<property name="test.dir" location="${AntWorkSpace}" />
-		<property name="test.classes.dir" location="${test.dir}/classes" />
-		<property name="test.data.dir" location="${AntWorkSpace}/dataTest" />
-			
+		<property name="distDir" value="${distDirZip}/Diamant" />		
+		<property name="tictacJar" value="${distDir}/tictac.jar" />
+					
 		<property name="setProps" value="true" />
-
 	</target>
-
 
 	<target name="clean" depends="setDirs" description="clean up the output directories.">
 		<delete dir="${AntWorkSpace}" />
@@ -35,9 +29,10 @@
 	<target name="prepare" depends="clean" description="prepare the output directories.">
 		<mkdir dir="${AntWorkSpace}" />
 		<mkdir dir="${build}" />
+		<mkdir dir="${dataTest}" />
+		<mkdir dir="${dataOutputFiles}" />		
 		<mkdir dir="${reports}" />
-		<mkdir dir="${AntDataTest}"/>
-		<mkdir dir="${AntOutputFiles}" />
+		<mkdir dir="${pref}" />
 		<mkdir dir="${lib}" />
 		<mkdir dir="${distDirZip}" />
 		<mkdir dir="${distDir}" />
@@ -61,13 +56,12 @@
 		<mkdir dir="${distDir}/facs/medInf/exemple" />
 		<mkdir dir="${distDir}/facs/sciences" />
 		<mkdir dir="${distDir}/facs/sciences/exemple" />
-		<copy todir="${AntDataTest}">
+		<copy todir="${dataTest}">
 			<fileset dir="${orgDataTest}">
 				<exclude name="**/svn" />
-				<exclude name="**/*.txvpck" />
 			</fileset>
 		</copy>
-		<copy todir="${AntWorkSpace}"  file="${srcDir}/MANIFEST.MF" />
+		<copy todir="${AntWorkSpace}"  file="./MANIFEST.MF" />
 		
 	</target>
 
@@ -93,13 +87,11 @@
 		<copy todir="${build}/eLib/exit/txt/data">
 			<fileset dir="${srcDir}/eLib/exit/txt/data">
 				<exclude name="**/svn" />
-				<exclude name="**/*.txvpck" />
 			</fileset>
 		</copy>
 		<copy todir="${build}/dInterface/images">
 			<fileset dir="${srcDir}/dInterface/images">
 				<exclude name="**/svn" />
-				<exclude name="**/*.txvpck" />
 			</fileset>
 		</copy>
 	</target>
@@ -155,7 +147,7 @@
 	</target>
 			
 	<target name="manifest" depends="unjar4" description="make the manifest">
-		<manifest file="${srcDir}/MANIFEST.MF">
+		<manifest file="./MANIFEST.MF">
 			<attribute name="Built-By" value="${user.name}" />
 			<attribute name="Built-On" value="${timestamp}" />
 			<attribute name="Main-Class" value="dmains.Diamant" />
@@ -165,50 +157,40 @@
 
 
 	<target name="package" depends="manifest">
-		<copy todir="${build}/pref">
+		<copy todir="${distDir}/pref">
 			<fileset dir="${srcDir}/pref">
-				<exclude name="**/CVS" />
-				<exclude name="**/*.txvpck" />
+				<exclude name="**/svn" />
 			</fileset>
 		</copy>
 		<copy todir="${distDir}/trace">
 			<fileset dir="${trace}">
-				<exclude name="**/CVS" />
-				<exclude name="**/*.txvpck" />
+				<exclude name="**/svn" />
 			</fileset>
 		</copy>
-		<jar jarfile="${distDir}/tictac.jar" index="true" manifest="${AntWorkSpace}/MANIFEST.MF">
+		<jar jarfile="${distDir}/tictac.jar" index="true" manifest="./MANIFEST.MF">
 			<fileset dir="${build}" />
 		</jar>
 	</target>
 
 	<target name="completepackage" depends="package">
 		<copy file="${origDist}/Diamant.bat" todir="${distDir}" />
-		<copy file="${distDir}/tictac.jar" todir="${srcDir}" />
-		<copy todir="${distDir}/pref">
-			<fileset dir="${srcDir}/pref">
-				<exclude name="**/CVS" />
-				<exclude name="**/*.txvpck" />
-			</fileset>
-		</copy>
+			
 		<copy file="${trace}/log4j.conf" todir="${distDir}/trace" />
 		<copy todir="${distDir}/qVerif">
 			<fileset dir="${origDist}/qVerif">
-				<exclude name="**/CVS" />
-				<exclude name="**/*.txvpck" />
+				<exclude name="**/svn" />
 			</fileset>
 		</copy>
 		<copy todir="${distDir}/facs">
 			<fileset dir="${origDist}/facs">
-				<exclude name="**/CVS" />
-				<exclude name="**/*.txvpck" />
+				<exclude name="**/svn" />
 			</fileset>
 		</copy>
 	</target>
 
 	<!-- performs the jar signature -->
 	<target name="signjar" depends="zip" description="performs the jar signature">
-		<signjar jar="${AntWorkSpace}/tictac.jar" keystore="${AntWorkSpace}/eXitStore" signedjar="${distDir}/stictac.jar" alias="signer" keypass="Diamant" storepass="Diamant" />
+		<signjar jar="${tictac.jar}" keystore="$./sixsStore" signedjar="${distDir}/stictac.jar" alias="signer" keypass="Diamant" storepass="Diamant" />
 	</target>
 
 	<!-- performs zipping -->

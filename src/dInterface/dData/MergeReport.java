@@ -99,6 +99,13 @@ public class MergeReport extends ViewReport implements ActionListener {
    jta.setCaretPosition(0);
  }
 
+ 
+ 
+ @Override
+ public void showReport() {
+ 	// TODO Auto-generated method stub
+ 	
+ }
  public void actionPerformed(ActionEvent e){
    //String command = e.getActionCommand();
    //if "Option" button
@@ -138,5 +145,8 @@ public class MergeReport extends ViewReport implements ActionListener {
     _dApplic.getDxPreferences().save();
     _rightVec = rigth;
   }
+
+
+
 
 }

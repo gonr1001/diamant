@@ -183,6 +183,7 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
 		//if button OK
 		if (command.equals(DConst.BUT_APPLY)) {
 			_parentDlg.doSave(_rightVec);
+			_parentDlg.showReport();
 			//_modified = false;
 			_applyPanel.setFirstDisable();
 			//dispose();

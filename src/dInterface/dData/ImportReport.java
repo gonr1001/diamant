@@ -50,6 +50,12 @@ public class ImportReport extends ViewReport implements ActionListener {
         setImportReport(_jTextArea);
     }
 
+    
+    
+    @Override
+    public void showReport() {
+    	// TODO Auto-generated method stub   	
+    }
     /**
      * 
      * @param jta

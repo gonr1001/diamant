@@ -34,8 +34,8 @@ public class ConflictReport extends ViewReport implements ActionListener {
 
   }
 
-  private void showReport() {
-  	
+  @Override
+  public void showReport() {  	
     _elements = _options.size() - _rightVec.size();
     _options = buildExternalOptions(_options, _rightVec);
     int firstField = 0;
