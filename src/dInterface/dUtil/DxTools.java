@@ -116,50 +116,11 @@ public class DxTools {
 		}//end for
 	}//end method
 
-	/*
-	 public static void listTransfersWithFixed(JList sourceList, JList destinationList, Vector sourceVector, Vector destinationVector, boolean toLeft, String chain){
-	 if (sourceList == null || destinationList == null || sourceVector == null || destinationVector == null )
-	 return;
-	 SetOfResources destinationRes = new SetOfResources(0);
-	 Resource res;
-	 Object [] elementsToTransfer = sourceList.getSelectedValues();
-	 String strElement;
-	 if (elementsToTransfer.length != 0){
-	 for (int i = 0; i < elementsToTransfer.length; i++){
-	 sourceVector.remove(elementsToTransfer[i]);
-	 strElement = (String)elementsToTransfer[i];
-	 if (toLeft){
-	 if(strElement.endsWith(chain))
-	 elementsToTransfer[i] = strElement.substring(0, strElement.length()-chain.length());
-	 }else{
-	 elementsToTransfer[i] = strElement + chain;
-	 }
-	 destinationVector.add(elementsToTransfer[i]);
-	 }
-	 for(int j = 0; j < destinationVector.size(); j++){
-	 res = new Resource((String)destinationVector.elementAt(j),null);
-	 destinationRes.addResource(res, 1);
-	 }
-	 destinationRes.sortSetOfResourcesByID();
-	 destinationVector = destinationRes.getNamesVector();
-	 sourceList.setListData(sourceVector);
-	 destinationList.setListData(destinationVector);
-	 int[] indices = getIndicesToSelect(destinationVector, elementsToTransfer);
-	 destinationList.setSelectedIndices(indices);
-	 sourceList.clearSelection();
-	 }//end for
-	 }//end method
-	 */
 
-	/**
-	 * Set the vectors leftVector and rightVector with the values found in the SetOfActivities
-	 */
-	/*
-	 private static void setVectors(SetOfResources resources, int fieldIndex, String valueSource, String valueDestination, Vector sourceVector, Vector destinationVector){
-	 sourceVector = resources.getIDsByField(fieldIndex, valueSource);
-	 destinationVector = resources.getIDsByField(fieldIndex, valueDestination);
-	 }
-	 */
+
+
+
+
 
 	/**
 	 *
@@ -170,14 +131,14 @@ public class DxTools {
 		return Integer.parseInt(STIGroupID);
 	}
 
-	/**
-	 *
-	 * @param STIGroupNumber
-	 * @return
-	 */
-	public static String STIConvertGroup(String STIGroupNumber) {
-		return STIGroupNumber;
-	}
+//	/**
+//	 *
+//	 * @param STIGroupNumber
+//	 * @return
+//	 */
+//	public static String STIConvertGroup(String STIGroupNumber) {
+//		return STIGroupNumber;
+//	}
 
 	/**
 	 *
@@ -212,19 +173,6 @@ public class DxTools {
 		return panel;
 	}//end method
 
-	/*
-	public static JPanel buttonsPanel2(ActionListener parentDialog, String [] buttonsNames, Dimension parentDim){
-	  JPanel panel = new JPanel();
-	  panel.setPreferredSize(new Dimension((int)parentDim.getWidth(), 35));
-	  JButton button;
-	  for(int i = 0; i<buttonsNames.length; i++){
-	    button = new JButton(buttonsNames[i]);
-	    button.addActionListener(parentDialog);
-	    panel.add(button) ;
-	  }
-	  return panel;
-	}//end method
-	 */
 
 	/**
 	 * Build a panel containing the arrows for information transfert. This panel implements the
@@ -284,65 +232,7 @@ public class DxTools {
 		panel.add(scrollPane);
 		return panel;
 	}
-
-	/*
-	 public static JPanel listPanel(JList theList, JList aList, int panelWidth, int panelHeight){
-	 JPanel panel = new JPanel(new BorderLayout());
-	 panel.setPreferredSize(new Dimension(panelWidth, panelHeight));
-	 Container hBox = Box.createHorizontalBox(); 
-	 hBox.add(theList);
-	 hBox.add(Box.createHorizontalStrut(2));
-	 hBox.add(aList);
-	 JScrollPane scrollPane = new JScrollPane();
-	 scrollPane.setPreferredSize(new Dimension(panelWidth,panelHeight));
-	 scrollPane.getViewport().add(hBox);
-	 //scrollPane.getViewport().add(aList);
-	 panel.add(scrollPane);
-	 return panel;
-	 }
-	 */
-	/*
-	public static JPanel listPanel(JList firstList, JList secondList,JList thirdList, int panelWidth, int panelHeight){
-	   JPanel panel = new JPanel(new BorderLayout());
-	   panel.setPreferredSize(new Dimension(panelWidth, panelHeight));
-	   Container hBox = Box.createHorizontalBox(); 
-	   hBox.add(firstList);
-	   hBox.add(Box.createHorizontalStrut(1));
-	   hBox.add(secondList);
-	   hBox.add(Box.createHorizontalStrut(1));
-	   hBox.add(thirdList);
-	   JScrollPane scrollPane = new JScrollPane();
-	   scrollPane.setPreferredSize(new Dimension(panelWidth,panelHeight));
-	   scrollPane.getViewport().add(hBox);
-	   //scrollPane.getViewport().add(aList);
-	   panel.add(scrollPane);
-	   return panel;
-	 }
-	 */
-
-	// public static JPanel listPanel(JPanel panel, JList[] lists,  int panelWidth, int panelHeight){
-	// 	panel.setPreferredSize(new Dimension(panelWidth, panelHeight));
-	// 	Container hBox = Box.createHorizontalBox(); 
-	// 	int nameListPosition = 1;
-	// 	if(lists.length>0){
-	// 		hBox.add(lists[0]);
-	// 		for(int i=1; i< lists.length; i++){
-	// 			hBox.add(Box.createHorizontalStrut(2));
-	// 			hBox.add(lists[i]);
-	// 			if(i == nameListPosition){
-	// 				Dimension dim=new Dimension(45,80);
-	// 				lists[i].setPreferredSize(dim);
-	// 			}
-	// 				
-	// 		}// end for(int i=1; i< lists.length; i++)
-	// 	}// end if(lists.length>0)
-	// 	JScrollPane scrollPane = new JScrollPane();
-	// 	scrollPane.setPreferredSize(new Dimension(panelWidth,panelHeight));
-	// 	scrollPane.getViewport().add(hBox);
-	// 	//scrollPane.getViewport().add(aList);
-	// 	panel.add(scrollPane);
-	// 	return panel;
-	//  }
+	
 	/**
 	 * Builds a JPanel containing just a JList
 	 * @param theList
@@ -358,75 +248,6 @@ public class DxTools {
 		return panel;
 	}
 
-	// /**
-	//  * Creates a Panel containing a valued title plus a listPanel
-	//  * @param panelDim The panel dimension
-	//  * @param list the list
-	//  * @param vec the vector source for the list
-	//  * @param labelsInfo The array containing the Strings to be displayed
-	//  * @param ml the Mouselistener for the list
-	//  * @return
-	//  */
-	//
-	// public static JPanel setListPanel(Dimension panelDim, JList list, Vector vec, String [] labelsInfo, MouseListener ml){
-	//   Dimension infoPanelDim = new Dimension((int)panelDim.getWidth(), 20);
-	//   Dimension listPanelDim = new Dimension((int)panelDim.getWidth(), (int)(panelDim.getHeight() - infoPanelDim.getHeight()));
-	//   list.setListData(vec);
-	//   list.addMouseListener(ml);
-	//   JPanel listPanel = listPanel(list, (int)listPanelDim.getWidth(), (int)listPanelDim.getHeight());
-	//   //the panel
-	//   JPanel panel = new JPanel();
-	//   panel.setPreferredSize(panelDim);
-	//   panel.add(setInfoPanel(infoPanelDim, labelsInfo));
-	//   panel.add(listPanel);
-	//   //panel.setBorder(BorderFactory.createLineBorder(Color.black));
-	//   return panel;
-	// }
-
-	//  /**
-	//   * Builds a JPanel containig several labels arranged by couples.
-	//   * The first label of the couple represents the name of a quantity, the second
-	//   * label of the couple represents the value of that quantity. If there is
-	//   * only the names, the labels represents the titles
-	//   * @param parentDim The dimension of the panel containing this infoPanel
-	//   * @param items the items to be displayed
-	//   * @return the infoPanel
-	//   */
-	//  public static JPanel setInfoPanel(Dimension panelDim, String [] items){
-	//    JPanel infoPanel = new JPanel();
-	//    JLabel [] labels = new JLabel[items.length];
-	//    infoPanel.setPreferredSize(panelDim);
-	//    for (int i = 0; i < items.length; i++){
-	//      labels[i] = new JLabel(items[i]+ " ");
-	//      if (i%2 != 0){
-	//        labels[i].setForeground(DConst.COLOR_QUANTITY_DLGS);
-	//      }
-	//      infoPanel.add(labels[i]);
-	//    }
-	//    return infoPanel;
-	//  }
-
-	// /**
-	//  * Builds a panel containing a Jlist
-	//  * @param list
-	//  * @param panelWidth
-	//  * @param panelHeight
-	//  * @return
-	//  */
-	///*
-	// public static JPanel infoPanel(String[][] list, int panelWidth, int panelHeight){
-	//   JPanel panel = new JPanel();
-	//   JLabel lNumber;
-	//   panel.setPreferredSize(new Dimension(panelWidth, panelHeight));
-	//   for (int i = 0; i < list.length; i++){
-	//     panel.add(new JLabel((String)list[i][0]));
-	//     lNumber = new JLabel((String)list[i][1]);
-	//     lNumber.setForeground(Color.blue);
-	//     panel.add(lNumber);
-	//   }
-	//   return panel;
-	// }
-	// */
 
 	/**
 	 * Sorts the elements of a vector

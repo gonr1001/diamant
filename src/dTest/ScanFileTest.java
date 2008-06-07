@@ -19,7 +19,7 @@
  * All Exceptions must be handled explicitly.
  */
 
-package dTest.dmains;
+package dTest;
 
 import java.io.File;
 

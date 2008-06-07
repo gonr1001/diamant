@@ -331,18 +331,7 @@ public class DXToolsMethods {
 				+ str.substring(str.lastIndexOf(File.separator) + 1, str
 						.length());
 	} // end getRelativeFileName
-//
-//	/**
-//	 * give the relative path of a file Exemple: input of an absolute path is
-//	 * c:\developpement\DiaExtreme\DX\data\fgen\ete04.dia the operation return:
-//	 * ete04.dia
-//	 * 
-//	 * @param str
-//	 * @return
-//	 */
-//	public final static String getRelativeFileName(String str) {
-//		return str.substring(str.lastIndexOf(File.separator) + 1, str.length());
-//	} // end getRelativeFileName
+
 
 	public static String getToken4Activitiy(String activityName,
 			String delimiter, int position) {

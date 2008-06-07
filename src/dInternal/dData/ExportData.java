@@ -58,8 +58,9 @@ public class ExportData {
         if(roomTemp.equalsIgnoreCase(DConst.NO_ROOM_INTERNAL))
           roomTemp= DConst.NO_ROOM_EXPORT;
         String room= roomTemp+"          ";
-        report.append(room.substring(0,_ROOMSIZE)+DxTools.STIConvertGroup(section));
-      //}// end while(tokens.hasMoreTokens())
+//        report.append(room.substring(0,_ROOMSIZE)+DxTools.STIConvertGroup(section));
+	        report.append(room.substring(0,_ROOMSIZE)+ section) ;
+      //}// end while(tokens.hasMoreTokens())s
         report.append(DConst.CR_LF);
     }// end while(strTokens.hasMoreTokens())
     return report.toString();

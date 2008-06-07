@@ -56,10 +56,8 @@ import dInterface.dAffectation.ActivityModifDlg;
 import dInterface.dAffectation.SectionDlg;
 import dInterface.dAlgorithms.PersonalizeMixingAlgorithmDlg;
 import dInterface.dAssignementDlgs.DxActivityDlg;
-import dInterface.dAssignementDlgs.DxConflictsOfAnEventDlg;
-//import dInterface.dAssignementDlgs.DxConflictsOfAnEventDlgOld;
-import dInterface.dAssignementDlgs.DxEventsDlg;
-//import dInterface.dAssignementDlgs.DxEventsDlgOld;
+import dInterface.dAssignementDlgs.DxConflictsOfAnEventDlg; //import dInterface.dAssignementDlgs.DxConflictsOfAnEventDlgOld;
+import dInterface.dAssignementDlgs.DxEventsDlg; //import dInterface.dAssignementDlgs.DxEventsDlgOld;
 import dInterface.dAssignementDlgs.DxInstructorAvailabilityDlg;
 import dInterface.dAssignementDlgs.DxRoomAvailabilityDlg;
 import dInterface.dData.DefFilesToImportDlg;
@@ -89,6 +87,7 @@ import eLib.exit.exception.DxException;
 public class DApplication {
 
 	private static final String LOGO_PATH = "images/logoDia.jpg";
+
 	// singleton: has only one instance
 	private static int instanceNumber = 0;
 	private static DApplication _instance = null;
@@ -127,8 +126,6 @@ public class DApplication {
 
 	private DxPreferences _dxPreferences;
 
-	// private Preferences _preferences;
-
 	private DMediator _dMediator;
 
 	private String _currentDir;
@@ -159,9 +156,8 @@ public class DApplication {
 				+ File.separator + "pref.txt";
 		System.out.println("Preference file is in :" + str);
 		Runtime runtime = Runtime.getRuntime();
-		System.out.println("allocated memory " + runtime.totalMemory()/1024);
+		System.out.println("allocated memory " + runtime.totalMemory() / 1024);
 		_dxPreferences = new DxPreferences(str);
-		// _preferences = Preferences.userRoot().node("/com.dinc/exit/diamant");
 	}
 
 	public void doIt(String[] args) {
@@ -209,7 +205,7 @@ public class DApplication {
 	// -------------------------------------------
 	private JFrame createFrame(String str) {
 		JFrame jFrame = new JFrame(str + "   " + System.getProperty("user.dir"));
-		
+
 		Image diamantIcon = createImageIcon(LOGO_PATH);
 		if (diamantIcon != null) {
 			jFrame.setIconImage(diamantIcon);
@@ -253,9 +249,6 @@ public class DApplication {
 					- DConst.ADJUST_WIDTH, screenSize.height
 					- DConst.ADJUST_HEIGHT));
 		}
-		/* Application Icon */
-		// ImageIcon iconeDiamant
-		
 
 		jFrame.pack();
 		jFrame.setVisible(true);
@@ -614,11 +607,7 @@ public class DApplication {
 	 * 
 	 */
 	public void assignEvents() {
-//		if(DxFlags.newDxConflictsOfAnEventDlg) {
-			new DxEventsDlg(this);
-//		} else {
-//			new DxEventsDlgOld(this.getJFrame(), this.getCurrentDModel());
-//		}		
+		new DxEventsDlg(this);
 	}
 
 	/**
@@ -632,11 +621,7 @@ public class DApplication {
 	 * 
 	 */
 	public void conflictsOfAnEvent() {
-//		if(DxFlags.newDxConflictsOfAnEventDlg) {
-			new DxConflictsOfAnEventDlg(this);
-//		} else {
-//			new DxConflictsOfAnEventDlgOld(this.getJFrame(), this.getCurrentDModel());
-//		}		
+		new DxConflictsOfAnEventDlg(this);
 	}
 
 	/**
@@ -728,9 +713,6 @@ public class DApplication {
 	 * 
 	 */
 	public void doSectionPartition() {
-		// boolean _userTestActiv = true;
-		//
-		// DConst.USER_TEST_ACTIV = _userTestActiv;
 		PersonalizeMixingAlgorithmDlg perso = new PersonalizeMixingAlgorithmDlg(
 				DConst.DEFAULT_MIX_ALGO);
 		String input = perso.showInputDialog();
@@ -762,7 +744,6 @@ public class DApplication {
 	}
 
 	public void addPrefsListener(Preferences pref) {
-		// _preferences
 		pref.addPreferenceChangeListener(new PreferenceChangeListener() {
 			public void preferenceChange(PreferenceChangeEvent pce) {
 				String str = pce.getNewValue();
@@ -817,7 +798,7 @@ public class DApplication {
 	public void tryOpenDevFile() {
 		if (!_fileToOpenAtStart.equalsIgnoreCase("")) {
 			try {
-				_dMediator.addDxTTableDoc("", _fileToOpenAtStart);
+				_dMediator.addDxTTableDoc(_fileToOpenAtStart);
 			} catch (Exception e) {
 				new DxExceptionDlg(e.getMessage(), e);
 			}
@@ -835,18 +816,18 @@ public class DApplication {
 			// fileName += "flsh2_1" + File.separator;
 			// fileName += "RoomAffContTT.dia";		
 			try {
-			 String fileName = "." + File.separator;
-			 fileName = fileName +  "dataTest" + File.separator + "bug117"
-			 + File.separator;
+				String fileName = "." + File.separator;
+				fileName = fileName + "dataTest" + File.separator + "bug117"
+						+ File.separator;
 				// filepath += "refFiles" + File.separator;
 				// filepath += "facs" + File.separator;
 				// filepath += "flsh2_1" + File.separator;
-			// fileName += "HIVER2008examens.dia";
-			 fileName += "Horaire-complet.dia";
-			 //fileName += "test1.dia";
+				// fileName += "HIVER2008examens.dia";
+				fileName += "Horaire-complet.dia";
+				//fileName += "test1.dia";
 				//fileName += "lData5j30min.dia";
 				System.out.println("filename: " + fileName);
-				_dMediator.addDxTTableDoc("", fileName);
+				_dMediator.addDxTTableDoc(fileName);
 
 			} catch (Exception e) {
 				new DxExceptionDlg(e.getMessage(), e);
@@ -985,8 +966,7 @@ public class DApplication {
 			dlg.dispose();
 			this.setCurrentDir(pathfileName);
 			try {
-				this.getDMediator().addDxTTableDoc(
-						this.getCurrentDir() + DConst.NO_NAME, pathfileName);
+				this.getDMediator().addDxTTableDoc(pathfileName);
 				_dxMenuBar.afterNewTTable();
 			} catch (Exception e) {
 				new DxExceptionDlg(_jFrame, e.getMessage(), e);
@@ -1043,7 +1023,7 @@ public class DApplication {
 			try {
 				this.setCursorWait();
 				this.hideToolBar();
-				this.getDMediator().addDxTTableDoc(fullFileName, fullFileName);
+				this.getDMediator().addDxTTableDoc(fullFileName);
 				_dxMenuBar.afterNewTTable();
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -1088,16 +1068,14 @@ public class DApplication {
 		this.setCursorWait();
 		OpenTTSDlg dlg = new OpenTTSDlg();
 		String fullFileName = dlg.getFileName(this);
-		// dApplic.setCurrentDir(fil);
 
 		if (fullFileName == "") {// cancel button was pressed!
 			dlg.dispose();
 			this.initialState();
 		} else {
 			dlg.dispose();
-			// this.setCurrentDir(fullFileName);
 			this.closeCurrentDxDoc();
-			// this.hideToolBar();
+
 			try {
 				this._dMediator.addDxTTStructureDoc(fullFileName);
 				_dxMenuBar.afterNewTTStruc();
@@ -1126,9 +1104,9 @@ public class DApplication {
 			this.initialState();
 		} else {
 			dlg.dispose();
-			// this.setCurrentDir(fullFileName);
+
 			this.closeCurrentDxDoc();
-			// this.hideToolBar();
+
 			try {
 				this._dMediator.addDxTTStructureDoc(fullFileName);
 				_dxMenuBar.afterNewTTStruc();
