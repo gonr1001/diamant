@@ -81,7 +81,6 @@ import dInternal.dUtil.DXToolsMethods;
 import eLib.exit.dialog.DxExceptionDlg;
 import eLib.exit.dialog.InformationDlg;
 
-
 public class DxEditEventDlg extends JDialog implements ActionListener,
 		ChangeListener, DlgIdentification {
 
@@ -90,7 +89,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	private final String ACTION_CB_TYPE = "aCBTYPE";
 
 	private final String ACTION_CB_ROOM = "aCBROOM";
-	
+
 	private final String JOKER = "------";
 
 	private DModel _dModel;
@@ -101,7 +100,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 
 	private ButtonsPanel _applyPanel;
 
-	private Vector<DResource>_events;
+	private Vector<DResource> _events;
 
 	private JList[] _instructorsLists;
 
@@ -120,7 +119,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	 *            The selected activity the parent Dialog
 	 * @param canBeModified
 	 */
-	
+
 	public DxEditEventDlg(JDialog dialog, DModel dModel,
 			String currentActivity, boolean canBeModified) {
 		// One activity or n events
@@ -147,7 +146,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		_applyPanel.setFirstDisable();
 		if (command.equals(ACTION_CB_SITE)) {
 			actionCbSite();
-			
+
 		}
 		if (command.equals(ACTION_CB_TYPE)) {
 			actionCBType();
@@ -155,41 +154,36 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		if (command.equals(ACTION_CB_ROOM)) {
 			actionCBRooms();
 		}
-		
-//		if (command.equals(DConst.STATE_AC)) {
-//			//_applyPanel.setFirstEnable();
-//		}
-		
+
+		//		if (command.equals(DConst.STATE_AC)) {
+		//			//_applyPanel.setFirstEnable();
+		//		}
+
 		if (command.equals(DConst.BUT_CLOSE)) {
 			dispose();
-		} 
+		}
 
 		if (command.equals("comboBoxChanged")
 				|| command.equals(DConst.BUT_PLACE)
 				|| command.equals(DConst.BUT_FIGE)) {
 			//_applyPanel.setFirstEnable()
-		} 
+		}
 		if (command.equals(DConst.BUT_CHANGE)) {
 			actionInstructors();
 		}
 		_applyPanel.setFirstEnable();
-		
+
 		if (command.equals(DConst.BUT_APPLY)) {
 			actionApply();
-		} 
+		}
 	}
 
-	
-
-	
 	/**
 	 * 
 	 */
 	private void actionInstructors() {
-		new SelectInstructors(
-				this,
-				makeVector(_instructorsLists[_tabbedPane.getSelectedIndex()]),
-				buildInstructorList());
+		new SelectInstructors(this, makeVector(_instructorsLists[_tabbedPane
+				.getSelectedIndex()]), buildInstructorList());
 	}
 
 	/**
@@ -209,9 +203,9 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 			_dModel.changeInDModelByDxEditEventDlg(this);
 			_applyPanel.setFirstDisable();
 		}
-		
+
 	}
-	
+
 	/**
 	 * 
 	 */
@@ -247,8 +241,8 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 					currentCatName);
 			DxRoom currentRoom = currentSite.getRoom(currentCat.getName(),
 					roomName);
-			dcbmRooms = new DefaultComboBoxModel(currentCat
-					.getSetOfDxRooms().getRoomsNameSorted());
+			dcbmRooms = new DefaultComboBoxModel(currentCat.getSetOfDxRooms()
+					.getRoomsNameSorted());
 			JComboBox cbRooms = getRoomsJCB(tpane);
 			cbRooms.removeActionListener(this);
 			cbRooms.setModel(dcbmRooms);
@@ -288,10 +282,10 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 					.getAllRoomsNameSorted());
 			dcbmRooms.insertElementAt(JOKER, 0);
 		} else {
-			DxCategory currentCat = _dModel.getDxSetOfSites().getCat(
-					sSiteName, sTypeName);
-			dcbmRooms = new DefaultComboBoxModel(currentCat
-					.getSetOfDxRooms().getRoomsNameSorted());
+			DxCategory currentCat = _dModel.getDxSetOfSites().getCat(sSiteName,
+					sTypeName);
+			dcbmRooms = new DefaultComboBoxModel(currentCat.getSetOfDxRooms()
+					.getRoomsNameSorted());
 			dcbmRooms.insertElementAt(JOKER, 0);
 		}
 
@@ -311,7 +305,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		//_applyPanel.setFirstDisable();
 		//JPanel tpane = (JPanel) _tabbedPane.getSelectedComponent();
 		//String siteName = getSelectedSite(tpane);
-		
+
 	}
 
 	/**
@@ -319,10 +313,11 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 	 */
 	private boolean applyChanges() {
 		Cycle cycle = _dModel.getTTStructure().getCurrentCycle();
-		DxEvent event = (DxEvent) ( _events.get(_tabbedPane
-				.getSelectedIndex())).getAttach();
-		_dModel.getConditionsToTest().removeEventInTTs(_dModel.getTTStructure(),
-				 _events.get(_tabbedPane.getSelectedIndex()), false);
+		DxEvent event = (DxEvent) (_events.get(_tabbedPane.getSelectedIndex()))
+				.getAttach();
+		_dModel.getConditionsToTest().removeEventInTTs(
+				_dModel.getTTStructure(),
+				_events.get(_tabbedPane.getSelectedIndex()), false);
 
 		JPanel tpane = (JPanel) _tabbedPane.getSelectedComponent();
 		String duration = getSelectedDuration(tpane);
@@ -359,14 +354,14 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		event.setRoomName(room);
 		event.setAssigned(assignBut);
 		event.setFixed(fixedBut);
-		
+
 		Vector<DResource> vect = new Vector<DResource>();
 		vect.add(_events.get(_tabbedPane.getSelectedIndex()));
 
 		_dModel.getSetOfEvents().updateActivities(_dModel.getSetOfActivities(),
 				vect);
 		_dModel.getConditionsToTest().addEventInTTs(_dModel.getTTStructure(),
-				 _events.get(_tabbedPane.getSelectedIndex()), false);
+				_events.get(_tabbedPane.getSelectedIndex()), false);
 
 		return true;
 	}
@@ -633,8 +628,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		JComboBox cbRooms = new JComboBox();
 		//System.out.println("room " + name);
 
-		if (name.equalsIgnoreCase(JOKER) || name.equalsIgnoreCase(JOKER)) { ///rgr
-			//System.out.println("......" + " ou " + "------" + name);
+		if (name.equalsIgnoreCase(JOKER)) {
 			currentRoom = null;
 			currentCat = null;
 
@@ -652,8 +646,8 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 				String currentCatName = currentSite.getCatNameOfRoom(name);
 				currentCat = currentSite.getSetOfCat().getCat(currentCatName);
 				currentRoom = currentSite.getRoom(currentCat.getName(), name);
-//				System.out.println("Is room : cat " + currentCat.getName() + " name "
-//						+ name);
+				//				System.out.println("Is room : cat " + currentCat.getName() + " name "
+				//						+ name);
 				dcbmRooms = new DefaultComboBoxModel(currentCat
 						.getSetOfDxRooms().getRoomsNameSorted());
 				dcbmRooms.insertElementAt(JOKER, 0);
@@ -666,8 +660,8 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 			} else { // it is a cat.
 				currentCat = currentSite.getSetOfCat().getCat(name);
 				currentRoom = null;
-//				System.out.println("Is cat : cat " + currentCat.getName() + " noroom "
-//						+ name);
+				//				System.out.println("Is cat : cat " + currentCat.getName() + " noroom "
+				//						+ name);
 				dcbmRooms = new DefaultComboBoxModel(currentCat
 						.getSetOfDxRooms().getRoomsNameSorted());
 				dcbmRooms.insertElementAt(JOKER, 0);
@@ -725,17 +719,16 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		_instructorsLists = new JList[_events.size()];
 		for (int i = 0; i < _events.size(); i++) {
 			if (_events.get(i) != null) {
-				DxEvent event = (DxEvent)  _events.get(i)
-						.getAttach();
-				jtp.addTab((_events.get(i)).getID(),
-						buildEventPanel(event, i, canBeModified));
+				DxEvent event = (DxEvent) _events.get(i).getAttach();
+				jtp.addTab((_events.get(i)).getID(), buildEventPanel(event, i,
+						canBeModified));
 			}
 		}// end for
 		return jtp;
 	}// end buildTabbedPane
 
 	// dans ttable
-	private Vector<String>  buildThePeriods(int size) {
+	private Vector<String> buildThePeriods(int size) {
 		Vector<String> v = new Vector<String>();
 		for (int i = 0; i <= size; i++) {
 			v.addElement(Integer.toString(i));
@@ -884,7 +877,6 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		return (JList) (jsp.getViewport()).getComponent(0);
 	} // getInstructorsList
 
-
 	/**
 	 * 
 	 * @param jPanel
@@ -989,7 +981,7 @@ public class DxEditEventDlg extends JDialog implements ActionListener,
 		Vector<String> v = new Vector<String>();
 		if (jList != null) {
 			for (int i = 0; i < jList.getModel().getSize(); i++)
-				v.add((String)jList.getModel().getElementAt(i));
+				v.add((String) jList.getModel().getElementAt(i));
 		}
 		return v;
 	}

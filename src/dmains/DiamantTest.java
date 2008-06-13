@@ -30,6 +30,7 @@ import java.io.File;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 import developer.DxFlags;
+import dInternal.dData.dRooms.DxSetOfSitesTest;
 import dInternal.dOptimization.DxAssignRoomsAlgTest;
 import dInternal.dTimeTable.DxTTStructureTest;
 import dTest.ScanFileTest;
@@ -55,7 +56,6 @@ import dTest.dInternal.dData.dActivities.DxSetOfActivitiesSitesTest;
 import dTest.dInternal.dData.dInstructors.DxInstructorTest;
 import dTest.dInternal.dData.dInstructors.DxInstructorsReaderTest;
 import dTest.dInternal.dData.dInstructors.DxSetOfInstructorsTest;
-import dTest.dInternal.dData.dRooms.DxSetOfSitesTest;
 import dTest.dInternal.dData.dRooms.DxSiteReaderTest;
 import dTest.dInternal.dData.dStudents.SetOfStuSitesTest;
 import dTest.dInternal.dData.dStudents.StudentTest;
@@ -104,30 +104,29 @@ public class DiamantTest {
 		TestSuite suite = new TestSuite("Diamant Tests");
 		String str = System.getProperty("user.dir");
 		System.out.println("User Dir here  :" + str);
-		File forOutputTests = new File("."+File.separator+ "forOutputTests");
+		File forOutputTests = new File("." + File.separator + "forOutputTests");
 		forOutputTests.mkdir();
-		System.out.println("fot path" +forOutputTests.getAbsolutePath());
+		System.out.println("fot path" + forOutputTests.getAbsolutePath());
 		// Using files	
 		suite.addTest(DxTTStructureTest.suite());
 		suite.addTest(ByteInputFileTest.suite());
 		suite.addTest(ByteOutputFileTest.suite());
 		suite.addTest(FilterFileTest.suite());
-		suite.addTest(SemiExtendedAsciiFileTest.suite());	
+		suite.addTest(SemiExtendedAsciiFileTest.suite());
 		suite.addTest(DxInstructorsReaderTest.suite());
 		suite.addTest(DxSetOfSitesTest.suite());
 		suite.addTest(DxAssignAllAlgTest.suite());
 		if (DxFlags.newAlg) {
 			suite.addTest(DxAssignRoomsAlgTest.suite());
-		}		
+		}
 		suite.addTest(RefinedStudMixAlgoTest.suite()); //TODO to be changed 
 		suite.addTest(PeriodTest.suite());
-		suite.addTest(SequenceTest.suite()); 
+		suite.addTest(SequenceTest.suite());
 		suite.addTest(DayTest.suite());
 		suite.addTest(CycleTest.suite());
-		suite.addTest(TTStructureTest.suite()); 		
+		suite.addTest(TTStructureTest.suite());
 		suite.addTest(SetOfEventsTest.suite());
 
-		
 		// Not using files
 		suite.addTest(DxAvailabilityTest.suite());
 		suite.addTest(DxInstructorTest.suite());
@@ -140,7 +139,7 @@ public class DiamantTest {
 		suite.addTest(ActivityTest.suite());
 		suite.addTest(DXToolsMethodsTest.suite());
 		suite.addTest(ConflictsAttachTest.suite());
-		
+
 		//to be classed 		
 		suite.addTest(StudentsConflictsMatrixTest.suite());
 		suite.addTest(InstructorsConditionsTest.suite());
@@ -168,7 +167,7 @@ public class DiamantTest {
 			suite.addTest(DxLoadDataTest.suite());
 		} else {
 			suite.addTest(DLoadDataTest.suite());
-		}	
+		}
 		suite.addTest(DSaveDataTest.suite());
 		suite.addTest(DSetOfResourcesTest.suite());
 		suite.addTest(DStandardReportDataTest.suite());
@@ -177,7 +176,7 @@ public class DiamantTest {
 		suite.addTest(ResourceTest.suite());
 		suite.addTest(DFileMenuTest.suite());
 		suite.addTest(DxEditEventDlgTest.suite());
-		
+
 		System.out.println("Bye I was in Diamant tests");
 		return suite;
 	}

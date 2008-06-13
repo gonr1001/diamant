@@ -796,47 +796,23 @@ public class DApplication {
 	 * 
 	 */
 	public void tryOpenDevFile() {
-		if (!_fileToOpenAtStart.equalsIgnoreCase("")) {
-			try {
-				_dMediator.addDxTTableDoc(_fileToOpenAtStart);
-			} catch (Exception e) {
-				new DxExceptionDlg(e.getMessage(), e);
-			}
-			getCurrentDxDoc().setAutoImportDIMFilePath(".\\devData\\");
-			getCurrentDxDoc().getCurrentDModel().changeInDModel(
-					this.getJFrame());
-			_dxMenuBar.afterInitialAssignment();
 
-		} else {
-			//setCurrentDir(".\\dataTest\\");
-			// String fileName = "." + File.separator;
-			// fileName += "dataTest" + File.separator;
-			// fileName += "refFiles" + File.separator;
-			// fileName += "facs" + File.separator;
-			// fileName += "flsh2_1" + File.separator;
-			// fileName += "RoomAffContTT.dia";		
-			try {
-				String fileName = "." + File.separator;
-				fileName = fileName + "dataTest" + File.separator + "bug117"
-						+ File.separator;
-				// filepath += "refFiles" + File.separator;
-				// filepath += "facs" + File.separator;
-				// filepath += "flsh2_1" + File.separator;
-				// fileName += "HIVER2008examens.dia";
-				fileName += "Horaire-complet.dia";
-				//fileName += "test1.dia";
-				//fileName += "lData5j30min.dia";
-				System.out.println("filename: " + fileName);
-				_dMediator.addDxTTableDoc(fileName);
-
-			} catch (Exception e) {
-				new DxExceptionDlg(e.getMessage(), e);
-			}
-			getCurrentDxDoc().setAutoImportDIMFilePath(".\\devData\\");
-			getCurrentDxDoc().getCurrentDModel().changeInDModel(
-					this.getJFrame());
-			_dxMenuBar.afterInitialAssignment();
+		if (_fileToOpenAtStart.equalsIgnoreCase("")) {
+			_fileToOpenAtStart = "." + File.separator + "dataTest"
+					+ File.separator + "bug118" + File.separator;
+			_fileToOpenAtStart += "bug118.dia";
 		}
+		System.out.println(System.getProperty("user.dir"));
+		System.out.println(_fileToOpenAtStart);
+		try {
+			_dMediator.addDxTTableDoc(_fileToOpenAtStart);
+		} catch (Exception e) {
+			new DxExceptionDlg(e.getMessage(), e);
+		}
+		getCurrentDxDoc().setAutoImportDIMFilePath(".\\devData\\");
+		getCurrentDxDoc().getCurrentDModel().changeInDModel(this.getJFrame());
+		_dxMenuBar.afterInitialAssignment();
+
 	}
 
 	/**

@@ -1,17 +1,12 @@
-package dTest.dInternal.dData.dRooms;
+package dInternal.dData.dRooms;
 
 import java.io.File;
 
 import dConstants.DConst;
 import dInternal.DataExchange;
+import dInternal.DxLoadData;
 import dInternal.dData.ByteArrayMsg;
 import dInternal.dData.DLoadData;
-import dInternal.dData.dRooms.DxReadSite1dot5;
-import dInternal.dData.dRooms.DxReadSite1dot6;
-import dInternal.dData.dRooms.DxReadSitedotDia;
-import dInternal.dData.dRooms.DxSetOfRooms;
-import dInternal.dData.dRooms.DxSetOfSites;
-import dInternal.dData.dRooms.DxSiteReader;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -32,9 +27,9 @@ public class DxSetOfSitesTest extends TestCase {
 		try {
 			DLoadData ld = new DLoadData();
 			byte[] dataloaded = ld.filterBadChars(_pathForFiles + "locaux.txt");
-			
-			DataExchange de = ld.buildDataExchange(dataloaded);			
-			DxSiteReader dxsr = new DxReadSite1dot5(de);			
+
+			DataExchange de = ld.buildDataExchange(dataloaded);
+			DxSiteReader dxsr = new DxReadSite1dot5(de);
 			DxSetOfSites dxsosSingle = dxsr.readSetOfSites();
 
 			assertEquals("test_1_getSetOfSitesSingleSite: asserEquals", 1,
@@ -45,16 +40,17 @@ public class DxSetOfSitesTest extends TestCase {
 					dxsosSingle.getRoomCount(DConst.ROOM_DEFAULT_SITE,
 							DConst.ROOM_STANDARD_CAT));
 			assertEquals("test_4_getSetOfSitesSingleSite: assertEquals",
-					DConst.ROOM_DEFAULT_SITE, dxsosSingle.getSitesNamesSorted().elementAt(0));
-//			assertEquals("test_5_getSetOfSitesSingleSite: asserEquals",
-//					DConst.ROOM_STANDARD_CAT, dxsosSingle.getCatName(1, 1));
-//			assertEquals("test_6_getSetOfSitesSingleSite: asserEquals",
-//					"D13012", dxsosSingle.getRoomName(1, 1, 1));
-//			assertEquals("test_7_getSetOfSitesSingleSite: asserEquals",
-//					"D13000", dxsosSingle.getRoomName(1, 1, 44));
-//
-//			assertEquals("test_8_getSetOfSitesSingleSite: asserEquals", 20,
-//					dxsosSingle.getRoomCapacity(1, 1, 44));
+					DConst.ROOM_DEFAULT_SITE, dxsosSingle.getSitesNamesSorted()
+							.elementAt(0));
+			// assertEquals("test_5_getSetOfSitesSingleSite: asserEquals",
+			// DConst.ROOM_STANDARD_CAT, dxsosSingle.getCatName(1, 1));
+			// assertEquals("test_6_getSetOfSitesSingleSite: asserEquals",
+			// "D13012", dxsosSingle.getRoomName(1, 1, 1));
+			// assertEquals("test_7_getSetOfSitesSingleSite: asserEquals",
+			// "D13000", dxsosSingle.getRoomName(1, 1, 44));
+			//
+			// assertEquals("test_8_getSetOfSitesSingleSite: asserEquals", 20,
+			// dxsosSingle.getRoomCapacity(1, 1, 44));
 
 			assertEquals("test_9_getSetOfSitesSingleSite: asserEquals", 61,
 					dxsosSingle.getRoomCapacity(DConst.ROOM_DEFAULT_SITE,
@@ -80,11 +76,13 @@ public class DxSetOfSitesTest extends TestCase {
 		DLoadData ld = new DLoadData();
 		byte[] dataloaded = null;
 		try {
-			dataloaded = ld.filterBadChars(_pathForFiles + "locauxINFIRComplet.txt");
+			dataloaded = ld.filterBadChars(_pathForFiles
+					+ "locauxINFIRComplet.txt");
 			DataExchange de = ld.buildDataExchange(dataloaded);
 			DxSiteReader dxsr = new DxReadSite1dot6(de);
 			DxSetOfSites dxsosMulti = dxsr.readSetOfSites();
-			 de = new ByteArrayMsg(DConst.FILE_VER_NAME1_6, new String(dataloaded));
+			de = new ByteArrayMsg(DConst.FILE_VER_NAME1_6, new String(
+					dataloaded));
 
 			assertEquals("test_1_getSetOfSitesMultiSite: asserEquals", 3,
 					dxsosMulti.getSiteCount());
@@ -141,8 +139,8 @@ public class DxSetOfSitesTest extends TestCase {
 					dxsosMulti.getAllDxRooms().getRoom("101"));
 		} catch (Exception e) {
 			// Should not fail in tests, but if file not there gives a failure
-			assertEquals("test_getSetOfSitesMultiSite: exception", "nullPointer", e
-					.toString());
+			assertEquals("test_getSetOfSitesMultiSite: exception",
+					"nullPointer", e.toString());
 			System.out.println("Exception in: test_getSetOfSitesMultiSite");
 			e.printStackTrace();
 		}
@@ -150,7 +148,9 @@ public class DxSetOfSitesTest extends TestCase {
 	}
 
 	public void test_getSetOfSitesMultiCat() {
-		DLoadData ld = new DLoadData();
+		final String CLASSE = "CLASSE";
+		final String LAB = "LAB";
+		DxLoadData ld = new DxLoadData();
 		int jours = 7;
 		int per = 4;
 		try {
@@ -166,43 +166,39 @@ public class DxSetOfSitesTest extends TestCase {
 
 			assertEquals("t_readSetOfSitesMultiCat: defaultSite", 29, dxsosFlsh
 					.getAllDxRooms().size());
-			 long sitekey = dxsosFlsh.getSiteKey(DConst.ROOM_DEFAULT_SITE);
-			 assertEquals("t_readSetOfSitesMultiCat: siteCount_defaultSite",
-			 4,
-			 dxsosFlsh.getCatCount(sitekey));
-			 long catkey = dxsosFlsh.getCatKey(sitekey, "Classe");
-			 assertEquals("t_readSetOfSitesMultiCat: CatName", "Classe",
-			 dxsosFlsh.getCatName(sitekey, catkey));
-			
-			 catkey = dxsosFlsh.getCatKey(sitekey, "Classe");
-//			 assertEquals("t_readSetOfSitesMultiCat: Classe 1", 7, catkey);
-//			 assertEquals("t_readSetOfSitesMultiCat: Classe 1", 79, catkey);
-			
-			 DxSetOfRooms dxSor = dxsosFlsh.getAllDxRooms();
-			 long roomkey = dxsosFlsh.getRoomKey(sitekey, catkey, "A3-004");
-			 assertEquals("t_readSetOfSitesMultiCat: roomName A3-004",
-			 "A3-004",
-			 dxSor.getRoomName(roomkey));
-			
-			 catkey = dxsosFlsh.getCatKey(sitekey, "Lab");
-//			 assertEquals("t_readSetOfSitesMultiCat: Lab 10", 10, catkey);
-//			 assertEquals("t_readSetOfSitesMultiCat: Lab 10", 82, catkey);
-			
-			 roomkey = dxsosFlsh.getRoomKey(sitekey, catkey, "A6-2004");
-			 assertEquals("t_readSetOfSitesMultiCat: roomName A6-2004",
-			 "A6-2004", dxSor.getRoomName(roomkey));
+			long sitekey = dxsosFlsh.getSiteKey(DConst.ROOM_DEFAULT_SITE);
+			assertEquals("t_readSetOfSitesMultiCat: siteCount_defaultSite", 4,
+					dxsosFlsh.getCatCount(sitekey));
+			long catkey = dxsosFlsh.getCatKey(sitekey, CLASSE);
+			assertEquals("t_readSetOfSitesMultiCat: CatName", CLASSE, dxsosFlsh
+					.getCatName(sitekey, catkey));
 
-			 assertEquals("test_2test1_getSetOfSitesMultiCat: asserEquals", 4,
-			 dxsosFlsh.getSitesSortedByKey()[0].getCatCount());
-			 assertEquals("test_2_1_getSetOfSitesMultiCat: asserEquals", 4,
-			 dxsosFlsh.getSitesSortedByKey()[0].getCatCount());
-			 assertEquals("test_3_getSetOfSitesMultiSite: asserEquals", 4,
-			 dxsosFlsh.getCatCount(DConst.ROOM_DEFAULT_SITE));
+			catkey = dxsosFlsh.getCatKey(sitekey, CLASSE);
+			// assertEquals("t_readSetOfSitesMultiCat: Classe 1", 7, catkey);
+			// assertEquals("t_readSetOfSitesMultiCat: Classe 1", 79, catkey);
+
+			DxSetOfRooms dxSor = dxsosFlsh.getAllDxRooms();
+			long roomkey = dxsosFlsh.getRoomKey(sitekey, catkey, "A3-004");
+			assertEquals("t_readSetOfSitesMultiCat: roomName A3-004", "A3-004",
+					dxSor.getRoomName(roomkey));
+
+			catkey = dxsosFlsh.getCatKey(sitekey, LAB);
+
+			roomkey = dxsosFlsh.getRoomKey(sitekey, catkey, "A6-2004");
+			assertEquals("t_readSetOfSitesMultiCat: roomName A6-2004",
+					"A6-2004", dxSor.getRoomName(roomkey));
+
+			assertEquals("test_2test1_getSetOfSitesMultiCat: asserEquals", 4,
+					dxsosFlsh.getSitesSortedByKey()[0].getCatCount());
+			assertEquals("test_2_1_getSetOfSitesMultiCat: asserEquals", 4,
+					dxsosFlsh.getSitesSortedByKey()[0].getCatCount());
+			assertEquals("test_3_getSetOfSitesMultiSite: asserEquals", 4,
+					dxsosFlsh.getCatCount(DConst.ROOM_DEFAULT_SITE));
 
 		} catch (Exception e) {
 			// Should not fail in tests, but if file not there gives a failure
-			assertEquals("test_getSetOfSitesMultiCat: exception", "nullPointer", e
-					.toString());
+			assertEquals("test_getSetOfSitesMultiCat: exception",
+					"nullPointer", e.toString());
 			System.out.println("Exception in: test_getSetOfSitesMultiCats");
 			e.printStackTrace();
 		}

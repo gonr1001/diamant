@@ -23,24 +23,23 @@ import java.io.File;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
+import dInternal.dData.dRooms.DxSetOfSitesTest;
 import dInternal.dOptimization.DxAssignRoomsAlgTest;
 import dInternal.dTimeTable.DxTTStructureTest;
 import dTest.dInternal.DxLoadDataTest;
 import dTest.dInternal.dData.DLoadDataTest;
 import dTest.dInternal.dData.DSaveDataTest;
 import dTest.dInternal.dData.dInstructors.DxInstructorsReaderTest;
-import dTest.dInternal.dData.dRooms.DxSetOfSitesTest;
 import dTest.dInternal.dData.dRooms.DxSiteReaderTest;
 import dTest.dInternal.dOptimizationTest.ConditionsTest;
 import dTest.dInternal.dOptimizationTest.DxAssignAllAlgTest;
 import dTest.dInternal.dOptimizationTest.RoomsConditionsTest;
-import dTest.dInternal.dOptimizationTest.SetOfEventsTest;   
+import dTest.dInternal.dOptimizationTest.SetOfEventsTest;
 import developer.DxFlags;
 import eTest.ByteInputFileTest;
 import eTest.ByteOutputFileTest;
 import eTest.FilterFileTest;
 import eTest.SemiExtendedAsciiFileTest;
-
 
 /**
  * Ruben Gonzalez-Rubio
@@ -59,7 +58,7 @@ public class RgrTest {
 	 */
 	public static void main(String[] args) {
 		junit.textui.TestRunner.run(suite());
-		
+
 	}
 
 	/**
@@ -69,26 +68,26 @@ public class RgrTest {
 	 */
 	public static Test suite() {
 		System.out.println("Hello I am rgr selected Tests");
-		
-		File forOutputTests = new File("."+File.separator+ "forOutputTests");
-		if (!forOutputTests.isDirectory()){
+
+		File forOutputTests = new File("." + File.separator + "forOutputTests");
+		if (!forOutputTests.isDirectory()) {
 			forOutputTests.mkdir();
 		}
-		
+
 		TestSuite suite = new TestSuite("rgr selected Tests");
-		
+
+		suite.addTest(DxSetOfSitesTest.suite());
+		suite.addTest(DxAssignRoomsAlgTest.suite());
 		suite.addTest(DxTTStructureTest.suite());
 		suite.addTest(DxSiteReaderTest.suite());
 		suite.addTest(ByteInputFileTest.suite());
 		suite.addTest(ByteOutputFileTest.suite());
 		suite.addTest(FilterFileTest.suite());
-		suite.addTest(SemiExtendedAsciiFileTest.suite());	
-		suite.addTest(DxSetOfSitesTest.suite());	
+		suite.addTest(SemiExtendedAsciiFileTest.suite());
+		suite.addTest(DxSetOfSitesTest.suite());
 		suite.addTest(DxAssignAllAlgTest.suite());
 		suite.addTest(RoomsConditionsTest.suite());
-		if (DxFlags.newAlg) {
-			suite.addTest(DxAssignRoomsAlgTest.suite());
-		}
+
 		if (DxFlags.newDxLoadData) {
 			suite.addTest(DxLoadDataTest.suite()); //TODO to review
 		} else {
@@ -97,7 +96,7 @@ public class RgrTest {
 		suite.addTest(DxInstructorsReaderTest.suite());
 		suite.addTest(SetOfEventsTest.suite());
 		suite.addTest(ConditionsTest.suite());
-		suite.addTest(DSaveDataTest.suite()); 
+		suite.addTest(DSaveDataTest.suite());
 
 		System.out.println("Bye I was in rgr selected Tests");
 		return suite;

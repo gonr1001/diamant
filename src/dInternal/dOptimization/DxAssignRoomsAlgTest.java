@@ -42,7 +42,6 @@ import dInternal.dData.dRooms.DxSetOfSites;
 import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.Period;
 
-
 /**
  * Ruben Gonzalez-Rubio
  * 
@@ -55,8 +54,9 @@ import dInternal.dTimeTable.Period;
 public class DxAssignRoomsAlgTest extends TestCase {
 
 	private final String _pathForFiles = "." + File.separator + "dataTest"
-	+ File.separator + "refFiles" + File.separator + "facs" + File.separator + "tAlgorithmes" + File.separator;
-	
+			+ File.separator + "refFiles" + File.separator + "facs"
+			+ File.separator + "tAlgorithmes" + File.separator;
+
 	private boolean _increase;
 
 	private boolean _best;
@@ -89,7 +89,6 @@ public class DxAssignRoomsAlgTest extends TestCase {
 
 		DxDocument _dxDocument1 = new DxTTableDoc();
 
-
 		try {
 			dm1 = new DModel(_dxDocument1, _pathForFiles + "RoomAffContTT.dia");
 			dm1.changeInDModel(new Object());
@@ -97,15 +96,16 @@ public class DxAssignRoomsAlgTest extends TestCase {
 					.getSetOfActivities().size());
 			assertEquals("test_basicData: events size", 117, dm1
 					.getSetOfEvents().size());
-			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL,
-					_increase, _best);
+			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL, _increase,
+					_best);
 			alg.doWork();
 			assertEquals("test_basicData: nbEventsToAssign", 116, dm1
 					.getSetOfEvents().getNumberOfEventToAssign());
 			dm1 = null;
 		} catch (Exception e) {
 			// Should not fail in tests, but if file not there gives a failure
-			assertEquals("test_basicData: exception", "nullPointer", e.toString());
+			assertEquals("test_basicData: exception", "nullPointer", e
+					.toString());
 			System.out.println("Exception in: test_basicData");
 			e.printStackTrace();
 		}
@@ -123,21 +123,23 @@ public class DxAssignRoomsAlgTest extends TestCase {
 		DxDocument _dxDocument1 = new DxTTableDoc();
 
 		try {
-			dm1 = new DModel(_dxDocument1, _pathForFiles + "Aut2006flsh170m.dia");
+			dm1 = new DModel(_dxDocument1, _pathForFiles
+					+ "Aut2006flsh170m.dia");
 			dm1.changeInDModel(new Object());
 			assertEquals("test_basicData2: activities size", 199, dm1
 					.getSetOfActivities().size());
 			assertEquals("test_basicData2: events size", 253, dm1
 					.getSetOfEvents().size());
-			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL,
-					_increase, _best);
+			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL, _increase,
+					_best);
 			alg.doWork();
 			assertEquals("test_basicData2: nbEventsToAssign", 250, dm1
 					.getSetOfEvents().getNumberOfEventToAssign());
 			dm1 = null;
 		} catch (Exception e) {
 			// Should not fail in tests, but if file not there gives a failure
-			assertEquals("test_basicData: exception", "nullPointer", e.toString());
+			assertEquals("test_basicData: exception", "nullPointer", e
+					.toString());
 			System.out.println("Exception in: test_basicData2");
 			e.printStackTrace();
 		}
@@ -156,17 +158,19 @@ public class DxAssignRoomsAlgTest extends TestCase {
 		DxDocument _dxDocument1 = new DxTTableDoc();
 
 		try {
-			dm1 = new DModel(_dxDocument1, _pathForFiles + "RoomAffTestsFlsh170min.dia");
+			dm1 = new DModel(_dxDocument1, _pathForFiles
+					+ "RoomAffTestsFlsh170min.dia");
 			dm1.changeInDModel(new Object());
 
-			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL,
-					_increase, _best);
+			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL, _increase,
+					_best);
 			assertEquals("test_getNumberOfPeriods: nb Periods", 28, alg
 					.getNumberOfPeriods());
 			dm1 = null;
 		} catch (Exception e) {
 			// Should not fail in tests, but if file not there gives a failure
-			assertEquals("test_basicData: exception", "nullPointer", e.toString());
+			assertEquals("test_basicData: exception", "nullPointer", e
+					.toString());
 			System.out.println("Exception in: test_basicData2");
 			e.printStackTrace();
 		}
@@ -177,6 +181,7 @@ public class DxAssignRoomsAlgTest extends TestCase {
 	 * 
 	 */
 	public void test_events() {
+		final String CLASSE = "CLASSE";
 		DxConflictLimits dxCL = new DxConflictLimits();
 		String str = "conflictLimits;0;0;0;0;30;0;100;";
 		dxCL.readLimits(str);
@@ -184,11 +189,12 @@ public class DxAssignRoomsAlgTest extends TestCase {
 		DxDocument _dxDocument1 = new DxTTableDoc();
 
 		try {
-			DModel dm = new DModel(_dxDocument1, _pathForFiles + "RoomAffTestsFlsh170min.dia");
+			DModel dm = new DModel(_dxDocument1, _pathForFiles
+					+ "RoomAffTestsFlsh170min.dia");
 			dm.changeInDModel(new Object());
 
-			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm, dxCL,
-					_increase, _best);
+			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm, dxCL, _increase,
+					_best);
 			Cycle cycle = dm.getTTStructure().getCurrentCycle();
 			cycle.setCurrentDaySeqPerIndex(0, 0, 0);
 			int periodStep = 1;
@@ -210,8 +216,7 @@ public class DxAssignRoomsAlgTest extends TestCase {
 				DxEvent e = (DxEvent) eventToAssign.getAttach();
 				assertEquals("test_events: eventFullName ", "FRE060", e
 						.getfullName());
-				assertEquals("test_events: eventName ", "Classe", e
-						.getRoomName());
+				assertEquals("test_events: eventName ", CLASSE, e.getRoomName());
 
 				eventToAssign = eventsInPeriod.getResourceAt(1);
 				e = (DxEvent) eventToAssign.getAttach();
@@ -233,8 +238,8 @@ public class DxAssignRoomsAlgTest extends TestCase {
 				DxCategory[] cArray = soc.getCatsSortedByKey();
 				// for (int i = 0; i < cArray.length; i++){
 				DxCategory cat = cArray[0];
-				String sCatName = cat.getName();
-				assertEquals("test_events: catName ", "Classe", cat.getName());
+				String sCatName = cat.getName().toUpperCase();
+				assertEquals("test_events: catName ", "CLASSE", cat.getName());
 
 				listOfAvailableDxRooms = alg
 						.buildListofAvailableDxRooms(eventsInPeriod);
@@ -273,7 +278,7 @@ public class DxAssignRoomsAlgTest extends TestCase {
 				e = (DxEvent) eventToAssign.getAttach();
 				assertEquals("test_events: eventFullName ", "FRE060", e
 						.getfullName());
-				assertEquals("test_events: eventName ", "Classe", e
+				assertEquals("test_events: eventName ", "CLASSE", e
 						.getRoomName());
 				// }
 				DxSetOfSites sos = dm.getDxSetOfSites();
@@ -283,7 +288,7 @@ public class DxAssignRoomsAlgTest extends TestCase {
 				// for (int i = 0; i < cArray.length; i++){
 				DxCategory cat = cArray[0];
 				String sCatName = cat.getName();
-				assertEquals("test_events: catName ", "Classe", cat.getName());
+				assertEquals("test_events: catName ", "CLASSE", cat.getName());
 
 				listOfAvailableDxRooms = alg
 						.buildListofAvailableDxRooms(eventsInPeriod);
@@ -303,12 +308,17 @@ public class DxAssignRoomsAlgTest extends TestCase {
 			dm = null;
 		} catch (Exception e) {
 			// Should not fail in tests, but if file not there gives a failure
-			assertEquals("test_basicData: exception", "nullPointer", e.toString());
+			assertEquals("test_basicData: exception", "nullPointer", e
+					.toString());
 			System.out.println(e.getStackTrace());
 		}
 	}
 
 	public void test_getEvents() {
+		final String SEMINAIRE = "SÉMINAIRE";
+		final String MULTIMEDIA = "MULTIMÉDIA";
+		final String CLASSE = "CLASSE";
+		final String LAB = "LAB";
 		DxConflictLimits dxCL = new DxConflictLimits();
 		String str = "conflictLimits;0;0;0;0;30;0;100;";
 		dxCL.readLimits(str);
@@ -320,8 +330,8 @@ public class DxAssignRoomsAlgTest extends TestCase {
 			dm1 = new DModel(_dxDocument1, _pathForFiles + "testRoomAlg.dia");
 			dm1.changeInDModel(new Object());
 
-			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL,
-					_increase, _best);
+			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL, _increase,
+					_best);
 			Cycle cycle = dm1.getTTStructure().getCurrentCycle();
 			cycle.setCurrentDaySeqPerIndex(0, 0, 0);
 			int periodStep = 1;
@@ -497,9 +507,8 @@ public class DxAssignRoomsAlgTest extends TestCase {
 				assertEquals("getEvents: availableRooms ", 28, allRooms.size());
 
 				alg.sortSetByCapacitymM(allRooms/*
-				 * ,
-				 * listOfAvailableDxRooms
-				 */);
+												 * , listOfAvailableDxRooms
+												 */);
 				assertEquals("getEvents: availableRooms ", 28, allRooms.size());
 
 				eventsToPlace = alg.getEventsWithRoomNamed(eventsInPeriod,
@@ -629,7 +638,7 @@ public class DxAssignRoomsAlgTest extends TestCase {
 				// for (int i = 0; i < cArray.length; i++){
 				DxCategory cat = cArray[0];
 				String sCatName = cat.getName();
-				assertEquals("getEvents: catName ", "Séminaire", cat.getName());
+				assertEquals("getEvents: catName ", SEMINAIRE, cat.getName());
 
 				Vector<DxResource> roomsInCat = alg.getAvailableRoomsInCat(
 						listOfAvailableDxRooms, sCatName, currentPeriod, d, h);
@@ -642,7 +651,7 @@ public class DxAssignRoomsAlgTest extends TestCase {
 
 				cat = cArray[1];
 				sCatName = cat.getName();
-				assertEquals("getEvents: catName ", "Multimédia", cat.getName());
+				assertEquals("getEvents: catName ", MULTIMEDIA, cat.getName());
 
 				roomsInCat = alg.getAvailableRoomsInCat(listOfAvailableDxRooms,
 						sCatName, currentPeriod, d, h);
@@ -655,7 +664,7 @@ public class DxAssignRoomsAlgTest extends TestCase {
 
 				cat = cArray[2];
 				sCatName = cat.getName();
-				assertEquals("getEvents: catName ", "Classe", cat.getName());
+				assertEquals("getEvents: catName ", CLASSE, cat.getName());
 
 				roomsInCat = alg.getAvailableRoomsInCat(listOfAvailableDxRooms,
 						sCatName, currentPeriod, d, h);
@@ -668,7 +677,7 @@ public class DxAssignRoomsAlgTest extends TestCase {
 
 				cat = cArray[3];
 				sCatName = cat.getName();
-				assertEquals("getEvents: catName ", "Lab", cat.getName());
+				assertEquals("getEvents: catName ", LAB, cat.getName());
 
 				roomsInCat = alg.getAvailableRoomsInCat(listOfAvailableDxRooms,
 						sCatName, currentPeriod, d, h);
@@ -693,9 +702,8 @@ public class DxAssignRoomsAlgTest extends TestCase {
 				assertEquals("getEvents: availableRooms ", 28, allRooms.size());
 
 				alg.sortSetByCapacitymM(allRooms/*
-				 * ,
-				 * listOfAvailableDxRooms
-				 */);
+												 * , listOfAvailableDxRooms
+												 */);
 				assertEquals("getEvents: availableRooms ", 28, allRooms.size());
 
 				eventsToPlace = alg.getEventsWithRoomNamed(eventsInPeriod,
@@ -732,7 +740,8 @@ public class DxAssignRoomsAlgTest extends TestCase {
 			dm1 = null;
 		} catch (Exception e) {
 			// Should not fail in tests, but if file not there gives a failure
-			assertEquals("test_basicData: exception", "nullPointer", e.toString());
+			assertEquals("test_basicData: exception", "nullPointer", e
+					.toString());
 			e.printStackTrace();
 			System.out.println(e.getStackTrace());
 		}
@@ -744,12 +753,12 @@ public class DxAssignRoomsAlgTest extends TestCase {
 		String str = "conflictLimits;0;0;0;0;30;0;100;";
 		dxCL.readLimits(str);
 
-//		String fileName = "." + File.separator;
-//		fileName += "dataTest" + File.separator;
-//		fileName += "refFiles" + File.separator;
-//		fileName += "facs" + File.separator;
-//		fileName += "flsh2_1" + File.separator;
-//		fileName += "RoomAffContTT.dia";
+		// String fileName = "." + File.separator;
+		// fileName += "dataTest" + File.separator;
+		// fileName += "refFiles" + File.separator;
+		// fileName += "facs" + File.separator;
+		// fileName += "flsh2_1" + File.separator;
+		// fileName += "RoomAffContTT.dia";
 
 		DxAssignRoomsAlg alg = new DxAssignRoomsAlg(null, null, true, true);
 		Vector<DxResource> v = new Vector<DxResource>();

@@ -33,8 +33,6 @@ import dInternal.dData.dActivities.Unity;
 import dInternal.dData.dRooms.DxSite;
 import dInternal.dUtil.DXToolsMethods;
 
-//import developer.DxFlags;
-
 /**
  * 
  * DxEvent is a class used to keep all informations concerning an Event.
@@ -78,7 +76,7 @@ public class DxEvent extends DObject {
 		_setInstructorKeys = null;
 		_unity = null;
 		_assignment = null;
-		_ttsKey = null; //assignment.getPeriodKey();
+		_ttsKey = null; // assignment.getPeriodKey();
 		_isPlacedInAPeriod = false;
 	}
 
@@ -89,7 +87,8 @@ public class DxEvent extends DObject {
 		eA._assignment = cloneAssigment();
 		eA._ttsKey = new String(this._ttsKey);
 		eA.setRoomName(new String(this._roomName));
-		eA.setIntructors(this._setInstructorKeys.clone()); //it is necessary to clone the set		
+		eA.setIntructors(this._setInstructorKeys.clone()); // it is necessary
+		// to clone the set
 		eA.setRoomKeyWithKey(this._roomKey);
 		eA.setUnit(this._bloc.clone()); // its is necessary to clone the unit
 		eA.setCapacityLimit(this._cLimit);
@@ -151,7 +150,7 @@ public class DxEvent extends DObject {
 	}
 
 	public boolean getPermanentState() {
-		return _bloc.isFixed(); //isPermanent();
+		return _bloc.isFixed(); // isPermanent();
 
 	}
 
@@ -164,7 +163,7 @@ public class DxEvent extends DObject {
 	}
 
 	public String getRoomName() {
-		return _assignment.getRoomName();
+		return _assignment.getRoomName().toUpperCase();
 	}
 
 	/*
@@ -301,7 +300,7 @@ public class DxEvent extends DObject {
 
 	public String toString() {
 		StringBuffer strB = new StringBuffer();
-		//strB.append(DConst.CR_LF);
+		// strB.append(DConst.CR_LF);
 		strB.append("Full Name ");
 		strB.append(this._fullName);
 		strB.append(" Limit ");
@@ -319,7 +318,7 @@ public class DxEvent extends DObject {
 		strB.append(this._assignment.toString());
 		strB.append(this._unity.getAttach().toString());
 		strB.append(DConst.CR_LF);
-		//		strB.append(this._setInstructorKeys.toString());
+		// strB.append(this._setInstructorKeys.toString());
 		return strB.toString();
 	}
 
