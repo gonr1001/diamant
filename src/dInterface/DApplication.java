@@ -796,7 +796,6 @@ public class DApplication {
 	 * 
 	 */
 	public void tryOpenDevFile() {
-
 		if (_fileToOpenAtStart.equalsIgnoreCase("")) {
 			_fileToOpenAtStart = "." + File.separator + "dataTest"
 					+ File.separator + "bug118" + File.separator;

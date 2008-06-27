@@ -22,9 +22,11 @@ import dInterface.dTimeTable.SaveAsTxtDlg;
 import dInternal.DValue;
 
 public class ConflictReport extends ViewReport implements ActionListener {
+	
 
   public ConflictReport(ReportsDlg parentDlg, DApplication dApplic, Dimension dim) {
     super(parentDlg, dApplic, dim);
+    _parentDlg = parentDlg;
     _allOptionsVec = buildAllOptionsVector();
     _options = getOptions(_allOptionsVec);
     _rightVec = _dApplic.getDxPreferences().getSelectedOptionsInConflictReport();
@@ -42,7 +44,7 @@ public class ConflictReport extends ViewReport implements ActionListener {
    if (_rightVec.size() == 0 )
      _jTextArea.setText("Choisir options");
    else {
-     firstField = indexElementIn ((String)_rightVec.get(0), _allOptionsVec);
+     firstField = indexElementIn (_rightVec.get(0), _allOptionsVec);
      int [] othersFields = buildOtherFields(_rightVec, _allOptionsVec);
      _jTextArea.setText(
          (_parentDlg.getStandardReportData()).getConflictsReport(firstField, othersFields)
@@ -113,6 +115,7 @@ public class ConflictReport extends ViewReport implements ActionListener {
       //_dApplic.getPreferences().setSelectedOptionsInConflictReport(_rightVec);
       // _dApplic.getPreferences().save();
       dispose();
+    _parentDlg.dispose();
     //if "Save as" button
     if (e.getActionCommand().equals(DConst.BUT_SAVE_AS)){
       //System.out.println("_buttonsNames[0]");

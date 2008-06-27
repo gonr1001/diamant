@@ -28,7 +28,7 @@ import dInternal.DValue;
 
 public abstract class ViewReport extends JPanel implements ActionListener {
 
-	ReportsDlg _parentDlg;
+	protected ReportsDlg _parentDlg;
 
 	JScrollPane _scrollPane;
 
@@ -45,6 +45,7 @@ public abstract class ViewReport extends JPanel implements ActionListener {
 	Vector <String>_options;
 
 	int _elements;
+	
 
 	protected class FieldRecord {
 		int _n; // size of String used to format
@@ -126,11 +127,11 @@ public abstract class ViewReport extends JPanel implements ActionListener {
 		return index;
 	}
 
-	protected int[] buildOtherFields(Vector v, Vector allOpt) {
+	protected int[] buildOtherFields(Vector <String> v, Vector  allOpt) {
 		int[] a = new int[v.size() - 1];
 
 		for (int i = 1; i < v.size(); i++)
-			a[i - 1] = indexElementIn((String) v.get(i), allOpt);
+			a[i - 1] = indexElementIn(v.get(i), allOpt);
 		return a;
 	}
 

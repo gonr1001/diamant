@@ -32,8 +32,6 @@ package dInterface.dData;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.util.Observable;
-import java.util.Observer;
 
 import javax.swing.JDialog;
 import javax.swing.JTabbedPane;
@@ -42,7 +40,7 @@ import dConstants.DConst;
 import dInterface.DApplication;
 import dInternal.dData.DStandardReportData;
 
-public class ReportsDlg extends JDialog implements Observer{// implements ActionListener{
+public class ReportsDlg extends JDialog  { //Observer{// 
 	/* ADJUST_HEIGHT is needed to ajdust the screenSize
 	 * minus the barSize (the value is a guess) at the bottom */
 	private final static int ADJUST_HEIGHT = 100;
@@ -65,14 +63,11 @@ public class ReportsDlg extends JDialog implements Observer{// implements Action
 	public ReportsDlg(DApplication dApplic) {
 		super(dApplic.getJFrame(), DConst.REPORT_DLG_TITLE, true);
 		_dApplic = dApplic;
-		//ProgressBar pBar= new ProgressBar("Génération de rapports en cours",_dApplic);
-
-		//_resources = new SetOfResources[1];
-		DApplication.getInstance().setCursorWait();
+		_dApplic.setCursorWait();
 		//pBar.execute();
 		_srd = new DStandardReportData(_dApplic.getCurrentDModel());
-		_dApplic.getCurrentDModel().addObserver(this);
-		DApplication.getInstance().setCursorDefault();
+
+		_dApplic.setCursorDefault();
 		//System.out.println("Génération de rapports terminé");
 		//pBar.close();
 		initReportDlg();
@@ -118,12 +113,13 @@ public class ReportsDlg extends JDialog implements Observer{// implements Action
 		return _srd;
 	}
 
-	@Override
-	public void update(@SuppressWarnings("unused")
-			Observable o, @SuppressWarnings("unused")
-			Object arg) {
-		System.out.println("Updating ReportsDlg");
-				this.initReportDlg();
-			}
+	
+//	@Override
+//	public void update(@SuppressWarnings("unused")
+//			Observable o, @SuppressWarnings("unused")
+//			Object arg) {
+//		System.out.println("Updating ReportsDlg");
+//				this.initReportDlg();
+//			}
 
 } /* end ReportsDlg */

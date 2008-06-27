@@ -46,9 +46,12 @@ import dInternal.DValue;
 
 
 public class FullReport extends ViewReport implements ActionListener {
+	
+	
 
   public FullReport(ReportsDlg parentDlg, DApplication dApplic, Dimension dim) {
     super(parentDlg, dApplic, dim);
+    _parentDlg = parentDlg;
     _allOptionsVec = buildAllOptionsVector();
     _options = getOptions(_allOptionsVec);
     _rightVec = _dApplic.getDxPreferences().getSelectedOptionsInFullReport();
@@ -63,7 +66,7 @@ public class FullReport extends ViewReport implements ActionListener {
    if (_rightVec.size() == 0 )
      _jTextArea.setText("Choisir options");
    else {
-     firstField = indexElementIn ((String)_rightVec.get(0), _allOptionsVec);
+     firstField = indexElementIn (_rightVec.get(0), _allOptionsVec);
      int [] othersFields = buildOtherFields(_rightVec, _allOptionsVec);
      _jTextArea.setText(
          (_parentDlg.getStandardReportData()).getActivitiesReport(firstField, othersFields)
@@ -130,7 +133,9 @@ public class FullReport extends ViewReport implements ActionListener {
     if (e.getActionCommand().equals(DConst.BUT_CLOSE))
       //_dApplic.getPreferences().setSelectedOptionsInConflictReport(_rightVec);
       // _dApplic.getPreferences().save();
+    	
       dispose();
+    _parentDlg.dispose();
     //if "Save as" button
     if (e.getActionCommand().equals(DConst.BUT_SAVE_AS)){
       //System.out.println("_buttonsNames[0]");
