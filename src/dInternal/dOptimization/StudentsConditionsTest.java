@@ -1,4 +1,4 @@
-package dTest.dInternal.dOptimizationTest;
+package dInternal.dOptimization;
 
 import java.io.File;
 import java.util.Vector;
@@ -8,7 +8,6 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import dInterface.DxTTableDoc;
 import dInternal.DModel;
-import dInternal.dOptimization.DxStudentCondtionsToTest;
 import dInternal.dTimeTable.Period;
 
 public class StudentsConditionsTest extends TestCase {

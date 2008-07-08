@@ -1,4 +1,4 @@
-package dTest.dInternal.dOptimizationTest;
+package dInternal.dOptimization;
 
 /**
  * <p>Title: Diamant</p>
@@ -15,7 +15,6 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import dInterface.DxTTableDoc;
 import dInternal.DModel;
-import dInternal.dOptimization.StudentsConflictsMatrix;
 
 public class StudentsConflictsMatrixTest extends TestCase {
 
