@@ -110,7 +110,7 @@ public class Assignment extends DObject {
 		r._dateAndHour[1] = this._dateAndHour[1];
 		r._dateAndHour[2] = this._dateAndHour[2];
 		r._periodKey = new String(this._periodKey);
-		r._roomName = new String(this._roomName);;
+		r._roomName = new String(this._roomName);
 		r._roomFixed = this._roomFixed;
 		r._isRoom = this._isRoom;
 		r._isType = this._isType;

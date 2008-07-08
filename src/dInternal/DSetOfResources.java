@@ -959,7 +959,7 @@ public abstract class DSetOfResources extends DObject {
 	}
 
 	private Vector<DResource> cloneRL() {
-		Vector<DResource> rl = new Vector<DResource>(1, 1); ;
+		Vector<DResource> rl = new Vector<DResource>(1, 1);
 		for (int i = 0; i < _resourceList.size(); i++){
 			rl.add(_resourceList.elementAt(i));
 		}
