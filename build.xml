@@ -146,7 +146,7 @@
 		<unjar src="${localJars}/sjsxp.jar" dest="${build}" />
 	</target>
 			
-	<target name="manifest" depends="unjar4" description="make the manifest">
+	<target name="manifest" depends="unjar5" description="make the manifest">
 		<manifest file="./MANIFEST.MF">
 			<attribute name="Built-By" value="${user.name}" />
 			<attribute name="Built-On" value="${timestamp}" />
