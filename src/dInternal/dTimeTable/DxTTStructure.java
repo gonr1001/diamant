@@ -114,8 +114,6 @@ public class DxTTStructure extends Observable {
 		reader.setProperty(EXTERNAL_SCHEMA_LOCATION, D_INC + FILE
 				+ schemaFileName);
 		reader.setProperty(NO_NAMESPACE, FILE + schemaFileName);
-		
-		 @SuppressWarnings("unused")
 		InputSource inputSource = new InputSource(fileName);
 		reader.parse(inputSource);
 	}

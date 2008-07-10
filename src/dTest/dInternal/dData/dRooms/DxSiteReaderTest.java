@@ -228,7 +228,6 @@ public class DxSiteReaderTest extends TestCase {
 		DxSiteReader dxSites = new DxReadSitedotDia(ld.buildDataExchange(tokens
 				.getBytes()), 5, 12);
 		try {
-			@SuppressWarnings("unused")
 			DxSetOfSites dxsor = dxSites.readSetOfSites();
 			DxSetOfRooms sor = dxsor.getAllDxRooms();
 			assertEquals("testNote_readSetOfSites :", 4, sor.size());

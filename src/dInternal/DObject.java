@@ -41,8 +41,8 @@ public abstract class DObject extends Object {
 	 *            The value tibe compared
 	 * @return true if the field has the same value of the argument "value"
 	 */
-	public boolean compareByField(@SuppressWarnings("unused")
-	int fieldIndex, @SuppressWarnings("unused")
+	public boolean compareByField(
+	int fieldIndex, 
 	String value) {
 		return false; // XXXX Pascal: ???
 	}
@@ -58,8 +58,8 @@ public abstract class DObject extends Object {
 	 *            The value to be setted
 	 */
 
-	public void setField(@SuppressWarnings("unused")
-	int fieldIndex, @SuppressWarnings("unused")
+	public void setField(
+	@SuppressWarnings("unused") int fieldIndex, 
 	String value) {
 		// to avoid warning
 	}
@@ -107,7 +107,7 @@ public abstract class DObject extends Object {
 	 * @param field
 	 * @return
 	 */
-	public long getSelectedField(@SuppressWarnings("unused")
+	public long getSelectedField(
 	int field) {
 		return 0;// XXXX Pascal: ?
 	}

@@ -105,7 +105,7 @@ public class DxAssignRoomsAlg implements Algorithm {
 
 	}
 
-	@SuppressWarnings("boxing")
+	
 	protected Vector<DResource> placeRoomsWithType(Period currentPeriod, int d,
 			int h) {
 		Vector<DResource> result = new Vector<DResource>();
