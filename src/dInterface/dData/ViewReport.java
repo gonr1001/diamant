@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+
 import dConstants.DConst;
 import dInterface.DApplication;
 import dInterface.dUtil.DxTools;
@@ -135,7 +136,8 @@ public abstract class ViewReport extends JPanel implements ActionListener {
 		return a;
 	}
 
-	public abstract void doSave(Vector <String>rigth);
+//	public abstract void doSave(Vector <String>rigth);
+	public abstract void doSavePref(Vector<String> rigth);
 	public abstract void showReport();
 
 	public abstract void actionPerformed(ActionEvent e);

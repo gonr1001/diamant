@@ -39,10 +39,14 @@ import java.util.Vector;
 
 import javax.swing.JTextArea;
 
+import ca.sixs.util.pref.ReportPref;
+
 import dConstants.DConst;
 import dInterface.DApplication;
 import dInterface.dTimeTable.SaveAsTxtDlg;
 import dInternal.DValue;
+import developer.DxFlags;
+
 
 
 public class FullReport extends ViewReport implements ActionListener {
@@ -54,7 +58,12 @@ public class FullReport extends ViewReport implements ActionListener {
     _parentDlg = parentDlg;
     _allOptionsVec = buildAllOptionsVector();
     _options = getOptions(_allOptionsVec);
-    _rightVec = _dApplic.getDxPreferences().getSelectedOptionsInFullReport();
+	if (DxFlags.newPref) {	
+		_rightVec = new ReportPref().getSelectedOptionsForFullReport();		 
+//	} else {
+//		_rightVec = _dApplic.getDxPreferences().getSelectedOptionsInFullReport();
+	}
+   
     showReport();
   } //FullReport
 
@@ -159,9 +168,19 @@ public class FullReport extends ViewReport implements ActionListener {
     }//end if (e.getActionCommand().equals(_buttonsNames[0]))
   }//end method
 
-  public void doSave(Vector <String> rigth) {
-    _dApplic.getDxPreferences().setSelectedOptionsInFullReport(rigth);
-    _dApplic.getDxPreferences().save();
-    _rightVec = rigth;
-  }
+//  public void doSave(Vector <String> rigth) {
+//    _dApplic.getDxPreferences().setSelectedOptionsInFullReport(rigth);
+//    _dApplic.getDxPreferences().save();
+//    _rightVec = rigth;
+//  }
+
+/* (non-Javadoc)
+ * @see dInterface.dData.ViewReport#doSavePref(java.util.Vector)
+ */
+@Override
+public void doSavePref(Vector<String> rigth) {
+		new ReportPref().saveSelectedOptionsInFullReport(rigth);
+		_rightVec = rigth;
+	}
+	
 }

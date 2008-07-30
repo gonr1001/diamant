@@ -138,15 +138,26 @@ public class ImportReport extends ViewReport implements ActionListener {
 
     }// end method
 
-    /**
-     * 
-     * @param rigth
-     *            Save the options
-     */
-    public void doSave(Vector <String> rigth) {
-        _dApplic.getDxPreferences().setSelectedOptionsInFullReport(rigth);
-        _dApplic.getDxPreferences().save();
-        _rightVec = rigth;
-    }
+//    /**
+//     * 
+//     * @param rigth
+//     *            Save the options
+//     */
+//    public void doSave(Vector <String> rigth) {
+//        _dApplic.getDxPreferences().setSelectedOptionsInFullReport(rigth);
+//        _dApplic.getDxPreferences().save();
+//        _rightVec = rigth;
+//    }
+
+
+
+	/* (non-Javadoc)
+	 * @see dInterface.dData.ViewReport#doSavePref(java.util.Vector)
+	 */
+	@Override
+	public void doSavePref(Vector<String> rigth) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

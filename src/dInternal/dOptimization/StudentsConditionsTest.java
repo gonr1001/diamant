@@ -15,6 +15,12 @@ public class StudentsConditionsTest extends TestCase {
 	private DModel _dm1; // For dataTest7j
 
 	private DModel _dm2; // For dataTest5j
+	
+	public static Test suite() {
+		// the type safe way is in SimpleTest
+		// the dynamic way :
+		return new TestSuite(StudentsConditionsTest.class);
+	} // end suite
 
 	public StudentsConditionsTest(String name) {
 		super(name);
@@ -41,11 +47,7 @@ public class StudentsConditionsTest extends TestCase {
 		_dm2.getConditionsToTest().buildAllConditions(_dm1.getTTStructure());
 	}
 
-	public static Test suite() {
-		// the type safe way is in SimpleTest
-		// the dynamic way :
-		return new TestSuite(StudentsConditionsTest.class);
-	} // end suite
+
 
 	/**
 	 * 

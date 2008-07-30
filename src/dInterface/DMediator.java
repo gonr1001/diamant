@@ -20,6 +20,7 @@ package dInterface;
 
 import java.beans.PropertyVetoException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Vector;
 
 import javax.swing.JInternalFrame;
@@ -59,58 +60,7 @@ public class DMediator extends Object {
 		return _cancel;
 	}
 
-	/**
-	 * for new ttStructure and for open ttStructure
-	 * 
-	 * @param fileName
-	 *            is the full path file name containing the TTStructure
-	 * @param type
-	 *            is the type of timetable to be constructed
-	 * @throws Exception
-	 * 
-	 */
-	// public String addDoc(String fileName, int type) throws DxException /*
-	// !!!NIC!!! */{
-	// DApplication.getInstance().setCursorWait();
-	// DDocument currentDoc = new DDocument(this, fileName, fileName, type);
-	// _documents.addElement(currentDoc);
-	//
-	// if (currentDoc.getError().length() == 0) {
-	// _dApplication.getToolBar().setToolBars(
-	// currentDoc.getCurrentDModel().getTTStructure());
-	// } else {
-	// new DxExceptionDlg(_dApplication.getJFrame(), currentDoc.getError());
-	// System.exit(1);
-	// }
-	// DApplication.getInstance().setCursorDefault();
-	// return currentDoc.getError();
-	// } // end addDoc
-	/**
-	 * for new tt and for open tt
-	 * 
-	 * @param ttname
-	 *            This string will be displayed as the title of the JIF
-	 * @param fileName
-	 *            is the full path file name containing the TTStructure
-	 * @param type
-	 *            is the type of timetable to be constructed possible types
-	 *            NO_TYPE = 0; CYCLE = 1; EXAM = 2; CYCLEANDEXAM = 3;
-	 * @throws Exception
-	 * 
-	 */
-	// public String addDoc(String ttName, String fileName, int type)
-	// throws DxException {
-	// DDocument currentDoc = new DDocument(this, ttName, fileName, type);
-	// if (currentDoc.getError().length() == 0) {
-	// _documents.addElement(currentDoc);
-	// _dApplication.getToolBar().setToolBars(
-	// currentDoc.getCurrentDModel().getTTStructure());
-	// _dApplication.hideToolBar();
-	// } else {
-	// throw new DxException(currentDoc.getError());
-	// }
-	// return currentDoc.getError();
-	// } // end addDoc
+
 	/**
 	 * for new tt and for open tt
 	 * 
@@ -157,39 +107,8 @@ public class DMediator extends Object {
 		return "";
 	}
 
-	// /**
-	// * for new ttStructure and for open ttStructure
-	// *
-	// * @param fileName
-	// * is the full path file name containing the TTStructure
-	// * @param type
-	// * is the type of timetable to be constructed
-	// * @throws Exception
-	// *
-	// */
-	// public String addDxTTExamDoc(String ttName, String fileName, int type)
-	// throws Exception /* !!!NIC!!! */{
-	// //TODO review all this method
-	// DApplication.getInstance().setCursorWait();
-	// DxDocument currentDoc = new DxTTableDoc(this, fileName, type);
-	// //currentDoc.setDocumentName(ttName);
-	// _dxDocuments.addElement(currentDoc);
-	// _dApplication.hideToolBar();
-	// DApplication.getInstance().setCursorDefault();
-	//	
-	// // _documents.addElement(currentDoc);
-	//
-	// // if (currentDoc.getError().length() == 0) {
-	// // _dApplication.getToolBar().setToolBars(
-	// // currentDoc.getCurrentDModel().getTTStructure());
-	// // } else {
-	// // new DxExceptionDlg(_dApplication.getJFrame(), currentDoc.getError());
-	// // System.exit(1);
-	// // }
-	// // DApplication.getInstance().setCursorDefault();
-	// // return currentDoc.getError();
-	// return "addDxTTExamDoc";
-	// } // end addDoc
+
+
 
 	/**
 	 * for new ttStructure and for open ttStructure
@@ -202,25 +121,18 @@ public class DMediator extends Object {
 	 * 
 	 */
 	public void addDxTTStructureDoc(String fileName) throws Exception {
+		System.out.println("UFile Name in addDxTTStructureDoc" + fileName);
 		DxDocument currentDxDoc = new DxTTStructureDoc(this, fileName);
 		_dxDocuments.addElement(currentDxDoc);
 		_dApplication.getToolBar().setToolBars(currentDxDoc.getTTStructure());
 	} // end addDxTTStructureDoc
 
-	// public void removeCurrentDoc() {
-	// _documents.remove(getCurrentDoc());
-	// if (_documents.size() != 0) {
-	// try {
-	// _documents.get(0).getJIF().setSelected(true);
-	// } catch (PropertyVetoException e) {
-	// new DxExceptionDlg(_dApplication.getJFrame(), e.toString());
-	// e.printStackTrace();
-	// System.exit(1);
-	// }
-	// } else {// end if (_documents.size()!=0)
-	// _dApplication.getToolBar().setEnabledToolbar(false);
-	// }
-	// } // end removeCurrentDoc
+	public void addDxTTStructureDoc(InputStream fileName) throws Exception {
+		System.out.println("UFile Name in addDxTTStructureDoc" + fileName);
+		DxDocument currentDxDoc = new DxTTStructureDoc(this, fileName);
+		_dxDocuments.addElement(currentDxDoc);
+		_dApplication.getToolBar().setToolBars(currentDxDoc.getTTStructure());
+	} // end addDxTTStructureDoc
 
 	private void removeCurrentDxDoc() {
 		_dxDocuments.remove(getCurrentDxDoc());
@@ -246,24 +158,6 @@ public class DMediator extends Object {
 		return error;
 	}
 
-	// public void closeCurrentDoc() {
-	// if (getCurrentDoc() != null) {
-	// if (getCurrentDoc().isModified()) {
-	// _cancel = promptToSave();
-	// } else {// end if
-	// DDocument aux = getCurrentDoc();
-	// _documents.remove(getCurrentDoc());
-	// aux.close();
-	// } // end else
-	// if (_documents.size() == 0) {
-	// _dApplication.hideToolBar();
-	// } else {
-	// _dApplication.getToolBar().setToolBars(
-	// getCurrentDoc().getCurrentDModel().getTTStructure());
-	// }
-	// }// end if
-	//
-	// }
 
 	public void closeCurrentDxDoc() {
 		if (getCurrentDxDoc() != null) {
@@ -283,29 +177,6 @@ public class DMediator extends Object {
 		}// end if
 	}
 
-	// -------------------------------------------
-	// public DDocument getCurrentDoc() {
-	// DDocument currentDoc = null;
-	// for (int i = 0; i < _documents.size(); i++) {
-	// currentDoc = _documents.elementAt(i);
-	// JInternalFrame currentFrame = currentDoc.getJIF();
-	// if (currentFrame.isSelected()) {
-	// return currentDoc;
-	// } // end if
-	// } // end for
-	// if (_documents.size() != 0) {
-	// currentDoc = _documents.elementAt(0);
-	// try {
-	// currentDoc.getJIF().setIcon(false);
-	// } catch (PropertyVetoException e) {
-	// new DxExceptionDlg(_dApplication.getJFrame(),
-	// "In DMediator.getCurrentDoc: " + e.getMessage(), e);
-	// System.exit(1);
-	// }
-	// return currentDoc;
-	// }
-	// return null;
-	// } // end getCurrentDoc
 
 	public DxDocument getCurrentDxDoc() {
 		DxDocument currentDxDoc = null;
@@ -329,15 +200,6 @@ public class DMediator extends Object {
 		}
 		return null;
 	}
-
-	// -------------------------------------------
-	// public JInternalFrame getCurrentFrame() {
-	// DDocument currentDoc = getCurrentDoc();
-	// if (currentDoc != null) {
-	// return currentDoc.getJIF();
-	// }
-	// return null;
-	// } // end getCurrentFrame
 
 	/**
 	 * Prompts to save if document has changed. This checks the document to see

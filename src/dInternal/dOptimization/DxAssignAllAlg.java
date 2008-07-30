@@ -26,7 +26,7 @@ import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
 import dInternal.DValue;
-import dInternal.DxConflictLimits;
+//import dInternal.DxConflictLimits;
 import dInternal.dData.StandardCollection;
 import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
@@ -47,15 +47,20 @@ public class DxAssignAllAlg implements Algorithm {
 
 	private DModel _dm;
 
-	private DxConflictLimits _dxCL;
+//	private DxConflictLimits _dxCL;
 
 	/**
 	 * constructor
 	 */
-	public DxAssignAllAlg(DModel dm, DxConflictLimits dxcl) {
+//	public DxAssignAllAlg(DModel dm, DxConflictLimits dxcl) {
+//		_placedEvents = new Vector<DResource>();
+//		_dm = dm;
+//		_dxCL = dxcl;
+//	}
+
+	public DxAssignAllAlg(DModel dm) {
 		_placedEvents = new Vector<DResource>();
 		_dm = dm;
-		_dxCL = dxcl;
 	}
 
 	/**
@@ -67,13 +72,24 @@ public class DxAssignAllAlg implements Algorithm {
 		Vector<DResource> vPeriods;
 		Vector<DResource> vNotYetAssignedEvents = getEvents();
 		int currentDuration = 0;
-		_dxCL.getMNumOfEventsInPeriod(); // to avoid warning
+		
+		if (DxFlags.newPref) {			
+			// aa
+//		} else {
+//			_dxCL.getMNumOfEventsInPeriod(); // to avoid warning
+		}
+		
 
 	
 		if (DxFlags.newAlg) {
-			_dm.getConditionsToTest().extractDxPreference();
+			
+			if (DxFlags.newPref) {			
+				_dm.getConditionsToTest().extractParametersPref();
+//			} else {
+//				_dm.getConditionsToTest().extractDxPreference();
+			}
 		} else {
-			_dm.getConditionsToTest().extractPreference();
+//			_dm.getConditionsToTest().extractPreference();
 		}
 		int[] nbConf;
 		for (int i = 0; i < vNotYetAssignedEvents.size(); i++) {

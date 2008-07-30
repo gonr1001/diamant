@@ -140,11 +140,21 @@ public class MergeReport extends ViewReport implements ActionListener {
    }//end if (e.getActionCommand().equals(_buttonsNames[0]))
 
  }//end method
- public void doSave(Vector <String> rigth) {
-    _dApplic.getDxPreferences().setSelectedOptionsInFullReport(rigth);
-    _dApplic.getDxPreferences().save();
-    _rightVec = rigth;
-  }
+// public void doSave(Vector <String> rigth) {
+//    _dApplic.getDxPreferences().setSelectedOptionsInFullReport(rigth);
+//    _dApplic.getDxPreferences().save();
+//    _rightVec = rigth;
+//  }
+
+
+/* (non-Javadoc)
+ * @see dInterface.dData.ViewReport#doSavePref(java.util.Vector)
+ */
+@Override
+public void doSavePref(Vector<String> rigth) {
+	// TODO Auto-generated method stub
+	
+}
 
 
 

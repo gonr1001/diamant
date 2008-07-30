@@ -19,6 +19,7 @@
 package dInternal.dTimeTable;
 
 import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.Observable;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -253,6 +254,20 @@ public class TTStructure extends Observable {
 		Element root;
 
 		xmlFile = new XMLInputFile();
+		System.out.println("UFile Name in addDxTTStructureDoc" + fileName);
+		Document doc = xmlFile.createDocument(fileName);
+		XMLReader list = new XMLReader();
+		root = list.getRootElement(doc);
+		readXMLTTTag(root);
+
+	} // loadTTStructFromFile
+	
+	public void loadTTStructFromFile(InputStream fileName) throws Exception {
+		XMLInputFile xmlFile;
+		Element root;
+
+		xmlFile = new XMLInputFile();
+		System.out.println("UFile Name in addDxTTStructureDoc" + fileName);
 		Document doc = xmlFile.createDocument(fileName);
 		XMLReader list = new XMLReader();
 		root = list.getRootElement(doc);

@@ -70,6 +70,9 @@ public class DxTTableDoc extends DxDocument {
 
 	private void initDxTTableDoc(String fileName) throws DxException,
 			NullPointerException, IOException {
+		// read file 
+		// is all is ok 
+		// then create DModel
 		_dm = new DModel(this, fileName, _type);
 		_documentName = fileName;
 		buidDocument(true, true);
@@ -77,9 +80,6 @@ public class DxTTableDoc extends DxDocument {
 		if (DxFlags.newDxTTPane) {
 			_dxTTPane.updateDxTTPane(_dm.getTTStructure());
 		} 
-//			else {
-//			_ttPane.updateTTPane(_dm.getTTStructure());
-//		}
 	}
 
 	public DxTTableDoc(DMediator mediator, String fileName, int type)

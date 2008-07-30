@@ -28,7 +28,6 @@ import dConstants.DConst;
 import developer.DxFlags;
 import dInterface.DApplication;
 import dInterface.DxDocument;
-import dInterface.DxPreferences;
 import dInterface.DxTTableDoc;
 import dInternal.dData.DLoadData;
 import dInternal.dData.DSaveData;
@@ -222,15 +221,7 @@ public class DModel extends Observable {
 		} else {
 			throw new DxException(_error);
 		}
-		// if ((type == DConst.CYCLE) || (type == DConst.EXAM)) {
-		// _isATimeTable = true;
-		// _isOnlyATimeTable = true;
-		// }
-		// _type = type;
-//		_setOfRoomsFunctions = new SetOfRoomsFunctions();
-//		_setOfRoomsFunctions.functionReader();
 		this.notifyObservers(this);
-
 	}
 
 	/**
@@ -1252,9 +1243,10 @@ public class DModel extends Observable {
 		this.clearChanged();
 	}
 
-	public DxPreferences getDxPreferences() {
-		return this.getDxDocument().getDMediator().getDApplication()
-				.getDxPreferences();
-	}
+//	public DxPreferences getDxPreferences() {
+////		return this.getDxDocument().getDMediator().getDApplication()
+////				.getDxPreferences();
+//		return new DxPreferences();
+//	}
 
 } /* end class DModel */

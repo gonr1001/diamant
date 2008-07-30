@@ -19,14 +19,19 @@
  */
 package dInternal.dOptimization;
 
+
 import java.util.Iterator;
 import java.util.Vector;
+
+
+import ca.sixs.util.pref.ParametersPref;
 import dConstants.DConst;
+
 import dInterface.dUtil.DxTools;
 import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
-import dInternal.DxConflictLimits;
+//import dInternal.DxConflictLimits;
 import dInternal.dData.DxAvailability;
 import dInternal.dData.DxResource;
 import dInternal.dData.DxSetOfResources;
@@ -41,6 +46,7 @@ import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.Period;
 import dInternal.dUtil.DXToolsMethods;
 
+
 /**
  * Ruben Gonzalez-Rubio
  * 
@@ -54,7 +60,7 @@ public class DxAssignRoomsAlg implements Algorithm {
 
 	private DModel _dm;
 
-	private DxConflictLimits _dxCL;
+//	private DxConflictLimits _dxCL;
 
 	protected boolean _increase;
 
@@ -65,16 +71,38 @@ public class DxAssignRoomsAlg implements Algorithm {
 	 * @param dm
 	 * @param limits
 	 */
-	public DxAssignRoomsAlg(DModel dm, DxConflictLimits limits,
+//	public DxAssignRoomsAlg(DModel dm, DxConflictLimits limits,
+//			boolean increase, boolean best) {
+//		super();
+//		if (DxFlags.newPref) {
+//			_dm = dm;
+//			_dxCL = limits;
+//			_increase = increase;
+//			_best = best;			
+//			new ParametersPref().getAllowedRoomBookingRate();
+//		} else {
+//			_dm = dm;
+//			_dxCL = limits;
+//			_increase = increase;
+//			_best = best;
+//			if (limits != null) {
+//				_dxCL.getRoomBookingRate();
+//			}
+//		}
+//		
+//	}
+	
+	public DxAssignRoomsAlg(DModel dm, 
 			boolean increase, boolean best) {
 		super();
-		_dm = dm;
-		_dxCL = limits;
-		_increase = increase;
-		_best = best;
-		if (limits != null) {
-			_dxCL.getRoomBookingRate();
-		}
+
+			_dm = dm;
+			
+			_increase = increase;
+			_best = best;			
+			new ParametersPref().getAllowedRoomBookingRate();
+		
+		
 	}
 
 	/*

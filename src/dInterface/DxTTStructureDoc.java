@@ -22,6 +22,7 @@ package dInterface;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.io.File;
+import java.io.InputStream;
 import java.util.Observable;
 
 
@@ -65,11 +66,30 @@ public class DxTTStructureDoc extends DxDocument {
 
 	public DxTTStructureDoc(DMediator dMed, String fileName) throws Exception {
 		super(dMed);
+		System.out.println("UFile Name in addDxTTStructureDoc" + fileName);
 		_ttStructure = new TTStructure();
 		// try {
 		_ttStructure.loadTTStructFromFile(fileName);
 		// }
 		_documentName = modifiyDocumentName(fileName);
+		buidDocument(true, true);
+		if(DxFlags.newDxTTPane) {
+			_dxTTPane.updateDxTTPane(_ttStructure);
+		} 
+//		else {
+//			_ttPane.updateTTPane(_ttStructure);
+//		}
+//		_ttPane.updateTTPane(_ttStructure);
+	}
+	
+	public DxTTStructureDoc(DMediator dMed, InputStream fileName) throws Exception {
+		super(dMed);
+		System.out.println("UFile Name in addDxTTStructureDoc" + fileName);
+		_ttStructure = new TTStructure();
+		// try {
+		_ttStructure.loadTTStructFromFile(fileName);
+		// }
+//		_documentName = modifiyDocumentName(fileName);
 		buidDocument(true, true);
 		if(DxFlags.newDxTTPane) {
 			_dxTTPane.updateDxTTPane(_ttStructure);

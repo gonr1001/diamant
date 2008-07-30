@@ -34,11 +34,14 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+
+
 import dConstants.DConst;
 import dInterface.DApplication;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.DxTools;
 import dInterface.dUtil.TwoButtonsPanel;
+import developer.DxFlags;
 
 public class ReportOptionsDlg extends JDialog implements ActionListener {
 	private ViewReport _parentDlg;
@@ -182,7 +185,11 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
 			dispose();
 		//if button OK
 		if (command.equals(DConst.BUT_APPLY)) {
-			_parentDlg.doSave(_rightVec);
+			if (DxFlags.newPref) {	
+				_parentDlg.doSavePref(_rightVec);	 
+			} else {
+//				_parentDlg.doSave(_rightVec);
+			}
 			_parentDlg.showReport();
 			//_modified = false;
 			_applyPanel.setFirstDisable();

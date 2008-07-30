@@ -148,7 +148,7 @@ public class DStringFrRes extends java.util.ListResourceBundle {
 			{ "pref", "Preferences" },
 			{ "plafM", "Options L&F" },
 			{ "plafTD", "Options L&F" },
-			{ "plafD", "Choisisez un L&F" },
+			{ "plafD", "Choisisez le Look and Feel :\n" + "et cliquez ok" },
 			{ "conflicts", "Options Conflits ..." },
 			{ "displayTT", "Affichage grille" },
 			{ "simple", "Simple" },

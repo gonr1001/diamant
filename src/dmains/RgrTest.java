@@ -21,6 +21,10 @@ package dmains;
 
 import java.io.File;
 
+import ca.sixs.util.pref.LookAndFeelPrefTest;
+import ca.sixs.util.pref.ParametersPrefTest;
+import ca.sixs.util.pref.ReportPrefTest;
+
 import junit.framework.Test;
 import junit.framework.TestSuite;
 import dInternal.dData.dRooms.DxSetOfSitesTest;
@@ -97,6 +101,10 @@ public class RgrTest {
 		suite.addTest(SetOfEventsTest.suite());
 		suite.addTest(ConditionsTest.suite());
 		suite.addTest(DSaveDataTest.suite());
+
+		suite.addTest(LookAndFeelPrefTest.suite());
+		suite.addTest(ParametersPrefTest.suite());
+		suite.addTest(ReportPrefTest.suite());
 
 		System.out.println("Bye I was in rgr selected Tests");
 		return suite;

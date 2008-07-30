@@ -27,7 +27,7 @@ import junit.framework.TestSuite;
 import dInterface.DxDocument;
 import dInterface.DxTTableDoc;
 import dInternal.DModel;
-import dInternal.DxConflictLimits;
+//import dInternal.DxConflictLimits;
 import dInternal.dOptimization.DxAssignAllAlg;
 
 /**
@@ -60,9 +60,10 @@ public class DxAssignAllAlgTest extends TestCase {
 	 * 
 	 */
 	public void test_buildScNoAssigned() {
-		DxConflictLimits dxCL = new DxConflictLimits();
-		String str = "conflictLimits;0;0;0;0;30;0;100;";
-		dxCL.readLimits(str);
+//		DxConflictLimits dxCL = new DxConflictLimits();
+//		String str = "conflictLimits;0;0;0;0;30;0;100;";
+//		dxCL.readLimits(str);
+//		ParametersPref pp = new ParametersPref();
 		DxDocument dxDocument1 = new DxTTableDoc();
 
 		try {
@@ -74,7 +75,8 @@ public class DxAssignAllAlgTest extends TestCase {
 					.getSetOfActivities().size());
 			assertEquals("test_buildScNoAssigned: events size", 275, dm1
 					.getSetOfEvents().size());
-			DxAssignAllAlg alg = new DxAssignAllAlg(dm1, dxCL);
+//			DxAssignAllAlg alg = new DxAssignAllAlg(dm1, dxCL);
+			DxAssignAllAlg alg = new DxAssignAllAlg(dm1);
 			alg.doWork();
 			assertEquals("test_buildScNoAssigned: number of Events", 254, dm1
 					.getSetOfEvents().getNumberOfEventToAssign());
@@ -92,9 +94,9 @@ public class DxAssignAllAlgTest extends TestCase {
 	 * 
 	 */
 	public void test_buildGenNoAssigned() {
-		DxConflictLimits dxCL = new DxConflictLimits();
-		String str = "conflictLimits;0;0;0;0;30;0;100;";
-		dxCL.readLimits(str);
+//		DxConflictLimits dxCL = new DxConflictLimits();
+//		String str = "conflictLimits;0;0;0;0;30;0;100;";
+//		dxCL.readLimits(str);
 
 		DxDocument dxDocument1 = new DxTTableDoc();
 
@@ -106,7 +108,8 @@ public class DxAssignAllAlgTest extends TestCase {
 					.getSetOfActivities().size());
 			assertEquals("test_buildScNoAssigned: events size", 293, dm1
 					.getSetOfEvents().size());
-			DxAssignAllAlg alg = new DxAssignAllAlg(dm1, dxCL);
+//			DxAssignAllAlg alg = new DxAssignAllAlg(dm1, dxCL);
+			DxAssignAllAlg alg = new DxAssignAllAlg(dm1);
 			alg.doWork();
 			assertEquals("test_buildScNoAssigned: number of Events", 245, dm1
 					.getSetOfEvents().getNumberOfEventToAssign());

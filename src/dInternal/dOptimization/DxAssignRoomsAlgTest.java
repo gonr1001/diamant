@@ -31,7 +31,7 @@ import dInterface.DxTTableDoc;
 import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
-import dInternal.DxConflictLimits;
+//import dInternal.DxConflictLimits;
 import dInternal.dData.DxResource;
 import dInternal.dData.DxSetOfResources;
 import dInternal.dData.StandardCollection;
@@ -82,9 +82,9 @@ public class DxAssignRoomsAlgTest extends TestCase {
 	 * 
 	 */
 	public void test_basicData() {
-		DxConflictLimits dxCL = new DxConflictLimits();
-		String str = "conflictLimits;0;0;0;0;30;0;100;";
-		dxCL.readLimits(str);
+//		DxConflictLimits dxCL = new DxConflictLimits();
+//		String str = "conflictLimits;0;0;0;0;30;0;100;";
+//		dxCL.readLimits(str);
 		DModel dm1 = null;
 
 		DxDocument _dxDocument1 = new DxTTableDoc();
@@ -96,7 +96,9 @@ public class DxAssignRoomsAlgTest extends TestCase {
 					.getSetOfActivities().size());
 			assertEquals("test_basicData: events size", 117, dm1
 					.getSetOfEvents().size());
-			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL, _increase,
+//			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL, _increase,
+//					_best);
+			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, _increase,
 					_best);
 			alg.doWork();
 			assertEquals("test_basicData: nbEventsToAssign", 116, dm1
@@ -116,9 +118,9 @@ public class DxAssignRoomsAlgTest extends TestCase {
 	 * 
 	 */
 	public void test_basicData2() {
-		DxConflictLimits dxCL = new DxConflictLimits();
-		String str = "conflictLimits;0;0;0;0;30;0;100;";
-		dxCL.readLimits(str);
+//		DxConflictLimits dxCL = new DxConflictLimits();
+//		String str = "conflictLimits;0;0;0;0;30;0;100;";
+//		dxCL.readLimits(str);
 		DModel dm1 = null;
 		DxDocument _dxDocument1 = new DxTTableDoc();
 
@@ -130,7 +132,9 @@ public class DxAssignRoomsAlgTest extends TestCase {
 					.getSetOfActivities().size());
 			assertEquals("test_basicData2: events size", 253, dm1
 					.getSetOfEvents().size());
-			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL, _increase,
+//			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL, _increase,
+//					_best);
+			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, _increase,
 					_best);
 			alg.doWork();
 			assertEquals("test_basicData2: nbEventsToAssign", 250, dm1
@@ -150,9 +154,9 @@ public class DxAssignRoomsAlgTest extends TestCase {
 	 * 
 	 */
 	public void test_getNumberOfPeriods() {
-		DxConflictLimits dxCL = new DxConflictLimits();
-		String str = "conflictLimits;0;0;0;0;30;0;100;";
-		dxCL.readLimits(str);
+//		DxConflictLimits dxCL = new DxConflictLimits();
+//		String str = "conflictLimits;0;0;0;0;30;0;100;";
+//		dxCL.readLimits(str);
 		DModel dm1 = null;
 
 		DxDocument _dxDocument1 = new DxTTableDoc();
@@ -162,7 +166,10 @@ public class DxAssignRoomsAlgTest extends TestCase {
 					+ "RoomAffTestsFlsh170min.dia");
 			dm1.changeInDModel(new Object());
 
-			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL, _increase,
+//			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL, _increase,
+//					_best);
+			
+			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1,  _increase,
 					_best);
 			assertEquals("test_getNumberOfPeriods: nb Periods", 28, alg
 					.getNumberOfPeriods());
@@ -182,9 +189,9 @@ public class DxAssignRoomsAlgTest extends TestCase {
 	 */
 	public void test_events() {
 		final String CLASSE = "CLASSE";
-		DxConflictLimits dxCL = new DxConflictLimits();
-		String str = "conflictLimits;0;0;0;0;30;0;100;";
-		dxCL.readLimits(str);
+//		DxConflictLimits dxCL = new DxConflictLimits();
+//		String str = "conflictLimits;0;0;0;0;30;0;100;";
+//		dxCL.readLimits(str);
 
 		DxDocument _dxDocument1 = new DxTTableDoc();
 
@@ -193,7 +200,10 @@ public class DxAssignRoomsAlgTest extends TestCase {
 					+ "RoomAffTestsFlsh170min.dia");
 			dm.changeInDModel(new Object());
 
-			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm, dxCL, _increase,
+//			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm, dxCL, _increase,
+//					_best);
+			
+			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm,  _increase,
 					_best);
 			Cycle cycle = dm.getTTStructure().getCurrentCycle();
 			cycle.setCurrentDaySeqPerIndex(0, 0, 0);
@@ -319,9 +329,9 @@ public class DxAssignRoomsAlgTest extends TestCase {
 		final String MULTIMEDIA = "MULTIMÉDIA";
 		final String CLASSE = "CLASSE";
 		final String LAB = "LAB";
-		DxConflictLimits dxCL = new DxConflictLimits();
-		String str = "conflictLimits;0;0;0;0;30;0;100;";
-		dxCL.readLimits(str);
+//		DxConflictLimits dxCL = new DxConflictLimits();
+//		String str = "conflictLimits;0;0;0;0;30;0;100;";
+//		dxCL.readLimits(str);
 		DModel dm1 = null;
 
 		DxDocument _dxDocument1 = new DxTTableDoc();
@@ -330,7 +340,10 @@ public class DxAssignRoomsAlgTest extends TestCase {
 			dm1 = new DModel(_dxDocument1, _pathForFiles + "testRoomAlg.dia");
 			dm1.changeInDModel(new Object());
 
-			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL, _increase,
+//			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, dxCL, _increase,
+//					_best);
+			
+			DxAssignRoomsAlg alg = new DxAssignRoomsAlg(dm1, _increase,
 					_best);
 			Cycle cycle = dm1.getTTStructure().getCurrentCycle();
 			cycle.setCurrentDaySeqPerIndex(0, 0, 0);
@@ -749,9 +762,9 @@ public class DxAssignRoomsAlgTest extends TestCase {
 	}
 
 	public void test_Sort() {
-		DxConflictLimits dxCL = new DxConflictLimits();
-		String str = "conflictLimits;0;0;0;0;30;0;100;";
-		dxCL.readLimits(str);
+//		DxConflictLimits dxCL = new DxConflictLimits();
+//		String str = "conflictLimits;0;0;0;0;30;0;100;";
+//		dxCL.readLimits(str);
 
 		// String fileName = "." + File.separator;
 		// fileName += "dataTest" + File.separator;
@@ -760,7 +773,8 @@ public class DxAssignRoomsAlgTest extends TestCase {
 		// fileName += "flsh2_1" + File.separator;
 		// fileName += "RoomAffContTT.dia";
 
-		DxAssignRoomsAlg alg = new DxAssignRoomsAlg(null, null, true, true);
+//		DxAssignRoomsAlg alg = new DxAssignRoomsAlg(null, null, true, true);
+		DxAssignRoomsAlg alg = new DxAssignRoomsAlg(null,  true, true);
 		Vector<DxResource> v = new Vector<DxResource>();
 		DxRoom dr = new DxRoom("C1-310", 10, 0, null, "", null);
 		v.add(dr);
