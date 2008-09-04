@@ -28,6 +28,7 @@ package dmains;
 import java.io.File;
 
 
+import ca.sixs.util.pref.FileFilterPrefTest;
 import ca.sixs.util.pref.LookAndFeelPrefTest;
 import ca.sixs.util.pref.ParametersPrefTest;
 import ca.sixs.util.pref.ReportPrefTest;
@@ -180,10 +181,12 @@ public class DiamantTest {
 		suite.addTest(StudentTest.suite());
 		suite.addTest(ResourceTest.suite());
 		suite.addTest(DFileMenuTest.suite());
-		suite.addTest(DxEditEventDlgTest.suite());		
+		suite.addTest(DxEditEventDlgTest.suite());	
+		
 		suite.addTest(LookAndFeelPrefTest.suite());
 		suite.addTest(ParametersPrefTest.suite());
 		suite.addTest(ReportPrefTest.suite());
+		suite.addTest(FileFilterPrefTest.suite());
 
 		System.out.println("Bye I was in Diamant tests");
 		return suite;

@@ -92,12 +92,11 @@ public class LookAndFeelPref implements ConstantsForLookAndFeel {
 	public void lafChooser(JFrame jFrame) {
 		String[] possibilities = { METAL_EXT, MOTIF_EXT, WINDOWS_EXT };
 		String current = getLookAndFeel();
-		// System.out.println("Current " + current);
+		
 		String str = (String) JOptionPane.showInputDialog(jFrame,
-
-		DConst.PLAF_D, DConst.PLAF_TD, JOptionPane.PLAIN_MESSAGE, /* icon */null,
-				possibilities, convertIntToExt(current));
-		// System.out.println("Reponse " + str);
+				DConst.PLAF_D, DConst.PLAF_TD, JOptionPane.PLAIN_MESSAGE, /* icon */
+				null, possibilities, convertIntToExt(current));
+		
 		if ((str != null) && (str.length() > 0)) {
 			String choice = convertExtToInt(str);
 			this.putLookAndFeel(choice);

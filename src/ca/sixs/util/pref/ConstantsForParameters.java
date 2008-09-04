@@ -58,4 +58,18 @@ public interface ConstantsForParameters {
 	
 	public final int ROOM_BOOK_RATE_DEFAULT = 100;
 	
+	public final int LOW_LIMIT = 0;
+	
+	public final int HIGH_LIMIT = 99999;
+	
+	public final int HIGH_PRIORITY_LIMIT = 2;
+	
+	public final int HIGH_GAP_LIMIT = 4;
+	
+	public final int LOW_BOOK_RATE_LIMIT = 1;
+	
+	public final int HIGH_BOOK_RATE_LIMIT = 125;
+	
+	
+	
 }

@@ -21,6 +21,7 @@ package dmains;
 
 import java.io.File;
 
+import ca.sixs.util.pref.FileFilterPrefTest;
 import ca.sixs.util.pref.LookAndFeelPrefTest;
 import ca.sixs.util.pref.ParametersPrefTest;
 import ca.sixs.util.pref.ReportPrefTest;
@@ -80,31 +81,32 @@ public class RgrTest {
 
 		TestSuite suite = new TestSuite("rgr selected Tests");
 
-		suite.addTest(DxSetOfSitesTest.suite());
-		suite.addTest(DxAssignRoomsAlgTest.suite());
-		suite.addTest(DxTTStructureTest.suite());
-		suite.addTest(DxSiteReaderTest.suite());
-		suite.addTest(ByteInputFileTest.suite());
-		suite.addTest(ByteOutputFileTest.suite());
-		suite.addTest(FilterFileTest.suite());
-		suite.addTest(SemiExtendedAsciiFileTest.suite());
-		suite.addTest(DxSetOfSitesTest.suite());
-		suite.addTest(DxAssignAllAlgTest.suite());
-		suite.addTest(RoomsConditionsTest.suite());
-
-		if (DxFlags.newDxLoadData) {
-			suite.addTest(DxLoadDataTest.suite()); //TODO to review
-		} else {
-			suite.addTest(DLoadDataTest.suite()); //TODO to review
-		}
-		suite.addTest(DxInstructorsReaderTest.suite());
-		suite.addTest(SetOfEventsTest.suite());
-		suite.addTest(ConditionsTest.suite());
-		suite.addTest(DSaveDataTest.suite());
+//		suite.addTest(DxSetOfSitesTest.suite());
+//		suite.addTest(DxAssignRoomsAlgTest.suite());
+//		suite.addTest(DxTTStructureTest.suite());
+//		suite.addTest(DxSiteReaderTest.suite());
+//		suite.addTest(ByteInputFileTest.suite());
+//		suite.addTest(ByteOutputFileTest.suite());
+//		suite.addTest(FilterFileTest.suite());
+//		suite.addTest(SemiExtendedAsciiFileTest.suite());
+//		suite.addTest(DxSetOfSitesTest.suite());
+//		suite.addTest(DxAssignAllAlgTest.suite());
+//		suite.addTest(RoomsConditionsTest.suite());
+//
+//		if (DxFlags.newDxLoadData) {
+//			suite.addTest(DxLoadDataTest.suite()); //TODO to review
+//		} else {
+//			suite.addTest(DLoadDataTest.suite()); //TODO to review
+//		}
+//		suite.addTest(DxInstructorsReaderTest.suite());
+//		suite.addTest(SetOfEventsTest.suite());
+//		suite.addTest(ConditionsTest.suite());
+//		suite.addTest(DSaveDataTest.suite());
 
 		suite.addTest(LookAndFeelPrefTest.suite());
 		suite.addTest(ParametersPrefTest.suite());
 		suite.addTest(ReportPrefTest.suite());
+		suite.addTest(FileFilterPrefTest.suite());
 
 		System.out.println("Bye I was in rgr selected Tests");
 		return suite;
