@@ -90,7 +90,7 @@ public class RgrTest {
 //		suite.addTest(FilterFileTest.suite());
 //		suite.addTest(SemiExtendedAsciiFileTest.suite());
 //		suite.addTest(DxSetOfSitesTest.suite());
-//		suite.addTest(DxAssignAllAlgTest.suite());
+		suite.addTest(DxAssignAllAlgTest.suite());
 //		suite.addTest(RoomsConditionsTest.suite());
 //
 //		if (DxFlags.newDxLoadData) {

@@ -161,6 +161,7 @@ public class ParametersPref implements ConstantsForParameters, ActionListener {
 
 		Dimension dim = new Dimension(600, 300);
 		jd.setSize(dim);
+		_buttonsNames =  new String[1];
 		_buttonsNames[0] = DConst.BUT_OK;
 		_maxStuConflictsBetweenTwoEvents = new JTextField(""
 				+ this.getMaxStuConfictsBetweenTwoEvents());
