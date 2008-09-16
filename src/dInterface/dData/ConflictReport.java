@@ -33,12 +33,12 @@ public class ConflictReport extends ViewReport implements ActionListener {
 		_parentDlg = parentDlg;
 		_allOptionsVec = buildAllOptionsVector();
 		_options = getOptions(_allOptionsVec);
-		if (DxFlags.newPref) {
+//		if (DxFlags.newPref) {
 			_rightVec = new ReportPref().getSelectedOptionsForConflictReport();
 //		} else {
 //			_rightVec = _dApplic.getDxPreferences()
 //					.getSelectedOptionsInFullReport();
-		}
+//		}
 
 		showReport();
 

@@ -143,11 +143,11 @@ public class DxConditionsToTest {
 	public void initAllConditions() {
 		buildStudentConflictMatrix();
 		if (DxFlags.newAlg) {
-			if(DxFlags.newPref) {
+//			if(DxFlags.newPref) {
 				extractParametersPref();
 //			} else {
 //			extractDxPreference();
-			}
+//			}
 		} else {
 			//extractPreference();
 		}
@@ -513,11 +513,11 @@ public class DxConditionsToTest {
 	 */
 	public Vector<Period> periodVariationEvents(int[] perKey) {
 		if (DxFlags.newAlg) {
-			if(DxFlags.newPref) {
+//			if(DxFlags.newPref) {
 				extractParametersPref();
 //			} else {
 //			extractDxPreference();
-			}
+//			}
 		} else {
 			//extractPreference();
 		}

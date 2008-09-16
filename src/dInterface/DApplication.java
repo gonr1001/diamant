@@ -29,18 +29,9 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileReader;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.util.StringTokenizer;
-//import java.util.prefs.PreferenceChangeEvent;
-//import java.util.prefs.PreferenceChangeListener;
-//import java.util.prefs.Preferences;
 
 import javax.swing.DefaultDesktopManager;
 import javax.swing.ImageIcon;
@@ -48,14 +39,10 @@ import javax.swing.JDesktopPane;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.WindowConstants;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
-
 
 import ca.sixs.util.pref.LookAndFeelPref;
 import ca.sixs.util.pref.ParametersPref;
@@ -67,8 +54,8 @@ import dInterface.dAffectation.ActivityModifDlg;
 import dInterface.dAffectation.SectionDlg;
 import dInterface.dAlgorithms.PersonalizeMixingAlgorithmDlg;
 import dInterface.dAssignementDlgs.DxActivityDlg;
-import dInterface.dAssignementDlgs.DxConflictsOfAnEventDlg; 
-import dInterface.dAssignementDlgs.DxEventsDlg; 
+import dInterface.dAssignementDlgs.DxConflictsOfAnEventDlg;
+import dInterface.dAssignementDlgs.DxEventsDlg;
 import dInterface.dAssignementDlgs.DxInstructorAvailabilityDlg;
 import dInterface.dAssignementDlgs.DxRoomAvailabilityDlg;
 import dInterface.dData.DefFilesToImportDlg;
@@ -81,36 +68,33 @@ import dInterface.dMenus.DxMenuBar;
 import dInterface.dTimeTable.OpenTTSDlg;
 import dInterface.dTimeTable.SaveAsTTDlg;
 import dInterface.dUtil.AboutDlg;
-//import dInterface.dUtil.ConflictDlg;
 import dInterface.selectiveSchedule.dialog.SelectiveScheduleDlg;
 import dInternal.DModel;
 import dInternal.DxLoadData;
 import dInternal.dOptimization.DxAssignAllAlg;
 import dInternal.dOptimization.DxAssignRoomsAlg;
 import dInternal.dOptimization.SelectAlgorithm;
-import dInternal.dTimeTable.TTStructure;
 import eLib.exit.dialog.DxExceptionDlg;
-import eLib.exit.dialog.FatalProblemDlg;
 import eLib.exit.dialog.InformationDlg;
 import eLib.exit.exception.DxException;
 
 public class DApplication {
 
 	private final String _LOGO_PATH = "images/logoDia.jpg";
-		
+
 	private final String _START_TTC = "timetables/startTTC.xml";
 
 	private final String _START_TTE = "timetables/startTTE.xml";
-	
+
 	// singleton: it has only one instance
-	private static int instanceNumber = 0;
+	private static int _instanceNumber = 0;
 
 	private static DApplication _instance = null;
 
 	// DApplication is a singleton
 	public static DApplication getInstance() {
-		if (instanceNumber == 0) {
-			instanceNumber++;
+		if (_instanceNumber == 0) {
+			_instanceNumber++;
 			_instance = new DApplication();
 		}
 		return _instance;
@@ -149,6 +133,7 @@ public class DApplication {
 
 	private DToolBar _toolBar;
 
+	// TODO _increse and _best must disappear
 	private boolean _increase;
 
 	private boolean _best;
@@ -172,37 +157,17 @@ public class DApplication {
 		if (args.length > 0) {
 			lookUpforOptions(args); // arguments came from the command line
 		}
-//		if (DxFlags.newPref) {
-//			//_dPreferences = new DPreferences();
-////		} else {
-////			String str = System.getProperty("user.home") + File.separator
-////					+ "pref" + File.separator + "pref.txt";
-////			System.out.println("Preference file is in :" + str);
-////			_dxPreferences = new DxPreferences(str);
-//		}
-
 		_dMediator = new DMediator(this);
 		_currentDir = System.getProperty("user.dir");
 		_jFrame = createFrame(DConst.APP_NAME + "   " + DConst.V_DATE);
-		if (DxFlags.newPref) {			
-			 new LookAndFeelPref().setLookAndFeel();
-//		} else {
-//			setLAF(_dxPreferences._lookAndFeel);
-		}
+
+		new LookAndFeelPref().setLookAndFeel();
+
 		if (_inDevelopment) {
 			tryOpenDevFile();
 		}
 		_logger.warn("bye_from DApplication"); // at the end of an execution
 	}
-
-	// DxFlag.newPref
-	// private String getLAFFromPref() {
-	// boolean visible = false;
-	// DxPLAFDlg dlg = new DxPLAFDlg(this,_dPreferences, visible);
-	// String str = dlg.getLookAndFeelFromPref();
-	// dlg.dispose();
-	// return str;
-	// }
 
 	private void lookUpforOptions(String[] args) {
 		if (args[0].compareTo(DEV) == 0) {
@@ -285,6 +250,10 @@ public class DApplication {
 		return _dMediator.getCurrentDxDoc();
 	}
 
+	public DModel getCurrentDModel() {
+		return getCurrentDxDoc().getCurrentDModel();
+	}
+
 	public String saveCurrentDxDoc(String str) {
 		return _dMediator.saveCurrentDxDoc(str);
 	} // end getCurrentDoc
@@ -300,10 +269,6 @@ public class DApplication {
 	public DToolBar getToolBar() {
 		return _toolBar;
 	}
-
-//	public DxPreferences getDxPreferences() {
-//		return _dxPreferences;
-//	} // end getPreferences
 
 	public String getCurrentDir() {
 		return _currentDir;
@@ -324,47 +289,6 @@ public class DApplication {
 	public void hideToolBar() {
 		_toolBar.setVisible(false);
 	}
-
-//	// -------------------------------------------
-//	public void setLAF(String str) {
-//		// Force SwingApp to come up in the System L&F
-//		try {
-//			UIManager.setLookAndFeel(str);
-//			System.out.println("pref: " + str);
-//		} catch (UnsupportedLookAndFeelException ulafe) {
-//			new FatalProblemDlg("UnsupportedLookAndFeel: " + str);
-//			System.err.println("Warning: UnsupportedLookAndFeel: " + str);
-//			ulafe.printStackTrace();
-//			System.exit(1);
-//		} catch (ClassNotFoundException cnfe) {
-//			new FatalProblemDlg("Error ClassNotFound LookAndFeel" + str);
-//			System.err.println("Error ClassNotFound LookAndFeel" + str);
-//			cnfe.printStackTrace();
-//			System.exit(1);
-//		} catch (IllegalAccessException iace) {
-//			new FatalProblemDlg("Error IllegalAccess LookAndFeel" + str);
-//			System.err.println("Error IllegalAccess LookAndFeel" + str);
-//			iace.printStackTrace();
-//			System.exit(1);
-//		} catch (InstantiationException ie) {
-//			new FatalProblemDlg("Error Instantiation LookAndFeel" + str);
-//			System.err.println("Error Instantiation LookAndFeel" + str);
-//			ie.printStackTrace();
-//			System.exit(1);
-//		}
-//	} // end setLF
-
-	// -------------------------------------------
-	/**
-	 * This method updates the look and feel style
-	 * 
-	 * @param String
-	 *            A look and feel style
-	 */
-//	public void updateLAF(String str) {
-//		setLAF(str);
-//		SwingUtilities.updateComponentTreeUI(_jFrame);
-//	}
 
 	/**
 	 * Closes the document(s) and the application. Use this method for
@@ -388,10 +312,6 @@ public class DApplication {
 			System.exit(0);
 		}
 	} // end exit
-
-	public DModel getCurrentDModel() {
-		return getCurrentDxDoc().getCurrentDModel();
-	}
 
 	public void setCursorWait() {
 		if (_jFrame != null)
@@ -427,116 +347,29 @@ public class DApplication {
 	 * 
 	 */
 	public void newTTStrucCycle() {
-//		buildTTStruc(this.getDxPreferences()._standardTTC);
-			createTTStructure(_START_TTC);
+		createTTStructure(_START_TTC);
 
+	}
+
+	public void newTTStrucExam() {
+		createTTStructure(_START_TTE);
 	}
 
 	private void createTTStructure(String path) {
 		System.out.println("Path in createTTStructure : " + path);
-				
-			try {
-				InputStream in = 
-			        this.getClass().getResourceAsStream(path); 
-//				System.out.println("inToString" + in.toString());
-//				InputStreamReader isr = 
-//			        new InputStreamReader(in);
-//			      BufferedReader br = 
-//			        new BufferedReader(isr);
-//			      StringWriter sw = new StringWriter();
-//
-//			      String line;
-//			       while ((line = br.readLine()) != null) {
-//			    	   System.out.println(line);
-//			       }
-				_dMediator.addDxTTStructureDoc(in);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			//return new TTStructure();
-		}
-	
-	
 
-	
-	private  static void createTTStructure2(String path, DApplication da) {
-//		java.net.URL imgURL = DApplication.class.getResource(path);
-		java.net.URL imgURL = ClassLoader.getSystemResource ("./build.xml");
-//		System.out.println("URL toExter" + imgURL.toExternalForm());
-		System.out.println("URL to String" + imgURL.toString());
-//		path = "./build.xml";
-		System.out.println("URL toExter" + path);
-		if (imgURL != null) {					
-			try {
-				FileReader file =new FileReader (path);
-				BufferedReader in = new BufferedReader(file);
-				String line;
-				while ((line = in.readLine()) !=null)
-					System.out.println(line);
-				
-				//da._dMediator.addDxTTStructureDoc(imgURL.toString());
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			//return new TTStructure();
-		}
-//		System.err.println("Couldn't find file: " + path);
-//		//return null;
-//		System.out.println("begin create TTable");
-//
-////			setCurrentDir(imgURL.toString());
-////			setCursorWait();
-//			try {
-//				DxLoadData dxLoadData = new DxLoadData();
-//				dxLoadData.loadDataStructures(imgURL.toString(), this
-//						.getCurrentDir());
-//				System.out.println("DxLoadData was done");
-//				this.getDMediator().addDxTTableDoc(dxLoadData, imgURL.toString());
-//				this.afterNewTTable();
-////				this.getCurrentDxDoc()
-////						.changeInModel(this.getClass().toString());
-//				this.afterInitialAssign();
-//			} catch (Exception e) {
-//				System.out.println("Exception:   " + e.toString());
-//				new DxExceptionDlg(_jFrame, e.getMessage(), e);
-//				this.initialState();
-//			}
-////			dlg.dispose();
-//			this.setCursorDefault();
-//			System.out.println("end builTTAbel");
-		}
-
-	
-	
-	/**
-	 * @param string
-	 *            indicates the type of timetable structure
-	 * 
-	 */
-	private void buildTTStruc(String str) {
-		this.showToolBar();
-		this.setCursorWait();
 		try {
-			this._dMediator.addDxTTStructureDoc(str);
-			_dxMenuBar.afterNewTTStruc();
+			InputStream in = this.getClass().getResourceAsStream(path);
+			_dMediator.addDxTTStructureDoc(in);
 		} catch (Exception e) {
-			new DxExceptionDlg(this._jFrame, e.getMessage(), e);
-			this.hideToolBar();
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		this.setCursorDefault();
 	}
 
 	/**
 	 * 
 	 */
-	public void newTTStrucExam() {
-//		buildTTStruc(this.getDxPreferences()._standardTTE);
-		
-		//TTStructure tts = 
-			createTTStructure(_START_TTE);
-	}
 
 	/**
 	 * 
@@ -809,14 +642,14 @@ public class DApplication {
 		this.setCursorWait();
 
 		if (DxFlags.newAlg) {
-			
-			if (DxFlags.newPref) {			
-				new DxAssignAllAlg(this.getCurrentDModel()).doWork();
-//			} else {
-//				new DxAssignAllAlg(this.getCurrentDModel(), this.getDxPreferences()
-//						.getDxConflictLimits()).doWork();
-			}
 
+//			if (DxFlags.newPref) {
+				new DxAssignAllAlg(this.getCurrentDModel()).doWork();
+				// } else {
+				// new DxAssignAllAlg(this.getCurrentDModel(),
+				// this.getDxPreferences()
+				// .getDxConflictLimits()).doWork();
+//			}
 
 		} else {
 			int _selectedContext = 0;
@@ -855,23 +688,14 @@ public class DApplication {
 	 * 
 	 */
 	public void showPLAFDlg() {
-//		if (DxFlags.newPref) {
-			new LookAndFeelPref().lafChooser(getJFrame());
-//		} else {
-//			new PLAFDlg(this);
-//		}
+		new LookAndFeelPref().lafChooser(getJFrame());
 	}
-
 
 	/**
 	 * 
 	 */
 	public void showConflictsDlg() {
-		if (DxFlags.newPref) {
-			new ParametersPref().paramChooser(this);
-//		} else {
-//			new ConflictDlg(this);
-		}	
+		new ParametersPref().paramChooser(this);
 	}
 
 	/**
@@ -947,15 +771,17 @@ public class DApplication {
 	 */
 	public void roomAssignment() {
 		System.out.println("before call RAO" + _increase + " " + _best);
-		
-		if (DxFlags.newPref) {			
-			new DxAssignRoomsAlg(this.getCurrentDModel(), _increase, _best).doWork();
+
+//		if (DxFlags.newPref) {
+			new DxAssignRoomsAlg(this.getCurrentDModel(), _increase, _best)
+					.doWork();
 			new InformationDlg(this.getJFrame(), DConst.ROOM_ASSIGN_MESSAGE);
-//		} else {
-//			new DxAssignRoomsAlg(this.getCurrentDModel(), this.getDxPreferences()
-//					.getDxConflictLimits(), _increase, _best).doWork();
-//			new InformationDlg(this.getJFrame(), DConst.ROOM_ASSIGN_MESSAGE);
-		}
+			// } else {
+			// new DxAssignRoomsAlg(this.getCurrentDModel(),
+			// this.getDxPreferences()
+			// .getDxConflictLimits(), _increase, _best).doWork();
+			// new InformationDlg(this.getJFrame(), DConst.ROOM_ASSIGN_MESSAGE);
+//		}
 
 	}
 
@@ -970,7 +796,7 @@ public class DApplication {
 	 * 
 	 */
 	public void conflictOption() {
-//		new ConflictDlg(this);
+		// new ConflictDlg(this);
 	}
 
 	/**
@@ -1136,8 +962,6 @@ public class DApplication {
 		dlg.dispose();
 	}
 
-
-
 	/**
 	 * @param string
 	 *            indicates the type of timetable structure
@@ -1202,22 +1026,11 @@ public class DApplication {
 	private static Image createImageIcon(String path) {
 		java.net.URL imgURL = DApplication.class.getResource(path);
 		System.out.println("URL toExter" + imgURL.toExternalForm());
-		if (imgURL != null) {
-			return new ImageIcon(imgURL).getImage();
-		}
-		System.err.println("Couldn't find file: " + path);
-		return null;
+		// if (imgURL != null) {
+		return new ImageIcon(imgURL).getImage();
+		// }
+		// System.err.println("Couldn't find file: " + path);
+		// return null;
 	}
 
-	//
-//	public void addPrefsListener(Preferences pref) {
-//		pref.addPreferenceChangeListener(new PreferenceChangeListener() {
-//			public void preferenceChange(PreferenceChangeEvent pce) {
-//				String str = pce.getNewValue();
-//				System.out.println("Change: (" + pce.getNode() + ") key= "
-//						+ pce.getKey() + "   value = " + str);
-//				updateLAF(str);
-//			}
-//		});
-//	}
 } /* end class DApplication */

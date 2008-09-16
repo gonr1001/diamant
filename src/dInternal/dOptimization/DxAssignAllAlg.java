@@ -73,21 +73,21 @@ public class DxAssignAllAlg implements Algorithm {
 		Vector<DResource> vNotYetAssignedEvents = getEvents();
 		int currentDuration = 0;
 		
-		if (DxFlags.newPref) {			
+//		if (DxFlags.newPref) {			
 			// aa
 //		} else {
 //			_dxCL.getMNumOfEventsInPeriod(); // to avoid warning
-		}
+//		}
 		
 
 	
 		if (DxFlags.newAlg) {
 			
-			if (DxFlags.newPref) {			
+//			if (DxFlags.newPref) {			
 				_dm.getConditionsToTest().extractParametersPref();
 //			} else {
 //				_dm.getConditionsToTest().extractDxPreference();
-			}
+//			}
 		} else {
 //			_dm.getConditionsToTest().extractPreference();
 		}

@@ -185,11 +185,11 @@ public class ReportOptionsDlg extends JDialog implements ActionListener {
 			dispose();
 		//if button OK
 		if (command.equals(DConst.BUT_APPLY)) {
-			if (DxFlags.newPref) {	
+//			if (DxFlags.newPref) {	
 				_parentDlg.doSavePref(_rightVec);	 
-			} else {
+//			} else {
 //				_parentDlg.doSave(_rightVec);
-			}
+//			}
 			_parentDlg.showReport();
 			//_modified = false;
 			_applyPanel.setFirstDisable();

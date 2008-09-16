@@ -58,11 +58,11 @@ public class FullReport extends ViewReport implements ActionListener {
     _parentDlg = parentDlg;
     _allOptionsVec = buildAllOptionsVector();
     _options = getOptions(_allOptionsVec);
-	if (DxFlags.newPref) {	
+//	if (DxFlags.newPref) {	
 		_rightVec = new ReportPref().getSelectedOptionsForFullReport();		 
 //	} else {
 //		_rightVec = _dApplic.getDxPreferences().getSelectedOptionsInFullReport();
-	}
+//	}
    
     showReport();
   } //FullReport
