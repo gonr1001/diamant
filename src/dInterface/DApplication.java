@@ -735,8 +735,8 @@ public class DApplication {
 	public void tryOpenDevFile() {
 		if (_fileToOpenAtStart.equalsIgnoreCase("")) {
 			_fileToOpenAtStart = "." + File.separator + "dataTest"
-					+ File.separator + "bug118" + File.separator;
-			_fileToOpenAtStart += "bug118.dia";
+					+ File.separator + "bug125" + File.separator;
+			_fileToOpenAtStart += "bug125.dia";
 		}
 		System.out.println(System.getProperty("user.dir"));
 		System.out.println(_fileToOpenAtStart);

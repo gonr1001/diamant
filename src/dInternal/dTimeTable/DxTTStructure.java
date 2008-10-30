@@ -723,8 +723,10 @@ public class DxTTStructure extends Observable {
 		System.out.println("hi!");
 		String RESOURCES_FOLDER = "pref";
 		DxTTStructure tts = new DxTTStructure();
+		System.out.println(System.getProperty("user.dir"));
 		try {
-			tts.loadTTSFromFile(RESOURCES_FOLDER + "/ntest.xml"); // "/StandardTTE.xml");
+			System.out.println(System.getProperty("user.dir") + "./src/pref/ntest.xml");
+			tts.loadTTSFromFile("./src/pref/ntest.xml"); // "/StandardTTE.xml");
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
