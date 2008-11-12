@@ -86,7 +86,7 @@ public class DApplication {
 
 	private final String _START_TTE = "timetables/startTTE.xml";
 
-	// singleton: it has only one instance
+	// singleton
 	private static int _instanceNumber = 0;
 
 	private static DApplication _instance = null;
@@ -735,8 +735,8 @@ public class DApplication {
 	public void tryOpenDevFile() {
 		if (_fileToOpenAtStart.equalsIgnoreCase("")) {
 			_fileToOpenAtStart = "." + File.separator + "dataTest"
-					+ File.separator + "bug125" + File.separator;
-			_fileToOpenAtStart += "bug125.dia";
+					+ File.separator + "bug126" + File.separator;
+			_fileToOpenAtStart += "bug126.dia";
 		}
 		System.out.println(System.getProperty("user.dir"));
 		System.out.println(_fileToOpenAtStart);
