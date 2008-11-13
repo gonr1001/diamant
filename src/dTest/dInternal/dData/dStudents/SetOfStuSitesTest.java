@@ -25,7 +25,7 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import dConstants.DConst;
-import dInternal.dData.DLoadData;
+import dInternal.DxLoadData;
 import dInternal.dData.dStudents.SetOfStuSites;
 import dInternal.dData.dStudents.SetOfStudents;
 
@@ -55,13 +55,14 @@ public class SetOfStuSitesTest extends TestCase {
 				+ "CTB443101 CTB451102 CTB513102 CTB563101" + "\r\n";
 
 		SetOfStuSites setOfStuSites = new SetOfStuSites(); //,5,14);
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 		setOfStuSites.analyseTokens(ld.buildDataExchange(tokens.getBytes()), 0);
 
 		assertEquals("test_analyseTokens1_5: assertEquals", DConst.STUD_TEXT6,
 				setOfStuSites.getError().substring(0,
 						DConst.STUD_TEXT6.length()));
 	}
+
 
 	/**
 	 * test1_analyseTokens, test that analyse the empty student name in the
@@ -75,7 +76,7 @@ public class SetOfStuSitesTest extends TestCase {
 				+ "009027042035010720003VEILLEUX 04" + "\r\n"
 				+ "CTB443101 CTB451102 CTB513102 CTB563101" + "\r\n";
 		SetOfStuSites setOfStuSites = new SetOfStuSites(); //,5,14);
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 		setOfStuSites.analyseTokens(ld.buildDataExchange(tokens.getBytes()), 0);
 
 		assertEquals("test1_analyseTokens1_5: assertEquals", DConst.STUD_TEXT2,
@@ -101,7 +102,7 @@ public class SetOfStuSitesTest extends TestCase {
 				+ "C FII221100 SHE" + "\r\n" + "C MQB144100 SHE" + "\r\n"
 				+ "T 003";
 		SetOfStuSites setOfStuSites = new SetOfStuSites(); //,5,14);
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 		setOfStuSites.analyseTokens(ld.buildDataExchange(tokens.getBytes()), 0);
 		assertEquals("test1_analyseTokens1_6: assertEquals", "", setOfStuSites
 				.getError());
@@ -125,7 +126,7 @@ public class SetOfStuSitesTest extends TestCase {
 				+ "C FII221100 SHE" + "\r\n" + "C MQB144100 SHE" + "\r\n"
 				+ "T 003";
 		SetOfStuSites setOfStuSites = new SetOfStuSites(); //,5,14);
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 		setOfStuSites.analyseTokens(ld.buildDataExchange(tokens.getBytes()), 0);
 		assertEquals("test2_analyseTokens1_6: assertEquals", "", setOfStuSites
 				.getError());//.substring(0,DConst.STUD_TEXT8.length()));
@@ -149,7 +150,7 @@ public class SetOfStuSitesTest extends TestCase {
 				+ "C FII221100 SHE" + "\r\n" + "C MQB144100 SHE" + "\r\n"
 				+ "T 003";
 		SetOfStuSites setOfStuSites = new SetOfStuSites(); //,5,14);
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 		setOfStuSites.analyseTokens(ld.buildDataExchange(tokens.getBytes()), 0);
 		assertEquals("test3_analyseTokens1_6: assertEquals", "", setOfStuSites
 				.getError());
@@ -173,7 +174,7 @@ public class SetOfStuSitesTest extends TestCase {
 				+ "C FII221100 SHE" + "\r\n" + "C MQB144100 SHE" + "\r\n"
 				+ "T 00293";
 		SetOfStuSites setOfStuSites = new SetOfStuSites(); //,5,14);
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 		setOfStuSites.analyseTokens(ld.buildDataExchange(tokens.getBytes()), 0);
 		assertEquals("test4_analyseTokens1_6: assertEquals", DConst.STUD_TEXT1,
 				setOfStuSites.getError().substring(0,
@@ -198,7 +199,7 @@ public class SetOfStuSitesTest extends TestCase {
 				+ "C FII221100 SHE" + "\r\n" + "C MQB144100 SHE" + "\r\n"
 				+ "T 00293";
 		SetOfStuSites setOfStuSites = new SetOfStuSites(); //,5,14);
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 		setOfStuSites.analyseTokens(ld.buildDataExchange(tokens.getBytes()), 0);
 		assertEquals("test5_analyseTokens1_6: assertEquals", DConst.STUD_TEXT8,
 				setOfStuSites.getError().substring(0,
@@ -223,7 +224,7 @@ public class SetOfStuSitesTest extends TestCase {
 				+ "C FII221100 SHE" + "\r\n" + "C MQB144100 SHE" + "\r\n"
 				+ "T 00293";
 		SetOfStuSites setOfStuSites = new SetOfStuSites(); //,5,14);
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 		setOfStuSites.analyseTokens(ld.buildDataExchange(tokens.getBytes()), 0);
 		assertEquals("test6_analyseTokens1_6: assertEquals", DConst.STUD_TEXT3,
 				setOfStuSites.getError().substring(0,
@@ -248,7 +249,7 @@ public class SetOfStuSitesTest extends TestCase {
 				+ "C FII221100 SHE" + "\r\n" + "C MQB144100 SHE" + "\r\n"
 				+ "T 00293";
 		SetOfStuSites setOfStuSites = new SetOfStuSites(); //,5,14);
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 		setOfStuSites.analyseTokens(ld.buildDataExchange(tokens.getBytes()), 0);
 		assertEquals("test7_analyseTokens1_6: assertEquals", DConst.STUD_TEXT3,
 				setOfStuSites.getError().substring(0,
@@ -273,7 +274,7 @@ public class SetOfStuSitesTest extends TestCase {
 				+ "C FII221100 SHE" + "\r\n" + "C MQB144100 SHE" + "\r\n"
 				+ "T 00293";
 		SetOfStuSites setOfStuSites = new SetOfStuSites(); //,5,14);
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 		setOfStuSites.analyseTokens(ld.buildDataExchange(tokens.getBytes()), 0);
 		assertEquals("test8_analyseTokens1_6: assertEquals", DConst.STUD_TEXT3,
 				setOfStuSites.getError().substring(0,
@@ -298,7 +299,7 @@ public class SetOfStuSitesTest extends TestCase {
 				+ "C FII221100 SHE" + "\r\n" + "C MQB144100 SHE" + "\r\n"
 				+ "T 00293";
 		SetOfStuSites setOfStuSites = new SetOfStuSites(); //,5,14);
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 		setOfStuSites.analyseTokens(ld.buildDataExchange(tokens.getBytes()), 0);
 		assertEquals("test9_analyseTokens1_6: assertEquals", DConst.STUD_TEXT9,
 				setOfStuSites.getError().substring(0,
@@ -323,7 +324,7 @@ public class SetOfStuSitesTest extends TestCase {
 				+ "C FII221100 SHE" + "\r\n" + "C MQB144100 SHE" + "\r\n"
 				+ "T 00293";
 		SetOfStuSites setOfStuSites = new SetOfStuSites(); //,5,14);
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 		setOfStuSites.analyseTokens(ld.buildDataExchange(tokens.getBytes()), 0);
 		assertEquals("test10_analyseTokens1_6: assertEquals",
 				DConst.STUD_TEXT6, setOfStuSites.getError().substring(0,
@@ -343,7 +344,7 @@ public class SetOfStuSitesTest extends TestCase {
 				+ "009027042035010720003VEILLEUX 04" + "\r\n"
 				+ "CTB443101 CTB451102 CTB513102 CTB563101" + "\r\n";
 		SetOfStuSites setOfStuSites = new SetOfStuSites(); //,5,14);
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 		setOfStuSites.analyseTokens(ld.buildDataExchange(tokens.getBytes()), 0);
 		assertEquals("test2_analyseTokens1_5: assertEquals", DConst.STUD_TEXT7,
 				setOfStuSites.getError().substring(0,
@@ -363,7 +364,7 @@ public class SetOfStuSitesTest extends TestCase {
 				+ "009027042035010720003VEILLEUX 04" + "\r\n"
 				+ "CTB443101 CTB451102 CTB513102 CTB563101" + "\r\n";
 		SetOfStuSites setOfStuSites = new SetOfStuSites(); //,5,14);
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 		setOfStuSites.analyseTokens(ld.buildDataExchange(tokens.getBytes()), 0);
 		assertEquals("test3_analyseTokens1_5: assertEquals", DConst.STUD_TEXT1,
 				setOfStuSites.getError().substring(0,
@@ -382,7 +383,7 @@ public class SetOfStuSitesTest extends TestCase {
 				+ "009027042035010720003VEILLEUX 04" + "\r\n"
 				+ "CTB443101 CTB451102 CTB513102 CTB563101" + "\r\n";
 		SetOfStuSites setOfStuSites = new SetOfStuSites(); //,5,14);
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 		setOfStuSites.analyseTokens(ld.buildDataExchange(tokens.getBytes()), 0);
 		assertEquals("test4_analyseTokens1_5: assertEquals", DConst.STUD_TEXT3,
 				setOfStuSites.getError().substring(0,
@@ -401,7 +402,7 @@ public class SetOfStuSitesTest extends TestCase {
 				+ "009027042035010720003VEILLEUX 04" + "\r\n"
 				+ "CTB443101 CTB451102 CTB513102 CTB563101" + "\r\n";
 		SetOfStuSites setOfStuSites = new SetOfStuSites(); //,5,14);
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 		setOfStuSites.analyseTokens(ld.buildDataExchange(tokens.getBytes()), 0);
 		assertEquals("test5_analyseTokens1_5: assertEquals", DConst.STUD_TEXT3,
 				setOfStuSites.getError().substring(0,
@@ -421,7 +422,7 @@ public class SetOfStuSitesTest extends TestCase {
 				+ "009027042035010720003VEILLEUX 04" + "\r\n"
 				+ "CTB443101 CTB451102 CTB513102 CTB563101" + "\r\n";
 		SetOfStuSites setOfStuSites = new SetOfStuSites(); //,5,14);
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 		setOfStuSites.analyseTokens(ld.buildDataExchange(tokens.getBytes()), 0);
 		assertEquals("test6_analyseTokens1_5: assertEquals", DConst.STUD_TEXT3,
 				setOfStuSites.getError().substring(0,
@@ -441,7 +442,7 @@ public class SetOfStuSitesTest extends TestCase {
 				+ "009027042035010720003VEILLEUX 04" + "\r\n"
 				+ "CTB443101 CTB451102 CTB513102 CTB563101" + "\r\n";
 		SetOfStuSites setOfStuSites = new SetOfStuSites(); //,5,14);
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 		setOfStuSites.analyseTokens(ld.buildDataExchange(tokens.getBytes()), 0);
 		assertEquals("test7_analyseTokens1_5: assertEquals", DConst.STUD_TEXT6,
 				setOfStuSites.getError().substring(0,
@@ -469,14 +470,14 @@ public class SetOfStuSitesTest extends TestCase {
 		list.add("Syam, Yannick Ulrich            00939140");
 		list.add("Roy, Julie  01109838");
 		SetOfStuSites setOfStuSites = new SetOfStuSites(); //,5,14);
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 		setOfStuSites.analyseTokens(ld.buildDataExchange(tokens.getBytes()), 0);
 		setOfStuSites.buildSetOfResources(ld.buildDataExchange(tokens
 				.getBytes()), 0);
 		SetOfStudents sos = (SetOfStudents) setOfStuSites.getResource("LON")
 				.getAttach();
 		assertEquals("test1_buildSetOfResources1_6: assertEquals", list, sos
-				.getStudentsByGroup("MQB144", "1", 1));
+				.getStudentsSortedInGroup("MQB144", "1", 1));
 	}
 
 	/**
@@ -493,7 +494,7 @@ public class SetOfStuSitesTest extends TestCase {
 				+ "019027042035010720003ALEX JARA04" + "\r\n"
 				+ "GEI700101 GEI450202 CTB513102 GEI442101" + "\r\n";
 		SetOfStuSites setOfStuSites = new SetOfStuSites(); //,5,14);
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 		setOfStuSites.analyseTokens(ld.buildDataExchange(tokens.getBytes()), 0);
 		setOfStuSites.buildSetOfResources(ld.buildDataExchange(tokens
 				.getBytes()), 0);
@@ -503,7 +504,7 @@ public class SetOfStuSitesTest extends TestCase {
 		SetOfStudents sos = (SetOfStudents) setOfStuSites.getResource(
 				DConst.STUDENT_STANDARD_SITE).getAttach();
 		assertEquals("test_getStudentsByGroup: assertEquals", list, sos
-				.getStudentsByGroup("GEI442", "1", 1));
+				.getStudentsSortedInGroup("GEI442", "1", 1));
 	}
 
 	public void test_toWrite() {
@@ -516,7 +517,7 @@ public class SetOfStuSitesTest extends TestCase {
 				+ "019027042035010720003ALEX JARA04" + "\r\n"
 				+ "GEI700101 GEI450202 CTB513102 GEI442101" + "\r\n";
 		SetOfStuSites setOfStuSites = new SetOfStuSites();
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 		setOfStuSites.analyseTokens(ld.buildDataExchange(tokens.getBytes()), 0);
 		setOfStuSites.buildSetOfResources(ld.buildDataExchange(tokens
 				.getBytes()), 0);
