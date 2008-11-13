@@ -1,6 +1,6 @@
 package dTest.dInternal.dData.dActivities;
 
-import dInternal.dData.DLoadData;
+import dInternal.DxLoadData;
 import dInternal.dData.dActivities.DxActivity;
 import dInternal.dData.dActivities.DxActivitySite;
 import dInternal.dData.dActivities.DxReadActivitiesSites1dot5;
@@ -55,7 +55,7 @@ public class DxSetOfActivitiesSitesTest extends TestCase {
 		dxsorTempRooms.addRoom(new DxRoom("C1-387", 0, 0, null, null, null));
 		dxsorTempRooms.addRoom(new DxRoom("C1-330", 0, 0, null, null, null));
 
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 
 		DxReadActivitiesSites1dot5 dxrasSiteReader = new DxReadActivitiesSites1dot5(
 				ld.buildDataExchange(tokens.getBytes()), dxsoiTempInst,
@@ -115,7 +115,7 @@ public class DxSetOfActivitiesSitesTest extends TestCase {
 		dxsorTempRooms.addRoom(new DxRoom("C1-387", 0, 0, null, null, null));
 		dxsorTempRooms.addRoom(new DxRoom("C1-330", 0, 0, null, null, null));
 
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 
 		DxReadActivitiesSites1dot6 dxrasSiteReader = new DxReadActivitiesSites1dot6(
 				ld.buildDataExchange(tokens.getBytes()), dxsoiTempInst,
