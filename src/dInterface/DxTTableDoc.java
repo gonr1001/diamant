@@ -224,6 +224,7 @@ public class DxTTableDoc extends DxDocument {
 		_jif.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		_jif.addInternalFrameListener(new InternalFrameAdapter() {
 			public void internalFrameClosing(InternalFrameEvent e) {
+				e.toString();
 				_dMediator.getDApplication().close();
 			}
 		});
