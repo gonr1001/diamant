@@ -72,7 +72,7 @@ public class RefinedStudMixAlgo{
    for(int i=0; i< type.getSetOfSections().size(); i++){
      DValue size= new DValue();
      int group= DxTools.STIConvertGroupToInt(type.getSetOfSections().getResourceAt(i).getID());//int group= i+1;
-     size.setIntValue(_dm.getSetOfStudents().getStudentsByGroup(activityID,typeID,group).size());
+     size.setIntValue(_dm.getSetOfStudents().getStudentsSortedInGroup(activityID,typeID,group).size());
      sizeOfGroups.add(size);
     }// end for(int i=0; i< type.getSetOfSections().size(); i++)
     Vector <String>removedStudents= new Vector<String>();

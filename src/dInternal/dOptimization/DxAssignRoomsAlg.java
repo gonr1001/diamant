@@ -332,7 +332,7 @@ public class DxAssignRoomsAlg implements Algorithm {
 					DConst.TOKENSEPARATOR, TOKEN_RANGE2);
 			section = DxTools.STIConvertGroupToInt(secID);
 
-			v = students.getStudentsByGroup(actID, typeID, section, 0);
+			v = students.getStudentsSortedInGroup(actID, typeID, section, 0);
 			resc = new DResource(Integer.toString(v.size()), event);
 
 			setOfEventsInPeriod.addResourceUsingIDWithDuplicatesrgr(resc);

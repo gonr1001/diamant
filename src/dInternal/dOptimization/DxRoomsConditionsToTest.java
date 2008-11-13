@@ -116,7 +116,7 @@ public class DxRoomsConditionsToTest implements DxCondition {
 				.getResource(event1.nextToken());
 		DResource section = ((Type) type.getAttach()).getSetOfSections()
 				.getResource(event1.nextToken());
-		int nbOfStudents = _dm.getSetOfStudents().getStudentsByGroup(
+		int nbOfStudents = _dm.getSetOfStudents().getStudentsSortedInGroup(
 				activity.getID(), type.getID(),
 				DxTools.STIConvertGroupToInt(section.getID())).size();
 		long roomKey = event.getRoomKey();

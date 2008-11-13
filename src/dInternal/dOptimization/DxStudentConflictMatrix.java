@@ -210,7 +210,7 @@ public class DxStudentConflictMatrix {
 						.getSetOfSections().size(); z++) {
 					DResource rescSection = ((Type) rescType.getAttach())
 							.getSetOfSections().getResourceAt(z);
-					tab[z] = sos.getStudentsByGroup(rescActivity.getID(),
+					tab[z] = sos.getStudentsSortedInGroup(rescActivity.getID(),
 							rescType.getID(),
 							DxTools.STIConvertGroupToInt(rescSection.getID()))
 							.size();
