@@ -7,7 +7,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import dConstants.DConst;
 import dInternal.DataExchange;
-import dInternal.dData.DLoadData;
+import dInternal.DxLoadData;
 import dInternal.dData.dInstructors.DxInstructorsReader;
 import dInternal.dData.dInstructors.DxReadInstructorsdotDia;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
@@ -41,7 +41,7 @@ public class DxInstructorsReaderTest extends TestCase {
 				+ "1 5 5 5 5 5 5 5 5 5 5 1 1 1" + "\r\n"
 				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n"
 				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n";
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 		DxInstructorsReader dxriTest = new DxReadInstructorsdotDia(ld
 				.buildDataExchange(tokens.getBytes()), 5, 14);
 		try {
@@ -71,7 +71,7 @@ public class DxInstructorsReaderTest extends TestCase {
 				+ "1 5 5 5 5 5 5 5 5 5 5 1 1 1" + "\r\n"
 				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n"
 				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n";
-		DLoadData ld = new DLoadData(); 
+		DxLoadData ld = new DxLoadData();
 	
 		DxInstructorsReader dxriTest = new DxReadInstructorsdotDia(ld
 				.buildDataExchange(tokens.getBytes()), 5, 14);
@@ -105,7 +105,7 @@ public class DxInstructorsReaderTest extends TestCase {
 				+ "1 5 5 5 5 5 5 5 5 5 5 1 1 1" + "\r\n"
 				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n"
 				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n";
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 		DxInstructorsReader dxriTest = new DxReadInstructorsdotDia(ld
 				.buildDataExchange(tokens.getBytes()), 5, 14);
 		try {
@@ -138,7 +138,7 @@ public class DxInstructorsReaderTest extends TestCase {
 				+ "1 5 5 5 5 5 5 5 5 5 5 1 1 1 6" + "\r\n"
 				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n"
 				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n";
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 		DxInstructorsReader dxriTest = new DxReadInstructorsdotDia(ld
 				.buildDataExchange(tokens.getBytes()), 5, 14);
 		try {
@@ -170,7 +170,7 @@ public class DxInstructorsReaderTest extends TestCase {
 				+ "1 5 5 5 5 5 5 5 5 5 5 1 1 1" + "\r\n"
 				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n"
 				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n";
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 		DxInstructorsReader dxriTest = new DxReadInstructorsdotDia(ld
 				.buildDataExchange(tokens.getBytes()), 5, 14);
 		try {
@@ -201,7 +201,7 @@ public class DxInstructorsReaderTest extends TestCase {
 				+ "1 5 5 5 5 5 5 5 5 5 5 1 1 1" + "\r\n"
 				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n"
 				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n";
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 		DxInstructorsReader dxriTest = new DxReadInstructorsdotDia(ld
 				.buildDataExchange(tokens.getBytes()), 5, 14);
 		try {
@@ -225,7 +225,7 @@ public class DxInstructorsReaderTest extends TestCase {
 	 */
 	public void test_valuesOnDispoInst() {
 		DxSetOfInstructors dxsoi = null;
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 		byte[] dataloaded = null;
 		try {
 			dataloaded = ld.filterBadChars(_pathForFiles + "testDispoInst.sig");
