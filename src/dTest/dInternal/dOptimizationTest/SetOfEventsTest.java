@@ -138,7 +138,7 @@ public class SetOfEventsTest extends TestCase {
 
 			int section = DxTools.STIConvertGroupToInt(secID);
 			SetOfStudents students = dmData7j.getSetOfStudents();
-			Vector<String> v = students.getStudentsByGroup(actID, typeID,
+			Vector<String> v = students.getStudentsSortedInGroup(actID, typeID,
 					section, 0);
 			DResource resc = new DResource(Integer.toString(v.size()), dxEvent);
 			index = newSetOfEvents.searchWhereToInsert(Integer.toString(v
@@ -161,7 +161,7 @@ public class SetOfEventsTest extends TestCase {
 			secID = DXToolsMethods.getToken(eventInPeriodName,
 					DConst.TOKENSEPARATOR, TOKEN_RANGE2);
 			section = DxTools.STIConvertGroupToInt(secID);
-			v = students.getStudentsByGroup(actID, typeID, section, 0);
+			v = students.getStudentsSortedInGroup(actID, typeID, section, 0);
 			resc = new DResource(Integer.toString(v.size()), dxEvent);
 			index = newSetOfEvents.searchWhereToInsert(Integer.toString(v
 					.size()));
@@ -183,7 +183,7 @@ public class SetOfEventsTest extends TestCase {
 			secID = DXToolsMethods.getToken(eventInPeriodName,
 					DConst.TOKENSEPARATOR, TOKEN_RANGE2);
 			section = DxTools.STIConvertGroupToInt(secID);
-			v = students.getStudentsByGroup(actID, typeID, section, 0);
+			v = students.getStudentsSortedInGroup(actID, typeID, section, 0);
 			resc = new DResource(Integer.toString(v.size()), dxEvent);
 			index = newSetOfEvents.searchWhereToInsert(Integer.toString(v
 					.size()));
@@ -208,7 +208,7 @@ public class SetOfEventsTest extends TestCase {
 			secID = DXToolsMethods.getToken(eventInPeriodName,
 					DConst.TOKENSEPARATOR, TOKEN_RANGE2);
 			section = DxTools.STIConvertGroupToInt(secID);
-			v = students.getStudentsByGroup(actID, typeID, section, 0);
+			v = students.getStudentsSortedInGroup(actID, typeID, section, 0);
 			resc = new DResource(Integer.toString(v.size()), dxEvent);
 			index = newSetOfEvents.searchWhereToInsert(Integer.toString(v
 					.size()));
@@ -233,7 +233,7 @@ public class SetOfEventsTest extends TestCase {
 			secID = DXToolsMethods.getToken(eventInPeriodName,
 					DConst.TOKENSEPARATOR, TOKEN_RANGE2);
 			section = DxTools.STIConvertGroupToInt(secID);
-			v = students.getStudentsByGroup(actID, typeID, section, 0);
+			v = students.getStudentsSortedInGroup(actID, typeID, section, 0);
 			resc = new DResource(Integer.toString(v.size()), dxEvent);
 			index = newSetOfEvents.searchWhereToInsert(Integer.toString(v
 					.size()));
@@ -257,7 +257,7 @@ public class SetOfEventsTest extends TestCase {
 			secID = DXToolsMethods.getToken(eventInPeriodName,
 					DConst.TOKENSEPARATOR, TOKEN_RANGE2);
 			section = DxTools.STIConvertGroupToInt(secID);
-			v = students.getStudentsByGroup(actID, typeID, section, 0);
+			v = students.getStudentsSortedInGroup(actID, typeID, section, 0);
 			resc = new DResource(Integer.toString(v.size()), dxEvent);
 			index = newSetOfEvents.searchWhereToInsert(Integer.toString(v
 					.size()));
@@ -282,7 +282,7 @@ public class SetOfEventsTest extends TestCase {
 			secID = DXToolsMethods.getToken(eventInPeriodName,
 					DConst.TOKENSEPARATOR, TOKEN_RANGE2);
 			section = DxTools.STIConvertGroupToInt(secID);
-			v = students.getStudentsByGroup(actID, typeID, section, 0);
+			v = students.getStudentsSortedInGroup(actID, typeID, section, 0);
 			resc = new DResource(Integer.toString(v.size()), dxEvent);
 			index = newSetOfEvents.searchWhereToInsert(Integer.toString(v
 					.size()));
@@ -307,7 +307,7 @@ public class SetOfEventsTest extends TestCase {
 			secID = DXToolsMethods.getToken(eventInPeriodName,
 					DConst.TOKENSEPARATOR, TOKEN_RANGE2);
 			section = DxTools.STIConvertGroupToInt(secID);
-			v = students.getStudentsByGroup(actID, typeID, section, 0);
+			v = students.getStudentsSortedInGroup(actID, typeID, section, 0);
 			resc = new DResource(Integer.toString(v.size()), dxEvent);
 			index = newSetOfEvents.searchWhereToInsert(Integer.toString(v
 					.size()));
@@ -333,7 +333,7 @@ public class SetOfEventsTest extends TestCase {
 			secID = DXToolsMethods.getToken(eventInPeriodName,
 					DConst.TOKENSEPARATOR, TOKEN_RANGE2);
 			section = DxTools.STIConvertGroupToInt(secID);
-			v = students.getStudentsByGroup(actID, typeID, section, 0);
+			v = students.getStudentsSortedInGroup(actID, typeID, section, 0);
 			resc = new DResource(Integer.toString(v.size()), dxEvent);
 			index = newSetOfEvents.searchWhereToInsert(Integer.toString(v
 					.size()));
