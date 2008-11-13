@@ -26,7 +26,7 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import dConstants.DConst;
-import dInternal.dData.DLoadData;
+import dInternal.DxLoadData;
 import dInternal.dData.dRooms.DxReadSitedotDia;
 import dInternal.dData.dRooms.DxSetOfRooms;
 import dInternal.dData.dRooms.DxSetOfSites;
@@ -53,7 +53,7 @@ public class DxSiteReaderTest extends TestCase {
 				+ "1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,"
 				+ "1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,"
 				+ "1 1 1 1 1 1 1 1 1 1 1 1;";
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 		DxSiteReader dxSites = new DxReadSitedotDia(ld.buildDataExchange(tokens
 				.getBytes()), 5, 12);
 		try {
@@ -87,7 +87,7 @@ public class DxSiteReaderTest extends TestCase {
 				+ "1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,"
 				+ "1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,"
 				+ "1 1 1 1 1 1 1 1 1 1 1 1;";
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 		DxSiteReader dxSites = new DxReadSitedotDia(ld.buildDataExchange(tokens
 				.getBytes()), 5, 12);
 		try {
@@ -124,7 +124,7 @@ public class DxSiteReaderTest extends TestCase {
 				+ "1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,"
 				+ "1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,"
 				+ "1 1 1 1 1 1 1 1 1 1 1 1;";
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 		DxSiteReader dxSites = new DxReadSitedotDia(ld.buildDataExchange(tokens
 				.getBytes()), 5, 12);
 		try {
@@ -150,7 +150,7 @@ public class DxSiteReaderTest extends TestCase {
 				+ "1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,"
 				+ "1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,"
 				+ "1 1 1 1 1 1 1 1 1 1 1 1;";
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 		DxSiteReader dxSites = new DxReadSitedotDia(ld.buildDataExchange(tokens
 				.getBytes()), 5, 12);
 		try {
@@ -178,7 +178,7 @@ public class DxSiteReaderTest extends TestCase {
 	 		"1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1," +
 	 		"1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1," +
 	 		"1 1 1 1 1 1 1 1 1 1 1 1;";
-		DLoadData ld = new DLoadData();
+	 	DxLoadData ld = new DxLoadData();
 		DxSiteReader dxSites = new DxReadSitedotDia(ld
 				.buildDataExchange(tokens.getBytes()), 5, 12);
 		
@@ -224,7 +224,7 @@ public class DxSiteReaderTest extends TestCase {
 				+ "1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,"
 				+ "1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,"
 				+ "1 1 1 1 1 1 1 1 1 1 1 1;";
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 		DxSiteReader dxSites = new DxReadSitedotDia(ld.buildDataExchange(tokens
 				.getBytes()), 5, 12);
 		try {
