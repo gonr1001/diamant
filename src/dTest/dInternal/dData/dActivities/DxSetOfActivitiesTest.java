@@ -12,7 +12,8 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-import dInternal.dData.DLoadData;
+import dInternal.DxLoadData;
+//import dInternal.dData.DLoadData;
 import dInternal.dData.dActivities.DxActivitiesSitesReader;
 import dInternal.dData.dActivities.DxActivity;
 import dInternal.dData.dActivities.DxActivitySite;
@@ -59,7 +60,7 @@ public class DxSetOfActivitiesTest extends TestCase {
 		dxsorTempRooms.addRoom(new DxRoom("C1-387", 0, 0, null, null, null));
 		dxsorTempRooms.addRoom(new DxRoom("C1-330", 0, 0, null, null, null));
 
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 
 		DxActivitiesSitesReader dxasrReader = new DxReadActivitiesSites1dot5(ld
 				.buildDataExchange(tokens.getBytes()), dxsoiTempInst,
@@ -98,7 +99,7 @@ public class DxSetOfActivitiesTest extends TestCase {
 		dxsorTempRooms.addRoom(new DxRoom("C1-387", 0, 0, null, null, null));
 		dxsorTempRooms.addRoom(new DxRoom("C1-330", 0, 0, null, null, null));
 
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 
 		DxActivitiesSitesReader dxasrReader = new DxReadActivitiesSites1dot5(ld
 				.buildDataExchange(tokens.getBytes()), dxsoiTempInst,
@@ -138,8 +139,7 @@ public class DxSetOfActivitiesTest extends TestCase {
 		dxsorTempRooms.addRoom(new DxRoom("C1-387", 0, 0, null, null, null));
 		dxsorTempRooms.addRoom(new DxRoom("C1-330", 0, 0, null, null, null));
 
-		DLoadData ld = new DLoadData();
-
+		DxLoadData ld = new DxLoadData();
 		DxActivitiesSitesReader dxasrReader = new DxReadActivitiesSites1dot5(ld
 				.buildDataExchange(tokens.getBytes()), dxsoiTempInst,
 				dxsorTempRooms, 60, false);
@@ -180,7 +180,7 @@ public class DxSetOfActivitiesTest extends TestCase {
 		dxsorTempRooms.addRoom(new DxRoom("C1-387", 0, 0, null, null, null));
 		dxsorTempRooms.addRoom(new DxRoom("C1-330", 0, 0, null, null, null));
 
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 
 		DxActivitiesSitesReader dxasrReader = new DxReadActivitiesSites1dot5(ld
 				.buildDataExchange(tokens.getBytes()), dxsoiTempInst,
@@ -219,7 +219,7 @@ public class DxSetOfActivitiesTest extends TestCase {
 		dxsorTempRooms.addRoom(new DxRoom("C1-387", 0, 0, null, null, null));
 		dxsorTempRooms.addRoom(new DxRoom("C1-330", 0, 0, null, null, null));
 
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 
 		DxActivitiesSitesReader dxasrReader = new DxReadActivitiesSites1dot5(ld
 				.buildDataExchange(tokens.getBytes()), dxsoiTempInst,
@@ -257,8 +257,7 @@ public class DxSetOfActivitiesTest extends TestCase {
 		dxsorTempRooms.addRoom(new DxRoom("C1-387", 0, 0, null, null, null));
 		dxsorTempRooms.addRoom(new DxRoom("C1-330", 0, 0, null, null, null));
 
-		DLoadData ld = new DLoadData();
-
+		DxLoadData ld = new DxLoadData();
 		DxActivitiesSitesReader dxasrReader = new DxReadActivitiesSites1dot5(ld
 				.buildDataExchange(tokens.getBytes()), dxsoiTempInst,
 				dxsorTempRooms, 60, false);
@@ -297,7 +296,7 @@ public class DxSetOfActivitiesTest extends TestCase {
 		dxsorTempRooms.addRoom(new DxRoom("C1-387", 0, 0, null, null, null));
 		dxsorTempRooms.addRoom(new DxRoom("C1-330", 0, 0, null, null, null));
 
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 
 		DxActivitiesSitesReader dxasrReader = new DxReadActivitiesSites1dot5(ld
 				.buildDataExchange(tokens.getBytes()), dxsoiTempInst,
@@ -336,7 +335,7 @@ public class DxSetOfActivitiesTest extends TestCase {
 		dxsorTempRooms.addRoom(new DxRoom("C1-387", 0, 0, null, null, null));
 		dxsorTempRooms.addRoom(new DxRoom("C1-330", 0, 0, null, null, null));
 
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 
 		DxActivitiesSitesReader dxasrReader = new DxReadActivitiesSites1dot5(ld
 				.buildDataExchange(tokens.getBytes()), dxsoiTempInst,
@@ -374,7 +373,7 @@ public class DxSetOfActivitiesTest extends TestCase {
 		dxsorTempRooms.addRoom(new DxRoom("C1-387", 0, 0, null, null, null));
 		dxsorTempRooms.addRoom(new DxRoom("C1-330", 0, 0, null, null, null));
 
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 
 		DxActivitiesSitesReader dxasrReader = new DxReadActivitiesSites1dot5(ld
 				.buildDataExchange(tokens.getBytes()), dxsoiTempInst,
@@ -412,8 +411,7 @@ public class DxSetOfActivitiesTest extends TestCase {
 		dxsorTempRooms.addRoom(new DxRoom("C1-387", 0, 0, null, null, null));
 		dxsorTempRooms.addRoom(new DxRoom("C1-330", 0, 0, null, null, null));
 
-		DLoadData ld = new DLoadData();
-
+		DxLoadData ld = new DxLoadData();
 		DxActivitiesSitesReader dxasrReader = new DxReadActivitiesSites1dot5(ld
 				.buildDataExchange(tokens.getBytes()), dxsoiTempInst,
 				dxsorTempRooms, 60, false);
@@ -450,8 +448,7 @@ public class DxSetOfActivitiesTest extends TestCase {
 		dxsorTempRooms.addRoom(new DxRoom("C1-387", 0, 0, null, null, null));
 		dxsorTempRooms.addRoom(new DxRoom("C1-330", 0, 0, null, null, null));
 
-		DLoadData ld = new DLoadData();
-
+		DxLoadData ld = new DxLoadData();
 		DxActivitiesSitesReader dxasrReader = new DxReadActivitiesSites1dot5(ld
 				.buildDataExchange(tokens.getBytes()), dxsoiTempInst,
 				dxsorTempRooms, 60, false);
@@ -488,8 +485,7 @@ public class DxSetOfActivitiesTest extends TestCase {
 		dxsorTempRooms.addRoom(new DxRoom("C1-387", 0, 0, null, null, null));
 		dxsorTempRooms.addRoom(new DxRoom("C1-330", 0, 0, null, null, null));
 
-		DLoadData ld = new DLoadData();
-
+		DxLoadData ld = new DxLoadData();
 		DxActivitiesSitesReader dxasrReader = new DxReadActivitiesSites1dot5(ld
 				.buildDataExchange(tokens.getBytes()), dxsoiTempInst,
 				dxsorTempRooms, 60, false);
@@ -526,8 +522,7 @@ public class DxSetOfActivitiesTest extends TestCase {
 		dxsorTempRooms.addRoom(new DxRoom("C1-387", 0, 0, null, null, null));
 		dxsorTempRooms.addRoom(new DxRoom("C1-330", 0, 0, null, null, null));
 
-		DLoadData ld = new DLoadData();
-
+		DxLoadData ld = new DxLoadData();
 		DxActivitiesSitesReader dxasrReader = new DxReadActivitiesSites1dot5(ld
 				.buildDataExchange(tokens.getBytes()), dxsoiTempInst,
 				dxsorTempRooms, 60, false);
@@ -564,7 +559,7 @@ public class DxSetOfActivitiesTest extends TestCase {
 		dxsorTempRooms.addRoom(new DxRoom("C1-387", 0, 0, null, null, null));
 		dxsorTempRooms.addRoom(new DxRoom("C1-330", 0, 0, null, null, null));
 
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 
 		DxActivitiesSitesReader dxasrReader = new DxReadActivitiesSites1dot5(ld
 				.buildDataExchange(tokens.getBytes()), dxsoiTempInst,
@@ -602,8 +597,7 @@ public class DxSetOfActivitiesTest extends TestCase {
 		dxsorTempRooms.addRoom(new DxRoom("C1-387", 0, 0, null, null, null));
 		dxsorTempRooms.addRoom(new DxRoom("C1-330", 0, 0, null, null, null));
 
-		DLoadData ld = new DLoadData();
-
+		DxLoadData ld = new DxLoadData();
 		DxActivitiesSitesReader dxasrReader = new DxReadActivitiesSites1dot5(ld
 				.buildDataExchange(tokens.getBytes()), dxsoiTempInst,
 				dxsorTempRooms, 60, false);
@@ -651,8 +645,7 @@ public class DxSetOfActivitiesTest extends TestCase {
 		dxsorTempRooms.addRoom(new DxRoom("C1-387", 0, 0, null, null, null));
 		dxsorTempRooms.addRoom(new DxRoom("C1-330", 0, 0, null, null, null));
 
-		DLoadData ld = new DLoadData();
-
+		DxLoadData ld = new DxLoadData();
 		DxActivitiesSitesReader dxasrReader = new DxReadActivitiesSites1dot5(ld
 				.buildDataExchange(tokens.getBytes()), dxsoiTempInst,
 				dxsorTempRooms, 60, false);
@@ -712,7 +705,7 @@ public class DxSetOfActivitiesTest extends TestCase {
 		dxsorTempRooms.addRoom(new DxRoom("C1-387", 0, 0, null, null, null));
 		dxsorTempRooms.addRoom(new DxRoom("C1-330", 0, 0, null, null, null));
 
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 
 		DxActivitiesSitesReader dxasrReader = new DxReadActivitiesSites1dot5(ld
 				.buildDataExchange(tokens.getBytes()), dxsoiTempInst,
@@ -789,8 +782,7 @@ public class DxSetOfActivitiesTest extends TestCase {
 		dxsorTempRooms.addRoom(new DxRoom("C1-387", 0, 0, null, null, null));
 		dxsorTempRooms.addRoom(new DxRoom("C1-330", 0, 0, null, null, null));
 
-		DLoadData ld = new DLoadData();
-
+		DxLoadData ld = new DxLoadData();
 		DxActivitiesSitesReader dxasrReader = new DxReadActivitiesSites1dot5(ld
 				.buildDataExchange(tokens.getBytes()), dxsoiTempInst,
 				dxsorTempRooms, 60, false);
@@ -827,8 +819,7 @@ public class DxSetOfActivitiesTest extends TestCase {
 		dxsorTempRooms.addRoom(new DxRoom("C1-387", 0, 0, null, null, null));
 		dxsorTempRooms.addRoom(new DxRoom("C1-330", 0, 0, null, null, null));
 
-		DLoadData ld = new DLoadData();
-
+		DxLoadData ld = new DxLoadData();
 		DxActivitiesSitesReader dxasrReader = new DxReadActivitiesSites1dot5(ld
 				.buildDataExchange(tokens.getBytes()), dxsoiTempInst,
 				dxsorTempRooms, 60, false);
@@ -860,8 +851,7 @@ public class DxSetOfActivitiesTest extends TestCase {
 		dxsorTempRooms.addRoom(new DxRoom("C1-387", 0, 0, null, null, null));
 		dxsorTempRooms.addRoom(new DxRoom("C1-330", 0, 0, null, null, null));
 
-		DLoadData ld = new DLoadData();
-
+		DxLoadData ld = new DxLoadData();
 		DxActivitiesSitesReader dxasrReader = new DxReadActivitiesSites1dot5(ld
 				.buildDataExchange(tokens.getBytes()), dxsoiTempInst,
 				dxsorTempRooms, 60, false);
