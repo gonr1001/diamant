@@ -21,6 +21,8 @@
 package dTest.dInternal.dTimeTable;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -62,8 +64,9 @@ public class SequenceTest extends TestCase {
 		Sequence sequence = new Sequence();
 		try {
 			xmlFile = new XMLInputFile();
-			Document doc = xmlFile.createDocument(_pathForFiles
-					+ "sequence.xml");
+			InputStream is = new FileInputStream(_pathForFiles + "sequence.xml");
+			Document doc = xmlFile.createDocumentFromInputStream(is);
+
 			XMLReader list = new XMLReader();
 			setOfPers = list.getRootElement(doc);
 			sequence.readXMLtag(setOfPers);
@@ -138,8 +141,9 @@ public class SequenceTest extends TestCase {
 			xmlOF.write(doc, _pathForOutputFiles + "SavedSequence.xml");
 
 			// read xml file
-			doc = xmlFile.createDocument(_pathForOutputFiles
-					+ "SavedSequence.xml");
+			InputStream is = new FileInputStream(_pathForOutputFiles + "SavedSequence.xml");
+			doc = xmlFile.createDocumentFromInputStream(is);
+
 			XMLReader list = new XMLReader();
 			eSetOfPers = list.getRootElement(doc);
 			savedSequence = new Sequence();

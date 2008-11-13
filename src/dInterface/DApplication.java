@@ -30,6 +30,7 @@ import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.StringTokenizer;
 
@@ -135,7 +136,6 @@ public class DApplication {
 
 	// TODO _increse and _best must disappear
 	private boolean _increase;
-
 	private boolean _best;
 
 	/**
@@ -347,29 +347,15 @@ public class DApplication {
 	 * 
 	 */
 	public void newTTStrucCycle() {
-		createTTStructure(_START_TTC);
-
-	}
-
-	public void newTTStrucExam() {
-		createTTStructure(_START_TTE);
-	}
-
-	private void createTTStructure(String path) {
-		System.out.println("Path in createTTStructure : " + path);
-
-		try {
-			InputStream in = this.getClass().getResourceAsStream(path);
-			_dMediator.addDxTTStructureDoc(in);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		buildTTStructure(_START_TTC);
 	}
 
 	/**
 	 * 
 	 */
+	public void newTTStrucExam() {
+		buildTTStructure(_START_TTE);
+	}
 
 	/**
 	 * 
@@ -386,11 +372,7 @@ public class DApplication {
 	 * 
 	 */
 	public void openTTStruc() {
-		if (DxFlags.newDxLoadData) {
-			buildTTStruc();
-		} else {
-			oldBuildTTStruc();
-		}
+		buildTTStructure("");
 	}
 
 	/**
@@ -505,6 +487,10 @@ public class DApplication {
 		}
 		return string;
 	}
+	
+	/*
+	 * In Assign menu
+	 */
 
 	/**
 	 * 
@@ -642,15 +628,7 @@ public class DApplication {
 		this.setCursorWait();
 
 		if (DxFlags.newAlg) {
-
-//			if (DxFlags.newPref) {
 				new DxAssignAllAlg(this.getCurrentDModel()).doWork();
-				// } else {
-				// new DxAssignAllAlg(this.getCurrentDModel(),
-				// this.getDxPreferences()
-				// .getDxConflictLimits()).doWork();
-//			}
-
 		} else {
 			int _selectedContext = 0;
 			(new SelectAlgorithm(this.getCurrentDModel(), _selectedContext))
@@ -963,65 +941,53 @@ public class DApplication {
 	}
 
 	/**
-	 * @param string
-	 *            indicates the type of timetable structure
 	 * 
 	 */
-	private void buildTTStruc() {
+	private void buildTTStructure(String inputStreamName) {
 		this.showToolBar();
 		this.setCursorWait();
-		OpenTTSDlg dlg = new OpenTTSDlg();
-		String fullFileName = dlg.getFileName(this);
-
-		if (fullFileName == "") {// cancel button was pressed!
-			dlg.dispose();
-			this.initialState();
+		String name = new String(inputStreamName);
+		InputStream in; 
+		boolean isAResource = false;
+		if (inputStreamName != "") {
+			isAResource = true;
 		} else {
-			dlg.dispose();
-			this.closeCurrentDxDoc();
-
-			try {
-				this._dMediator.addDxTTStructureDoc(fullFileName);
-				_dxMenuBar.afterNewTTStruc();
-			} catch (DxException e) {
-				new DxExceptionDlg(_jFrame, e.getMessage(), e);
-			} catch (Exception e) {
-				new DxExceptionDlg(_jFrame, e.getMessage(), e);
-			}
+			name = obtainName();
 		}
+		try {
+			if(isAResource) {
+				in = this.getClass().getResourceAsStream(name);
+			} else {
+				in = new FileInputStream(name);
+			}
+			this._dMediator.addDxTTStructureDoc(in, name);
+			_dxMenuBar.afterNewTTStruc();
+		} catch (DxException e) {
+			new DxExceptionDlg(_jFrame, e.getMessage(), e);
+			e.printStackTrace();
+
+		} catch (Exception e) {
+			new DxExceptionDlg(_jFrame, e.getMessage(), e);
+			e.printStackTrace();
+
+		}
+
 		this.setCursorDefault();
 	}
 
-	/**
-	 * @param string
-	 *            indicates the type of timetable structure
-	 * 
-	 */
-	private void oldBuildTTStruc() {
-		this.showToolBar();
-		this.setCursorWait();
+	private String obtainName() {
+		String name;
 		OpenTTSDlg dlg = new OpenTTSDlg();
-		String fullFileName = dlg.getFileName(this);
-
-		if (fullFileName == "") {// cancel button was pressed!
-			dlg.dispose();
+		name = dlg.getFileName(this);
+		if (name == "") {// cancel button was pressed!
 			this.initialState();
 		} else {
-			dlg.dispose();
-
 			this.closeCurrentDxDoc();
-
-			try {
-				this._dMediator.addDxTTStructureDoc(fullFileName);
-				_dxMenuBar.afterNewTTStruc();
-			} catch (DxException e) {
-				new DxExceptionDlg(_jFrame, e.getMessage(), e);
-			} catch (Exception e) {
-				new DxExceptionDlg(_jFrame, e.getMessage(), e);
-			}
 		}
-		this.setCursorDefault();
+		dlg.dispose();
+		return name;
 	}
+	
 
 	private static Image createImageIcon(String path) {
 		java.net.URL imgURL = DApplication.class.getResource(path);

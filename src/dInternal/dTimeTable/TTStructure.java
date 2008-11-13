@@ -19,6 +19,7 @@
 package dInternal.dTimeTable;
 
 import java.io.ByteArrayInputStream;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Observable;
 
@@ -214,66 +215,51 @@ public class TTStructure extends Observable {
 		}
 	}// end of CreateStandardTT method
 
-	/**
-	 * it load the time table structure
-	 * 
-	 * @param String
-	 *            the xml file containing the timetable structure
-	 * @return String the error message, empty if it does not found error
-	 */
+//	/**
+//	 * it load the time table structure
+//	 * 
+//	 * @param String
+//	 *            the xml file containing the timetable structure
+//	 * @return String the error message, empty if it does not found error
+//	 */
+////TODO Eliminate this method
+//	public String loadTTSFromFile(String fileName) {
+//		XMLInputFile xmlFile;
+//		Element root; 
+//		try {
+//			xmlFile = new XMLInputFile();
+//			InputStream is = new FileInputStream(fileName);
+//			Document doc = xmlFile.createDocumentFromInputStream(is);
+//			//Document doc = xmlFile.createDocument(fileName);
+//			XMLReader list = new XMLReader();
+//			root = list.getRootElement(doc);
+//			if (readXMLtag(root).length() != 0) {
+//				_error = DConst.ERROR_XML_FILE;
+//				return _error;
+//			}
+//		} catch (Exception e) {
+//			_error = e.getMessage();
+//			new DxExceptionDlg(_error, e);
+//		}
+//		return _error;
+//	}
 
-	public String loadTTSFromFile(String fileName) {
-		XMLInputFile xmlFile;
-		Element root; // , item, ID;
-		try {
-			xmlFile = new XMLInputFile();
-			Document doc = xmlFile.createDocument(fileName);
-			XMLReader list = new XMLReader();
-			root = list.getRootElement(doc);
-			if (readXMLtag(root).length() != 0) {
-				_error = DConst.ERROR_XML_FILE;
-				return _error;
-			}
-		} catch (Exception e) {
-			_error = e.getMessage();
-			new DxExceptionDlg(_error, e);
-		}
-		return _error;
-	}
 
-	/**
-	 * it load the time table structure
-	 * 
-	 * @param String
-	 *            the xml file containing the timetable structure
-	 * @return String the error message, empty if it does not found error
-	 */
-
-	public void loadTTStructFromFile(String fileName) throws Exception {
-		XMLInputFile xmlFile;
-		Element root;
-
-		xmlFile = new XMLInputFile();
-		System.out.println("UFile Name in addDxTTStructureDoc" + fileName);
-		Document doc = xmlFile.createDocument(fileName);
-		XMLReader list = new XMLReader();
-		root = list.getRootElement(doc);
-		readXMLTTTag(root);
-
-	} // loadTTStructFromFile
 	
-	public void loadTTStructFromFile(InputStream fileName) throws Exception {
-		XMLInputFile xmlFile;
+	/**
+	 * 
+	 * @param inputStream
+	 *            is the inputStream containing the TTStructure
+	 * 
+	 */
+	public void loadTTStructureFromInpuStream(InputStream inputStream) throws Exception {
+		XMLInputFile xmlFile = new XMLInputFile();
 		Element root;
-
-		xmlFile = new XMLInputFile();
-		System.out.println("UFile Name in addDxTTStructureDoc" + fileName);
-		Document doc = xmlFile.createDocument(fileName);
+		Document doc = xmlFile.createDocumentFromInputStream(inputStream);
 		XMLReader list = new XMLReader();
 		root = list.getRootElement(doc);
 		readXMLTTTag(root);
-
-	} // loadTTStructFromFile
+	} // loadTTStructFromInpuStream
 
 	/**
 	 * it load the time table structure
@@ -286,7 +272,6 @@ public class TTStructure extends Observable {
 	public String loadTTSFromString(String str) {
 		Element root;
 		try {
-
 			DocumentBuilderFactory factory = DocumentBuilderFactory
 					.newInstance();
 			DocumentBuilder builder = factory.newDocumentBuilder();

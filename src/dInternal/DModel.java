@@ -19,7 +19,9 @@ package dInternal;
 
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Iterator;
 import java.util.Observable;
 import java.util.Vector;
@@ -163,7 +165,13 @@ public class DModel extends Observable {
 			_isATimeTable = true;
 		} else if (fileName.endsWith(DConst.DOT_XML)) {
 			_ttStruct = new TTStructure();
-			_error = _ttStruct.loadTTSFromFile(fileName);
+			InputStream is = new FileInputStream(fileName);
+			try {
+				_ttStruct.loadTTStructureFromInpuStream(is);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			_isATimeTable = false;
 		} else {
 			_error = "Wrong type of file";
@@ -210,7 +218,13 @@ public class DModel extends Observable {
 			// _isATimeTable = true;
 		} else if (fileName.endsWith(DConst.DOT_XML)) {
 			_ttStruct = new TTStructure();
-			_error = _ttStruct.loadTTSFromFile(fileName);
+			InputStream is = new FileInputStream(fileName);
+			try {
+				_ttStruct.loadTTStructureFromInpuStream(is);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			_isATimeTable = false;
 		} else {
 			_error = "Wrong type of file";

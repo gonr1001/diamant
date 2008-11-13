@@ -111,25 +111,16 @@ public class DMediator extends Object {
 
 
 	/**
-	 * for new ttStructure and for open ttStructure
 	 * 
-	 * @param fileName
-	 *            is the full path file name containing the TTStructure
-	 * @param type
-	 *            is the type of timetable to be constructed
+	 * @param inputStream
+	 *            is the inputStream containing a new TTStructure
+	 * @param name
+	 *            is the full name of the file
 	 * @throws Exception
 	 * 
 	 */
-	public void addDxTTStructureDoc(String fileName) throws Exception {
-		System.out.println("UFile Name in addDxTTStructureDoc" + fileName);
-		DxDocument currentDxDoc = new DxTTStructureDoc(this, fileName);
-		_dxDocuments.addElement(currentDxDoc);
-		_dApplication.getToolBar().setToolBars(currentDxDoc.getTTStructure());
-	} // end addDxTTStructureDoc
-
-	public void addDxTTStructureDoc(InputStream fileName) throws Exception {
-		System.out.println("UFile Name in addDxTTStructureDoc" + fileName);
-		DxDocument currentDxDoc = new DxTTStructureDoc(this, fileName);
+	public void addDxTTStructureDoc(InputStream inputStream, String name) throws Exception {
+		DxDocument currentDxDoc = new DxTTStructureDoc(this, inputStream, name);
 		_dxDocuments.addElement(currentDxDoc);
 		_dApplication.getToolBar().setToolBars(currentDxDoc.getTTStructure());
 	} // end addDxTTStructureDoc

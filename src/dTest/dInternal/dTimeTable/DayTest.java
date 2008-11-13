@@ -10,6 +10,8 @@ package dTest.dInternal.dTimeTable;
  */
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -51,7 +53,9 @@ public class DayTest extends TestCase {
 		Day day = new Day();
 		try {
 			xmlFile = new XMLInputFile();
-			Document doc = xmlFile.createDocument(_pathForFiles + "day.xml");
+			InputStream is = new FileInputStream(_pathForFiles + "day.xml");
+			Document doc = xmlFile.createDocumentFromInputStream(is);
+
 			XMLReader list = new XMLReader();
 			eDay = list.getRootElement(doc);
 			day.readXMLtag(eDay);
@@ -137,7 +141,9 @@ public class DayTest extends TestCase {
 			xmlOF.write(doc, _pathForOutputFiles + "SavedDay.xml");
 
 			// read xml file
-			doc = xmlFile.createDocument(_pathForOutputFiles + "SavedDay.xml");
+			InputStream is = new FileInputStream(_pathForOutputFiles + "SavedDay.xml");
+			doc = xmlFile.createDocumentFromInputStream(is);
+
 			XMLReader list = new XMLReader();
 			eSetOfSequences = list.getRootElement(doc);
 			savedDay = new Day();
@@ -156,8 +162,6 @@ public class DayTest extends TestCase {
 			assertEquals("test_writeXMLtag : assertEquals 4 (ID of sequence 3): ",
 					firstDay.getSetOfSequences().getResourceAt(2).getID(), savedDay
 							.getSetOfSequences().getResourceAt(2).getID());
-
-
 		} catch (Exception e) {
 			// Should not fail in tests, but if file not there gives a failure
 			assertEquals("test_writeXMLtag: exception", "nullPointer", e

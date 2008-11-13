@@ -20,8 +20,10 @@
 
 package dInternal;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
@@ -137,7 +139,15 @@ public class DxLoadData {
 			String inDiaTTSFileName = DXToolsMethods.getAbsoluteFileName(
 					currentDir, dataTokens.nextToken().trim());
 			linePosition++;// for XML file name line
-			_tts.loadTTSFromFile(inDiaTTSFileName);
+			//_tts.loadTTSFromFile(inDiaTTSFileName);
+			
+			InputStream is = new FileInputStream(inDiaTTSFileName);
+			try {
+				_tts.loadTTStructureFromInpuStream(is);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 			linePosition++; // for separator =========================
 			inDiaFileInstructors = dataTokens.nextToken().trim();

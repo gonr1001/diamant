@@ -55,49 +55,27 @@ public class DxTTStructureDoc extends DxDocument {
 
 	/**
 	 * 
-	 * @param dMediator
+	 * @param dMed
 	 *            (pattern Mediator)
-	 * @param fileName
-	 *            is the full path file name containing the TTStructure
+	 *  
+	 *  @param inputStream
+	 *            is the inputStream containing the TTStructure
+	 *            
+	 * @param name
+	 *            is the full name file name containing the TTStructure
 	 * 
 	 * @throws Exception
 	 * 
 	 */
-
-	public DxTTStructureDoc(DMediator dMed, String fileName) throws Exception {
+	public DxTTStructureDoc(DMediator dMed, InputStream inputStream, String name) throws Exception {
 		super(dMed);
-		System.out.println("UFile Name in addDxTTStructureDoc" + fileName);
 		_ttStructure = new TTStructure();
-		// try {
-		_ttStructure.loadTTStructFromFile(fileName);
-		// }
-		_documentName = modifiyDocumentName(fileName);
+		_ttStructure.loadTTStructureFromInpuStream(inputStream);
+		_documentName = modifiyDocumentName(name);
 		buidDocument(true, true);
 		if(DxFlags.newDxTTPane) {
 			_dxTTPane.updateDxTTPane(_ttStructure);
 		} 
-//		else {
-//			_ttPane.updateTTPane(_ttStructure);
-//		}
-//		_ttPane.updateTTPane(_ttStructure);
-	}
-	
-	public DxTTStructureDoc(DMediator dMed, InputStream fileName) throws Exception {
-		super(dMed);
-		System.out.println("UFile Name in addDxTTStructureDoc" + fileName);
-		_ttStructure = new TTStructure();
-		// try {
-		_ttStructure.loadTTStructFromFile(fileName);
-		// }
-//		_documentName = modifiyDocumentName(fileName);
-		buidDocument(true, true);
-		if(DxFlags.newDxTTPane) {
-			_dxTTPane.updateDxTTPane(_ttStructure);
-		} 
-//		else {
-//			_ttPane.updateTTPane(_ttStructure);
-//		}
-//		_ttPane.updateTTPane(_ttStructure);
 	}
 
 	// -------------------------------------------

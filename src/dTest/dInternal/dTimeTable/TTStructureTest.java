@@ -19,6 +19,9 @@
 package dTest.dInternal.dTimeTable;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -57,7 +60,19 @@ public class TTStructureTest extends TestCase {
 	 */
 	public void test_loadTTStructure() {
 		TTStructure tts = new TTStructure();
-		tts.loadTTSFromFile(_pathForFiles + "StandardTTC.xml");
+		InputStream is;
+		try {
+			is = new FileInputStream(_pathForFiles + "StandardTTC.xml");
+//			Document doc = xmlFile.createDocumentFromInputStream(is);
+		    tts.loadTTStructureFromInpuStream(is);//loadTTSFromFile(_pathForFiles + "DXToolsMethodsTest_resizeAvailability.xml")
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//		tts.loadTTSFromFile(_pathForFiles + "StandardTTC.xml");
 		assertEquals(
 				"test_CreateStandardTT : assertEquals 1 (number of cycles):",
 				3, tts.getSetOfCycles().size());
@@ -96,7 +111,19 @@ public class TTStructureTest extends TestCase {
 	public void test_CreateDefaultTT() {
 		TTStructure tts = new TTStructure();
 		tts.createDefaultTT(_pathForOutputFiles + "newStandardTT.xml", 5, 5);
-		tts.loadTTSFromFile(_pathForOutputFiles + "newStandardTT.xml");
+		InputStream is;
+		try {
+			is = new FileInputStream(_pathForOutputFiles + "newStandardTT.xml");
+//			Document doc = xmlFile.createDocumentFromInputStream(is);
+		    tts.loadTTStructureFromInpuStream(is);//loadTTSFromFile(_pathForFiles + "DXToolsMethodsTest_resizeAvailability.xml")
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//		tts.loadTTSFromFile(_pathForOutputFiles + "newStandardTT.xml");
 		assertEquals(
 				"test1_CreateDefaultTT : assertEquals 1 (number of cycles):",
 				5, tts.getSetOfCycles().size());
@@ -112,7 +139,20 @@ public class TTStructureTest extends TestCase {
 
 	public void test_getMaxNumberOfPeriodsADay() {
 		TTStructure tts = new TTStructure();
-		tts.loadTTSFromFile(_pathForFiles + "nonUniformTT.xml");
+		InputStream is;
+		try {
+			is = new FileInputStream(_pathForFiles + "nonUniformTT.xml");
+//			Document doc = xmlFile.createDocumentFromInputStream(is);
+		    tts.loadTTStructureFromInpuStream(is);//loadTTSFromFile(_pathForFiles + "DXToolsMethodsTest_resizeAvailability.xml")
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+//		tts.loadTTSFromFile(_pathForFiles + "nonUniformTT.xml");
 		int maxPer = tts.getCurrentCycle().getMaxNumberOfPeriodsADay();
 		assertEquals("test_getMaxNumberOfPeriodsADay : assertEquals 1 :", 12,
 				maxPer);
@@ -130,10 +170,34 @@ public class TTStructureTest extends TestCase {
 	 */
 	public void test_saveTTStructure() {
 		TTStructure tts = new TTStructure();
-		tts.loadTTSFromFile(_pathForFiles + "StandardTTC.xml");
+		InputStream is;
+		try {
+			is = new FileInputStream(_pathForFiles + "StandardTTC.xml");
+//			Document doc = xmlFile.createDocumentFromInputStream(is);
+		    tts.loadTTStructureFromInpuStream(is);//loadTTSFromFile(_pathForFiles + "DXToolsMethodsTest_resizeAvailability.xml")
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//		tts.loadTTSFromFile(_pathForFiles + "StandardTTC.xml");
 		tts.saveTTStructure(_pathForOutputFiles + "SaveStandardTTC.xml");
 		TTStructure newtts = new TTStructure();
-		newtts.loadTTSFromFile(_pathForOutputFiles + "SaveStandardTTC.xml");
+		InputStream nis;
+		try {
+			nis = new FileInputStream(_pathForOutputFiles + "SaveStandardTTC.xml");
+//			Document doc = xmlFile.createDocumentFromInputStream(is);
+			newtts.loadTTStructureFromInpuStream(nis);//loadTTSFromFile(_pathForFiles + "DXToolsMethodsTest_resizeAvailability.xml")
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//		newtts.loadTTSFromFile(_pathForOutputFiles + "SaveStandardTTC.xml");
 		Period lastPer = newtts.getCurrentCycle().getLastPeriod();
 		assertEquals(
 				"test_saveTTStructure : assertEquals 1 (number of cycles):", 3,
@@ -158,8 +222,9 @@ public class TTStructureTest extends TestCase {
 		// SetOfCycles setOfcycle= new SetOfCycles();
 		try {
 			xmlFile = new XMLInputFile();
-			// System.out.println(path+"StandardTTC.xml");//debug
-			Document doc = xmlFile.createDocument(_pathForFiles + "StandardTTC.xml");
+			InputStream is = new FileInputStream(_pathForFiles + "StandardTTC.xml");
+			Document doc = xmlFile.createDocumentFromInputStream(is);
+			//Document doc = xmlFile.createDocument(_pathForFiles + "StandardTTC.xml");
 			XMLReader list = new XMLReader();
 			item = list.getRootElement(doc);
 			tts.readXMLtag(item);
@@ -210,7 +275,8 @@ public class TTStructureTest extends TestCase {
 			xmlOF.write(doc, _pathForOutputFiles + "SaveSetOfCycles.xml");
 
 			// read xml file
-			doc = xmlFile.createDocument(_pathForOutputFiles + "SaveSetOfCycles.xml");
+			InputStream is = new FileInputStream(_pathForOutputFiles + "SaveSetOfCycles.xml");
+			doc = xmlFile.createDocumentFromInputStream(is);
 			XMLReader list = new XMLReader();
 			item = list.getRootElement(doc);
 			newtts.readXMLtag(item);
@@ -232,7 +298,19 @@ public class TTStructureTest extends TestCase {
 	 */
 	public void test_cloneCurrentTTS() {
 		TTStructure tts = new TTStructure();
-		tts.loadTTSFromFile(_pathForFiles + "5j27p.xml");
+		InputStream is;
+		try {
+			is = new FileInputStream(_pathForFiles + "5j27p.xml");
+//			Document doc = xmlFile.createDocumentFromInputStream(is);
+		    tts.loadTTStructureFromInpuStream(is);//loadTTSFromFile(_pathForFiles + "DXToolsMethodsTest_resizeAvailability.xml")
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//tts.loadTTSFromFile(_pathForFiles + "5j27p.xml");
 
 		TTStructure cloneTTS = tts.cloneCurrentTTS();
 		assertEquals(
@@ -271,7 +349,20 @@ public class TTStructureTest extends TestCase {
 	 */
 	public void test1_cloneCurrentTTS() {
 		TTStructure tts = new TTStructure();
-		tts.loadTTSFromFile(_pathForFiles + "5j27p.xml");
+		InputStream is;
+		try {
+			is = new FileInputStream(_pathForFiles + "5j27p.xml");
+//			Document doc = xmlFile.createDocumentFromInputStream(is);
+		    tts.loadTTStructureFromInpuStream(is);//loadTTSFromFile(_pathForFiles + "DXToolsMethodsTest_resizeAvailability.xml")
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+//		tts.loadTTSFromFile(_pathForFiles + "5j27p.xml");
 
 		TTStructure cloneTTS = tts.cloneCurrentTTS();
 		boolean isEquals = tts.getCurrentCycle().isEquals(

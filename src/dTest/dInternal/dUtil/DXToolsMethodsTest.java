@@ -15,6 +15,8 @@ import junit.framework.TestSuite;
 import dInternal.dTimeTable.TTStructure;
 import dInternal.dUtil.DXToolsMethods;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 
 public class DXToolsMethodsTest extends TestCase{
 
@@ -35,21 +37,31 @@ public class DXToolsMethodsTest extends TestCase{
       initialAvail[i] = line;
     }
     TTStructure tts = new TTStructure();
-    tts.loadTTSFromFile(_pathForFiles + "DXToolsMethodsTest_resizeAvailability.xml");
-    finalAvail = DXToolsMethods.resizeAvailability(initialAvail, tts);
+	InputStream is;
+	try {
+		is = new FileInputStream(_pathForFiles + "DXToolsMethodsTest_resizeAvailability.xml");		
+	    tts.loadTTStructureFromInpuStream(is);
+	    finalAvail = DXToolsMethods.resizeAvailability(initialAvail, tts);
+	    assertEquals("test_resizeAvailability finalAvail.length : assertEquals", 8, finalAvail.length);
+	    assertEquals("test_resizeAvailability finalAvail[0].length : assertEquals", 3, finalAvail[0].length);
+	    assertEquals("test_resizeAvailability finalAvail[0][0].length : assertEquals", 1, finalAvail[0][0]);
+	    assertEquals("test_resizeAvailability finalAvail[0][1].length : assertEquals", 5, finalAvail[0][1]);
+	    assertEquals("test_resizeAvailability finalAvail[0][2].length : assertEquals", 1, finalAvail[0][2]);// was 5
+	    assertEquals("test_resizeAvailability finalAvail[1][0].length : assertEquals", 1, finalAvail[1][0]);
+	    assertEquals("test_resizeAvailability finalAvail[1][1].length : assertEquals", 1, finalAvail[1][1]);// was 5
+	    assertEquals("test_resizeAvailability finalAvail[1][2].length : assertEquals", 5, finalAvail[1][2]);
+	    assertEquals("test_resizeAvailability finalAvail[4][0].length : assertEquals", 1, finalAvail[4][0]);
+	    assertEquals("test_resizeAvailability finalAvail[4][1].length : assertEquals", 1, finalAvail[4][1]); //was 5
+	    assertEquals("test_resizeAvailability finalAvail[4][2].length : assertEquals", 5, finalAvail[4][2]);
 
-    assertEquals("test_resizeAvailability finalAvail.length : assertEquals", 8, finalAvail.length);
-    assertEquals("test_resizeAvailability finalAvail[0].length : assertEquals", 3, finalAvail[0].length);
-    assertEquals("test_resizeAvailability finalAvail[0][0].length : assertEquals", 1, finalAvail[0][0]);
-    assertEquals("test_resizeAvailability finalAvail[0][1].length : assertEquals", 5, finalAvail[0][1]);
-    assertEquals("test_resizeAvailability finalAvail[0][2].length : assertEquals", 1, finalAvail[0][2]);// was 5
-    assertEquals("test_resizeAvailability finalAvail[1][0].length : assertEquals", 1, finalAvail[1][0]);
-    assertEquals("test_resizeAvailability finalAvail[1][1].length : assertEquals", 1, finalAvail[1][1]);// was 5
-    assertEquals("test_resizeAvailability finalAvail[1][2].length : assertEquals", 5, finalAvail[1][2]);
-    assertEquals("test_resizeAvailability finalAvail[4][0].length : assertEquals", 1, finalAvail[4][0]);
-    assertEquals("test_resizeAvailability finalAvail[4][1].length : assertEquals", 1, finalAvail[4][1]); //was 5
-    assertEquals("test_resizeAvailability finalAvail[4][2].length : assertEquals", 5, finalAvail[4][2]);
+	} catch (Exception e) {
+		// Should not fail in tests, but if file not there gives a failure
+		System.out.println("Exception in: test_resizeAvailability");
+		e.printStackTrace();
+	}
+   
 
+  
   }
 
 } //end class

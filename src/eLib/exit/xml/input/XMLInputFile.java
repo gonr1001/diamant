@@ -25,7 +25,8 @@
 
 package eLib.exit.xml.input;
 
-import java.io.File;
+
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -54,29 +55,14 @@ public class XMLInputFile {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		_builder = factory.newDocumentBuilder();
 	}
-
-	/**
-	 * create a Document org.w3c.dom.Document
-	 * @param fileName a String which contains the file name
-	 * @return a Document which is the XML file
-	 * */
-	public Document createDocument(String fileName) throws SAXException,
-			FileNotFoundException, IOException {
-		System.out.println("UFile Name in createDocument" + fileName);
-		File file = new File(fileName);
-		return _builder.parse(file);
-	}
-
 	
 	/**
 	 * create a Document org.w3c.dom.Document
-	 * @param fileName a String which contains the file name
-	 * @return a Document which is the XML file
+	 * @param inputStream  which contains the TTStructure
+	 * @return a Document which as it is in the XML file
 	 * */
-	public Document createDocument(InputStream fileName) throws SAXException,
+	public Document createDocumentFromInputStream(InputStream inputStream) throws SAXException,
 			FileNotFoundException, IOException {
-		System.out.println("UFile Name in createDocument" + fileName);
-		//File file = new File(fileName);
-		return _builder.parse(fileName);
+		return _builder.parse(inputStream);
 	}
 } /* end XMLInputFile */

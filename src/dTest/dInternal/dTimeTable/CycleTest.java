@@ -39,6 +39,8 @@ package dTest.dInternal.dTimeTable;
  */
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -79,10 +81,9 @@ public class CycleTest extends TestCase {
 		Element item;
 		Cycle cycle = new Cycle();
 		try {
-
 			xmlFile = new XMLInputFile();
-			// System.out.println(path+"cycle.xml");//debug
-			Document doc = xmlFile.createDocument(_pathForFiles + "cycle.xml");
+			InputStream is = new FileInputStream(_pathForFiles + "cycle.xml");
+			Document doc = xmlFile.createDocumentFromInputStream(is);
 			XMLReader list = new XMLReader();
 			item = list.getRootElement(doc);
 			cycle.readXMLtag(item);
@@ -115,7 +116,8 @@ public class CycleTest extends TestCase {
 		Cycle cycle = new Cycle();
 		try {
 			xmlFile = new XMLInputFile();
-			Document doc = xmlFile.createDocument(_pathForFiles + "cycle.xml");
+			InputStream is = new FileInputStream(_pathForFiles + "cycle.xml");
+			Document doc = xmlFile.createDocumentFromInputStream(is);
 			XMLReader list = new XMLReader();
 			item = list.getRootElement(doc);
 			cycle.readXMLtag(item);
@@ -146,7 +148,8 @@ public class CycleTest extends TestCase {
 		Cycle cycle = new Cycle();
 		try {
 			xmlFile = new XMLInputFile();
-			Document doc = xmlFile.createDocument(_pathForFiles + "cycle.xml");
+			InputStream is = new FileInputStream(_pathForFiles + "cycle.xml");
+			Document doc = xmlFile.createDocumentFromInputStream(is);
 			XMLReader list = new XMLReader();
 			item = list.getRootElement(doc);
 			cycle.readXMLtag(item);
@@ -251,8 +254,9 @@ public class CycleTest extends TestCase {
 			XMLOutputFile xmlOF = new XMLOutputFile();
 			xmlOF.write(doc, _pathForOutputFiles + "SaveCycle.xml");
 
-			// read xml file
-			doc = xmlFile.createDocument(_pathForOutputFiles + "SaveCycle.xml");
+			// read xml file			
+			InputStream is = new FileInputStream(_pathForOutputFiles + "SaveCycle.xml");
+			doc = xmlFile.createDocumentFromInputStream(is);
 			
 			XMLReader list = new XMLReader();
 			item = list.getRootElement(doc);

@@ -10,6 +10,8 @@ package dTest.dInternal.dTimeTable;
  */
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.Vector;
 
 import junit.framework.Test;
@@ -51,7 +53,8 @@ public class PeriodTest extends TestCase {
 		Period period = new Period();
 		try {
 			xmlFile = new XMLInputFile();
-			Document doc = xmlFile.createDocument(_pathForFiles + "period.xml");
+			InputStream is = new FileInputStream(_pathForFiles + "period.xml");
+			Document doc = xmlFile.createDocumentFromInputStream(is);
 			XMLReader list = new XMLReader();
 			item = list.getRootElement(doc);
 			period.readXMLtag(item);
@@ -61,7 +64,6 @@ public class PeriodTest extends TestCase {
 					period.getBeginHour()[1]);
 			assertEquals("test_readXMLtag : assertEquals 3(priotity):", 0,
 					period.getPriority());
-
 		} catch (Exception e) {
 			// Should not fail in tests, but if file not there gives a failure
 			assertEquals("test_readXMLtag: exception", "nullPointer", e
@@ -80,7 +82,8 @@ public class PeriodTest extends TestCase {
 		Period period = new Period();
 		try {
 			xmlFile = new XMLInputFile();
-			Document doc = xmlFile.createDocument(_pathForFiles + "period.xml");
+			InputStream is = new FileInputStream(_pathForFiles + "period.xml");
+			Document doc = xmlFile.createDocumentFromInputStream(is);
 			XMLReader list = new XMLReader();
 			item = list.getRootElement(doc);
 			period.readXMLtag(item);
@@ -117,7 +120,8 @@ public class PeriodTest extends TestCase {
 		Period period = new Period();
 		try {
 			xmlFile = new XMLInputFile();
-			Document doc = xmlFile.createDocument(_pathForFiles + "period.xml");
+			InputStream is = new FileInputStream(_pathForFiles + "period.xml");
+			Document doc = xmlFile.createDocumentFromInputStream(is);
 			XMLReader list = new XMLReader();
 			item = list.getRootElement(doc);
 			period.readXMLtag(item);
@@ -156,8 +160,8 @@ public class PeriodTest extends TestCase {
 			xmlOF.write(doc, _pathForOutputFiles + "SavePeriod.xml");
 
 			// read xml file
-			doc = xmlFile.createDocument(_pathForOutputFiles + "SavePeriod.xml");
-
+			InputStream is = new FileInputStream(_pathForOutputFiles + "SavePeriod.xml");
+			doc = xmlFile.createDocumentFromInputStream(is);
 			XMLReader list = new XMLReader();
 			item = list.getRootElement(doc);
 
