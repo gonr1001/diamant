@@ -112,6 +112,9 @@ public abstract class DObject extends Object {
 		return 0;// XXXX Pascal: ?
 	}
 	
+	public String getProgram() {
+				return "";// XXXX Pascal: ?
+			}
 //	public abstract DObject clone();
 
 
