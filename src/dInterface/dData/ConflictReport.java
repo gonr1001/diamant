@@ -23,7 +23,7 @@ import dConstants.DConst;
 import dInterface.DApplication;
 import dInterface.dTimeTable.SaveAsTxtDlg;
 import dInternal.DValue;
-import developer.DxFlags;
+
 
 public class ConflictReport extends ViewReport implements ActionListener {
 
