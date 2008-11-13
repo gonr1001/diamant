@@ -20,7 +20,7 @@
 package dTest.dInternal.dData.dActivities;
 
 import dInternal.DResource;
-import dInternal.dData.DLoadData;
+import dInternal.DxLoadData;
 import dInternal.dData.dActivities.Activity;
 import dInternal.dData.dActivities.SetOfActivities;
 import dInternal.dData.dActivities.SetOfActivitiesSites;
@@ -68,7 +68,7 @@ public class DSetOfActivitiesSitesTest extends TestCase {
 				+ "0 0" + "\r\n";
 
 		SetOfActivitiesSites setOfsites = new SetOfActivitiesSites(false, 60);
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 		setOfsites.analyseTokens(ld.buildDataExchange(tokens.getBytes()), 1);
 		if (setOfsites.getError().length() == 0) {
 			setOfsites.buildSetOfResources(ld.buildDataExchange(tokens
@@ -114,7 +114,7 @@ public class DSetOfActivitiesSitesTest extends TestCase {
 				+ "\r\n" + "0 0" + "\r\n" + "0 0" + "\r\n" + "0 0" + "\r\n";
 
 		SetOfActivitiesSites setOfsites = new SetOfActivitiesSites(false, 60);
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 		setOfsites.analyseTokens(ld.buildDataExchange(tokens.getBytes()), 1);
 		if (setOfsites.getError().length() == 0) {
 			setOfsites.buildSetOfResources(ld.buildDataExchange(tokens
