@@ -158,7 +158,7 @@ public class StudentsConflictsMatrix {
         int[] tab= new int[((Type)rescType.getAttach()).getSetOfSections().size()];
         for(int z=0; z<((Type)rescType.getAttach()).getSetOfSections().size(); z++){
           DResource rescSection= ((Type)rescType.getAttach()).getSetOfSections().getResourceAt(z);
-          tab[z]= sos.getStudentsByGroup(rescActivity.getID(),rescType.getID(),
+          tab[z]= sos.getStudentsSortedInGroup(rescActivity.getID(),rescType.getID(),
               DxTools.STIConvertGroupToInt(rescSection.getID())).size();
         }//end for(int z=0; z<((Type)rescType.getAttach()).getSetOfSections().size(); z++)
 
