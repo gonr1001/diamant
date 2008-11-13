@@ -6,8 +6,6 @@ import dConstants.DConst;
 import dInternal.DataExchange;
 import dInternal.DxLoadData;
 import dInternal.dData.ByteArrayMsg;
-import dInternal.dData.DLoadData;
-
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -25,7 +23,7 @@ public class DxSetOfSitesTest extends TestCase {
 
 	public void test_getSetOfSitesSingleSite() {
 		try {
-			DLoadData ld = new DLoadData();
+			DxLoadData ld = new DxLoadData();
 			byte[] dataloaded = ld.filterBadChars(_pathForFiles + "locaux.txt");
 
 			DataExchange de = ld.buildDataExchange(dataloaded);
@@ -73,7 +71,7 @@ public class DxSetOfSitesTest extends TestCase {
 	}
 
 	public void test_getSetOfSitesMultiSite() {
-		DLoadData ld = new DLoadData();
+		DxLoadData ld = new DxLoadData();
 		byte[] dataloaded = null;
 		try {
 			dataloaded = ld.filterBadChars(_pathForFiles
