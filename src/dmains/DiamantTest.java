@@ -169,11 +169,11 @@ public class DiamantTest {
 		suite.addTest(ByteArrayMessageTest.suite());
 		suite.addTest(StandardCollectionTest.suite());
 		suite.addTest(DResourceTest.suite());
-		if (DxFlags.newDxLoadData) {
+//		if (DxFlags.newDxLoadData) {
 			suite.addTest(DxLoadDataTest.suite());
-		} else {
+//		} else {
 			suite.addTest(DLoadDataTest.suite());
-		}
+//		}
 		suite.addTest(DSaveDataTest.suite());
 		suite.addTest(DSetOfResourcesTest.suite());
 		suite.addTest(DStandardReportDataTest.suite());

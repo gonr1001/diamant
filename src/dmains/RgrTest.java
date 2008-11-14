@@ -40,7 +40,6 @@ import dTest.dInternal.dOptimizationTest.ConditionsTest;
 import dTest.dInternal.dOptimizationTest.DxAssignAllAlgTest;
 import dTest.dInternal.dOptimizationTest.RoomsConditionsTest;
 import dTest.dInternal.dOptimizationTest.SetOfEventsTest;
-import developer.DxFlags;
 import eTest.ByteInputFileTest;
 import eTest.ByteOutputFileTest;
 import eTest.FilterFileTest;
@@ -93,11 +92,11 @@ public class RgrTest {
 		suite.addTest(DxAssignAllAlgTest.suite());
 		suite.addTest(RoomsConditionsTest.suite());
 
-		if (DxFlags.newDxLoadData) {
+//		if (DxFlags.newDxLoadData) {
 			suite.addTest(DxLoadDataTest.suite()); //TODO to review
-		} else {
+//		} else {
 			suite.addTest(DLoadDataTest.suite()); //TODO to review
-		}
+//		}
 		suite.addTest(DxInstructorsReaderTest.suite());
 		suite.addTest(SetOfEventsTest.suite());
 		suite.addTest(ConditionsTest.suite());
