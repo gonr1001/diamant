@@ -164,22 +164,11 @@ public class DApplication {
 		new LookAndFeelPref().setLookAndFeel();
 
 		if (_inDevelopment) {
-			tryOpenDevFile();
+			openDevFile();
 		}
 		_logger.warn("bye_from DApplication"); // at the end of an execution
 	}
 
-	private void lookUpforOptions(String[] args) {
-		if (args[0].compareTo(DEV) == 0) {
-			_inDevelopment = true;
-			System.out.println("I am in Mode Development");
-		}
-		if (args.length == 2) {
-			// it contains a file name
-			_fileToOpenAtStart = args[1];
-		}
-		// all other arguments are ignored
-	}
 
 	// -------------------------------------------
 	private JFrame createFrame(String str) {
@@ -333,14 +322,14 @@ public class DApplication {
 	 * 
 	 */
 	public void newTTable() {
-		buildTTable(DConst.CYCLE);
+		loadATTableStructure(DConst.CYCLE);
 	}
 
 	/**
 	 * 
 	 */
 	public void newTTableExam() {
-		buildTTable(DConst.EXAM);
+		loadATTableStructure(DConst.EXAM);
 	}
 
 	/**
@@ -361,11 +350,7 @@ public class DApplication {
 	 * 
 	 */
 	public void openTTable() {
-		if (DxFlags.newDxLoadData) {
-			buildTTable();
-		} else {
-			oldBuildTTable();
-		}
+			loadFullTTable();
 	}
 
 	/**
@@ -381,7 +366,7 @@ public class DApplication {
 	public void close() {
 		this._dMediator.closeCurrentDxDoc();
 		if (!this._dMediator.getCancel()) {
-			_dxMenuBar.initialState();
+			this.initialState();
 		}
 	}
 
@@ -707,28 +692,7 @@ public class DApplication {
 		new AboutDlg(this.getJFrame());
 	}
 
-	/**
-	 * 
-	 */
-	public void tryOpenDevFile() {
-		if (_fileToOpenAtStart.equalsIgnoreCase("")) {
-			_fileToOpenAtStart = "." + File.separator + "dataTest"
-					+ File.separator + "bug126" + File.separator;
-			_fileToOpenAtStart += "bug126.dia";
-		}
-		System.out.println(System.getProperty("user.dir"));
-		System.out.println(_fileToOpenAtStart);
-		try {
-			_dMediator.addDxTTableDoc(_fileToOpenAtStart);
-		} catch (Exception e) {
-			new DxExceptionDlg(e.getMessage(), e);
-			e.printStackTrace();
-		}
-		getCurrentDxDoc().setAutoImportDIMFilePath(".\\devData\\");
-		getCurrentDxDoc().getCurrentDModel().changeInDModel(this.getJFrame());
-		_dxMenuBar.afterInitialAssignment();
 
-	}
 
 	/**
 	 * 
@@ -851,12 +815,31 @@ public class DApplication {
 		return _inDevelopment;
 	}
 
+	/*
+	 * @param args came from command line it must besome like -d \dataTest\bug126\bug126.dia
+	 * this string will be concatenated with System.getProperty("user.dir") 
+	 */
+	private void lookUpforOptions(String[] args) {
+		if (args[0].compareTo(DEV) == 0) {
+			_inDevelopment = true;
+			System.out.println("I am in Mode Development");
+		}
+		if (args.length == 2) {
+			// it contains a file name
+			_fileToOpenAtStart = System.getProperty("user.dir") + args[1];
+			System.out.println("lookUpforOptions : " + _fileToOpenAtStart);			
+		}
+		// all other arguments are ignored
+	}
+
+
 	/**
-	 * @param i
-	 *            timetable type
+	 * @param i  timetable type 
+	 *           
 	 * 
 	 */
-	private void buildTTable(int i) {
+	private void loadATTableStructure(int i) {
+		System.out.println("begin DApplication.loadATTableStructure");
 		NewTimeTableDlg dlg = new NewTimeTableDlg();
 		String pathfileName = dlg.getFileName(this, i);
 
@@ -872,73 +855,60 @@ public class DApplication {
 				new DxExceptionDlg(_jFrame, e.getMessage(), e);
 			}
 		}
+		System.out.println("end DApplication.loadATTableStructure");
 	}
 
 	/**
 	 * 
 	 * 
 	 */
-	private void buildTTable() {
-		System.out.println("begin buildTTable");
+	private void loadFullTTable() {
+		System.out.println("begin DApplication.loadFullTTable");
 		OpenTimeTableDlg dlg = new OpenTimeTableDlg();
 		String fullFileName = dlg.getFileName(this);
 		if (fullFileName == "") {// the cancel button was pressed!
 			this.initialState();
 		} else {
-			this.setCurrentDir(fullFileName);
-			this.setCursorWait();
-			try {
-				DxLoadData dxLoadData = new DxLoadData();
-				dxLoadData.loadDataStructures(fullFileName, this
-						.getCurrentDir());
-				System.out.println("DxLoadData was done");
-				this.getDMediator().addDxTTableDoc(dxLoadData, fullFileName);
-				this.afterNewTTable();
-				this.getCurrentDxDoc()
-						.changeInModel(this.getClass().toString());
-				this.afterInitialAssign();
-			} catch (Exception e) {
-				System.out.println("Exception:   " + e.toString());
-				new DxExceptionDlg(_jFrame, e.getMessage(), e);
-				this.initialState();
-			}
 			dlg.dispose();
-			this.setCursorDefault();
-			System.out.println("end builTTAbel");
+			doLoad(fullFileName);			
 		}
+		System.out.println("end DApplication.loadFullTTable");
 	}
 
+	private void doLoad(String fullFileName) {
+		this.setCurrentDir(fullFileName);
+		this.setCursorWait();
+		try {
+			DxLoadData dxLoadData = new DxLoadData();
+			dxLoadData.loadDataStructures(fullFileName, this
+					.getCurrentDir());
+			System.out.println("DxLoadData was done");
+			this.getDMediator().addDxTTableDoc(dxLoadData, fullFileName);
+			this.afterNewTTable();
+			this.getCurrentDxDoc()
+					.changeInModel(this.getClass().toString());
+			this.afterInitialAssign();
+		} catch (Exception e) {
+			System.out.println("Exception:   " + e.toString());
+			new DxExceptionDlg(_jFrame, e.getMessage(), e);
+			this.initialState();
+		}
+		
+		this.setCursorDefault();
+	}
+	
 	/**
 	 * 
-	 * 
 	 */
-	private void oldBuildTTable() {
-		OpenTimeTableDlg dlg = new OpenTimeTableDlg();
-		String fullFileName = dlg.getFileName(this);
-
-		if (fullFileName == "") {// the cancel button was pressed!
-			this.initialState();
-		} else {
-			this.setCurrentDir(fullFileName);
-			try {
-				this.setCursorWait();
-				this.hideToolBar();
-				this.getDMediator().addDxTTableDoc(fullFileName);
-				_dxMenuBar.afterNewTTable();
-			} catch (Exception e) {
-				e.printStackTrace();
-				new DxExceptionDlg(_jFrame, e.getMessage(), e);
-				DMediator dMed = this.getDMediator();
-				dMed.clean();
-				dMed = null;
-				this.initialState();
-			}
-			this.setCursorDefault();
-			this.getCurrentDxDoc().changeInModel(this.getClass().toString());
-			this.afterInitialAssign();
+	public void openDevFile() {
+		if (_fileToOpenAtStart.equalsIgnoreCase("")) {
+			_fileToOpenAtStart = "." + File.separator + "dataTest"
+					+ File.separator + "bug126" + File.separator;
+			_fileToOpenAtStart += "bug126.dia";
 		}
-		dlg.dispose();
+		doLoad(_fileToOpenAtStart);
 	}
+
 
 	/**
 	 * 
@@ -991,12 +961,9 @@ public class DApplication {
 
 	private static Image createImageIcon(String path) {
 		java.net.URL imgURL = DApplication.class.getResource(path);
-		System.out.println("URL toExter" + imgURL.toExternalForm());
-		// if (imgURL != null) {
+		//System.out.println("URL toExter" + imgURL.toExternalForm());
 		return new ImageIcon(imgURL).getImage();
-		// }
-		// System.err.println("Couldn't find file: " + path);
-		// return null;
+
 	}
 
 } /* end class DApplication */

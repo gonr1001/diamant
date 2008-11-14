@@ -88,6 +88,10 @@ public class SetOfStuCourses extends DSetOfResources {
 	    }
 	    return -1;
 	  }
+	  
+	  public String getProgram(){
+		  return getAuxField().toString();
+	  }
 	/**
 	 * @param id
 	 * @return

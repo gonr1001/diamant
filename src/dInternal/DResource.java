@@ -190,11 +190,6 @@ public class DResource {
 		}
 	};
 
-//	public static Comparator<DResource> IDComparatorMm = new Comparator<DResource>() {
-//		public int compare(DResource left, DResource right) {
-//			return right._resourceID.compareTo(left._resourceID);
-//		}
-//	};
 	
 	public static Comparator<DResource> KeyComparator = new Comparator<DResource>() {
 		public int compare(DResource left, DResource right) {
@@ -218,34 +213,14 @@ public class DResource {
 			return 0;
 		}
 	};
-	/**
-	 * Constructor
-	 * 
-	 * @param String
-	 *            the id of the Resource
-	 * @param DXObject
-	 *            the object to set in the _resourceAttach field
-	 */
-//	public DResource clone() {	
-//		String s = new String(_resourceID);
-//		Object o = _resourceAttach;
-//		DxEvent dxEvent = null;
-//		if (DxFlags.newEventClone) {
-//			dxEvent = ((DxEvent) o).eventClone();
-//		} else {
-//			dxEvent = ((DxEvent) o).oldEventClone();
-//		}		
-//		DResource r = new DResource(s, dxEvent);
-//		return r;
-//	}
-//	public DResource clone() {	
-//		String s = new String(_resourceID);
-//		DObject o = _resourceAttach;
-//		DObject co = (DObject)o.clone();
-//		
-//		return new DResource(s,co);
-//	}
 	
-
+	public static Comparator<DResource> ProgramComparator = new Comparator<DResource>() {
+//		public int compare(DResource left, DResource right) {
+//			long diff = left.getAttach().getProgram(left._nSearchField)
+//					- right.getAttach().getProgram(left._nSearchField);
+			public int compare(DResource left, DResource right) {
+				return left.getAttach().getProgram().compareTo(right.getAttach().getProgram());
+			}
+	};
 
 }

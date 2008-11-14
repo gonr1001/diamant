@@ -46,19 +46,16 @@ import dInternal.dData.dRooms.DxReadSitedotDia;
 import dInternal.dData.dRooms.DxSetOfRooms;
 import dInternal.dData.dRooms.DxSetOfSites;
 import dInternal.dData.dRooms.DxSiteReader;
-//import dInternal.dData.dRooms.SetOfCategories;
-//import dInternal.dData.dRooms.SetOfRooms;
 import dInternal.dData.dRooms.SetOfSites;
 import dInternal.dData.dStudents.SetOfStuCourses;
 import dInternal.dData.dStudents.SetOfStuSites;
 import dInternal.dData.dStudents.Student;
 import dInternal.dTimeTable.TTStructure;
 import dInternal.dUtil.DXToolsMethods;
-import eLib.exit.dialog.DxExceptionDlg;
 import eLib.exit.exception.DxException;
 import eLib.exit.txt.ByteInputFile;
 import eLib.exit.txt.FilterFile;
-import eLib.exit.xml.input.XMLInputFile;
+
 
 public class DLoadData {
 
@@ -139,44 +136,44 @@ public class DLoadData {
 		}
 	}
 
-	/**
-	 * TODO: Create extractRooms for DxSetOfSites
-	 * 
-	 * @param currentList
-	 *            the current SetOfRooms
-	 * @param merge
-	 *            a boolean
-	 *            <p>
-	 *            (if merge = true --> merge the new SetOfRooms to the current
-	 *            SetOfRooms)
-	 *            </p>
-	 *            (if merge = false --> replace the current SetOfRooms by the
-	 *            new SetOfRooms)
-	 * @return SetOfRooms
-	 * @throws DxException
-	 */
-
-	public SetOfSites extractRooms(SetOfSites currentList, boolean merge)
-			throws DxException {
-		DataExchange de = buildDataExchange(_roomsFileName);
-		SetOfSites roomsList = new SetOfSites(); // ,5,14);// 5 jours et 14
-		// periods!
-		if (de != null) {
-			if (merge)
-				if (currentList != null)
-					roomsList
-							.setSetOfResources(currentList.getSetOfResources());
-			if (roomsList.analyseTokens(de, 0)) {
-				// roomsList.setAttributesInterpretor(_roomsAttributesInterpretor);
-				roomsList.buildSetOfResources(de, 0);
-			}
-		} else {// (NullPointerException npe)
-			new DxExceptionDlg(
-					"I was in LoadData.extractRooms. preload failed!!!");
-			System.exit(52);
-		}
-		return roomsList;
-	}// end extractRooms
+//	/**
+//	 * TODO: Create extractRooms for DxSetOfSites
+//	 * 
+//	 * @param currentList
+//	 *            the current SetOfRooms
+//	 * @param merge
+//	 *            a boolean
+//	 *            <p>
+//	 *            (if merge = true --> merge the new SetOfRooms to the current
+//	 *            SetOfRooms)
+//	 *            </p>
+//	 *            (if merge = false --> replace the current SetOfRooms by the
+//	 *            new SetOfRooms)
+//	 * @return SetOfRooms
+//	 * @throws DxException
+//	 */
+//
+//	public SetOfSites extractRooms(SetOfSites currentList, boolean merge)
+//			throws DxException {
+//		DataExchange de = buildDataExchange(_roomsFileName);
+//		SetOfSites roomsList = new SetOfSites(); // ,5,14);// 5 jours et 14
+//		// periods!
+//		if (de != null) {
+//			if (merge)
+//				if (currentList != null)
+//					roomsList
+//							.setSetOfResources(currentList.getSetOfResources());
+//			if (roomsList.analyseTokens(de, 0)) {
+//				// roomsList.setAttributesInterpretor(_roomsAttributesInterpretor);
+//				roomsList.buildSetOfResources(de, 0);
+//			}
+//		} else {// (NullPointerException npe)
+//			new DxExceptionDlg(
+//					"I was in LoadData.extractRooms. preload failed!!!");
+//			System.exit(52);
+//		}
+//		return roomsList;
+//	}// end extractRooms
 
 	
 	

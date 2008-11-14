@@ -80,15 +80,6 @@ public abstract class DSetOfResources extends DObject {
 		de.getHeader();
 	}
 
-	/**
-	 * build SetOfResources list. use StringTokenizer st: instructors in text
-	 * format
-	 * 
-	 */
-	/*
-	 * public abstract void buildSetOfResources(byte[] dataloaded, int
-	 * beginPosition);/*{ beginPosition+=0; }
-	 */
 
 	/**
 	 * Add a Resource to SetOfResources
@@ -532,6 +523,14 @@ public abstract class DSetOfResources extends DObject {
 		_stateSort = 2;
 	}
 
+	/**
+	 * Sort the SetOfResources by DResource object selected field from smallest
+	 * to biggest
+	 */
+	public void sortSetOfResourcesBySelectedProgram() {
+		Collections.sort(_resourceList, DResource.ProgramComparator);
+		_stateSort = 2;
+	}
 	/**
 	 * This object (which is already a string!) is itself returned.
 	 * 

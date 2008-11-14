@@ -25,7 +25,6 @@ import java.io.File;
 import java.io.InputStream;
 import java.util.Observable;
 
-
 import javax.swing.JInternalFrame;
 import javax.swing.WindowConstants;
 import javax.swing.event.InternalFrameAdapter;
@@ -36,7 +35,6 @@ import dInterface.dTimeTable.DxDetailedTTPane;
 import dInterface.dTimeTable.DxSimpleTTPane;
 import dInternal.DModel;
 import dInternal.dTimeTable.TTStructure;
-import developer.DxFlags;
 import eLib.exit.dialog.FatalProblemDlg;
 import eLib.exit.dialog.InformationDlg;
 
@@ -57,32 +55,31 @@ public class DxTTStructureDoc extends DxDocument {
 	 * 
 	 * @param dMed
 	 *            (pattern Mediator)
-	 *  
-	 *  @param inputStream
+	 * 
+	 * @param inputStream
 	 *            is the inputStream containing the TTStructure
-	 *            
+	 * 
 	 * @param name
 	 *            is the full name file name containing the TTStructure
 	 * 
 	 * @throws Exception
 	 * 
 	 */
-	public DxTTStructureDoc(DMediator dMed, InputStream inputStream, String name) throws Exception {
+	public DxTTStructureDoc(DMediator dMed, InputStream inputStream, String name)
+			throws Exception {
 		super(dMed);
 		_ttStructure = new TTStructure();
 		_ttStructure.loadTTStructureFromInpuStream(inputStream);
 		_documentName = modifiyDocumentName(name);
 		buidDocument(true, true);
-		if(DxFlags.newDxTTPane) {
-			_dxTTPane.updateDxTTPane(_ttStructure);
-		} 
+		_dxTTPane.updateDxTTPane(_ttStructure);
+
 	}
 
 	// -------------------------------------------
 	public TTStructure getTTStructure() {
 		return _ttStructure;
 	} // end getTTStructure
-
 
 	// -------------------------------------------
 	private String modifiyDocumentName(String str) {
@@ -96,23 +93,18 @@ public class DxTTStructureDoc extends DxDocument {
 	}
 
 	@Override
-	public void update(Observable ttS, Object component) {		
-		if (ttS instanceof TTStructure){
+	public void update(Observable ttS, Object component) {
+		if (ttS instanceof TTStructure) {
 			if (component != null)
-			component.toString();
-		_dMediator.getDApplication().setCursorWait();
-		if(DxFlags.newDxTTPane) {
+				component.toString();
+			_dMediator.getDApplication().setCursorWait();
+
 			_dxTTPane.updateDxTTPane(_ttStructure);
-		} 
-//		else {
-//			_ttPane.updateTTPane(_ttStructure);
-//		}
-//		_ttPane.updateTTPane(_ttStructure);
-		// _stateBar.upDate();
-		_dMediator.getDApplication().setCursorDefault();
+
+			_dMediator.getDApplication().setCursorDefault();
 		} else {
-			new InformationDlg("I am in DxTTStructureDoc.update \n" 
-					+"This message will never ocurrs in normal conditions");
+			new InformationDlg("I am in DxTTStructureDoc.update \n"
+					+ "This message will never ocurrs in normal conditions");
 		}
 	}// end update
 
@@ -120,42 +112,24 @@ public class DxTTStructureDoc extends DxDocument {
 	public void displaySimple() {
 		close();
 		buidDocument(true, true);
-		if(DxFlags.newDxTTPane) {
-			_dxTTPane.updateDxTTPane(_ttStructure);
-		} 
-//		else {
-//			_ttPane.updateTTPane(_ttStructure);
-//		}
-//		_ttPane.updateTTPane(_ttStructure);
-		
+
+		_dxTTPane.updateDxTTPane(_ttStructure);
+
 	}
 
 	// -------------------------------------------
 	public void displayHorizontalSplit() {
 		close();
 		buidDocument(false, false);
-		
-		if(DxFlags.newDxTTPane) {
-			_dxTTPane.updateDxTTPane(_ttStructure);
-		} 
-//		else {
-//			_ttPane.updateTTPane(_ttStructure);
-//		}
-//		_ttPane.updateTTPane(_ttStructure);
-		
+		_dxTTPane.updateDxTTPane(_ttStructure);
+
 	}
 
 	public void displayVericalSplit() {
 		close();
 		buidDocument(false, true);
-		if(DxFlags.newDxTTPane) {
-			_dxTTPane.updateDxTTPane(_ttStructure);
-		} 
-//		else {
-//			_ttPane.updateTTPane(_ttStructure);
-//		}
-//		_ttPane.updateTTPane(_ttStructure);
-		
+		_dxTTPane.updateDxTTPane(_ttStructure);
+
 	}
 
 	// -------------------------------------------
@@ -191,25 +165,23 @@ public class DxTTStructureDoc extends DxDocument {
 		_jif.setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
 		_jif.setPreferredSize(new Dimension(MAX_WIDTH, MAX_HEIGHT));
 
-//		if(DxFlags.newDxTTPane) {
-			if (simple) {
-				_dxTTPane = new DxSimpleTTPane(_ttStructure, _dMediator
-						.getDApplication().getToolBar());
-			} else {
-				_dxTTPane = new DxDetailedTTPane(_ttStructure, _dMediator
-						.getDApplication().getToolBar(), vertical);
-			}
-//		} else {
-//			if (simple) {
-//				_ttPane = new SimpleTTPane(_ttStructure, _dMediator
-//						.getDApplication().getToolBar());
-//			} else {
-//				_ttPane = new DetailedTTPane(_ttStructure, _dMediator
-//						.getDApplication().getToolBar(), vertical);
-//			}
-//		}
-		
-		
+		// if(DxFlags.newDxTTPane) {
+		if (simple) {
+			_dxTTPane = new DxSimpleTTPane(_ttStructure, _dMediator
+					.getDApplication().getToolBar());
+		} else {
+			_dxTTPane = new DxDetailedTTPane(_ttStructure, _dMediator
+					.getDApplication().getToolBar(), vertical);
+		}
+		// } else {
+		// if (simple) {
+		// _ttPane = new SimpleTTPane(_ttStructure, _dMediator
+		// .getDApplication().getToolBar());
+		// } else {
+		// _ttPane = new DetailedTTPane(_ttStructure, _dMediator
+		// .getDApplication().getToolBar(), vertical);
+		// }
+		// }
 
 		_jif.getContentPane().add(_dxTTPane.getDxPane(), BorderLayout.CENTER);
 		_jif.pack();
@@ -262,7 +234,7 @@ public class DxTTStructureDoc extends DxDocument {
 
 	@Override
 	public void changeInModel(String str) {
-		_ttStructure.changeInTTStructure(str);	
+		_ttStructure.changeInTTStructure(str);
 	}
 
 	@Override
@@ -272,11 +244,11 @@ public class DxTTStructureDoc extends DxDocument {
 
 	@Override
 	public void saveDxDocument(String str) {
-		_ttStructure.saveTTStructure(str);	
+		_ttStructure.saveTTStructure(str);
 	}
 
 	@Override
 	public void clean() {
-		_ttStructure = null;	
+		_ttStructure = null;
 	}
 }

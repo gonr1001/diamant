@@ -54,6 +54,7 @@ import dInternal.dData.dRooms.DxSetOfSites;
 import dInternal.dData.dRooms.SetOfSites;
 import dInternal.dData.dStudents.SetOfStuSites;
 import dInternal.dData.dStudents.SetOfStudents;
+import dInternal.dData.dStudents.Student;
 import dInternal.dOptimization.DxConditionsToTest;
 import dInternal.dOptimization.SetOfEvents;
 import dInternal.dTimeTable.TTStructure;
@@ -139,24 +140,9 @@ public class DModel extends Observable {
 	 * @throws Exception
 	 * 
 	 */
-	// XXXX Pascal: 'type' devrait etre un objet, pas un 'int' !
 	public DModel(DxDocument dDocument, String fileName, int type)
 			throws DxException, NullPointerException, IOException {
-		_error = "";
-		_modified = false;
-		_isExamPrepared = false;
-		_currentSite = DConst.ACTIVITY_STANDARD_SITE;
-		_importDone = false;
-		_mergeDone = false;
-		_constructionState = 0;
-		_currentCycle = 1;
-		_nbConflicts = new int[] { 10, 20, 30 };
-		_setOfEvents = new SetOfEvents(this);
-		_setOfImportErrors = new StandardCollection();
-		_setOfImportSelErrors = new StandardCollection();
-
-		_progressBarState = new DValue();
-		_progressBarState.setIntValue(0); // XXXX Pascal: magic number
+		initDModel();
 		_dxDocument = dDocument;
 		_isOnlyATimeTable = false;
 
@@ -194,21 +180,7 @@ public class DModel extends Observable {
 
 	// this constructor is used only for tests
 	public DModel(DxDocument dxDocument, String fileName) throws DxException, NullPointerException, IOException {
-		_error = "";
-		_modified = false;
-		_isExamPrepared = false;
-		_currentSite = DConst.ACTIVITY_STANDARD_SITE;
-		_importDone = false;
-		_mergeDone = false;
-		_constructionState = 0;
-		_currentCycle = 1;
-		_nbConflicts = new int[] { 10, 20, 30 };
-		_setOfEvents = new SetOfEvents(this);
-		_setOfImportErrors = new StandardCollection();
-		_setOfImportSelErrors = new StandardCollection();
-
-		_progressBarState = new DValue();
-		_progressBarState.setIntValue(0); // XXXX Pascal: magic number
+		initDModel(); // XXXX Pascal: magic number
 		_dxDocument = dxDocument;
 		_isOnlyATimeTable = false;
 		_isATimeTable = true;
@@ -243,7 +215,20 @@ public class DModel extends Observable {
 	 * @param dxLoadData
 	 * @param _type2
 	 */
-	public DModel(DxTTableDoc dxTTableDoc, DxLoadData dxLoadData, int _type2) {
+	public DModel(DxTTableDoc dxTTableDoc, DxLoadData dxLoadData) {
+		initDModel();
+		_dxDocument = dxTTableDoc;
+		_isOnlyATimeTable = false;
+		_isATimeTable = true;
+		
+		this.transferTimeTable(dxLoadData);
+		
+		_isATimeTable = true;
+		if (_isATimeTable)
+			_conditionsToTest = new DxConditionsToTest(this);
+		this.notifyObservers(this);
+	}
+	private void initDModel() {
 		_error = "";
 		_modified = false;
 		_isExamPrepared = false;
@@ -258,18 +243,10 @@ public class DModel extends Observable {
 		_setOfImportSelErrors = new StandardCollection();
 
 		_progressBarState = new DValue();
-		_progressBarState.setIntValue(0); // XXXX Pascal: magic number
-		_dxDocument = dxTTableDoc;
-		_isOnlyATimeTable = false;
-		_isATimeTable = true;
-		
-		this.transferTimeTable(dxLoadData);
-		
-		_isATimeTable = true;
-		if (_isATimeTable)
-			_conditionsToTest = new DxConditionsToTest(this);
-		this.notifyObservers(this);
+		_progressBarState.setIntValue(0);
 	}
+
+
 
 
 	/**
@@ -952,7 +929,7 @@ public class DModel extends Observable {
 		changeInDModel(obj);
 	}
 
-	public void changeInDModelByModifyAdd(Object obj, Vector students, String id) {
+	public void changeInDModelByModifyAdd(Object obj, Vector <Student>students, String id) {
 		getSetOfStudents().addActivityToStudents(students, id);
 		getConditionsToTest().setMatrixBuilded(false, false);
 		changeInDModel(obj);
@@ -1135,17 +1112,17 @@ public class DModel extends Observable {
 		this.setCurrentSite(currentS);
 	}
 
-	private void resizeResource(DSetOfResources soRes) {
-		int[][] matrix;
-		DObject attach;
-		for (int i = 0; i < soRes.size(); i++) {
-			attach = soRes.getResourceAt(i).getAttach();
-			matrix = attach.getMatrixAvailability();
-			matrix = DXToolsMethods
-					.resizeAvailability(matrix, getTTStructure());
-			attach.setAvailability(matrix);
-		}
-	}
+//	private void resizeResource(DSetOfResources soRes) {
+//		int[][] matrix;
+//		DObject attach;
+//		for (int i = 0; i < soRes.size(); i++) {
+//			attach = soRes.getResourceAt(i).getAttach();
+//			matrix = attach.getMatrixAvailability();
+//			matrix = DXToolsMethods
+//					.resizeAvailability(matrix, getTTStructure());
+//			attach.setAvailability(matrix);
+//		}
+//	}
 
 	private void resizeInstructorsResource(DxSetOfInstructors soiRes) {
 		int[][] matrix;
@@ -1256,11 +1233,5 @@ public class DModel extends Observable {
 		this.notifyObservers(listener);
 		this.clearChanged();
 	}
-
-//	public DxPreferences getDxPreferences() {
-////		return this.getDxDocument().getDMediator().getDApplication()
-////				.getDxPreferences();
-//		return new DxPreferences();
-//	}
 
 } /* end class DModel */

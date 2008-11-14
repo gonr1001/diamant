@@ -38,9 +38,9 @@ public class DxFlags {
 
 	public final static boolean newActivity = false;
 
-	public final static boolean newDxLoadData = false;
+//	public final static boolean newDxLoadData = true;
 
-	public final static boolean newDxTTPane = true;
+//	public final static boolean newDxTTPane = true;
 
 	public final static boolean newReadSetOfSites = false;
 	

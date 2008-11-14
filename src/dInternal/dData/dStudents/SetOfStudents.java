@@ -114,7 +114,7 @@ public class SetOfStudents extends DSetOfResources {
 	 * @return
 	 */
 
-	public boolean addActivityToStudents(Vector listOfStudents, String course) {
+	public boolean addActivityToStudents(Vector <Student>listOfStudents, String course) {
 		for (int i = 0; i < listOfStudents.size(); i++) {
 			Student student = (Student) getResource(Long
 					.parseLong(listOfStudents.get(i).toString()));
@@ -133,7 +133,7 @@ public class SetOfStudents extends DSetOfResources {
 	 * @return
 	 */
 
-	public Vector getStudentsByGroup(String activityID, String typeID, int group) {
+	public Vector<String> getStudentsSortedInGroup(String activityID, String typeID, int group) {
 		int iDLength = DConst.STUDENT_ID_LENGTH;
 		int keyLength = DConst.STUDENT_KEY_LENGTH;
 		int diff;
@@ -168,7 +168,7 @@ public class SetOfStudents extends DSetOfResources {
 	 * @return
 	 */
 
-	public Vector<String> getStudentsByGroup(String activityID, String typeID,
+	public Vector<String> getStudentsSortedInGroup(String activityID, String typeID,
 			int group, int order) {
 		int iDLength = DConst.STUDENT_ID_LENGTH;
 		int keyLength = DConst.STUDENT_KEY_LENGTH;
@@ -177,29 +177,25 @@ public class SetOfStudents extends DSetOfResources {
 		String iD, key, studentProgram, str = null;
 		Student studentRes;
 		Vector<String> list = new Vector<String>();
-		if (order == 0)
-			sortSetOfResourcesByID();
-		if (order == 1)
-			sortSetOfResourcesByKey();
-		if (order == 2)
-			sortSetOfResourcesBySelectedAttachField(5);//sort by _auxField
-
+		doSorting(order);
 		for (int i = 0; i < size(); i++) {
 			studentRes = (Student) getResourceAt(i);
 			if (studentRes.isInGroup(activityID + typeID, group)) {
 				iD = studentRes.getID();
 				diff = Math.abs(iDLength - iD.length());
-				for (int j = 0; j < diff; j++)
+				for (int j = 0; j < diff; j++) {
 					iD = iD + " ";
+				}
 				iD = iD.substring(0, DConst.STUDENT_KEY_LENGTH); //rgr 4 juillet
 				iD = iD + " ";
 				key = String.valueOf(studentRes.getKey());
 				diff = Math.abs(keyLength - key.length());
-				for (int j = 0; j < diff; j++)
+				for (int j = 0; j < diff; j++) {
 					key = "0" + key;
+				}
 				studentProgram = studentRes.getAuxField();
 				studentProgram = studentProgram.substring(0, 6);
-				//System.out.println("studentProgram " + studentProgram);
+				
 				if (order == 0)
 					str = iD + " " + key + " " + studentProgram;
 				if (order == 1)
@@ -209,10 +205,20 @@ public class SetOfStudents extends DSetOfResources {
 				if (studentRes.isFixedInGroup(activityID + typeID))
 					str = str + DConst.CHAR_FIXED_IN_GROUP;
 				list.add(str);
-				//list.add(studentRes.getID());
-			}//end if(((StudentAttach)studentRes.getAttach()).isInGroup(activityID+typeID,group))
+				
+			}//end if(
 		}//end for(int i=0; i< size(); i++)
 		return list;
+	}
+
+	private void doSorting(int order) {
+		if (order == 0)
+			sortSetOfResourcesByID();
+		if (order == 1)
+			sortSetOfResourcesByKey();
+		if (order == 2) {
+			sortSetOfResourcesBySelectedProgram();
+		}
 	}
 
 	/**

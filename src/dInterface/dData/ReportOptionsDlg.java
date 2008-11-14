@@ -41,7 +41,7 @@ import dInterface.DApplication;
 import dInterface.dUtil.ButtonsPanel;
 import dInterface.dUtil.DxTools;
 import dInterface.dUtil.TwoButtonsPanel;
-import developer.DxFlags;
+
 
 public class ReportOptionsDlg extends JDialog implements ActionListener {
 	private ViewReport _parentDlg;

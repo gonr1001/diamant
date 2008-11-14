@@ -19,7 +19,6 @@
 package dInternal.dTimeTable;
 
 import java.io.ByteArrayInputStream;
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Observable;
 
@@ -35,7 +34,6 @@ import org.w3c.dom.Element;
 
 import dConstants.DConst;
 
-import eLib.exit.dialog.DxExceptionDlg;
 import eLib.exit.xml.input.XMLReader;
 import eLib.exit.xml.input.XMLInputFile;
 import eLib.exit.xml.output.XMLWriter;
