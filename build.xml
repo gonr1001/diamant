@@ -94,6 +94,11 @@
 				<exclude name="**/svn" />
 			</fileset>
 		</copy>
+		<copy todir="${build}/dInterface/timetables">
+			<fileset dir="${srcDir}/dInterface/timetables">
+				<exclude name="**/svn" />
+			</fileset>
+		</copy>
 	</target>
 
 	<target name="testpath" depends="prepare,compile,addToClasses " description="test path classpath.">
