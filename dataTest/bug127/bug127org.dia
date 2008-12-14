@@ -1,0 +1,5810 @@
+2.1
+!!!!!!!!!!
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<DXTimeTable>
+     <TTcycle>
+        <TTdays>
+        <TTday>
+             <TTsequences>
+               <TTsequence><sequenceID>avant midi</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>08:00</BeginTime><EndTime>08:30</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                    <TTperiod><BeginTime>08:30</BeginTime><EndTime>09:00</EndTime><priority>0</priority><periodID>2</periodID></TTperiod>
+                    <TTperiod><BeginTime>09:00</BeginTime><EndTime>09:30</EndTime><priority>0</priority><periodID>3</periodID></TTperiod>
+                    <TTperiod><BeginTime>09:30</BeginTime><EndTime>10:00</EndTime><priority>0</priority><periodID>4</periodID></TTperiod>
+                    <TTperiod><BeginTime>10:00</BeginTime><EndTime>10:30</EndTime><priority>0</priority><periodID>5</periodID></TTperiod>
+                    <TTperiod><BeginTime>10:30</BeginTime><EndTime>11:00</EndTime><priority>0</priority><periodID>6</periodID></TTperiod>
+                    <TTperiod><BeginTime>11:00</BeginTime><EndTime>11:30</EndTime><priority>0</priority><periodID>7</periodID></TTperiod>
+                    <TTperiod><BeginTime>11:30</BeginTime><EndTime>12:00</EndTime><priority>0</priority><periodID>8</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>après midi</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>13:00</BeginTime><EndTime>13:30</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                    <TTperiod><BeginTime>13:30</BeginTime><EndTime>14:00</EndTime><priority>0</priority><periodID>2</periodID></TTperiod>
+                    <TTperiod><BeginTime>14:00</BeginTime><EndTime>14:30</EndTime><priority>0</priority><periodID>3</periodID></TTperiod>
+                    <TTperiod><BeginTime>14:30</BeginTime><EndTime>15:00</EndTime><priority>0</priority><periodID>4</periodID></TTperiod>
+                    <TTperiod><BeginTime>15:00</BeginTime><EndTime>15:30</EndTime><priority>0</priority><periodID>5</periodID></TTperiod>
+                    <TTperiod><BeginTime>15:30</BeginTime><EndTime>16:00</EndTime><priority>0</priority><periodID>6</periodID></TTperiod>
+                    <TTperiod><BeginTime>16:00</BeginTime><EndTime>16:30</EndTime><priority>0</priority><periodID>7</periodID></TTperiod>
+                    <TTperiod><BeginTime>16:30</BeginTime><EndTime>17:00</EndTime><priority>0</priority><periodID>8</periodID></TTperiod>
+                    <TTperiod><BeginTime>17:00</BeginTime><EndTime>17:30</EndTime><priority>0</priority><periodID>9</periodID></TTperiod>
+                    <TTperiod><BeginTime>17:30</BeginTime><EndTime>18:00</EndTime><priority>0</priority><periodID>10</periodID></TTperiod>
+                    <TTperiod><BeginTime>18:00</BeginTime><EndTime>18:30</EndTime><priority>0</priority><periodID>11</periodID></TTperiod>
+                    <TTperiod><BeginTime>18:30</BeginTime><EndTime>19:00</EndTime><priority>0</priority><periodID>12</periodID></TTperiod>
+                    <TTperiod><BeginTime>19:00</BeginTime><EndTime>19:30</EndTime><priority>0</priority><periodID>13</periodID></TTperiod>
+                    <TTperiod><BeginTime>19:30</BeginTime><EndTime>20:00</EndTime><priority>0</priority><periodID>14</periodID></TTperiod>
+                    <TTperiod><BeginTime>20:00</BeginTime><EndTime>20:30</EndTime><priority>0</priority><periodID>15</periodID></TTperiod>
+                    <TTperiod><BeginTime>20:30</BeginTime><EndTime>21:00</EndTime><priority>0</priority><periodID>16</periodID></TTperiod>
+                    <TTperiod><BeginTime>21:00</BeginTime><EndTime>21:30</EndTime><priority>0</priority><periodID>17</periodID></TTperiod>
+                    <TTperiod><BeginTime>21:30</BeginTime><EndTime>22:00</EndTime><priority>0</priority><periodID>18</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+             </TTsequences>
+          <dayID>Lu</dayID><dayRef>1</dayRef>
+          </TTday>
+        <TTday>
+             <TTsequences>
+               <TTsequence><sequenceID>avant midi</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>08:00</BeginTime><EndTime>08:30</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                    <TTperiod><BeginTime>08:30</BeginTime><EndTime>09:00</EndTime><priority>0</priority><periodID>2</periodID></TTperiod>
+                    <TTperiod><BeginTime>09:00</BeginTime><EndTime>09:30</EndTime><priority>0</priority><periodID>3</periodID></TTperiod>
+                    <TTperiod><BeginTime>09:30</BeginTime><EndTime>10:00</EndTime><priority>0</priority><periodID>4</periodID></TTperiod>
+                    <TTperiod><BeginTime>10:00</BeginTime><EndTime>10:30</EndTime><priority>0</priority><periodID>5</periodID></TTperiod>
+                    <TTperiod><BeginTime>10:30</BeginTime><EndTime>11:00</EndTime><priority>0</priority><periodID>6</periodID></TTperiod>
+                    <TTperiod><BeginTime>11:00</BeginTime><EndTime>11:30</EndTime><priority>0</priority><periodID>7</periodID></TTperiod>
+                    <TTperiod><BeginTime>11:30</BeginTime><EndTime>12:00</EndTime><priority>0</priority><periodID>8</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>après midi</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>13:00</BeginTime><EndTime>13:30</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                    <TTperiod><BeginTime>13:30</BeginTime><EndTime>14:00</EndTime><priority>0</priority><periodID>2</periodID></TTperiod>
+                    <TTperiod><BeginTime>14:00</BeginTime><EndTime>14:30</EndTime><priority>0</priority><periodID>3</periodID></TTperiod>
+                    <TTperiod><BeginTime>14:30</BeginTime><EndTime>15:00</EndTime><priority>0</priority><periodID>4</periodID></TTperiod>
+                    <TTperiod><BeginTime>15:00</BeginTime><EndTime>15:30</EndTime><priority>0</priority><periodID>5</periodID></TTperiod>
+                    <TTperiod><BeginTime>15:30</BeginTime><EndTime>16:00</EndTime><priority>0</priority><periodID>6</periodID></TTperiod>
+                    <TTperiod><BeginTime>16:00</BeginTime><EndTime>16:30</EndTime><priority>0</priority><periodID>7</periodID></TTperiod>
+                    <TTperiod><BeginTime>16:30</BeginTime><EndTime>17:00</EndTime><priority>0</priority><periodID>8</periodID></TTperiod>
+                    <TTperiod><BeginTime>17:00</BeginTime><EndTime>17:30</EndTime><priority>0</priority><periodID>9</periodID></TTperiod>
+                    <TTperiod><BeginTime>17:30</BeginTime><EndTime>18:00</EndTime><priority>0</priority><periodID>10</periodID></TTperiod>
+                    <TTperiod><BeginTime>18:00</BeginTime><EndTime>18:30</EndTime><priority>0</priority><periodID>11</periodID></TTperiod>
+                    <TTperiod><BeginTime>18:30</BeginTime><EndTime>19:00</EndTime><priority>0</priority><periodID>12</periodID></TTperiod>
+                    <TTperiod><BeginTime>19:00</BeginTime><EndTime>19:30</EndTime><priority>0</priority><periodID>13</periodID></TTperiod>
+                    <TTperiod><BeginTime>19:30</BeginTime><EndTime>20:00</EndTime><priority>0</priority><periodID>14</periodID></TTperiod>
+                    <TTperiod><BeginTime>20:00</BeginTime><EndTime>20:30</EndTime><priority>0</priority><periodID>15</periodID></TTperiod>
+                    <TTperiod><BeginTime>20:30</BeginTime><EndTime>21:00</EndTime><priority>0</priority><periodID>16</periodID></TTperiod>
+                    <TTperiod><BeginTime>21:00</BeginTime><EndTime>21:30</EndTime><priority>0</priority><periodID>17</periodID></TTperiod>
+                    <TTperiod><BeginTime>21:30</BeginTime><EndTime>22:00</EndTime><priority>0</priority><periodID>18</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+             </TTsequences>
+          <dayID>Ma</dayID><dayRef>2</dayRef>
+          </TTday>
+        <TTday>
+             <TTsequences>
+               <TTsequence><sequenceID>avant midi</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>08:00</BeginTime><EndTime>08:30</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                    <TTperiod><BeginTime>08:30</BeginTime><EndTime>09:00</EndTime><priority>0</priority><periodID>2</periodID></TTperiod>
+                    <TTperiod><BeginTime>09:00</BeginTime><EndTime>09:30</EndTime><priority>0</priority><periodID>3</periodID></TTperiod>
+                    <TTperiod><BeginTime>09:30</BeginTime><EndTime>10:00</EndTime><priority>0</priority><periodID>4</periodID></TTperiod>
+                    <TTperiod><BeginTime>10:00</BeginTime><EndTime>10:30</EndTime><priority>0</priority><periodID>5</periodID></TTperiod>
+                    <TTperiod><BeginTime>10:30</BeginTime><EndTime>11:00</EndTime><priority>0</priority><periodID>6</periodID></TTperiod>
+                    <TTperiod><BeginTime>11:00</BeginTime><EndTime>11:30</EndTime><priority>0</priority><periodID>7</periodID></TTperiod>
+                    <TTperiod><BeginTime>11:30</BeginTime><EndTime>12:00</EndTime><priority>0</priority><periodID>8</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>après midi</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>13:00</BeginTime><EndTime>13:30</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                    <TTperiod><BeginTime>13:30</BeginTime><EndTime>14:00</EndTime><priority>0</priority><periodID>2</periodID></TTperiod>
+                    <TTperiod><BeginTime>14:00</BeginTime><EndTime>14:30</EndTime><priority>0</priority><periodID>3</periodID></TTperiod>
+                    <TTperiod><BeginTime>14:30</BeginTime><EndTime>15:00</EndTime><priority>0</priority><periodID>4</periodID></TTperiod>
+                    <TTperiod><BeginTime>15:00</BeginTime><EndTime>15:30</EndTime><priority>0</priority><periodID>5</periodID></TTperiod>
+                    <TTperiod><BeginTime>15:30</BeginTime><EndTime>16:00</EndTime><priority>0</priority><periodID>6</periodID></TTperiod>
+                    <TTperiod><BeginTime>16:00</BeginTime><EndTime>16:30</EndTime><priority>0</priority><periodID>7</periodID></TTperiod>
+                    <TTperiod><BeginTime>16:30</BeginTime><EndTime>17:00</EndTime><priority>0</priority><periodID>8</periodID></TTperiod>
+                    <TTperiod><BeginTime>17:00</BeginTime><EndTime>17:30</EndTime><priority>0</priority><periodID>9</periodID></TTperiod>
+                    <TTperiod><BeginTime>17:30</BeginTime><EndTime>18:00</EndTime><priority>0</priority><periodID>10</periodID></TTperiod>
+                    <TTperiod><BeginTime>18:00</BeginTime><EndTime>18:30</EndTime><priority>0</priority><periodID>11</periodID></TTperiod>
+                    <TTperiod><BeginTime>18:30</BeginTime><EndTime>19:00</EndTime><priority>0</priority><periodID>12</periodID></TTperiod>
+                    <TTperiod><BeginTime>19:00</BeginTime><EndTime>19:30</EndTime><priority>0</priority><periodID>13</periodID></TTperiod>
+                    <TTperiod><BeginTime>19:30</BeginTime><EndTime>20:00</EndTime><priority>0</priority><periodID>14</periodID></TTperiod>
+                    <TTperiod><BeginTime>20:00</BeginTime><EndTime>20:30</EndTime><priority>0</priority><periodID>15</periodID></TTperiod>
+                    <TTperiod><BeginTime>20:30</BeginTime><EndTime>21:00</EndTime><priority>0</priority><periodID>16</periodID></TTperiod>
+                    <TTperiod><BeginTime>21:00</BeginTime><EndTime>21:30</EndTime><priority>0</priority><periodID>17</periodID></TTperiod>
+                    <TTperiod><BeginTime>21:30</BeginTime><EndTime>22:00</EndTime><priority>0</priority><periodID>18</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+             </TTsequences>
+          <dayID>Me</dayID><dayRef>3</dayRef>
+          </TTday>
+        <TTday>
+             <TTsequences>
+               <TTsequence><sequenceID>avant midi</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>08:00</BeginTime><EndTime>08:30</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                    <TTperiod><BeginTime>08:30</BeginTime><EndTime>09:00</EndTime><priority>0</priority><periodID>2</periodID></TTperiod>
+                    <TTperiod><BeginTime>09:00</BeginTime><EndTime>09:30</EndTime><priority>0</priority><periodID>3</periodID></TTperiod>
+                    <TTperiod><BeginTime>09:30</BeginTime><EndTime>10:00</EndTime><priority>0</priority><periodID>4</periodID></TTperiod>
+                    <TTperiod><BeginTime>10:00</BeginTime><EndTime>10:30</EndTime><priority>0</priority><periodID>5</periodID></TTperiod>
+                    <TTperiod><BeginTime>10:30</BeginTime><EndTime>11:00</EndTime><priority>0</priority><periodID>6</periodID></TTperiod>
+                    <TTperiod><BeginTime>11:00</BeginTime><EndTime>11:30</EndTime><priority>0</priority><periodID>7</periodID></TTperiod>
+                    <TTperiod><BeginTime>11:30</BeginTime><EndTime>12:00</EndTime><priority>0</priority><periodID>8</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>après midi</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>13:00</BeginTime><EndTime>13:30</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                    <TTperiod><BeginTime>13:30</BeginTime><EndTime>14:00</EndTime><priority>0</priority><periodID>2</periodID></TTperiod>
+                    <TTperiod><BeginTime>14:00</BeginTime><EndTime>14:30</EndTime><priority>0</priority><periodID>3</periodID></TTperiod>
+                    <TTperiod><BeginTime>14:30</BeginTime><EndTime>15:00</EndTime><priority>0</priority><periodID>4</periodID></TTperiod>
+                    <TTperiod><BeginTime>15:00</BeginTime><EndTime>15:30</EndTime><priority>0</priority><periodID>5</periodID></TTperiod>
+                    <TTperiod><BeginTime>15:30</BeginTime><EndTime>16:00</EndTime><priority>0</priority><periodID>6</periodID></TTperiod>
+                    <TTperiod><BeginTime>16:00</BeginTime><EndTime>16:30</EndTime><priority>0</priority><periodID>7</periodID></TTperiod>
+                    <TTperiod><BeginTime>16:30</BeginTime><EndTime>17:00</EndTime><priority>0</priority><periodID>8</periodID></TTperiod>
+                    <TTperiod><BeginTime>17:00</BeginTime><EndTime>17:30</EndTime><priority>0</priority><periodID>9</periodID></TTperiod>
+                    <TTperiod><BeginTime>17:30</BeginTime><EndTime>18:00</EndTime><priority>0</priority><periodID>10</periodID></TTperiod>
+                    <TTperiod><BeginTime>18:00</BeginTime><EndTime>18:30</EndTime><priority>0</priority><periodID>11</periodID></TTperiod>
+                    <TTperiod><BeginTime>18:30</BeginTime><EndTime>19:00</EndTime><priority>0</priority><periodID>12</periodID></TTperiod>
+                    <TTperiod><BeginTime>19:00</BeginTime><EndTime>19:30</EndTime><priority>0</priority><periodID>13</periodID></TTperiod>
+                    <TTperiod><BeginTime>19:30</BeginTime><EndTime>20:00</EndTime><priority>0</priority><periodID>14</periodID></TTperiod>
+                    <TTperiod><BeginTime>20:00</BeginTime><EndTime>20:30</EndTime><priority>0</priority><periodID>15</periodID></TTperiod>
+                    <TTperiod><BeginTime>20:30</BeginTime><EndTime>21:00</EndTime><priority>0</priority><periodID>16</periodID></TTperiod>
+                    <TTperiod><BeginTime>21:00</BeginTime><EndTime>21:30</EndTime><priority>0</priority><periodID>17</periodID></TTperiod>
+                    <TTperiod><BeginTime>21:30</BeginTime><EndTime>22:00</EndTime><priority>0</priority><periodID>18</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+             </TTsequences>
+          <dayID>Je</dayID><dayRef>4</dayRef>
+          </TTday>
+        <TTday>
+             <TTsequences>
+               <TTsequence><sequenceID>avant midi</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>08:00</BeginTime><EndTime>08:30</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                    <TTperiod><BeginTime>08:30</BeginTime><EndTime>09:00</EndTime><priority>0</priority><periodID>2</periodID></TTperiod>
+                    <TTperiod><BeginTime>09:00</BeginTime><EndTime>09:30</EndTime><priority>0</priority><periodID>3</periodID></TTperiod>
+                    <TTperiod><BeginTime>09:30</BeginTime><EndTime>10:00</EndTime><priority>0</priority><periodID>4</periodID></TTperiod>
+                    <TTperiod><BeginTime>10:00</BeginTime><EndTime>10:30</EndTime><priority>0</priority><periodID>5</periodID></TTperiod>
+                    <TTperiod><BeginTime>10:30</BeginTime><EndTime>11:00</EndTime><priority>0</priority><periodID>6</periodID></TTperiod>
+                    <TTperiod><BeginTime>11:00</BeginTime><EndTime>11:30</EndTime><priority>0</priority><periodID>7</periodID></TTperiod>
+                    <TTperiod><BeginTime>11:30</BeginTime><EndTime>12:00</EndTime><priority>0</priority><periodID>8</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+               <TTsequence><sequenceID>après midi</sequenceID>
+                  <TTperiods>
+                    <TTperiod><BeginTime>13:00</BeginTime><EndTime>13:30</EndTime><priority>0</priority><periodID>1</periodID></TTperiod>
+                    <TTperiod><BeginTime>13:30</BeginTime><EndTime>14:00</EndTime><priority>0</priority><periodID>2</periodID></TTperiod>
+                    <TTperiod><BeginTime>14:00</BeginTime><EndTime>14:30</EndTime><priority>0</priority><periodID>3</periodID></TTperiod>
+                    <TTperiod><BeginTime>14:30</BeginTime><EndTime>15:00</EndTime><priority>0</priority><periodID>4</periodID></TTperiod>
+                    <TTperiod><BeginTime>15:00</BeginTime><EndTime>15:30</EndTime><priority>0</priority><periodID>5</periodID></TTperiod>
+                    <TTperiod><BeginTime>15:30</BeginTime><EndTime>16:00</EndTime><priority>0</priority><periodID>6</periodID></TTperiod>
+                    <TTperiod><BeginTime>16:00</BeginTime><EndTime>16:30</EndTime><priority>0</priority><periodID>7</periodID></TTperiod>
+                    <TTperiod><BeginTime>16:30</BeginTime><EndTime>17:00</EndTime><priority>0</priority><periodID>8</periodID></TTperiod>
+                    <TTperiod><BeginTime>17:00</BeginTime><EndTime>17:30</EndTime><priority>2</priority><periodID>9</periodID></TTperiod>
+                    <TTperiod><BeginTime>17:30</BeginTime><EndTime>18:00</EndTime><priority>2</priority><periodID>10</periodID></TTperiod>
+                    <TTperiod><BeginTime>18:00</BeginTime><EndTime>18:30</EndTime><priority>2</priority><periodID>11</periodID></TTperiod>
+                    <TTperiod><BeginTime>18:30</BeginTime><EndTime>19:00</EndTime><priority>2</priority><periodID>12</periodID></TTperiod>
+                    <TTperiod><BeginTime>19:00</BeginTime><EndTime>19:30</EndTime><priority>2</priority><periodID>13</periodID></TTperiod>
+                    <TTperiod><BeginTime>19:30</BeginTime><EndTime>20:00</EndTime><priority>2</priority><periodID>14</periodID></TTperiod>
+                    <TTperiod><BeginTime>20:00</BeginTime><EndTime>20:30</EndTime><priority>2</priority><periodID>15</periodID></TTperiod>
+                    <TTperiod><BeginTime>20:30</BeginTime><EndTime>21:00</EndTime><priority>2</priority><periodID>16</periodID></TTperiod>
+                    <TTperiod><BeginTime>21:00</BeginTime><EndTime>21:30</EndTime><priority>2</priority><periodID>17</periodID></TTperiod>
+                    <TTperiod><BeginTime>21:30</BeginTime><EndTime>22:00</EndTime><priority>2</priority><periodID>18</periodID></TTperiod>
+                  </TTperiods>
+               </TTsequence>
+             </TTsequences>
+          <dayID>Ve</dayID><dayRef>5</dayRef>
+          </TTday>
+        </TTdays>
+<cycleID>1</cycleID><pLength>30</pLength>
+     </TTcycle>
+</DXTimeTable>
+!!!!!!!!!!
+49
+Bacon-Brochu, Geneviève
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Barrette, Robert
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Beaudoin, Anne-Josée
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Beaulé, Annick
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Bergeron, Denise
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Boissy, Patrick
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Bourgault, Alain
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Brochu, Martin
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Bédard, Pierre
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Bélisle, Marc
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Cantin, Hugo
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Cayer, Julie
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Chartier, Josée
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Cliche, Martin
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Cloutier, Gaëtan
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Delisle, Alain
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Desbiens, Jean-François
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Dionne, Isabelle
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Duquette, Jacques Y.
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+EPS211-1-01, EPS211-1-01
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Gauthier, Pierre
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Goyette, Robert
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Hamel, Jean
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Labrecque, Susan
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Lamboley, Cédric
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Lanoue, Sèverine
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Laroche, Jean
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Lebel, Grégoire
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Levasseur, Marcel André
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Loiseau, Sylvain
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Morin, Pascale
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Page, Brian
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Pedneault, Denis
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Perreault, Gino
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Quenneville, Gilles
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Racicot, Pierre
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Roy, Martin
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Roy, Nicolas
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Roy, Stéphanie
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Roy, Yves
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Roy, Éric
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Royer, Donald
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Shannon, Nancy
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Spallanzani, Carlo
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+St-Arnaud, Liliane
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Therrien, René
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Therrien, Richard
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Tremblay, Janie
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+Turcotte, Sylvain
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 
+!!!!!!!!!!
+Diamant1.6
+A8-334; 160; 211; 08,11,14,57; SHE; CAT 1; laboratoire de chimie; 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ;
+A8-353; 0; 211; 08,11,57; SHE; CAT 1; laboratoire de chimie; 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ;
+A8-239; 36; 211; 08,44,57; SHE; CAT 1; laboratoire de chimie; 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ;
+A8-345; 39; 211; 8,57; SHE; CAT 1; laboratoire de chimie; 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ;
+A8-349; 41; 210; 07,11,22,44; SHE; CAT 1; laboratoire informatique; 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ;
+A8-260; 54; 210; 08,11,27,44; SHE; CAT 1; laboratoire informatique; 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ;
+A8-320; 98; 210; 08,11,27,44; SHE; CAT 1; laboratoire informatique; 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ;
+A8-360; 57; 620; 11,14,15,20,44; SHE; CAT 1; xx; 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ;
+J1-221; 20; 620; 11,14,15,20,44; SHE; CAT 1; SSAP; 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ;
+J1-227; 30; 620; 11,14,15,20,44; SHE; CAT 1; SSAP; 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ;
+J1-322; 50; 620; 11,14,15,20,44; SHE; CAT 1; SSAP; 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ;
+Ext-So; 100; 620; 11,14,15,20,44; SHE; CAT 1; y; 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ;
+Ext-Mt; 100; 620; 11,14,15,20,44; SHE; CAT 1; y; 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ;
+Ext-At; 100; 620; 11,14,15,20,44; SHE; CAT 1; y; 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ;
+J1-Gym-1; 50; 620; 11,14,15,20,44; SHE; CAT 1; SSAP; 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ;
+J1-Gym-2; 50; 620; 11,14,15,20,44; SHE; CAT 1; SSAP; 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ;
+J1-Gym1+2; 100; 620; 11,14,15,20,44; SHE; CAT 1; SSAP; 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ;
+J1-Judo; 100; 620; 11,14,15,20,44; SHE; CAT 1; SSAP; 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ;
+J1-Karaté; 100; 620; 11,14,15,20,44; SHE; CAT 1; SSAP; 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ;
+J1-Studio; 100; 620; 11,14,15,20,44; SHE; CAT 1; SSAP; 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ;
+J1-Stade; 100; 620; 11,14,15,20,44; SHE; CAT 1; SSAP; 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ;
+Aréna; 100; 620; 11,14,15,20,44; SHE; CAT 1; SSAP; 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ;
+Orford; 100; 620; 11,14,15,20,44; SHE; CAT 1; y; 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ;
+J1-Piscine; 100; 620; 11,14,15,20,44; SHE; CAT 1; SSAP; 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ;
+Y.-Dugré; 35; 620; 11; SHE; CAT1; x; 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ;
+J1-201; 35; 620; 11; SHE; CAT1; x; 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ;
+A8-220; 36; 620; 11; SHE; CAT1; x; 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ;
+SSAP; 50; 620; 11; SHE; CAT1; x; 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ;
+Sém-Sherb; 35; 620; 11; SHE; CAT1; x; 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ;
+Écoles; 70; 620; 11; SHE; CAT1; x; 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 , 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ;
+
+!!!!!!!!!!
+Diamant1.6
+EPD1041  01 SHE 20
+1
+1
+St-Arnaud, Liliane : Bacon-Brochu, Geneviève :  ;
+1
+ 6
+2.1.2 
+1
+ J1-STUDIO
+1
+1
+ 1 ; 1
+EPD1041  02 SHE 20
+1
+1
+St-Arnaud, Liliane : Bacon-Brochu, Geneviève :  ;
+1
+ 6
+2.2.8 
+1
+ ------
+1
+1
+ 1 ; 1
+EPD1041  03 SHE 20
+1
+1
+St-Arnaud, Liliane : Bacon-Brochu, Geneviève :  ;
+1
+ 6
+4.2.9 
+1
+ ------
+1
+1
+ 1 ; 1
+EPK3061  02 SHE 99999
+1
+1
+Beaudoin, Anne-Josée :  ;Beaudoin, Anne-Josée :  ;
+2
+ 4 6
+1.2.1 3.2.1 
+1
+ A8-320 A8-260
+1
+1
+ 0 0 ; 0 0
+EPK8031  01 SHE 99999
+1
+1
+Spallanzani, Carlo :  ;
+1
+ 6
+4.1.2 
+1
+ A8-357
+1
+1
+ 0 ; 0
+EPK8081  01 SHE 99999
+1
+1
+
+0
+ 0
+
+
+
+1
+1
+ ;
+EPK8091  01 SHE 99999
+1
+1
+
+0
+ 0
+
+
+
+1
+1
+ ;
+EPK8201  01 SHE 99999
+1
+1
+Delisle, Alain :  ;
+1
+ 6
+3.2.1 
+1
+ A8-220
+1
+1
+ 0 ; 0
+EPK8321  01 SHE 99999
+1
+1
+Desbiens, Jean-François :  ;
+1
+ 5
+3.1.2 
+1
+ A8-220
+1
+1
+ 0 ; 0
+EPK8331  01 SHE 99999
+1
+1
+Spallanzani, Carlo :  ;
+1
+ 6
+2.2.1 
+1
+ A8-357
+1
+1
+ 0 ; 0
+EPK8341  01 SHE 99999
+1
+1
+Spallanzani, Carlo :  ;
+1
+ 6
+1.2.1 
+1
+ A8-220
+1
+1
+ 0 ; 0
+EPK8601  01 SHE 99999
+1
+1
+Boissy, Patrick : Dionne, Isabelle : Gauthier, Pierre : Brochu, Martin :  ;Boissy, Patrick : Dionne, Isabelle : Gauthier, Pierre : Brochu, Martin :  ;
+2
+ 6 6
+2.1.2 4.1.2 
+1
+ A8-220 A8-220
+1
+1
+ 0 0 ; 0 0
+EPK8611  01 SHE 99999
+1
+1
+Boissy, Patrick : Dionne, Isabelle : Gauthier, Pierre : Brochu, Martin :  ;
+1
+ 6
+2.2.1 
+1
+ A8-220
+1
+1
+ 0 ; 0
+EPS1101  01 SHE 50
+1
+1
+Laroche, Jean :  ;
+1
+ 2
+2.2.8 
+1
+ A8-260
+1
+1
+ 1 ; 1
+EPS1101  02 SHE 50
+1
+1
+Laroche, Jean :  ;
+1
+ 2
+2.2.10 
+1
+ A8-260
+1
+1
+ 1 ; 1
+EPS1102  11 SHE 30
+1
+1
+Roy, Nicolas :  ;
+1
+ 4
+4.1.5 
+1
+ SSAP
+1
+1
+ 1 ; 1
+EPS1102  12 SHE 30
+1
+1
+Roy, Nicolas :  ;
+1
+ 4
+5.1.5 
+1
+ SSAP
+1
+1
+ 1 ; 1
+EPS1102  13 SHE 30
+1
+1
+Roy, Nicolas :  ;
+1
+ 4
+5.2.1 
+1
+ SSAP
+1
+1
+ 1 ; 1
+EPS1121  01 SHE 40
+1
+1
+Cayer, Julie :  ;
+1
+ 6
+3.2.9 
+1
+ A8-345
+1
+1
+ 1 ; 1
+EPS1121  02 SHE 40
+1
+1
+Cayer, Julie :  ;
+1
+ 6
+4.2.9 
+1
+ A8-320
+1
+1
+ 1 ; 1
+EPS1122  11 SHE 25
+1
+1
+Cayer, Julie :  ;
+1
+ 4
+1.2.9 
+1
+ A8-360
+1
+1
+ 1 ; 1
+EPS1122  12 SHE 25
+1
+1
+Cayer, Julie :  ;
+1
+ 4
+1.2.13 
+1
+ A8-360
+1
+1
+ 1 ; 1
+EPS1122  13 SHE 25
+1
+1
+Cayer, Julie :  ;
+1
+ 4
+2.2.9 
+1
+ A8-320
+1
+1
+ 1 ; 1
+EPS1221  01 SHE 20
+1
+1
+
+0
+ 0
+
+
+
+1
+1
+ ;
+EPS1221  02 SHE 20
+1
+1
+
+0
+ 0
+
+
+
+1
+1
+ ;
+EPS1221  03 SHE 20
+1
+1
+
+0
+ 0
+
+
+
+1
+1
+ ;
+EPS1241  01 SHE 30
+1
+1
+Loiseau, Sylvain :  ;
+1
+ 6
+2.1.2 
+1
+ J1-GYM-2
+1
+1
+ 1 ; 1
+EPS1241  02 SHE 30
+1
+1
+Loiseau, Sylvain :  ;
+1
+ 6
+2.2.1 
+1
+ J1-GYM-2
+1
+1
+ 1 ; 1
+EPS1241  03 SHE 30
+1
+1
+Loiseau, Sylvain :  ;
+1
+ 6
+3.2.1 
+1
+ J1-GYM-2
+1
+1
+ 1 ; 1
+EPS1241  04 SHE 30
+1
+1
+Loiseau, Sylvain :  ;
+1
+ 6
+3.1.2 
+1
+ J1-GYM-2
+1
+1
+ 1 ; 1
+EPS1251  01 SHE 25
+1
+1
+Bourgault, Alain :  ;
+1
+ 6
+4.1.2 
+1
+ Y.-DUGRÉ
+1
+1
+ 1 ; 1
+EPS1251  02 SHE 25
+1
+1
+Bourgault, Alain :  ;
+1
+ 4
+4.2.1 
+1
+ Y.-DUGRÉ
+1
+1
+ 1 ; 1
+EPS1301  01 SHE 30
+1
+1
+Roy, Yves :  ;
+1
+ 6
+2.2.1 
+1
+ J1-STADE
+1
+1
+ 1 ; 1
+EPS1301  02 SHE 30
+1
+1
+Roy, Yves :  ;
+1
+ 6
+5.2.1 
+1
+ J1-STADE
+1
+1
+ 1 ; 1
+EPS1321  01 SHE 50
+1
+1
+Levasseur, Marcel André :  ;
+1
+ 2
+3.2.8 
+1
+ A8-260
+1
+1
+ 1 ; 1
+EPS1321  02 SHE 50
+1
+1
+Levasseur, Marcel André :  ;
+1
+ 2
+3.2.10 
+1
+ A8-260
+1
+1
+ 1 ; 1
+EPS1322  11 SHE 24
+1
+1
+Beaulé, Annick : Levasseur, Marcel André :  ;
+1
+ 4
+4.2.1 
+1
+ J1-PISCINE
+1
+1
+ 1 ; 1
+EPS1322  12 SHE 24
+1
+1
+Beaulé, Annick : Levasseur, Marcel André :  ;
+1
+ 4
+4.2.5 
+1
+ J1-PISCINE
+1
+1
+ 1 ; 1
+EPS1322  13 SHE 24
+1
+1
+Beaulé, Annick : Levasseur, Marcel André :  ;
+1
+ 4
+5.2.1 
+1
+ J1-PISCINE
+1
+1
+ 1 ; 1
+EPS1322  14 SHE 24
+1
+1
+Beaulé, Annick : Levasseur, Marcel André :  ;
+1
+ 4
+5.1.1 
+1
+ J1-PISCINE
+1
+1
+ 0 ; 0
+EPS1431  01 SHE 30
+1
+1
+Duquette, Jacques Y. :  ;
+1
+ 6
+3.2.1 
+1
+ J1-STADE
+1
+1
+ 1 ; 1
+EPS1441  01 SHE 30
+1
+1
+Loiseau, Sylvain :  ;
+1
+ 6
+5.1.2 
+1
+ J1-GYM-2
+1
+1
+ 1 ; 1
+EPS1461  01 SHE 30
+1
+1
+Cliche, Martin :  ;
+1
+ 6
+2.2.1 
+1
+ J1-GYM-1
+1
+1
+ 1 ; 1
+EPS2041  01 SHE 40
+1
+1
+Lebel, Grégoire : Beaudoin, Anne-Josée :  ;Lebel, Grégoire : Beaudoin, Anne-Josée :  ;
+2
+ 4 4
+3.1.1 5.2.1 
+1
+ A8-360 A8-260
+1
+1
+ 1 1 ; 1 1
+EPS2041  02 SHE 40
+1
+1
+Lebel, Grégoire : Beaudoin, Anne-Josée :  ;Lebel, Grégoire : Beaudoin, Anne-Josée :  ;
+2
+ 4 4
+2.1.1 3.1.5 
+1
+ A8-260 A8-360
+1
+1
+ 1 1 ; 1 1
+EPS2051  01 SHE 45
+1
+1
+Beaudoin, Anne-Josée :  ;Beaudoin, Anne-Josée :  ;
+2
+ 6 4
+1.1.2 5.1.5 
+1
+ A8-320 A8-260
+1
+1
+ 1 1 ; 1 1
+EPS2051  02 SHE 45
+1
+1
+Beaudoin, Anne-Josée :  ;Beaudoin, Anne-Josée :  ;
+2
+ 4 6
+1.2.1 3.2.1 
+1
+ A8-320 A8-260
+1
+1
+ 1 1 ; 1 1
+EPS2051  03 SHE 45
+1
+1
+Beaudoin, Anne-Josée :  ;Beaudoin, Anne-Josée :  ;
+2
+ 4 4
+4.1.3 2.1.5 
+1
+ A8-260 A8-260
+1
+1
+ 1 1 ; 1 1
+EPS2051  04 SHE 45
+1
+1
+Beaudoin, Anne-Josée :  ;Beaudoin, Anne-Josée :  ;
+2
+ 4 4
+4.2.1 2.2.1 
+1
+ A8-360 A8-260
+1
+1
+ 1 1 ; 1 1
+EPS2061  01 SHE 40
+1
+1
+Tremblay, Janie :  ;
+1
+ 6
+1.2.8 
+1
+ A8-320
+1
+1
+ 1 ; 1
+EPS2071  01 SHE 85
+1
+1
+Brochu, Martin :  ;
+1
+ 4
+4.1.1 
+1
+ A8-320
+1
+1
+ 1 ; 1
+EPS2111  01 SHE 65
+1
+1
+EPS211-1-01, EPS211-1-01 :  ;
+1
+ 6
+2.2.1 
+1
+ A8-334
+1
+1
+ 1 ; 1
+EPS2121  01 SHE 45
+1
+1
+Lamboley, Cédric :  ;Lamboley, Cédric :  ;
+2
+ 4 2
+1.2.1 5.1.1 
+1
+ A8-360 A8-360
+1
+1
+ 1 1 ; 1 1
+EPS2121  02 SHE 45
+1
+1
+Lamboley, Cédric :  ;Lamboley, Cédric :  ;
+2
+ 4 2
+1.2.5 5.1.3 
+1
+ A8-360 A8-360
+1
+1
+ 1 1 ; 1 1
+EPS2131  01 SHE 30
+1
+1
+Tremblay, Janie :  ;
+1
+ 6
+2.2.8 
+1
+ A8-239
+1
+1
+ 1 ; 1
+EPS2141  01 SHE 60
+1
+1
+Morin, Pascale :  ;
+1
+ 6
+2.1.2 
+1
+ A8-334
+1
+1
+ 1 ; 1
+EPS2161  01 SHE 40
+1
+1
+Cloutier, Gaëtan :  ;Cloutier, Gaëtan :  ;
+2
+ 4 4
+4.1.1 2.1.1 
+1
+ A8-360 A8-320
+1
+1
+ 1 1 ; 1 1
+EPS2161  02 SHE 40
+1
+1
+Cloutier, Gaëtan :  ;Cloutier, Gaëtan :  ;
+2
+ 4 4
+4.1.5 2.1.5 
+1
+ A8-360 A8-320
+1
+1
+ 1 1 ; 1 1
+EPS3011  01 SHE 45
+1
+1
+Desbiens, Jean-François :  ;
+1
+ 6
+2.1.2 
+1
+ A8-360
+1
+1
+ 1 ; 1
+EPS3011  02 SHE 45
+1
+1
+Desbiens, Jean-François :  ;
+1
+ 6
+2.2.1 
+1
+ A8-320
+1
+1
+ 1 ; 1
+EPS3012  11 SHE 18
+1
+1
+Desbiens, Jean-François :  ;
+1
+ 6
+1.1.2 
+1
+ J1-GYM-1
+1
+1
+ 1 ; 1
+EPS3012  12 SHE 18
+1
+1
+Lanoue, Sèverine :  ;
+1
+ 6
+4.1.2 
+1
+ J1-GYM-1
+1
+1
+ 1 ; 1
+EPS3012  13 SHE 18
+1
+1
+Page, Brian :  ;
+1
+ 6
+4.1.2 
+1
+ J1-GYM-2
+1
+1
+ 1 ; 1
+EPS3012  14 SHE 18
+1
+1
+Perreault, Gino :  ;
+1
+ 6
+4.2.1 
+1
+ J1-GYM-1
+1
+1
+ 1 ; 1
+EPS3012  15 SHE 18
+1
+1
+Bédard, Pierre :  ;
+1
+ 6
+4.2.1 
+1
+ J1-GYM-2
+1
+1
+ 1 ; 1
+EPS3012  16 SHE 18
+1
+1
+Desbiens, Jean-François :  ;
+1
+ 6
+4.2.1 
+1
+ J1-STADE
+1
+1
+ 1 ; 1
+EPS3081  01 SHE 40
+1
+1
+Goyette, Robert :  ;Goyette, Robert :  ;
+2
+ 4 4
+4.1.3 2.1.5 
+1
+ A8-349 A8-349
+1
+1
+ 1 1 ; 1 1
+EPS3081  02 SHE 40
+1
+1
+Goyette, Robert :  ;Goyette, Robert :  ;
+2
+ 4 4
+4.2.1 2.2.1 
+1
+ A8-260 A8-349
+1
+1
+ 1 1 ; 1 1
+EPS3111  01 SHE 35
+1
+1
+Therrien, Richard :  ;
+1
+ 8
+4.2.11 
+1
+ A8-360
+1
+1
+ 1 ; 1
+EPS3111  02 SHE 35
+1
+1
+Therrien, Richard :  ;
+1
+ 8
+3.2.11 
+1
+ A8-360
+1
+1
+ 1 ; 1
+EPS4071  01 SHE 68
+1
+1
+Barrette, Robert :  ;
+1
+ 6
+5.1.2 
+1
+ A8-334
+1
+1
+ 1 ; 1
+EPS4091  01 SHE 90
+1
+1
+Barrette, Robert :  ;
+1
+ 4
+3.1.3 
+1
+ A8-334
+1
+1
+ 1 ; 1
+EPS4111  01 SHE 70
+1
+1
+Barrette, Robert :  ;
+1
+ 6
+5.1.2 
+1
+ A8-320
+1
+1
+ 1 ; 1
+EPS5001  01 SHE 35
+1
+1
+Turcotte, Sylvain : Goyette, Robert :  ;
+1
+ 6
+1.1.2 
+1
+ A8-349
+1
+1
+ 1 ; 1
+EPS5001  02 SHE 35
+1
+1
+Turcotte, Sylvain : Goyette, Robert :  ;
+1
+ 6
+1.2.1 
+1
+ A8-349
+1
+1
+ 1 ; 1
+EPS5011  01 SHE 45
+1
+1
+Barrette, Robert :  ;
+1
+ 6
+3.1.3 
+1
+ A8-260
+1
+1
+ 1 ; 1
+EPS5011  02 SHE 45
+1
+1
+Barrette, Robert :  ;
+1
+ 6
+3.2.1 
+1
+ A8-349
+1
+1
+ 1 ; 1
+EPS5031  01 SHE 45
+1
+1
+Spallanzani, Carlo :  ;
+1
+ 6
+3.1.2 
+1
+ A8-320
+1
+1
+ 1 ; 1
+EPS5031  02 SHE 45
+1
+1
+Spallanzani, Carlo :  ;
+1
+ 6
+3.2.1 
+1
+ A8-360
+1
+1
+ 1 ; 1
+HPE2821  01 SHE 80
+1
+1
+Bergeron, Denise :  ;
+1
+ 7
+4.2.1 
+1
+ A8-334
+1
+1
+ 1 ; 1
+KIN1231  01 SHE 25
+1
+1
+Shannon, Nancy :  ;
+1
+ 6
+1.2.1 
+1
+ J1-PISCINE
+1
+1
+ 1 ; 1
+KIN1241  01 SHE 30
+1
+1
+Roy, Stéphanie :  ;
+1
+ 6
+3.1.2 
+1
+ J1-STUDIO
+1
+1
+ 1 ; 1
+KIN2121  01 SHE 50
+1
+1
+Royer, Donald :  ;Royer, Donald :  ;
+2
+ 2 4
+2.2.7 3.2.1 
+1
+ A8-320 A8-320
+1
+1
+ 1 1 ; 1 1
+KIN2121  02 SHE 50
+1
+1
+Royer, Donald :  ;Royer, Donald :  ;
+2
+ 4 2
+1.2.1 3.2.7 
+1
+ A8-334 A8-320
+1
+1
+ 1 1 ; 1 1
+KIN2131  01 SHE 45
+1
+1
+Laroche, Jean :  ;
+1
+ 2
+1.1.3 
+1
+ A8-260
+1
+1
+ 1 ; 1
+KIN2131  02 SHE 45
+1
+1
+Laroche, Jean :  ;
+1
+ 2
+1.1.5 
+1
+ A8-260
+1
+1
+ 1 ; 1
+KIN2132  11 SHE 30
+1
+1
+Racicot, Pierre :  ;
+1
+ 4
+3.1.5 
+1
+ SSAP
+1
+1
+ 1 ; 1
+KIN2132  12 SHE 30
+1
+1
+Racicot, Pierre :  ;
+1
+ 4
+5.1.1 
+1
+ SSAP
+1
+1
+ 1 ; 1
+KIN2132  13 SHE 30
+1
+1
+Racicot, Pierre :  ;
+1
+ 4
+4.2.5 
+1
+ SSAP
+1
+1
+ 1 ; 1
+KIN2151  01 SHE 45
+1
+1
+Brochu, Martin :  ;
+1
+ 4
+1.1.1 
+1
+ A8-360
+1
+1
+ 1 ; 1
+KIN2151  02 SHE 45
+1
+1
+Brochu, Martin :  ;
+1
+ 4
+1.1.5 
+1
+ A8-360
+1
+1
+ 1 ; 1
+KIN2152  11 SHE 45
+1
+1
+Roy, Éric :  ;
+1
+ 4
+3.2.1 
+1
+ J1-KARATÉ
+1
+1
+ 1 ; 1
+KIN2152  12 SHE 45
+1
+1
+Roy, Éric :  ;
+1
+ 4
+3.2.5 
+1
+ J1-KARATÉ
+1
+1
+ 1 ; 1
+KIN2191  01 SHE 40
+1
+1
+Bélisle, Marc :  ;
+1
+ 6
+4.1.2 
+1
+ A8-345
+1
+1
+ 1 ; 1
+KIN2191  02 SHE 40
+1
+1
+Bélisle, Marc :  ;
+1
+ 6
+1.1.2 
+1
+ A8-239
+1
+1
+ 1 ; 1
+KIN2341  01 SHE 40
+1
+1
+Chartier, Josée :  ;
+1
+ 6
+3.2.13 
+1
+ A8-320
+1
+1
+ 1 ; 1
+KIN2381  01 SHE 30
+1
+1
+Hamel, Jean :  ;
+1
+ 8
+2.1.1 
+1
+ A8-239
+1
+1
+ 1 ; 1
+KIN2381  02 SHE 30
+1
+1
+Hamel, Jean :  ;
+1
+ 8
+1.2.9 
+1
+ A8-345
+1
+1
+ 1 ; 1
+KIN2421  01 SHE 50
+1
+1
+Labrecque, Susan :  ;
+1
+ 4
+1.2.4 
+1
+ A8-260
+1
+1
+ 1 ; 1
+KIN2421  02 SHE 50
+1
+1
+Labrecque, Susan :  ;
+1
+ 4
+1.2.8 
+1
+ A8-260
+1
+1
+ 1 ; 1
+KIN2421  03 SHE 50
+1
+1
+Labrecque, Susan :  ;
+1
+ 4
+4.1.5 
+1
+ A8-320
+1
+1
+ 1 ; 1
+KIN2431  01 SHE 50
+1
+1
+Roy, Martin :  ;
+1
+ 6
+1.1.3 
+1
+ A8-345
+1
+1
+ 1 ; 1
+KIN3001  01 SHE 55
+1
+1
+Brochu, Martin :  ;
+1
+ 6
+4.2.1 
+1
+ A8-320
+1
+1
+ 1 ; 1
+KIN3021  01 SHE 25
+1
+1
+Cantin, Hugo :  ;
+1
+ 6
+2.1.2 
+1
+ J1-322
+1
+1
+ 1 ; 1
+KIN3021  02 SHE 25
+1
+1
+Cantin, Hugo :  ;
+1
+ 6
+2.2.1 
+1
+ J1-322
+1
+1
+ 1 ; 1
+KIN3021  03 SHE 25
+1
+1
+Pedneault, Denis :  ;
+1
+ 6
+4.2.1 
+1
+ J1-322
+1
+1
+ 1 ; 1
+KIN3021  04 SHE 25
+1
+1
+Pedneault, Denis :  ;
+1
+ 6
+5.1.2 
+1
+ J1-322
+1
+1
+ 1 ; 1
+KIN3141  01 SHE 50
+1
+1
+Therrien, René :  ;
+1
+ 6
+5.1.2 
+1
+ A8-349
+1
+1
+ 1 ; 1
+KIN3531  01 SHE 20
+1
+1
+Roy, Martin :  ;Roy, Martin :  ;
+2
+ 6 4
+4.2.1 1.2.1 
+1
+ A8-345 A8-239
+1
+1
+ 1 1 ; 1 1
+
+!!!!!!!!!!
+Diamant1.6
+E 083711939P10000120091 Adam, Stéphanie
+C EPS124104;0 SHE
+C EPS205103;0 SHE
+C KIN212101;0 SHE
+C KIN213213;0 SHE
+C KIN213102;0 SHE
+C KIN215101;0 SHE
+C KIN215212;0 SHE
+C KIN242101;0 SHE
+C KIN302104;0 SHE
+E 071503892470000220073 Amyot, France
+C EPS112211;0 SHE
+C EPS112101;0 SHE
+C EPS130101;0 SHE
+C EPS204102;0 SHE
+C EPS308101;0 SHE
+C EPS311101;0 SHE
+C EPS411101;0 SHE
+C EPS500101;0 SHE
+E 056582732470000220073 Amyot, Stéphanie
+C EPS132213;0 SHE
+C EPS132101;0 SHE
+C EPS144101;0 SHE
+C EPS146101;0 SHE
+C EPS207101;0 SHE
+C EPS213101;0 SHE
+C EPS501101;0 SHE
+C KIN242103;0 SHE
+C KIN243101;0 SHE
+E 083674572605000320083 Arbour, Sabrina
+C EPS124104;0 SHE
+C EPS205103;0 SHE
+C KIN212102;0 SHE
+C KIN213212;0 SHE
+C KIN213101;0 SHE
+C KIN215102;0 SHE
+C KIN215211;0 SHE
+C KIN242102;0 SHE
+C KIN302103;0 SHE
+E 083282312605010320083 Archambault-Therrien, Claudie
+C EPS205103;0 SHE
+C KIN124101;0 SHE
+C KIN212102;0 SHE
+C KIN213212;0 SHE
+C KIN213101;0 SHE
+C KIN215102;0 SHE
+C KIN215211;0 SHE
+C KIN242102;0 SHE
+C KIN302103;0 SHE
+E 083642362605000320083 Arseneau, Marie-Christine
+C KIN123101;0 SHE
+C KIN124101;0 SHE
+C KIN215101;0 SHE
+C KIN215211;0 SHE
+C KIN242103;0 SHE
+C KIN302102;0 SHE
+E 068151732605000320063 Arès, Patricia
+C EPS122102;0 SHE
+C KIN219102;0 SHE
+C KIN234101;0 SHE
+C KIN238101;0 SHE
+C KIN300101;0 SHE
+C KIN314101;0 SHE
+E 045192482470000220063 Asselin, Audrey
+C EPS143101;0 SHE
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS214101;0 SHE
+C EPS501101;0 SHE
+C KIN242101;0 SHE
+C KIN243101;0 SHE
+E 068123092605000320063 Atkins-Bellemare, Pascale
+C KIN212102;0 SHE
+C KIN219101;0 SHE
+C KIN234101;0 SHE
+C KIN238101;0 SHE
+C KIN300101;0 SHE
+C KIN314101;0 SHE
+E 071671119P10000120091 Aubert-Lehoux, Gabrielle
+C EPS110211;0 SHE
+C EPS110101;0 SHE
+C EPS124101;0 SHE
+C EPS132214;0 SHE
+C EPS132102;0 SHE
+C EPS205102;0 SHE
+C EPS301102;0 SHE
+C EPS301211;0 SHE
+C EPS409101;0 SHE
+E 068137902470000220063 Audet, Maxime
+C EPS144101;0 SHE
+C EPS146101;0 SHE
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS214101;0 SHE
+C EPS501102;0 SHE
+C KIN242101;0 SHE
+E 071702782470000220073 B. Faucher, Philippe
+C EPS112212;0 SHE
+C EPS112101;0 SHE
+C EPS130101;0 SHE
+C EPS204102;0 SHE
+C EPS308101;0 SHE
+C EPS311101;0 SHE
+C EPS411101;0 SHE
+C EPS500101;0 SHE
+E 068378452470000220063 Babin, Stéphanie
+C EPS132214;0 SHE
+C EPS132102;0 SHE
+C EPS146101;0 SHE
+C EPS207101;0 SHE
+C EPS213101;0 SHE
+C EPS214101;0 SHE
+C EPS501102;0 SHE
+C KIN242101;0 SHE
+C KIN243101;0 SHE
+E 045313592605010320073 Bachand, David
+C EPS143101;0 SHE
+C KIN234101;0 SHE
+C KIN238101;0 SHE
+C KIN353101;0 SHE
+E 068031402470000220063 Baillargeon, Marie-Hélen
+C EPS122103;0 SHE
+C EPS132102;0 SHE
+C EPS132214;0 SHE
+C EPS143101;0 SHE
+C EPS207101;0 SHE
+C EPS213101;0 SHE
+C EPS214101;0 SHE
+C EPS501101;0 SHE
+C KIN242103;0 SHE
+C KIN243101;0 SHE
+E 071769772470000220083 Balleux, Frédéric
+C EPS110211;0 SHE
+C EPS110102;0 SHE
+C EPS124101;0 SHE
+C EPS132102;0 SHE
+C EPS132213;0 SHE
+C EPS205101;0 SHE
+C EPS212102;0 SHE
+C EPS301102;0 SHE
+C EPS301215;0 SHE
+C EPS409101;0 SHE
+E 083363202470000220083 Barabé, Vicky
+C EPS110211;0 SHE
+C EPS110102;0 SHE
+C EPS132102;0 SHE
+C EPS132211;0 SHE
+C EPS205102;0 SHE
+C EPS212102;0 SHE
+C EPS301101;0 SHE
+C EPS301211;0 SHE
+C EPS409101;0 SHE
+E 045192752470000220043 Barrette, Véronique
+C EPS211101;0 SHE
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+E 083747152605010320083 Barrette-Pellerin, Frédéric
+C EPS130102;0 SHE
+C EPS205104;0 SHE
+C KIN212101;0 SHE
+C KIN213213;0 SHE
+C KIN213101;0 SHE
+C KIN215102;0 SHE
+C KIN215212;0 SHE
+C KIN242101;0 SHE
+C KIN302104;0 SHE
+E 998088632470000220083 Bastien, Fannie
+C EPS110212;0 SHE
+C EPS110102;0 SHE
+C EPS124102;0 SHE
+C EPS132211;0 SHE
+C EPS132101;0 SHE
+C EPS205102;0 SHE
+C EPS212102;0 SHE
+C EPS301101;0 SHE
+C EPS301211;0 SHE
+E 056399362470000220053 Beauchamp, Martin
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+E 083771332605010320083 Beauchemin Pratte, Éric
+C EPS124104;0 SHE
+C EPS125101;0 SHE
+C EPS205104;0 SHE
+C KIN212102;0 SHE
+C KIN213213;0 SHE
+C KIN213101;0 SHE
+C KIN215102;0 SHE
+C KIN215211;0 SHE
+C KIN242102;0 SHE
+C KIN302104;0 SHE
+E 083662432470000220083 Beaulieu, Alexandre
+C EPS110211;0 SHE
+C EPS110102;0 SHE
+C EPS124101;0 SHE
+C EPS132102;0 SHE
+C EPS132213;0 SHE
+C EPS205101;0 SHE
+C EPS212101;0 SHE
+C EPS301102;0 SHE
+C EPS301215;0 SHE
+C EPS409101;0 SHE
+E 068289622470000220063 Beaulieu, Annie
+C EPS132214;0 SHE
+C EPS132102;0 SHE
+C EPS146101;0 SHE
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS214101;0 SHE
+C EPS501102;0 SHE
+C KIN242103;0 SHE
+C KIN243101;0 SHE
+E 083804872605010320083 Beaulieu, Geneviève
+C EPS122102;0 SHE
+C EPS205104;0 SHE
+C KIN212102;0 SHE
+C KIN213213;0 SHE
+C KIN213101;0 SHE
+C KIN215102;0 SHE
+C KIN215211;0 SHE
+C KIN242103;0 SHE
+C KIN302104;0 SHE
+E 056438962470000220053 Beaulieu, Mélanie
+C EPS211101;0 SHE
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+E 071164352470000220073 Beaumont, Joanie
+C EPD104101;0 SHE
+C EPS112102;0 SHE
+C EPS112213;0 SHE
+C EPS125101;0 SHE
+C EPS204101;0 SHE
+C EPS308102;0 SHE
+C EPS311102;0 SHE
+C EPS411101;0 SHE
+C EPS500102;0 SHE
+E 071658812470000220073 Beaunoyer-Pinsonneault, Laurence
+C EPD104101;0 SHE
+C EPS112101;0 SHE
+C EPS112212;0 SHE
+C EPS204101;0 SHE
+C EPS308102;0 SHE
+C EPS311101;0 SHE
+C EPS411101;0 SHE
+C EPS500101;0 SHE
+E 056334792470000220053 Bellehumeur, Lucie
+C EPS211101;0 SHE
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+E 056366262470000220053 Benjamin, Elyse
+C EPS122101;0 SHE
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+E 083233982605010320083 Benoît, Maxime
+C EPS124104;0 SHE
+C EPS205103;0 SHE
+C KIN212101;0 SHE
+C KIN213212;0 SHE
+C KIN213102;0 SHE
+C KIN215101;0 SHE
+C KIN215212;0 SHE
+C KIN242101;0 SHE
+C KIN302102;0 SHE
+E 083880059P10000120091 Benoît, Sonny
+C EPS110211;0 SHE
+C EPS110102;0 SHE
+C EPS124101;0 SHE
+C EPS132102;0 SHE
+C EPS132212;0 SHE
+C EPS205102;0 SHE
+C EPS212102;0 SHE
+C EPS301102;0 SHE
+C EPS301211;0 SHE
+C EPS409101;0 SHE
+E 045045662470000220053 Bergeron, Alix
+C EPS211101;0 SHE
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+E 067738052470000220063 Bergeron, Marie-Ève
+C EPS143101;0 SHE
+C EPS144101;0 SHE
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS214101;0 SHE
+C EPS501101;0 SHE
+C KIN242103;0 SHE
+E 083430272605000320083 Bergeron, Marilyn
+C EPS124104;0 SHE
+C EPS205103;0 SHE
+C KIN212101;0 SHE
+C KIN213212;0 SHE
+C KIN213102;0 SHE
+C KIN215101;0 SHE
+C KIN215212;0 SHE
+C KIN242101;0 SHE
+C KIN302102;0 SHE
+E 083601052605010320083 Bergeron, Philippe
+C EPS125101;0 SHE
+C EPS205104;0 SHE
+C KIN212102;0 SHE
+C KIN213211;0 SHE
+C KIN213101;0 SHE
+C KIN215102;0 SHE
+C KIN215211;0 SHE
+C KIN242102;0 SHE
+C KIN302104;0 SHE
+E 056872872470000220063 Bernard, Raphaël
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+E 056686452470000220053 Bernier, Maxime
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+E 083710952470000220083 Berthiaume, Yannick
+C EPS110213;0 SHE
+C EPS110102;0 SHE
+C EPS124101;0 SHE
+C EPS205102;0 SHE
+C EPS212102;0 SHE
+C EPS301102;0 SHE
+C EPS301215;0 SHE
+C EPS409101;0 SHE
+E 068336252470000220063 Bertrand, Annie
+C EPS132212;0 SHE
+C EPS132102;0 SHE
+C EPS144101;0 SHE
+C EPS207101;0 SHE
+C EPS213101;0 SHE
+C EPS214101;0 SHE
+C EPS501102;0 SHE
+C KIN242102;0 SHE
+C KIN243101;0 SHE
+E 083717722470000220083 Bezeau, David
+C EPS110213;0 SHE
+C EPS110101;0 SHE
+C EPS124103;0 SHE
+C EPS132101;0 SHE
+C EPS132211;0 SHE
+C EPS205101;0 SHE
+C EPS212101;0 SHE
+C EPS301101;0 SHE
+C EPS301212;0 SHE
+C EPS409101;0 SHE
+E 071691469P10000120091 Bibeau, Pierre
+C EPS110212;0 SHE
+C EPS110102;0 SHE
+C EPS124102;0 SHE
+C EPS132101;0 SHE
+C EPS132211;0 SHE
+C EPS205102;0 SHE
+C EPS212102;0 SHE
+C EPS301101;0 SHE
+C EPS301212;0 SHE
+C EPS409101;0 SHE
+E 056869742470000220053 Blais, Mathieu
+C EPS211101;0 SHE
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+E 083691512470000220083 Blanchard, Simon
+C EPS110213;0 SHE
+C EPS110101;0 SHE
+C EPS122103;0 SHE
+C EPS124102;0 SHE
+C EPS205101;0 SHE
+C EPS212101;0 SHE
+C EPS301101;0 SHE
+C EPS301216;0 SHE
+C EPS409101;0 SHE
+E 083183049P10000120091 Blanchette, Pascal
+C EPD104103;0 SHE
+C EPS205104;0 SHE
+C KIN212101;0 SHE
+C KIN213212;0 SHE
+C KIN213102;0 SHE
+C KIN215101;0 SHE
+C KIN215212;0 SHE
+C KIN242102;0 SHE
+C KIN302101;0 SHE
+E 083895582605000320083 Blanchette, Valérie
+C EPS124104;0 SHE
+C EPS205103;0 SHE
+C KIN212102;0 SHE
+C KIN213212;0 SHE
+C KIN213101;0 SHE
+C KIN215102;0 SHE
+C KIN215211;0 SHE
+C KIN242102;0 SHE
+C KIN302103;0 SHE
+E 067943562470000220063 Blouin, Dominique
+C EPS132213;0 SHE
+C EPS132101;0 SHE
+C EPS146101;0 SHE
+C EPS207101;0 SHE
+C EPS213101;0 SHE
+C EPS214101;0 SHE
+C EPS501102;0 SHE
+C KIN242101;0 SHE
+C KIN243101;0 SHE
+E 072713382470000220083 Blouin, Guillaume
+C EPS110211;0 SHE
+C EPS110101;0 SHE
+C EPS124101;0 SHE
+C EPS132213;0 SHE
+C EPS132101;0 SHE
+C EPS205101;0 SHE
+C EPS301102;0 SHE
+C EPS301214;0 SHE
+C EPS409101;0 SHE
+E 071093362470000220073 Blouin, Michael
+C EPD104101;0 SHE
+C EPS112102;0 SHE
+C EPS112213;0 SHE
+C EPS125101;0 SHE
+C EPS204101;0 SHE
+C EPS308102;0 SHE
+C EPS311102;0 SHE
+C EPS411101;0 SHE
+C EPS500101;0 SHE
+E 072021542470000220073 Boisclair, Alex
+C EPS112213;0 SHE
+C EPS112102;0 SHE
+C EPS125102;0 SHE
+C EPS204102;0 SHE
+C EPS308101;0 SHE
+C EPS311102;0 SHE
+C EPS411101;0 SHE
+C EPS500101;0 SHE
+E 083543632605000320083 Boisvert, Kim
+C EPS124104;0 SHE
+C EPS205104;0 SHE
+C KIN212102;0 SHE
+C KIN213212;0 SHE
+C KIN213101;0 SHE
+C KIN215102;0 SHE
+C KIN215211;0 SHE
+C KIN242103;0 SHE
+C KIN302101;0 SHE
+E 071594602605010320083 Boisvert-Grondin, Marianne
+C EPS122103;0 SHE
+C EPS205104;0 SHE
+C KIN212101;0 SHE
+C KIN213212;0 SHE
+C KIN213102;0 SHE
+C KIN215101;0 SHE
+C KIN215212;0 SHE
+C KIN242103;0 SHE
+C KIN302101;0 SHE
+E 056671292470000220053 Bolduc, Simon
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+E 071550802470000220073 Bonin, Marie-Claude
+C EPS112212;0 SHE
+C EPS112101;0 SHE
+C EPS204102;0 SHE
+C EPS308102;0 SHE
+C EPS311101;0 SHE
+C EPS411101;0 SHE
+C EPS500101;0 SHE
+E 083926882470000220083 Bonneau-Choinière, Emilie
+C EPD104103;0 SHE
+C EPS110102;0 SHE
+C EPS110211;0 SHE
+C EPS124103;0 SHE
+C EPS205101;0 SHE
+C EPS212101;0 SHE
+C EPS301101;0 SHE
+C EPS301216;0 SHE
+C EPS409101;0 SHE
+E 083772592470000220083 Bossé Germain, Simon-Pierre
+C EPS110213;0 SHE
+C EPS110101;0 SHE
+C EPS122101;0 SHE
+C EPS124103;0 SHE
+C EPS205101;0 SHE
+C EPS212101;0 SHE
+C EPS301101;0 SHE
+C EPS301216;0 SHE
+C EPS409101;0 SHE
+E 045329642470000220053 Bouchard, Amélie
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+E 056634542470000220071 Bouchard, Simon
+C EPS130101;0 SHE
+C EPS143101;0 SHE
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS214101;0 SHE
+C EPS501101;0 SHE
+C KIN242103;0 SHE
+E 068370242470000220063 Bouchard, Yannick
+C EPS124103;0 SHE
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS214101;0 SHE
+C EPS501101;0 SHE
+C KIN242103;0 SHE
+C KIN243101;0 SHE
+E 033889432470000220033 Bouchard-Mercier, Philippe
+C KIN242101;0 SHE
+E 068220672470000220073 Bouchard-Robert, Simon
+C EPS112213;0 SHE
+C EPS112102;0 SHE
+C EPS204101;0 SHE
+C EPS308102;0 SHE
+C EPS311102;0 SHE
+C EPS411101;0 SHE
+C EPS500101;0 SHE
+E 056377322470000220053 Boucher, David
+C EPS122102;0 SHE
+C EPS211101;0 SHE
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+E 083397732605010320083 Boulianne, Pierre
+C EPS125101;0 SHE
+C EPS205104;0 SHE
+C KIN212102;0 SHE
+C KIN213213;0 SHE
+C KIN213101;0 SHE
+C KIN215102;0 SHE
+C KIN215211;0 SHE
+C KIN242102;0 SHE
+C KIN302104;0 SHE
+E 083348309P10000120091 Bourassa, Maxime
+C EPS110212;0 SHE
+C EPS110101;0 SHE
+C EPS124102;0 SHE
+C EPS132101;0 SHE
+C EPS132212;0 SHE
+C EPS205102;0 SHE
+C EPS212102;0 SHE
+C EPS301101;0 SHE
+C EPS301212;0 SHE
+C EPS409101;0 SHE
+E 044815632605000320063 Bouthillier Hénault, Anthony
+C EPS130102;0 SHE
+C KIN219101;0 SHE
+C KIN234101;0 SHE
+C KIN243101;0 SHE
+C KIN300101;0 SHE
+C KIN302102;0 SHE
+E 068264562470000220063 Boutin, Sandra
+C EPS110212;0 SHE
+C EPS110102;0 SHE
+C EPS143101;0 SHE
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS214101;0 SHE
+C EPS501101;0 SHE
+C KIN242103;0 SHE
+E 071529572470000220073 Boyer, Jean-Simon
+C EPS112213;0 SHE
+C EPS112102;0 SHE
+C EPS125102;0 SHE
+C EPS130101;0 SHE
+C EPS204101;0 SHE
+C EPS308101;0 SHE
+C EPS311102;0 SHE
+C EPS411101;0 SHE
+C EPS500102;0 SHE
+E 083637722470000220083 Branco, Anne-Marie
+C EPD104101;0 SHE
+C EPS110101;0 SHE
+C EPS110213;0 SHE
+C EPS124103;0 SHE
+C EPS132211;0 SHE
+C EPS132101;0 SHE
+C EPS205101;0 SHE
+C EPS212101;0 SHE
+C EPS301102;0 SHE
+C EPS301212;0 SHE
+C EPS409101;0 SHE
+E 084163239500010120091 Bregeon, Claire
+C EPK803101;0 SHE
+E 068200692605000320063 Brien-Fontaine, Alexis
+C EPS130102;0 SHE
+C KIN219101;0 SHE
+C KIN234101;0 SHE
+C KIN238102;0 SHE
+C KIN300101;0 SHE
+C KIN314101;0 SHE
+E 067915722605000320063 Brière, Stéphanie
+C EPS122102;0 SHE
+C KIN219101;0 SHE
+C KIN234101;0 SHE
+C KIN238101;0 SHE
+C KIN300101;0 SHE
+C KIN314101;0 SHE
+E 083454452605010320083 Brochu, Claudia
+C EPS205104;0 SHE
+C KIN124101;0 SHE
+C KIN212101;0 SHE
+C KIN213213;0 SHE
+C KIN213102;0 SHE
+C KIN215101;0 SHE
+C KIN215212;0 SHE
+C KIN242101;0 SHE
+C KIN302101;0 SHE
+E 068452662605000320063 Brochu, Jessica
+C KIN124101;0 SHE
+C KIN212102;0 SHE
+C KIN219101;0 SHE
+C KIN234101;0 SHE
+C KIN300101;0 SHE
+C KIN314101;0 SHE
+E 067454812470000220063 Brodeur-Fontaine, Anne-Marie
+C EPS132211;0 SHE
+C EPS132101;0 SHE
+C EPS146101;0 SHE
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS214101;0 SHE
+C EPS501102;0 SHE
+C KIN242101;0 SHE
+E 071594792470000220073 Brosseau, Mylène
+C EPS112212;0 SHE
+C EPS112101;0 SHE
+C EPS125101;0 SHE
+C EPS204101;0 SHE
+C EPS308102;0 SHE
+C EPS311101;0 SHE
+C EPS411101;0 SHE
+C EPS500101;0 SHE
+E 083566192470000220083 Brouard, Pierre-Olivier
+C EPS110213;0 SHE
+C EPS110101;0 SHE
+C EPS124103;0 SHE
+C EPS205101;0 SHE
+C EPS212101;0 SHE
+C EPS301101;0 SHE
+C EPS301215;0 SHE
+C EPS409101;0 SHE
+E 083142192470000220083 Brouard, Vincent
+C EPS110211;0 SHE
+C EPS110101;0 SHE
+C EPS124101;0 SHE
+C EPS132101;0 SHE
+C EPS132213;0 SHE
+C EPS205101;0 SHE
+C EPS212102;0 SHE
+C EPS301102;0 SHE
+C EPS301214;0 SHE
+C EPS409101;0 SHE
+E 056588522605000320053 Bugeaud, Yannick
+C KIN353101;0 SHE
+E 068409112605000320063 Bussières, Claudie
+C KIN212102;0 SHE
+C KIN213102;0 SHE
+C KIN213211;0 SHE
+C KIN219101;0 SHE
+C KIN234101;0 SHE
+C KIN238102;0 SHE
+C KIN300101;0 SHE
+C KIN314101;0 SHE
+E 071223579P10000120091 Buzingo, Ferdinand
+C EPS132214;0 SHE
+C EPS132102;0 SHE
+C EPS205104;0 SHE
+C KIN212102;0 SHE
+C KIN215101;0 SHE
+C KIN215211;0 SHE
+C KIN242102;0 SHE
+E 083849372470000220083 Bédard, Marco
+C EPS110211;0 SHE
+C EPS110102;0 SHE
+C EPS124103;0 SHE
+C EPS132101;0 SHE
+C EPS132213;0 SHE
+C EPS205101;0 SHE
+C EPS212101;0 SHE
+C EPS301101;0 SHE
+C EPS301214;0 SHE
+C EPS409101;0 SHE
+E 083744672470000220083 Bélanger, Jean-François
+C EPS110211;0 SHE
+C EPS110102;0 SHE
+C EPS122103;0 SHE
+C EPS124101;0 SHE
+C EPS205102;0 SHE
+C EPS212102;0 SHE
+C EPS301102;0 SHE
+C EPS301216;0 SHE
+C EPS409101;0 SHE
+E 068431792605000320063 Bélanger, Josée
+C KIN219101;0 SHE
+C KIN234101;0 SHE
+C KIN238102;0 SHE
+C KIN300101;0 SHE
+C KIN314101;0 SHE
+E 068237612470000220063 Bélanger, Kaven
+C EPS143101;0 SHE
+C EPS144101;0 SHE
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS214101;0 SHE
+C EPS501101;0 SHE
+C KIN242101;0 SHE
+C KIN243101;0 SHE
+E 083727262605000320083 Bélanger, Sophie
+C EPS125102;0 SHE
+C EPS205103;0 SHE
+C KIN212101;0 SHE
+C KIN213211;0 SHE
+C KIN213102;0 SHE
+C KIN215101;0 SHE
+C KIN215212;0 SHE
+C KIN242101;0 SHE
+C KIN302102;0 SHE
+E 056800889P10000120091 Bélanger-Bertrand, Charles
+C EPS112212;0 SHE
+C EPS112101;0 SHE
+C EPS125102;0 SHE
+C EPS204101;0 SHE
+C EPS308101;0 SHE
+C EPS311101;0 SHE
+C EPS411101;0 SHE
+C EPS500101;0 SHE
+E 071853882470000220073 Bélec, Guillaume Christophe
+C EPS112213;0 SHE
+C EPS112102;0 SHE
+C EPS125102;0 SHE
+C EPS130101;0 SHE
+C EPS204102;0 SHE
+C EPS308101;0 SHE
+C EPS311102;0 SHE
+C EPS411101;0 SHE
+C EPS500101;0 SHE
+E 083504742470000220083 Camiré, Ariane
+C EPS110211;0 SHE
+C EPS110102;0 SHE
+C EPS124103;0 SHE
+C EPS132101;0 SHE
+C EPS132213;0 SHE
+C EPS205101;0 SHE
+C EPS212101;0 SHE
+C EPS301102;0 SHE
+C EPS301214;0 SHE
+C EPS409101;0 SHE
+E 084163329500010120091 Cara, Cécile
+C EPS112212;0 SHE
+C EPS112101;0 SHE
+C EPS124103;0 SHE
+C EPS130102;0 SHE
+C EPS204101;0 SHE
+C EPS205104;0 SHE
+C EPS212101;0 SHE
+C EPS216101;0 SHE
+C EPS301102;0 SHE
+C EPS301211;0 SHE
+C EPS308101;0 SHE
+C KIN215101;0 SHE
+C KIN215212;0 SHE
+E 083717902605000320083 Carbonneau, Brian
+C EPS124104;0 SHE
+C EPS205103;0 SHE
+C KIN212102;0 SHE
+C KIN213212;0 SHE
+C KIN213101;0 SHE
+C KIN215102;0 SHE
+C KIN215211;0 SHE
+C KIN242102;0 SHE
+C KIN302103;0 SHE
+E 045237322605010320043 Caron, Alexandre
+C EPS124104;0 SHE
+C KIN219101;0 SHE
+C KIN242102;0 SHE
+C KIN300101;0 SHE
+C KIN314101;0 SHE
+E 067954172470000220063 Caron, Mathieu
+C EPS143101;0 SHE
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS214101;0 SHE
+C EPS501101;0 SHE
+C KIN242103;0 SHE
+C KIN243101;0 SHE
+E 083913592470000220083 Caron, Mathieu
+C EPS110211;0 SHE
+C EPS110102;0 SHE
+C EPS122103;0 SHE
+C EPS132101;0 SHE
+C EPS132213;0 SHE
+C EPS205101;0 SHE
+C EPS212101;0 SHE
+C EPS301101;0 SHE
+C EPS301216;0 SHE
+C EPS409101;0 SHE
+E 071978102470000220083 Carrier-Vachon, Alexandre
+C EPS112213;0 SHE
+C EPS112101;0 SHE
+C EPS125101;0 SHE
+C EPS204102;0 SHE
+C EPS308102;0 SHE
+C EPS311101;0 SHE
+C EPS411101;0 SHE
+C EPS500102;0 SHE
+E 045119322470000220051 Cartier, Francis
+C EPS503101;0 SHE
+E 083441332470000220083 Casavant, Jessy
+C EPD104103;0 SHE
+C EPS110101;0 SHE
+C EPS110213;0 SHE
+C EPS124102;0 SHE
+C EPS205102;0 SHE
+C EPS212102;0 SHE
+C EPS301101;0 SHE
+C EPS301214;0 SHE
+C EPS409101;0 SHE
+E 071716502470000220073 Castonguay, Mélanie
+C EPD104101;0 SHE
+C EPS112102;0 SHE
+C EPS112213;0 SHE
+C EPS125101;0 SHE
+C EPS204101;0 SHE
+C EPS308102;0 SHE
+C EPS311102;0 SHE
+C EPS411101;0 SHE
+C EPS500102;0 SHE
+E 084235569500010120091 Cerda, Hugo
+C EPK834101;0 SHE
+C EPK861101;0 SHE
+C KIN300101;0 SHE
+C KIN302101;0 SHE
+E 067979782470000220063 Chagnon, Benoît
+C EPS132212;0 SHE
+C EPS132102;0 SHE
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS214101;0 SHE
+C EPS501102;0 SHE
+C KIN242103;0 SHE
+C KIN243101;0 SHE
+E 056222212470000220053 Champigny, Pierre-Yves
+C EPS211101;0 SHE
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+E 083510442470000220083 Charbonneau, Catherine
+C EPD104103;0 SHE
+C EPS110102;0 SHE
+C EPS110213;0 SHE
+C EPS124101;0 SHE
+C EPS205102;0 SHE
+C EPS212102;0 SHE
+C EPS301102;0 SHE
+C EPS301215;0 SHE
+C EPS409101;0 SHE
+E 083636382605010320083 Charbonneau, Julie
+C EPS205104;0 SHE
+C KIN124101;0 SHE
+C KIN212101;0 SHE
+C KIN213212;0 SHE
+C KIN213102;0 SHE
+C KIN215101;0 SHE
+C KIN215212;0 SHE
+C KIN242103;0 SHE
+C KIN302101;0 SHE
+E 045297722605010320053 Charbonneau Black, Yan
+C KIN212102;0 SHE
+E 083752882605000320083 Charrois, Jessika
+C EPS124104;0 SHE
+C EPS205103;0 SHE
+C KIN123101;0 SHE
+C KIN212101;0 SHE
+C KIN213212;0 SHE
+C KIN213101;0 SHE
+C KIN215102;0 SHE
+C KIN215212;0 SHE
+C KIN242102;0 SHE
+C KIN302102;0 SHE
+E 056729342470000220053 Chartré Bérubé, Jean-Laurier
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+E 068190532605010320063 Chartré-Bertrand, Janie
+C EPS144101;0 SHE
+C KIN212101;0 SHE
+C KIN219102;0 SHE
+C KIN234101;0 SHE
+C KIN238101;0 SHE
+C KIN353101;0 SHE
+E 055947152605010320053 Chevrier, Jonathan
+C EPS144101;0 SHE
+C KIN219101;0 SHE
+C KIN234101;0 SHE
+C KIN238101;0 SHE
+C KIN353101;0 SHE
+E 056556952470000220053 Chiasson, François
+C EPS211101;0 SHE
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+E 022418712470000220073 Chicoine, Jonathan
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS501101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+E 083706662470000220083 Choquet, Valérie
+C EPS110211;0 SHE
+C EPS110102;0 SHE
+C EPS124102;0 SHE
+C EPS132102;0 SHE
+C EPS132213;0 SHE
+C EPS205101;0 SHE
+C EPS212101;0 SHE
+C EPS301101;0 SHE
+C EPS301215;0 SHE
+C EPS409101;0 SHE
+E 067476022470000220063 Chouinard, Marc
+C EPS144101;0 SHE
+C EPS207101;0 SHE
+C EPS213101;0 SHE
+C EPS214101;0 SHE
+C EPS501102;0 SHE
+C KIN242101;0 SHE
+C KIN243101;0 SHE
+E 056787052470000220073 Chouinard-Gagnon, Alexandre
+C EPS112213;0 SHE
+C EPS112102;0 SHE
+C EPS130101;0 SHE
+C EPS204102;0 SHE
+C EPS308101;0 SHE
+C EPS311102;0 SHE
+C EPS411101;0 SHE
+C EPS500102;0 SHE
+E 072491312605000320083 Claveau, Sabrina
+C EPS130102;0 SHE
+C EPS205103;0 SHE
+C KIN212102;0 SHE
+C KIN213211;0 SHE
+C KIN213102;0 SHE
+C KIN215101;0 SHE
+C KIN215211;0 SHE
+C KIN242102;0 SHE
+C KIN302103;0 SHE
+E 068140762470000220063 Cliche, Andréanne
+C EPS143101;0 SHE
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS214101;0 SHE
+C EPS501101;0 SHE
+C KIN242101;0 SHE
+E 071598342470000220073 Cormier, Marie-France
+C EPD104101;0 SHE
+C EPS112101;0 SHE
+C EPS112212;0 SHE
+C EPS204101;0 SHE
+C EPS308102;0 SHE
+C EPS311101;0 SHE
+C EPS411101;0 SHE
+C EPS500102;0 SHE
+E 056614562470000220063 Cormier, Véronique
+C EPS110211;0 SHE
+C EPS110102;0 SHE
+C EPS144101;0 SHE
+C EPS207101;0 SHE
+C EPS213101;0 SHE
+C EPS214101;0 SHE
+C EPS501102;0 SHE
+C KIN242101;0 SHE
+E 067726642605000320071 Cormier, Éric
+C KIN124101;0 SHE
+C KIN219102;0 SHE
+C KIN234101;0 SHE
+C KIN238102;0 SHE
+C KIN300101;0 SHE
+C KIN314101;0 SHE
+E 071320332470000220073 Corney, Martine
+C EPD104102;0 SHE
+C EPS112101;0 SHE
+C EPS112212;0 SHE
+C EPS204101;0 SHE
+C EPS308102;0 SHE
+C EPS311101;0 SHE
+C EPS411101;0 SHE
+C EPS500102;0 SHE
+E 083935072470000220083 Corriveau, Christina
+C EPS110213;0 SHE
+C EPS110101;0 SHE
+C EPS122103;0 SHE
+C EPS132101;0 SHE
+C EPS132211;0 SHE
+C EPS205101;0 SHE
+C EPS212101;0 SHE
+C EPS301101;0 SHE
+C EPS301212;0 SHE
+C EPS409101;0 SHE
+E 068135492605000320063 Corriveau, Josianne
+C KIN212102;0 SHE
+C KIN213102;0 SHE
+C KIN213211;0 SHE
+C KIN219101;0 SHE
+C KIN234101;0 SHE
+C KIN238102;0 SHE
+C KIN300101;0 SHE
+C KIN314101;0 SHE
+E 056408532470000220053 Cousineau, Éric
+C EPS211101;0 SHE
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+E 055963852470000220063 Couture, Joanie
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+E 083556922470000220083 Couture, Marie-Hélène
+C EPS110213;0 SHE
+C EPS110102;0 SHE
+C EPS122102;0 SHE
+C EPS132102;0 SHE
+C EPS132212;0 SHE
+C EPS205101;0 SHE
+C EPS212101;0 SHE
+C EPS301102;0 SHE
+C EPS301212;0 SHE
+C EPS409101;0 SHE
+E 022297792470000220073 Cyr, Mélanie
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS501102;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+E 083466302470000220083 Cyr-Gervais, Clodie
+C EPS110213;0 SHE
+C EPS110102;0 SHE
+C EPS124102;0 SHE
+C EPS132101;0 SHE
+C EPS132211;0 SHE
+C EPS205101;0 SHE
+C EPS212101;0 SHE
+C EPS301101;0 SHE
+C EPS301213;0 SHE
+C EPS409101;0 SHE
+E 056164522470000220053 Côté, Pierre
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+C KIN242102;0 SHE
+E 067957562470000220063 Daigle, Pierrick
+C EPS124102;0 SHE
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS214101;0 SHE
+C EPS501102;0 SHE
+C KIN242101;0 SHE
+C KIN243101;0 SHE
+E 056565962470000220063 Daigneault, Jonathan
+C EPS122102;0 SHE
+C EPS144101;0 SHE
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS214101;0 SHE
+C EPS501102;0 SHE
+E 071486232470000220073 Dallaire, Laurie
+C EPS112211;0 SHE
+C EPS112102;0 SHE
+C EPS125102;0 SHE
+C EPS204101;0 SHE
+C EPS308101;0 SHE
+C EPS311102;0 SHE
+C EPS411101;0 SHE
+C EPS500102;0 SHE
+E 071865732470000220073 Dallaire, Maxime
+C EPS112211;0 SHE
+C EPS112101;0 SHE
+C EPS125101;0 SHE
+C EPS204102;0 SHE
+C EPS308102;0 SHE
+C EPS311101;0 SHE
+C EPS411101;0 SHE
+C EPS500102;0 SHE
+E 084159122470000220083 Daoust, Catherine
+C EPS110211;0 SHE
+C EPS110101;0 SHE
+C EPS122101;0 SHE
+C EPS124103;0 SHE
+C EPS132213;0 SHE
+C EPS132101;0 SHE
+C EPS205101;0 SHE
+C EPS212101;0 SHE
+C EPS301101;0 SHE
+C EPS301216;0 SHE
+C EPS409101;0 SHE
+E 083490582470000220083 Daudelin-Gauthier, Laurie
+C EPD104103;0 SHE
+C EPS110102;0 SHE
+C EPS110213;0 SHE
+C EPS124101;0 SHE
+C EPS205101;0 SHE
+C EPS212101;0 SHE
+C EPS301102;0 SHE
+C EPS301216;0 SHE
+C EPS409101;0 SHE
+E 083914932470000220083 Deguire, Michael
+C EPS110211;0 SHE
+C EPS110102;0 SHE
+C EPS124103;0 SHE
+C EPS132102;0 SHE
+C EPS132213;0 SHE
+C EPS205101;0 SHE
+C EPS212101;0 SHE
+C EPS301101;0 SHE
+C EPS301216;0 SHE
+C EPS409101;0 SHE
+E 084235749500010120091 Delaygue, Jordan
+C EPS112102;0 SHE
+C EPS112211;0 SHE
+C EPS212101;0 SHE
+C EPS213101;0 SHE
+C EPS301101;0 SHE
+C EPS301211;0 SHE
+C EPS308102;0 SHE
+C EPS311102;0 SHE
+E 056456702470000220053 Demers, Christian
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+E 044988862470000220043 Demers, Jean-Simon
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+E 056291262470000220053 Demers, Jordan
+C EPS211101;0 SHE
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+E 068231372470000220071 Deschênes, Nathalie
+C EPS112102;0 SHE
+C EPS112213;0 SHE
+C EPS204102;0 SHE
+C EPS308102;0 SHE
+C EPS411101;0 SHE
+C EPS500102;0 SHE
+E 068040412605010320063 Desgagné, Julie
+C EPS144101;0 SHE
+C KIN212101;0 SHE
+C KIN219101;0 SHE
+C KIN234101;0 SHE
+C KIN238101;0 SHE
+C KIN353101;0 SHE
+E 083691332470000220083 Deslandes Landry, Jasmin
+C EPS110213;0 SHE
+C EPS110102;0 SHE
+C EPS122101;0 SHE
+C EPS132102;0 SHE
+C EPS132212;0 SHE
+C EPS205101;0 SHE
+C EPS212101;0 SHE
+C EPS301101;0 SHE
+C EPS301212;0 SHE
+C EPS409101;0 SHE
+E 056408802470000220053 Desloges, Steve
+C EPS122103;0 SHE
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+E 083898072470000220083 Desmarais, Pier-Olivier
+C EPS110213;0 SHE
+C EPS110101;0 SHE
+C EPS122102;0 SHE
+C EPS124103;0 SHE
+C EPS205101;0 SHE
+C EPS212101;0 SHE
+C EPS301101;0 SHE
+C EPS301216;0 SHE
+C EPS409101;0 SHE
+E 083299629P10000120091 Despaties Witty, Renaud
+C EPS130102;0 SHE
+C EPS205104;0 SHE
+C KIN212101;0 SHE
+C KIN213211;0 SHE
+C KIN213101;0 SHE
+C KIN215102;0 SHE
+C KIN215212;0 SHE
+C KIN242102;0 SHE
+C KIN302101;0 SHE
+E 083505262470000220083 Dion, Alexandre
+C EPS110212;0 SHE
+C EPS110102;0 SHE
+C EPS124101;0 SHE
+C EPS132102;0 SHE
+C EPS132211;0 SHE
+C EPS205102;0 SHE
+C EPS212102;0 SHE
+C EPS301102;0 SHE
+C EPS301211;0 SHE
+C EPS409101;0 SHE
+E 083695252605010320083 Dion, Tommy
+C EPS124104;0 SHE
+C EPS205104;0 SHE
+C KIN212102;0 SHE
+C KIN213213;0 SHE
+C KIN213101;0 SHE
+C KIN215102;0 SHE
+C KIN215211;0 SHE
+C KIN242103;0 SHE
+C KIN302104;0 SHE
+E 084018012605000320083 Dion, Véronique
+C EPS205103;0 SHE
+C KIN124101;0 SHE
+C KIN212101;0 SHE
+C KIN213212;0 SHE
+C KIN213102;0 SHE
+C KIN215101;0 SHE
+C KIN215212;0 SHE
+C KIN242101;0 SHE
+C KIN302103;0 SHE
+E 033867672605000320063 Dionne, Carl
+C EPS122102;0 SHE
+C KIN219101;0 SHE
+C KIN234101;0 SHE
+C KIN238101;0 SHE
+C KIN242101;0 SHE
+C KIN300101;0 SHE
+C KIN314101;0 SHE
+E 056860822470000220063 Doré, Sébastien
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+E 083913682470000220083 Doucet Paquin, Marie-Pier
+C EPD104103;0 SHE
+C EPS110101;0 SHE
+C EPS110212;0 SHE
+C EPS124101;0 SHE
+C EPS205102;0 SHE
+C EPS212102;0 SHE
+C EPS301102;0 SHE
+C EPS301214;0 SHE
+C EPS409101;0 SHE
+E 056687072470000220053 Doyon, Marie-Hélène
+C EPS211101;0 SHE
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+E 071332479P10000120091 Drouin, Cindy
+C EPS112211;0 SHE
+C EPS112102;0 SHE
+C EPS130102;0 SHE
+C EPS204102;0 SHE
+C EPS308102;0 SHE
+C EPS311102;0 SHE
+C EPS411101;0 SHE
+C EPS500101;0 SHE
+E 056617402470000220053 Drouin, Roxane
+C EPS211101;0 SHE
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+E 071413909P10000120091 Dubois, Véronique
+C EPS125102;0 SHE
+C EPS205103;0 SHE
+C KIN212101;0 SHE
+C KIN213211;0 SHE
+C KIN213101;0 SHE
+C KIN215102;0 SHE
+C KIN215212;0 SHE
+C KIN242101;0 SHE
+C KIN302102;0 SHE
+E 072087282470000220073 Dubreuil, Sarah
+C EPD104102;0 SHE
+C EPS112101;0 SHE
+C EPS112212;0 SHE
+C EPS204102;0 SHE
+C EPS308102;0 SHE
+C EPS311101;0 SHE
+C EPS411101;0 SHE
+C EPS500102;0 SHE
+E 083297932470000220083 Dubuc, Jean-Philippe
+C EPS110212;0 SHE
+C EPS110102;0 SHE
+C EPS124101;0 SHE
+C EPS132102;0 SHE
+C EPS132213;0 SHE
+C EPS205102;0 SHE
+C EPS212102;0 SHE
+C EPS301102;0 SHE
+C EPS301216;0 SHE
+C EPS409101;0 SHE
+E 068257322470000220071 Dubuc, Rémi
+C EPS143101;0 SHE
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS214101;0 SHE
+C EPS501101;0 SHE
+C KIN242103;0 SHE
+C KIN243101;0 SHE
+E 083820382470000220083 Dubé, Cathy
+C EPS110211;0 SHE
+C EPS110101;0 SHE
+C EPS124103;0 SHE
+C EPS132102;0 SHE
+C EPS132213;0 SHE
+C EPS205101;0 SHE
+C EPS212101;0 SHE
+C EPS301101;0 SHE
+C EPS301214;0 SHE
+C EPS409101;0 SHE
+E 068453192605010320063 Dubé, Christine
+C EPS144101;0 SHE
+C KIN212101;0 SHE
+C KIN219101;0 SHE
+C KIN234101;0 SHE
+C KIN238102;0 SHE
+C KIN353101;0 SHE
+E 056245222470000220063 Duclos, Caroline
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+E 056248442470000220053 Dufour Chouinard, Emilie
+C EPS122103;0 SHE
+C EPS211101;0 SHE
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+E 068387282470000220063 Duplin, Kevin
+C EPS501102;0 SHE
+E 071654992470000220073 Duquette, Emilie
+C EPS112212;0 SHE
+C EPS112101;0 SHE
+C EPS204101;0 SHE
+C EPS308102;0 SHE
+C EPS311101;0 SHE
+C EPS411101;0 SHE
+C EPS500102;0 SHE
+E 067860612605000320063 Durand, Sara
+C KIN212102;0 SHE
+C KIN219101;0 SHE
+C KIN234101;0 SHE
+C KIN238101;0 SHE
+C KIN300101;0 SHE
+C KIN314101;0 SHE
+E 083210322605000320083 Déry, Anne-Marie
+C EPS122101;0 SHE
+C EPS205103;0 SHE
+C KIN212102;0 SHE
+C KIN213211;0 SHE
+C KIN213101;0 SHE
+C KIN215102;0 SHE
+C KIN215211;0 SHE
+C KIN242102;0 SHE
+C KIN302103;0 SHE
+E 083498152605000320083 Déry, Marie-Noël
+C EPD104103;0 SHE
+C EPS205104;0 SHE
+C KIN212101;0 SHE
+C KIN213213;0 SHE
+C KIN213102;0 SHE
+C KIN215101;0 SHE
+C KIN215212;0 SHE
+C KIN242103;0 SHE
+C KIN302104;0 SHE
+E 068290972605000320063 Emond, Geneviève
+C KIN219102;0 SHE
+C KIN234101;0 SHE
+C KIN238102;0 SHE
+C KIN300101;0 SHE
+C KIN314101;0 SHE
+E 083449362470000220083 Fabien, Lisa-Manon
+C EPS110212;0 SHE
+C EPS110102;0 SHE
+C EPS124101;0 SHE
+C EPS132102;0 SHE
+C EPS132214;0 SHE
+C EPS205102;0 SHE
+C EPS212102;0 SHE
+C EPS301102;0 SHE
+C EPS301213;0 SHE
+C EPS409101;0 SHE
+E 056533942470000220053 Ferland, Andréanne
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+E 068087152605010320063 Filion, Maryse
+C EPS130102;0 SHE
+C EPS144101;0 SHE
+C KIN212101;0 SHE
+C KIN219101;0 SHE
+C KIN234101;0 SHE
+C KIN238101;0 SHE
+C KIN353101;0 SHE
+E 083639052605010320083 Forand Boulerice, Sophie
+C EPS124104;0 SHE
+C EPS205104;0 SHE
+C KIN212102;0 SHE
+C KIN213213;0 SHE
+C KIN213101;0 SHE
+C KIN215102;0 SHE
+C KIN215211;0 SHE
+C KIN242102;0 SHE
+C KIN302101;0 SHE
+E 056602242470000220073 Fortier, Simon
+C EPS132212;0 SHE
+C EPS132102;0 SHE
+C EPS143101;0 SHE
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS214101;0 SHE
+C EPS501101;0 SHE
+C KIN242103;0 SHE
+C KIN243101;0 SHE
+E 068228062605010320063 Fortin, Isabelle
+C EPS143101;0 SHE
+C KIN219102;0 SHE
+C KIN234101;0 SHE
+C KIN238101;0 SHE
+C KIN353101;0 SHE
+E 034494962470000220051 Fortin, Patrice
+C EPS144101;0 SHE
+C EPS213101;0 SHE
+E 068465682605000320071 Fortin, Thomas
+C KIN212102;0 SHE
+C KIN219102;0 SHE
+C KIN238101;0 SHE
+C KIN242103;0 SHE
+C KIN300101;0 SHE
+C KIN314101;0 SHE
+E 068329579P10000120091 Fredette, Maxime
+C KIN212102;0 SHE
+C KIN213101;0 SHE
+C KIN213211;0 SHE
+C KIN215102;0 SHE
+C KIN215211;0 SHE
+C KIN242102;0 SHE
+C KIN302102;0 SHE
+E 071681832470000220073 Gagnon, Jean-Christophe
+C EPS112212;0 SHE
+C EPS112101;0 SHE
+C EPS130101;0 SHE
+C EPS204102;0 SHE
+C EPS308101;0 SHE
+C EPS311101;0 SHE
+C EPS411101;0 SHE
+C EPS500102;0 SHE
+E 045362922470000220061 Gagnon, Jean-François
+C EPS211101;0 SHE
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+E 083485212470000220083 Gagnon, Jean-Philippe
+C EPS110211;0 SHE
+C EPS110101;0 SHE
+C EPS122101;0 SHE
+C EPS132102;0 SHE
+C EPS132212;0 SHE
+C EPS205102;0 SHE
+C EPS212102;0 SHE
+C EPS301101;0 SHE
+C EPS301211;0 SHE
+C EPS409101;0 SHE
+E 083242262605000320083 Gagnon, Josiane
+C EPS130102;0 SHE
+C EPS205104;0 SHE
+C KIN212101;0 SHE
+C KIN213213;0 SHE
+C KIN213101;0 SHE
+C KIN215102;0 SHE
+C KIN215212;0 SHE
+C KIN242101;0 SHE
+C KIN302101;0 SHE
+E 071935832470000220073 Gagnon, Marc-André
+C EPS112211;0 SHE
+C EPS112102;0 SHE
+C EPS125102;0 SHE
+C EPS130101;0 SHE
+C EPS204102;0 SHE
+C EPS308101;0 SHE
+C EPS311102;0 SHE
+C EPS411101;0 SHE
+C EPS500101;0 SHE
+E 072020472470000220073 Gagnon-Goulet, Alexis
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+E 068457742470000220081 Gagné, Louis-Charles
+C EPS112211;0 SHE
+C EPS112102;0 SHE
+C EPS204101;0 SHE
+C EPS308102;0 SHE
+C EPS311102;0 SHE
+C EPS411101;0 SHE
+C EPS500101;0 SHE
+E 083690089P10000120091 Gagné-Maher, Mélanie
+C EPS205103;0 SHE
+C KIN123101;0 SHE
+C KIN212101;0 SHE
+C KIN213213;0 SHE
+C KIN213102;0 SHE
+C KIN215101;0 SHE
+C KIN215212;0 SHE
+C KIN242102;0 SHE
+C KIN302102;0 SHE
+E 068289712470000220083 Gamache, Jean-François
+C EPS112212;0 SHE
+C EPS112101;0 SHE
+C EPS130101;0 SHE
+C EPS204101;0 SHE
+C EPS308101;0 SHE
+C EPS311101;0 SHE
+C EPS411101;0 SHE
+C EPS500101;0 SHE
+E 072747812470000220083 Garant, Catherine
+C EPS110212;0 SHE
+C EPS110102;0 SHE
+C EPS124101;0 SHE
+C EPS132102;0 SHE
+C EPS132212;0 SHE
+C EPS205102;0 SHE
+C EPS212102;0 SHE
+C EPS301102;0 SHE
+C EPS301213;0 SHE
+C EPS409101;0 SHE
+E 083398622605010320083 Gardner, Kevin
+C EPS125101;0 SHE
+C EPS205104;0 SHE
+C KIN212101;0 SHE
+C KIN213211;0 SHE
+C KIN213102;0 SHE
+C KIN215101;0 SHE
+C KIN215212;0 SHE
+C KIN242101;0 SHE
+C KIN302104;0 SHE
+E 071204482470000220073 Gaudet-Lavallée, Anne-Marie
+C EPD104102;0 SHE
+C EPS112102;0 SHE
+C EPS112211;0 SHE
+C EPS130101;0 SHE
+C EPS204101;0 SHE
+C EPS308101;0 SHE
+C EPS311102;0 SHE
+C EPS411101;0 SHE
+C EPS500101;0 SHE
+E 045061092470000220063 Gaudreau, Dave-Antony
+C EPS122102;0 SHE
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+E 071511642470000220073 Gaudreau, Sonia
+C EPD104102;0 SHE
+C EPS112101;0 SHE
+C EPS112211;0 SHE
+C EPS122101;0 SHE
+C EPS204101;0 SHE
+C EPS308102;0 SHE
+C EPS311101;0 SHE
+C EPS411101;0 SHE
+C EPS500102;0 SHE
+E 056618752470000220053 Gaudreault, Nicholas
+C EPS211101;0 SHE
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+E 083410102470000220083 Gaulin, Bruno
+C EPS110212;0 SHE
+C EPS110102;0 SHE
+C EPS124101;0 SHE
+C EPS132101;0 SHE
+C EPS132212;0 SHE
+C EPS205102;0 SHE
+C EPS212102;0 SHE
+C EPS301102;0 SHE
+C EPS301213;0 SHE
+C EPS409101;0 SHE
+E 044509352605000320061 Gauthier, Audray
+C KIN219102;0 SHE
+C KIN234101;0 SHE
+C KIN238102;0 SHE
+C KIN300101;0 SHE
+C KIN314101;0 SHE
+E 068139232470000220063 Gauthier, Jean-Sébastien
+C EPS144101;0 SHE
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS214101;0 SHE
+C EPS501102;0 SHE
+C KIN242103;0 SHE
+C KIN243101;0 SHE
+E 083102229P10000120091 Gauthier, Lucie
+C EPS132214;0 SHE
+C EPS132101;0 SHE
+C EPS205103;0 SHE
+C KIN213213;0 SHE
+C KIN213102;0 SHE
+C KIN215101;0 SHE
+C KIN215211;0 SHE
+C KIN242101;0 SHE
+C KIN302102;0 SHE
+E 056395702470000220053 Gauthier, Marie-Eve
+C EPS211101;0 SHE
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+E 055930202470000220053 Gendron, Guillaume
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+C KIN242102;0 SHE
+E 045363272470000220053 Gingras, Lysianne
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+E 083689649P10000120091 Gingras, Michaël
+C EPS110212;0 SHE
+C EPS110101;0 SHE
+C EPS122102;0 SHE
+C EPS132101;0 SHE
+C EPS132214;0 SHE
+C EPS205102;0 SHE
+C EPS212102;0 SHE
+C EPS301102;0 SHE
+C EPS301211;0 SHE
+C EPS409101;0 SHE
+E 068194642470000220063 Gingras, Simon
+C EPS124103;0 SHE
+C EPS146101;0 SHE
+C EPS207101;0 SHE
+C EPS213101;0 SHE
+C EPS214101;0 SHE
+C EPS501101;0 SHE
+C KIN242102;0 SHE
+C KIN243101;0 SHE
+E 068441412470000220063 Gingras, Vincent
+C EPS146101;0 SHE
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS214101;0 SHE
+C EPS501102;0 SHE
+C KIN242103;0 SHE
+E 056251932470000220053 Girard, Claude
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+E 056418432470000220053 Giroux, Michael
+C EPS211101;0 SHE
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+E 068020892470000220081 Glaude, Véronique
+C EPD104102;0 SHE
+C EPS204102;0 SHE
+C EPS308102;0 SHE
+C EPS311101;0 SHE
+C EPS411101;0 SHE
+C EPS500102;0 SHE
+E 083266342605000320083 Godin-Bergeron, Patricia
+C EPS130102;0 SHE
+C EPS205103;0 SHE
+C KIN212102;0 SHE
+C KIN213212;0 SHE
+C KIN213102;0 SHE
+C KIN215101;0 SHE
+C KIN215211;0 SHE
+C KIN242102;0 SHE
+C KIN302102;0 SHE
+E 056211242470000220053 Gosselin, Jean-François
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+E 083247432605010320083 Gosselin, Stéphanie
+C EPS124104;0 SHE
+C EPS205104;0 SHE
+C KIN212102;0 SHE
+C KIN213213;0 SHE
+C KIN213101;0 SHE
+C KIN215102;0 SHE
+C KIN215211;0 SHE
+C KIN242103;0 SHE
+C KIN302104;0 SHE
+E 083780702605000320083 Gosselin Poisson, Joseanne
+C EPS124104;0 SHE
+C EPS205103;0 SHE
+C KIN123101;0 SHE
+C KIN212101;0 SHE
+C KIN213212;0 SHE
+C KIN213102;0 SHE
+C KIN215101;0 SHE
+C KIN215212;0 SHE
+C KIN242102;0 SHE
+C KIN302103;0 SHE
+E 083731822470000220083 Goulet, Christina
+C EPD104103;0 SHE
+C EPS110102;0 SHE
+C EPS110212;0 SHE
+C EPS124101;0 SHE
+C EPS205102;0 SHE
+C EPS212102;0 SHE
+C EPS301102;0 SHE
+C EPS301214;0 SHE
+C EPS409101;0 SHE
+E 067949352470000220063 Grand Maison, Sara
+C EPS144101;0 SHE
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS214101;0 SHE
+C EPS501102;0 SHE
+C KIN242103;0 SHE
+C KIN243101;0 SHE
+E 083422792605010320083 Grenier, Marie-Christine
+C EPD104103;0 SHE
+C EPS205104;0 SHE
+C KIN212102;0 SHE
+C KIN213211;0 SHE
+C KIN213101;0 SHE
+C KIN215102;0 SHE
+C KIN215211;0 SHE
+C KIN242103;0 SHE
+C KIN302101;0 SHE
+E 083507402470000220083 Grenier, Odrée
+C EPS110213;0 SHE
+C EPS110101;0 SHE
+C EPS124102;0 SHE
+C EPS132101;0 SHE
+C EPS132212;0 SHE
+C EPS205101;0 SHE
+C EPS212101;0 SHE
+C EPS301101;0 SHE
+C EPS301212;0 SHE
+C EPS409101;0 SHE
+E 055917362605000320063 Grégoire, Charles
+C KIN212102;0 SHE
+C KIN219102;0 SHE
+C KIN234101;0 SHE
+C KIN238102;0 SHE
+C KIN300101;0 SHE
+C KIN314101;0 SHE
+E 083877472470000220083 Guay, Israël
+C EPS110211;0 SHE
+C EPS110101;0 SHE
+C EPS122101;0 SHE
+C EPS124103;0 SHE
+C EPS205101;0 SHE
+C EPS212101;0 SHE
+C EPS301102;0 SHE
+C EPS301214;0 SHE
+C EPS409101;0 SHE
+E 044737782605010320063 Guevremont, Marc
+C EPS143101;0 SHE
+C KIN212101;0 SHE
+C KIN219101;0 SHE
+C KIN234101;0 SHE
+C KIN238101;0 SHE
+C KIN353101;0 SHE
+E 056539372470000220083 Guilbault, Pascal
+C EPS112213;0 SHE
+C EPS112102;0 SHE
+C EPS204102;0 SHE
+C EPS308102;0 SHE
+C EPS311102;0 SHE
+C EPS409101;0 SHE
+C EPS411101;0 SHE
+C EPS500102;0 SHE
+E 083830822470000220083 Guillemette, Jessyca
+C EPS110211;0 SHE
+C EPS110102;0 SHE
+C EPS122101;0 SHE
+C EPS124101;0 SHE
+C EPS132213;0 SHE
+C EPS132102;0 SHE
+C EPS205101;0 SHE
+C EPS212102;0 SHE
+C EPS301102;0 SHE
+C EPS301215;0 SHE
+C EPS409101;0 SHE
+E 045168112470000220061 Guénette, Mathieu
+C EPS122102;0 SHE
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+E 083531862470000220083 Hamann, Alexandre
+C EPS110212;0 SHE
+C EPS110101;0 SHE
+C EPS124102;0 SHE
+C EPS132102;0 SHE
+C EPS132211;0 SHE
+C EPS205102;0 SHE
+C EPS212102;0 SHE
+C EPS301101;0 SHE
+C EPS301213;0 SHE
+C EPS409101;0 SHE
+E 056585762470000220053 Hart, Jonathan
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+E 068013202605000320063 Henry, Justine
+C KIN219102;0 SHE
+C KIN234101;0 SHE
+C KIN238102;0 SHE
+C KIN300101;0 SHE
+C KIN314101;0 SHE
+E 071417002470000220073 Houde, Cynthia
+C EPK306102;0 SHE
+C EPS110101;0 SHE
+C EPS110212;0 SHE
+C EPS132214;0 SHE
+C EPS132102;0 SHE
+C EPS146101;0 SHE
+C EPS207101;0 SHE
+C EPS214101;0 SHE
+C EPS501102;0 SHE
+E 083525792470000220083 Hudon, Joëlle
+C EPS110213;0 SHE
+C EPS110102;0 SHE
+C EPS124101;0 SHE
+C EPS132101;0 SHE
+C EPS132211;0 SHE
+C EPS205101;0 SHE
+C EPS212101;0 SHE
+C EPS301102;0 SHE
+C EPS301213;0 SHE
+C EPS409101;0 SHE
+E 071812842470000220073 Hunter, Rémi
+C EPD104101;0 SHE
+C EPS112102;0 SHE
+C EPS112213;0 SHE
+C EPS204101;0 SHE
+C EPS308102;0 SHE
+C EPS311102;0 SHE
+C EPS411101;0 SHE
+C EPS500101;0 SHE
+E 068887819P10000120091 Hébert, Marc-Antoine
+C EPS110212;0 SHE
+C EPS110101;0 SHE
+C EPS122102;0 SHE
+C EPS132214;0 SHE
+C EPS132101;0 SHE
+C EPS205102;0 SHE
+C EPS301102;0 SHE
+C EPS301211;0 SHE
+C EPS409101;0 SHE
+E 068112662605000320063 Jacques, Audrey
+C EPS122101;0 SHE
+C KIN219102;0 SHE
+C KIN234101;0 SHE
+C KIN238102;0 SHE
+C KIN300101;0 SHE
+C KIN314101;0 SHE
+E 044929532470000220061 Jacques, Louis-Bernard
+C EPS211101;0 SHE
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+E 071859942470000220073 Janelle, Jean-François
+C EPD104102;0 SHE
+C EPS112101;0 SHE
+C EPS112211;0 SHE
+C EPS130101;0 SHE
+C EPS204102;0 SHE
+C EPS308101;0 SHE
+C EPS311101;0 SHE
+C EPS411101;0 SHE
+C EPS500101;0 SHE
+E 071204842470000220073 Jolicoeur-Lalonde, Vicky
+C EPD104101;0 SHE
+C EPS112102;0 SHE
+C EPS112213;0 SHE
+C EPS204101;0 SHE
+C EPS308102;0 SHE
+C EPS311102;0 SHE
+C EPS411101;0 SHE
+C EPS500102;0 SHE
+E 056855552470000220053 Julien, Samuel
+C EPS211101;0 SHE
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+C KIN242102;0 SHE
+E 083568602605010320083 Karahasanovic, Adnan
+C EPS124104;0 SHE
+C EPS205104;0 SHE
+C KIN212102;0 SHE
+C KIN213213;0 SHE
+C KIN213101;0 SHE
+C KIN215102;0 SHE
+C KIN215211;0 SHE
+C KIN242103;0 SHE
+C KIN302104;0 SHE
+E 083433122470000220083 L. Beaudoin, Sabrina
+C EPD104103;0 SHE
+C EPS110102;0 SHE
+C EPS110211;0 SHE
+C EPS124101;0 SHE
+C EPS205102;0 SHE
+C EPS212102;0 SHE
+C EPS301102;0 SHE
+C EPS301215;0 SHE
+C EPS409101;0 SHE
+E 068311282470000220063 Labine-Labonté, Alexandre
+C EPS143101;0 SHE
+C EPS144101;0 SHE
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS214101;0 SHE
+C EPS501101;0 SHE
+C KIN242103;0 SHE
+C KIN243101;0 SHE
+E 056277079P10000120091 Labrosse, Claudia
+C KIN353101;0 SHE
+E 071846462470000220073 Lacasse, Simon
+C EPD104101;0 SHE
+C EPS112102;0 SHE
+C EPS112213;0 SHE
+C EPS204101;0 SHE
+C EPS308102;0 SHE
+C EPS311102;0 SHE
+C EPS411101;0 SHE
+C EPS500101;0 SHE
+E 071504502470000220073 Lacerte, Guillaume
+C EPS112213;0 SHE
+C EPS112101;0 SHE
+C EPS125102;0 SHE
+C EPS204101;0 SHE
+C EPS308101;0 SHE
+C EPS311101;0 SHE
+C EPS411101;0 SHE
+C EPS500102;0 SHE
+E 083852772605000320083 Lachance, Virginie
+C EPS205103;0 SHE
+C KIN123101;0 SHE
+C KIN212101;0 SHE
+C KIN213211;0 SHE
+C KIN213101;0 SHE
+C KIN215102;0 SHE
+C KIN215212;0 SHE
+C KIN242102;0 SHE
+C KIN302103;0 SHE
+E 056301502470000220053 Lachapelle, Maude
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+E 083636102470000220083 Lacroix, Andréanne
+C EPS110211;0 SHE
+C EPS110102;0 SHE
+C EPS122101;0 SHE
+C EPS124101;0 SHE
+C EPS205102;0 SHE
+C EPS212102;0 SHE
+C EPS301102;0 SHE
+C EPS301216;0 SHE
+C EPS409101;0 SHE
+E 083506242605000320083 Laflamme, Marie
+C EPS124104;0 SHE
+C EPS205104;0 SHE
+C KIN212101;0 SHE
+C KIN213213;0 SHE
+C KIN213102;0 SHE
+C KIN215101;0 SHE
+C KIN215212;0 SHE
+C KIN242102;0 SHE
+C KIN302101;0 SHE
+E 045322502470000220043 Lafontaine Paul, Georges
+C EPS122103;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+E 068849542470000220073 Lafrance, Simon
+C EPS112212;0 SHE
+C EPS112101;0 SHE
+C EPS125101;0 SHE
+C EPS130101;0 SHE
+C EPS204102;0 SHE
+C EPS311101;0 SHE
+C EPS411101;0 SHE
+C EPS500102;0 SHE
+E 057236112605000320073 Lajeunesse, Céline
+C EPS122103;0 SHE
+C KIN219101;0 SHE
+C KIN234101;0 SHE
+C KIN238101;0 SHE
+C KIN300101;0 SHE
+C KIN314101;0 SHE
+E 083955879P10000120091 Laliberté, Julien
+C EPS205100;0 SHE
+E 083746352605000320083 Laliberté, Lydie-Anne
+C EPS124104;0 SHE
+C EPS205103;0 SHE
+C KIN212101;0 SHE
+C KIN213212;0 SHE
+C KIN213102;0 SHE
+C KIN215101;0 SHE
+C KIN215212;0 SHE
+C KIN242101;0 SHE
+C KIN302103;0 SHE
+E 083506152605010320083 Lalonde, Corinne
+C EPS125102;0 SHE
+C EPS205103;0 SHE
+C KIN212102;0 SHE
+C KIN213211;0 SHE
+C KIN213101;0 SHE
+C KIN215102;0 SHE
+C KIN215211;0 SHE
+C KIN242102;0 SHE
+C KIN302102;0 SHE
+E 068281142605000320071 Lalumière, Roxanne
+C KIN124101;0 SHE
+C KIN212102;0 SHE
+C KIN219101;0 SHE
+C KIN234101;0 SHE
+C KIN238101;0 SHE
+C KIN300101;0 SHE
+E 067792482605010320063 Lambert, Patrick
+C KIN212101;0 SHE
+C KIN219102;0 SHE
+C KIN234101;0 SHE
+C KIN238102;0 SHE
+C KIN353101;0 SHE
+E 056325222470000220053 Lambert-Morin, Johannie
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+E 071600479P10000120091 Lamothe-Michaud, Pascale-Maude
+C EPS110212;0 SHE
+C EPS110102;0 SHE
+C EPS122102;0 SHE
+C EPS132101;0 SHE
+C EPS132211;0 SHE
+C EPS205102;0 SHE
+C EPS212102;0 SHE
+C EPS301101;0 SHE
+C EPS301212;0 SHE
+C EPS409101;0 SHE
+E 071518782470000220073 Landreville, Maxime
+C EPS112213;0 SHE
+C EPS112102;0 SHE
+C EPS204102;0 SHE
+C EPS308102;0 SHE
+C EPS311102;0 SHE
+C EPS411101;0 SHE
+C EPS500101;0 SHE
+E 083708262470000220083 Lanthier, Marjolaine
+C EPD104101;0 SHE
+C EPS110101;0 SHE
+C EPS110211;0 SHE
+C EPS124103;0 SHE
+C EPS205101;0 SHE
+C EPS212101;0 SHE
+C EPS301102;0 SHE
+C EPS301214;0 SHE
+C EPS409101;0 SHE
+E 056874832470000220063 Lapierre, Jérôme
+C EPS206101;0 SHE
+C EPS211101;0 SHE
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+E 083911809P10000120091 Laplante, Philippe
+C EPS124104;0 SHE
+C EPS205103;0 SHE
+C KIN212101;0 SHE
+C KIN213212;0 SHE
+C KIN213102;0 SHE
+C KIN215101;0 SHE
+C KIN215212;0 SHE
+C KIN242101;0 SHE
+C KIN302103;0 SHE
+E 068001432470000220063 Lapointe, Jasmin
+C EPS143101;0 SHE
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS214101;0 SHE
+C EPS501101;0 SHE
+C KIN242101;0 SHE
+E 072147842470000220073 Largie, Marc
+C EPS112211;0 SHE
+C EPS112101;0 SHE
+C EPS204102;0 SHE
+C EPS308101;0 SHE
+C EPS311101;0 SHE
+C EPS411101;0 SHE
+C EPS500101;0 SHE
+E 068085372470000220063 Larivée, Jean-François
+C EPS143101;0 SHE
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS214101;0 SHE
+C EPS501101;0 SHE
+C KIN242103;0 SHE
+C KIN243101;0 SHE
+E 068336529P10000120091 Larochelle, Nicolas
+C EPS125102;0 SHE
+C EPS205103;0 SHE
+C KIN212102;0 SHE
+C KIN213212;0 SHE
+C KIN213101;0 SHE
+C KIN215102;0 SHE
+C KIN215211;0 SHE
+C KIN242102;0 SHE
+C KIN302102;0 SHE
+E 084256342605000320083 Larose, Annie
+C EPS130102;0 SHE
+C EPS205103;0 SHE
+C KIN212102;0 SHE
+C KIN213213;0 SHE
+C KIN213102;0 SHE
+C KIN215101;0 SHE
+C KIN215211;0 SHE
+C KIN242102;0 SHE
+C KIN302102;0 SHE
+E 068440072470000220063 Laurendeau, Nancy
+C EPS143101;0 SHE
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS214101;0 SHE
+C EPS501101;0 SHE
+C KIN242103;0 SHE
+E 068204982470000220081 Lauzier, Hélène
+C EPS110213;0 SHE
+C EPS110101;0 SHE
+C EPS132101;0 SHE
+C EPS132212;0 SHE
+C EPS143101;0 SHE
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS501101;0 SHE
+C KIN242103;0 SHE
+E 071856182470000220073 Lauzon, Audrey
+C EPD104101;0 SHE
+C EPS112102;0 SHE
+C EPS112213;0 SHE
+C EPS204101;0 SHE
+C EPS308102;0 SHE
+C EPS311102;0 SHE
+C EPS411101;0 SHE
+C EPS500102;0 SHE
+E 056643462470000220053 Lauzon, Jean Sébastien
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+E 056542772470000220053 Lavallée, Jean-Dominic
+C EPS122102;0 SHE
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+E 083692862470000220091 Lavery-Lebeau, Simon
+C EPS110213;0 SHE
+C EPS110102;0 SHE
+C EPS122101;0 SHE
+C EPS124103;0 SHE
+C EPS205101;0 SHE
+C EPS212101;0 SHE
+C EPS301102;0 SHE
+C EPS301216;0 SHE
+C EPS409101;0 SHE
+E 071593802605000320083 Lavigne, Dominique
+C EPS205103;0 SHE
+C KIN123101;0 SHE
+C KIN212101;0 SHE
+C KIN213213;0 SHE
+C KIN213101;0 SHE
+C KIN215102;0 SHE
+C KIN215212;0 SHE
+C KIN242102;0 SHE
+C KIN302102;0 SHE
+E 056494262470000220053 Lavoie, David
+C EPS211101;0 SHE
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+E 083880872470000220083 Lavoie, José
+C EPS110212;0 SHE
+C EPS110101;0 SHE
+C EPS122101;0 SHE
+C EPS132211;0 SHE
+C EPS132101;0 SHE
+C EPS205102;0 SHE
+C EPS212102;0 SHE
+C EPS311101;0 SHE
+E 083557812605010320083 Lavoie-Bouliane, Gabriel
+C EPS130102;0 SHE
+C EPS205104;0 SHE
+C KIN212101;0 SHE
+C KIN213211;0 SHE
+C KIN213102;0 SHE
+C KIN215101;0 SHE
+C KIN215212;0 SHE
+C KIN242101;0 SHE
+C KIN302104;0 SHE
+E 068043902605000320063 Le Bel, Lysandre
+C KIN123101;0 SHE
+C KIN219102;0 SHE
+C KIN234101;0 SHE
+C KIN238102;0 SHE
+C KIN300101;0 SHE
+C KIN314101;0 SHE
+E 068225842470000220063 Lebeau, Édith
+C EPS132212;0 SHE
+C EPS132102;0 SHE
+C EPS144101;0 SHE
+C EPS207101;0 SHE
+C EPS213101;0 SHE
+C EPS214101;0 SHE
+C EPS501102;0 SHE
+C KIN242101;0 SHE
+E 056647562470000220053 Lebel-Lapointe, Jérôme
+C EPS211101;0 SHE
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+E 067545132605000320063 Leblanc, Guillaume
+C EPS132213;0 SHE
+C EPS132102;0 SHE
+C KIN219101;0 SHE
+C KIN234101;0 SHE
+C KIN238101;0 SHE
+C KIN300101;0 SHE
+C KIN314101;0 SHE
+E 071901302470000220073 Leblanc, Julie
+C EPS112212;0 SHE
+C EPS112101;0 SHE
+C EPS122102;0 SHE
+C EPS204102;0 SHE
+C EPS308101;0 SHE
+C EPS311101;0 SHE
+C EPS411101;0 SHE
+C EPS500102;0 SHE
+E 068340542605000320063 Leblond, Cathy
+C EPS122101;0 SHE
+C EPS130102;0 SHE
+C KIN234101;0 SHE
+C KIN238101;0 SHE
+C KIN300101;0 SHE
+C KIN314101;0 SHE
+E 033368202605010320063 Leclerc, Jessica
+C KIN234101;0 SHE
+E 083400572470000220083 Leclerc Chouinard, Hugues
+C EPS110212;0 SHE
+C EPS110102;0 SHE
+C EPS124101;0 SHE
+C EPS132101;0 SHE
+C EPS132214;0 SHE
+C EPS205102;0 SHE
+C EPS212102;0 SHE
+C EPS301102;0 SHE
+C EPS301211;0 SHE
+C EPS409101;0 SHE
+E 083676892605010320083 Lecomte, Josianne
+C EPS205103;0 SHE
+C KIN212101;0 SHE
+C KIN213102;0 SHE
+C KIN213212;0 SHE
+C KIN215101;0 SHE
+C KIN215212;0 SHE
+C KIN242101;0 SHE
+C KIN302102;0 SHE
+E 068159582605000320063 Ledoux, Geneviève
+C KIN124101;0 SHE
+C KIN212102;0 SHE
+C KIN219101;0 SHE
+C KIN234101;0 SHE
+C KIN238102;0 SHE
+C KIN300101;0 SHE
+C KIN314101;0 SHE
+E 083599832605010320083 Leduc, Dany
+C EPS125101;0 SHE
+C EPS205104;0 SHE
+C KIN212101;0 SHE
+C KIN213211;0 SHE
+C KIN213102;0 SHE
+C KIN215101;0 SHE
+C KIN215212;0 SHE
+C KIN242101;0 SHE
+C KIN302101;0 SHE
+E 056617952470000220053 Lefebvre, Jean
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+E 083195539P10000120091 Lefebvre, Philippe
+C EPS110213;0 SHE
+C EPS110102;0 SHE
+C EPS122101;0 SHE
+C EPS132102;0 SHE
+C EPS132211;0 SHE
+C EPS205101;0 SHE
+C EPS212101;0 SHE
+C EPS301101;0 SHE
+C EPS301213;0 SHE
+C EPS409101;0 SHE
+E 056385802605010320063 Lefebvre, Sylvain
+C EPS130102;0 SHE
+C KIN219102;0 SHE
+C KIN234101;0 SHE
+C KIN238102;0 SHE
+C KIN353101;0 SHE
+E 067959162605000320063 Lefebvre, Valérie
+C EPS122101;0 SHE
+C KIN219101;0 SHE
+C KIN234101;0 SHE
+C KIN238102;0 SHE
+C KIN300101;0 SHE
+E 083879342605000320083 Legault, Nicolas
+C EPS122101;0 SHE
+C EPS125102;0 SHE
+C EPS130102;0 SHE
+C EPS205103;0 SHE
+C KIN212102;0 SHE
+C KIN213102;0 SHE
+C KIN213211;0 SHE
+C KIN215101;0 SHE
+C KIN215211;0 SHE
+C KIN242102;0 SHE
+C KIN302102;0 SHE
+E 045406242470000220061 Lejour, Gabriel
+C EPS211101;0 SHE
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+E 056547672470000220053 Lemaire, Alicia
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+E 067530512605010320063 Lemay, Véronique
+C KIN124101;0 SHE
+C KIN212101;0 SHE
+C KIN219102;0 SHE
+C KIN234101;0 SHE
+C KIN238102;0 SHE
+C KIN353101;0 SHE
+E 083275719P10000120091 Lemay-Gaudet, Adam
+C EPS110213;0 SHE
+C EPS110101;0 SHE
+C EPS122101;0 SHE
+C EPS132101;0 SHE
+C EPS132212;0 SHE
+C EPS205101;0 SHE
+C EPS212101;0 SHE
+C EPS301102;0 SHE
+C EPS301213;0 SHE
+C EPS409101;0 SHE
+E 083838212470000220083 Lemelin, Gabriel
+C EPS110212;0 SHE
+C EPS110101;0 SHE
+C EPS124102;0 SHE
+C EPS132102;0 SHE
+C EPS132213;0 SHE
+C EPS205102;0 SHE
+C EPS212102;0 SHE
+C EPS301101;0 SHE
+C EPS301215;0 SHE
+C EPS409101;0 SHE
+E 067883902605000320063 Lemieux, Benoît
+C EPS130102;0 SHE
+C KIN219102;0 SHE
+C KIN234101;0 SHE
+C KIN238102;0 SHE
+C KIN300101;0 SHE
+C KIN314101;0 SHE
+E 067855432470000220063 Lemieux, Jean-François
+C EPS144101;0 SHE
+C EPS207101;0 SHE
+C EPS213101;0 SHE
+C EPS214101;0 SHE
+C EPS501102;0 SHE
+C KIN242102;0 SHE
+C KIN243101;0 SHE
+E 083775522605000320083 Lemieux-Girard, Justine
+C EPS205104;0 SHE
+C KIN123101;0 SHE
+C KIN212101;0 SHE
+C KIN213211;0 SHE
+C KIN213102;0 SHE
+C KIN215101;0 SHE
+C KIN215212;0 SHE
+C KIN242103;0 SHE
+C KIN302101;0 SHE
+E 083406722470000220083 Lequin Doré, Maxime
+C EPS110212;0 SHE
+C EPS110101;0 SHE
+C EPS124102;0 SHE
+C EPS132102;0 SHE
+C EPS132214;0 SHE
+C EPS205102;0 SHE
+C EPS212102;0 SHE
+C EPS301101;0 SHE
+C EPS301212;0 SHE
+C EPS409101;0 SHE
+E 067950602470000220063 Leroux, Hugo
+C EPS143101;0 SHE
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS214101;0 SHE
+C EPS501101;0 SHE
+C KIN242101;0 SHE
+C KIN243101;0 SHE
+E 071577102470000220073 Lessard, Lisa-Anne
+C EPD104101;0 SHE
+C EPS112101;0 SHE
+C EPS112212;0 SHE
+C EPS125101;0 SHE
+C EPS204101;0 SHE
+C EPS308102;0 SHE
+C EPS311101;0 SHE
+C EPS411101;0 SHE
+C EPS500101;0 SHE
+E 083575479P10000120091 Lessard, Pierre-Luc
+C EPS110213;0 SHE
+C EPS110101;0 SHE
+C EPS132102;0 SHE
+C EPS132212;0 SHE
+C EPS205101;0 SHE
+C EPS212101;0 SHE
+C EPS301102;0 SHE
+C EPS301213;0 SHE
+C EPS409101;0 SHE
+E 056454112470000220053 Lessard, Thomas
+C EPS211101;0 SHE
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+E 067784272605000320063 Letendre, Claudia
+C EPS124104;0 SHE
+C KIN219101;0 SHE
+C KIN234101;0 SHE
+C KIN238101;0 SHE
+C KIN300101;0 SHE
+C KIN314101;0 SHE
+E 083556562605010320083 Levasseur Demarbre, Andrew
+C EPS125101;0 SHE
+C EPS205104;0 SHE
+C KIN212102;0 SHE
+C KIN213211;0 SHE
+C KIN213101;0 SHE
+C KIN215102;0 SHE
+C KIN215211;0 SHE
+C KIN242102;0 SHE
+C KIN302101;0 SHE
+E 056543662470000220053 Lupien, David
+C EPS211101;0 SHE
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+E 083792662605000320083 Lussier, Audrey
+C EPS205104;0 SHE
+C KIN124101;0 SHE
+C KIN212101;0 SHE
+C KIN213213;0 SHE
+C KIN213102;0 SHE
+C KIN215101;0 SHE
+C KIN215212;0 SHE
+C KIN242101;0 SHE
+C KIN302104;0 SHE
+E 022236682605010320083 Lussier, Benoit
+C EPS122102;0 SHE
+C EPS205104;0 SHE
+C KIN212102;0 SHE
+C KIN213212;0 SHE
+C KIN213101;0 SHE
+C KIN215102;0 SHE
+C KIN215211;0 SHE
+C KIN242102;0 SHE
+C KIN302101;0 SHE
+E 033747702470000220083 Lussier-Beaulac, Vincent
+C EPS211101;0 SHE
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+E 083974249P10000120091 Lépinay, Maxim
+C EPS110211;0 SHE
+C EPS110101;0 SHE
+C EPS122103;0 SHE
+C EPS124103;0 SHE
+C EPS132213;0 SHE
+C EPS132101;0 SHE
+C EPS205101;0 SHE
+C EPS212101;0 SHE
+C EPS301102;0 SHE
+C EPS301216;0 SHE
+C EPS409101;0 SHE
+E 056847252470000220053 Lépine, Véronique
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+E 068124522605000320063 Létourneau, François
+C KIN212102;0 SHE
+C KIN219102;0 SHE
+C KIN234101;0 SHE
+C KIN238102;0 SHE
+C KIN300101;0 SHE
+C KIN314101;0 SHE
+E 083382662470000220083 Lévesque, Christine
+C EPD104103;0 SHE
+C EPS110101;0 SHE
+C EPS110213;0 SHE
+C EPS124102;0 SHE
+C EPS205102;0 SHE
+C EPS212102;0 SHE
+C EPS301101;0 SHE
+C EPS301215;0 SHE
+C EPS409101;0 SHE
+E 056315052470000220053 Lévesque, Éric
+C EPS211101;0 SHE
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+E 083463822470000220083 M. Lengacher, David
+C EPD104103;0 SHE
+C EPS110101;0 SHE
+C EPS110212;0 SHE
+C EPS124102;0 SHE
+C EPS205102;0 SHE
+C EPS212102;0 SHE
+C EPS301101;0 SHE
+C EPS301213;0 SHE
+C EPS409101;0 SHE
+E 033891492470000220082 Mafu, Ken
+C EPS112211;0 SHE
+C EPS112101;0 SHE
+C EPS143101;0 SHE
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS213101;0 SHE
+C EPS308102;0 SHE
+E 067834022470000220063 Maheu-Bourassa, Marie-Pier
+C EPS143101;0 SHE
+C EPS207101;0 SHE
+C EPS213101;0 SHE
+C EPS214101;0 SHE
+C EPS501101;0 SHE
+C KIN242103;0 SHE
+E 068590362470000220063 Maheux, Sébastien
+C EPS501102;0 SHE
+E 067820922470000220063 Mak, Marie-Christine
+C EPS132212;0 SHE
+C EPS132101;0 SHE
+C EPS143101;0 SHE
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS501101;0 SHE
+C KIN242103;0 SHE
+C KIN302101;0 SHE
+E 056604752470000220053 Malone, Kimberly
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+E 083671082470000220083 Marceau, Valérie
+C EPS110211;0 SHE
+C EPS110102;0 SHE
+C EPS122102;0 SHE
+C EPS124103;0 SHE
+C EPS205101;0 SHE
+C EPS212101;0 SHE
+C EPS301101;0 SHE
+C EPS301214;0 SHE
+C EPS409101;0 SHE
+E 083524092470000220083 Marcotte, Virginie
+C EPS110212;0 SHE
+C EPS110101;0 SHE
+C EPS124102;0 SHE
+C EPS132102;0 SHE
+C EPS132212;0 SHE
+C EPS205102;0 SHE
+C EPS212102;0 SHE
+C EPS301101;0 SHE
+C EPS301212;0 SHE
+C EPS409101;0 SHE
+E 072271462605000320083 Marcoux, Marie-Louise
+C EPD104102;0 SHE
+C EPS205103;0 SHE
+C KIN212102;0 SHE
+C KIN213211;0 SHE
+C KIN213101;0 SHE
+C KIN215102;0 SHE
+C KIN215211;0 SHE
+C KIN242102;0 SHE
+C KIN302103;0 SHE
+E 083298829P10000120091 Marier, Alexy
+C EPS122101;0 SHE
+C EPS205104;0 SHE
+C KIN212101;0 SHE
+C KIN213213;0 SHE
+C KIN213102;0 SHE
+C KIN215101;0 SHE
+C KIN215212;0 SHE
+C KIN242103;0 SHE
+C KIN302101;0 SHE
+E 068348932470000220063 Marion, Alexandre
+C EPS143101;0 SHE
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS214101;0 SHE
+C EPS501101;0 SHE
+C KIN242103;0 SHE
+C KIN243101;0 SHE
+E 083110169P10000120091 Marquis, Jean-François
+C EPS110211;0 SHE
+C EPS110102;0 SHE
+C EPS122103;0 SHE
+C EPS124102;0 SHE
+C EPS132213;0 SHE
+C EPS132102;0 SHE
+C EPS205101;0 SHE
+C EPS212101;0 SHE
+C EPS301101;0 SHE
+C EPS301215;0 SHE
+C EPS409101;0 SHE
+E 083778562605000320083 Marquis, Laurence
+C EPS124104;0 SHE
+C EPS205103;0 SHE
+C KIN212102;0 SHE
+C KIN213212;0 SHE
+C KIN213101;0 SHE
+C KIN215102;0 SHE
+C KIN215211;0 SHE
+C KIN242102;0 SHE
+C KIN302103;0 SHE
+E 068422692605000320063 Marszalik, Beata
+C EPS124104;0 SHE
+C KIN219102;0 SHE
+C KIN234101;0 SHE
+C KIN238101;0 SHE
+C KIN300101;0 SHE
+C KIN314101;0 SHE
+E 068420722605000320063 Marszalik, Magdalena
+C EPS124104;0 SHE
+C KIN219102;0 SHE
+C KIN234101;0 SHE
+C KIN238101;0 SHE
+C KIN300101;0 SHE
+C KIN314101;0 SHE
+E 083947112470000220083 Martel, Mathieu
+C EPS110212;0 SHE
+C EPS110102;0 SHE
+C EPS124102;0 SHE
+C EPS132102;0 SHE
+C EPS132212;0 SHE
+C EPS205102;0 SHE
+C EPS212102;0 SHE
+C EPS301101;0 SHE
+C EPS301213;0 SHE
+C EPS409101;0 SHE
+E 068467822605000320063 Martin-Lacasse, Joannie
+C KIN212102;0 SHE
+C KIN219101;0 SHE
+C KIN234101;0 SHE
+C KIN238101;0 SHE
+C KIN300101;0 SHE
+C KIN314101;0 SHE
+E 056491222470000220063 Massé, Guillaume
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+E 056554452470000220053 Massé, Marie-Eve
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+E 083737162470000220083 Massé, Éliane
+C EPS110211;0 SHE
+C EPS110101;0 SHE
+C EPS124103;0 SHE
+C EPS132102;0 SHE
+C EPS132213;0 SHE
+C EPS205101;0 SHE
+C EPS212101;0 SHE
+C EPS301102;0 SHE
+C EPS301214;0 SHE
+C EPS409101;0 SHE
+E 083576272605000320083 Mathieu, Sarah
+C EPS122101;0 SHE
+C EPS205103;0 SHE
+C KIN212101;0 SHE
+C KIN213211;0 SHE
+C KIN213102;0 SHE
+C KIN215101;0 SHE
+C KIN215212;0 SHE
+C KIN242101;0 SHE
+C KIN302103;0 SHE
+E 083574592470000220083 Mathieu, Étienne
+C EPS110213;0 SHE
+C EPS110102;0 SHE
+C EPS124102;0 SHE
+C EPS132101;0 SHE
+C EPS132211;0 SHE
+C EPS205101;0 SHE
+C EPS212101;0 SHE
+C EPS301101;0 SHE
+C EPS301213;0 SHE
+C EPS409101;0 SHE
+E 056646212470000220081 Mercier, Laura
+C EPD104102;0 SHE
+C EPS112102;0 SHE
+C EPS112211;0 SHE
+C EPS130101;0 SHE
+C EPS204102;0 SHE
+C EPS308101;0 SHE
+C EPS311102;0 SHE
+C EPS411101;0 SHE
+C EPS500102;0 SHE
+E 071846552470000220073 Mercier, Raymond
+C EPD104102;0 SHE
+C EPS112102;0 SHE
+C EPS112211;0 SHE
+C EPS130101;0 SHE
+C EPS204101;0 SHE
+C EPS308101;0 SHE
+C EPS311102;0 SHE
+C EPS411101;0 SHE
+C EPS500102;0 SHE
+E 068304322470000220063 Meunier, Sophie
+C EPS132214;0 SHE
+C EPS132101;0 SHE
+C EPS146101;0 SHE
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS214101;0 SHE
+C EPS501102;0 SHE
+C KIN242103;0 SHE
+E 068023652470000220063 Michaud, Angèle
+C EPS132211;0 SHE
+C EPS132101;0 SHE
+C EPS144101;0 SHE
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS214101;0 SHE
+C EPS501102;0 SHE
+C KIN242103;0 SHE
+E 083546202470000220083 Michaud, Lisa
+C EPS110211;0 SHE
+C EPS110102;0 SHE
+C EPS124101;0 SHE
+C EPS132101;0 SHE
+C EPS132212;0 SHE
+C EPS205102;0 SHE
+C EPS212102;0 SHE
+C EPS301102;0 SHE
+C EPS301211;0 SHE
+C EPS409101;0 SHE
+E 084029449P10000120091 Milani, Sabrina
+C EPD104103;0 SHE
+C EPS110102;0 SHE
+C EPS110212;0 SHE
+C EPS122103;0 SHE
+C EPS124104;0 SHE
+C EPS132101;0 SHE
+C EPS132212;0 SHE
+C EPS205104;0 SHE
+C EPS212101;0 SHE
+C EPS301101;0 SHE
+C EPS301212;0 SHE
+E 056392222470000220053 Minville, Simon
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+E 942629342470000220071 Mohammed, Amjad
+C EPS407101;0 SHE
+C EPS501102;0 SHE
+C EPS503101;0 SHE
+E 056474002470000220053 Moncion, Joanie
+C EPS211101;0 SHE
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+E 056694672470000220053 Mongeon, Mylène
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+E 071844142605010320073 Montminy, Martin
+C EPS124104;0 SHE
+C KIN219102;0 SHE
+C KIN234101;0 SHE
+C KIN238101;0 SHE
+C KIN353101;0 SHE
+E 022445472470000220053 Montreuil Jean-Pois, Emmanuel
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+E 083589932470000220083 Morin, Carl
+C EPS110213;0 SHE
+C EPS110102;0 SHE
+C EPS122103;0 SHE
+C EPS124101;0 SHE
+C EPS205102;0 SHE
+C EPS212102;0 SHE
+C EPS301102;0 SHE
+C EPS301214;0 SHE
+C EPS409101;0 SHE
+E 071464482470000220073 Morin, Julie
+C EPS112211;0 SHE
+C EPS112102;0 SHE
+C EPS125102;0 SHE
+C EPS204102;0 SHE
+C EPS308101;0 SHE
+C EPS311102;0 SHE
+C EPS411101;0 SHE
+C EPS500102;0 SHE
+E 083748312605010320083 Morin, Étienne
+C EPS122102;0 SHE
+C EPS124104;0 SHE
+C EPS205104;0 SHE
+C KIN212101;0 SHE
+C KIN213213;0 SHE
+C KIN213102;0 SHE
+C KIN215101;0 SHE
+C KIN215212;0 SHE
+C KIN242101;0 SHE
+C KIN302104;0 SHE
+E 083794712470000220083 Morin-Lemay, Audrey
+C EPS110213;0 SHE
+C EPS110102;0 SHE
+C EPS124103;0 SHE
+C EPS132101;0 SHE
+C EPS132212;0 SHE
+C EPS205101;0 SHE
+C EPS212101;0 SHE
+C EPS301102;0 SHE
+C EPS301213;0 SHE
+C EPS409101;0 SHE
+E 083886022470000220083 Morissette, Vicky
+C EPS110211;0 SHE
+C EPS110102;0 SHE
+C EPS124103;0 SHE
+C EPS132102;0 SHE
+C EPS132213;0 SHE
+C EPS205101;0 SHE
+C EPS212101;0 SHE
+C EPS301101;0 SHE
+C EPS301216;0 SHE
+C EPS409101;0 SHE
+E 083544162605000320083 Morvan, Marie-Pierre
+C EPD104102;0 SHE
+C EPS205103;0 SHE
+C KIN212102;0 SHE
+C KIN213212;0 SHE
+C KIN213102;0 SHE
+C KIN215101;0 SHE
+C KIN215211;0 SHE
+C KIN242102;0 SHE
+C KIN302103;0 SHE
+E 056770382470000220053 Nadeau, Véronique
+C EPS211101;0 SHE
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+E 068263852605000320063 Nadeau Leblanc, Joanie
+C EPD104101;0 SHE
+C EPS122101;0 SHE
+C KIN219102;0 SHE
+C KIN234101;0 SHE
+C KIN238102;0 SHE
+C KIN300101;0 SHE
+C KIN314101;0 SHE
+E 068348022605000320063 Ngalula Kambaji, Bilolo Yessica
+C EPS146101;0 SHE
+C KIN219101;0 SHE
+C KIN234101;0 SHE
+C KIN300101;0 SHE
+C KIN314101;0 SHE
+E 071807752470000220073 Noël, Marie-Ève
+C EPD104102;0 SHE
+C EPS112102;0 SHE
+C EPS112211;0 SHE
+C EPS130101;0 SHE
+C EPS204102;0 SHE
+C EPS308101;0 SHE
+C EPS311102;0 SHE
+C EPS411101;0 SHE
+C EPS500102;0 SHE
+E 084163059500010120091 Orlandini, Julien
+C EPS214101;0 SHE
+C KIN215102;0 SHE
+C KIN215200;0 SHE
+C KIN219101;0 SHE
+C KIN300101;0 SHE
+E 083870242605000320083 Ouellet-Demers, Anne
+C EPS122101;0 SHE
+C EPS205104;0 SHE
+C KIN123101;0 SHE
+C KIN212101;0 SHE
+C KIN213211;0 SHE
+C KIN213101;0 SHE
+C KIN215102;0 SHE
+C KIN215212;0 SHE
+C KIN242103;0 SHE
+C KIN302104;0 SHE
+E 056438502470000220053 Ouimet, Viky
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+E 071693602470000220073 P.-Beauregard, Simon
+C EPD104101;0 SHE
+C EPS112102;0 SHE
+C EPS112211;0 SHE
+C EPS204101;0 SHE
+C EPS308102;0 SHE
+C EPS311102;0 SHE
+C EPS411101;0 SHE
+C EPS500102;0 SHE
+E 083582162470000220083 Pairault, Brice
+C EPS110212;0 SHE
+C EPS110102;0 SHE
+C EPS124101;0 SHE
+C EPS132101;0 SHE
+C EPS132211;0 SHE
+C EPS205102;0 SHE
+C EPS212102;0 SHE
+C EPS301102;0 SHE
+C EPS301211;0 SHE
+C EPS409101;0 SHE
+E 072030462470000220073 Paquette, Guillaume
+C EPS112213;0 SHE
+C EPS112101;0 SHE
+C EPS125102;0 SHE
+C EPS130101;0 SHE
+C EPS204102;0 SHE
+C EPS308101;0 SHE
+C EPS311101;0 SHE
+C EPS411101;0 SHE
+C EPS500102;0 SHE
+E 056193792470000220053 Paquette, Julie
+C EPS211101;0 SHE
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+E 068140122470000220063 Paquette, Marie-Ève
+C EPS501102;0 SHE
+E 068268392605000320063 Paquette Ambroise, Hendrick
+C KIN213211;0 SHE
+C KIN213102;0 SHE
+C KIN219101;0 SHE
+C KIN234101;0 SHE
+C KIN238102;0 SHE
+C KIN300101;0 SHE
+C KIN302101;0 SHE
+C KIN314101;0 SHE
+E 067975942470000220063 Paquin, Caroline
+C EPS501102;0 SHE
+E 071682902470000220073 Pellerin, Pierre-Luc
+C EPS112212;0 SHE
+C EPS112101;0 SHE
+C EPS125101;0 SHE
+C EPS204101;0 SHE
+C EPS308102;0 SHE
+C EPS311101;0 SHE
+C EPS411101;0 SHE
+C EPS500101;0 SHE
+E 071751752470000220073 Pellerin-Chainé, Bibiane
+C EPS112212;0 SHE
+C EPS112101;0 SHE
+C EPS125101;0 SHE
+C EPS204101;0 SHE
+C EPS308102;0 SHE
+C EPS311101;0 SHE
+C EPS411101;0 SHE
+C EPS500101;0 SHE
+E 045278272470000220063 Pelletier, Annie-Claude
+C EPS211101;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+E 072445829500010120091 Perié, Camille
+C EPS212101;0 SHE
+C EPS213101;0 SHE
+C EPS301101;0 SHE
+C EPS301211;0 SHE
+C EPS308102;0 SHE
+C EPS311101;0 SHE
+E 083495112605000320083 Perreault, Claudine
+C EPD104103;0 SHE
+C EPS124104;0 SHE
+C EPS205103;0 SHE
+C KIN212101;0 SHE
+C KIN213212;0 SHE
+C KIN213102;0 SHE
+C KIN215101;0 SHE
+C KIN215212;0 SHE
+C KIN242101;0 SHE
+C KIN302103;0 SHE
+E 083541032605000320083 Perreault Ladouceur, Joëlle
+C EPS205103;0 SHE
+C KIN124101;0 SHE
+C KIN212101;0 SHE
+C KIN213213;0 SHE
+C KIN213102;0 SHE
+C KIN215101;0 SHE
+C KIN215212;0 SHE
+C KIN242101;0 SHE
+C KIN302104;0 SHE
+E 083598492470000220083 Picard-Charette, Andréanne
+C EPD104101;0 SHE
+C EPS110101;0 SHE
+C EPS110212;0 SHE
+C EPS122103;0 SHE
+C EPS205102;0 SHE
+C EPS212102;0 SHE
+C EPS301102;0 SHE
+C EPS301215;0 SHE
+C EPS409101;0 SHE
+E 056209192470000220063 Piché, Christele
+C EPS110212;0 SHE
+C EPS110101;0 SHE
+C EPS132102;0 SHE
+C EPS132211;0 SHE
+C EPS143101;0 SHE
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS214101;0 SHE
+C EPS501101;0 SHE
+C KIN242101;0 SHE
+C KIN243101;0 SHE
+E 056706962470000220053 Piché, Steeve
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+E 068310572470000220081 Pilotto, Vincent
+C EPS112211;0 SHE
+C EPS112102;0 SHE
+C EPS125101;0 SHE
+C EPS204102;0 SHE
+C EPS308102;0 SHE
+C EPS311102;0 SHE
+C EPS411101;0 SHE
+C EPS500102;0 SHE
+E 068538442605000320063 Pinard, Pierre-Olivier
+C EPS130102;0 SHE
+C KIN219102;0 SHE
+C KIN234101;0 SHE
+C KIN238102;0 SHE
+C KIN300101;0 SHE
+C KIN314101;0 SHE
+E 083852592470000220083 Plante, Maggy
+C EPS110212;0 SHE
+C EPS110101;0 SHE
+C EPS124102;0 SHE
+C EPS132102;0 SHE
+C EPS132212;0 SHE
+C EPS205102;0 SHE
+C EPS212102;0 SHE
+C EPS301101;0 SHE
+C EPS301212;0 SHE
+C EPS409101;0 SHE
+E 067453742470000220071 Poirier, Alexandre
+C EPS143101;0 SHE
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS214101;0 SHE
+C EPS501101;0 SHE
+C KIN242103;0 SHE
+E 083868642470000220083 Poirier, Joannie
+C EPS110212;0 SHE
+C EPS110102;0 SHE
+C EPS122102;0 SHE
+C EPS124101;0 SHE
+C EPS132211;0 SHE
+C EPS132101;0 SHE
+C EPS205102;0 SHE
+C EPS212102;0 SHE
+C EPS301102;0 SHE
+C EPS301213;0 SHE
+C EPS409101;0 SHE
+E 083925712470000220083 Poirier, Philippe
+C EPS110212;0 SHE
+C EPS110101;0 SHE
+C EPS122103;0 SHE
+C EPS124103;0 SHE
+C EPS212101;0 SHE
+C EPS301101;0 SHE
+C EPS301215;0 SHE
+C EPS409101;0 SHE
+E 071659342470000220073 Poliquin, Jean-François
+C EPS112211;0 SHE
+C EPS112102;0 SHE
+C EPS130101;0 SHE
+C EPS204102;0 SHE
+C EPS308101;0 SHE
+C EPS311102;0 SHE
+C EPS411101;0 SHE
+C EPS500102;0 SHE
+E 083754662470000220083 Poulin-Bureau, Jean-Christophe
+C EPS110212;0 SHE
+C EPS110101;0 SHE
+C EPS124102;0 SHE
+C EPS132101;0 SHE
+C EPS132212;0 SHE
+C EPS205102;0 SHE
+C EPS212102;0 SHE
+C EPS301101;0 SHE
+C EPS301213;0 SHE
+C EPS409101;0 SHE
+E 056911562470000220063 Poulin-Cadovius, James
+C EPS124103;0 SHE
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS214101;0 SHE
+C EPS501101;0 SHE
+C KIN242101;0 SHE
+E 083941872605000320083 Pouliot, Julie
+C EPS130102;0 SHE
+C EPS205103;0 SHE
+C KIN212101;0 SHE
+C KIN213213;0 SHE
+C KIN213101;0 SHE
+C KIN215102;0 SHE
+C KIN215212;0 SHE
+C KIN242101;0 SHE
+C KIN302102;0 SHE
+E 068082432605000320063 Proteau, Guylaine
+C EPS132213;0 SHE
+C EPS132102;0 SHE
+C KIN219102;0 SHE
+C KIN234101;0 SHE
+C KIN238102;0 SHE
+C KIN300101;0 SHE
+C KIN314101;0 SHE
+E 071638832470000220073 Proteau, Marie Hélène
+C EPS112212;0 SHE
+C EPS112101;0 SHE
+C EPS204101;0 SHE
+C EPS308102;0 SHE
+C EPS311101;0 SHE
+C EPS411101;0 SHE
+C EPS500101;0 SHE
+E 071831112470000220073 Proulx, Jonathan
+C EPS112212;0 SHE
+C EPS112101;0 SHE
+C EPS125101;0 SHE
+C EPS204102;0 SHE
+C EPS308102;0 SHE
+C EPS311101;0 SHE
+C EPS411101;0 SHE
+C EPS500102;0 SHE
+E 083735832605010320083 Proulx, Vincent
+C EPS122103;0 SHE
+C EPS124104;0 SHE
+C EPS205104;0 SHE
+C KIN212102;0 SHE
+C KIN213213;0 SHE
+C KIN213101;0 SHE
+C KIN215102;0 SHE
+C KIN215211;0 SHE
+C KIN242103;0 SHE
+C KIN302104;0 SHE
+E 083244402605000320083 Proulx-Salvas, Catherine
+C EPS205103;0 SHE
+C KIN123101;0 SHE
+C KIN212101;0 SHE
+C KIN213212;0 SHE
+C KIN213102;0 SHE
+C KIN215101;0 SHE
+C KIN215212;0 SHE
+C KIN242102;0 SHE
+C KIN302103;0 SHE
+E 071662472470000220073 Provencher, Vicky
+C EPD104102;0 SHE
+C EPS112101;0 SHE
+C EPS112211;0 SHE
+C EPS130101;0 SHE
+C EPS204101;0 SHE
+C EPS308101;0 SHE
+C EPS311101;0 SHE
+C EPS411101;0 SHE
+C EPS500101;0 SHE
+E 084163149500010120091 Puyjalon, Pierre
+C EPS211101;0 SHE
+C EPS214101;0 SHE
+C KIN219102;0 SHE
+C KIN242101;0 SHE
+C KIN300101;0 SHE
+E 071746752470000220081 Raby, Patrick
+C EPS112213;0 SHE
+C EPS112102;0 SHE
+C EPS130101;0 SHE
+C EPS204102;0 SHE
+C EPS308101;0 SHE
+C EPS311102;0 SHE
+C EPS411101;0 SHE
+C EPS500102;0 SHE
+E 071554372470000220073 Racicot, Véronique
+C EPD104102;0 SHE
+C EPS112102;0 SHE
+C EPS112211;0 SHE
+C EPS204101;0 SHE
+C EPS308101;0 SHE
+C EPS311102;0 SHE
+C EPS411101;0 SHE
+C EPS500102;0 SHE
+E 068324212605010320063 Rainville-Cloutier, Claudia
+C KIN212101;0 SHE
+C KIN219102;0 SHE
+C KIN234101;0 SHE
+C KIN238102;0 SHE
+C KIN353101;0 SHE
+E 056537042470000220053 Ramacieri-L Heureux, Katherine
+C EPS211101;0 SHE
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+E 056585212470000220073 Ramsay, Michael
+C EPD104102;0 SHE
+C EPS112101;0 SHE
+C EPS112212;0 SHE
+C EPS125102;0 SHE
+C EPS204101;0 SHE
+C EPS308101;0 SHE
+C EPS311101;0 SHE
+C EPS411101;0 SHE
+C EPS500101;0 SHE
+E 056684952470000220053 Ratté, Kevin
+C EPS211101;0 SHE
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+C KIN242102;0 SHE
+E 083511882605000320083 Raymond, Annie-Pier
+C EPS205103;0 SHE
+C KIN123101;0 SHE
+C KIN212101;0 SHE
+C KIN213211;0 SHE
+C KIN213101;0 SHE
+C KIN215102;0 SHE
+C KIN215212;0 SHE
+C KIN242102;0 SHE
+C KIN302104;0 SHE
+E 083772132470000220083 Raymond, Michael
+C EPS110212;0 SHE
+C EPS110102;0 SHE
+C EPS124101;0 SHE
+C EPS132102;0 SHE
+C EPS132214;0 SHE
+C EPS205102;0 SHE
+C EPS212102;0 SHE
+C EPS301102;0 SHE
+C EPS301212;0 SHE
+C EPS409101;0 SHE
+E 083687222605000320083 Raymond, Sandra
+C EPD104102;0 SHE
+C EPS205104;0 SHE
+C KIN212102;0 SHE
+C KIN213211;0 SHE
+C KIN213101;0 SHE
+C KIN215102;0 SHE
+C KIN215211;0 SHE
+C KIN242103;0 SHE
+C KIN302101;0 SHE
+E 045271042470000220073 Raymond-Blondeau, Alexandre
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS214101;0 SHE
+C EPS501101;0 SHE
+C KIN242103;0 SHE
+E 068363012470000220063 Ricard, Mélanie
+C EPS132214;0 SHE
+C EPS132101;0 SHE
+C EPS143101;0 SHE
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS214101;0 SHE
+C EPS501101;0 SHE
+C KIN242103;0 SHE
+E 056546232470000220053 Richard, Véronique
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+E 022488832470000220071 Riendeau, Andréa
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+E 056668432470000220053 Riopel, Jean-Philippe
+C EPS211101;0 SHE
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+E 068080742470000220083 Rioux, Michael
+C EPS110213;0 SHE
+C EPS110101;0 SHE
+C EPS122103;0 SHE
+C EPS130101;0 SHE
+C EPS132214;0 SHE
+C EPS132101;0 SHE
+C EPS205101;0 SHE
+C EPS301101;0 SHE
+C EPS301212;0 SHE
+C EPS409101;0 SHE
+E 083387922605000320083 Rivest, Annie-Claude
+C KIN123101;0 SHE
+C KIN124101;0 SHE
+C KIN215101;0 SHE
+C KIN215211;0 SHE
+C KIN242103;0 SHE
+C KIN302101;0 SHE
+E 056441722470000220053 Roberge, Joannie
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+E 055997012470000220061 Robert-Goupil, Karine
+C EPS211101;0 SHE
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+E 071585132470000220073 Rodier, Jean-François
+C EPS112211;0 SHE
+C EPS112101;0 SHE
+C EPS204102;0 SHE
+C EPS308102;0 SHE
+C EPS311101;0 SHE
+C EPS411101;0 SHE
+C EPS500102;0 SHE
+E 067515612470000220063 Rodrigue, Mireille
+C EPS501102;0 SHE
+E 045081432470000220043 Rome-Gosselin, Yannick
+C EPS122102;0 SHE
+C EPS211101;0 SHE
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+E 068320472470000220063 Rompré, Mathieu
+C EPS144101;0 SHE
+C EPS207101;0 SHE
+C EPS213101;0 SHE
+C EPS214101;0 SHE
+C EPS311101;0 SHE
+C EPS501102;0 SHE
+C KIN242103;0 SHE
+C KIN243101;0 SHE
+E 071826022470000220073 Rosetti, Caroline
+C EPD104101;0 SHE
+C EPS112102;0 SHE
+C EPS112211;0 SHE
+C EPS204101;0 SHE
+C EPS308102;0 SHE
+C EPS311102;0 SHE
+C EPS411101;0 SHE
+C EPS500102;0 SHE
+E 067881212470000220063 Rousseau, Catherine
+C EPS144101;0 SHE
+C EPS146101;0 SHE
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS214101;0 SHE
+C EPS501102;0 SHE
+C KIN242101;0 SHE
+E 083433212605000320083 Roux, Sammy-Joe
+C EPS125101;0 SHE
+C EPS205104;0 SHE
+C KIN212102;0 SHE
+C KIN213212;0 SHE
+C KIN213101;0 SHE
+C KIN215102;0 SHE
+C KIN215211;0 SHE
+C KIN242102;0 SHE
+C KIN302101;0 SHE
+E 072008882470000220073 Roy, Hugo
+C EPS112212;0 SHE
+C EPS112101;0 SHE
+C EPS125101;0 SHE
+C EPS204102;0 SHE
+C EPS308102;0 SHE
+C EPS311101;0 SHE
+C EPS411101;0 SHE
+C EPS500102;0 SHE
+E 068452932605000320063 Roy, Nicolas
+C EPS122102;0 SHE
+C KIN219102;0 SHE
+C KIN234101;0 SHE
+C KIN238101;0 SHE
+C KIN300101;0 SHE
+C KIN314101;0 SHE
+E 068436412605010320063 Saint-Laurent, Élie
+C KIN219102;0 SHE
+C KIN234101;0 SHE
+C KIN238101;0 SHE
+C KIN353101;0 SHE
+E 068299522605010320063 Saint-Pierre, Charles
+C EPS130102;0 SHE
+C KIN219101;0 SHE
+C KIN234101;0 SHE
+C KIN238101;0 SHE
+C KIN353101;0 SHE
+E 083695982470000220083 Samson, Pierre-Olivier
+C EPS110211;0 SHE
+C EPS110101;0 SHE
+C EPS124102;0 SHE
+C EPS132101;0 SHE
+C EPS132211;0 SHE
+C EPS205102;0 SHE
+C EPS212102;0 SHE
+C EPS301101;0 SHE
+C EPS301211;0 SHE
+C EPS409101;0 SHE
+E 083755279P10000120091 Sangiovanni, Marie-Ève
+C EPS125101;0 SHE
+C EPS205104;0 SHE
+C KIN212101;0 SHE
+C KIN213211;0 SHE
+C KIN213102;0 SHE
+C KIN215101;0 SHE
+C KIN215212;0 SHE
+C KIN242101;0 SHE
+C KIN302104;0 SHE
+E 056595482470000220053 Santerre-Ratté, Blaise
+C EPS211101;0 SHE
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+E 068130402605010320063 Saucier, Valérie
+C EPS144101;0 SHE
+C KIN212101;0 SHE
+C KIN219101;0 SHE
+C KIN234101;0 SHE
+C KIN238101;0 SHE
+C KIN353101;0 SHE
+E 083457202605000320083 Saucier Fortier, Stéphanie
+C EPD104102;0 SHE
+C EPS205104;0 SHE
+C KIN212102;0 SHE
+C KIN213211;0 SHE
+C KIN213101;0 SHE
+C KIN215102;0 SHE
+C KIN215211;0 SHE
+C KIN242103;0 SHE
+C KIN302104;0 SHE
+E 068855972605000320071 Savard, Marilaine
+C KIN123101;0 SHE
+C KIN124101;0 SHE
+C KIN219102;0 SHE
+C KIN234101;0 SHE
+C KIN238101;0 SHE
+C KIN300101;0 SHE
+C KIN314101;0 SHE
+E 067971482605000320063 Savoie, Valérie
+C EPD104102;0 SHE
+C EPS122103;0 SHE
+C KIN219101;0 SHE
+C KIN234101;0 SHE
+C KIN238101;0 SHE
+C KIN300101;0 SHE
+C KIN314101;0 SHE
+E 071769592470000220073 Sigouin, Joël
+C EPD104101;0 SHE
+C EPS112101;0 SHE
+C EPS112212;0 SHE
+C EPS204101;0 SHE
+C EPS308102;0 SHE
+C EPS311101;0 SHE
+C EPS411101;0 SHE
+C EPS500101;0 SHE
+E 045216632605000320073 Sirois, Étienne
+C EPS130102;0 SHE
+C KIN219102;0 SHE
+C KIN234101;0 SHE
+C KIN238102;0 SHE
+C KIN300101;0 SHE
+C KIN314101;0 SHE
+E 056502172470000220063 St-Cyr, Marie-Alexe
+C EPS143101;0 SHE
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS214101;0 SHE
+C EPS501101;0 SHE
+C KIN242101;0 SHE
+E 068331802470000220063 St-Cyr, Noemie
+C EPS146101;0 SHE
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS214101;0 SHE
+C EPS501102;0 SHE
+C KIN242103;0 SHE
+C KIN243101;0 SHE
+E 068137182470000220063 St-Denis, Guillaume
+C EPS110211;0 SHE
+C EPS110102;0 SHE
+C EPS143101;0 SHE
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS214101;0 SHE
+C EPS301102;0 SHE
+C EPS301215;0 SHE
+C EPS501101;0 SHE
+C KIN242101;0 SHE
+E 068071192605000320063 St-Gelais, Isabelle
+C KIN219101;0 SHE
+C KIN234101;0 SHE
+C KIN238101;0 SHE
+C KIN300101;0 SHE
+C KIN314101;0 SHE
+E 056707032470000220063 St-Laurent, Jean-Michel
+C EPS211101;0 SHE
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+E 071754422470000220073 St-Onge, Stéphanie
+C EPD104101;0 SHE
+C EPS112102;0 SHE
+C EPS112213;0 SHE
+C EPS204101;0 SHE
+C EPS308102;0 SHE
+C EPS311102;0 SHE
+C EPS411101;0 SHE
+C EPS500102;0 SHE
+E 055946352470000220053 St-Pierre, David-Esteban
+C EPS211101;0 SHE
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+E 083585462470000220083 St-Pierre, Jonathan
+C EPS110211;0 SHE
+C EPS110101;0 SHE
+C EPS124101;0 SHE
+C EPS132102;0 SHE
+C EPS132213;0 SHE
+C EPS205101;0 SHE
+C EPS212101;0 SHE
+C EPS301102;0 SHE
+C EPS301214;0 SHE
+C EPS409101;0 SHE
+E 071932172470000220073 St-Pierre Tremblay, David
+C EPS112211;0 SHE
+C EPS112101;0 SHE
+C EPS125102;0 SHE
+C EPS130101;0 SHE
+C EPS204102;0 SHE
+C EPS308101;0 SHE
+C EPS311101;0 SHE
+C EPS411101;0 SHE
+C EPS500102;0 SHE
+E 072077012470000220081 St-Pierre-Hould, Jasmin
+C EPS112211;0 SHE
+C EPS112102;0 SHE
+C EPS130101;0 SHE
+C EPS204102;0 SHE
+C EPS308101;0 SHE
+C EPS311102;0 SHE
+C EPS411101;0 SHE
+C EPS500101;0 SHE
+E 083668862470000220083 Taillon, Julie
+C EPD104103;0 SHE
+C EPS110101;0 SHE
+C EPS110213;0 SHE
+C EPS124102;0 SHE
+C EPS205102;0 SHE
+C EPS212102;0 SHE
+C EPS301101;0 SHE
+C EPS301214;0 SHE
+C EPS409101;0 SHE
+E 067939722470000220063 Tessier, Alexandre
+C EPS144101;0 SHE
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS214101;0 SHE
+C EPS501102;0 SHE
+C KIN242103;0 SHE
+C KIN243101;0 SHE
+E 067882922470000220073 Tessier, Dominic
+C EPS112213;0 SHE
+C EPS112102;0 SHE
+C EPS130101;0 SHE
+C EPS204101;0 SHE
+C EPS308101;0 SHE
+C EPS311102;0 SHE
+C EPS411101;0 SHE
+C EPS500101;0 SHE
+E 033428222470000220063 Therrien, David
+C EPS143101;0 SHE
+C EPS144101;0 SHE
+C EPS207101;0 SHE
+C EPS213101;0 SHE
+C EPS214101;0 SHE
+C EPS501101;0 SHE
+C KIN242102;0 SHE
+C KIN243101;0 SHE
+E 072005482470000220073 Thibault, Jérôme
+C EPS112213;0 SHE
+C EPS112102;0 SHE
+C EPS125102;0 SHE
+C EPS204102;0 SHE
+C EPS308101;0 SHE
+C EPS311102;0 SHE
+C EPS411101;0 SHE
+C EPS500101;0 SHE
+E 083548352470000220083 Thibault, Stéphanie
+C EPD104103;0 SHE
+C EPS110101;0 SHE
+C EPS110211;0 SHE
+C EPS124102;0 SHE
+C EPS205101;0 SHE
+C EPS212101;0 SHE
+C EPS301101;0 SHE
+C EPS301215;0 SHE
+C EPS409101;0 SHE
+E 068421892605000320063 Thibeault, Claudia
+C EPD104101;0 SHE
+C EPS122102;0 SHE
+C KIN219102;0 SHE
+C KIN234101;0 SHE
+C KIN238102;0 SHE
+C KIN300101;0 SHE
+C KIN314101;0 SHE
+E 071509682470000220073 Thibodeau, Frédéric
+C EPS112213;0 SHE
+C EPS112102;0 SHE
+C EPS130101;0 SHE
+C EPS204102;0 SHE
+C EPS308101;0 SHE
+C EPS311102;0 SHE
+C EPS411101;0 SHE
+C EPS500101;0 SHE
+E 071250412470000220073 Thivierge, Vincent
+C EPS112213;0 SHE
+C EPS112102;0 SHE
+C EPS204102;0 SHE
+C EPS308102;0 SHE
+C EPS311102;0 SHE
+C EPS411101;0 SHE
+C EPS500101;0 SHE
+E 056652742470000220053 Thériault, Pierre-Étienne
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+E 083812622605010320083 Thériault, Samantha
+C EPS205103;0 SHE
+C KIN212101;0 SHE
+C KIN213102;0 SHE
+C KIN213212;0 SHE
+C KIN215101;0 SHE
+C KIN215212;0 SHE
+C KIN242101;0 SHE
+C KIN302103;0 SHE
+E 083820569P10000120091 Touchette, Francis
+C EPS132211;0 SHE
+C EPS132102;0 SHE
+C EPS205103;0 SHE
+C KIN212102;0 SHE
+C KIN213212;0 SHE
+C KIN213101;0 SHE
+C KIN215102;0 SHE
+C KIN215211;0 SHE
+C KIN242102;0 SHE
+C KIN302102;0 SHE
+E 067770082470000220063 Tousignant, Marc-Olivier
+C EPS143101;0 SHE
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS214101;0 SHE
+C EPS501101;0 SHE
+C KIN242101;0 SHE
+C KIN243101;0 SHE
+E 083495842605000320083 Tremblay, Amélie
+C EPS205103;0 SHE
+C KIN212102;0 SHE
+C KIN213101;0 SHE
+C KIN213213;0 SHE
+C KIN215102;0 SHE
+C KIN215211;0 SHE
+C KIN242102;0 SHE
+C KIN302102;0 SHE
+E 033406002470000220071 Tremblay, David
+C EPS407101;0 SHE
+C EPS501101;0 SHE
+C EPS503102;0 SHE
+E 083098402470000220083 Tremblay, David
+C EPS110213;0 SHE
+C EPS110101;0 SHE
+C EPS122103;0 SHE
+C EPS124103;0 SHE
+C EPS205101;0 SHE
+C EPS212102;0 SHE
+C EPS301102;0 SHE
+C EPS301216;0 SHE
+C EPS409101;0 SHE
+E 056780192470000220053 Tremblay, Francis
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+E 011300832470000220063 Tremblay, Julie
+C EPS211101;0 SHE
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+C HPE282101;0 SHE
+E 022482312470000220071 Tremblay, Sylvie
+C EPS407101;0 SHE
+C EPS503102;0 SHE
+E 068029802470000220063 Trudeau Langelier, Yann
+C EPS144101;0 SHE
+C EPS206101;0 SHE
+C EPS207101;0 SHE
+C EPS214101;0 SHE
+C EPS501102;0 SHE
+C KIN242101;0 SHE
+C KIN243101;0 SHE
+E 071726952470000220073 Trudel, Marc-Antoine
+C EPD104102;0 SHE
+C EPS112101;0 SHE
+C EPS112212;0 SHE
+C EPS125102;0 SHE
+C EPS130101;0 SHE
+C EPS204101;0 SHE
+C EPS308101;0 SHE
+C EPS311101;0 SHE
+C EPS411101;0 SHE
+C EPS500101;0 SHE
+E 056846632470000220053 Trudel, Martin
+C EPS211101;0 SHE
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+E 071869932470000220073 Trépanier Goulet, James
+C EPS112213;0 SHE
+C EPS112102;0 SHE
+C EPS130101;0 SHE
+C EPS204102;0 SHE
+C EPS308101;0 SHE
+C EPS311102;0 SHE
+C EPS411101;0 SHE
+C EPS500101;0 SHE
+E 083599749P10000120091 Turcotte, Elyse
+C EPS124104;0 SHE
+C EPS205104;0 SHE
+C KIN212102;0 SHE
+C KIN213213;0 SHE
+C KIN213101;0 SHE
+C KIN215102;0 SHE
+C KIN215211;0 SHE
+C KIN242103;0 SHE
+C KIN302104;0 SHE
+E 071714372470000220083 Turgeon, Catherine
+C EPS110213;0 SHE
+C EPS110101;0 SHE
+C EPS122101;0 SHE
+C EPS124101;0 SHE
+C EPS205102;0 SHE
+C EPS212102;0 SHE
+C EPS301102;0 SHE
+C EPS301211;0 SHE
+C EPS409101;0 SHE
+E 056985232470000220081 Tétrault, Jonathan
+C EPS112212;0 SHE
+C EPS112101;0 SHE
+C EPS125101;0 SHE
+C EPS204102;0 SHE
+C EPS308102;0 SHE
+C EPS311101;0 SHE
+C EPS411101;0 SHE
+C EPS500102;0 SHE
+E 056706052470000220053 Vachon, Cynthia
+C EPS211101;0 SHE
+C EPS216101;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+E 068386572470000220063 Vachon, Hugo
+C EPS122103;0 SHE
+C EPS130101;0 SHE
+C EPS143101;0 SHE
+C EPS207101;0 SHE
+C EPS213101;0 SHE
+C EPS214101;0 SHE
+C EPS501101;0 SHE
+C KIN242103;0 SHE
+C KIN243101;0 SHE
+E 056755752470000220073 Vaillancourt, Miguel
+C EPS112212;0 SHE
+C EPS112101;0 SHE
+C EPS130101;0 SHE
+C EPS204101;0 SHE
+C EPS308101;0 SHE
+C EPS411101;0 SHE
+C EPS500101;0 SHE
+E 068243962605000320063 Valenti Fournier, Martin
+C EPS122103;0 SHE
+C EPS132101;0 SHE
+C EPS132213;0 SHE
+C KIN219101;0 SHE
+C KIN234101;0 SHE
+C KIN238102;0 SHE
+C KIN300101;0 SHE
+C KIN314101;0 SHE
+E 034461402470000220043 Veillet St-Amant, Étienne
+C EPS211101;0 SHE
+C EPS216102;0 SHE
+C EPS407101;0 SHE
+C EPS503101;0 SHE
+C HPE282101;0 SHE
+E 068429822470000220071 Verrette, Martin
+C EPS124102;0 SHE
+C EPS207101;0 SHE
+C EPS214101;0 SHE
+C EPS501102;0 SHE
+C KIN242102;0 SHE
+E 033969522470000220051 Verrier, Gabriel
+C EPD104103;0 SHE
+C EPS125102;0 SHE
+E 083413142470000220083 Vianna, Jean-Sébastien
+C EPD104103;0 SHE
+C EPS110101;0 SHE
+C EPS110211;0 SHE
+C EPS124103;0 SHE
+C EPS205101;0 SHE
+C EPS212101;0 SHE
+C EPS301102;0 SHE
+C EPS301215;0 SHE
+C EPS409101;0 SHE
+E 068471842470000220063 Viens, Ann-Marie
+C EPS144101;0 SHE
+C EPS207101;0 SHE
+C EPS213101;0 SHE
+C EPS214101;0 SHE
+C EPS501102;0 SHE
+C KIN242101;0 SHE
+C KIN243101;0 SHE
+E 071485072470000220073 Villeneuve, Caroline
+C EPD104101;0 SHE
+C EPS112101;0 SHE
+C EPS112212;0 SHE
+C EPS204101;0 SHE
+C EPS308102;0 SHE
+C EPS311101;0 SHE
+C EPS411101;0 SHE
+C EPS500101;0 SHE
+E 071910772470000220073 Villeneuve Cyr, David
+C EPS112213;0 SHE
+C EPS112102;0 SHE
+C EPS125102;0 SHE
+C EPS130101;0 SHE
+C EPS204102;0 SHE
+C EPS308101;0 SHE
+C EPS311102;0 SHE
+C EPS411101;0 SHE
+C EPS500101;0 SHE
+E 083791952605000320083 Wolford-Masse, Gabriel
+C EPS205103;0 SHE
+C KIN123101;0 SHE
+C KIN212101;0 SHE
+C KIN213211;0 SHE
+C KIN213101;0 SHE
+C KIN215102;0 SHE
+C KIN215212;0 SHE
+C KIN242102;0 SHE
+C KIN302104;0 SHE
+E 072495872605010320083 Zaccabri, Julien
+C EPS124104;0 SHE
+C EPS205104;0 SHE
+C KIN212102;0 SHE
+C KIN213212;0 SHE
+C KIN213101;0 SHE
+C KIN215102;0 SHE
+C KIN215211;0 SHE
+C KIN242102;0 SHE
+C KIN302101;0 SHE
+!!!!!!!!!!
