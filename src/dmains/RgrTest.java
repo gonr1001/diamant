@@ -80,6 +80,7 @@ public class RgrTest {
 
 		TestSuite suite = new TestSuite("rgr selected Tests");
 
+		suite.addTest(DxInstructorsReaderTest.suite());	
 		suite.addTest(DxSetOfSitesTest.suite());
 		suite.addTest(DxAssignRoomsAlgTest.suite());
 		suite.addTest(DxTTStructureTest.suite());
@@ -97,7 +98,7 @@ public class RgrTest {
 //		} else {
 			suite.addTest(DLoadDataTest.suite()); //TODO to review
 //		}
-		suite.addTest(DxInstructorsReaderTest.suite());
+
 		suite.addTest(SetOfEventsTest.suite());
 		suite.addTest(ConditionsTest.suite());
 		suite.addTest(DSaveDataTest.suite());
