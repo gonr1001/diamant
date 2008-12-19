@@ -29,7 +29,8 @@ import eLib.exit.exception.DxException;
 
 public class DxExceptionDlg {
 
-	private static final String DX_EXCEPTION = "DxException";
+	private final String DX_EXCEPTION = "Diamant a detecté erreur : ";
+	
 	public DxExceptionDlg(String message) {
 		new DxExceptionDlg(null,message,DX_EXCEPTION);
 	}
