@@ -34,6 +34,7 @@ import dInternal.dTimeTable.DxTTStructureTest;
 import dTest.dInternal.DxLoadDataTest;
 import dTest.dInternal.dData.DLoadDataTest;
 import dTest.dInternal.dData.DSaveDataTest;
+import dTest.dInternal.dData.dActivities.DSetOfActivitiesTest;
 import dTest.dInternal.dData.dInstructors.DxInstructorsReaderTest;
 import dTest.dInternal.dData.dRooms.DxSiteReaderTest;
 import dTest.dInternal.dOptimizationTest.ConditionsTest;
@@ -42,8 +43,7 @@ import dTest.dInternal.dOptimizationTest.RoomsConditionsTest;
 import dTest.dInternal.dOptimizationTest.SetOfEventsTest;
 import eTest.ByteInputFileTest;
 import eTest.ByteOutputFileTest;
-import eTest.FilterFileTest;
-import eTest.SemiExtendedAsciiFileTest;
+
 
 /**
  * Ruben Gonzalez-Rubio
@@ -79,7 +79,8 @@ public class RgrTest {
 		}
 
 		TestSuite suite = new TestSuite("rgr selected Tests");
-
+		
+		suite.addTest(DSetOfActivitiesTest.suite());	
 		suite.addTest(DxInstructorsReaderTest.suite());	
 		suite.addTest(DxSetOfSitesTest.suite());
 		suite.addTest(DxAssignRoomsAlgTest.suite());
@@ -87,8 +88,6 @@ public class RgrTest {
 		suite.addTest(DxSiteReaderTest.suite());
 		suite.addTest(ByteInputFileTest.suite());
 		suite.addTest(ByteOutputFileTest.suite());
-		suite.addTest(FilterFileTest.suite());
-		suite.addTest(SemiExtendedAsciiFileTest.suite());
 		suite.addTest(DxSetOfSitesTest.suite());
 		suite.addTest(DxAssignAllAlgTest.suite());
 		suite.addTest(RoomsConditionsTest.suite());
