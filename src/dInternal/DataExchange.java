@@ -7,47 +7,61 @@
 package dInternal;
 
 /**
-*
-* Title: DataExchange $Revision $  $Date: 2005-02-03 16:52:42 $
-* Description: DataExchange is a class used to
-*
-*
-* Copyright (c) 2001 by rgr.
-* All rights reserved.
-*
-*
-* This software is the confidential and proprietary information
-* of rgr. ("Confidential Information").  You
-* shall not disclose such Confidential Information and shall use
-* it only in accordance with the terms of the license agreement
-* you entered into with rgr.
-*
-* @version $ $
-* @author  $Author: garr2701 $
-* @since JDK1.3
-*/
+ * 
+ * Title: DataExchange $Revision $ $Date: 2005-02-03 16:52:42 $ Description:
+ * DataExchange is a class used to
+ * 
+ * 
+ * Copyright (c) 2001 by rgr. All rights reserved.
+ * 
+ * 
+ * This software is the confidential and proprietary information of rgr.
+ * ("Confidential Information"). You shall not disclose such Confidential
+ * Information and shall use it only in accordance with the terms of the license
+ * agreement you entered into with rgr.
+ * 
+ * @version $ $
+ * @author $Author: garr2701 $
+ * @since JDK1.3
+ */
 
 public abstract class DataExchange {
+	
 	String _header;
+	
 	String _contents;
 
 	/**
-	 * 
+	 * @header a String
+	 * @contents a String
 	 */
 	public DataExchange(String header, String contents) {
 		_header = header;
-		_contents = contents;		
-	}
-	
-	public String getHeader(){
-		return _header;
-	}
-	
-	public String getContents(){
-		return _contents;
-	}
-	
-	public void setContents(String contents){
 		_contents = contents;
 	}
+
+	public String getHeader() {
+		return _header;
+	}
+
+	public String getContents() {
+		return _contents;
+	}
+
+	public void setContents(String contents) {
+		_contents = contents;
+	}
+
+	/*
+	 * countLines counts the number of carriage returns in the contents
+	 */
+	public int countLines() {
+		int lines = 0;
+		for (int i = 1; i < _contents.length(); i++) {
+			if (_contents.charAt(i) == '\n')
+				lines++;
+		}
+		return lines;
+	}
+
 }
