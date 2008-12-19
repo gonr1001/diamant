@@ -25,6 +25,7 @@ import dInternal.dData.dActivities.Activity;
 import dInternal.dData.dActivities.SetOfActivities;
 import dInternal.dData.dActivities.SetOfActivitiesSites;
 import dInternal.dData.dActivities.Type;
+import eLib.exit.exception.DxException;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -69,7 +70,12 @@ public class DSetOfActivitiesSitesTest extends TestCase {
 
 		SetOfActivitiesSites setOfsites = new SetOfActivitiesSites(false, 60);
 		DxLoadData ld = new DxLoadData();
-		setOfsites.analyseTokens(ld.buildDataExchange(tokens.getBytes()), 1);
+		try {
+			setOfsites.analyseTokens(ld.buildDataExchange(tokens.getBytes()), 1);
+		} catch (DxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		if (setOfsites.getError().length() == 0) {
 			setOfsites.buildSetOfResources(ld.buildDataExchange(tokens
 					.getBytes()), 1);
@@ -115,7 +121,12 @@ public class DSetOfActivitiesSitesTest extends TestCase {
 
 		SetOfActivitiesSites setOfsites = new SetOfActivitiesSites(false, 60);
 		DxLoadData ld = new DxLoadData();
-		setOfsites.analyseTokens(ld.buildDataExchange(tokens.getBytes()), 1);
+		try {
+			setOfsites.analyseTokens(ld.buildDataExchange(tokens.getBytes()), 1);
+		} catch (DxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		if (setOfsites.getError().length() == 0) {
 			setOfsites.buildSetOfResources(ld.buildDataExchange(tokens
 					.getBytes()), 1);
