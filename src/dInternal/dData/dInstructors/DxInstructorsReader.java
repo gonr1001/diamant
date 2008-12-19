@@ -19,6 +19,10 @@ package dInternal.dData.dInstructors;
 
 import eLib.exit.exception.DxException;
 
-public interface DxInstructorsReader{
-    public DxSetOfInstructors readSetOfInstructors() throws DxException;
+public interface DxInstructorsReader {
+
+	public DxSetOfInstructors readSetOfInstructors() throws DxException;
+
+	public int getLines();
+
 }
