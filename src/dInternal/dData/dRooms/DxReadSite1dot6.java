@@ -177,4 +177,10 @@ public class DxReadSite1dot6 implements DxSiteReader {
 		return null;
 	}
 
+	@Override
+	public int getLines() {
+		System.out.println("DxReadInstructors1dot5.bad value -1");
+		return -1;
+	}
+
 }
