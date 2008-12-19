@@ -116,7 +116,7 @@ public class DxInstructorsReaderTest extends TestCase {
 
 		} catch (DxException e) {
 			assertEquals("test_numberOfInstructors: ",
-					 DConst.INVALID_NUMBER_OF_INSTRUCTORS, e.getMessage());
+					 true, e.getMessage().contains(DConst.INVALID_NUMBER_OF_INSTRUCTORS));
 		}
 	}
 
