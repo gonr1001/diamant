@@ -172,4 +172,11 @@ public class DxReadSite1dot5 implements DxSiteReader {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public int getLines() {
+		System.out.println("DxReadInstructors1dot5.bad value -1");
+		return -1;
+	}
+
 }
