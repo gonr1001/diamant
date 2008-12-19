@@ -888,6 +888,10 @@ public class DApplication {
 			this.getCurrentDxDoc()
 					.changeInModel(this.getClass().toString());
 			this.afterInitialAssign();
+		} catch (DxException e) {
+			System.out.println("Exception:   " + e.toString());
+			new DxExceptionDlg(_jFrame, e.getMessage(), e);
+			this.initialState();
 		} catch (Exception e) {
 			System.out.println("Exception:   " + e.toString());
 			new DxExceptionDlg(_jFrame, e.getMessage(), e);
@@ -903,8 +907,8 @@ public class DApplication {
 	public void openDevFile() {
 		if (_fileToOpenAtStart.equalsIgnoreCase("")) {
 			_fileToOpenAtStart = "." + File.separator + "dataTest"
-					+ File.separator + "bug126" + File.separator;
-			_fileToOpenAtStart += "bug126.dia";
+					+ File.separator + "bug127" + File.separator;
+			_fileToOpenAtStart += "bug127.dia";
 		}
 		doLoad(_fileToOpenAtStart);
 	}
