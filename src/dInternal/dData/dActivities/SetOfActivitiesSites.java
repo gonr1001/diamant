@@ -29,6 +29,7 @@ import dInternal.DSetOfResources;
 import dInternal.DataExchange;
 import dInternal.dData.ByteArrayMsg;
 import dInternal.dUtil.DXToolsMethods;
+import eLib.exit.exception.DxException;
 
 public class SetOfActivitiesSites extends DSetOfResources {
 
@@ -62,7 +63,7 @@ public class SetOfActivitiesSites extends DSetOfResources {
 	 * @return boolean "true" if the analysis proceeded successfully and false
 	 *         otherwise
 	 */
-	public boolean analyseTokens(DataExchange de, int beginPosition) {
+	public boolean analyseTokens(DataExchange de, int beginPosition) throws DxException{
 		if (de.getHeader().equalsIgnoreCase(DConst.FILE_VER_NAME1_6)) {
 			return analyseTokens1dot6(de.getContents().getBytes(), beginPosition);
 		} // else if (token.equalsIgnoreCase(DConst.FILE_VER_NAME1_7)) {
@@ -82,7 +83,7 @@ public class SetOfActivitiesSites extends DSetOfResources {
 	 *         </p>
 	 *         false otherwise
 	 */
-	private boolean analyseTokens1dot5(byte[] dataloaded, int beginPosition) {
+	private boolean analyseTokens1dot5(byte[] dataloaded, int beginPosition) throws DxException{
 		_error = "";
 		if (!analyseSIGTokens(dataloaded, beginPosition)) {// analyse STI data
 			return false;
@@ -105,7 +106,7 @@ public class SetOfActivitiesSites extends DSetOfResources {
 	 *         </p>
 	 *         false otherwise
 	 */
-	private boolean analyseTokens1dot6(byte[] dataloaded, int beginPosition) {
+	private boolean analyseTokens1dot6(byte[] dataloaded, int beginPosition) throws DxException {
 		_error = "";
 		StringBuffer newFile = new StringBuffer("");
 		StringTokenizer st = new StringTokenizer(new String(dataloaded),
@@ -429,7 +430,7 @@ public class SetOfActivitiesSites extends DSetOfResources {
 	 * @return boolean "true" if the analysis proceeded successfully and false
 	 *         otherwise
 	 */
-	private boolean analyseSIGTokens(byte[] dataloaded, int beginPosition) {
+	private boolean analyseSIGTokens(byte[] dataloaded, int beginPosition) throws DxException {
 		String token;
 		String sousString; // auxiliar String for stocking a substring of a
 		// line
@@ -514,12 +515,17 @@ public class SetOfActivitiesSites extends DSetOfResources {
 			case 8:// duration of blocs
 				stLine = new StringTokenizer(token);
 				if (numberOfUnities != stLine.countTokens()) {
-					_error = DConst.ACTI_TEXT5
+					throw new DxException(DConst.ACTI_TEXT5
 							+ _line
 							+ " in the activity file:"
 							+ "\n"
-							+ "I was in ActiviesList class and in analyseTokens method ";
-					return false;
+							+ "I was in ActiviesList class and in analyseTokens method ");
+//					_error = DConst.ACTI_TEXT5
+//							+ _line
+//							+ " in the activity file:"
+//							+ "\n"
+//							+ "I was in ActiviesList class and in analyseTokens method ";
+//					return false;
 				}
 				_error = DXToolsMethods.checkIfLineIsEmpty(token,
 						DConst.ACTI_TEXT6 + _line, "ActivityList");
@@ -1089,6 +1095,13 @@ public class SetOfActivitiesSites extends DSetOfResources {
 	public long getSelectedField() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	public void readSetOfActivities(DataExchange de, int i) throws DxException {
+		if (this.analyseTokens(de, i)) {
+			this.buildSetOfResources(de, i);
+		}
+		
 	}
 
 
