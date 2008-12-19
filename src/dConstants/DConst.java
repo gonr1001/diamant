@@ -28,7 +28,7 @@ public class DConst {
 	static ResourceBundle res = ResourceBundle.getBundle("dConstants.DStringFrRes");
 
 
-  	public final static String V_DATE = "v 2.3.1 14 novembre 08";
+  	public final static String V_DATE = "v 2.3.2 19 décembre 08";
 
   	/** The number format for Hours **/
     public final static NumberFormat HourFormat = NumberFormat.getIntegerInstance();
@@ -638,7 +638,8 @@ public class DConst {
   public static final String USEDCOW="COW";
   public static final String DEFAULT_MIX_ALGO = "8";
 
-public static final String INVALID_NUMBER_OF_INSTRUCTORS = "Availability:Invalid number of instructors ";
+public static final String INVALID_NUMBER_OF_INSTRUCTORS = "The number of instructors is incorrect ";
+ 
 public static final String INVALID_AVAILABILITY_AT = "Invalid Availability  at line:";
 
 public static final String INVALID_FILE_FILTER = "Invalid filter file !";
