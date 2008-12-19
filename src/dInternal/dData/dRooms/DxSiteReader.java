@@ -27,10 +27,15 @@ import eLib.exit.exception.DxException;
  * Description: DxSiteReader is a class used to:
  * <p>
  * TODO:insert comments
- * <p> 
+ * <p>
  * 
  */
 public interface DxSiteReader {
-    public DxSetOfSites readSetOfSites()throws DxException;
-    public DxSetOfSites readSetOfSitesNew()throws DxException;
+
+	public DxSetOfSites readSetOfSites() throws DxException;
+
+	public DxSetOfSites readSetOfSitesNew() throws DxException;
+
+	public int getLines();
+
 }
