@@ -126,4 +126,10 @@ public class DxReadInstructors1dot5 implements DxInstructorsReader {
 				&& (!sDispo.equalsIgnoreCase("5"))
 				&& (!sDispo.equalsIgnoreCase("2"));
 	}
+
+	@Override
+	public int getLines() {
+		System.out.println("DxReadInstructors1dot5.bad value -1");
+		return -1;
+	}
 }
