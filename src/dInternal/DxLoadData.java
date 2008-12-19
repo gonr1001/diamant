@@ -63,6 +63,8 @@ import eLib.exit.txt.SemiExtendedAsciiFile;
  * 
  */
 public class DxLoadData {
+	
+	private final int OTHER_LINES = 4;
 
 	private String _instructorFileName;
 
@@ -102,6 +104,8 @@ public class DxLoadData {
 			throws NullPointerException, FileNotFoundException, IOException,
 			DxException {
 
+		System.out.println("start DxLoadData.loadDataStructures");
+
 		String dataloaded = new String(filterBadChars(fileName));
 		StringTokenizer readFile;
 		readFile = new StringTokenizer(dataloaded, DConst.CR_LF);
@@ -111,6 +115,8 @@ public class DxLoadData {
 				|| head.equalsIgnoreCase(DConst.FILE_HEADER_NAME1_6)) {
 			return loadData(fileName, currentDir);
 		} else if (head.equalsIgnoreCase(DConst.FILE_HEADER_NAME2_1)) {
+			System.out
+					.println("before DxLoadData.loadDataStructures call loadData2dot1");
 			return loadData2dot1(fileName);
 		} else {
 			throw new DxException("Invalid FILE_HEADER_NAME !");
@@ -123,7 +129,7 @@ public class DxLoadData {
 
 		String dataloaded = new String(filterBadChars(fileName));
 		StringTokenizer dataTokens;
-		long linePosition = 0;
+		int linePosition = 0;
 		DataExchange de;
 
 		dataTokens = new StringTokenizer(dataloaded, DConst.SAVE_SEPARATOR);
@@ -139,8 +145,8 @@ public class DxLoadData {
 			String inDiaTTSFileName = DXToolsMethods.getAbsoluteFileName(
 					currentDir, dataTokens.nextToken().trim());
 			linePosition++;// for XML file name line
-			//_tts.loadTTSFromFile(inDiaTTSFileName);
-			
+			// _tts.loadTTSFromFile(inDiaTTSFileName);
+
 			InputStream is = new FileInputStream(inDiaTTSFileName);
 			try {
 				_tts.loadTTStructureFromInpuStream(is);
@@ -179,8 +185,13 @@ public class DxLoadData {
 			} else {
 				_activitiesList = new SetOfActivitiesSites(true, _tts
 						.getPeriodLenght());
-				if (_activitiesList.analyseTokens(de, 1)) {
-					_activitiesList.buildSetOfResources(de, 1);
+				try {
+					if (_activitiesList.analyseTokens(de, 1)) {
+						_activitiesList.buildSetOfResources(de, 1);
+					}
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 			}
 			linePosition += ByteInputFile.countLines(inDiaFileActivities);
@@ -205,6 +216,23 @@ public class DxLoadData {
 	private boolean loadData2dot1(String fileName) throws NullPointerException,
 			FileNotFoundException, IOException, DxException {
 
+		System.out.println("start DxLoadData.loadData2dot1");
+		if (DxFlags.newExceptionsReading) {
+			loadData2dot1WithExceptions(fileName);
+			System.out.println("end by DxLoadData.loadData2dot1Exceptions");
+			return true;
+		}
+		// else {
+		System.out.println("end by DxLoadData.loadData2dot1Old");
+		return loadData2dot1Old(fileName);
+		// }
+	}
+
+	private boolean loadData2dot1Old(String fileName)
+			throws NullPointerException, FileNotFoundException, IOException,
+			DxException {
+
+		System.out.println("start DxLoadData.loadData2dot1");
 		String dataloaded = new String(filterBadChars(fileName));
 		StringTokenizer dataTokens;
 
@@ -251,8 +279,13 @@ public class DxLoadData {
 				boolean isOpen = true;
 				_activitiesList = new SetOfActivitiesSites(isOpen, _tts
 						.getPeriodLenght());
-				if (_activitiesList.analyseTokens(de, 1)) {
-					_activitiesList.buildSetOfResources(de, 1);
+				try {
+					if (_activitiesList.analyseTokens(de, 1)) {
+						_activitiesList.buildSetOfResources(de, 1);
+					}
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 			}
 
@@ -270,9 +303,94 @@ public class DxLoadData {
 		}
 		// if we arrive here there is no exception
 		// so true can be used as a constant
+		System.out.println("end DxLoadData.loadData2dot1");
 		return true;
 
 	}
+
+	private void loadData2dot1WithExceptions(String fileName)
+			throws NullPointerException, FileNotFoundException, IOException,
+			DxException {
+
+		System.out.println("start DxLoadData.loadData2dot1WithExceptions");
+		String dataloaded = new String(filterBadChars(fileName));
+
+		StringTokenizer dataTokens = new StringTokenizer(dataloaded,
+				DConst.SAVE_SEPARATOR_VIS);
+		DataExchange de;
+
+		// dataTokens = new StringTokenizer(dataloaded,
+		// DConst.SAVE_SEPARATOR_VIS);
+
+		if (dataTokens.countTokens() == DConst.SAVE_SEPARATOR_COUNT) { // 6
+			// !!!!!!!!!!!!!!
+			// extract version
+			_inDiaFileVersion = dataTokens.nextToken().trim();
+
+			_tts = new TTStructure();
+
+			de = buildDataExchange(dataTokens.nextToken().trim().getBytes());
+			int lines = de.countLines();
+			lines += OTHER_LINES;
+			_tts.loadTTSFromString(de.getContents());
+
+			// extract SetOfInstructor
+			// if (_tts.getError().length() == 0) {
+			de = buildDataExchange(dataTokens.nextToken().trim().getBytes());
+			DxInstructorsReader dxir = new DxReadInstructorsdotDia(de, _tts
+					.getNumberOfActiveDays(), _tts.getCurrentCycle()
+					.getMaxNumberOfPeriodsADay(), lines);
+			_dxSoInst = dxir.readSetOfInstructors();
+			lines = dxir.getLines();
+			// }// end if
+
+			// extract SetOfSites
+			de = buildDataExchange(dataTokens.nextToken().trim().getBytes());
+			DxSiteReader dxrr = new DxReadSitedotDia(de, _tts
+					.getNumberOfActiveDays(), _tts.getCurrentCycle()
+					.getMaxNumberOfPeriodsADay(), lines);
+
+			_dxSoSRooms = dxrr.readSetOfSites();
+			lines = dxrr.getLines();
+			
+			// }
+
+			// extract SetOfActivities
+			de = buildDataExchange(dataTokens.nextToken().trim().getBytes());
+			if (DxFlags.newActivity) {
+				_dxasr = new DxReadActivitiesSites1dot5(de, _dxSoInst,
+						_dxSoSRooms.getAllDxRooms(), _tts.getPeriodLenght(),
+						true);
+
+			} else {
+				boolean isOpen = true;
+				_activitiesList = new SetOfActivitiesSites(isOpen, _tts
+						.getPeriodLenght());
+				_activitiesList.readSetOfActivities(de, 1);
+//				if (_activitiesList.analyseTokens(de, 1)) {
+//					_activitiesList.buildSetOfResources(de, 1);
+//				}
+			}
+
+			// extract SetOfStudents
+			de = buildDataExchange(dataTokens.nextToken().trim().getBytes());
+			_studentsList = new SetOfStuSites();
+			if (_studentsList.analyseTokens(de, 0)) {
+				_studentsList.buildSetOfResources(de, 0);
+			}
+
+		} else {
+			new DxException(DConst.PARTS_IN_DIA_SEPARATED_BY + DConst.CR_LF
+					+ DConst.SAVE_SEPARATOR_VIS);
+			// System.exit(-1);
+		}
+		// if we arrive here there is no exception
+		// so true can be used as a constant
+		System.out.println("end lDxLoadData.loadData2dot1WithExceptions");
+
+	}
+
+
 
 	// /**
 	// *
@@ -489,8 +607,13 @@ public class DxLoadData {
 
 				activitiesList.setSetOfResources(currentList
 						.getSetOfResources());
-			if (activitiesList.analyseTokens(de, 1)) {
-				activitiesList.buildSetOfResources(de, 1);
+			try {
+				if (activitiesList.analyseTokens(de, 1)) {
+					activitiesList.buildSetOfResources(de, 1);
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		} else {// (NullPointerException npe) {
 			throw new DxException("NullPointerException: Preload failed!!!");
@@ -556,11 +679,13 @@ public class DxLoadData {
 		for (int i = 0; i < siteSize; i++) {
 			String rscSite = getSite(currentSites, i);
 			DSetOfResources rescSite = getRscSite(currentSites, i);
-			int catSize = 111111; //getCategorySize(rescSite);
+			int catSize = 111111; // getCategorySize(rescSite);
 			// find category in site
 			for (int j = 0; j < catSize; j++) {
-				String rscCat = DConst.ROOM_STANDARD_CAT;//getCategory(rescSite, j);
-				DSetOfResources rescCat = rescSite; // getRscCategory(rescSite, j);
+				String rscCat = DConst.ROOM_STANDARD_CAT;// getCategory(rescSite,
+				// j);
+				DSetOfResources rescCat = rescSite; // getRscCategory(rescSite,
+				// j);
 				// find resource in a category
 				for (int k = 0; k < rescCat.size(); k++) {
 					// current resource
@@ -598,11 +723,13 @@ public class DxLoadData {
 		for (int i = 0; i < newSize; i++) {
 			String rscSite = getSite(newSites, i);
 			DSetOfResources rescSite = getRscSite(newSites, i);
-			int catSize = 111111; //getCategorySize(rescSite);
+			int catSize = 111111; // getCategorySize(rescSite);
 			// find category in site
 			for (int j = 0; j < catSize; j++) {
-				String rscCat = DConst.ROOM_STANDARD_CAT; //getCategory(rescSite, j);
-				DSetOfResources rescCat = rescSite; //getRscCategory(rescSite, j);
+				String rscCat = DConst.ROOM_STANDARD_CAT; // getCategory(rescSite,
+				// j);
+				DSetOfResources rescCat = rescSite; // getRscCategory(rescSite,
+				// j);
 				// find resource in a category
 				for (int k = 0; k < rescCat.size(); k++) {
 					// current ressource
@@ -642,11 +769,13 @@ public class DxLoadData {
 		for (int i = 0; i < siteSize; i++) {
 			String rscSite = getSite(currentSites, i);
 			DSetOfResources rescSite = getRscSite(currentSites, i);
-			int catSize = 111111; //getCategorySize(rescSite);
+			int catSize = 111111; // getCategorySize(rescSite);
 			// find category in site
 			for (int j = 0; j < catSize; j++) {
-				String rscCat = DConst.ROOM_STANDARD_CAT;//getCategory(rescSite, j);
-				DSetOfResources rescCat = rescSite; //getRscCategory(rescSite, j);
+				String rscCat = DConst.ROOM_STANDARD_CAT;// getCategory(rescSite,
+				// j);
+				DSetOfResources rescCat = rescSite; // getRscCategory(rescSite,
+				// j);
 				// find resource in a category
 				for (int k = 0; k < rescCat.size(); k++) {
 					DResource resc = rescCat.getResourceAt(k);
@@ -818,48 +947,6 @@ public class DxLoadData {
 
 	}
 
-//	/**
-//	 * 
-//	 * @param sourceSites
-//	 * @param index
-//	 * @return
-//	 */
-//	private String getCategory(DSetOfResources sourceCategories, int index) {
-//		return DConst.ROOM_STANDARD_CAT;
-//	}
-
-//	// /**
-//	// *
-//	// * @param sourceSites
-//	// * @param index
-//	// * @return
-//	// */
-//	private int getCategorySize(DSetOfResources sourceCategories) {
-//		// if (sourceCategories instanceof SetOfCategories) {
-//		// return sourceCategories.size();
-//		// }
-//		//
-//		return 11111;
-//	}
-
-//	/**
-//	 * 
-//	 * @param sourceSites
-//	 * @param index
-//	 * @return
-//	 */
-//	private DSetOfResources getRscCategory(DSetOfResources sourceCategories,
-//			int index) {
-//		// if (sourceCategories instanceof SetOfRooms) {
-//		// DResource rsc = sourceCategories.getResourceAt(index);
-//		// if (rsc != null)
-//		// return (DSetOfResources) rsc.getAttach();
-//		// return null;
-//		// }
-//
-//		return sourceCategories;
-//	}
-
 	public byte[] filterBadChars(String str) throws NullPointerException,
 			FileNotFoundException, IOException, DxException {
 		SemiExtendedAsciiFile filter = new SemiExtendedAsciiFile();
@@ -867,12 +954,5 @@ public class DxLoadData {
 		return filter.getByteArray();
 	}
 
-	/**
-	 * @param model
-	 */
-	public void transfer(DModel model) {
-		// TODO Auto-generated method stub
-		
-	}
 
 } // end DxLoadData
