@@ -38,7 +38,7 @@ public class DxReadSitedotDia implements DxSiteReader {
 	/**
 	 * Used to report line where error was found
 	 */
-	private long currentLine = 0;
+	private int _linesCounter = 0;
 
 	public DxReadSitedotDia(DataExchange de, int nDays, int nPeriods) {
 		_deSites = de;
@@ -46,11 +46,11 @@ public class DxReadSitedotDia implements DxSiteReader {
 		_nPeriods = nPeriods;
 	}
 
-	public DxReadSitedotDia(DataExchange de, int nDays, int nPeriods, long line) {
+	public DxReadSitedotDia(DataExchange de, int nDays, int nPeriods, int line) {
 		_deSites = de;
 		_nDays = nDays;
 		_nPeriods = nPeriods;
-		currentLine = line;
+		_linesCounter = line;
 	}
 
 	public DxSetOfSites readSetOfSites() throws DxException {
@@ -73,11 +73,11 @@ public class DxReadSitedotDia implements DxSiteReader {
 		DxRoom dxrTempRoom;
 		// "Diamant1.6" token
 		stFileTokenizer.nextToken();
-		currentLine++;
+		_linesCounter++;
 		// For every line containing a room
 		while (stFileTokenizer.hasMoreElements()) {
 			sFileToken = stFileTokenizer.nextToken();
-			currentLine++;
+			_linesCounter++;
 			stLineTokenizer = new StringTokenizer(sFileToken,
 					DConst.ROOM_FIELD_SEPARATOR_TOKEN);
 			if (stLineTokenizer.countTokens() == DConst.ROOM_DIA_TOKEN_COUNT) {
@@ -88,19 +88,19 @@ public class DxReadSitedotDia implements DxSiteReader {
 				try {
 					nRoomCapacity = Integer.parseInt(sLineToken);
 				} catch (NumberFormatException e) {
-					throw new DxException(DConst.ROOM_TEXT2 + currentLine);
+					throw new DxException(DConst.ROOM_TEXT2 + _linesCounter);
 				}
 				// Room function
 				sLineToken = stLineTokenizer.nextToken().trim();
 				try {
 					nRoomFunction = Integer.parseInt(sLineToken);
 				} catch (NumberFormatException e) {
-					throw new DxException(DConst.ROOM_TEXT3 + currentLine);
+					throw new DxException(DConst.ROOM_TEXT3 + _linesCounter);
 				}
 				// Room characteristics list
 				sLineToken = stLineTokenizer.nextToken().trim();
 				viCharacteristics = parseCharacteristics(sLineToken,
-						currentLine);
+						_linesCounter);
 				// Room site
 				sRoomSite = stLineTokenizer.nextToken().trim();
 				// Room category
@@ -112,7 +112,7 @@ public class DxReadSitedotDia implements DxSiteReader {
 				sLineToken = stLineTokenizer.nextToken().trim();
 				dxaAva = parseAvailability(sLineToken);
 			} else {
-				throw new DxException(DConst.ROOM_TEXT7 + currentLine);
+				throw new DxException(DConst.ROOM_TEXT7 + _linesCounter);
 			}
 			sRoomName = sRoomName.toUpperCase();
 			sRoomCat = sRoomCat.toUpperCase();
@@ -148,11 +148,11 @@ public class DxReadSitedotDia implements DxSiteReader {
 		DxRoom dxrTempRoom;
 		// "Diamant1.6" token
 		stFileTokenizer.nextToken();
-		currentLine++;
+		_linesCounter++;
 		// For every line containing a room
 		while (stFileTokenizer.hasMoreElements()) {
 			sFileToken = stFileTokenizer.nextToken();
-			currentLine++;
+			_linesCounter++;
 			stLineTokenizer = new StringTokenizer(sFileToken,
 					DConst.ROOM_FIELD_SEPARATOR_TOKEN, true);
 			if (stLineTokenizer.countTokens() == DConst.ROOM_DIA_TOKEN_COUNT) {
@@ -163,19 +163,19 @@ public class DxReadSitedotDia implements DxSiteReader {
 				try {
 					nRoomCapacity = Integer.parseInt(sLineToken);
 				} catch (NumberFormatException e) {
-					throw new DxException(DConst.ROOM_TEXT2 + currentLine);
+					throw new DxException(DConst.ROOM_TEXT2 + _linesCounter);
 				}
 				// Room function
 				sLineToken = stLineTokenizer.nextToken().trim();
 				try {
 					nRoomFunction = Integer.parseInt(sLineToken);
 				} catch (NumberFormatException e) {
-					throw new DxException(DConst.ROOM_TEXT3 + currentLine);
+					throw new DxException(DConst.ROOM_TEXT3 + _linesCounter);
 				}
 				// Room characteristics list
 				sLineToken = stLineTokenizer.nextToken().trim();
 				viCharacteristics = parseCharacteristics(sLineToken,
-						currentLine);
+						_linesCounter);
 				// Room site
 				sRoomSite = stLineTokenizer.nextToken().trim();
 				// Room category
@@ -187,7 +187,7 @@ public class DxReadSitedotDia implements DxSiteReader {
 				sLineToken = stLineTokenizer.nextToken().trim();
 				dxaAva = parseAvailability(sLineToken);
 			} else {
-				throw new DxException(DConst.ROOM_TEXT7 + currentLine);
+				throw new DxException(DConst.ROOM_TEXT7 + _linesCounter);
 			}
 
 			dxrTempRoom = new DxRoom(sRoomName, sRoomCat, nRoomCapacity,
@@ -249,14 +249,14 @@ public class DxReadSitedotDia implements DxSiteReader {
 					String dispo = tokenDispo.nextToken();
 					if (!isValidDayAvailability(dispo)) {
 						throw new DxException(DConst.INVALID_AVAILABILITY_AT
-								+ currentLine);
+								+ _linesCounter);
 					}
 				}
 				// After line is validated, we add it to the availability
 				dxaAvaTemp.addDayAvailability(line);
 			} else
 				throw new DxException(DConst.INVALID_AVAILABILITY_AT
-						+ currentLine);
+						+ _linesCounter);
 
 		}// end for(int i=1;
 		return dxaAvaTemp;
@@ -266,113 +266,11 @@ public class DxReadSitedotDia implements DxSiteReader {
 		return (sDispo.equalsIgnoreCase("1")) || (sDispo.equalsIgnoreCase("5"))
 				|| (sDispo.equalsIgnoreCase("2"));
 	}
-	// public DxSetOfSites readSetOfSites2() throws DxException{
-	// StringTokenizer stLineTokenizer;
-	// StringTokenizer stFileTokenizer = new StringTokenizer(_deSites
-	// .getContents(), DConst.CR_LF);
-	//
-	// String sFileToken;
-	// String sLineToken;
-	//
-	// int nCurrentLineState = 0;
-	//
-	// // Initialized to avoid further warnings
-	// String sRoomName = null;
-	// int nRoomCapacity = 0;
-	// int nRoomFunction = 0;
-	// Vector<Integer> viCharacteristics = null;
-	// String sRoomSite = null;
-	// String sRoomCat = null;
-	// String sNote = null;
-	// DxAvailability dxaAva = null;
-	//
-	// DxSetOfSites dxsosBuild = new DxSetOfSites();
-	// DxRoom dxrTempRoom;
-	//
-	// ////No useless lines in dia files
-	// // // Skips useless lines
-	// // while (stFileTokenizer.hasMoreElements()
-	// // && nCurrentLine < DConst.ROOM_USELESS_DIA_HEADER) {
-	// // sFileToken = stFileTokenizer.nextToken();
-	// // nCurrentLine++;
-	// // }
-	//
-	// stFileTokenizer.nextToken(); // "Diamant1.6" token
-	// // For every line containing a room
-	// while (stFileTokenizer.hasMoreElements()) {
-	// sFileToken = stFileTokenizer.nextToken();
-	// nCurrentLineState = 0;
-	// stLineTokenizer = new StringTokenizer(sFileToken,
-	// DConst.ROOM_FIELD_SEPARATOR_TOKEN);
-	// if (stLineTokenizer.countTokens() == DConst.ROOM_DIA_TOKEN_COUNT) {
-	// while (nCurrentLineState < DConst.ROOM_DIA_TOKEN_COUNT) {
-	// sLineToken = stLineTokenizer.nextToken().trim();
-	//
-	// // Finite state machine for fields on a line
-	// switch (nCurrentLineState) {
-	// // Room name field
-	// case 0:
-	// sRoomName = sLineToken;
-	// break;
-	//
-	// // Room capacity
-	// case 1:
-	// try {
-	// nRoomCapacity = new Integer(sLineToken).intValue();
-	// } catch (NumberFormatException e) {
-	// throw new DxException(DConst.ROOM_TEXT2+currentLine);
-	// }
-	// break;
-	//
-	// // Room function
-	// case 2:
-	// try {
-	// nRoomFunction = new Integer(sLineToken).intValue();
-	// } catch (NumberFormatException e) {
-	// throw new DxException(DConst.ROOM_TEXT3+currentLine);
-	// }
-	// break;
-	//
-	// // Room characteristics list
-	// case 3:
-	// viCharacteristics = parseCharacteristics(sLineToken,currentLine);
-	// break;
-	//
-	// case 4:
-	// sRoomSite = sLineToken;
-	// break;
-	//
-	// case 5:
-	// sRoomCat = sLineToken;
-	// break;
-	//
-	// // Room comment or note
-	// case 6:
-	// sNote = sLineToken;
-	// break;
-	//
-	// // Room availability
-	// case 7:
-	// dxaAva = parseAvailability(sLineToken);
-	// break;
-	//
-	// }
-	// nCurrentLineState++;
-	// }
-	// dxrTempRoom = new DxRoom(sRoomName, nRoomCapacity,
-	// nRoomFunction, viCharacteristics, sNote, dxaAva);
-	// dxsosBuild.addSite(sRoomSite); // If site exists, it's not
-	// // added
-	// dxsosBuild.addCategory(sRoomSite, sRoomCat);// If cat exits, it's
-	// // not added
-	// dxsosBuild.addRoom(sRoomSite, sRoomCat, dxrTempRoom);
-	// } else {
-	// //if (stLineTokenizer.countTokens() == DConst.ROOM_DIA_TOKEN_COUNT)
-	// throw new DxException(DConst.ROOM_TEXT7+currentLine);
-	// }
-	// currentLine++;
-	// }
-	// return dxsosBuild;
-	//}
+
+
+	@Override
+	public int getLines() {
+		return _linesCounter;
+	}
 
 }
