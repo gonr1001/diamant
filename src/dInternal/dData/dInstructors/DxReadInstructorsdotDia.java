@@ -19,6 +19,7 @@
  */
 
 package dInternal.dData.dInstructors;
+
 import java.util.StringTokenizer;
 import eLib.exit.exception.DxException;
 import dConstants.DConst;
@@ -26,69 +27,73 @@ import dInternal.DataExchange;
 import dInternal.dData.DxAvailability;
 import dInternal.dUtil.DXToolsMethods;
 
-
 public class DxReadInstructorsdotDia implements DxInstructorsReader {
- 	private DataExchange _deInstructors;
 
-		private int _nDays, _nPeriods;
- /**
-  * Used to report line where error was found
-  */ 
-		private long currentLine=0;
+	private DataExchange _deInstructors;
 
-		public DxReadInstructorsdotDia(DataExchange de, int nDays, int nPeriods) {
-			_deInstructors = de;
-			_nDays = nDays;
-			_nPeriods = nPeriods;
-		}
-		public DxReadInstructorsdotDia(DataExchange de, int nDays, int nPeriods,long line) {
-			_deInstructors = de;
-			_nDays = nDays;
-			_nPeriods = nPeriods;
-			currentLine=line;
-		}
+	private int _nDays, _nPeriods;
+	/**
+	 * Used to report line where error was found
+	 */
+	private int _linesCounter = 0;
 
-		/**
+	public DxReadInstructorsdotDia(DataExchange de, int nDays, int nPeriods) {
+		_deInstructors = de;
+		_nDays = nDays;
+		_nPeriods = nPeriods;
+	}
+
+	public DxReadInstructorsdotDia(DataExchange de, int nDays, int nPeriods,
+			int line) {
+		_deInstructors = de;
+		_nDays = nDays;
+		_nPeriods = nPeriods;
+		_linesCounter = line;
+	}
+
+	/**
 		 * 
 		 */
-		public DxSetOfInstructors readSetOfInstructors() throws DxException {
-			StringTokenizer st = new StringTokenizer(_deInstructors.getContents(),
-					DConst.CR_LF);
-			String token;
+	public DxSetOfInstructors readSetOfInstructors() throws DxException {
+		StringTokenizer st = new StringTokenizer(_deInstructors.getContents(),
+				DConst.CR_LF);
+		String token;
 
-			int numberOfInstructors = 0;
-			int countInstructor = 0;
-             String instID = "";
-			DxSetOfInstructors dxsoiInst = new DxSetOfInstructors();
-			DxAvailability dxaAvaTemp = new DxAvailability();
-            
-			// Get the total number 
-			
-			try {
-				token = st.nextToken();
-				currentLine++;
-				numberOfInstructors = (new Integer(token.trim())).intValue();
-			 } catch (NumberFormatException exc) {
-				throw new DxException(DConst.INVALID_NUMBER_OF_INSTRUCTORS+exc.getMessage());
-			}
-			// As long as we dont reach the end of the string tokenizer
-			// Reads all tokens in the file
-			while (st.hasMoreElements()) {
+		int numberOfInstructors = 0;
+		int countInstructor = 0;
+		long numberOfInstructorsLine = 0;
+		String instID = "";
+		DxSetOfInstructors dxsoiInst = new DxSetOfInstructors();
+		DxAvailability dxaAvaTemp = new DxAvailability();
+
+		// Get the total number
+
+		try {
 			token = st.nextToken();
-			currentLine++;
+			_linesCounter++;
+			numberOfInstructors = (new Integer(token.trim())).intValue();
+			numberOfInstructorsLine = _linesCounter;
+		} catch (NumberFormatException nfe) {
+			throw new DxException(DConst.INVALID_NUMBER_OF_INSTRUCTORS
+					+ nfe.getMessage());
+		}
+		// As long as we do not reach the end of the string tokenizer
+		// Reads all tokens in the file
+		while (st.hasMoreElements()) {
+			token = st.nextToken();
+			_linesCounter++;
 			// Get the instructor name
 			boolean isnotavail = !isValidDayAvailability(token.substring(0, 1));
-			if (token.trim().length() > DConst.MINIMUN_NAME
-					&& isnotavail) {
+			if (token.trim().length() > DConst.MINIMUN_NAME && isnotavail) {
 				instID = token;
 			} else
 				throw new DxException(DConst.INVALID_INSTRUCTOR_NAME
-						+ currentLine);
+						+ _linesCounter);
 			// Build Availability
 			dxaAvaTemp = new DxAvailability();
 			for (int i = 0; st.hasMoreElements() && i < _nDays; i++) {
 				token = st.nextToken();
-				currentLine++;
+				_linesCounter++;
 				// extract a line that gives availability of a day
 				String line = DXToolsMethods.getToken(token,
 						DConst.AVAILABILITY_SEPARATOR, 0);
@@ -102,32 +107,47 @@ public class DxReadInstructorsdotDia implements DxInstructorsReader {
 						if (!isValidDayAvailability(dispo)) {
 							throw new DxException(
 									DConst.INVALID_AVAILABILITY_AT
-											+ currentLine);
+											+ _linesCounter);
 						}
 					}
 					// After line is validated, we add it to the availability
 					dxaAvaTemp.addDayAvailability(line);
 				} else
-					throw new DxException(DConst.INVALID_AVAILABILITY_AT+ currentLine);
+					throw new DxException(DConst.INVALID_AVAILABILITY_AT
+							+ _linesCounter);
 			}// end for(int i=1;
 			dxsoiInst.addInstructor(instID, dxaAvaTemp);
 			countInstructor++;
 
 		}// end while
 
-            // Verifies if number of instructors indicated at the beginning of
-			// the
-			// file was valid
-			if (countInstructor != numberOfInstructors) {
-				throw new DxException(DConst.INVALID_NUMBER_OF_INSTRUCTORS);
-			}
+		verifyNumberOfInstructors(numberOfInstructors, countInstructor,
+				numberOfInstructorsLine);
 
-			return dxsoiInst;
-		}
+		return dxsoiInst;
+	}
 
-		private boolean isValidDayAvailability(String sDispo) {
-			return (sDispo.equalsIgnoreCase("1"))
-					|| (sDispo.equalsIgnoreCase("5"))
-					|| (sDispo.equalsIgnoreCase("2"));
+	private void verifyNumberOfInstructors(int numberOfInstructors,
+			int countInstructor, long numberOfInstructorsLine)
+			throws DxException {
+		// Verify if number of instructors indicated at the beginning of
+		// the
+		// file was valid
+		if (countInstructor != numberOfInstructors) {
+			throw new DxException(DConst.INVALID_NUMBER_OF_INSTRUCTORS
+					+ " Il y a " + countInstructor + " a la place de "
+					+ numberOfInstructors + " indique \n" + " sur la ligne "
+					+ numberOfInstructorsLine);
 		}
 	}
+
+	private boolean isValidDayAvailability(String sDispo) {
+		return (sDispo.equalsIgnoreCase("1")) || (sDispo.equalsIgnoreCase("5"))
+				|| (sDispo.equalsIgnoreCase("2"));
+	}
+
+	@Override
+	public int getLines() {
+		return _linesCounter;
+	}
+}
