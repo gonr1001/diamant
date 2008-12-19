@@ -39,7 +39,6 @@ import dResources.DFileFilter;
 
 public class ImportDlg extends JDialog implements DlgIdentification {
 
-	// DApplication _dApplic;
 	/**
 	 * the constructor will displays the dialog
 	 * 
@@ -68,28 +67,6 @@ public class ImportDlg extends JDialog implements DlgIdentification {
 		}
 	} // end constructor
 
-	// /**
-	// *
-	// */
-	// private void buildDialog(DApplication dApplic) {
-	// JFileChooser fc = new JFileChooser(dApplic.getCurrentDir());
-	// fc.setFileFilter(new DFileFilter(new String[] { DConst.DIM },
-	// DConst.DIM_FILE));
-	// // Display the file chooser in a dialog
-	// Dimension d = fc.getPreferredSize();
-	// fc.setPreferredSize(new Dimension((int) d.getWidth() + 100, (int) d
-	// .getHeight()));
-	// int returnVal = fc.showDialog(dApplic.getJFrame(), DConst.IMP_A_TD);
-	//
-	// // If the file chooser exited sucessfully,
-	// // and a file was selected, continue
-	// if (returnVal == JFileChooser.APPROVE_OPTION) {
-	// // get the file name
-	// String fil = fc.getSelectedFile().getAbsolutePath();
-	// dApplic.doImport(fc,fil);
-	// dispose();
-	// }
-	// }// end loadData
 
 	public String idDlgToString() {
 		return this.getClass().toString();
