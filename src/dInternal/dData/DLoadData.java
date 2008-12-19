@@ -322,7 +322,7 @@ public class DLoadData {
 
 		String dataloaded = new String(filterBadChars(fileName));
 		StringTokenizer dataTokens;
-		long linePosition = 0;
+		int linePosition = 0;
 		DataExchange de;
 
 		dataTokens = new StringTokenizer(dataloaded, DConst.SAVE_SEPARATOR);
