@@ -36,7 +36,7 @@ import dInternal.dData.dActivities.DxActivitiesSitesReader;
 import dInternal.dData.dActivities.DxReadActivitiesSites1dot5;
 import dInternal.dData.dActivities.DxReadActivitiesSites1dot6;
 import dInternal.dData.dActivities.DxSetOfActivitiesSites;
-import dInternal.dData.dActivities.SetOfActivitiesSites;
+import dInternal.dData.dActivities.SetOfActivitiesInSites;
 import dInternal.dData.dInstructors.DxInstructorsReader;
 import dInternal.dData.dInstructors.DxReadInstructors1dot5;
 import dInternal.dData.dInstructors.DxReadInstructorsdotDia;
@@ -81,7 +81,7 @@ public class DLoadData {
 
 	private DxActivitiesSitesReader _dxasr;
 
-	private SetOfActivitiesSites _activitiesList;
+	private SetOfActivitiesInSites _activitiesList;
 
 	private SetOfStuSites _studentsList;
 
@@ -242,10 +242,10 @@ public class DLoadData {
 	 *            the new SetOfActivities)
 	 * @return SetOfActivities
 	 */
-	public SetOfActivitiesSites extractActivities(
-			SetOfActivitiesSites currentList, boolean merge) throws DxException {
+	public SetOfActivitiesInSites extractActivities(
+			SetOfActivitiesInSites currentList, boolean merge) throws DxException {
 		DataExchange de = buildDataExchange(_activitiesFileName);
-		SetOfActivitiesSites activitiesList = new SetOfActivitiesSites(false,
+		SetOfActivitiesInSites activitiesList = new SetOfActivitiesInSites(false,
 				_dm.getTTStructure().getPeriodLenght());
 		if (de.getContents() != null) {
 			// Vector setOfResources = currentList
@@ -381,7 +381,7 @@ public class DLoadData {
 						de, _dxSoInst, _dxSoSRooms.getAllDxRooms(), _tts
 								.getPeriodLenght(), true);
 			} else {
-				_activitiesList = new SetOfActivitiesSites(true, _tts
+				_activitiesList = new SetOfActivitiesInSites(true, _tts
 						.getPeriodLenght());
 				if (_activitiesList.analyseTokens(de, 1)) {
 					_activitiesList.buildSetOfResources(de, 1);
@@ -451,7 +451,7 @@ public class DLoadData {
 
 			} else {
 				boolean isOpen = true;
-				_activitiesList = new SetOfActivitiesSites(isOpen, _tts
+				_activitiesList = new SetOfActivitiesInSites(isOpen, _tts
 						.getPeriodLenght());
 				if (_activitiesList.analyseTokens(de, 1)) {
 					_activitiesList.buildSetOfResources(de, 1);
@@ -571,7 +571,7 @@ public class DLoadData {
 		} else if (currentSetOfResc instanceof dInternal.dData.dStudents.SetOfStuSites) {
 			_studentsFileName = file;
 			newSetOfResc = extractStudents(null, false);
-		} else if (currentSetOfResc instanceof dInternal.dData.dActivities.SetOfActivitiesSites) {
+		} else if (currentSetOfResc instanceof dInternal.dData.dActivities.SetOfActivitiesInSites) {
 			_activitiesFileName = file;
 			newSetOfResc = extractActivities(null, false);
 		} else {// (NullPointerException npe) {
@@ -1092,7 +1092,7 @@ public class DLoadData {
 		}
 
 		// TODO Make getResource for DxSetOfActivitiesSites
-		if (source instanceof SetOfActivitiesSites) {
+		if (source instanceof SetOfActivitiesInSites) {
 			if (rescSite != null)
 				return ((DSetOfResources) rescSite.getAttach())
 						.getResource(target.getID());
@@ -1255,7 +1255,7 @@ public class DLoadData {
 		return _dxasr;
 	}
 
-	public SetOfActivitiesSites getSetOfActivitiesSites() {
+	public SetOfActivitiesInSites getSetOfActivitiesSites() {
 		return _activitiesList;
 	}
 
