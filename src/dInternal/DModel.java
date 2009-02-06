@@ -43,7 +43,7 @@ import dInternal.dData.dActivities.DxSetOfActivities;
 import dInternal.dData.dActivities.DxSetOfActivitiesSites;
 import dInternal.dData.dActivities.Section;
 import dInternal.dData.dActivities.SetOfActivities;
-import dInternal.dData.dActivities.SetOfActivitiesSites;
+import dInternal.dData.dActivities.SetOfActivitiesInSites;
 import dInternal.dData.dActivities.Type;
 import dInternal.dData.dActivities.Unity;
 import dInternal.dData.dInstructors.DxInstructor;
@@ -103,7 +103,7 @@ public class DModel extends Observable {
 
 	private SetOfStuSites _setOfStuSites;
 
-	private SetOfActivitiesSites _setOfActivitiesSites;
+	private SetOfActivitiesInSites _setOfActivitiesSites;
 
 	private DxDocument _dxDocument;
 
@@ -587,7 +587,7 @@ public class DModel extends Observable {
 			// // --
 			// // Activité
 			// TODO revoir ceci
-			// _setOfActivitiesSites = (SetOfActivitiesSites) loadData
+			// _setOfActivitiesSites = (SetOfActivitiesInSites) loadData
 			// .selectiveImport(_setOfActivitiesSites, fileName);
 			// error = _setOfActivitiesSites.getError();
 			//
@@ -738,7 +738,7 @@ public class DModel extends Observable {
 	/**
 	 * @return Returns the _setOfActivitiesSites.
 	 */
-	public SetOfActivitiesSites getSetOfActivitiesSites() {
+	public SetOfActivitiesInSites getSetOfActivitiesSites() {
 		return _setOfActivitiesSites;
 	}
 
