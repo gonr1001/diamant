@@ -26,7 +26,7 @@ import dConstants.DConst;
 import dInternal.dData.dRooms.DxSetOfSites;
 import dInternal.dData.dRooms.SetOfSites;
 import dInternal.dData.dActivities.DxSetOfActivitiesSites;
-import dInternal.dData.dActivities.SetOfActivitiesSites;
+import dInternal.dData.dActivities.SetOfActivitiesInSites;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
 import dInternal.dData.dStudents.SetOfStuSites;
 
@@ -56,7 +56,7 @@ public class DSaveData {
 	 *
 	 */
 	public String saveTimeTable(TTStructure tts, DxSetOfInstructors inst,
-			SetOfSites rooms, SetOfActivitiesSites act, SetOfStuSites students,
+			SetOfSites rooms, SetOfActivitiesInSites act, SetOfStuSites students,
 			String fileName) {
 		String error = "";
 		if (inst == null || rooms == null || act == null || students == null) {
@@ -94,7 +94,7 @@ public class DSaveData {
 	 *
 	 */
 	public String saveTimeTable(TTStructure tts, DxSetOfInstructors inst,
-			DxSetOfSites sites, SetOfActivitiesSites act, SetOfStuSites students,
+			DxSetOfSites sites, SetOfActivitiesInSites act, SetOfStuSites students,
 			String fileName) {
 		String error = "";
 		if (inst == null || sites == null || act == null || students == null) {
