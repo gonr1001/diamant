@@ -20,8 +20,8 @@
 
 package dInternal.dData.dStudents;
 
-import eLib.exit.exception.DxException;
+import dExceptions.DiaException;
 
 public interface DxStudentsReader{
-    public DxSetOfStudents readSetOfStudents() throws DxException;
+    public DxSetOfStudents readSetOfStudents() throws DiaException;
 }
