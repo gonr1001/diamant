@@ -20,8 +20,8 @@
 
 package dInternal.dData.dStudents;
 
+import dExceptions.DiaException;
 import dInternal.DataExchange;
-import eLib.exit.exception.DxException;
 
 
 public class DxReadStudentsdotDia implements DxStudentsReader {
@@ -37,7 +37,7 @@ public class DxReadStudentsdotDia implements DxStudentsReader {
 			_deStudents = de;
 			currentLine=line;
 		}
-		public DxSetOfStudents readSetOfStudents() throws DxException {
+		public DxSetOfStudents readSetOfStudents() throws DiaException {
 			
 			DxSetOfStudents dxsosStud = new DxSetOfStudents();
 			return dxsosStud;
