@@ -28,12 +28,13 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 
 import dConstants.DConst;
+import dExceptions.DiaException;
 import dInternal.DModel;
 import dInternal.DataExchange;
 import dInternal.dData.ByteArrayMsg;
 import dInternal.dData.dActivities.DxActivitiesSitesReader;
 import dInternal.dData.dActivities.DxReadActivitiesSites1dot5;
-import dInternal.dData.dActivities.SetOfActivitiesSites;
+import dInternal.dData.dActivities.SetOfActivitiesInSites;
 import dInternal.dData.dInstructors.DxInstructorsReader;
 import dInternal.dData.dInstructors.DxReadInstructors1dot5;
 import dInternal.dData.dInstructors.DxReadInstructorsdotDia;
@@ -49,7 +50,6 @@ import dInternal.dData.dStudents.Student;
 import dInternal.dTimeTable.TTStructure;
 import dInternal.dUtil.DXToolsMethods;
 import developer.DxFlags;
-import eLib.exit.exception.DxException;
 import eLib.exit.txt.ByteInputFile;
 import eLib.exit.txt.SemiExtendedAsciiFile;
 
@@ -86,7 +86,7 @@ public class DxLoadData {
 
 	private DxActivitiesSitesReader _dxasr;
 
-	private SetOfActivitiesSites _activitiesList;
+	private SetOfActivitiesInSites _activitiesList;
 
 	private SetOfStuSites _studentsList;
 
@@ -102,7 +102,7 @@ public class DxLoadData {
 
 	public boolean loadDataStructures(String fileName, String currentDir)
 			throws NullPointerException, FileNotFoundException, IOException,
-			DxException {
+			DiaException {
 
 		System.out.println("start DxLoadData.loadDataStructures");
 
@@ -119,13 +119,13 @@ public class DxLoadData {
 					.println("before DxLoadData.loadDataStructures call loadData2dot1");
 			return loadData2dot1(fileName);
 		} else {
-			throw new DxException("Invalid FILE_HEADER_NAME !");
+			throw new DiaException("Invalid FILE_HEADER_NAME !");
 		}
 	}
 
 	private boolean loadData(String fileName, String currentDir)
 			throws NullPointerException, FileNotFoundException, IOException,
-			DxException {
+			DiaException {
 
 		String dataloaded = new String(filterBadChars(fileName));
 		StringTokenizer dataTokens;
@@ -157,7 +157,7 @@ public class DxLoadData {
 
 			linePosition++; // for separator =========================
 			inDiaFileInstructors = dataTokens.nextToken().trim();
-			de = buildDataExchange(inDiaFileInstructors.getBytes());
+			de = insertHeader(inDiaFileInstructors.getBytes());
 			DxInstructorsReader dxir = new DxReadInstructorsdotDia(de, _tts
 					.getNumberOfActiveDays(), _tts.getCurrentCycle()
 					.getMaxNumberOfPeriodsADay(), linePosition);
@@ -167,7 +167,7 @@ public class DxLoadData {
 			linePosition++; // for separator =========================
 			// extract SetOfSites
 			inDiaFileRooms = dataTokens.nextToken().trim();
-			de = buildDataExchange(inDiaFileRooms.getBytes());
+			de = insertHeader(inDiaFileRooms.getBytes());
 			// if (DxFlags.newRooms) {
 			DxSiteReader dxrr = new DxReadSitedotDia(de, _tts
 					.getNumberOfActiveDays(), _tts.getCurrentCycle()
@@ -177,13 +177,13 @@ public class DxLoadData {
 			linePosition++; // for separator =========================
 			// extract SetOfActivities
 			inDiaFileActivities = dataTokens.nextToken().trim();
-			de = buildDataExchange(inDiaFileActivities.getBytes());
+			de = insertHeader(inDiaFileActivities.getBytes());
 			if (DxFlags.newActivity) {
 				DxActivitiesSitesReader dxasr = new DxReadActivitiesSites1dot5(
 						de, _dxSoInst, _dxSoSRooms.getAllDxRooms(), _tts
 								.getPeriodLenght(), true);
 			} else {
-				_activitiesList = new SetOfActivitiesSites(true, _tts
+				_activitiesList = new SetOfActivitiesInSites(true, _tts
 						.getPeriodLenght());
 				try {
 					if (_activitiesList.analyseTokens(de, 1)) {
@@ -199,13 +199,13 @@ public class DxLoadData {
 			// extract SetOfStudents
 			inDiaFileStudents = dataTokens.nextToken().trim();
 			linePosition += ByteInputFile.countLines(inDiaFileStudents);
-			de = buildDataExchange(inDiaFileStudents.getBytes());
+			de = insertHeader(inDiaFileStudents.getBytes());
 			_studentsList = new SetOfStuSites();
 			if (_studentsList.analyseTokens(de, 0)) {
 				_studentsList.buildSetOfResources(de, 0);
 			}
 		} else {
-			throw new DxException(DConst.PARTS_IN_DIA_SEPARATED_BY
+			throw new DiaException(DConst.PARTS_IN_DIA_SEPARATED_BY
 					+ DConst.CR_LF + DConst.SAVE_SEPARATOR);
 		}
 		// if we arrive here there is no exception
@@ -214,7 +214,7 @@ public class DxLoadData {
 	}
 
 	private boolean loadData2dot1(String fileName) throws NullPointerException,
-			FileNotFoundException, IOException, DxException {
+			FileNotFoundException, IOException, DiaException {
 
 		System.out.println("start DxLoadData.loadData2dot1");
 		if (DxFlags.newExceptionsReading) {
@@ -230,7 +230,7 @@ public class DxLoadData {
 
 	private boolean loadData2dot1Old(String fileName)
 			throws NullPointerException, FileNotFoundException, IOException,
-			DxException {
+			DiaException {
 
 		System.out.println("start DxLoadData.loadData2dot1");
 		String dataloaded = new String(filterBadChars(fileName));
@@ -247,12 +247,12 @@ public class DxLoadData {
 
 			_tts = new TTStructure();
 
-			de = buildDataExchange(dataTokens.nextToken().trim().getBytes());
+			de = insertHeader(dataTokens.nextToken().trim().getBytes());
 			_tts.loadTTSFromString(de.getContents());
 
 			// extract SetOfInstructor
 			if (_tts.getError().length() == 0) {
-				de = buildDataExchange(dataTokens.nextToken().trim().getBytes());
+				de = insertHeader(dataTokens.nextToken().trim().getBytes());
 				DxInstructorsReader dxir = new DxReadInstructorsdotDia(de, _tts
 						.getNumberOfActiveDays(), _tts.getCurrentCycle()
 						.getMaxNumberOfPeriodsADay());
@@ -260,7 +260,7 @@ public class DxLoadData {
 			}// end if
 
 			// extract SetOfSites
-			de = buildDataExchange(dataTokens.nextToken().trim().getBytes());
+			de = insertHeader(dataTokens.nextToken().trim().getBytes());
 			DxSiteReader dxrr = new DxReadSitedotDia(de, _tts
 					.getNumberOfActiveDays(), _tts.getCurrentCycle()
 					.getMaxNumberOfPeriodsADay());
@@ -269,7 +269,7 @@ public class DxLoadData {
 			// }
 
 			// extract SetOfActivities
-			de = buildDataExchange(dataTokens.nextToken().trim().getBytes());
+			de = insertHeader(dataTokens.nextToken().trim().getBytes());
 			if (DxFlags.newActivity) {
 				_dxasr = new DxReadActivitiesSites1dot5(de, _dxSoInst,
 						_dxSoSRooms.getAllDxRooms(), _tts.getPeriodLenght(),
@@ -277,7 +277,7 @@ public class DxLoadData {
 
 			} else {
 				boolean isOpen = true;
-				_activitiesList = new SetOfActivitiesSites(isOpen, _tts
+				_activitiesList = new SetOfActivitiesInSites(isOpen, _tts
 						.getPeriodLenght());
 				try {
 					if (_activitiesList.analyseTokens(de, 1)) {
@@ -290,14 +290,14 @@ public class DxLoadData {
 			}
 
 			// extract SetOfStudents
-			de = buildDataExchange(dataTokens.nextToken().trim().getBytes());
+			de = insertHeader(dataTokens.nextToken().trim().getBytes());
 			_studentsList = new SetOfStuSites();
 			if (_studentsList.analyseTokens(de, 0)) {
 				_studentsList.buildSetOfResources(de, 0);
 			}
 
 		} else {
-			new DxException(DConst.PARTS_IN_DIA_SEPARATED_BY + DConst.CR_LF
+			new DiaException(DConst.PARTS_IN_DIA_SEPARATED_BY + DConst.CR_LF
 					+ DConst.SAVE_SEPARATOR_VIS);
 			// System.exit(-1);
 		}
@@ -310,7 +310,7 @@ public class DxLoadData {
 
 	private void loadData2dot1WithExceptions(String fileName)
 			throws NullPointerException, FileNotFoundException, IOException,
-			DxException {
+			DiaException {
 
 		System.out.println("start DxLoadData.loadData2dot1WithExceptions");
 		String dataloaded = new String(filterBadChars(fileName));
@@ -319,9 +319,6 @@ public class DxLoadData {
 				DConst.SAVE_SEPARATOR_VIS);
 		DataExchange de;
 
-		// dataTokens = new StringTokenizer(dataloaded,
-		// DConst.SAVE_SEPARATOR_VIS);
-
 		if (dataTokens.countTokens() == DConst.SAVE_SEPARATOR_COUNT) { // 6
 			// !!!!!!!!!!!!!!
 			// extract version
@@ -329,14 +326,14 @@ public class DxLoadData {
 
 			_tts = new TTStructure();
 
-			de = buildDataExchange(dataTokens.nextToken().trim().getBytes());
+			de = insertHeader(dataTokens.nextToken().trim().getBytes());
 			int lines = de.countLines();
 			lines += OTHER_LINES;
 			_tts.loadTTSFromString(de.getContents());
 
 			// extract SetOfInstructor
 			// if (_tts.getError().length() == 0) {
-			de = buildDataExchange(dataTokens.nextToken().trim().getBytes());
+			de = insertHeader(dataTokens.nextToken().trim().getBytes());
 			DxInstructorsReader dxir = new DxReadInstructorsdotDia(de, _tts
 					.getNumberOfActiveDays(), _tts.getCurrentCycle()
 					.getMaxNumberOfPeriodsADay(), lines);
@@ -345,7 +342,7 @@ public class DxLoadData {
 			// }// end if
 
 			// extract SetOfSites
-			de = buildDataExchange(dataTokens.nextToken().trim().getBytes());
+			de = insertHeader(dataTokens.nextToken().trim().getBytes());
 			DxSiteReader dxrr = new DxReadSitedotDia(de, _tts
 					.getNumberOfActiveDays(), _tts.getCurrentCycle()
 					.getMaxNumberOfPeriodsADay(), lines);
@@ -356,7 +353,7 @@ public class DxLoadData {
 			// }
 
 			// extract SetOfActivities
-			de = buildDataExchange(dataTokens.nextToken().trim().getBytes());
+			de = insertHeader(dataTokens.nextToken().trim().getBytes());
 			if (DxFlags.newActivity) {
 				_dxasr = new DxReadActivitiesSites1dot5(de, _dxSoInst,
 						_dxSoSRooms.getAllDxRooms(), _tts.getPeriodLenght(),
@@ -364,23 +361,20 @@ public class DxLoadData {
 
 			} else {
 				boolean isOpen = true;
-				_activitiesList = new SetOfActivitiesSites(isOpen, _tts
+				_activitiesList = new SetOfActivitiesInSites(isOpen, _tts
 						.getPeriodLenght());
 				_activitiesList.readSetOfActivities(de, 1);
-//				if (_activitiesList.analyseTokens(de, 1)) {
-//					_activitiesList.buildSetOfResources(de, 1);
-//				}
 			}
 
 			// extract SetOfStudents
-			de = buildDataExchange(dataTokens.nextToken().trim().getBytes());
+			de = insertHeader(dataTokens.nextToken().trim().getBytes());
 			_studentsList = new SetOfStuSites();
 			if (_studentsList.analyseTokens(de, 0)) {
 				_studentsList.buildSetOfResources(de, 0);
 			}
 
 		} else {
-			new DxException(DConst.PARTS_IN_DIA_SEPARATED_BY + DConst.CR_LF
+			new DiaException(DConst.PARTS_IN_DIA_SEPARATED_BY + DConst.CR_LF
 					+ DConst.SAVE_SEPARATOR_VIS);
 			// System.exit(-1);
 		}
@@ -396,7 +390,7 @@ public class DxLoadData {
 	// *
 	// * @param fileName
 	// * @return
-	// * @throws DxException
+	// * @throws DiaException
 	// */
 	// private DataExchange buildDataExchange(String fileName) throws Exception
 	// {
@@ -420,7 +414,7 @@ public class DxLoadData {
 	 * @param dataloaded
 	 * @return
 	 */
-	public DataExchange buildDataExchange(byte[] dataloaded) {
+	public DataExchange insertHeader(byte[] dataloaded) {
 		StringTokenizer st = new StringTokenizer(new String(dataloaded),
 				DConst.CR_LF);
 		String token = st.nextToken().toString().trim();
@@ -446,7 +440,7 @@ public class DxLoadData {
 		return _dxasr;
 	}
 
-	public SetOfActivitiesSites getSetOfActivitiesSites() {
+	public SetOfActivitiesInSites getSetOfActivitiesSites() {
 		return _activitiesList;
 	}
 
@@ -475,7 +469,7 @@ public class DxLoadData {
 	 * @throws NullPointerException
 	 */
 	public DSetOfResources selectiveImport(DSetOfResources currentSetOfResc,
-			String file) throws DxException, NullPointerException,
+			String file) throws DiaException, NullPointerException,
 			FileNotFoundException, IOException {// , boolean merge){
 
 		DSetOfResources newSetOfResc = null;
@@ -491,11 +485,11 @@ public class DxLoadData {
 		} else if (currentSetOfResc instanceof dInternal.dData.dStudents.SetOfStuSites) {
 			_studentsFileName = file;
 			newSetOfResc = extractStudents(null, false);
-		} else if (currentSetOfResc instanceof dInternal.dData.dActivities.SetOfActivitiesSites) {
+		} else if (currentSetOfResc instanceof dInternal.dData.dActivities.SetOfActivitiesInSites) {
 			_activitiesFileName = file;
 			newSetOfResc = extractActivities(null, false);
 		} else {// (NullPointerException npe) {
-			throw new DxException("Unknown resource type !!!");
+			throw new DiaException("Unknown resource type !!!");
 		}
 
 		if ((newSetOfResc != null) && (newSetOfResc.getError() == "")) {
@@ -504,12 +498,12 @@ public class DxLoadData {
 		}// Ici sans le else on passe même s’il y a une erreur !!!!
 		else {
 			if (newSetOfResc != null)
-				throw new DxException(newSetOfResc.getError());
+				throw new DiaException(newSetOfResc.getError());
 		}
 		return currentSetOfResc;
 	}
 
-	public DxSetOfInstructors extractInstructors() throws DxException,
+	public DxSetOfInstructors extractInstructors() throws DiaException,
 			NullPointerException, FileNotFoundException, IOException {
 		DataExchange de = buildDataExchange(_instructorFileName);
 		// hara2602 ! TODO params 4 et 14 Trop dangeureux
@@ -521,7 +515,7 @@ public class DxLoadData {
 
 	}
 
-	public DxSetOfSites extractDxRooms() throws DxException,
+	public DxSetOfSites extractDxRooms() throws DiaException,
 			NullPointerException, FileNotFoundException, IOException {
 		DataExchange de = buildDataExchange(_roomsFileName);
 		DxSiteReader dxsrReader;
@@ -549,13 +543,13 @@ public class DxLoadData {
 	 *            (if merge = false --> replace the current SetOfStudents by the
 	 *            new SetOfStudents)
 	 * @return SetOfStudents
-	 * @throws DxException
+	 * @throws DiaException
 	 * @throws IOException
 	 * @throws FileNotFoundException
 	 * @throws NullPointerException
 	 */
 	public SetOfStuSites extractStudents(SetOfStuSites currentList,
-			boolean merge) throws DxException, NullPointerException,
+			boolean merge) throws DiaException, NullPointerException,
 			FileNotFoundException, IOException {
 		DataExchange de = buildDataExchange(_studentsFileName);
 		SetOfStuSites studentsList = new SetOfStuSites();
@@ -570,7 +564,7 @@ public class DxLoadData {
 				// return studentsList;
 			}
 		} else {
-			new DxException(DConst.FILE_PRELOAD_FAILED);
+			new DiaException(DConst.FILE_PRELOAD_FAILED);
 		}
 		return studentsList;
 	}
@@ -593,12 +587,12 @@ public class DxLoadData {
 	 * @throws FileNotFoundException
 	 * @throws NullPointerException
 	 */
-	public SetOfActivitiesSites extractActivities(
-			SetOfActivitiesSites currentList, boolean merge)
-			throws DxException, NullPointerException, FileNotFoundException,
+	public SetOfActivitiesInSites extractActivities(
+			SetOfActivitiesInSites currentList, boolean merge)
+			throws DiaException, NullPointerException, FileNotFoundException,
 			IOException {
 		DataExchange de = buildDataExchange(_activitiesFileName);
-		SetOfActivitiesSites activitiesList = new SetOfActivitiesSites(false,
+		SetOfActivitiesInSites activitiesList = new SetOfActivitiesInSites(false,
 				_dm.getTTStructure().getPeriodLenght());
 		if (de.getContents() != null) {
 			// Vector setOfResources = currentList
@@ -616,7 +610,7 @@ public class DxLoadData {
 				e.printStackTrace();
 			}
 		} else {// (NullPointerException npe) {
-			throw new DxException("NullPointerException: Preload failed!!!");
+			throw new DiaException("NullPointerException: Preload failed!!!");
 		}
 		return activitiesList;
 	}
@@ -625,12 +619,12 @@ public class DxLoadData {
 	 * 
 	 * @param fileName
 	 * @return
-	 * @throws DxException
+	 * @throws DiaException
 	 * @throws IOException
 	 * @throws FileNotFoundException
 	 * @throws NullPointerException
 	 */
-	private DataExchange buildDataExchange(String fileName) throws DxException,
+	private DataExchange buildDataExchange(String fileName) throws DiaException,
 			NullPointerException, FileNotFoundException, IOException {
 		byte[] dataloaded = filterBadChars(fileName);
 		StringTokenizer st = new StringTokenizer(new String(dataloaded),
@@ -880,7 +874,7 @@ public class DxLoadData {
 		}
 
 		// TODO Make getResource for DxSetOfActivitiesSites
-		if (source instanceof SetOfActivitiesSites) {
+		if (source instanceof SetOfActivitiesInSites) {
 			if (rescSite != null)
 				return ((DSetOfResources) rescSite.getAttach())
 						.getResource(target.getID());
@@ -948,7 +942,7 @@ public class DxLoadData {
 	}
 
 	public byte[] filterBadChars(String str) throws NullPointerException,
-			FileNotFoundException, IOException, DxException {
+			FileNotFoundException, IOException, DiaException {
 		SemiExtendedAsciiFile filter = new SemiExtendedAsciiFile();
 		filter.validFile(str);
 		return filter.getByteArray();

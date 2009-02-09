@@ -27,6 +27,7 @@ import java.util.Observable;
 import java.util.Vector;
 
 import dConstants.DConst;
+import dExceptions.DiaException;
 import developer.DxFlags;
 import dInterface.DApplication;
 import dInterface.DxDocument;
@@ -59,7 +60,6 @@ import dInternal.dOptimization.DxConditionsToTest;
 import dInternal.dOptimization.SetOfEvents;
 import dInternal.dTimeTable.TTStructure;
 import dInternal.dUtil.DXToolsMethods;
-import eLib.exit.exception.DxException;
 
 /**
  * Description: DModel is a class used to
@@ -141,7 +141,7 @@ public class DModel extends Observable {
 	 * 
 	 */
 	public DModel(DxDocument dDocument, String fileName, int type)
-			throws DxException, NullPointerException, IOException {
+			throws DiaException, NullPointerException, IOException {
 		initDModel();
 		_dxDocument = dDocument;
 		_isOnlyATimeTable = false;
@@ -166,7 +166,7 @@ public class DModel extends Observable {
 			if (_isATimeTable)
 				_conditionsToTest = new DxConditionsToTest(this);
 		} else {
-			throw new DxException(_error);
+			throw new DiaException(_error);
 		}
 		if ((type == DConst.CYCLE) || (type == DConst.EXAM)) {
 			_isATimeTable = true;
@@ -179,7 +179,7 @@ public class DModel extends Observable {
 	}
 
 	// this constructor is used only for tests
-	public DModel(DxDocument dxDocument, String fileName) throws DxException, NullPointerException, IOException {
+	public DModel(DxDocument dxDocument, String fileName) throws DiaException, NullPointerException, IOException {
 		initDModel(); // XXXX Pascal: magic number
 		_dxDocument = dxDocument;
 		_isOnlyATimeTable = false;
@@ -205,7 +205,7 @@ public class DModel extends Observable {
 			if (_isATimeTable)
 				_conditionsToTest = new DxConditionsToTest(this);
 		} else {
-			throw new DxException(_error);
+			throw new DiaException(_error);
 		}
 		this.notifyObservers(this);
 	}
@@ -396,7 +396,7 @@ public class DModel extends Observable {
 	 * @throws Exception
 	 */
 
-	public String loadTimeTable(String fileName, String currentDir) throws DxException, NullPointerException, IOException{
+	public String loadTimeTable(String fileName, String currentDir) throws DiaException, NullPointerException, IOException{
 
 		DLoadData loadData = new DLoadData(this);
 //		try {
@@ -439,7 +439,7 @@ public class DModel extends Observable {
 			// } catch (FileNotFoundException fnfe) { // alert the user that the
 			// // specified file does not exist
 			// new DxExceptionDlg(fnfe.getMessage(), fnfe);
-//		} catch (DxException e) {
+//		} catch (DiaException e) {
 //			new DxExceptionDlg(e.getMessage(), e);
 //			// TODO hara2602
 //
@@ -504,7 +504,7 @@ public class DModel extends Observable {
 	 * @return
 	 * @throws Exception
 	 */
-	public String importData(String str) throws DxException {
+	public String importData(String str) throws DiaException {
 
 		DLoadData loadData = new DLoadData(this, str);
 
@@ -549,10 +549,10 @@ public class DModel extends Observable {
 	 * 
 	 * @param str
 	 * @return
-	 * @throws DxException
+	 * @throws DiaException
 	 */
 	public void mergeData(String fileName, String selectionName)
-			throws DxException {
+			throws DiaException {
 		_setOfImportSelErrors = new StandardCollection();
 		String error = "";
 		DLoadData loadData = new DLoadData(this);
@@ -605,7 +605,7 @@ public class DModel extends Observable {
 		}
 		_mergeDone = true;
 		if (error != "")
-			throw new DxException(error);
+			throw new DiaException(error);
 	}
 
 	/**
