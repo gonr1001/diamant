@@ -6,12 +6,12 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import dConstants.DConst;
+import dExceptions.DiaException;
 import dInternal.DataExchange;
 import dInternal.DxLoadData;
 import dInternal.dData.dInstructors.DxInstructorsReader;
 import dInternal.dData.dInstructors.DxReadInstructorsdotDia;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
-import eLib.exit.exception.DxException;
 
 
 public class DxInstructorsReaderTest extends TestCase {
@@ -43,13 +43,13 @@ public class DxInstructorsReaderTest extends TestCase {
 				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n";
 		DxLoadData ld = new DxLoadData();
 		DxInstructorsReader dxriTest = new DxReadInstructorsdotDia(ld
-				.buildDataExchange(tokens.getBytes()), 5, 14);
+				.insertHeader(tokens.getBytes()), 5, 14);
 		try {
 			DxSetOfInstructors dxsoi = dxriTest.readSetOfInstructors();
 			dxsoi.getClass(); // exception is throw before this line
 			assertFalse("test_exceptionOnFirstLine: Should have failed before",
 					true);
-		} catch (DxException e) {
+		} catch (DiaException e) {
 			assertEquals("test_exceptionOnFirstLine:",DConst.INVALID_NUMBER_OF_INSTRUCTORS+"For input string: \"1k\"", e.getMessage());			
 		}
 	}
@@ -74,13 +74,13 @@ public class DxInstructorsReaderTest extends TestCase {
 		DxLoadData ld = new DxLoadData();
 	
 		DxInstructorsReader dxriTest = new DxReadInstructorsdotDia(ld
-				.buildDataExchange(tokens.getBytes()), 5, 14);
+				.insertHeader(tokens.getBytes()), 5, 14);
 		try {
 			DxSetOfInstructors dxsoi = dxriTest.readSetOfInstructors();
 			dxsoi.getClass(); // exception is throw before this line
 			assertFalse("test1_exceptionOnName: Should have failed before",
 					true);
-		} catch (DxException e) {
+		} catch (DiaException e) {
 			assertEquals("test1_1_getSetOfInstructors: assertEquals",
 					DConst.INVALID_INSTRUCTOR_NAME+"2", e
 							.getMessage());
@@ -107,14 +107,14 @@ public class DxInstructorsReaderTest extends TestCase {
 				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n";
 		DxLoadData ld = new DxLoadData();
 		DxInstructorsReader dxriTest = new DxReadInstructorsdotDia(ld
-				.buildDataExchange(tokens.getBytes()), 5, 14);
+				.insertHeader(tokens.getBytes()), 5, 14);
 		try {
 			DxSetOfInstructors dxsoi = dxriTest.readSetOfInstructors();
 			dxsoi.getClass(); // exception is throw before this line
 			assertFalse("test_numberOfInstructors: Should have failed before",
 					true);
 
-		} catch (DxException e) {
+		} catch (DiaException e) {
 			assertEquals("test_numberOfInstructors: ",
 					 true, e.getMessage().contains(DConst.INVALID_NUMBER_OF_INSTRUCTORS));
 		}
@@ -140,7 +140,7 @@ public class DxInstructorsReaderTest extends TestCase {
 				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n";
 		DxLoadData ld = new DxLoadData();
 		DxInstructorsReader dxriTest = new DxReadInstructorsdotDia(ld
-				.buildDataExchange(tokens.getBytes()), 5, 14);
+				.insertHeader(tokens.getBytes()), 5, 14);
 		try {
 			DxSetOfInstructors dxsoi = dxriTest.readSetOfInstructors();
 			dxsoi.getClass(); // exception is throw before this line
@@ -172,7 +172,7 @@ public class DxInstructorsReaderTest extends TestCase {
 				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n";
 		DxLoadData ld = new DxLoadData();
 		DxInstructorsReader dxriTest = new DxReadInstructorsdotDia(ld
-				.buildDataExchange(tokens.getBytes()), 5, 14);
+				.insertHeader(tokens.getBytes()), 5, 14);
 		try {
 			DxSetOfInstructors dxsoi = dxriTest.readSetOfInstructors();
 			dxsoi.getClass(); // exception is throw before this line
@@ -203,7 +203,7 @@ public class DxInstructorsReaderTest extends TestCase {
 				+ "1 5 5 5 5 5 5 5 5 5 5 5 5 5" + "\r\n";
 		DxLoadData ld = new DxLoadData();
 		DxInstructorsReader dxriTest = new DxReadInstructorsdotDia(ld
-				.buildDataExchange(tokens.getBytes()), 5, 14);
+				.insertHeader(tokens.getBytes()), 5, 14);
 		try {
 			DxSetOfInstructors dxsoiTemp = dxriTest.readSetOfInstructors();
 			assertNotNull("test_values: assertNotNull",
@@ -236,7 +236,7 @@ public class DxInstructorsReaderTest extends TestCase {
 			e.printStackTrace();
 		}
 		
-		DataExchange de = ld.buildDataExchange(dataloaded);
+		DataExchange de = ld.insertHeader(dataloaded);
 
 		DxInstructorsReader dxir = new DxReadInstructorsdotDia(de, 5, 14);
 		try {
