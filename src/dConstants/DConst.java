@@ -125,7 +125,8 @@ public class DConst {
   public final static String BLOCS = "BLOCS";//pas trouve dans DStringFrRes
 
   //return constant
-  public final static String CR_LF = "\r\n";//
+  public final static String CR_LF = "\r\n"; 
+  public final static String CR = "\r"; 
   public final static String SPACE = " ";
   
  
@@ -463,7 +464,9 @@ public class DConst {
   public final static String ROOM_TEXT7= res.getString("roomText7");//Wrong line format at line:
   public final static String ROOM_TEXT8= res.getString("roomText8");//Wrong name of site at line:
   // activity constants
-  public final static String ACTI_TEXT1= res.getString("activText1");//Wrong activity name at line:
+  public final static String ERR_ACTIVITY_NAME = res.getString("errActivityName");//Erreur dans le nom de l'activité
+  public final static String ERR_ACTIVITY_LINE = res.getString("errActivityLine");//À la ligne :  
+  public final static String ERR_ACTIVITY_FILE = res.getString("errActivityFile");//Du fichier ou section activités  
   public final static String ACTI_TEXT2= res.getString("activText2");//Wrong format of activity visibility at line:
   public final static String ACTI_TEXT3= res.getString("activText3");//Wrong number of activities at line:
   public final static String ACTI_TEXT4= res.getString("activText4");//Wrong teacher name at line:

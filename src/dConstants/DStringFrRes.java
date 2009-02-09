@@ -250,8 +250,13 @@ public class DStringFrRes extends java.util.ListResourceBundle {
 					"I was in roomList class and in analyseTokens method" },
 			{ "roomText7", "Wrong room line format at line: " },
 			{ "roomText8", "Wrong name of site at line: " },
+			
+			
 			// activities constants
-			{ "activText1", "Wrong activity name at line: " },
+			{ "errActivityName", "Erreur dans le nom de l'activité " },
+			{ "errActivityLine", "À la ligne :  " },
+			{ "errActivityFile", "Du fichier ou section activités" },
+			
 			{ "activText2", "Wrong format of activity visibility at line: " },
 			{ "activText3", "Wrong number of activities at line: " },
 			{ "activText4", "Wrong teacher name at line: " },
