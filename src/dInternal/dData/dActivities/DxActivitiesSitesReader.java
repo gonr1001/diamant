@@ -20,8 +20,8 @@
 
 package dInternal.dData.dActivities;
 
-import eLib.exit.exception.DxException;
+import dExceptions.DiaException;
 
 public interface DxActivitiesSitesReader {
-    public DxSetOfActivitiesSites readSetOfActivitiesSites() throws DxException;
+    public DxSetOfActivitiesSites readSetOfActivitiesSites() throws DiaException;
 }

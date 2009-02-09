@@ -24,13 +24,13 @@ import java.util.Iterator;
 import java.util.StringTokenizer;
 
 import dConstants.DConst;
+import dExceptions.DiaException;
 import dInternal.DataExchange;
 import dInternal.dData.dInstructors.DxInstructor;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
 import dInternal.dData.dRooms.DxRoom;
 import dInternal.dData.dRooms.DxSetOfRooms;
 import dInternal.dUtil.DXToolsMethods;
-import eLib.exit.exception.DxException;
 
 public class DxReadActivitiesSites1dot6 implements DxActivitiesSitesReader {
 
@@ -58,7 +58,7 @@ public class DxReadActivitiesSites1dot6 implements DxActivitiesSitesReader {
 		_isDia = isDia;
 	}
 
-	public DxSetOfActivitiesSites readSetOfActivitiesSites() throws DxException {
+	public DxSetOfActivitiesSites readSetOfActivitiesSites() throws DiaException {
 
 		String sToken;
 		// String sousString; //auxiliar String for stocking a substring of a
