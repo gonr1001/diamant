@@ -27,8 +27,8 @@ import java.util.ArrayList;
 
 import java.util.Properties;
 import dConstants.DConst;
+import dExceptions.DiaException;
 import eLib.exit.dialog.DxExceptionDlg;
-import eLib.exit.exception.DxException;
 
 
 /**
@@ -166,14 +166,14 @@ public class FilterFile {
 		}
 	}
 
-	public boolean validFile(String str) throws DxException {
+	public boolean validFile(String str) throws DiaException {
 		readFile(str);
 		if (testValidityOfBytes()) {
 			adjustingLines();
 			adjustingEndFile();
 			return true;
 		}
-		throw new DxException(DConst.INVALID_FILE_FILTER);
+		throw new DiaException(DConst.INVALID_FILE_FILTER);
 	} // end validFile
 
 	public boolean adjustingFile(String str) {
@@ -264,7 +264,7 @@ public class FilterFile {
 			_bof.writeFileFromBytes(_bytesArray);
 			_bof.close();
 		} catch (Exception iofe) {
-			new DxException("Error while writing bytes !\n"+iofe.getMessage());
+			new DiaException("Error while writing bytes !\n"+iofe.getMessage());
 			System.exit(101);
 		} // end catch
 
@@ -308,7 +308,7 @@ public class FilterFile {
 	}
 
 	// -----------------------------------------------------------------------
-	private boolean testValidityOfBytes() throws DxException {
+	private boolean testValidityOfBytes() throws DiaException {
 		String nonImpStr = "\r\n\t";
 		byte[] validCharTable = null;
 
@@ -317,7 +317,7 @@ public class FilterFile {
 		for (int i = 0; i < _bytesArray.length; i++) {
 			if (!asciiChar(_bytesArray[i]))
 				if (!byteIn(_bytesArray[i], validCharTable)) {
-					throw new DxException(" Unknown caracter = " + Byte.toString(_bytesArray[i]));
+					throw new DiaException(" Unknown caracter = " + Byte.toString(_bytesArray[i]));
               } // if (asciiChar(_b[i]) ;
 		}
 		return true;
