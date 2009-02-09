@@ -24,11 +24,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import dExceptions.DiaException;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-import eLib.exit.exception.DxException;
 import eLib.exit.txt.SemiExtendedAsciiFile;
 
 public class SemiExtendedAsciiFileTest extends TestCase {
@@ -74,7 +75,7 @@ public class SemiExtendedAsciiFileTest extends TestCase {
 			System.out.println(e);
 			e.printStackTrace();
 			throw new RuntimeException("Problem in testCharNotValid");
-		} catch (DxException e) {
+		} catch (DiaException e) {
 			// Should fail in tests
 			return;
 		} catch (Exception e) {
@@ -83,7 +84,7 @@ public class SemiExtendedAsciiFileTest extends TestCase {
 			e.printStackTrace();
 			throw new RuntimeException("Problem in testCharNotValid");
 		}
-		fail("DxException");
+		fail("DiaException");
 	}
 
 	public void testReadFile() {
