@@ -24,10 +24,10 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 
 import dConstants.DConst;
+import dExceptions.DiaException;
 import dInternal.DataExchange;
 import dInternal.dData.DxAvailability;
 import dInternal.dUtil.DXToolsMethods;
-import eLib.exit.exception.DxException;
 
 public class DxReadSitedotDia implements DxSiteReader {
 
@@ -53,7 +53,7 @@ public class DxReadSitedotDia implements DxSiteReader {
 		_linesCounter = line;
 	}
 
-	public DxSetOfSites readSetOfSites() throws DxException {
+	public DxSetOfSites readSetOfSites() throws DiaException {
 		StringTokenizer stLineTokenizer;
 		StringTokenizer stFileTokenizer = new StringTokenizer(_deSites
 				.getContents(), DConst.CR_LF);
@@ -88,14 +88,14 @@ public class DxReadSitedotDia implements DxSiteReader {
 				try {
 					nRoomCapacity = Integer.parseInt(sLineToken);
 				} catch (NumberFormatException e) {
-					throw new DxException(DConst.ROOM_TEXT2 + _linesCounter);
+					throw new DiaException(DConst.ROOM_TEXT2 + _linesCounter);
 				}
 				// Room function
 				sLineToken = stLineTokenizer.nextToken().trim();
 				try {
 					nRoomFunction = Integer.parseInt(sLineToken);
 				} catch (NumberFormatException e) {
-					throw new DxException(DConst.ROOM_TEXT3 + _linesCounter);
+					throw new DiaException(DConst.ROOM_TEXT3 + _linesCounter);
 				}
 				// Room characteristics list
 				sLineToken = stLineTokenizer.nextToken().trim();
@@ -112,7 +112,7 @@ public class DxReadSitedotDia implements DxSiteReader {
 				sLineToken = stLineTokenizer.nextToken().trim();
 				dxaAva = parseAvailability(sLineToken);
 			} else {
-				throw new DxException(DConst.ROOM_TEXT7 + _linesCounter);
+				throw new DiaException(DConst.ROOM_TEXT7 + _linesCounter);
 			}
 			sRoomName = sRoomName.toUpperCase();
 			sRoomCat = sRoomCat.toUpperCase();
@@ -128,7 +128,7 @@ public class DxReadSitedotDia implements DxSiteReader {
 		return dxsosBuild;
 	}
 
-	public DxSetOfSites readSetOfSitesNew() throws DxException {
+	public DxSetOfSites readSetOfSitesNew() throws DiaException {
 		StringTokenizer stLineTokenizer;
 		StringTokenizer stFileTokenizer = new StringTokenizer(_deSites
 				.getContents(), DConst.CR_LF);
@@ -163,14 +163,14 @@ public class DxReadSitedotDia implements DxSiteReader {
 				try {
 					nRoomCapacity = Integer.parseInt(sLineToken);
 				} catch (NumberFormatException e) {
-					throw new DxException(DConst.ROOM_TEXT2 + _linesCounter);
+					throw new DiaException(DConst.ROOM_TEXT2 + _linesCounter);
 				}
 				// Room function
 				sLineToken = stLineTokenizer.nextToken().trim();
 				try {
 					nRoomFunction = Integer.parseInt(sLineToken);
 				} catch (NumberFormatException e) {
-					throw new DxException(DConst.ROOM_TEXT3 + _linesCounter);
+					throw new DiaException(DConst.ROOM_TEXT3 + _linesCounter);
 				}
 				// Room characteristics list
 				sLineToken = stLineTokenizer.nextToken().trim();
@@ -187,7 +187,7 @@ public class DxReadSitedotDia implements DxSiteReader {
 				sLineToken = stLineTokenizer.nextToken().trim();
 				dxaAva = parseAvailability(sLineToken);
 			} else {
-				throw new DxException(DConst.ROOM_TEXT7 + _linesCounter);
+				throw new DiaException(DConst.ROOM_TEXT7 + _linesCounter);
 			}
 
 			dxrTempRoom = new DxRoom(sRoomName, sRoomCat, nRoomCapacity,
@@ -220,7 +220,7 @@ public class DxReadSitedotDia implements DxSiteReader {
 			try {
 				viTemp.add(new Integer(stChar.nextToken()));
 			} catch (NumberFormatException e) {
-				new DxException(DConst.ROOM_TEXT4 + currentLine2);
+				new DiaException(DConst.ROOM_TEXT4 + currentLine2);
 			}
 		}
 
@@ -228,7 +228,7 @@ public class DxReadSitedotDia implements DxSiteReader {
 	}
 
 	private DxAvailability parseAvailability(String sAvailabilities)
-			throws DxException {
+			throws DiaException {
 		// extract a line that gives availability of a day
 
 		StringTokenizer stDays = new StringTokenizer(sAvailabilities,
@@ -248,14 +248,14 @@ public class DxReadSitedotDia implements DxSiteReader {
 				while (tokenDispo.hasMoreElements()) {
 					String dispo = tokenDispo.nextToken();
 					if (!isValidDayAvailability(dispo)) {
-						throw new DxException(DConst.INVALID_AVAILABILITY_AT
+						throw new DiaException(DConst.INVALID_AVAILABILITY_AT
 								+ _linesCounter);
 					}
 				}
 				// After line is validated, we add it to the availability
 				dxaAvaTemp.addDayAvailability(line);
 			} else
-				throw new DxException(DConst.INVALID_AVAILABILITY_AT
+				throw new DiaException(DConst.INVALID_AVAILABILITY_AT
 						+ _linesCounter);
 
 		}// end for(int i=1;
