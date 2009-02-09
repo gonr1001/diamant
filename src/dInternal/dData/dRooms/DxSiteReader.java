@@ -19,7 +19,7 @@
  */
 package dInternal.dData.dRooms;
 
-import eLib.exit.exception.DxException;
+import dExceptions.DiaException;
 
 /**
  * Ruben Gonzalez-Rubio
@@ -32,9 +32,9 @@ import eLib.exit.exception.DxException;
  */
 public interface DxSiteReader {
 
-	public DxSetOfSites readSetOfSites() throws DxException;
+	public DxSetOfSites readSetOfSites() throws DiaException;
 
-	public DxSetOfSites readSetOfSitesNew() throws DxException;
+	public DxSetOfSites readSetOfSitesNew() throws DiaException;
 
 	public int getLines();
 
