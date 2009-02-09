@@ -34,7 +34,7 @@ import dInternal.dTimeTable.DxTTStructureTest;
 import dTest.dInternal.DxLoadDataTest;
 import dTest.dInternal.dData.DLoadDataTest;
 import dTest.dInternal.dData.DSaveDataTest;
-import dTest.dInternal.dData.dActivities.DSetOfActivitiesTest;
+import dTest.dInternal.dData.dActivities.DSetOfActivitiesInSitesTest;
 import dTest.dInternal.dData.dInstructors.DxInstructorsReaderTest;
 import dTest.dInternal.dData.dRooms.DxSiteReaderTest;
 import dTest.dInternal.dOptimizationTest.ConditionsTest;
@@ -80,7 +80,7 @@ public class RgrTest {
 
 		TestSuite suite = new TestSuite("rgr selected Tests");
 		
-		suite.addTest(DSetOfActivitiesTest.suite());	
+		suite.addTest(DSetOfActivitiesInSitesTest.suite());	
 		suite.addTest(DxInstructorsReaderTest.suite());	
 		suite.addTest(DxSetOfSitesTest.suite());
 		suite.addTest(DxAssignRoomsAlgTest.suite());
