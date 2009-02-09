@@ -33,11 +33,12 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import dExceptions.DiaException;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-import eLib.exit.exception.DxException;
 import eLib.exit.txt.FilterFile;
 
 public class FilterFileTest extends TestCase {
@@ -72,10 +73,10 @@ public class FilterFileTest extends TestCase {
 
 		try {
 			filter.validFile(_pathForFiles + "SimpleCharNotV.txt");
-		} catch (DxException e) {
+		} catch (DiaException e) {
 			return;
 		}
-		fail("DxException");
+		fail("DiaException");
 	}
 
 	public void testReadFile() throws Exception {
