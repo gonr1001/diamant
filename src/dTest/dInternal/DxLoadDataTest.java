@@ -30,7 +30,7 @@ import dInternal.DxLoadData;
 import dInternal.dData.dActivities.DxActivitySite;
 import dInternal.dData.dActivities.DxSetOfActivitiesSites;
 import dInternal.dData.dActivities.SetOfActivities;
-import dInternal.dData.dActivities.SetOfActivitiesSites;
+import dInternal.dData.dActivities.SetOfActivitiesInSites;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
 import dInternal.dData.dRooms.DxCategory;
 import dInternal.dData.dRooms.DxRoom;
@@ -87,7 +87,7 @@ public class DxLoadDataTest extends TestCase {
 				assertNotNull("test_loadTimeTable5j: getActivity", dxasSite
 						.getActivity("AMC640"));
 			} else {
-				SetOfActivitiesSites setSite = loadData5j
+				SetOfActivitiesInSites setSite = loadData5j
 						.getSetOfActivitiesSites();
 				assertEquals("test_loadTimeTable5j : getSiteId: ", "SHE",
 						setSite.getResourceAt(0).getID());
@@ -216,7 +216,7 @@ public class DxLoadDataTest extends TestCase {
 				assertNotNull("test2_1_loadTimeTable5j", dxasSite
 						.getActivity("AMC640"));
 			} else {
-				SetOfActivitiesSites setSite = loadData7j
+				SetOfActivitiesInSites setSite = loadData7j
 						.getSetOfActivitiesSites();
 				assertEquals("test2_2_loadTimeTable5j : assertEquals: ", "SHE",
 						setSite.getResourceAt(0).getID());
