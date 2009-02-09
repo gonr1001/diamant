@@ -58,7 +58,7 @@ public class DxSetOfActivitiesSitesTest extends TestCase {
 		DxLoadData ld = new DxLoadData();
 
 		DxReadActivitiesSites1dot5 dxrasSiteReader = new DxReadActivitiesSites1dot5(
-				ld.buildDataExchange(tokens.getBytes()), dxsoiTempInst,
+				ld.insertHeader(tokens.getBytes()), dxsoiTempInst,
 				dxsorTempRooms, 60, false);
 		DxSetOfActivitiesSites dxsoasAct = null;
 		try {
@@ -118,7 +118,7 @@ public class DxSetOfActivitiesSitesTest extends TestCase {
 		DxLoadData ld = new DxLoadData();
 
 		DxReadActivitiesSites1dot6 dxrasSiteReader = new DxReadActivitiesSites1dot6(
-				ld.buildDataExchange(tokens.getBytes()), dxsoiTempInst,
+				ld.insertHeader(tokens.getBytes()), dxsoiTempInst,
 				dxsorTempRooms, 60, false);
 		DxSetOfActivitiesSites dxsoasAct = null;
 		try {
