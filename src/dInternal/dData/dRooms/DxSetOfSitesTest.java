@@ -26,7 +26,7 @@ public class DxSetOfSitesTest extends TestCase {
 			DxLoadData ld = new DxLoadData();
 			byte[] dataloaded = ld.filterBadChars(_pathForFiles + "locaux.txt");
 
-			DataExchange de = ld.buildDataExchange(dataloaded);
+			DataExchange de = ld.insertHeader(dataloaded);
 			DxSiteReader dxsr = new DxReadSite1dot5(de);
 			DxSetOfSites dxsosSingle = dxsr.readSetOfSites();
 
@@ -76,7 +76,7 @@ public class DxSetOfSitesTest extends TestCase {
 		try {
 			dataloaded = ld.filterBadChars(_pathForFiles
 					+ "locauxINFIRComplet.txt");
-			DataExchange de = ld.buildDataExchange(dataloaded);
+			DataExchange de = ld.insertHeader(dataloaded);
 			DxSiteReader dxsr = new DxReadSite1dot6(de);
 			DxSetOfSites dxsosMulti = dxsr.readSetOfSites();
 			de = new ByteArrayMsg(DConst.FILE_VER_NAME1_6, new String(
@@ -152,7 +152,7 @@ public class DxSetOfSitesTest extends TestCase {
 		int jours = 7;
 		int per = 4;
 		try {
-			DxSiteReader dxSites = new DxReadSitedotDia(ld.buildDataExchange(ld
+			DxSiteReader dxSites = new DxReadSitedotDia(ld.insertHeader(ld
 					.filterBadChars(_pathForFiles + "locauxFlsh.txt")), jours,
 					per);
 
