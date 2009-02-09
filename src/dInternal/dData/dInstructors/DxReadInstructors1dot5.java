@@ -3,10 +3,10 @@ package dInternal.dData.dInstructors;
 import java.util.StringTokenizer;
 
 import dConstants.DConst;
+import dExceptions.DiaException;
 import dInternal.DataExchange;
 import dInternal.dData.DxAvailability;
 import dInternal.dUtil.DXToolsMethods;
-import eLib.exit.exception.DxException;
 
 public class DxReadInstructors1dot5 implements DxInstructorsReader {
 
@@ -20,7 +20,7 @@ public class DxReadInstructors1dot5 implements DxInstructorsReader {
 		_nPeriods = nPeriods;
 	}
 
-	public DxSetOfInstructors readSetOfInstructors() throws DxException {
+	public DxSetOfInstructors readSetOfInstructors() throws DiaException {
 		StringTokenizer st = new StringTokenizer(_deInstructors.getContents(),
 				DConst.CR_LF);
 		String token;
@@ -51,7 +51,7 @@ public class DxReadInstructors1dot5 implements DxInstructorsReader {
 							.intValue();
 				} catch (NumberFormatException exc) {
 					// _error = DConst.INST_TEXT1 + "\n" + DConst.INST_TEXT6;
-					throw new DxException(DConst.INVALID_NUMBER_OF_INSTRUCTORS
+					throw new DiaException(DConst.INVALID_NUMBER_OF_INSTRUCTORS
 							+ exc.getMessage());
 				}
 				state = 1;
@@ -64,7 +64,7 @@ public class DxReadInstructors1dot5 implements DxInstructorsReader {
 				// the empty string wont appear
 				if (token.length() == 0) {
 
-					throw new DxException("Line should contain name of the instructor !");
+					throw new DiaException("Line should contain name of the instructor !");
 				}
 				state = 2;
 				stateDispo = 1;
@@ -83,7 +83,7 @@ public class DxReadInstructors1dot5 implements DxInstructorsReader {
 				// Verifies that number of period per day was correctly
 				// indicated
 				if (tokenDispo.countTokens() != _nPeriods) {
-				        throw new DxException(DConst.INVALID_AVAILABILITY_AT
+				        throw new DiaException(DConst.INVALID_AVAILABILITY_AT
 									+ currentLine);
 				}
 
@@ -91,7 +91,7 @@ public class DxReadInstructors1dot5 implements DxInstructorsReader {
 				while (tokenDispo.hasMoreElements()) {
 					String dispo = tokenDispo.nextToken();
 					if (isValidDayAvailability(dispo)) {
-						throw new DxException(DConst.INVALID_AVAILABILITY_AT
+						throw new DiaException(DConst.INVALID_AVAILABILITY_AT
 										+ currentLine);
 					}
 				}
@@ -115,7 +115,7 @@ public class DxReadInstructors1dot5 implements DxInstructorsReader {
 		// file was valid
 		if (countInstructor != numberOfInstructors) {
 			// _error = DConst.INST_TEXT1 + "\n" + DConst.INST_TEXT6;
-			throw new DxException(DConst.INVALID_NUMBER_OF_INSTRUCTORS);
+			throw new DiaException(DConst.INVALID_NUMBER_OF_INSTRUCTORS);
 		}
 
 		return dxsoiInst;
