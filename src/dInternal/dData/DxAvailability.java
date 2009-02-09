@@ -275,7 +275,7 @@ public class DxAvailability {
 //	                && (!sDispo.equalsIgnoreCase("2"));
 //	    }
 //	    public void parseAvailability(String sAvailabilities,
-//				 long currentLine) throws DxException {
+//				 long currentLine) throws DiaException {
 //			// extract a line that gives availability of a day
 //
 //			StringTokenizer stDays = new StringTokenizer(sAvailabilities,
@@ -296,7 +296,7 @@ public class DxAvailability {
 //					while (tokenDispo.hasMoreElements()) {
 //						String dispo = tokenDispo.nextToken();
 //						if (!isValidDayAvailability(dispo)) {
-//							throw new DxException(
+//							throw new DiaException(
 //									DConst.INVALID_AVAILABILITY_AT
 //											+ currentLine);
 //						}
@@ -304,7 +304,7 @@ public class DxAvailability {
 //					// After line is validated, we add it to the availability
 //					dxaAvaTemp.addDayAvailability(line);
 //				} else
-//					throw new DxException(DConst.INVALID_AVAILABILITY_AT+ currentLine);
+//					throw new DiaException(DConst.INVALID_AVAILABILITY_AT+ currentLine);
 //			}// end for(int i=1;
 //		}
 	/**

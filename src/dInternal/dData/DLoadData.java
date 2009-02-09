@@ -26,6 +26,7 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 
 import dConstants.DConst;
+import dExceptions.DiaException;
 import developer.DxFlags;
 import dInternal.DModel;
 import dInternal.DResource;
@@ -52,7 +53,6 @@ import dInternal.dData.dStudents.SetOfStuSites;
 import dInternal.dData.dStudents.Student;
 import dInternal.dTimeTable.TTStructure;
 import dInternal.dUtil.DXToolsMethods;
-import eLib.exit.exception.DxException;
 import eLib.exit.txt.ByteInputFile;
 import eLib.exit.txt.FilterFile;
 
@@ -131,7 +131,7 @@ public class DLoadData {
 		_dm = dm;
 		try {
 			verifyImportDataFile(str);
-		} catch (DxException e) {
+		} catch (DiaException e) {
 			e.printStackTrace();
 		}
 	}
@@ -150,11 +150,11 @@ public class DLoadData {
 //	 *            (if merge = false --> replace the current SetOfRooms by the
 //	 *            new SetOfRooms)
 //	 * @return SetOfRooms
-//	 * @throws DxException
+//	 * @throws DiaException
 //	 */
 //
 //	public SetOfSites extractRooms(SetOfSites currentList, boolean merge)
-//			throws DxException {
+//			throws DiaException {
 //		DataExchange de = buildDataExchange(_roomsFileName);
 //		SetOfSites roomsList = new SetOfSites(); // ,5,14);// 5 jours et 14
 //		// periods!
@@ -178,7 +178,7 @@ public class DLoadData {
 	
 	
 
-	public DxSetOfSites extractDxRooms() throws DxException {
+	public DxSetOfSites extractDxRooms() throws DiaException {
 		DataExchange de = buildDataExchange(_roomsFileName);
 		DxSiteReader dxsrReader;
 		TTStructure tts = _dm.getTTStructure();
@@ -205,10 +205,10 @@ public class DLoadData {
 	 *            (if merge = false --> replace the current SetOfStudents by the
 	 *            new SetOfStudents)
 	 * @return SetOfStudents
-	 * @throws DxException
+	 * @throws DiaException
 	 */
 	public SetOfStuSites extractStudents(SetOfStuSites currentList,
-			boolean merge) throws DxException {
+			boolean merge) throws DiaException {
 		DataExchange de = buildDataExchange(_studentsFileName);
 		SetOfStuSites studentsList = new SetOfStuSites();
 		if (de.getContents() != null) {
@@ -222,7 +222,7 @@ public class DLoadData {
 				// return studentsList;
 			}
 		} else {
-			new DxException(DConst.FILE_PRELOAD_FAILED);
+			new DiaException(DConst.FILE_PRELOAD_FAILED);
 		}
 		return studentsList;
 	}
@@ -243,7 +243,7 @@ public class DLoadData {
 	 * @return SetOfActivities
 	 */
 	public SetOfActivitiesInSites extractActivities(
-			SetOfActivitiesInSites currentList, boolean merge) throws DxException {
+			SetOfActivitiesInSites currentList, boolean merge) throws DiaException {
 		DataExchange de = buildDataExchange(_activitiesFileName);
 		SetOfActivitiesInSites activitiesList = new SetOfActivitiesInSites(false,
 				_dm.getTTStructure().getPeriodLenght());
@@ -258,7 +258,7 @@ public class DLoadData {
 				activitiesList.buildSetOfResources(de, 1);
 			}
 		} else {// (NullPointerException npe) {
-			throw new DxException("NullPointerException: Preload failed!!!");
+			throw new DiaException("NullPointerException: Preload failed!!!");
 		}
 		return activitiesList;
 	}
@@ -299,7 +299,7 @@ public class DLoadData {
 	// or try catch on the return. Since we want to propagate error to the
 	// application, I thought throws was the solution
 	public boolean loadDataStructures(String fileName, String currentDir)
-			throws DxException, NullPointerException, IOException {
+			throws DiaException, NullPointerException, IOException {
 
 		String dataloaded = new String(filterBadChars(fileName));
 		StringTokenizer readFile;
@@ -312,13 +312,13 @@ public class DLoadData {
 		} else if (head.equalsIgnoreCase(DConst.FILE_HEADER_NAME2_1)) {
 			return loadData2dot1(fileName);
 		} else {
-			throw new DxException("Invalid FILE_HEADER_NAME !");
+			throw new DiaException("Invalid FILE_HEADER_NAME !");
 		}
 
 	}
 
 	private boolean loadData(String fileName, String currentDir)
-			throws DxException, NullPointerException, IOException {
+			throws DiaException, NullPointerException, IOException {
 
 		String dataloaded = new String(filterBadChars(fileName));
 		StringTokenizer dataTokens;
@@ -398,7 +398,7 @@ public class DLoadData {
 				_studentsList.buildSetOfResources(de, 0);
 			}
 		} else {
-			throw new DxException(DConst.PARTS_IN_DIA_SEPARATED_BY
+			throw new DiaException(DConst.PARTS_IN_DIA_SEPARATED_BY
 					+ DConst.CR_LF + DConst.SAVE_SEPARATOR);
 		}
 		// if we arrive here there is no exception
@@ -406,7 +406,7 @@ public class DLoadData {
 		return true;
 	}
 
-	private boolean loadData2dot1(String fileName) throws DxException {
+	private boolean loadData2dot1(String fileName) throws DiaException {
 
 		String dataloaded = new String(filterBadChars(fileName));
 		StringTokenizer dataTokens;
@@ -466,7 +466,7 @@ public class DLoadData {
 			}
 
 		} else {
-			new DxException(DConst.PARTS_IN_DIA_SEPARATED_BY + DConst.CR_LF
+			new DiaException(DConst.PARTS_IN_DIA_SEPARATED_BY + DConst.CR_LF
 					+ DConst.SAVE_SEPARATOR_VIS);
 			// System.exit(-1);
 		}
@@ -477,13 +477,13 @@ public class DLoadData {
 	}
 
 
-	public byte[] filterBadChars(String str) throws DxException {
+	public byte[] filterBadChars(String str) throws DiaException {
 		FilterFile filter = new FilterFile();
 		filter.validFile(str);
 		return filter.getByteArray();
 	}
 
-	private void  verifyImportDataFile(String str) throws DxException {
+	private void  verifyImportDataFile(String str) throws DiaException {
 		FilterFile filter = new FilterFile();//_acceptedChars);
 		if (filter.validFile(str)) {
 			StringTokenizer st = new StringTokenizer(new String(filter
@@ -494,10 +494,10 @@ public class DLoadData {
 				_activitiesFileName = st.nextToken();
 				_studentsFileName = st.nextToken();
 			} else {
-				throw new DxException("Wrong number of lines in the file:");
+				throw new DiaException("Wrong number of lines in the file:");
 			}
 		} else {
-			throw new DxException("Invalid file:" + str);
+			throw new DiaException("Invalid file:" + str);
 		}
 	}
 
@@ -505,9 +505,9 @@ public class DLoadData {
 	 * 
 	 * @param fileName
 	 * @return
-	 * @throws DxException
+	 * @throws DiaException
 	 */
-	private DataExchange buildDataExchange(String fileName) throws DxException {
+	private DataExchange buildDataExchange(String fileName) throws DiaException {
 		byte[] dataloaded = filterBadChars(fileName);
 		StringTokenizer st = new StringTokenizer(new String(dataloaded),
 				DConst.CR_LF);
@@ -552,7 +552,7 @@ public class DLoadData {
 	 *         current DSetOfResources
 	 */
 	public DSetOfResources selectiveImport(DSetOfResources currentSetOfResc,
-			String file) throws DxException {// , boolean merge){
+			String file) throws DiaException {// , boolean merge){
 		// DataExchange de = buildDataExchange(file);
 		DSetOfResources newSetOfResc = null;
 		// int position=0;
@@ -575,7 +575,7 @@ public class DLoadData {
 			_activitiesFileName = file;
 			newSetOfResc = extractActivities(null, false);
 		} else {// (NullPointerException npe) {
-			throw new DxException("Unknown resource type !!!");
+			throw new DiaException("Unknown resource type !!!");
 		}
 
 		if ((newSetOfResc != null) && (newSetOfResc.getError() == "")) {
@@ -584,7 +584,7 @@ public class DLoadData {
 		}// Ici sans le else on passe même s’il y a une erreur !!!!
 		else {
 			if(newSetOfResc != null)
-				throw new DxException(newSetOfResc.getError());
+				throw new DiaException(newSetOfResc.getError());
 		}
 		return currentSetOfResc;
 	}
@@ -1208,7 +1208,7 @@ public class DLoadData {
 		return sourceCategories;
 	}
 
-	public DxSetOfInstructors extractInstructors() throws DxException {
+	public DxSetOfInstructors extractInstructors() throws DiaException {
 		DataExchange de = buildDataExchange(_instructorFileName);
 		// hara2602 ! TODO params 4 et 14 Trop dangeureux
 		DxInstructorsReader dxir = new DxReadInstructors1dot5(de, 5, 14);// 5
@@ -1221,7 +1221,7 @@ public class DLoadData {
 
 	public DxSetOfActivitiesSites extractDxActivity(
 			DxSetOfInstructors dxsoiInst, DxSetOfRooms dxsorRooms, int nPerLen)
-			throws DxException {
+			throws DiaException {
 		DataExchange de = buildDataExchange(_activitiesFileName);
 		DxActivitiesSitesReader dxasrReader;
 		if (de.getHeader().equalsIgnoreCase(DConst.FILE_VER_NAME1_6)) {
