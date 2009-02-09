@@ -25,7 +25,7 @@ import java.awt.Component;
 import javax.swing.JOptionPane;
 
 import dConstants.DConst;
-import eLib.exit.exception.DxException;
+import dExceptions.DiaException;
 
 public class DxExceptionDlg {
 
@@ -47,7 +47,7 @@ public class DxExceptionDlg {
 		new DxExceptionDlg(comp,error,DX_EXCEPTION);
 	}
 	public DxExceptionDlg(Component comp, String message, String title, Exception e) {
-		String nmessage = message + DConst.CR_LF + DxException.getCurrentMethod(e);
+		String nmessage = message + DConst.CR_LF + DiaException.getCurrentMethod(e);
 		new DxExceptionDlg(comp, nmessage, title);
 	}
 	public DxExceptionDlg(Component comp, String message, Exception e) {
