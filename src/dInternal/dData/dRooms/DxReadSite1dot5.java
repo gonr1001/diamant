@@ -23,9 +23,9 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 
 import dConstants.DConst;
+import dExceptions.DiaException;
 import dInternal.DataExchange;
 import dInternal.dData.DxAvailability;
-import eLib.exit.exception.DxException;
 
 /**
  * Ruben Gonzalez-Rubio
@@ -43,7 +43,7 @@ public class DxReadSite1dot5 implements DxSiteReader {
         _deSites = de;
     }
 
-    public DxSetOfSites readSetOfSites()throws DxException {
+    public DxSetOfSites readSetOfSites()throws DiaException {
         StringTokenizer stLineTokenizer;
         StringTokenizer stFileTokenizer = new StringTokenizer(_deSites
                 .getContents(), DConst.CR_LF);
@@ -168,7 +168,7 @@ public class DxReadSite1dot5 implements DxSiteReader {
     }
 
 	@Override
-	public DxSetOfSites readSetOfSitesNew() throws DxException {
+	public DxSetOfSites readSetOfSitesNew() throws DiaException {
 		// TODO Auto-generated method stub
 		return null;
 	}
