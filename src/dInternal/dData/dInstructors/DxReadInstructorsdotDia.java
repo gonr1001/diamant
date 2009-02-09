@@ -21,8 +21,8 @@
 package dInternal.dData.dInstructors;
 
 import java.util.StringTokenizer;
-import eLib.exit.exception.DxException;
 import dConstants.DConst;
+import dExceptions.DiaException;
 import dInternal.DataExchange;
 import dInternal.dData.DxAvailability;
 import dInternal.dUtil.DXToolsMethods;
@@ -54,7 +54,7 @@ public class DxReadInstructorsdotDia implements DxInstructorsReader {
 	/**
 		 * 
 		 */
-	public DxSetOfInstructors readSetOfInstructors() throws DxException {
+	public DxSetOfInstructors readSetOfInstructors() throws DiaException {
 		StringTokenizer st = new StringTokenizer(_deInstructors.getContents(),
 				DConst.CR_LF);
 		String token;
@@ -74,7 +74,7 @@ public class DxReadInstructorsdotDia implements DxInstructorsReader {
 			numberOfInstructors = (new Integer(token.trim())).intValue();
 			numberOfInstructorsLine = _linesCounter;
 		} catch (NumberFormatException nfe) {
-			throw new DxException(DConst.INVALID_NUMBER_OF_INSTRUCTORS
+			throw new DiaException(DConst.INVALID_NUMBER_OF_INSTRUCTORS
 					+ nfe.getMessage());
 		}
 		// As long as we do not reach the end of the string tokenizer
@@ -87,7 +87,7 @@ public class DxReadInstructorsdotDia implements DxInstructorsReader {
 			if (token.trim().length() > DConst.MINIMUN_NAME && isnotavail) {
 				instID = token;
 			} else
-				throw new DxException(DConst.INVALID_INSTRUCTOR_NAME
+				throw new DiaException(DConst.INVALID_INSTRUCTOR_NAME
 						+ _linesCounter);
 			// Build Availability
 			dxaAvaTemp = new DxAvailability();
@@ -105,7 +105,7 @@ public class DxReadInstructorsdotDia implements DxInstructorsReader {
 					while (tokenDispo.hasMoreElements()) {
 						String dispo = tokenDispo.nextToken();
 						if (!isValidDayAvailability(dispo)) {
-							throw new DxException(
+							throw new DiaException(
 									DConst.INVALID_AVAILABILITY_AT
 											+ _linesCounter);
 						}
@@ -113,7 +113,7 @@ public class DxReadInstructorsdotDia implements DxInstructorsReader {
 					// After line is validated, we add it to the availability
 					dxaAvaTemp.addDayAvailability(line);
 				} else
-					throw new DxException(DConst.INVALID_AVAILABILITY_AT
+					throw new DiaException(DConst.INVALID_AVAILABILITY_AT
 							+ _linesCounter);
 			}// end for(int i=1;
 			dxsoiInst.addInstructor(instID, dxaAvaTemp);
@@ -129,12 +129,12 @@ public class DxReadInstructorsdotDia implements DxInstructorsReader {
 
 	private void verifyNumberOfInstructors(int numberOfInstructors,
 			int countInstructor, long numberOfInstructorsLine)
-			throws DxException {
+			throws DiaException {
 		// Verify if number of instructors indicated at the beginning of
 		// the
 		// file was valid
 		if (countInstructor != numberOfInstructors) {
-			throw new DxException(DConst.INVALID_NUMBER_OF_INSTRUCTORS
+			throw new DiaException(DConst.INVALID_NUMBER_OF_INSTRUCTORS
 					+ " Il y a " + countInstructor + " a la place de "
 					+ numberOfInstructors + " indique \n" + " sur la ligne "
 					+ numberOfInstructorsLine);
