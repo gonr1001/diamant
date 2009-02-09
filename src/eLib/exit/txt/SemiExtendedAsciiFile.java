@@ -26,7 +26,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import java.util.Properties;
-import eLib.exit.exception.DxException;
+
+import dExceptions.DiaException;
 
 
 /**
@@ -190,7 +191,7 @@ public class SemiExtendedAsciiFile {
 	}
 
 	public boolean validFile(String str) throws NullPointerException,
-	FileNotFoundException,IOException, DxException  {
+	FileNotFoundException,IOException, DiaException  {
 		readFile(str);
 		if (testValidityOfBytes()) {
 			adjustingLines();
@@ -199,7 +200,7 @@ public class SemiExtendedAsciiFile {
 		}
 		return false;
 //		}
-//		throw new DxException(DConst.INVALID_FILE_FILTER);
+//		throw new DiaException(DConst.INVALID_FILE_FILTER);
 	} // end validFile
 
 	public boolean adjustingFile(String str) throws NullPointerException,
@@ -292,7 +293,7 @@ public class SemiExtendedAsciiFile {
 			_bof.writeFileFromBytes(_bytesArray);
 			_bof.close();
 		} catch (Exception iofe) {
-			new DxException("Error while writing bytes !\n"+iofe.getMessage());
+			new DiaException("Error while writing bytes !\n"+iofe.getMessage());
 			System.exit(101);
 		} // end catch
 
@@ -330,7 +331,7 @@ public class SemiExtendedAsciiFile {
 
 	// -----------------------------------------------------------------------
 	private boolean testValidityOfBytes() throws NullPointerException,
-	 DxException  {
+	 DiaException  {
 		String nonImpStr = "\r\n\t";
 		byte[] validCharTable = null;
 
@@ -339,7 +340,7 @@ public class SemiExtendedAsciiFile {
 		for (int i = 0; i < _bytesArray.length; i++) {
 			if (!asciiChar(_bytesArray[i]))
 				if (!byteIn(_bytesArray[i], validCharTable)) {
-					throw new DxException(" Unknown caracter = " + Byte.toString(_bytesArray[i]));
+					throw new DiaException(" Unknown caracter = " + Byte.toString(_bytesArray[i]));
               } // if (asciiChar(_b[i]) ;
 		}
 		return true;
