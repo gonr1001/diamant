@@ -58,8 +58,8 @@ import dTest.dInternal.dData.DSaveDataTest;
 import dTest.dInternal.dData.DStandardReportDataTest;
 import dTest.dInternal.dData.DxAvailabilityTest;
 import dTest.dInternal.dData.StandardCollectionTest;
-import dTest.dInternal.dData.dActivities.DSetOfActivitiesSitesTest;
-import dTest.dInternal.dData.dActivities.DSetOfActivitiesTest;
+//import dTest.dInternal.dData.dActivities.DSetOfActivitiesSitesTest;
+import dTest.dInternal.dData.dActivities.DSetOfActivitiesInSitesTest;
 import dTest.dInternal.dData.dActivities.DxSetOfActivitiesSitesTest;
 import dTest.dInternal.dData.dInstructors.DxInstructorTest;
 import dTest.dInternal.dData.dInstructors.DxInstructorsReaderTest;
@@ -155,11 +155,11 @@ public class DiamantTest {
 		suite.addTest(ConditionsTest.suite());
 		suite.addTest(ScanFileTest.suite());
 		suite.addTest(SetOfStuSitesTest.suite());
-		suite.addTest(DSetOfActivitiesTest.suite());
+
 		if (DxFlags.newActivity) {
 			suite.addTest(DxSetOfActivitiesSitesTest.suite());
 		} else {
-			suite.addTest(DSetOfActivitiesSitesTest.suite());
+			suite.addTest(DSetOfActivitiesInSitesTest.suite());
 		}
 		suite.addTest(DValueTest.suite());
 		suite.addTest(DObjectTest.suite());
