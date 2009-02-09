@@ -44,16 +44,16 @@ import org.apache.log4j.Logger;
 public class NewTimeTableDlg extends JDialog /*TODO decomment rgr implements DlgGetFileName*/ {
 	private static Logger logger = Logger.getLogger(NewTimeTableDlg.class);
 
-	/**
-	 * the constructor will displays the dialog
-	 *
-	 * @param dApplic    the parent of the dialog
-	 * @param type       indicating CYCLE or EXAM
-	 * 
-	 */
-	public NewTimeTableDlg() {
-		// to avoid warning
-	} // end constructor
+//	/**
+//	 * the constructor will displays the dialog
+//	 *
+//	 * @param dApplic    the parent of the dialog
+//	 * @param type       indicating CYCLE or EXAM
+//	 * 
+//	 */
+//	public NewTimeTableDlg() {
+//		// to avoid warning
+//	} // end constructor
 
 	/**
 	 *
