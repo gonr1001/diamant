@@ -24,11 +24,12 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import developer.DxFlags;
+import dExceptions.DiaException;
 import dInternal.dData.DLoadData;
 import dInternal.dData.dActivities.DxActivitySite;
 import dInternal.dData.dActivities.DxSetOfActivitiesSites;
 import dInternal.dData.dActivities.SetOfActivities;
-import dInternal.dData.dActivities.SetOfActivitiesSites;
+import dInternal.dData.dActivities.SetOfActivitiesInSites;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
 import dInternal.dData.dRooms.DxCategory;
 import dInternal.dData.dRooms.DxRoom;
@@ -40,7 +41,6 @@ import dInternal.dData.dStudents.SetOfStudents;
 import dInternal.dData.dStudents.Student;
 import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.TTStructure;
-import eLib.exit.exception.DxException;
 
 public class DLoadDataTest extends TestCase {
 	
@@ -119,7 +119,7 @@ public class DLoadDataTest extends TestCase {
 			assertNotNull("test2_1_loadTimeTable5j", dxasSite
 					.getActivity("AMC640"));
 		} else {
-			SetOfActivitiesSites setSite =  _loadData5j.getSetOfActivitiesSites();
+			SetOfActivitiesInSites setSite =  _loadData5j.getSetOfActivitiesSites();
 			assertEquals("test2_2_loadTimeTable5j : assertEquals: ", "SHE",
 					setSite.getResourceAt(0).getID());
 
@@ -205,7 +205,7 @@ public class DLoadDataTest extends TestCase {
 						"test4_ImportSelective5j : assertNull: Deleted student ",
 						setStud.getStudent("RHEAULT M"));
 			}
-		} catch (DxException e) {
+		} catch (DiaException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -245,7 +245,7 @@ public class DLoadDataTest extends TestCase {
 			assertNotNull("test2_1_loadTimeTable5j", dxasSite
 					.getActivity("AMC640"));
 		} else {
-			SetOfActivitiesSites setSite =  _loadData7j
+			SetOfActivitiesInSites setSite =  _loadData7j
 					.getSetOfActivitiesSites();
 			assertEquals("test2_loadTimeTable7j : assertEquals: ", "SHE",
 					setSite.getResourceAt(0).getID());
@@ -345,7 +345,7 @@ public class DLoadDataTest extends TestCase {
 						"test4_ImportSelective7j : assertNull: Deleted student ",
 						setStud.getStudent("RHEAULT M"));
 			}
-		} catch (DxException e) {
+		} catch (DiaException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
