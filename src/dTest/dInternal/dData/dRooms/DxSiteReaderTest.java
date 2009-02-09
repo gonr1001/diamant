@@ -26,13 +26,13 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import dConstants.DConst;
+import dExceptions.DiaException;
 import dInternal.DxLoadData;
 import dInternal.dData.dRooms.DxReadSitedotDia;
 import dInternal.dData.dRooms.DxSetOfRooms;
 import dInternal.dData.dRooms.DxSetOfSites;
 import dInternal.dData.dRooms.DxSiteReader;
 import developer.DxFlags;
-import eLib.exit.exception.DxException;
 
 public class DxSiteReaderTest extends TestCase {
 
@@ -54,7 +54,7 @@ public class DxSiteReaderTest extends TestCase {
 				+ "1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,"
 				+ "1 1 1 1 1 1 1 1 1 1 1 1;";
 		DxLoadData ld = new DxLoadData();
-		DxSiteReader dxSites = new DxReadSitedotDia(ld.buildDataExchange(tokens
+		DxSiteReader dxSites = new DxReadSitedotDia(ld.insertHeader(tokens
 				.getBytes()), 5, 12);
 		try {
 			if(DxFlags.newReadSetOfSites) {
@@ -88,14 +88,14 @@ public class DxSiteReaderTest extends TestCase {
 				+ "1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,"
 				+ "1 1 1 1 1 1 1 1 1 1 1 1;";
 		DxLoadData ld = new DxLoadData();
-		DxSiteReader dxSites = new DxReadSitedotDia(ld.buildDataExchange(tokens
+		DxSiteReader dxSites = new DxReadSitedotDia(ld.insertHeader(tokens
 				.getBytes()), 5, 12);
 		try {
 			@SuppressWarnings("unused")
 			
 			DxSetOfSites dxsor = dxSites.readSetOfSites();
 			assertFalse("test1_readSetOfSites: Should have failed before", true);
-		} catch (DxException e) {
+		} catch (DiaException e) {
 			assertEquals("test1_readSetOfSites: assertEquals",
 					DConst.ROOM_TEXT7 + "3", e.getMessage());
 
@@ -125,13 +125,13 @@ public class DxSiteReaderTest extends TestCase {
 				+ "1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,"
 				+ "1 1 1 1 1 1 1 1 1 1 1 1;";
 		DxLoadData ld = new DxLoadData();
-		DxSiteReader dxSites = new DxReadSitedotDia(ld.buildDataExchange(tokens
+		DxSiteReader dxSites = new DxReadSitedotDia(ld.insertHeader(tokens
 				.getBytes()), 5, 12);
 		try {
 			@SuppressWarnings("unused")
 			DxSetOfSites dxsor = dxSites.readSetOfSites();
 			assertFalse("test3_readSetOfSites: Should have failed before", true);
-		} catch (DxException e) {
+		} catch (DiaException e) {
 			assertEquals("test3_readSetOfSites: assertEquals",
 					DConst.ROOM_TEXT7 + "3", e.getMessage());
 
@@ -151,13 +151,13 @@ public class DxSiteReaderTest extends TestCase {
 				+ "1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,"
 				+ "1 1 1 1 1 1 1 1 1 1 1 1;";
 		DxLoadData ld = new DxLoadData();
-		DxSiteReader dxSites = new DxReadSitedotDia(ld.buildDataExchange(tokens
+		DxSiteReader dxSites = new DxReadSitedotDia(ld.insertHeader(tokens
 				.getBytes()), 5, 12);
 		try {
 			@SuppressWarnings("unused")
 			DxSetOfSites dxsor = dxSites.readSetOfSites();
 			assertFalse("test4_readSetOfSites: Should have failed before", true);
-		} catch (DxException e) {
+		} catch (DiaException e) {
 			assertEquals("test4_readSetOfSites: assertEquals",
 					DConst.INVALID_AVAILABILITY_AT + "2", e.getMessage());
 
@@ -180,7 +180,7 @@ public class DxSiteReaderTest extends TestCase {
 	 		"1 1 1 1 1 1 1 1 1 1 1 1;";
 	 	DxLoadData ld = new DxLoadData();
 		DxSiteReader dxSites = new DxReadSitedotDia(ld
-				.buildDataExchange(tokens.getBytes()), 5, 12);
+				.insertHeader(tokens.getBytes()), 5, 12);
 		
 		/*
 		 * Not use a key in test!!!!
@@ -197,7 +197,7 @@ public class DxSiteReaderTest extends TestCase {
 			assertEquals("test2_readSetOfSitesMultiCat: room Cap 12",12, dxSor.getRoomCapacity("C1-3007"));
 			assertEquals("test2_readSetOfSitesMultiCat: room Cap 25",25, dxSor.getRoomCapacity("C1-4030"));
 			assertEquals("test2_readSetOfSitesMultiCat: room Cap 0",0, dxSor.getRoomCapacity("-----"));
-     } catch (DxException e) {
+     } catch (DiaException e) {
 		// never here
      }
 	}
@@ -225,13 +225,13 @@ public class DxSiteReaderTest extends TestCase {
 				+ "1 1 1 1 1 1 1 1 1 1 1 1,1 1 1 1 1 1 1 1 1 1 1 1,"
 				+ "1 1 1 1 1 1 1 1 1 1 1 1;";
 		DxLoadData ld = new DxLoadData();
-		DxSiteReader dxSites = new DxReadSitedotDia(ld.buildDataExchange(tokens
+		DxSiteReader dxSites = new DxReadSitedotDia(ld.insertHeader(tokens
 				.getBytes()), 5, 12);
 		try {
 			DxSetOfSites dxsor = dxSites.readSetOfSites();
 			DxSetOfRooms sor = dxsor.getAllDxRooms();
 			assertEquals("testNote_readSetOfSites :", 4, sor.size());
-		} catch (DxException e) {
+		} catch (DiaException e) {
 			assertEquals("testNote_readSetOfSites: assertEquals",
 					DConst.ROOM_TEXT7 + "3", e.getMessage());
 
