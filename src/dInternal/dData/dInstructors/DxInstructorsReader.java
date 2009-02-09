@@ -17,11 +17,11 @@
 
 package dInternal.dData.dInstructors;
 
-import eLib.exit.exception.DxException;
+import dExceptions.DiaException;
 
 public interface DxInstructorsReader {
 
-	public DxSetOfInstructors readSetOfInstructors() throws DxException;
+	public DxSetOfInstructors readSetOfInstructors() throws DiaException;
 
 	public int getLines();
 
