@@ -49,6 +49,7 @@ import ca.sixs.util.pref.LookAndFeelPref;
 import ca.sixs.util.pref.ParametersPref;
 
 import dConstants.DConst;
+import dExceptions.DiaException;
 import developer.DxFlags;
 import dInterface.dAffectation.ActivityDlg;
 import dInterface.dAffectation.ActivityModifDlg;
@@ -77,7 +78,6 @@ import dInternal.dOptimization.DxAssignRoomsAlg;
 import dInternal.dOptimization.SelectAlgorithm;
 import eLib.exit.dialog.DxExceptionDlg;
 import eLib.exit.dialog.InformationDlg;
-import eLib.exit.exception.DxException;
 
 public class DApplication {
 
@@ -321,7 +321,7 @@ public class DApplication {
 	/**
 	 * 
 	 */
-	public void newTTable() {
+	public void newTTableCycle() {
 		loadATTableStructure(DConst.CYCLE);
 	}
 
@@ -415,10 +415,10 @@ public class DApplication {
 			if (error.length() == 0) {
 				new InformationDlg(this.getJFrame(), DConst.IMP_A_SUC);
 			} else {
-				throw new DxException(error);
+				throw new DiaException(error);
 			}
 			this.setCursorDefault();
-		} catch (DxException e) {
+		} catch (DiaException e) {
 			new DxExceptionDlg(e.getMessage(), e);
 			System.exit(-1);
 		}
@@ -841,15 +841,17 @@ public class DApplication {
 	private void loadATTableStructure(int i) {
 		System.out.println("begin DApplication.loadATTableStructure");
 		NewTimeTableDlg dlg = new NewTimeTableDlg();
-		String pathfileName = dlg.getFileName(this, i);
+		String fullFileName = dlg.getFileName(this, i);
 
-		if (pathfileName == "") {// cancel button was pressed!
+		if (fullFileName == "") {// cancel button was pressed!
 			dlg.dispose();
 		} else {
 			dlg.dispose();
-			this.setCurrentDir(pathfileName);
+			this.setCurrentDir(fullFileName);
 			try {
-				this.getDMediator().addDxTTableDoc(pathfileName);
+//rgr				DxLoadData dxLoadData = new DxLoadData();
+				this.getDMediator().addDxTTableDoc(fullFileName);
+//rgr				this.getDMediator().addDxTTableDoc(dxLoadData, fullFileName);
 				_dxMenuBar.afterNewTTable();
 			} catch (Exception e) {
 				new DxExceptionDlg(_jFrame, e.getMessage(), e);
@@ -857,7 +859,56 @@ public class DApplication {
 		}
 		System.out.println("end DApplication.loadATTableStructure");
 	}
+	/**
+	 * 
+	 */
+	private void buildTTStructure(String inputStreamName) {
+		System.out.println("begin DApplication.buildTTStructure");
+		this.showToolBar();
+		this.setCursorWait();
+		String name = new String(inputStreamName);
+		InputStream in; 
+		boolean isAResource = false;
+		if (inputStreamName != "") {
+			isAResource = true;
+		} else {
+			name = obtainName();
+		}
+		try {
+			if(isAResource) {
+				in = this.getClass().getResourceAsStream(name);
+			} else {
+				in = new FileInputStream(name);
+			}
+			this._dMediator.addDxTTStructureDoc(in, name);
+			_dxMenuBar.afterNewTTStruc();
+		} catch (DiaException e) {
+			new DxExceptionDlg(_jFrame, e.getMessage(), e);
+			e.printStackTrace();
 
+		} catch (Exception e) {
+			new DxExceptionDlg(_jFrame, e.getMessage(), e);
+			e.printStackTrace();
+
+		}
+
+		this.setCursorDefault();
+		System.out.println("end DApplication.buildTTStructure");
+	}
+	
+	
+	private String obtainName() {
+		String name;
+		OpenTTSDlg dlg = new OpenTTSDlg();
+		name = dlg.getFileName(this);
+		if (name == "") {// cancel button was pressed!
+			this.initialState();
+		} else {
+			this.closeCurrentDxDoc();
+		}
+		dlg.dispose();
+		return name;
+	}
 	/**
 	 * 
 	 * 
@@ -888,7 +939,7 @@ public class DApplication {
 			this.getCurrentDxDoc()
 					.changeInModel(this.getClass().toString());
 			this.afterInitialAssign();
-		} catch (DxException e) {
+		} catch (DiaException e) {
 			System.out.println("Exception:   " + e.toString());
 			new DxExceptionDlg(_jFrame, e.getMessage(), e);
 			this.initialState();
@@ -914,53 +965,9 @@ public class DApplication {
 	}
 
 
-	/**
-	 * 
-	 */
-	private void buildTTStructure(String inputStreamName) {
-		this.showToolBar();
-		this.setCursorWait();
-		String name = new String(inputStreamName);
-		InputStream in; 
-		boolean isAResource = false;
-		if (inputStreamName != "") {
-			isAResource = true;
-		} else {
-			name = obtainName();
-		}
-		try {
-			if(isAResource) {
-				in = this.getClass().getResourceAsStream(name);
-			} else {
-				in = new FileInputStream(name);
-			}
-			this._dMediator.addDxTTStructureDoc(in, name);
-			_dxMenuBar.afterNewTTStruc();
-		} catch (DxException e) {
-			new DxExceptionDlg(_jFrame, e.getMessage(), e);
-			e.printStackTrace();
 
-		} catch (Exception e) {
-			new DxExceptionDlg(_jFrame, e.getMessage(), e);
-			e.printStackTrace();
 
-		}
 
-		this.setCursorDefault();
-	}
-
-	private String obtainName() {
-		String name;
-		OpenTTSDlg dlg = new OpenTTSDlg();
-		name = dlg.getFileName(this);
-		if (name == "") {// cancel button was pressed!
-			this.initialState();
-		} else {
-			this.closeCurrentDxDoc();
-		}
-		dlg.dispose();
-		return name;
-	}
 	
 
 	private static Image createImageIcon(String path) {

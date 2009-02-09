@@ -27,9 +27,9 @@ import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
 import dConstants.DConst;
+import dExceptions.DiaException;
 import dInternal.DxLoadData;
 import eLib.exit.dialog.DxExceptionDlg;
-import eLib.exit.exception.DxException;
 
 /**
  * Description: DMediator is a class used as in the pattern mediator to make a
@@ -76,12 +76,28 @@ public class DMediator extends Object {
 	 * @throws Exception
 	 * 
 	 */
-	public String addDxTTableDoc(String fileName) throws DxException,
+	public String addDxTTableDoc(String fileName) throws DiaException,
 			NullPointerException, IOException {
 		DxDocument currentDoc = new DxTTableDoc(this, fileName);
 		_dxDocuments.addElement(currentDoc);
 		return "";
 	}
+	
+	/**
+	 * 
+	 * @param inputStream
+	 *            is the inputStream containing a new TTStructure
+	 * @param name
+	 *            is the full name of the file
+	 * @throws Exception
+	 * 
+	 */
+	public void addDxTTStructureDoc(InputStream inputStream, String name) throws Exception {
+		DxDocument currentDxDoc = new DxTTStructureDoc(this, inputStream, name);
+		_dxDocuments.addElement(currentDxDoc);
+		_dApplication.getToolBar().setToolBars(currentDxDoc.getTTStructure());
+	} // end addDxTTStructureDoc
+	
 
 	/**
 	 * for new tt and for open tt
@@ -99,7 +115,7 @@ public class DMediator extends Object {
 	 * 
 	 */
 	public String addDxTTableDoc(DxLoadData dxLoadData, String fileName) {
-		// throws DxException, NullPointerException, IOException {
+		// throws DiaException, NullPointerException, IOException {
 		DxDocument currentDoc = new DxTTableDoc(this, dxLoadData, fileName);
 		// currentDoc.setDocumentName(fileName);
 		_dxDocuments.addElement(currentDoc);
@@ -110,20 +126,9 @@ public class DMediator extends Object {
 
 
 
-	/**
-	 * 
-	 * @param inputStream
-	 *            is the inputStream containing a new TTStructure
-	 * @param name
-	 *            is the full name of the file
-	 * @throws Exception
-	 * 
-	 */
-	public void addDxTTStructureDoc(InputStream inputStream, String name) throws Exception {
-		DxDocument currentDxDoc = new DxTTStructureDoc(this, inputStream, name);
-		_dxDocuments.addElement(currentDxDoc);
-		_dApplication.getToolBar().setToolBars(currentDxDoc.getTTStructure());
-	} // end addDxTTStructureDoc
+
+	
+	
 
 	private void removeCurrentDxDoc() {
 		_dxDocuments.remove(getCurrentDxDoc());
@@ -229,11 +234,11 @@ public class DMediator extends Object {
 		return _dApplication;
 	}
 
-	public void clean() {
-		DxDocument dxd = this.getCurrentDxDoc();
-		dxd.clean();
-		dxd = null;
-
-	}
+//	public void clean() {
+//		DxDocument dxd = this.getCurrentDxDoc();
+//		dxd.clean();
+//		dxd = null;
+//
+//	}
 
 } /* end class DMediator */

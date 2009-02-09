@@ -31,6 +31,7 @@ import javax.swing.WindowConstants;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
 
+import dExceptions.DiaException;
 import dInterface.dTimeTable.DxDetailedTTPane;
 import dInterface.dTimeTable.DxSimpleTTPane;
 import dInterfaceTest.IHM;
@@ -41,7 +42,6 @@ import dInternal.dTimeTable.TTStructure;
 import developer.DxFlags;
 import eLib.exit.dialog.DxExceptionDlg;
 import eLib.exit.dialog.InformationDlg;
-import eLib.exit.exception.DxException;
 
 /**
  * Ruben Gonzalez-Rubio
@@ -66,14 +66,14 @@ public class DxTTableDoc extends DxDocument {
 		// for tests
 	}
 
-	public DxTTableDoc(DMediator mediator, String fileName) throws DxException,
+	public DxTTableDoc(DMediator mediator, String fileName) throws DiaException,
 			NullPointerException, IOException {
 		super(mediator);
 		_type = 0;
 		initDxTTableDoc(fileName);
 	}
 
-	private void initDxTTableDoc(String fileName) throws DxException,
+	private void initDxTTableDoc(String fileName) throws DiaException,
 			NullPointerException, IOException {
 		// read file
 		// is all is ok
@@ -94,12 +94,12 @@ public class DxTTableDoc extends DxDocument {
 		_dxTTPane.updateDxTTPane(_dm.getTTStructure());
 	}
 
-	public DxTTableDoc(DMediator mediator, String fileName, int type)
-			throws DxException, NullPointerException, IOException {
-		super(mediator);
-		_type = type;
-		initDxTTableDoc(fileName);
-	}
+//	public DxTTableDoc(DMediator mediator, String fileName, int type)
+//			throws DiaException, NullPointerException, IOException {
+//		super(mediator);
+//		_type = type;
+//		initDxTTableDoc(fileName);
+//	}
 
 	/**
 	 * @param mediator
