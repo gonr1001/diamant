@@ -15,11 +15,11 @@ import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 
 import dConstants.DConst;
+import dExceptions.DiaException;
 import dInterface.DApplication;
 import dResources.DFileFilter;
 import eLib.exit.dialog.DxExceptionDlg;
 import eLib.exit.dialog.InformationDlg;
-import eLib.exit.exception.DxException;
 
 public class ImportSelectiveFileDlg extends JDialog {
 
@@ -57,7 +57,7 @@ public class ImportSelectiveFileDlg extends JDialog {
                 try {
 					dApplic.getCurrentDModel().mergeData(fil, str);
 					new InformationDlg(dApplic.getJFrame(), DConst.IMP_A_SUC);
-				} catch (DxException dxe) {
+				} catch (DiaException dxe) {
 					 new DxExceptionDlg(dApplic.getJFrame(),dxe.getMessage());
 					dxe.printStackTrace();
 				}
