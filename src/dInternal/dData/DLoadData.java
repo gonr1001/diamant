@@ -19,6 +19,7 @@
 package dInternal.dData;
 
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -52,7 +53,6 @@ import dInternal.dData.dStudents.SetOfStuCourses;
 import dInternal.dData.dStudents.SetOfStuSites;
 import dInternal.dData.dStudents.Student;
 import dInternal.dTimeTable.TTStructure;
-import dInternal.dUtil.DXToolsMethods;
 import eLib.exit.txt.ByteInputFile;
 import eLib.exit.txt.FilterFile;
 
@@ -335,7 +335,7 @@ public class DLoadData {
 			linePosition++; // for separator =========================
 			// extract ttStructure
 			_tts = new TTStructure();
-			String inDiaTTSFileName = DXToolsMethods.getAbsoluteFileName(
+			String inDiaTTSFileName = getAbsoluteFileName(
 					currentDir, dataTokens.nextToken().trim());
 			linePosition++;// for XML file name line
 
@@ -406,6 +406,22 @@ public class DLoadData {
 		return true;
 	}
 
+	/**
+	 * give the relative path of a file Exemple: input of a relative path is:
+	 * ete04.dia the operation return:
+	 * c:\developpement\DiaExtreme\DX\data\fgen\ete04.dia where
+	 * c:\developpement\DiaExtreme\DX\data\fgen\ is the absolute path
+	 * 
+	 * @param str
+	 * @return
+	 */
+	private String getAbsoluteFileName(String absolutePath,
+			String str) {
+		return absolutePath
+				+ File.separator
+				+ str.substring(str.lastIndexOf(File.separator) + 1, str
+						.length());
+	} // end getRelativeFileName
 	private boolean loadData2dot1(String fileName) throws DiaException {
 
 		String dataloaded = new String(filterBadChars(fileName));
