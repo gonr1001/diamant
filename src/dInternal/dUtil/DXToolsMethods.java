@@ -18,7 +18,7 @@
  */
 package dInternal.dUtil;
 
-import java.io.File;
+
 import java.util.StringTokenizer;
 
 public class DXToolsMethods {
