@@ -85,7 +85,7 @@ import dTest.dInternal.dTimeTable.DayTest;
 import dTest.dInternal.dTimeTable.PeriodTest;
 import dTest.dInternal.dTimeTable.SequenceTest;
 import dTest.dInternal.dTimeTable.TTStructureTest;
-import dTest.dInternal.dUtil.DXToolsMethodsTest;
+//import dTest.dInternal.dUtil.DXToolsMethodsTest;
 import eTest.ByteInputFileTest;
 import eTest.ByteOutputFileTest;
 import eTest.FilterFileTest;
@@ -143,7 +143,6 @@ public class DiamantTest {
 		suite.addTest(SectionTest.suite());
 		suite.addTest(TypeTest.suite());
 		suite.addTest(ActivityTest.suite());
-		suite.addTest(DXToolsMethodsTest.suite());
 		suite.addTest(ConflictsAttachTest.suite());
 
 		//to be classed 		
