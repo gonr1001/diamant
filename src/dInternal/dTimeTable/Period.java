@@ -22,11 +22,11 @@ import java.util.StringTokenizer;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import dInternal.ArrayValue;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
 import dInternal.dData.StandardCollection;
 import dInternal.dOptimization.ConflictsAttach;
-import dInternal.dUtil.ArrayValue;
 import dInternal.DObject;
 import dInternal.DValue;
 import eLib.exit.xml.input.XMLReader;

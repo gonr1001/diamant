@@ -25,12 +25,12 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import dConstants.DConst;
+import dInternal.ArrayValue;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
 import dInternal.DValue;
 import dInternal.dData.StandardCollection;
 import dInternal.dOptimization.ConflictsAttach;
-import dInternal.dUtil.ArrayValue;
 import eLib.exit.xml.input.XMLReader;
 import eLib.exit.xml.output.XMLWriter;
 
