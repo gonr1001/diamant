@@ -13,11 +13,11 @@ package dInternal.dOptimization;
 import java.util.Vector;
 
 import dConstants.DConst;
+import dInternal.ArrayValue;
 import dInternal.DResource;
 import dInternal.DSetOfResources;
 //import dInternal.dTimeTable.SetOfConflicts;
 import dInternal.dData.StandardCollection;
-import dInternal.dUtil.ArrayValue;
 import dInternal.DObject;
 import dInternal.DValue;
 
