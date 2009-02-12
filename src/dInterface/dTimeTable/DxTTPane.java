@@ -41,10 +41,10 @@ import dInterface.DToolBar;
 import dInternal.DResource;
 import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.Day;
+import dInternal.dTimeTable.DisplayAttributs;
 import dInternal.dTimeTable.Period;
 import dInternal.dTimeTable.TTStructure;
 import dInternal.dUtil.DXToolsMethods;
-import dInternal.dUtil.DisplayAttributs;
 
 /**
  * Description: DxTTPanel is a class used to
