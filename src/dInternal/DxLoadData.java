@@ -20,6 +20,7 @@
 
 package dInternal;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -48,7 +49,6 @@ import dInternal.dData.dStudents.SetOfStuCourses;
 import dInternal.dData.dStudents.SetOfStuSites;
 import dInternal.dData.dStudents.Student;
 import dInternal.dTimeTable.TTStructure;
-import dInternal.dUtil.DXToolsMethods;
 import developer.DxFlags;
 import eLib.exit.txt.ByteInputFile;
 import eLib.exit.txt.SemiExtendedAsciiFile;
@@ -142,7 +142,7 @@ public class DxLoadData {
 			linePosition++; // for separator =========================
 			// extract ttStructure
 			_tts = new TTStructure();
-			String inDiaTTSFileName = DXToolsMethods.getAbsoluteFileName(
+			String inDiaTTSFileName = getAbsoluteFileName(
 					currentDir, dataTokens.nextToken().trim());
 			linePosition++;// for XML file name line
 			// _tts.loadTTSFromFile(inDiaTTSFileName);
@@ -213,6 +213,26 @@ public class DxLoadData {
 		return true;
 	}
 
+	
+	/**
+	 * give the relative path of a file Exemple: input of a relative path is:
+	 * ete04.dia the operation return:
+	 * c:\developpement\DiaExtreme\DX\data\fgen\ete04.dia where
+	 * c:\developpement\DiaExtreme\DX\data\fgen\ is the absolute path
+	 * 
+	 * @param str
+	 * @return
+	 */
+	private String getAbsoluteFileName(String absolutePath,
+			String str) {
+		return absolutePath
+				+ File.separator
+				+ str.substring(str.lastIndexOf(File.separator) + 1, str
+						.length());
+	} // end getRelativeFileName
+	
+	
+	
 	private boolean loadData2dot1(String fileName) throws NullPointerException,
 			FileNotFoundException, IOException, DiaException {
 
