@@ -4,9 +4,9 @@ import java.util.LinkedList;
 
 import dInternal.DResource;
 import dInternal.dTimeTable.Cycle;
+import dInternal.dTimeTable.DisplayAttributs;
 import dInternal.dTimeTable.Period;
 import dInternal.dTimeTable.TTStructure;
-import dInternal.dUtil.DisplayAttributs;
 
 public class IHM {
 
