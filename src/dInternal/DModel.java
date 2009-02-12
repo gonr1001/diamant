@@ -59,7 +59,9 @@ import dInternal.dData.dStudents.Student;
 import dInternal.dOptimization.DxConditionsToTest;
 import dInternal.dOptimization.SetOfEvents;
 import dInternal.dTimeTable.TTStructure;
-import dInternal.dUtil.DXToolsMethods;
+import dInternal.dTimeTable.Day;
+import dInternal.dTimeTable.Period;
+
 
 /**
  * Description: DModel is a class used to
@@ -1132,8 +1134,9 @@ public class DModel extends Observable {
 		while (itInst.hasNext()) {
 			dxiTemp = (DxInstructor) itInst.next();
 			matrix = dxiTemp.getAvailability().getMatrixAvailability();
-			matrix = DXToolsMethods
-					.resizeAvailability(matrix, getTTStructure());
+//			matrix = DXToolsMethods
+//					.resizeAvailability(matrix, getTTStructure());
+			matrix = resizeAvailability(matrix, getTTStructure());
 			dxiTemp.setAvailability(new DxAvailability(matrix));
 
 		}
@@ -1170,7 +1173,9 @@ public class DModel extends Observable {
 		while (itRooms.hasNext()) {
 			DxRoom dxrTemp = (DxRoom) itRooms.next();
 			int[][] nMatrix = dxrTemp.getAvailability().getMatrixAvailability();
-			nMatrix = DXToolsMethods.resizeAvailability(nMatrix,
+//			nMatrix = DXToolsMethods.resizeAvailability(nMatrix,
+//					getTTStructure());
+			nMatrix = resizeAvailability(nMatrix,
 					getTTStructure());
 			dxrTemp.setAvailability(new DxAvailability(nMatrix));
 		}
@@ -1234,4 +1239,100 @@ public class DModel extends Observable {
 		this.clearChanged();
 	}
 
+	/**
+	 * 
+	 * @param initialAvail
+	 * @param tt
+	 * @return
+	 */
+	private int[][] resizeAvailability(int[][] initialAvail,
+			TTStructure tt) {
+		// check if is upper, lower or nothing operation
+		// int UpperLower=0; // 1= make upper; 0= do nothing; -1= make lower
+		if (initialAvail[0].length == tt.getCurrentCycle()
+				.getMaxNumberOfPeriodsADay()) {
+			// UpperLower=0;
+			return initialAvail;
+		} else if (initialAvail[0].length > tt.getCurrentCycle()
+				.getMaxNumberOfPeriodsADay()) {
+			// UpperLower=-1;
+		} else if (initialAvail[0].length < tt.getCurrentCycle()
+				.getMaxNumberOfPeriodsADay()) {
+			// UpperLower=1;
+		}
+
+		Day day;
+		Period per;
+		int[][] finalAvail = new int[tt.getNumberOfActiveDays()][tt
+				.getCurrentCycle().getMaxNumberOfPeriodsADay()];
+		for (int h = 0; h < tt.getNumberOfActiveDays(); h++) {
+			int itr = 0;
+			day = tt.getCurrentCycle().getDayByIndex(h);
+			for (int i = 0; i < day.getSetOfSequences().size(); i++) {
+				for (int j = 0; j < day.getSequence(i).getSetOfPeriods().size(); j++) {
+					per = day.getSequence(i).getPeriodByIndex(j);
+					boolean avail = isAvailableInRange(initialAvail, h, per);// ,tt.getPeriodLenght());
+					if (avail)
+						finalAvail[h][itr] = 1;
+					else
+						finalAvail[h][itr] = 5;
+					itr++;
+				}// end for (int j=0; j<
+					// day.getSequence(i).getSetOfPeriods().size(); j++)
+			}// end for (int i=0; i< day.getSetOfSequences().size(); i++)
+		}// end
+		return finalAvail;
+	}
+
+	/**
+	 * check the state availability in the range
+	 * 
+	 * @param initial
+	 *            the availability matrix
+	 * @param day
+	 *            the day where to search availability
+	 * @param per
+	 *            the period
+	 * @param int
+	 *            the period lenght
+	 * @param up_low
+	 *            the type of operation 1= make upper; 0= do nothing; -1= make
+	 *            lower
+	 * @return boolean
+	 */
+	private static boolean isAvailableInRange(int[][] initial, int day,
+			Period per) {
+		// , int periodLenght) {//, int up_low){
+		int[] beginH = per.getBeginHour();
+		int[] endH = per.getEndHour();
+		int beginIndex;
+		int endIndex;
+		beginIndex = beginH[0] - DConst.STI_BEGIN_HOUR;
+		if (beginH[1] < DConst.STI_BEGIN_MINUTE)
+			beginIndex--;
+		if (beginH[1] > DConst.STI_BEGIN_MINUTE)
+			beginIndex++;
+		if (beginIndex < 0)
+			return false;
+		// else{// else if (beginIndex<0)
+		endIndex = endH[0] - DConst.STI_BEGIN_HOUR;
+		if (endH[1] <= DConst.STI_BEGIN_MINUTE)
+			endIndex--;
+		else if (endH[1] > DConst.STI_BEGIN_MINUTE)
+			endIndex++;
+		if (endIndex < 0)
+			return false;
+		if (endIndex >= initial[day].length) {
+			return false;
+		}// else{// else if(endIndex> initial[day].length)
+		for (int i = beginIndex; i <= endIndex; i++)
+			if (initial[day][i] == 5)
+				return false;
+		// }// end else if(endIndex> initial[day].length)
+		// }//end else if (beginIndex<0)
+		return true;
+	}
+
+	
+	
 } /* end class DModel */
