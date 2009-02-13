@@ -55,7 +55,7 @@ public class FilterSet {
         _set.clear();
     }
 
-    public Iterator getIterator() {
+    public Iterator<DResource> getIterator() {
         return _set.iterator();
     }
 
