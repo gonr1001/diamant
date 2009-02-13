@@ -17,6 +17,7 @@ import dInterface.selectiveSchedule.persistance.PersistanceMismatch;
 import dInterface.selectiveSchedule.persistance.PersistanceMismatchException;
 import dInterface.selectiveSchedule.persistance.PersistanceMismatchManager;
 import dInterface.selectiveSchedule.relationTesters.RelationTester;
+import dInterface.selectiveSchedule.relationTesters.RelationTesterTemplate;
 import dInterface.selectiveSchedule.relationTesters.RelationTester_ActivityEvent;
 import dInterface.selectiveSchedule.relationTesters.Tuple;
 import dInterface.selectiveSchedule.relationTesters.UnexpectedArguments;
@@ -121,7 +122,7 @@ public class SelectiveScheduleManager {
 		 * 
 		 * @see dInterface.selectiveSchedule.PersistanceMismatch#getMissingElementNames()
 		 */
-		public Collection getMissingElementNames() {
+		public Collection<String>  getMissingElementNames() {
 			return _unresolvedElementNames;
 		}
 
@@ -145,13 +146,13 @@ public class SelectiveScheduleManager {
 		/**
 		 * @associates PersistanceMismatch 
 		 */
-		private List _persistanceMismatches = null;
+		private List<PersistanceMismatch> _persistanceMismatches = null;
 
 		/**
 		 *  
 		 */
 		public PersistanceMismatchManagerImpl() {
-			_persistanceMismatches = new ArrayList();
+			_persistanceMismatches = new ArrayList<PersistanceMismatch>();
 		}
 
 		/*
@@ -177,7 +178,7 @@ public class SelectiveScheduleManager {
 		 * 
 		 * @see dInterface.selectiveSchedule.PersistanceMismatchManager#getPersistanceMismatches()
 		 */
-		public Collection getPersistanceMismatches() {
+		public Collection<PersistanceMismatch> getPersistanceMismatches() {
 			return _persistanceMismatches;
 		}
 
@@ -197,7 +198,7 @@ public class SelectiveScheduleManager {
 	 * @associates RelationTesterTemplate
 	 *  
 	 */
-	private Map _tupleToRelationTester = null;
+	private Map<Tuple, RelationTesterTemplate> _tupleToRelationTester = null;
 
 	/**
 	 * Flag qui identifie si le SelectiveScheduleManger est en fonction ou non
@@ -210,7 +211,7 @@ public class SelectiveScheduleManager {
 	 * @associates FilterSet
 	 *  
 	 */
-	private Map _filterSetIdentifierToFilterSets = null;
+	private Map<FilterSetIdentifier, FilterSet> _filterSetIdentifierToFilterSets = null;
 
 	/**
 	 * Le nom du dernier fichier XML de persistance lu
@@ -247,7 +248,7 @@ public class SelectiveScheduleManager {
 	 */
 	private void initialize() {
 		_enabled = false;
-		_filterSetIdentifierToFilterSets = new HashMap();
+		_filterSetIdentifierToFilterSets = new HashMap<FilterSetIdentifier, FilterSet>();
 		_persistanceMismatchManager = new PersistanceMismatchManagerImpl();
 
 		initializeRelationTesters();
@@ -258,7 +259,7 @@ public class SelectiveScheduleManager {
 	 *  
 	 */
 	private void initializeRelationTesters() {
-		_tupleToRelationTester = new HashMap();
+		_tupleToRelationTester = new HashMap<Tuple, RelationTesterTemplate>();
 
 		_tupleToRelationTester.put(new Tuple(new Class[] { DxEvent.class,
 				Activity.class }), RelationTester_ActivityEvent.getInstance());
@@ -288,12 +289,12 @@ public class SelectiveScheduleManager {
 		boolean matchFound = false;
 
 		/* Iterateur sur tous les ensembles de filtres */
-		Iterator itrAllFilterSets = _filterSetIdentifierToFilterSets.values()
+		Iterator<FilterSet> itrAllFilterSets = _filterSetIdentifierToFilterSets.values()
 				.iterator();
 
 		/* pour chaque ensemble de filtres... */
 		while (itrAllFilterSets.hasNext() && !matchFound) {
-			FilterSet fs = (FilterSet) itrAllFilterSets.next();
+			FilterSet fs = itrAllFilterSets.next();
 
 			/*
 			 * Si le filtre n'est pas actif, on ne vérifie pas si ses éléments
@@ -303,7 +304,7 @@ public class SelectiveScheduleManager {
 				continue;
 			}
 
-			Iterator itrFilterSet = fs.getIterator();
+			Iterator<DResource> itrFilterSet = fs.getIterator();
 
 			/*
 			 * pour chaque filtre, on effectue un test afin de savoir si un
@@ -311,7 +312,7 @@ public class SelectiveScheduleManager {
 			 */
 			DResource el;
 			while (itrFilterSet.hasNext()) {
-				el = (DResource) itrFilterSet.next();
+				el =  itrFilterSet.next();
 
 				if (el == null) {
 					continue;
@@ -321,7 +322,7 @@ public class SelectiveScheduleManager {
 				 * Verification de la relation entre l'element passe en
 				 * parametre et le filtre que l'on vient de recuperer
 				 */
-				RelationTester rt = (RelationTester) _tupleToRelationTester
+				RelationTester rt = _tupleToRelationTester
 						.get(new Tuple(new Class[] { el.getAttach().getClass(),
 								element.getAttach().getClass() }));
 
@@ -356,17 +357,17 @@ public class SelectiveScheduleManager {
 	}
 
 	public FilterSet addFilterSet(FilterSet aFilterSetToAdd) {
-		return (FilterSet) _filterSetIdentifierToFilterSets.put(aFilterSetToAdd
+		return _filterSetIdentifierToFilterSets.put(aFilterSetToAdd
 				.getFilterSetIdentifier(), aFilterSetToAdd);
 	}
 
 	public FilterSet removeFilterSet(FilterSet aFilterSetToRemove) {
-		return (FilterSet) _filterSetIdentifierToFilterSets
+		return _filterSetIdentifierToFilterSets
 				.remove(aFilterSetToRemove.getFilterSetIdentifier());
 	}
 
 	public FilterSet[] getAllFilterSet() {
-		return (FilterSet[]) _filterSetIdentifierToFilterSets.values().toArray(
+		return _filterSetIdentifierToFilterSets.values().toArray(
 				new FilterSet[0]);
 	}
 
@@ -377,11 +378,11 @@ public class SelectiveScheduleManager {
 	public boolean isFilterSetNameAvailable(String name) {
 		boolean result = true;
 
-		Iterator itr = _filterSetIdentifierToFilterSets.values().iterator();
+		Iterator<FilterSet> itr = _filterSetIdentifierToFilterSets.values().iterator();
 
 		FilterSet fs;
 		while (itr.hasNext()) {
-			fs = (FilterSet) itr.next();
+			fs = itr.next();
 
 			if (fs == null) {
 				continue;
@@ -444,11 +445,11 @@ public class SelectiveScheduleManager {
 		Element setsElement = new Element("Sets");
 		rootElement.addContent(setsElement);
 
-		Iterator itrFilterSet = _filterSetIdentifierToFilterSets.values()
+		Iterator<FilterSet> itrFilterSet = _filterSetIdentifierToFilterSets.values()
 				.iterator();
 		FilterSet fs;
 		while (itrFilterSet.hasNext()) {
-			fs = (FilterSet) itrFilterSet.next();
+			fs = itrFilterSet.next();
 
 			Element setElement = new Element("Set");
 
@@ -459,7 +460,7 @@ public class SelectiveScheduleManager {
 
 			setElement.addContent(setElementsElement);
 
-			Iterator itrFilterSetElements = fs.getIterator();
+			Iterator<DResource> itrFilterSetElements = fs.getIterator();
 
 			Element setElementElement;
 
@@ -468,7 +469,7 @@ public class SelectiveScheduleManager {
 				setElementsElement.addContent(setElementElement);
 				setElementElement.setAttribute("type", "Activity");
 				setElementElement.setAttribute("id",
-						((DResource) itrFilterSetElements.next()).getID());
+						( itrFilterSetElements.next()).getID());
 			}
 
 			setsElement.addContent(setElement);
@@ -553,7 +554,7 @@ public class SelectiveScheduleManager {
 
 		SAXBuilder saxBuilder = new SAXBuilder();
 		Document doc = null;
-		Iterator itrSetsElement= null;
+		Iterator<Element> itrSetsElement= null;
 		try {
 			doc = saxBuilder.build(fileInReader);
 			Element selectiveScheduleElement = doc.getRootElement();
@@ -584,7 +585,7 @@ public class SelectiveScheduleManager {
 		while (itrSetsElement.hasNext()) {
 			fs = createFilterSet();
 
-			setElement = (Element) itrSetsElement.next();
+			setElement =  itrSetsElement.next();
 
 			try {
 				fs.getFilterSetIdentifier().setFilterSetName(
@@ -605,7 +606,7 @@ public class SelectiveScheduleManager {
 			pmm.setExpectedNbOfElements(setElement.getChild("Elements")
 					.getChildren("Element").size());
 
-			Iterator itrSetElement = setElement.getChild("Elements")
+			Iterator<Element> itrSetElement = setElement.getChild("Elements")
 					.getChildren("Element").iterator();
 
 			Element setElementElement;
@@ -613,7 +614,7 @@ public class SelectiveScheduleManager {
 			DResource activity;
 
 			while (itrSetElement.hasNext()) {
-				setElementElement = (Element) itrSetElement.next();
+				setElementElement =  itrSetElement.next();
 				activityID = setElementElement.getAttributeValue("id");
 
 				// Si l'activité spécificée dans le fichier XML n'existe plus,
