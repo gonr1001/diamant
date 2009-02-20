@@ -31,7 +31,7 @@ import javax.swing.JOptionPane;
 
 /**
   * Description: InformationDlg is a class used to display a message,
-  *              when an exception is throwed, the dialog displays
+  *              when an exception is throw, the dialog displays
   *              the exception message.
   *              Normally after that the dialog is displayed
   *              a statment System.exit(1) is executed.
