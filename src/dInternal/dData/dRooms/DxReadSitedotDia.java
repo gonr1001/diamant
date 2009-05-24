@@ -75,7 +75,7 @@ public class DxReadSitedotDia implements DxSiteReader {
 		stFileTokenizer.nextToken();
 		_linesCounter++;
 		// For every line containing a room
-		while (stFileTokenizer.hasMoreElements()) {
+ 		while (stFileTokenizer.hasMoreElements()) {
 			sFileToken = stFileTokenizer.nextToken();
 			_linesCounter++;
 			stLineTokenizer = new StringTokenizer(sFileToken,
