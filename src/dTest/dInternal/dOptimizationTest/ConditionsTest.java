@@ -30,11 +30,10 @@ import dInternal.dOptimization.DxEvent;
 import dInternal.dTimeTable.Period;
 import dInternal.dTimeTable.TTStructure;
 
-
 public class ConditionsTest extends TestCase {
 
 	private final String _pathForFiles = "." + File.separator + "dataTest"
-	+ File.separator;
+			+ File.separator;
 
 	/**
 	 * 
@@ -47,12 +46,9 @@ public class ConditionsTest extends TestCase {
 	} // end suite
 
 	public void test_initAllConditions5j() {
-//		StringBuffer fileName = new StringBuffer("." + File.separator);
-//		fileName.append("dataTest" + File.separator);
-//		fileName.append("loadData5j.dia");
-
 		try {
-			DModel dm5j = new DModel(new DxTTableDoc(), _pathForFiles + "loadData5j.dia");
+			DModel dm5j = new DModel(new DxTTableDoc(), _pathForFiles
+					+ "loadData5j.dia");
 			dm5j.getConditionsToTest().initAllConditions();
 			dm5j.getConditionsToTest().buildStudentConflictMatrix();
 			dm5j.getConditionsToTest()
@@ -83,7 +79,8 @@ public class ConditionsTest extends TestCase {
 					period.getEventsInPeriod().size());
 		} catch (Exception e) {
 			// Should not fail in tests, but if file not there gives a failure
-			assertEquals("test_basicData: exception", "nullPointer", e.toString());
+			assertEquals("test_basicData: exception", "nullPointer", e
+					.toString());
 			System.out.println("Exception in: test_initAllConditions5j");
 			e.printStackTrace();
 		}
@@ -93,12 +90,9 @@ public class ConditionsTest extends TestCase {
 	 * check conflicts and add in period
 	 */
 	public void test_addEventInTTs_1_5j() {
-		StringBuffer fileName = new StringBuffer("." + File.separator);
-		fileName.append("dataTest" + File.separator);
-		fileName.append("loadData5j.dia");
-
 		try {
-			DModel dm5j = new DModel(new DxTTableDoc(), fileName.toString());
+			DModel dm5j = new DModel(new DxTTableDoc(), _pathForFiles
+					+ "loadData5j.dia");
 			dm5j.getConditionsToTest().initAllConditions();
 			dm5j.getConditionsToTest().buildStudentConflictMatrix();
 			dm5j.getConditionsToTest()
@@ -125,7 +119,8 @@ public class ConditionsTest extends TestCase {
 					.getEventsInPeriod().size());
 		} catch (Exception e) {
 			// Should not fail in tests, but if file not there gives a failure
-			assertEquals("test_basicData: exception", "nullPointer", e.toString());
+			assertEquals("test_basicData: exception", "nullPointer", e
+					.toString());
 			System.out.println("Exception in: test_initAllConditions5j");
 			e.printStackTrace();
 		}
@@ -135,12 +130,9 @@ public class ConditionsTest extends TestCase {
 	 * remove event in a period
 	 */
 	public void test_removeEventInTTs_5j() {
-		StringBuffer fileName = new StringBuffer("." + File.separator);
-		fileName.append("dataTest" + File.separator);
-		fileName.append("loadData5j.dia");
-
 		try {
-			DModel dm5j = new DModel(new DxTTableDoc(), fileName.toString());
+			DModel dm5j = new DModel(new DxTTableDoc(), _pathForFiles
+					+ "loadData5j.dia");
 			dm5j.getConditionsToTest().initAllConditions();
 			dm5j.getConditionsToTest().buildStudentConflictMatrix();
 			dm5j.getConditionsToTest()
@@ -188,7 +180,8 @@ public class ConditionsTest extends TestCase {
 					period.getEventsInPeriod().size());
 		} catch (Exception e) {
 			// Should not fail in tests, but if file not there gives a failure
-			assertEquals("test_basicData: exception", "nullPointer", e.toString());
+			assertEquals("test_basicData: exception", "nullPointer", e
+					.toString());
 			System.out.println("Exception in: test_removeEventInTTs_3_5j");
 			e.printStackTrace();
 		}
@@ -200,12 +193,9 @@ public class ConditionsTest extends TestCase {
 	 * 
 	 */
 	public void test_buildAllConditionsDh() {
-		StringBuffer fileName = new StringBuffer("." + File.separator);
-		fileName.append("dataTest" + File.separator);
-		fileName.append("lData5j30min.dia");
-
 		try {
-			DModel dmh = new DModel(new DxTTableDoc(), fileName.toString());
+			DModel dmh = new DModel(new DxTTableDoc(), _pathForFiles
+					+ "lData5j30min.dia");
 			dmh.getConditionsToTest().initAllConditions();
 			dmh.getConditionsToTest().buildStudentConflictMatrix();
 			dmh.getConditionsToTest().buildAllConditions(dmh.getTTStructure());
@@ -234,7 +224,8 @@ public class ConditionsTest extends TestCase {
 
 		} catch (Exception e) {
 			// Should not fail in tests, but if file not there gives a failure
-			assertEquals("test_basicData: exception", "nullPointer", e.toString());
+			assertEquals("test_basicData: exception", "nullPointer", e
+					.toString());
 			System.out.println("Exception in: test_buildAllConditionsDh");
 			e.printStackTrace();
 		}
@@ -245,12 +236,9 @@ public class ConditionsTest extends TestCase {
 	 * 
 	 */
 	public void test_buildAllConditionsInCloneTTS() {
-		StringBuffer fileName = new StringBuffer("." + File.separator);
-		fileName.append("dataTest" + File.separator);
-		fileName.append("lData5j30min.dia");
-
 		try {
-			DModel dmh = new DModel(new DxTTableDoc(), fileName.toString());
+			DModel dmh = new DModel(new DxTTableDoc(), _pathForFiles
+					+ "lData5j30min.dia");
 			dmh.getConditionsToTest().initAllConditions();
 			dmh.getConditionsToTest().buildStudentConflictMatrix();
 			dmh.getConditionsToTest().buildAllConditions(dmh.getTTStructure());
@@ -266,12 +254,12 @@ public class ConditionsTest extends TestCase {
 					0, per.getNbInstConflict());
 			assertEquals("test3_buildAllConditionsInCloneTTS : assertEquals 0",
 					0, per.getNbRoomConflict());
-			
-			assertEquals("test_Wen.beginHour hour : assertEquals 8",
-					8, per.getBeginHour()[0]);
-			assertEquals("test_WenbeginHour min : assertEquals 30",
-					30, per.getBeginHour()[1]);
-			
+
+			assertEquals("test_Wen.beginHour hour : assertEquals 8", 8, per
+					.getBeginHour()[0]);
+			assertEquals("test_WenbeginHour min : assertEquals 30", 30, per
+					.getBeginHour()[1]);
+
 			// get period day=1 (lundi), sequence = 3 (PM) and period = 6
 			// (15h30)
 			per = cloneTTS.getCurrentCycle().getPeriodByKey(1, 3, 6);
@@ -282,23 +270,23 @@ public class ConditionsTest extends TestCase {
 			assertEquals("test6_buildAllConditionsInCloneTTS : assertEquals 0",
 					0, per.getNbRoomConflict());
 			boolean isEquals = dmh.getTTStructure().isEquals(cloneTTS);
-			assertEquals("test7_buildAllConditionsInCloneTTS : assertEquals true",
+			assertEquals(
+					"test7_buildAllConditionsInCloneTTS : assertEquals true",
 					true, isEquals);
 
-			assertEquals("test_Mon.beginHour hour : assertEquals 8",
-					15, per.getBeginHour()[0]);
-			assertEquals("test_Mon.beginHour min : assertEquals 30",
-					30, per.getBeginHour()[1]);
+			assertEquals("test_Mon.beginHour hour : assertEquals 8", 15, per
+					.getBeginHour()[0]);
+			assertEquals("test_Mon.beginHour min : assertEquals 30", 30, per
+					.getBeginHour()[1]);
 			DResource event = dmh.getSetOfEvents()
 					.getResource("PED200.1.21.1.");
-			
-			
+
 			DxEvent eventClone = null;
-//			if (DxFlags.newEventClone) {
-				eventClone = ((DxEvent) event.getAttach()).eventClone();
-//			} else {
-//				eventClone = ((DxEvent) event.getAttach()).oldEventClone();
-//			}	
+			// if (DxFlags.newEventClone) {
+			eventClone = ((DxEvent) event.getAttach()).eventClone();
+			// } else {
+			// eventClone = ((DxEvent) event.getAttach()).oldEventClone();
+			// }
 
 			eventClone.setAssigned(true);
 			// String
@@ -308,8 +296,9 @@ public class ConditionsTest extends TestCase {
 			dmh.getConditionsToTest().addEventInTTs(cloneTTS,
 					new DResource("PED200.1.21.1.", eventClone), false);
 			per = cloneTTS.getCurrentCycle().getPeriodByKey(1, 1, 2);
-			assertEquals("test8_buildAllConditionsInCloneTTS : assertEquals 14",
-					14, per.getNbStudConflict());
+			assertEquals(
+					"test8_buildAllConditionsInCloneTTS : assertEquals 14", 14,
+					per.getNbStudConflict());
 			assertEquals("test9_buildAllConditionsInCloneTTS : assertEquals 9",
 					1, per.getNbInstConflict());
 			assertEquals(
@@ -317,11 +306,11 @@ public class ConditionsTest extends TestCase {
 					per.getNbRoomConflict());
 
 			// set event key tuesday at 8h30
-//			if (DxFlags.newEventClone) {
-				eventClone = ((DxEvent) event.getAttach()).eventClone();
-//			} else {
-//				eventClone = ((DxEvent) event.getAttach()).oldEventClone();
-//			}	
+			// if (DxFlags.newEventClone) {
+			eventClone = ((DxEvent) event.getAttach()).eventClone();
+			// } else {
+			// eventClone = ((DxEvent) event.getAttach()).oldEventClone();
+			// }
 			eventClone.setAssigned(true);
 			eventClone.setKey(4, "2.1.2");
 			dmh.getConditionsToTest().addEventInTTs(cloneTTS,
@@ -361,7 +350,8 @@ public class ConditionsTest extends TestCase {
 
 		} catch (Exception e) {
 			// Should not fail in tests, but if file not there gives a failure
-			assertEquals("test_basicData: exception", "nullPointer", e.toString());
+			assertEquals("test_basicData: exception", "nullPointer", e
+					.toString());
 			System.out
 					.println("Exception in: test_buildAllConditionsInCloneTTS()");
 			e.printStackTrace();
@@ -370,13 +360,9 @@ public class ConditionsTest extends TestCase {
 	}
 
 	public void test_initAllConditions7j() {
-		StringBuffer fileName = new StringBuffer("." + File.separator);
-		fileName.append("dataTest" + File.separator);
-		fileName.append("loadData7j.dia");
-
 		try {
-
-			DModel dm7j = new DModel(new DxTTableDoc(), fileName.toString());
+			DModel dm7j = new DModel(new DxTTableDoc(), _pathForFiles
+					+ "loadData7j.dia");
 			dm7j.getConditionsToTest().buildStudentConflictMatrix();
 			dm7j.getConditionsToTest()
 					.buildAllConditions(dm7j.getTTStructure());
@@ -406,7 +392,8 @@ public class ConditionsTest extends TestCase {
 					period.getEventsInPeriod().size());
 		} catch (Exception e) {
 			// Should not fail in tests, but if file not there gives a failure
-			assertEquals("test_basicData: exception", "nullPointer", e.toString());
+			assertEquals("test_basicData: exception", "nullPointer", e
+					.toString());
 			System.out.println("Exception in: test_initAllConditions7j");
 			e.printStackTrace();
 		}
@@ -416,13 +403,9 @@ public class ConditionsTest extends TestCase {
 	 * check conflicts and add in period
 	 */
 	public void test_addEventInTTs_1_7j() {
-		StringBuffer fileName = new StringBuffer("." + File.separator);
-		fileName.append("dataTest" + File.separator);
-		fileName.append("loadData7j.dia");
-
 		try {
-
-			DModel dm7j = new DModel(new DxTTableDoc(), fileName.toString());
+			DModel dm7j = new DModel(new DxTTableDoc(), _pathForFiles
+					+ "loadData7j.dia");
 			dm7j.getConditionsToTest().buildStudentConflictMatrix();
 			dm7j.getConditionsToTest()
 					.buildAllConditions(dm7j.getTTStructure());
@@ -452,7 +435,8 @@ public class ConditionsTest extends TestCase {
 					.getEventsInPeriod().size());
 		} catch (Exception e) {
 			// Should not fail in tests, but if file not there gives a failure
-			assertEquals("test_basicData: exception", "nullPointer", e.toString());
+			assertEquals("test_basicData: exception", "nullPointer", e
+					.toString());
 			System.out.println("Exception in: test_addEventInTTs_1_7j");
 			e.printStackTrace();
 		}
@@ -462,13 +446,9 @@ public class ConditionsTest extends TestCase {
 	 * check conflicts and add in period
 	 */
 	public void test_addEventInTTs_2_7j() {
-		StringBuffer fileName = new StringBuffer("." + File.separator);
-		fileName.append("dataTest" + File.separator);
-		fileName.append("loadData7j.dia");
-
 		try {
-
-			DModel dm7j = new DModel(new DxTTableDoc(), fileName.toString());
+			DModel dm7j = new DModel(new DxTTableDoc(), _pathForFiles
+					+ "loadData7j.dia");
 			dm7j.getConditionsToTest().buildStudentConflictMatrix();
 			dm7j.getConditionsToTest()
 					.buildAllConditions(dm7j.getTTStructure());
@@ -506,7 +486,8 @@ public class ConditionsTest extends TestCase {
 					.getConflictsEventsInPeriod(event.getID()).size());
 		} catch (Exception e) {
 			// Should not fail in tests, but if file not there gives a failure
-			assertEquals("test_basicData: exception", "nullPointer", e.toString());
+			assertEquals("test_basicData: exception", "nullPointer", e
+					.toString());
 			System.out.println("Exception in: test_addEventInTTs_2_7j");
 			e.printStackTrace();
 		}
@@ -516,13 +497,9 @@ public class ConditionsTest extends TestCase {
 	 * remove event in a period
 	 */
 	public void test_removeEventInTTs_3_7j() {
-		StringBuffer fileName = new StringBuffer("." + File.separator);
-		fileName.append("dataTest" + File.separator);
-		fileName.append("loadData7j.dia");
-
 		try {
-
-			DModel dm7j = new DModel(new DxTTableDoc(), fileName.toString());
+			DModel dm7j = new DModel(new DxTTableDoc(), _pathForFiles
+					+ "loadData7j.dia");
 			dm7j.getConditionsToTest().buildStudentConflictMatrix();
 			dm7j.getConditionsToTest()
 					.buildAllConditions(dm7j.getTTStructure());
@@ -574,7 +551,8 @@ public class ConditionsTest extends TestCase {
 					period.getEventsInPeriod().size());
 		} catch (Exception e) {
 			// Should not fail in tests, but if file not there gives a failure
-			assertEquals("test_basicData: exception", "nullPointer", e.toString());
+			assertEquals("test_basicData: exception", "nullPointer", e
+					.toString());
 			System.out.println("Exception in: test_removeEventInTTs_3_7j");
 			e.printStackTrace();
 		}
