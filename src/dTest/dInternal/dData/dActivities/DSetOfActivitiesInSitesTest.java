@@ -201,7 +201,7 @@ public class DSetOfActivitiesInSitesTest extends TestCase {
 		catch (DiaException e) {
 			System.out.println(e.getMessage());
 			assertEquals("test_analyseTokens1dot6: ",
-					 false, e.getMessage().contains(DConst.ERR_ACTIVITY_NAME));
+					 true, e.getMessage().contains(DConst.ERR_ACTIVITY_NAME));
 		}
 
 	}
