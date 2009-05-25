@@ -26,51 +26,53 @@ import dInternal.DxState;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-	
+
 /**
  * Ruben Gonzalez-Rubio
  * 
  * Description: DxStateTest is a class used to:
  * <p>
  * TODO:insert comments
- * <p> 
+ * <p>
  * 
  */
-public class DxStateTest extends TestCase{
+public class DxStateTest extends TestCase {
 	DxState a;
 	DxState b;
-	
-  public DxStateTest(String name) {
-     super(name);
-  }
-  
-  public static Test suite() {
-   // the type safe way is in SimpleTest
-   // the dynamic way :
-   return new TestSuite(DxStateTest.class);
-  } // end suite
-  
-  @Override
-public void setUp(){
-  	a = new DxState("T", Color.BLACK, 1);
-  	b = new DxState("S", Color.BLACK, 1);
-  }
-   
-  public void testA_setColor(){
-  	a.setColor(Color.RED);
-  	assertEquals("testA_setColor: assertEquals", Color.RED, a.getColor());
-  }
-  public void testA_setValue(){
-  	a.setValue(2);
-  	assertEquals("testA_setValue: assertEquals", 2, a.getValue());
-  }
 
-  public void testB_setColor(){
-  	b.setColor(Color.BLUE);
-  	assertEquals("testB_setColor: assertEquals", Color.BLUE, b.getColor());
-  }
-  public void testB_setValue(){
-  	b.setValue(4);
-  	assertEquals("testB_setValue: assertEquals", 4, b.getValue());
-  }
+	public DxStateTest(String name) {
+		super(name);
+	}
+
+	public static Test suite() {
+		// the type safe way is in SimpleTest
+		// the dynamic way :
+		return new TestSuite(DxStateTest.class);
+	} // end suite
+
+	@Override
+	public void setUp() {
+		a = new DxState("T", Color.BLACK, 1);
+		b = new DxState("S", Color.BLACK, 1);
+	}
+
+	public void testA_setColor() {
+		a.setColor(Color.RED);
+		assertEquals("testA_setColor: assertEquals", Color.RED, a.getColor());
+	}
+
+	public void testA_setValue() {
+		a.setValue(2);
+		assertEquals("testA_setValue: assertEquals", 2, a.getValue());
+	}
+
+	public void testB_setColor() {
+		b.setColor(Color.BLUE);
+		assertEquals("testB_setColor: assertEquals", Color.BLUE, b.getColor());
+	}
+
+	public void testB_setValue() {
+		b.setValue(4);
+		assertEquals("testB_setValue: assertEquals", 4, b.getValue());
+	}
 }
