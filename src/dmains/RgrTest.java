@@ -21,7 +21,8 @@ package dmains;
 
 import java.io.File;
 
-import ca.sixs.dTest.dFonctions.FonctionalTest;
+import ca.sixs.dTest.dFonctions.AdminFonctionsTest;
+import ca.sixs.dTest.dFonctions.GenFonctionsTest;
 import ca.sixs.util.pref.FileFilterPrefTest;
 import ca.sixs.util.pref.LookAndFeelPrefTest;
 import ca.sixs.util.pref.ParametersPrefTest;
@@ -83,7 +84,7 @@ public class RgrTest {
 		
 		if (false){
 		suite.addTest(DSetOfActivitiesInSitesTest.suite());	
-		suite.addTest(DxInstructorsReaderTest.suite());	
+		
 		suite.addTest(DxSetOfSitesTest.suite());
 		suite.addTest(DxAssignRoomsAlgTest.suite());
 		suite.addTest(DxTTStructureTest.suite());
@@ -108,8 +109,10 @@ public class RgrTest {
 		suite.addTest(ReportPrefTest.suite());
 		suite.addTest(FileFilterPrefTest.suite());
 		suite.addTest(ConditionsTest.suite());
+		suite.addTest(GenFonctionsTest.suite());
 		}
-		suite.addTest(FonctionalTest.suite());
+		suite.addTest(DxInstructorsReaderTest.suite());	
+		suite.addTest(AdminFonctionsTest.suite());
 
 		System.out.println("Bye I was in rgr selected Tests");
 		return suite;
