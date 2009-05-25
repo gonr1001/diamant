@@ -181,6 +181,7 @@ public class DApplication {
 		jFrame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 
 		jFrame.addWindowListener(new WindowAdapter() {
+			@Override
 			public void windowClosing(WindowEvent e) {
 				e.toString(); // to avoid warning
 				closeApplic();
