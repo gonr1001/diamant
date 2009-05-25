@@ -28,6 +28,7 @@ import dInterface.DxTTableDoc;
 import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.DxStateBarModel;
+import dInternal.dOptimization.DxAssignAllAlg;
 import dInternal.dOptimization.DxEvent;
 import dInternal.dTimeTable.Period;
 
@@ -46,10 +47,6 @@ public class GenFonctionsTest extends TestCase {
 		// the dynamic way :
 		return new TestSuite(GenFonctionsTest.class);
 	} // end suite
-
-	private final String _pathForFacsAdminDia = "." + File.separator
-			+ "origDist" + File.separator + "facs" + File.separator + "admin"
-			+ File.separator + "styleDia" + File.separator;
 
 	private final String _pathForqVerif = "." + File.separator + "origDist"
 			+ File.separator + "qVerif" + File.separator;
@@ -92,81 +89,91 @@ public class GenFonctionsTest extends TestCase {
 		}
 	}
 
-	public void test_facAdminDia() {
+	public void test_conflits() {
 		try {
-			DModel facAdminDia = new DModel(new DxTTableDoc(),
-					_pathForFacsAdminDia + "horaireAdmin.dia");
-			facAdminDia.changeInDModel(new Object());
-			DxStateBarModel sbm = new DxStateBarModel(facAdminDia);
+			DModel horaireDia = new DModel(new DxTTableDoc(),
+					_pathForqVerif + "horaire0.dia");
+			horaireDia.changeInDModel(new Object());
+		
+			DxStateBarModel sbm = new DxStateBarModel(horaireDia);
 			sbm.update();
 
-			assertEquals("test_facAdminDia: assertEquals -1", -1, sbm
+			assertEquals("test_conflits: assertEquals -1", -1, sbm
 					.elementAt(0).getValue());
-			assertEquals("test_facAdminDia: assertEquals 59", 59, sbm
+			assertEquals("test_conflits: assertEquals 135", 135, sbm
 					.elementAt(1).getValue());
-			assertEquals("test_facAdminDia: assertEquals 64", 64, sbm
+			assertEquals("test_conflits: assertEquals 115", 115, sbm
 					.elementAt(2).getValue());
-			assertEquals("test_facAdminDia: assertEquals 13", 13, sbm
+			assertEquals("test_conflits: assertEquals 39", 39, sbm
 					.elementAt(3).getValue());
-			assertEquals("test_facAdminDia: assertEquals 624", 624, sbm
+			assertEquals("test_conflits: assertEquals 1116", 1116, sbm
 					.elementAt(4).getValue());
-			assertEquals("test_facAdminDia: assertEquals 101", 101, sbm
+			assertEquals("test_conflits: assertEquals 254", 254, sbm
 					.elementAt(5).getValue());
-			assertEquals("test_facAdminDia: assertEquals 0", 0, sbm
+			assertEquals("test_conflits: assertEquals 252", 252, sbm
 					.elementAt(6).getValue());
-			assertEquals("test_facAdminDia: assertEquals 0", 0, sbm
+			assertEquals("test_conflits: assertEquals 250", 250, sbm
 					.elementAt(7).getValue());
-			assertEquals("test_facAdminDia: assertEquals 0", 0, sbm
+			assertEquals("test_conflits: assertEquals 199", 199, sbm
 					.elementAt(8).getValue());
-			assertEquals("test_facAdminDia: assertEquals 0", 0, sbm
+			assertEquals("test_conflits: assertEquals 15", 15, sbm
 					.elementAt(9).getValue());
-			assertEquals("test_facAdminDia: assertEquals 0", 0, sbm
+			assertEquals("test_conflits: assertEquals 36", 36, sbm
 					.elementAt(10).getValue());
 		} catch (Exception e) {
 			// Should not fail in tests, but if file not there gives a failure
-			assertEquals("test_basicData: exception", "nullPointer", e
+			assertEquals("test_conflits: exception", "nullPointer", e
 					.toString());
-			System.out.println("Exception in: test_facAdminDia");
+			System.out.println("Exception in: test_conflits");
 			e.printStackTrace();
 		}
 	}
+	
+	
+	public void test_conflitsNothingPlaced() {
+		try {
+			DModel horaireDia = new DModel(new DxTTableDoc(),
+					_pathForqVerif + "horaireNothingPlaced.dia");
+			horaireDia.changeInDModel(new Object());
+		
+			DxStateBarModel sbm = new DxStateBarModel(horaireDia);
+			sbm.update();
 
-	// public void testStateBarModel_5j() throws Exception {
-	// DModel _dm5j;
-	// DxStateBarModel sbm;
-	//
-	// DxDocument _dxDoc5j;
-	// _dxDoc5j = new DxTTableDoc();
-	// String fileName = "." + File.separator + "dataTest" + File.separator
-	// + "loadData5j.dia";
-	//
-	// _dm5j = new DModel(_dxDoc5j, fileName);
-	// _dm5j.changeInDModel(new Object());
-	// sbm = new DxStateBarModel(_dm5j);
-	// sbm.update();
-	//
-	// assertEquals("test0_StateBarModel_5j: assertEquals", -1, sbm.elementAt(
-	// 0).getValue());
-	// assertEquals("test1_StateBarModel_5j: assertEquals", 11, sbm.elementAt(
-	// 1).getValue());
-	// assertEquals("test2_StateBarModel_5j: assertEquals", 7, sbm
-	// .elementAt(2).getValue());
-	// assertEquals("test3_StateBarModel_5j: assertEquals", 44, sbm.elementAt(
-	// 3).getValue());
-	// assertEquals("test4_StateBarModel_5j: assertEquals", 15, sbm.elementAt(
-	// 4).getValue());
-	// assertEquals("test5_StateBarModel_5j: assertEquals", 27, sbm.elementAt(
-	// 5).getValue());
-	// assertEquals("test6_StateBarModel_5j: assertEquals", 3, sbm
-	// .elementAt(6).getValue());
-	// assertEquals("test7_StateBarModel_5j: assertEquals", 4, sbm
-	// .elementAt(7).getValue());
-	// assertEquals("test8_StateBarModel_5j: assertEquals", 0, sbm
-	// .elementAt(8).getValue());
-	// assertEquals("test9_StateBarModel_5j: assertEquals", 2, sbm
-	// .elementAt(9).getValue());
-	// assertEquals("test10_StateBarModel_5j: assertEquals", 2, sbm.elementAt(
-	// 10).getValue());
-	// }
+			assertEquals("test_conflits: assertEquals -1", -1, sbm
+					.elementAt(0).getValue());
+			assertEquals("test_conflits: assertEquals 135", 135, sbm
+					.elementAt(1).getValue());
+			assertEquals("test_conflits: assertEquals 115", 115, sbm
+					.elementAt(2).getValue());
+			assertEquals("test_conflits: assertEquals 39", 39, sbm
+					.elementAt(3).getValue());
+			assertEquals("test_conflits: assertEquals 1116", 1116, sbm
+					.elementAt(4).getValue());
+			assertEquals("test_conflits: assertEquals 254", 254, sbm
+					.elementAt(5).getValue());
+			assertEquals("test_conflits: assertEquals 0", 0, sbm
+					.elementAt(6).getValue());
+			assertEquals("test_conflits: assertEquals 0", 0, sbm
+					.elementAt(7).getValue());
+			assertEquals("test_conflits: assertEquals 0", 0, sbm
+					.elementAt(8).getValue());
+			assertEquals("test_conflits: assertEquals 0", 0, sbm
+					.elementAt(9).getValue());
+			assertEquals("test_conflits: assertEquals 0", 0, sbm
+					.elementAt(10).getValue());
+			new DxAssignAllAlg(horaireDia).doWork();
+			horaireDia.changeInDModel(new Object());
+			sbm.update();
+			assertEquals("test_conflits: assertEquals 239", 239, sbm
+					.elementAt(6).getValue());
+			
+		} catch (Exception e) {
+			// Should not fail in tests, but if file not there gives a failure
+			assertEquals("test_conflits: exception", "nullPointer", e
+					.toString());
+			System.out.println("Exception in: test_conflits");
+			e.printStackTrace();
+		}
+	}
 
 }
