@@ -26,7 +26,7 @@ import dInternal.DxState;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-
+	
 /**
  * Ruben Gonzalez-Rubio
  * 
@@ -50,7 +50,8 @@ public class DxStateTest extends TestCase{
    return new TestSuite(DxStateTest.class);
   } // end suite
   
-  public void setUp(){
+  @Override
+public void setUp(){
   	a = new DxState("T", Color.BLACK, 1);
   	b = new DxState("S", Color.BLACK, 1);
   }
@@ -63,10 +64,7 @@ public class DxStateTest extends TestCase{
   	a.setValue(2);
   	assertEquals("testA_setValue: assertEquals", 2, a.getValue());
   }
-//  public void testA_getSelectedField(){
-//  	assertEquals("testA_getSelectedField: assertEquals", 0, a.getSelectedField());
-//  }
- 
+
   public void testB_setColor(){
   	b.setColor(Color.BLUE);
   	assertEquals("testB_setColor: assertEquals", Color.BLUE, b.getColor());
@@ -75,7 +73,4 @@ public class DxStateTest extends TestCase{
   	b.setValue(4);
   	assertEquals("testB_setValue: assertEquals", 4, b.getValue());
   }
-//  public void testB_getSelectedField(){
-//  	assertEquals("testB_getSelectedField: assertEquals", 0, b.getSelectedField());
-//  }
 }
