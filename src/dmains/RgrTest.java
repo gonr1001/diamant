@@ -21,7 +21,7 @@ package dmains;
 
 import java.io.File;
 
-import ca.sixs.dTest.dOptimzation.FonctionalTest;
+import ca.sixs.dTest.dFonctions.FonctionalTest;
 import ca.sixs.util.pref.FileFilterPrefTest;
 import ca.sixs.util.pref.LookAndFeelPrefTest;
 import ca.sixs.util.pref.ParametersPrefTest;
