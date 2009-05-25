@@ -100,7 +100,7 @@ public abstract class DxSetOfResources implements Iterable <DxResource>{
 
 	/**
 	 * This method is used for tests only, to make sure add and remove will
-	 * corretly manage both vectors
+	 * correctly manage both vectors
 	 * 
 	 * @return true if name ordered vector and key ordered vector are the same
 	 *         size
