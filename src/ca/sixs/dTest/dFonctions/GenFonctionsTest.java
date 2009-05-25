@@ -35,7 +35,7 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-public class FonctionalTest extends TestCase {
+public class GenFonctionsTest extends TestCase {
 
 	/**
 	 * 
@@ -44,7 +44,7 @@ public class FonctionalTest extends TestCase {
 	public static Test suite() {
 		// the type safe way is in SimpleTest
 		// the dynamic way :
-		return new TestSuite(FonctionalTest.class);
+		return new TestSuite(GenFonctionsTest.class);
 	} // end suite
 
 	private final String _pathForFacsAdminDia = "." + File.separator
