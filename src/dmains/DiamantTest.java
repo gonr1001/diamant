@@ -27,7 +27,8 @@ package dmains;
 
 import java.io.File;
 
-
+import ca.sixs.dTest.dFonctions.AdminFonctionsTest;
+import ca.sixs.dTest.dFonctions.GenFonctionsTest;
 import ca.sixs.util.pref.FileFilterPrefTest;
 import ca.sixs.util.pref.LookAndFeelPrefTest;
 import ca.sixs.util.pref.ParametersPrefTest;
@@ -57,8 +58,7 @@ import dTest.dInternal.dData.DLoadDataTest;
 import dTest.dInternal.dData.DSaveDataTest;
 import dTest.dInternal.dData.DStandardReportDataTest;
 import dTest.dInternal.dData.DxAvailabilityTest;
-import dTest.dInternal.dData.StandardCollectionTest;
-//import dTest.dInternal.dData.dActivities.DSetOfActivitiesSitesTest;
+import dTest.dInternal.dData.StandardCollectionTest; //import dTest.dInternal.dData.dActivities.DSetOfActivitiesSitesTest;
 import dTest.dInternal.dData.dActivities.DSetOfActivitiesInSitesTest;
 import dTest.dInternal.dData.dActivities.DxSetOfActivitiesSitesTest;
 import dTest.dInternal.dData.dInstructors.DxInstructorTest;
@@ -84,8 +84,7 @@ import dTest.dInternal.dTimeTable.CycleTest;
 import dTest.dInternal.dTimeTable.DayTest;
 import dTest.dInternal.dTimeTable.PeriodTest;
 import dTest.dInternal.dTimeTable.SequenceTest;
-import dTest.dInternal.dTimeTable.TTStructureTest;
-//import dTest.dInternal.dUtil.DXToolsMethodsTest;
+import dTest.dInternal.dTimeTable.TTStructureTest; //import dTest.dInternal.dUtil.DXToolsMethodsTest;
 import eTest.ByteInputFileTest;
 import eTest.ByteOutputFileTest;
 import eTest.FilterFileTest;
@@ -113,7 +112,7 @@ public class DiamantTest {
 		File forOutputTests = new File("." + File.separator + "forOutputTests");
 		forOutputTests.mkdir();
 		System.out.println("fot path" + forOutputTests.getAbsolutePath());
-		// Using files	
+		// Using files
 		suite.addTest(DxTTStructureTest.suite());
 		suite.addTest(ByteInputFileTest.suite());
 		suite.addTest(ByteOutputFileTest.suite());
@@ -125,13 +124,15 @@ public class DiamantTest {
 		if (DxFlags.newAlg) {
 			suite.addTest(DxAssignRoomsAlgTest.suite());
 		}
-		suite.addTest(RefinedStudMixAlgoTest.suite()); //TODO to be changed 
+		suite.addTest(RefinedStudMixAlgoTest.suite()); // TODO to be changed
 		suite.addTest(PeriodTest.suite());
 		suite.addTest(SequenceTest.suite());
 		suite.addTest(DayTest.suite());
 		suite.addTest(CycleTest.suite());
 		suite.addTest(TTStructureTest.suite());
 		suite.addTest(SetOfEventsTest.suite());
+		suite.addTest(GenFonctionsTest.suite());
+		suite.addTest(AdminFonctionsTest.suite());
 
 		// Not using files
 		suite.addTest(DxAvailabilityTest.suite());
@@ -145,7 +146,7 @@ public class DiamantTest {
 		suite.addTest(ActivityTest.suite());
 		suite.addTest(ConflictsAttachTest.suite());
 
-		//to be classed 		
+		// to be classed
 		suite.addTest(StudentsConflictsMatrixTest.suite());
 		suite.addTest(InstructorsConditionsTest.suite());
 		suite.addTest(DxSiteReaderTest.suite());
@@ -168,11 +169,11 @@ public class DiamantTest {
 		suite.addTest(ByteArrayMessageTest.suite());
 		suite.addTest(StandardCollectionTest.suite());
 		suite.addTest(DResourceTest.suite());
-//		if (DxFlags.newDxLoadData) {
-			suite.addTest(DxLoadDataTest.suite());
-//		} else {
-			suite.addTest(DLoadDataTest.suite());
-//		}
+		// if (DxFlags.newDxLoadData) {
+		suite.addTest(DxLoadDataTest.suite());
+		// } else {
+		suite.addTest(DLoadDataTest.suite());
+		// }
 		suite.addTest(DSaveDataTest.suite());
 		suite.addTest(DSetOfResourcesTest.suite());
 		suite.addTest(DStandardReportDataTest.suite());
@@ -180,8 +181,8 @@ public class DiamantTest {
 		suite.addTest(StudentTest.suite());
 		suite.addTest(ResourceTest.suite());
 		suite.addTest(DFileMenuTest.suite());
-		suite.addTest(DxEditEventDlgTest.suite());	
-		
+		suite.addTest(DxEditEventDlgTest.suite());
+
 		suite.addTest(LookAndFeelPrefTest.suite());
 		suite.addTest(ParametersPrefTest.suite());
 		suite.addTest(ReportPrefTest.suite());
