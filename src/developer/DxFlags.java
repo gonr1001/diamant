@@ -41,8 +41,6 @@ public class DxFlags {
 //	public final static boolean newDxLoadData = true;
 
 //	public final static boolean newDxTTPane = true;
-
-	public final static boolean newReadSetOfSites = false;
 	
 	public final static boolean newDisplay = false;
 	
