@@ -223,35 +223,40 @@ public class DxInstructorsReaderTest extends TestCase {
 
 			DxInstructorsReader dxir = new DxReadInstructorsdotDia(de, 5, 14);
 			DxSetOfInstructors dxsoi = dxir.readSetOfInstructors();
-			assertEquals("test6_1_getSetOfInstructors: assertEquals", 126,
+			assertEquals("test_valuesOnDispoInst: assertEquals", 126,
 					dxsoi.size());
-			assertEquals("test6_2_getSetOfInstructors: assertEquals", true,
+			assertEquals("test_valuesOnDispoInst: assertEquals", true,
 					dxsoi.areVectorsSync());
-			assertNotNull("test6_3_getSetOfInstructors: assertEquals", dxsoi
+			assertNotNull("test_valuesOnDispoInst: assertEquals", dxsoi
 					.getResource("ABATZOGLOU, NICOLAS"));
-			assertNotNull("test6_4_getSetOfInstructors: assertEquals", dxsoi
+			assertNotNull("test_valuesOnDispoInst: assertEquals", dxsoi
 					.getResource("YAHIA, AMMAR"));
-			assertNotNull("test6_5_getSetOfInstructors: assertEquals", dxsoi
+			assertNotNull("test_valuesOnDispoInst: assertEquals", dxsoi
 					.getResource("AMÉDIN, CELSE KAFUI"));
 
-			// assertEquals("test6_6_getSetOfInstructors: assertEquals", 5,
-			// dxsoi
-			// .getInstructorAvailabilityByName("YAHIA, AMMAR").getPeriodAvailability(4,
-			// 13));
-			// assertEquals("test6_7_getSetOfInstructors: assertEquals", 1,
-			// dxsoi
-			// .getInstructorAvailabilityByKey(5).getPeriodAvailability(2, 7));
-			// dxsoi.removeInstructor(1);
-			// dxsoi.removeInstructor(126);
-			// assertEquals("test6_8_getSetOfInstructors: assertEquals", 124,
-			// dxsoi
-			// .size());
-			// assertEquals("test6_9_getSetOfInstructors: assertEquals", true,
-			// dxsoi
-			// .areVectorsSync());
-			// assertEquals("test6_10_getSetOfInstructors: assertEquals", -1,
-			// dxsoi
-			// .getInstructorKeyByName("YAHIA, AMMAR"));
+			long i = dxsoi.getResourceKey("YAHIA, AMMAR");
+			assertEquals("test6_6_getSetOfInstructors: assertEquals 5", 5,
+					dxsoi.getInstructorAvailability(i).getPeriodAvailability(4,
+							13));
+			
+			i = dxsoi.getResourceKey("ABATZOGLOU, NICOLAS");
+			assertEquals("test_readInstructors: assertEquals 5", 5,
+					dxsoi.getInstructorAvailability(i).getPeriodAvailability(4,
+							13));
+			 assertEquals("test_readInstructors: assertEquals", 1,
+					 dxsoi.getInstructorAvailability(i).getPeriodAvailability(1, 1));
+			 
+			 dxsoi.removeInstructor(dxsoi.getResourceKey("ABATZOGLOU, NICOLAS"));
+			 dxsoi.removeInstructor(dxsoi.getResourceKey("YAHIA, AMMAR"));
+			 assertEquals("test_readInstructors: assertEquals", 124,
+			 dxsoi
+			 .size());
+			 assertEquals("test_readInstructors: assertEquals", true,
+			 dxsoi
+			 .areVectorsSync());
+			 assertEquals("test6_10_getSetOfInstructors: assertEquals", -1,
+			 dxsoi.getResourceKey("YAHIA, AMMAR"));
+			
 		} catch (Exception e) {
 			// Should not fail in tests, but if file not there gives a failure
 			assertEquals("test_basicData: exception", "nullPointer", e
