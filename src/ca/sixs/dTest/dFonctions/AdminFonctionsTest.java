@@ -29,9 +29,15 @@ import dInternal.DModel;
 import dInternal.DataExchange;
 import dInternal.DxLoadData;
 import dInternal.DxStateBarModel;
+import dInternal.dData.DxResource;
+import dInternal.dData.dActivities.DxActivitiesSitesReader;
+import dInternal.dData.dActivities.DxReadActivitiesSites1dot5;
+import dInternal.dData.dActivities.DxSetOfActivitiesSites;
 import dInternal.dData.dInstructors.DxInstructorsReader;
 import dInternal.dData.dInstructors.DxReadInstructorsdotDia;
 import dInternal.dData.dInstructors.DxSetOfInstructors;
+import dInternal.dData.dRooms.DxRoom;
+import dInternal.dData.dRooms.DxSetOfRooms;
 import dInternal.dOptimization.DxAssignAllAlg;
 
 import junit.framework.Test;
@@ -110,15 +116,15 @@ public class AdminFonctionsTest extends TestCase {
 	public void test_readInstructors() {
 		try {
 			DxLoadData ld = new DxLoadData();
-			byte[] dataloaded = ld
-					.filterBadChars(_pathForFacsAdminDim + "profAdm.sig");
+			byte[] dataloaded = ld.filterBadChars(_pathForFacsAdminDim
+					+ "profAdm.sig");
 			DataExchange de = ld.insertHeader(dataloaded);
 			DxInstructorsReader dxir = new DxReadInstructorsdotDia(de, 5, 14);
 			DxSetOfInstructors dxsoi = dxir.readSetOfInstructors();
 			assertEquals("test_readInstructors: assertEquals 64", 64, dxsoi
 					.size());
-			assertEquals("test_readInstructors: assertEquals true", true,
-					dxsoi.areVectorsSync());
+			assertEquals("test_readInstructors: assertEquals true", true, dxsoi
+					.areVectorsSync());
 			assertNotNull("test_readInstructors: assertNotNull First", dxsoi
 					.getResource("ADM101"));
 			assertNotNull("test_readInstructors: assertNotNull Last", dxsoi
@@ -126,23 +132,24 @@ public class AdminFonctionsTest extends TestCase {
 			assertNull("test_readInstructors: assertNull", dxsoi
 					.getResource("rgr"));
 
-//			 assertEquals("test6_6_getSetOfInstructors: assertEquals", 5,
-//			dxsoi.getInstructorAvailabilityByName("YAHIA, AMMAR").getPeriodAvailability(4,
-//			 13));
-			// assertEquals("test6_7_getSetOfInstructors: assertEquals", 1,
-			// dxsoi
-			// .getInstructorAvailabilityByKey(5).getPeriodAvailability(2, 7));
-			// dxsoi.removeInstructor(1);
-			// dxsoi.removeInstructor(126);
-			// assertEquals("test6_8_getSetOfInstructors: assertEquals", 124,
-			// dxsoi
-			// .size());
-			// assertEquals("test6_9_getSetOfInstructors: assertEquals", true,
-			// dxsoi
-			// .areVectorsSync());
-			// assertEquals("test6_10_getSetOfInstructors: assertEquals", -1,
-			// dxsoi
-			// .getInstructorKeyByName("YAHIA, AMMAR"));
+			
+			long i = dxsoi.getResourceKey("ADM101");
+			assertEquals("test_readInstructors: assertEquals 5", 5,
+					dxsoi.getInstructorAvailability(i).getPeriodAvailability(4,
+							13));
+			 assertEquals("test_readInstructors: assertEquals", 1,
+					 dxsoi.getInstructorAvailability(i).getPeriodAvailability(1, 1));
+			 dxsoi.removeInstructor(dxsoi.getResourceKey("ADM101"));
+			 dxsoi.removeInstructor(dxsoi.getResourceKey("MQG542"));
+			 assertEquals("test_readInstructors: assertEquals", 62,
+			 dxsoi
+			 .size());
+			 assertEquals("test_readInstructors: assertEquals", true,
+			 dxsoi
+			 .areVectorsSync());
+			 assertEquals("test6_10_getSetOfInstructors: assertEquals", -1,
+			 dxsoi.getResourceKey("YAHIA, AMMAR"));
+			
 		} catch (Exception e) {
 			// Should not fail in tests, but if file not there gives a failure
 			assertEquals("test_basicData: exception", "nullPointer", e
@@ -150,7 +157,68 @@ public class AdminFonctionsTest extends TestCase {
 			System.out.println("Exception in: test_readInstructors");
 			e.printStackTrace();
 		}
+	}
 
+	/**
+	 * 
+	 *
+	 */
+	public void test_readActivities() {
+		try {
+			DxLoadData ld = new DxLoadData();
+			byte[] dataloaded = ld.filterBadChars(_pathForFacsAdminDim
+					+ "coursAdm.sig");
+			DataExchange de = ld.insertHeader(dataloaded);
+			DxSetOfInstructors dxsoiTempInst = new DxSetOfInstructors();
+			dxsoiTempInst.addInstructor("LUC LAJOIE", null);
+
+			DxSetOfRooms dxsorTempRooms = new DxSetOfRooms();
+			dxsorTempRooms.addRoom(new DxRoom("C1-387", 0, 0, null, null, null));
+			dxsorTempRooms.addRoom(new DxRoom("C1-330", 0, 0, null, null, null));
+
+			
+			DxActivitiesSitesReader dxasrReader = new DxReadActivitiesSites1dot5(
+					de, dxsoiTempInst,
+					dxsorTempRooms, 60, false);
+			
+	//		DxActivitiesReader dxir = new DxReadInstructorsdotDia(de, 5, 14);
+			DxSetOfActivitiesSites dxsoa = dxasrReader.readSetOfActivitiesSites();
+			assertEquals("test_readActivities: assertEquals 64", 64, dxsoa
+					.size());
+//			assertEquals("test_readInstructors: assertEquals true", true, dxsoi
+//					.areVectorsSync());
+//			assertNotNull("test_readInstructors: assertNotNull First", dxsoi
+//					.getResource("ADM101"));
+//			assertNotNull("test_readInstructors: assertNotNull Last", dxsoi
+//					.getResource("MQG542"));
+//			assertNull("test_readInstructors: assertNull", dxsoi
+//					.getResource("rgr"));
+//
+//			
+//			long i = dxsoi.getResourceKey("ADM101");
+//			assertEquals("test_readInstructors: assertEquals 5", 5,
+//					dxsoi.getInstructorAvailability(i).getPeriodAvailability(4,
+//							13));
+//			 assertEquals("test_readInstructors: assertEquals", 1,
+//					 dxsoi.getInstructorAvailability(i).getPeriodAvailability(1, 1));
+//			 dxsoi.removeInstructor(dxsoi.getResourceKey("ADM101"));
+//			 dxsoi.removeInstructor(dxsoi.getResourceKey("MQG542"));
+//			 assertEquals("test_readInstructors: assertEquals", 62,
+//			 dxsoi
+//			 .size());
+//			 assertEquals("test_readInstructors: assertEquals", true,
+//			 dxsoi
+//			 .areVectorsSync());
+//			 assertEquals("test6_10_getSetOfInstructors: assertEquals", -1,
+//			 dxsoi.getResourceKey("YAHIA, AMMAR"));
+			
+		} catch (Exception e) {
+			// Should not fail in tests, but if file not there gives a failure
+			assertEquals("test_basicData: exception", "nullPointer", e
+					.toString());
+			System.out.println("Exception in: test_readInstructors");
+			e.printStackTrace();
+		}
 	}
 
 	// public void test_facAdminDim() {

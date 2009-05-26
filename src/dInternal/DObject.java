@@ -71,12 +71,7 @@ public abstract class DObject extends Object {
 		return ""; // XXXX Pascal: ?
 	}
 
-	// /**
-	// *
-	// */
-	// public String externalKey(String str, String id) {
-	// return str + id; // XXXX Pascal: Hmmmm
-	// }
+
 
 	/**
 	 * 
@@ -115,7 +110,7 @@ public abstract class DObject extends Object {
 	public String getProgram() {
 				return "";// XXXX Pascal: ?
 			}
-//	public abstract DObject clone();
+
 
 
 }
