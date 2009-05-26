@@ -34,7 +34,7 @@ public interface DxSiteReader {
 
 	public DxSetOfSites readSetOfSites() throws DiaException;
 
-	public DxSetOfSites readSetOfSitesNew() throws DiaException;
+//	public DxSetOfSites readSetOfSitesNew() throws DiaException;
 
 	public int getLines();
 

@@ -171,11 +171,11 @@ public class DxReadSite1dot6 implements DxSiteReader {
         return new DxAvailability(nTemp);
     }
 
-	@Override
-	public DxSetOfSites readSetOfSitesNew() throws DiaException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	@Override
+//	public DxSetOfSites readSetOfSitesNew() throws DiaException {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 	@Override
 	public int getLines() {
