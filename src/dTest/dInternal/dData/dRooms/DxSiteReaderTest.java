@@ -57,11 +57,11 @@ public class DxSiteReaderTest extends TestCase {
 		DxSiteReader dxSites = new DxReadSitedotDia(ld.insertHeader(tokens
 				.getBytes()), 5, 12);
 		try {
-			if(DxFlags.newReadSetOfSites) {
-				DxSetOfSites dxsor = dxSites.readSetOfSitesNew();
-			} else {
+//			if(DxFlags.newReadSetOfSites) {
+//				DxSetOfSites dxsor = dxSites.readSetOfSitesNew();
+//			} else {
 				DxSetOfSites dxsor = dxSites.readSetOfSites();
-			}
+//			}
 			assertFalse("test2_readSetOfSites: Should have failed before", true);
 		} catch (Exception e) {
 			assertEquals("test2_readSetOfSites: assertEquals",
