@@ -80,6 +80,7 @@ public class DxSetOfInstructors extends DxSetOfResources {
 				.println("DxSetOfIntructors.alwaysAvailable must be implemented");
 	}
 
+	@Override
 	protected DxResource findEquivalent(DxResource dxrSearch) {
 		return this.getInstructor(dxrSearch.getName());
 	}
@@ -104,7 +105,7 @@ public class DxSetOfInstructors extends DxSetOfResources {
 	}
 
 	/**
-	 * Retreives the key of an instructor by his name. If there are two
+	 * Retrieves the key of an instructor by his name. If there are two
 	 * instructors with the same name, there is no guaranty on which of the
 	 * instructors key will be returned
 	 * 
