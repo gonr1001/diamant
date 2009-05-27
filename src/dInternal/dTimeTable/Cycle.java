@@ -28,7 +28,6 @@ import dInternal.DResource;
 import dInternal.DSetOfResources;
 import dInternal.DObject;
 import dInternal.dData.StandardCollection;
-import dInternal.dUtil.DXToolsMethods;
 import dInternal.DValue;
 import eLib.exit.xml.input.XMLReader;
 import eLib.exit.xml.output.XMLWriter;
