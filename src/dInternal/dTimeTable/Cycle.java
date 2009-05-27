@@ -328,7 +328,7 @@ public class Cycle extends DObject {
 					getMaxNumberOfSeqs() - 1).getAttach();
 			Period per = (Period) seq.getSetOfPeriods().getResourceAt(
 					seq.getSetOfPeriods().size() - 1).getAttach();
-			if (DXToolsMethods.compareTabsHour(lastPer.getBeginHour(), per
+			if (compareTabsHour(lastPer.getBeginHour(), per
 					.getBeginHour()) == -1)
 				lastPer = per;
 			// return
@@ -337,6 +337,37 @@ public class Cycle extends DObject {
 		return lastPer;
 	}
 
+	/**
+	 * compare two hour tables of int. tab[0] is the hour and tab[1] is the
+	 * minute
+	 * 
+	 * @param int[2]
+	 *            tab1 the first table of integer
+	 * @param int[2]
+	 *            tab2 the second table of integer
+	 * @return int "1" if tab1 is greater than tab2, "0" if tab1 and tab2 are
+	 *         equals, "-1" if tab1 is smaller than tab2
+	 */
+	private int compareTabsHour(int[] tab1, int[] tab2) {
+		if ((tab1.length == 2) && (tab2.length == 2)) {
+			if (tab1[0] >= tab2[0]) {
+				if (tab1[0] > tab2[0]) {
+					return 1;
+				}// else{// else if(tab1[0]>tab2[0])
+				if (tab1[1] > tab2[1]) {
+					return 1;
+				}// end if(tab1[1]>tab2[1])
+				if (tab1[1] == tab2[1]) {
+					return 0;
+				}// end if(tab1[1]==tab2[1])
+				if (tab1[1] < tab2[1]) {
+					return -1;
+				}// end if(tab1[1]<tab2[1])
+				// }// end else if(tab1[0]>tab2[0])
+			}// end if(tab1[0]>tab2[0])
+		}// end if((tab1.length==2) && (tab2.length==2))
+		return -1;
+	}
 	/**
 	 * get the max number of sequences in one day in a cycle
 	 * 

@@ -116,37 +116,37 @@ public class DXToolsMethods {
 		return true;
 	}
 
-	/**
-	 * compare two hour tables of int. tab[0] is the hour and tab[1] is the
-	 * minute
-	 * 
-	 * @param int[2]
-	 *            tab1 the first table of integer
-	 * @param int[2]
-	 *            tab2 the second table of integer
-	 * @return int "1" if tab1 is greater than tab2, "0" if tab1 and tab2 are
-	 *         equals, "-1" if tab1 is smaller than tab2
-	 */
-	public final static int compareTabsHour(int[] tab1, int[] tab2) {
-		if ((tab1.length == 2) && (tab2.length == 2)) {
-			if (tab1[0] >= tab2[0]) {
-				if (tab1[0] > tab2[0]) {
-					return 1;
-				}// else{// else if(tab1[0]>tab2[0])
-				if (tab1[1] > tab2[1]) {
-					return 1;
-				}// end if(tab1[1]>tab2[1])
-				if (tab1[1] == tab2[1]) {
-					return 0;
-				}// end if(tab1[1]==tab2[1])
-				if (tab1[1] < tab2[1]) {
-					return -1;
-				}// end if(tab1[1]<tab2[1])
-				// }// end else if(tab1[0]>tab2[0])
-			}// end if(tab1[0]>tab2[0])
-		}// end if((tab1.length==2) && (tab2.length==2))
-		return -1;
-	}
+//	/**
+//	 * compare two hour tables of int. tab[0] is the hour and tab[1] is the
+//	 * minute
+//	 * 
+//	 * @param int[2]
+//	 *            tab1 the first table of integer
+//	 * @param int[2]
+//	 *            tab2 the second table of integer
+//	 * @return int "1" if tab1 is greater than tab2, "0" if tab1 and tab2 are
+//	 *         equals, "-1" if tab1 is smaller than tab2
+//	 */
+//	public final static int compareTabsHour(int[] tab1, int[] tab2) {
+//		if ((tab1.length == 2) && (tab2.length == 2)) {
+//			if (tab1[0] >= tab2[0]) {
+//				if (tab1[0] > tab2[0]) {
+//					return 1;
+//				}// else{// else if(tab1[0]>tab2[0])
+//				if (tab1[1] > tab2[1]) {
+//					return 1;
+//				}// end if(tab1[1]>tab2[1])
+//				if (tab1[1] == tab2[1]) {
+//					return 0;
+//				}// end if(tab1[1]==tab2[1])
+//				if (tab1[1] < tab2[1]) {
+//					return -1;
+//				}// end if(tab1[1]<tab2[1])
+//				// }// end else if(tab1[0]>tab2[0])
+//			}// end if(tab1[0]>tab2[0])
+//		}// end if((tab1.length==2) && (tab2.length==2))
+//		return -1;
+//	}
 
 	/**
 	 * Convert STI Time and periods
