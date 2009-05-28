@@ -437,6 +437,7 @@ public class DStringFrRes extends java.util.ListResourceBundle {
 			{ "saveSeparator", "=================================" },
 			{ "errorXML", "XML file is corrupted" } };
 
+	@Override
 	public Object[][] getContents() {
 		return contents;
 	}
