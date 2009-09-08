@@ -21,6 +21,8 @@ package dTest.dInternal.dOptimizationTest;
 
 import java.io.File;
 
+import ca.sixs.util.pref.ParametersPref;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -60,13 +62,10 @@ public class DxAssignAllAlgTest extends TestCase {
 	 * 
 	 */
 	public void test_buildScNoAssigned() {
-//		DxConflictLimits dxCL = new DxConflictLimits();
-//		String str = "conflictLimits;0;0;0;0;30;0;100;";
-//		dxCL.readLimits(str);
-//		ParametersPref pp = new ParametersPref();
 		DxDocument dxDocument1 = new DxTTableDoc();
-
+		ParametersPref pp = new ParametersPref();
 		try {
+			pp.savePrefBeforeTest();
 			DModel dm1 = new DModel(dxDocument1, _pathForFiles
 					+ "scNoAssigned.dia");
 			dm1.changeInDModel(new String("DxAssign"));
@@ -75,7 +74,6 @@ public class DxAssignAllAlgTest extends TestCase {
 					.getSetOfActivities().size());
 			assertEquals("test_buildScNoAssigned: events size", 275, dm1
 					.getSetOfEvents().size());
-//			DxAssignAllAlg alg = new DxAssignAllAlg(dm1, dxCL);
 			DxAssignAllAlg alg = new DxAssignAllAlg(dm1);
 			alg.doWork();
 			assertEquals("test_buildScNoAssigned: number of Events", 254, dm1
@@ -86,7 +84,10 @@ public class DxAssignAllAlgTest extends TestCase {
 					.toString());
 			System.out.println("Exception in: test_buildScNoAssigned");
 			e.printStackTrace();
+		} finally {
+			pp.restorePrefAfterTest();
 		}
+		
 	}
 
 	/**
@@ -94,13 +95,12 @@ public class DxAssignAllAlgTest extends TestCase {
 	 * 
 	 */
 	public void test_buildGenNoAssigned() {
-//		DxConflictLimits dxCL = new DxConflictLimits();
-//		String str = "conflictLimits;0;0;0;0;30;0;100;";
-//		dxCL.readLimits(str);
 
 		DxDocument dxDocument1 = new DxTTableDoc();
+		ParametersPref pp = new ParametersPref();
 
 		try {
+			pp.savePrefBeforeTest();
 			DModel dm1 = new DModel(dxDocument1, _pathForFiles
 					+ "genNoAssigned.dia");
 			dm1.changeInDModel(new Object());
@@ -108,7 +108,7 @@ public class DxAssignAllAlgTest extends TestCase {
 					.getSetOfActivities().size());
 			assertEquals("test_buildScNoAssigned: events size", 293, dm1
 					.getSetOfEvents().size());
-//			DxAssignAllAlg alg = new DxAssignAllAlg(dm1, dxCL);
+
 			DxAssignAllAlg alg = new DxAssignAllAlg(dm1);
 			alg.doWork();
 			assertEquals("test_buildScNoAssigned: number of Events", 245, dm1
@@ -119,6 +119,8 @@ public class DxAssignAllAlgTest extends TestCase {
 					.toString());
 			System.out.println("Exception in: test_buildGenNoAssigned");
 			e.printStackTrace();
+		} finally {
+			pp.restorePrefAfterTest();
 		}
 	}
 

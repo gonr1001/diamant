@@ -24,6 +24,8 @@ package ca.sixs.dTest.dFonctions;
 
 import java.io.File;
 
+import ca.sixs.util.pref.ParametersPref;
+
 import dInterface.DxTTableDoc;
 import dInternal.DModel;
 import dInternal.DResource;
@@ -52,7 +54,10 @@ public class GenFonctionsTest extends TestCase {
 			+ File.separator + "qVerif" + File.separator;
 
 	public void test_qVerif() {
+		ParametersPref pp = new ParametersPref();
+		
 		try {
+			pp.savePrefBeforeTest();
 			DModel dmQVerif = new DModel(new DxTTableDoc(), _pathForqVerif
 					+ "horaire0.dia");
 			dmQVerif.getConditionsToTest().initAllConditions();
@@ -86,11 +91,16 @@ public class GenFonctionsTest extends TestCase {
 					.toString());
 			System.out.println("Exception in: test_qVerif");
 			e.printStackTrace();
+		} finally {
+			pp.restorePrefAfterTest();
 		}
 	}
 
 	public void test_conflits() {
+		ParametersPref pp = new ParametersPref();
+		
 		try {
+			pp.savePrefBeforeTest();
 			DModel horaireDia = new DModel(new DxTTableDoc(),
 					_pathForqVerif + "horaire0.dia");
 			horaireDia.changeInDModel(new Object());
@@ -126,12 +136,17 @@ public class GenFonctionsTest extends TestCase {
 					.toString());
 			System.out.println("Exception in: test_conflits");
 			e.printStackTrace();
+		} finally {
+			pp.restorePrefAfterTest();
 		}
 	}
 	
 	
 	public void test_conflitsNothingPlaced() {
+		ParametersPref pp = new ParametersPref();
+		
 		try {
+			pp.savePrefBeforeTest();
 			DModel horaireDia = new DModel(new DxTTableDoc(),
 					_pathForqVerif + "horaireNothingPlaced.dia");
 			horaireDia.changeInDModel(new Object());
@@ -173,6 +188,8 @@ public class GenFonctionsTest extends TestCase {
 					.toString());
 			System.out.println("Exception in: test_conflits");
 			e.printStackTrace();
+		} finally {
+			pp.restorePrefAfterTest();
 		}
 	}
 

@@ -38,6 +38,7 @@ import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
 import dConstants.DConst;
+import dExceptions.DiaException;
 import dInterface.DApplication;
 import dInterface.dUtil.DxTools;
 
@@ -55,19 +56,34 @@ public class ParametersPref implements ConstantsForParameters, ActionListener {
 
 	private JPanel _buttonsPanel;
 
-	private JTextField _maxStuConflictsBetweenTwoEvents;
+	private JTextField _maxStuConflictsBetweenTwoEventsJTF;
 
-	private JTextField _maxInsConflictsBetweenTwoEvents;
+	private int _maxStuConflictsBetweenTwoEvents;
 
-	private JTextField _maxRooConflictsBetweenTwoEvents;
+	private JTextField _maxInsConflictsBetweenTwoEventsJTF;
 
-	private JTextField _allowedPriorityLevel;
+	private int _maxInsConflictsBetweenTwoEvents;
 
-	private JTextField _maxEventsInPeriod;
+	private JTextField _maxRooConflictsBetweenTwoEventsJTF;
+	
+	private int _maxRooConflictsBetweenTwoEvents;
 
-	private JTextField _minGapBetweenPeriods;
+	private JTextField _allowedPriorityLevelJTF;
+	
+	private int _allowedPriorityLevel;
 
-	private JTextField _allowedRoomBookingRate;
+	private JTextField _maxEventsInPeriodJTF;
+	
+	private int _maxEventsInPeriod;
+
+	private JTextField _minGapBetweenPeriodsJTF;
+	
+	private int _minGapBetweenPeriods;
+
+	private JTextField _allowedRoomBookingRateJTF;
+	
+	private int _allowedRoomBookingRate;
+	
 
 	public ParametersPref() {
 		// Retrieve the user preference node for the package com.mycompany
@@ -161,45 +177,45 @@ public class ParametersPref implements ConstantsForParameters, ActionListener {
 
 		Dimension dim = new Dimension(600, 300);
 		jd.setSize(dim);
-		_buttonsNames =  new String[1];
+		_buttonsNames = new String[1];
 		_buttonsNames[0] = DConst.BUT_OK;
-		_maxStuConflictsBetweenTwoEvents = new JTextField(""
+		_maxStuConflictsBetweenTwoEventsJTF = new JTextField(""
 				+ this.getMaxStuConfictsBetweenTwoEvents());
-		_maxInsConflictsBetweenTwoEvents = new JTextField(""
+		_maxInsConflictsBetweenTwoEventsJTF = new JTextField(""
 				+ this.getMaxInsConfictsBetweenTwoEvents());
-		_maxRooConflictsBetweenTwoEvents = new JTextField(""
+		_maxRooConflictsBetweenTwoEventsJTF = new JTextField(""
 				+ this.getMaxRooConfictsBetweenTwoEvents());
-		_allowedPriorityLevel = new JTextField(""
+		_allowedPriorityLevelJTF = new JTextField(""
 				+ this.getAllowedPriorityLevel());
-		_maxEventsInPeriod = new JTextField("" + this.getMaxEventsInPeriod());
-		_minGapBetweenPeriods = new JTextField(""
+		_maxEventsInPeriodJTF = new JTextField("" + this.getMaxEventsInPeriod());
+		_minGapBetweenPeriodsJTF = new JTextField(""
 				+ this.getMinGapBetweenPeriods());
-		_allowedRoomBookingRate = new JTextField(""
+		_allowedRoomBookingRateJTF = new JTextField(""
 				+ this.getAllowedRoomBookingRate());
 
 		JPanel jPanel = new JPanel();
 		jPanel.setLayout(new GridLayout(7, 2));
 		jPanel.add(new JLabel("Max Conflits Étu entre 2 Eve ="));
-		jPanel.add(_maxStuConflictsBetweenTwoEvents);
+		jPanel.add(_maxStuConflictsBetweenTwoEventsJTF);
 
 		jPanel.add(new JLabel("Max Conflits Ens entre 2 Eve ="));
-		jPanel.add(_maxInsConflictsBetweenTwoEvents);
+		jPanel.add(_maxInsConflictsBetweenTwoEventsJTF);
 
 		jPanel.add(new JLabel("Max Conflits Loc entre 2 Eve ="));
-		jPanel.add(_maxRooConflictsBetweenTwoEvents);
+		jPanel.add(_maxRooConflictsBetweenTwoEventsJTF);
 
 		jPanel.add(new JLabel(
 				"Placer dans périodes (0=Normale, 1= Norm et Bas)"));
-		jPanel.add(_allowedPriorityLevel);
+		jPanel.add(_allowedPriorityLevelJTF);
 
 		jPanel.add(new JLabel("Nombre Max de cours dans une période ="));
-		jPanel.add(_maxEventsInPeriod);
+		jPanel.add(_maxEventsInPeriodJTF);
 
 		jPanel.add(new JLabel("Périodes d'écart ="));
-		jPanel.add(_minGapBetweenPeriods);
+		jPanel.add(_minGapBetweenPeriodsJTF);
 
 		jPanel.add(new JLabel("Taux de remplissage des locaux (en %) ="));
-		jPanel.add(_allowedRoomBookingRate);
+		jPanel.add(_allowedRoomBookingRateJTF);
 
 		jd.setLocationRelativeTo(dApplic.getJFrame());
 		jd.setResizable(false);
@@ -216,20 +232,26 @@ public class ParametersPref implements ConstantsForParameters, ActionListener {
 		if (command.equals(DConst.BUT_OK)) {
 			int ligne = validation();
 			if (ligne == 0) {
-				this.putMaxStuConfictsBetweenTwoEvents(Integer
-						.parseInt(_maxStuConflictsBetweenTwoEvents.getText()));
-				this.putMaxInsConfictsBetweenTwoEvents(Integer
-						.parseInt(_maxInsConflictsBetweenTwoEvents.getText()));
-				this.putMaxRooConfictsBetweenTwoEvents(Integer
-						.parseInt(_maxRooConflictsBetweenTwoEvents.getText()));
+				this
+						.putMaxStuConfictsBetweenTwoEvents(Integer
+								.parseInt(_maxStuConflictsBetweenTwoEventsJTF
+										.getText()));
+				this
+						.putMaxInsConfictsBetweenTwoEvents(Integer
+								.parseInt(_maxInsConflictsBetweenTwoEventsJTF
+										.getText()));
+				this
+						.putMaxRooConfictsBetweenTwoEvents(Integer
+								.parseInt(_maxRooConflictsBetweenTwoEventsJTF
+										.getText()));
 				this.putAllowedPriorityLevel(Integer
-						.parseInt(_allowedPriorityLevel.getText()));
-				this.putMaxEventsInPeriod(Integer.parseInt(_maxEventsInPeriod
-						.getText()));
+						.parseInt(_allowedPriorityLevelJTF.getText()));
+				this.putMaxEventsInPeriod(Integer
+						.parseInt(_maxEventsInPeriodJTF.getText()));
 				this.putMinGapBetweenPeriods(Integer
-						.parseInt(_minGapBetweenPeriods.getText()));
+						.parseInt(_minGapBetweenPeriodsJTF.getText()));
 				this.putAllowedRoomBookingRate(Integer
-						.parseInt(_allowedRoomBookingRate.getText()));
+						.parseInt(_allowedRoomBookingRateJTF.getText()));
 				jd.dispose();
 			} else {
 				JOptionPane
@@ -239,45 +261,79 @@ public class ParametersPref implements ConstantsForParameters, ActionListener {
 	} // end actionPerformed
 
 	private int validation() {
-		if (!testText(_maxStuConflictsBetweenTwoEvents.getText(), LOW_LIMIT,
+		if (!testText(_maxStuConflictsBetweenTwoEventsJTF.getText(), LOW_LIMIT,
 				HIGH_LIMIT))
 			return 1;
-		if (!testText(_maxInsConflictsBetweenTwoEvents.getText(), LOW_LIMIT,
+		if (!testText(_maxInsConflictsBetweenTwoEventsJTF.getText(), LOW_LIMIT,
 				HIGH_LIMIT))
 			return 2;
-		if (!testText(_maxRooConflictsBetweenTwoEvents.getText(), LOW_LIMIT,
+		if (!testText(_maxRooConflictsBetweenTwoEventsJTF.getText(), LOW_LIMIT,
 				HIGH_LIMIT))
 			return 3;
-		if (!testText(_allowedPriorityLevel.getText(), LOW_LIMIT,
+		if (!testText(_allowedPriorityLevelJTF.getText(), LOW_LIMIT,
 				HIGH_PRIORITY_LIMIT))
 			return 4;
-		if (!testText(_maxEventsInPeriod.getText(), LOW_LIMIT, HIGH_LIMIT))
+		if (!testText(_maxEventsInPeriodJTF.getText(), LOW_LIMIT, HIGH_LIMIT))
 			return 5;
-		if (!testText(_minGapBetweenPeriods.getText(), LOW_LIMIT,
+		if (!testText(_minGapBetweenPeriodsJTF.getText(), LOW_LIMIT,
 				HIGH_GAP_LIMIT))
 			return 6;
-		if (!testText(_allowedRoomBookingRate.getText(), LOW_BOOK_RATE_LIMIT,
-				HIGH_BOOK_RATE_LIMIT))
+		if (!testText(_allowedRoomBookingRateJTF.getText(),
+				LOW_BOOK_RATE_LIMIT, HIGH_BOOK_RATE_LIMIT))
 			return 7;
 		return 0;
 	}
 
 	protected boolean testText(String str, int inf, int sup) {
-		boolean res = false;
 		int i;
-		if (str == null)
-			return res;
-		if (str.length() == 0)
-			return res;
+		if (str == null || str.length() == 0) {
+			return false;
+		}
 		try {
 			i = Integer.parseInt(str);
 		} catch (Exception e) {
-			return res;
+			return false;
 		}
-		if (i >= inf && i <= sup)
-			res = true;
+		if (i >= inf && i <= sup) {
+			return true;
+		}
+		return false;
+	}
 
-		return res;
+	public void savePrefBeforeTest() {
+		_maxStuConflictsBetweenTwoEvents = getMaxStuConfictsBetweenTwoEvents();
+		putMaxStuConfictsBetweenTwoEvents(0);
+		_maxInsConflictsBetweenTwoEvents = getMaxInsConfictsBetweenTwoEvents();
+		putMaxInsConfictsBetweenTwoEvents(0);
+		_maxRooConflictsBetweenTwoEvents = getMaxRooConfictsBetweenTwoEvents();
+		putMaxRooConfictsBetweenTwoEvents(0);
+		_allowedPriorityLevel = getAllowedPriorityLevel();
+		putAllowedPriorityLevel(0);
+		_maxEventsInPeriod = getMaxEventsInPeriod();
+		putMaxEventsInPeriod(30);
+		_minGapBetweenPeriods = getMinGapBetweenPeriods();
+		putMinGapBetweenPeriods(0);		
+		_allowedRoomBookingRate = getAllowedRoomBookingRate();
+		putAllowedRoomBookingRate(100);
+
+		System.out.println(_maxStuConflictsBetweenTwoEvents + "," +
+		_maxInsConflictsBetweenTwoEvents + "," +
+		_maxRooConflictsBetweenTwoEvents + "," +
+		_allowedPriorityLevel + "," +
+		_maxEventsInPeriod + "," +
+		_minGapBetweenPeriods + "," +		
+		_allowedRoomBookingRate  + "," );
+	}
+
+	public void restorePrefAfterTest() {
+		putMaxStuConfictsBetweenTwoEvents(_maxStuConflictsBetweenTwoEvents);
+		putMaxInsConfictsBetweenTwoEvents(_maxInsConflictsBetweenTwoEvents);
+		putMaxRooConfictsBetweenTwoEvents(_maxRooConflictsBetweenTwoEvents);
+		putAllowedPriorityLevel(_allowedPriorityLevel);
+		putMaxEventsInPeriod(_maxEventsInPeriod);
+		putMinGapBetweenPeriods(_minGapBetweenPeriods);		
+		putAllowedRoomBookingRate(_allowedRoomBookingRate);	
+		
 	}
 
 }
