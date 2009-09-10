@@ -112,7 +112,7 @@ public class RgrTest {
 		suite.addTest(GenFonctionsTest.suite());
 		}
     	suite.addTest(DxInstructorsReaderTest.suite());	
-		suite.addTest(AdminFonctionsTest.suite());
+		//suite.addTest(AdminFonctionsTest.suite());
 
 		System.out.println("Bye I was in rgr selected Tests");
 		return suite;
