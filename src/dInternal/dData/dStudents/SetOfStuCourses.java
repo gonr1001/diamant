@@ -71,23 +71,23 @@ public class SetOfStuCourses extends DSetOfResources {
 		return 0;
 	}
 
-	/**
-	   * return the value of the selected key
-	   * INPUT: choice, an integer. choice = 0 return _area; 1 return _stage
-	   * 2 return _sex; 3 return _session; 4 return number of courses
-	   * OUTPUT: an integer. it return -1 if choice is invalid
-	   * */
-	  public long getSelectedField(int choice){
-	    switch(choice){
-	      //case 0: return _area;
-	      //case 1: return _stage;
-	      //case 2: return _sex;
-	      //case 3: return _session;
-	      //case 4: return ((SetOfStuCourses)getAttach()).size();
-	      case 5: return Long.parseLong(getAuxField());
-	    }
-	    return -1;
-	  }
+//	/**
+//	   * return the value of the selected key
+//	   * INPUT: choice, an integer. choice = 0 return _area; 1 return _stage
+//	   * 2 return _sex; 3 return _session; 4 return number of courses
+//	   * OUTPUT: an integer. it return -1 if choice is invalid
+//	   * */
+//	  public long getSelectedField(int choice){
+//	    switch(choice){
+//	      //case 0: return _area;
+//	      //case 1: return _stage;
+//	      //case 2: return _sex;
+//	      //case 3: return _session;
+//	      //case 4: return ((SetOfStuCourses)getAttach()).size();
+//	      case 5: return Long.parseLong(getAuxField());
+//	    }
+//	    return -1;
+//	  }
 	  
 	  public String getProgram(){
 		  return getAuxField().toString();
