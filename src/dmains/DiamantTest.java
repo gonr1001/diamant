@@ -58,9 +58,9 @@ import dTest.dInternal.dData.DLoadDataTest;
 import dTest.dInternal.dData.DSaveDataTest;
 import dTest.dInternal.dData.DStandardReportDataTest;
 import dTest.dInternal.dData.DxAvailabilityTest;
-import dTest.dInternal.dData.StandardCollectionTest; //import dTest.dInternal.dData.dActivities.DSetOfActivitiesSitesTest;
+import dTest.dInternal.dData.StandardCollectionTest; 
 import dTest.dInternal.dData.dActivities.DSetOfActivitiesInSitesTest;
-import dTest.dInternal.dData.dActivities.DxSetOfActivitiesSitesTest;
+//import dTest.dInternal.dData.dActivities.DxSetOfActivitiesSitesTest;
 import dTest.dInternal.dData.dInstructors.DxInstructorTest;
 import dTest.dInternal.dData.dInstructors.DxInstructorsReaderTest;
 import dTest.dInternal.dData.dInstructors.DxSetOfInstructorsTest;
@@ -157,7 +157,7 @@ public class DiamantTest {
 		suite.addTest(SetOfStuSitesTest.suite());
 
 		if (DxFlags.newActivity) {
-			suite.addTest(DxSetOfActivitiesSitesTest.suite());
+;//			suite.addTest(DxSetOfActivitiesSitesTest.suite());
 		} else {
 			suite.addTest(DSetOfActivitiesInSitesTest.suite());
 		}
