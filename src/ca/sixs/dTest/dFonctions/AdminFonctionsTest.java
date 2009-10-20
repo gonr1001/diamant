@@ -269,28 +269,28 @@ public class AdminFonctionsTest extends TestCase {
 			assertNull("test_readActivities: assertNotNull in Activity", dxsoa
 					.getAllActivities().getResource("RGR101"));
 
-			 assertEquals("readActivities: assertEquals 1", 1, dxsoa
-						.getAllActivities().getResourceKey("ADM101"));
+			 assertEquals("readActivities: assertEquals 0", 0 , "ADM101".compareTo(dxsoa
+						.getAllActivities().getResource("ADM101").getName()));
 			 
-			 assertEquals("readActivities: assertEquals 1", 59, dxsoa
-						.getAllActivities().getResourceKey("MQG542"));
+			 assertEquals("readActivities: assertEquals 0",
+					 0 , "MQG542".compareTo(dxsoa
+								.getAllActivities().getResource("MQG542").getName()));
 			 
 			 assertEquals("readActivities: assertEquals 59", 59, dxsoa
 						.getAllActivities().size());
 			 
 			 dxsoa
-				.getAllActivities().removeResource(1); 
+				.getAllActivities().removeResource(dxsoa
+						.getAllActivities().getResourceKey("ADM101")); 
 			 
 			 assertEquals("readActivities: assertEquals 58", 58, dxsoa
 						.getAllActivities().size());
-			 
-			 assertEquals("readActivities: assertEquals 1", 59, dxsoa
-						.getAllActivities().getResourceKey("MQG542"));
 			
 			 dxsoa
-				.getAllActivities().removeResource(1); 
+				.getAllActivities().removeResource(dxsoa
+						.getAllActivities().getResourceKey("MQG542")); 
 			 
-			 assertEquals("readActivities: assertEquals 58", 58, dxsoa
+			 assertEquals("readActivities: assertEquals 57", 57, dxsoa
 						.getAllActivities().size());
 			
 
