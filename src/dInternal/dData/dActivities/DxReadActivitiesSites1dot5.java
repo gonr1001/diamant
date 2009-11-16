@@ -60,19 +60,16 @@ public class DxReadActivitiesSites1dot5 implements DxActivitiesSitesReader {
 		_isDia = isDia;
 	}
 
+	@SuppressWarnings("null")
 	public DxSetOfActivitiesSites readSetOfActivitiesSites() throws DiaException {
 
 		String sToken;
-		// String sousString; //auxiliar String for stocking a substring of a
-		// line
+		
 		StringTokenizer st = new StringTokenizer(_deActivities.getContents(),
-				"\r\n");
-		StringTokenizer stLine = null; // auxiliar StringTokenizer for reading
-		// subStrings in a line
-
-		// Starting position of the finite state machine
-		int nPosition = 0;
-
+				DConst.CR_LF);
+		StringTokenizer stLine = null; // process a line
+		
+		int nPosition = 0; // finite state machine starting position 
 		String sInstructorsName = "";
 
 		// In version 1.5, no sites. We assign all activities to the same site.
