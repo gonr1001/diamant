@@ -35,8 +35,10 @@ import dInternal.dOptimization.DxAssignRoomsAlgTest;
 import dInternal.dTimeTable.DxTTStructureTest;
 import dTest.dInternal.DxLoadDataTest;
 import dTest.dInternal.dData.DLoadDataTest;
-import dTest.dInternal.dData.DSaveDataTest;
-import dTest.dInternal.dData.dActivities.DSetOfActivitiesInSitesTest;
+import dTest.dInternal.dData.DSaveDataTest; 
+//import dTest.dInternal.dData.dActivities.DSetOfActivitiesInSitesTest;
+import dTest.dInternal.dData.dActivities.DxSetOfActivitiesSitesTest;
+import dTest.dInternal.dData.dActivities.DxSetOfActivitiesTest;
 import dTest.dInternal.dData.dInstructors.DxInstructorsReaderTest;
 import dTest.dInternal.dData.dRooms.DxSiteReaderTest;
 import dTest.dInternal.dOptimizationTest.ConditionsTest;
@@ -45,7 +47,6 @@ import dTest.dInternal.dOptimizationTest.RoomsConditionsTest;
 import dTest.dInternal.dOptimizationTest.SetOfEventsTest;
 import eTest.ByteInputFileTest;
 import eTest.ByteOutputFileTest;
-
 
 /**
  * Ruben Gonzalez-Rubio
@@ -70,7 +71,7 @@ public class RgrTest {
 	/**
 	 * 
 	 * @return suite
-	 * 	 
+	 * 
 	 */
 	public static Test suite() {
 		System.out.println("Hello I am rgr selected Tests");
@@ -81,39 +82,43 @@ public class RgrTest {
 		}
 
 		TestSuite suite = new TestSuite("rgr selected Tests");
+
+		suite.addTest(DxSetOfActivitiesSitesTest.suite());
+		//suite.addTest(DxSetOfActivitiesSitesTest.suite());
+
+		suite.addTest(DxSetOfActivitiesTest.suite());
+		//suite.addTest(DxSetOfActivitiesTest.suite());
+
 		
-		if (false){
-		suite.addTest(DSetOfActivitiesInSitesTest.suite());	
+			suite.addTest(DxSetOfSitesTest.suite());
+			suite.addTest(DxAssignRoomsAlgTest.suite());
+			suite.addTest(DxTTStructureTest.suite());
+			suite.addTest(DxSiteReaderTest.suite());
+			suite.addTest(ByteInputFileTest.suite());
+			suite.addTest(ByteOutputFileTest.suite());
+			suite.addTest(DxSetOfSitesTest.suite());
+			suite.addTest(DxAssignAllAlgTest.suite());
+			suite.addTest(RoomsConditionsTest.suite());
+
+			// if (DxFlags.newDxLoadData) {
+			suite.addTest(DxLoadDataTest.suite()); // TODO to review
+			// } else {
+			suite.addTest(DLoadDataTest.suite()); // TODO to review
+			// }
+
+			suite.addTest(SetOfEventsTest.suite());
+			suite.addTest(DSaveDataTest.suite());
+
+			suite.addTest(LookAndFeelPrefTest.suite());
+			suite.addTest(ParametersPrefTest.suite());
+			suite.addTest(ReportPrefTest.suite());
+			suite.addTest(FileFilterPrefTest.suite());
+			suite.addTest(ConditionsTest.suite());
+			suite.addTest(GenFonctionsTest.suite());
 		
-		suite.addTest(DxSetOfSitesTest.suite());
-		suite.addTest(DxAssignRoomsAlgTest.suite());
-		suite.addTest(DxTTStructureTest.suite());
-		suite.addTest(DxSiteReaderTest.suite());
-		suite.addTest(ByteInputFileTest.suite());
-		suite.addTest(ByteOutputFileTest.suite());
-		suite.addTest(DxSetOfSitesTest.suite());
-		suite.addTest(DxAssignAllAlgTest.suite());
-		suite.addTest(RoomsConditionsTest.suite());
-
-//		if (DxFlags.newDxLoadData) {
-			suite.addTest(DxLoadDataTest.suite()); //TODO to review
-//		} else {
-			suite.addTest(DLoadDataTest.suite()); //TODO to review
-//		}
-
-		suite.addTest(SetOfEventsTest.suite());
-		suite.addTest(DSaveDataTest.suite());
-
-		suite.addTest(LookAndFeelPrefTest.suite());
-		suite.addTest(ParametersPrefTest.suite());
-		suite.addTest(ReportPrefTest.suite());
-		suite.addTest(FileFilterPrefTest.suite());
-		suite.addTest(ConditionsTest.suite());
-		suite.addTest(GenFonctionsTest.suite());
-		}
-    	suite.addTest(DxInstructorsReaderTest.suite());	
-		//suite.addTest(AdminFonctionsTest.suite());
-
+		suite.addTest(DxInstructorsReaderTest.suite());
+		suite.addTest(AdminFonctionsTest.suite());
+		
 		System.out.println("Bye I was in rgr selected Tests");
 		return suite;
 	}
