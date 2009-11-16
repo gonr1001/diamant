@@ -40,7 +40,7 @@ public abstract class DxSetOfResources implements Iterable <DxResource>{
 	private boolean _bSorted;
 
 	/**
-	 * Default constructor. Initialise vectors.
+	 * Default constructor. Initialize vectors.
 	 */
 	public DxSetOfResources() {
 		_vResourceSortedByKey = new Vector<DxResource>();
