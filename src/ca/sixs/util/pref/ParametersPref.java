@@ -38,7 +38,6 @@ import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
 import dConstants.DConst;
-import dExceptions.DiaException;
 import dInterface.DApplication;
 import dInterface.dUtil.DxTools;
 
@@ -332,8 +331,7 @@ public class ParametersPref implements ConstantsForParameters, ActionListener {
 		putAllowedPriorityLevel(_allowedPriorityLevel);
 		putMaxEventsInPeriod(_maxEventsInPeriod);
 		putMinGapBetweenPeriods(_minGapBetweenPeriods);		
-		putAllowedRoomBookingRate(_allowedRoomBookingRate);	
-		
+		putAllowedRoomBookingRate(_allowedRoomBookingRate);			
 	}
 
 }
