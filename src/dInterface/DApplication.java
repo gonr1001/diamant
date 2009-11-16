@@ -83,9 +83,9 @@ public class DApplication {
 
 	private final String _LOGO_PATH = "images/logoDia.jpg";
 
-	private final String _START_TTC = "timetables/startTTC.xml";
+	private final String _START_TTC_PATH = "timetables/startTTC.xml";
 
-	private final String _START_TTE = "timetables/startTTE.xml";
+	private final String _START_TTE_PATH = "timetables/startTTE.xml";
 
 	// singleton
 	private static int _instanceNumber = 0;
@@ -150,7 +150,7 @@ public class DApplication {
 		_increase = false;
 		_fileToOpenAtStart = "";
 		Runtime runtime = Runtime.getRuntime();
-		System.out.println("allocated memory " + runtime.totalMemory() / 1024);
+		System.out.println("Allocated memory " + runtime.totalMemory() / 1024);
 	}
 
 	public void doIt(String[] args) {
@@ -337,14 +337,14 @@ public class DApplication {
 	 * 
 	 */
 	public void newTTStrucCycle() {
-		buildTTStructure(_START_TTC);
+		buildTTStructure(_START_TTC_PATH);
 	}
 
 	/**
 	 * 
 	 */
 	public void newTTStrucExam() {
-		buildTTStructure(_START_TTE);
+		buildTTStructure(_START_TTE_PATH);
 	}
 
 	/**
