@@ -61,10 +61,6 @@ public class StudentTest extends TestCase {
 		assertEquals("test_setSex: assertEquals", 0, _student.getSex());
 	}
 	
-	public void test_setAuxField(){
-		_student.setAuxField("test");
-		assertEquals("test_setAuxField: assertEquals","test", _student.getAuxField());
-	}
 	
 	public void test_setSession(){
 		_student.setSession(2);
