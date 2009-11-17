@@ -153,6 +153,7 @@ public class DToolBar extends JToolBar implements Observer, DlgIdentification {
 	 */
 	private void actionManager() {
 		_toolBarSelector.addActionListener(new ActionListener() {
+			@SuppressWarnings("synthetic-access")
 			public void actionPerformed(ActionEvent e) {
 				e.toString();
 				int i = _toolBarSelector.getSelectedIndex();
@@ -163,7 +164,8 @@ public class DToolBar extends JToolBar implements Observer, DlgIdentification {
 		// *** Actions for the elements of the bar one
 		// * _setNumberOfDays
 		_setNumberOfDays.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			@SuppressWarnings("synthetic-access")
+			public void actionPerformed(ActionEvent e) {				
 				e.toString();
 				String nbDays = _setNumberOfDays.getText();
 				if (!DXToolsMethods.isIntValue(nbDays)) {
@@ -190,6 +192,7 @@ public class DToolBar extends JToolBar implements Observer, DlgIdentification {
 
 		// * _daySelector
 		_daySelector.addActionListener(new ActionListener() {
+			@SuppressWarnings("synthetic-access")
 			public void actionPerformed(ActionEvent e) {
 				e.toString();
 				int item = _daySelector.getSelectedIndex();
@@ -207,6 +210,7 @@ public class DToolBar extends JToolBar implements Observer, DlgIdentification {
 
 		// * _dayNameSelector
 		_dayNameSelector.addActionListener(new ActionListener() {
+			@SuppressWarnings("synthetic-access")
 			public void actionPerformed(ActionEvent e) {
 				e.toString();
 				int index = _tts.getCurrentCycle().getCurrentDayIndex();
@@ -224,7 +228,7 @@ public class DToolBar extends JToolBar implements Observer, DlgIdentification {
 
 		// *** Actions for the elements of the bar two
 		_periodSelector.addActionListener(new ActionListener() {
-
+			@SuppressWarnings("synthetic-access")
 			public void actionPerformed(ActionEvent e) {
 				e.toString();
 				String str = (String) _periodSelector.getSelectedItem();
@@ -234,6 +238,7 @@ public class DToolBar extends JToolBar implements Observer, DlgIdentification {
 		});// end addActionListener
 
 		_periodTypeSelector.addActionListener(new ActionListener() {
+			@SuppressWarnings("synthetic-access")
 			public void actionPerformed(ActionEvent e) {
 				e.toString();
 				String item = (String) _periodSelector.getSelectedItem();
@@ -257,6 +262,7 @@ public class DToolBar extends JToolBar implements Observer, DlgIdentification {
 		});// end addActionListener
 
 		_sameLine.addActionListener(new ActionListener() {
+			@SuppressWarnings("synthetic-access")
 			public void actionPerformed(ActionEvent e) {
 				e.toString();
 				String item = (String) _periodSelector.getSelectedItem();
@@ -281,6 +287,7 @@ public class DToolBar extends JToolBar implements Observer, DlgIdentification {
 		});// end addActionListener
 
 		_sameColumn.addActionListener(new ActionListener() {
+			@SuppressWarnings("synthetic-access")
 			public void actionPerformed(ActionEvent e) {
 				e.toString();
 				String item = (String) _periodSelector.getSelectedItem();
