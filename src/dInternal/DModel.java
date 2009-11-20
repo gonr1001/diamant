@@ -62,7 +62,6 @@ import dInternal.dTimeTable.TTStructure;
 import dInternal.dTimeTable.Day;
 import dInternal.dTimeTable.Period;
 
-
 /**
  * Description: DModel is a class used to
  * 
@@ -135,18 +134,17 @@ public class DModel extends Observable {
 	 *            is the full path file name containing the TTStructure
 	 * @param type
 	 *            is the type of timetable to be constructed see DConst.
-	 *            possible types NO_TYPE = 0; CYCLE = 1; EXAM = 2; CYCLEANDEXAM =
-	 *            3;
-	 * @throws IOException 
-	 * @throws NullPointerException 
+	 *            possible types NO_TYPE = 0; CYCLE = 1; EXAM = 2; CYCLEANDEXAM
+	 *            = 3;
+	 * @throws IOException
+	 * @throws NullPointerException
 	 * @throws Exception
-	 * 
+	 *             used only in initDxTTableDoc
 	 */
 	public DModel(DxDocument dDocument, String fileName, int type)
 			throws DiaException, NullPointerException, IOException {
-		initDModel();
-		_dxDocument = dDocument;
-		_isOnlyATimeTable = false;
+		boolean onlyATimeTable = false;
+		initDModel(dDocument, onlyATimeTable);
 
 		if (fileName.endsWith(DConst.DOT_DIA)) {
 			_error = loadTimeTable(fileName, getCurrentDir(fileName));
@@ -180,11 +178,32 @@ public class DModel extends Observable {
 
 	}
 
+	/**
+	 * @param dxTTableDoc
+	 * @param dxLoadData
+	 * @param _type2
+	 * 
+	 *            used only in initDxTTableDoc
+	 */
+	public DModel(DxTTableDoc dxTTableDoc, DxLoadData dxLoadData) {
+		boolean onlyATimeTable = false;
+		initDModel(dxTTableDoc, onlyATimeTable);	
+		_isATimeTable = true;
+
+		this.transferTimeTable(dxLoadData);
+
+		_isATimeTable = true;
+		if (_isATimeTable)
+			_conditionsToTest = new DxConditionsToTest(this);
+		this.notifyObservers(this);
+	}
+
 	// this constructor is used only for tests
-	public DModel(DxDocument dxDocument, String fileName) throws DiaException, NullPointerException, IOException {
-		initDModel(); // XXXX Pascal: magic number
-		_dxDocument = dxDocument;
-		_isOnlyATimeTable = false;
+	public DModel(DxDocument dxDocument, String fileName) throws DiaException,
+			NullPointerException, IOException {
+		boolean onlyATimeTable = false;
+		initDModel(dxDocument, onlyATimeTable);
+
 		_isATimeTable = true;
 
 		if (fileName.endsWith(DConst.DOT_DIA)) {
@@ -212,25 +231,7 @@ public class DModel extends Observable {
 		this.notifyObservers(this);
 	}
 
-	/**
-	 * @param dxTTableDoc
-	 * @param dxLoadData
-	 * @param _type2
-	 */
-	public DModel(DxTTableDoc dxTTableDoc, DxLoadData dxLoadData) {
-		initDModel();
-		_dxDocument = dxTTableDoc;
-		_isOnlyATimeTable = false;
-		_isATimeTable = true;
-		
-		this.transferTimeTable(dxLoadData);
-		
-		_isATimeTable = true;
-		if (_isATimeTable)
-			_conditionsToTest = new DxConditionsToTest(this);
-		this.notifyObservers(this);
-	}
-	private void initDModel() {
+	private void initDModel(DxDocument dDocument, boolean onlyATimeTable) {
 		_error = "";
 		_modified = false;
 		_isExamPrepared = false;
@@ -246,10 +247,10 @@ public class DModel extends Observable {
 
 		_progressBarState = new DValue();
 		_progressBarState.setIntValue(0);
+
+		_dxDocument = dDocument;
+		_isOnlyATimeTable = onlyATimeTable;
 	}
-
-
-
 
 	/**
 	 * 
@@ -393,100 +394,101 @@ public class DModel extends Observable {
 	 * 
 	 * @param fileName
 	 * @return
-	 * @throws IOException 
-	 * @throws NullPointerException 
+	 * @throws IOException
+	 * @throws NullPointerException
 	 * @throws Exception
 	 */
 
-	public String loadTimeTable(String fileName, String currentDir) throws DiaException, NullPointerException, IOException{
+	public String loadTimeTable(String fileName, String currentDir)
+			throws DiaException, NullPointerException, IOException {
 
 		DLoadData loadData = new DLoadData(this);
-//		try {
-			boolean loadOk = loadData.loadDataStructures(fileName, currentDir);
-			if (loadOk) {
-				setVersion(loadData.getVersion());
-				_ttStruct = loadData.getTTStructure();
-				if (_ttStruct.getError().length() != 0)
-					return _ttStruct.getError();
+		// try {
+		boolean loadOk = loadData.loadDataStructures(fileName, currentDir);
+		if (loadOk) {
+			setVersion(loadData.getVersion());
+			_ttStruct = loadData.getTTStructure();
+			if (_ttStruct.getError().length() != 0)
+				return _ttStruct.getError();
 
-				_dxSetOfInstructors = loadData.getDxSetOfInstructors();
+			_dxSetOfInstructors = loadData.getDxSetOfInstructors();
 
-				_dxSetOfSites = loadData.getDxSetOfSitesRooms();
+			_dxSetOfSites = loadData.getDxSetOfSitesRooms();
 
-				if (DxFlags.newActivity) {
-					_dxsoasSetOfAct = (DxSetOfActivitiesSites) loadData
-							.getDxActivitiesSitesReader();
-				} else {
-					_setOfActivitiesSites = loadData.getSetOfActivitiesSites();
+			if (DxFlags.newActivity) {
+				_dxsoasSetOfAct = (DxSetOfActivitiesSites) loadData
+						.getDxActivitiesSitesReader();
+			} else {
+				_setOfActivitiesSites = loadData.getSetOfActivitiesSites();
 
-				}
-				_setOfStuSites = loadData.getSetofStuSites();
-
-				if (_setOfActivitiesSites.getError().length() != 0) {
-					return _setOfActivitiesSites.getError();
-				}
-				if (_setOfStuSites.getError().length() != 0) {
-					return _setOfStuSites.getError();
-				}
-
-				buildSetOfEvents();
-				_conditionsToTest = new DxConditionsToTest(this);
-				this._conditionsToTest.initAllConditions();
 			}
-			_constructionState = 1;
-			setImportDone(false);
-			DApplication.getInstance().setCursorDefault();
-			return "";
+			_setOfStuSites = loadData.getSetofStuSites();
 
-			// } catch (FileNotFoundException fnfe) { // alert the user that the
-			// // specified file does not exist
-			// new DxExceptionDlg(fnfe.getMessage(), fnfe);
-//		} catch (DiaException e) {
-//			new DxExceptionDlg(e.getMessage(), e);
-//			// TODO hara2602
-//
-//		} finally {
-//			DApplication.getInstance().setCursorDefault();
-//		}
-//		return "";
+			if (_setOfActivitiesSites.getError().length() != 0) {
+				return _setOfActivitiesSites.getError();
+			}
+			if (_setOfStuSites.getError().length() != 0) {
+				return _setOfStuSites.getError();
+			}
+
+			buildSetOfEvents();
+			_conditionsToTest = new DxConditionsToTest(this);
+			this._conditionsToTest.initAllConditions();
+		}
+		_constructionState = 1;
+		setImportDone(false);
+		DApplication.getInstance().setCursorDefault();
+		return "";
+
+		// } catch (FileNotFoundException fnfe) { // alert the user that the
+		// // specified file does not exist
+		// new DxExceptionDlg(fnfe.getMessage(), fnfe);
+		// } catch (DiaException e) {
+		// new DxExceptionDlg(e.getMessage(), e);
+		// // TODO hara2602
+		//
+		// } finally {
+		// DApplication.getInstance().setCursorDefault();
+		// }
+		// return "";
 
 	}
+
 	public void transferTimeTable(DxLoadData dxLoadData) {
-			if (true) {
-				setVersion(dxLoadData.getVersion());
-				_ttStruct = dxLoadData.getTTStructure();
-//				if (_ttStruct.getError().length() != 0)
-//					return _ttStruct.getError();
+		if (true) {
+			setVersion(dxLoadData.getVersion());
+			_ttStruct = dxLoadData.getTTStructure();
+			// if (_ttStruct.getError().length() != 0)
+			// return _ttStruct.getError();
 
-				_dxSetOfInstructors = dxLoadData.getDxSetOfInstructors();
+			_dxSetOfInstructors = dxLoadData.getDxSetOfInstructors();
 
-				_dxSetOfSites = dxLoadData.getDxSetOfSitesRooms();
+			_dxSetOfSites = dxLoadData.getDxSetOfSitesRooms();
 
-				if (DxFlags.newActivity) {
-					_dxsoasSetOfAct = (DxSetOfActivitiesSites) dxLoadData
-							.getDxActivitiesSitesReader();
-				} else {
-					_setOfActivitiesSites = dxLoadData.getSetOfActivitiesSites();
+			if (DxFlags.newActivity) {
+				_dxsoasSetOfAct = (DxSetOfActivitiesSites) dxLoadData
+						.getDxActivitiesSitesReader();
+			} else {
+				_setOfActivitiesSites = dxLoadData.getSetOfActivitiesSites();
 
-				}
-				_setOfStuSites = dxLoadData.getSetofStuSites();
-
-//				if (_setOfActivitiesSites.getError().length() != 0) {
-//					return _setOfActivitiesSites.getError();
-//				}
-//				if (_setOfStuSites.getError().length() != 0) {
-//					return _setOfStuSites.getError();
-//				}
-
-				buildSetOfEvents();
-				_conditionsToTest = new DxConditionsToTest(this);
-				this._conditionsToTest.initAllConditions();
 			}
-			_constructionState = 1;
-			setImportDone(false);
+			_setOfStuSites = dxLoadData.getSetofStuSites();
+
+			// if (_setOfActivitiesSites.getError().length() != 0) {
+			// return _setOfActivitiesSites.getError();
+			// }
+			// if (_setOfStuSites.getError().length() != 0) {
+			// return _setOfStuSites.getError();
+			// }
+
+			buildSetOfEvents();
+			_conditionsToTest = new DxConditionsToTest(this);
+			this._conditionsToTest.initAllConditions();
+		}
+		_constructionState = 1;
+		setImportDone(false);
 	}
-	
-	
+
 	/**
 	 * build set of events using currentcycle, setofactivities, setofinstructors
 	 * and setofrooms
@@ -665,36 +667,36 @@ public class DModel extends Observable {
 	 * 
 	 * @return
 	 */
-//	public SetOfRooms getSetOfRooms() {
-//		SetOfRooms sorTmp = new SetOfRooms();
-////		if (_currentSite.equalsIgnoreCase(DConst.ALL_SITES)) {
-////			sorTmp = new SetOfRooms();
-////			for (int i = 0; i < _setOfSites.size(); i++) {
-////				SetOfCategories soc = (SetOfCategories) _setOfSites
-////						.getResourceAt(i).getAttach();
-////				for (int j = 0; j < soc.size(); j++) {
-////					SetOfRooms sor = (SetOfRooms) soc.getResourceAt(j)
-////							.getAttach();
-////					for (int k = 0; k < soc.size(); k++) {
-////						sorTmp.addResource(sor.getResourceAt(k), 1);
-////					}
-////				}// end for (int j = 0; j < sor.size(); j++)
-////			}// end for (int i = 0; i < _setOfSites
-////			// return sorTmp;
-////		} else {// else if (_currentSite.equalsIgnoreCase(DConst.ALL_SITES))
-////			DResource resc = _setOfSites.getResource(_currentSite);
-////			if (resc != null) {
-////				SetOfCategories site = (SetOfCategories) resc.getAttach();
-////				for (int i = 0; i < site.size(); i++) {
-////					SetOfRooms catSOR = (SetOfRooms) site.getResourceAt(i)
-////							.getAttach();
-////					for (int j = 0; j < catSOR.size(); j++)
-////						sorTmp.addResource(catSOR.getResourceAt(j), 1);
-////				}
-////			}
-////		}
-//		return sorTmp;
-//	}
+	// public SetOfRooms getSetOfRooms() {
+	// SetOfRooms sorTmp = new SetOfRooms();
+	// // if (_currentSite.equalsIgnoreCase(DConst.ALL_SITES)) {
+	// // sorTmp = new SetOfRooms();
+	// // for (int i = 0; i < _setOfSites.size(); i++) {
+	// // SetOfCategories soc = (SetOfCategories) _setOfSites
+	// // .getResourceAt(i).getAttach();
+	// // for (int j = 0; j < soc.size(); j++) {
+	// // SetOfRooms sor = (SetOfRooms) soc.getResourceAt(j)
+	// // .getAttach();
+	// // for (int k = 0; k < soc.size(); k++) {
+	// // sorTmp.addResource(sor.getResourceAt(k), 1);
+	// // }
+	// // }// end for (int j = 0; j < sor.size(); j++)
+	// // }// end for (int i = 0; i < _setOfSites
+	// // // return sorTmp;
+	// // } else {// else if (_currentSite.equalsIgnoreCase(DConst.ALL_SITES))
+	// // DResource resc = _setOfSites.getResource(_currentSite);
+	// // if (resc != null) {
+	// // SetOfCategories site = (SetOfCategories) resc.getAttach();
+	// // for (int i = 0; i < site.size(); i++) {
+	// // SetOfRooms catSOR = (SetOfRooms) site.getResourceAt(i)
+	// // .getAttach();
+	// // for (int j = 0; j < catSOR.size(); j++)
+	// // sorTmp.addResource(catSOR.getResourceAt(j), 1);
+	// // }
+	// // }
+	// // }
+	// return sorTmp;
+	// }
 
 	public DxSetOfRooms getDxSetOfRooms() {
 		// // DxSetOfRooms dxsorTmp = new DxSetOfRooms();
@@ -729,13 +731,13 @@ public class DModel extends Observable {
 		return _dxSetOfSites.getAllDxRooms();
 	}
 
-//	/**
-//	 * 
-//	 * @return
-//	 */
-//	public SetOfCategories getSetOfCategories() {
-//		return _setOfCategories;
-//	}
+	// /**
+	// *
+	// * @return
+	// */
+	// public SetOfCategories getSetOfCategories() {
+	// return _setOfCategories;
+	// }
 
 	/**
 	 * @return Returns the _setOfActivitiesSites.
@@ -763,13 +765,13 @@ public class DModel extends Observable {
 		return _setOfEvents;
 	}
 
-//	/**
-//	 * 
-//	 * @return
-//	 */
-//	public SetOfRoomsFunctions getSetOfRoomsFunctions() {
-//		return _setOfRoomsFunctions;
-//	}
+	// /**
+	// *
+	// * @return
+	// */
+	// public SetOfRoomsFunctions getSetOfRoomsFunctions() {
+	// return _setOfRoomsFunctions;
+	// }
 
 	/**
 	 * 
@@ -931,7 +933,8 @@ public class DModel extends Observable {
 		changeInDModel(obj);
 	}
 
-	public void changeInDModelByModifyAdd(Object obj, Vector <Student>students, String id) {
+	public void changeInDModelByModifyAdd(Object obj, Vector<Student> students,
+			String id) {
 		getSetOfStudents().addActivityToStudents(students, id);
 		getConditionsToTest().setMatrixBuilded(false, false);
 		changeInDModel(obj);
@@ -1114,17 +1117,17 @@ public class DModel extends Observable {
 		this.setCurrentSite(currentS);
 	}
 
-//	private void resizeResource(DSetOfResources soRes) {
-//		int[][] matrix;
-//		DObject attach;
-//		for (int i = 0; i < soRes.size(); i++) {
-//			attach = soRes.getResourceAt(i).getAttach();
-//			matrix = attach.getMatrixAvailability();
-//			matrix = DXToolsMethods
-//					.resizeAvailability(matrix, getTTStructure());
-//			attach.setAvailability(matrix);
-//		}
-//	}
+	// private void resizeResource(DSetOfResources soRes) {
+	// int[][] matrix;
+	// DObject attach;
+	// for (int i = 0; i < soRes.size(); i++) {
+	// attach = soRes.getResourceAt(i).getAttach();
+	// matrix = attach.getMatrixAvailability();
+	// matrix = DXToolsMethods
+	// .resizeAvailability(matrix, getTTStructure());
+	// attach.setAvailability(matrix);
+	// }
+	// }
 
 	private void resizeInstructorsResource(DxSetOfInstructors soiRes) {
 		int[][] matrix;
@@ -1134,8 +1137,8 @@ public class DModel extends Observable {
 		while (itInst.hasNext()) {
 			dxiTemp = (DxInstructor) itInst.next();
 			matrix = dxiTemp.getAvailability().getMatrixAvailability();
-//			matrix = DXToolsMethods
-//					.resizeAvailability(matrix, getTTStructure());
+			// matrix = DXToolsMethods
+			// .resizeAvailability(matrix, getTTStructure());
 			matrix = resizeAvailability(matrix, getTTStructure());
 			dxiTemp.setAvailability(new DxAvailability(matrix));
 
@@ -1153,14 +1156,14 @@ public class DModel extends Observable {
 	 * @param ofSites
 	 */
 	public void resizeSiteAvailability(SetOfSites setOfSites) {
-//		for (int i = 0; i < setOfSites.size(); i++) {
-//			SetOfCategories soc = (SetOfCategories) setOfSites.getResourceAt(i)
-//					.getAttach();
-//			for (int j = 0; j < soc.size(); j++) {
-//				SetOfRooms sor = (SetOfRooms) soc.getResourceAt(j).getAttach();
-//				resizeResource(sor);
-//			} // end for (int j=0; j < soc.size(); j++) {
-//		}// end for (int i=0; i< setOfSites.size(); i++){
+		// for (int i = 0; i < setOfSites.size(); i++) {
+		// SetOfCategories soc = (SetOfCategories) setOfSites.getResourceAt(i)
+		// .getAttach();
+		// for (int j = 0; j < soc.size(); j++) {
+		// SetOfRooms sor = (SetOfRooms) soc.getResourceAt(j).getAttach();
+		// resizeResource(sor);
+		// } // end for (int j=0; j < soc.size(); j++) {
+		// }// end for (int i=0; i< setOfSites.size(); i++){
 	} // resizeSiteAvailability
 
 	/**
@@ -1173,10 +1176,9 @@ public class DModel extends Observable {
 		while (itRooms.hasNext()) {
 			DxRoom dxrTemp = (DxRoom) itRooms.next();
 			int[][] nMatrix = dxrTemp.getAvailability().getMatrixAvailability();
-//			nMatrix = DXToolsMethods.resizeAvailability(nMatrix,
-//					getTTStructure());
-			nMatrix = resizeAvailability(nMatrix,
-					getTTStructure());
+			// nMatrix = DXToolsMethods.resizeAvailability(nMatrix,
+			// getTTStructure());
+			nMatrix = resizeAvailability(nMatrix, getTTStructure());
 			dxrTemp.setAvailability(new DxAvailability(nMatrix));
 		}
 	} // resizeSiteAvailability
@@ -1245,8 +1247,7 @@ public class DModel extends Observable {
 	 * @param tt
 	 * @return
 	 */
-	private int[][] resizeAvailability(int[][] initialAvail,
-			TTStructure tt) {
+	private int[][] resizeAvailability(int[][] initialAvail, TTStructure tt) {
 		// check if is upper, lower or nothing operation
 		// int UpperLower=0; // 1= make upper; 0= do nothing; -1= make lower
 		if (initialAvail[0].length == tt.getCurrentCycle()
@@ -1278,7 +1279,7 @@ public class DModel extends Observable {
 						finalAvail[h][itr] = 5;
 					itr++;
 				}// end for (int j=0; j<
-					// day.getSequence(i).getSetOfPeriods().size(); j++)
+				// day.getSequence(i).getSetOfPeriods().size(); j++)
 			}// end for (int i=0; i< day.getSetOfSequences().size(); i++)
 		}// end
 		return finalAvail;
@@ -1293,8 +1294,7 @@ public class DModel extends Observable {
 	 *            the day where to search availability
 	 * @param per
 	 *            the period
-	 * @param int
-	 *            the period lenght
+	 * @param int the period lenght
 	 * @param up_low
 	 *            the type of operation 1= make upper; 0= do nothing; -1= make
 	 *            lower
@@ -1333,6 +1333,4 @@ public class DModel extends Observable {
 		return true;
 	}
 
-	
-	
 } /* end class DModel */
