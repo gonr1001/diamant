@@ -72,6 +72,7 @@ public class ProgressBar extends JPanel implements ActionListener {
 
 		//Create a timer.
 		timer = new Timer(ONE_SECOND, new ActionListener() {
+			@SuppressWarnings("synthetic-access")
 			public void actionPerformed(ActionEvent e) {
 				e.toString();
 				//System.out.println("Timer event: "+evt);
