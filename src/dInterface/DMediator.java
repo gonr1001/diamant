@@ -82,6 +82,28 @@ public class DMediator extends Object {
 		_dxDocuments.addElement(currentDoc);
 		return "";
 	}
+	/**
+	 * for new tt and for open tt
+	 * 
+	 * @param ttname
+	 *            This string will be displayed as the title of the JIF
+	 * @param fileName
+	 *            is the full path file name containing the TTStructure
+	 * @param type
+	 *            is the type of timetable to be constructed possible types
+	 *            NO_TYPE = 0; CYCLE = 1; EXAM = 2; CYCLEANDEXAM = 3;
+	 * @throws IOException
+	 * @throws NullPointerException
+	 * @throws Exception
+	 * 
+	 */
+	public String addDxTTableDoc(DxLoadData dxLoadData, String fileName) 
+		 throws DiaException, NullPointerException, IOException {
+		DxDocument currentDoc = new DxTTableDoc(this, dxLoadData, fileName);
+		_dxDocuments.addElement(currentDoc);
+		return "";
+	}
+
 	
 	/**
 	 * 
@@ -99,29 +121,6 @@ public class DMediator extends Object {
 	} // end addDxTTStructureDoc
 	
 
-	/**
-	 * for new tt and for open tt
-	 * 
-	 * @param ttname
-	 *            This string will be displayed as the title of the JIF
-	 * @param fileName
-	 *            is the full path file name containing the TTStructure
-	 * @param type
-	 *            is the type of timetable to be constructed possible types
-	 *            NO_TYPE = 0; CYCLE = 1; EXAM = 2; CYCLEANDEXAM = 3;
-	 * @throws IOException
-	 * @throws NullPointerException
-	 * @throws Exception
-	 * 
-	 */
-	public String addDxTTableDoc(DxLoadData dxLoadData, String fileName) {
-		// throws DiaException, NullPointerException, IOException {
-		DxDocument currentDoc = new DxTTableDoc(this, dxLoadData, fileName);
-		// currentDoc.setDocumentName(fileName);
-		_dxDocuments.addElement(currentDoc);
-
-		return "";
-	}
 
 
 

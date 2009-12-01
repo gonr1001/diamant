@@ -48,12 +48,10 @@ public abstract class DxDocument implements Observer {
 	protected JInternalFrame _jif;
 
 	protected String _documentName;
-
-//	protected TTPane _ttPane;
 	
 	protected DxTTPane _dxTTPane;
 
-	protected String _autoImportDIMFilePath;
+	protected String _autoImportDIMFileName;
 
 	public DxDocument() {
 		// for tests
@@ -88,10 +86,6 @@ public abstract class DxDocument implements Observer {
 		return _dMediator;
 	} // end getDMediator
 
-//	public final TTPane getTTPane() {
-//		return _ttPane;
-//	}
-
 	public final DxTTPane getDxTTPane() {
 		return _dxTTPane;
 	}
@@ -104,27 +98,22 @@ public abstract class DxDocument implements Observer {
 
 
 	/**
-	 * Retourne le nom du fichier utilisé afin de réaliser l'importation
-	 * automatique des données
-	 * 
+	 *
+	 * getAutoImportDIMFilePath
 	 * @return le nom du fichier utilisé afin de réaliser l'importation
 	 *         automatique des données
 	 */
-	public String getAutoImportDIMFilePath() {
-		return _autoImportDIMFilePath;
+	public String getAutoImportDIMFileName() {
+		return _autoImportDIMFileName;
 	}
 
 	/**
-	 * Applique le nom du fichier utilisé lors de l'importation automatique des
-	 * données
 	 * 
-	 * XXXX n'est pas appelé lorsque l'on est en mode debug, car en mode debug,
-	 * ImportDlg n'est pas utilisé
-	 * 
+	 * setAutoImportDIMFilePath
 	 * @param importDIMFileName
 	 */
-	public void setAutoImportDIMFilePath(String importDIMFilePath) {
-		_autoImportDIMFilePath = importDIMFilePath;
+	public void setAutoImportDIMFileName(String importDIMFileName) {
+		_autoImportDIMFileName = importDIMFileName;
 	}
 	
 	public abstract TTStructure getTTStructure();
@@ -143,6 +132,4 @@ public abstract class DxDocument implements Observer {
 
 	public abstract void clean();
 	
-
-
 } /* end DxDocument class */

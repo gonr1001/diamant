@@ -210,8 +210,8 @@ public class DxTTStructureDoc extends DxDocument {
 	 * @return le nom du fichier utilisé afin de réaliser l'importation
 	 *         automatique des données
 	 */
-	public String getAutoImportDIMFilePath() {
-		return _autoImportDIMFilePath;
+	public String getAutoImportDIMFileName() {
+		return _autoImportDIMFileName;
 	}
 
 	/**
@@ -223,8 +223,8 @@ public class DxTTStructureDoc extends DxDocument {
 	 * 
 	 * @param importDIMFileName
 	 */
-	public void setAutoImportDIMFilePath(String importDIMFilePath) {
-		_autoImportDIMFilePath = importDIMFilePath;
+	public void setAutoImportDIMFileName(String importDIMFilePath) {
+		_autoImportDIMFileName = importDIMFilePath;
 	}
 
 	@Override

@@ -766,7 +766,7 @@ public class DApplication {
 	}
 
 	public void doImport(JFileChooser fc, String str, String dlg) {
-		this.getCurrentDxDoc().setAutoImportDIMFilePath(
+		this.getCurrentDxDoc().setAutoImportDIMFileName(
 				fc.getSelectedFile().getAbsolutePath().substring(
 						0,
 						fc.getSelectedFile().getAbsolutePath().lastIndexOf(

@@ -656,7 +656,7 @@ public class SelectiveScheduleManager {
 
 	private String fetchXMLPersistanceFileName() {
 		return DApplication.getInstance().getCurrentDxDoc()
-				.getAutoImportDIMFilePath()
+				.getAutoImportDIMFileName()
 				+ "fgs.xml";
 	}
 } // end SelectiveScheduleManager

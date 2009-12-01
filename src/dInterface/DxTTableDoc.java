@@ -73,6 +73,20 @@ public class DxTTableDoc extends DxDocument {
 		initDxTTableDoc(fileName);
 	}
 
+	/**
+	 * @param mediator
+	 * @param dxLoadData
+	 * @param fileName
+	 */
+	public DxTTableDoc(DMediator mediator, DxLoadData dxLoadData,
+			String fileName) throws DiaException,
+			NullPointerException, IOException {
+		super(mediator);
+		_type = 0;
+		_documentName = fileName;
+		initDxTTableDoc(dxLoadData);
+	}
+	
 	private void initDxTTableDoc(String fileName) throws DiaException,
 			NullPointerException, IOException {
 		// read file
@@ -88,31 +102,13 @@ public class DxTTableDoc extends DxDocument {
 	/**
 	 * @param dxLoadData
 	 */
-	private void initDxTTableDoc(DxLoadData dxLoadData) {
+	private void initDxTTableDoc(DxLoadData dxLoadData) throws DiaException,
+	NullPointerException, IOException {
 		_dm = new DModel(this, dxLoadData);
 		buidDocument(true, true);
 		_dxTTPane.updateDxTTPane(_dm.getTTStructure());
 	}
 
-//	public DxTTableDoc(DMediator mediator, String fileName, int type)
-//			throws DiaException, NullPointerException, IOException {
-//		super(mediator);
-//		_type = type;
-//		initDxTTableDoc(fileName);
-//	}
-
-	/**
-	 * @param mediator
-	 * @param dxLoadData
-	 * @param fileName
-	 */
-	public DxTTableDoc(DMediator mediator, DxLoadData dxLoadData,
-			String fileName) {
-		super(mediator);
-		_type = 0;
-		_documentName = fileName;
-		initDxTTableDoc(dxLoadData);
-	}
 
 	// -------------------------------------------
 	private void buidDocument(boolean simple, boolean vertical) {
