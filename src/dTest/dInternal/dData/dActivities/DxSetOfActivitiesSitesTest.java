@@ -1,6 +1,7 @@
 package dTest.dInternal.dData.dActivities;
 
 import dInternal.DxLoadData;
+import dInternal.dData.DxAvailability;
 import dInternal.dData.dActivities.DxActivity;
 import dInternal.dData.dActivities.DxActivitySite;
 import dInternal.dData.dActivities.DxReadActivitiesSites1dot5;
@@ -15,9 +16,9 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 public class DxSetOfActivitiesSitesTest extends TestCase {
-	public DxSetOfActivitiesSitesTest(String name) {
-		super(name);
-	}
+//	public DxSetOfActivitiesSitesTest(String name) {
+//		super(name);
+//	}
 
 	public static Test suite() {
 		// the type safe way is in SimpleTest
@@ -29,37 +30,46 @@ public class DxSetOfActivitiesSitesTest extends TestCase {
 	 * test_buildSetOfResources1_5, test that all elements of the activity are
 	 * added in the activities file
 	 */
+	
+
 	public void test_buildSetOfResources1_5() {
 		String tokens = "ADM1111  01" + "\r\n" + "1" + "\r\n" + "1" + "\r\n"
-				+ "LUC LAJOIE" + "\r\n" + "1" + "\r\n" + "3" + "\r\n" + "1 12"
+				+ "LAJOIE, LUC" + "\r\n" + "1" + "\r\n" + "3" + "\r\n" + "1 12"
 				+ "\r\n" + "1" + "\r\n" + "C1-387" + "\r\n" + "0" + "\r\n"
 				+ "0" + "\r\n" + "0" + "\r\n" + "ADM1111  02" + "\r\n" + "1"
-				+ "\r\n" + "1" + "\r\n" + "RÉAL CAOUETTE" + "\r\n" + "1"
+				+ "\r\n" + "1" + "\r\n" + "CAOUETTE, RÉAL " + "\r\n" + "1"
 				+ "\r\n" + "3" + "\r\n" + "1 12" + "\r\n" + "1" + "\r\n"
 				+ "C1-387" + "\r\n" + "0" + "\r\n" + "0" + "\r\n" + "0"
 				+ "\r\n" + "ADM1112  01" + "\r\n" + "1" + "\r\n" + "1" + "\r\n"
-				+ "Yannick" + "\r\n" + "1" + "\r\n" + "3" + "\r\n" + "1 12"
+				+ "Syam, Yannick" + "\r\n" + "1" + "\r\n" + "3" + "\r\n" + "1 12"
 				+ "\r\n" + "1" + "\r\n" + "C1-387" + "\r\n" + "0" + "\r\n"
 				+ "0" + "\r\n" + "0" + "\r\n" + "GEI4411  01" + "\r\n" + "1"
-				+ "\r\n" + "1" + "\r\n" + "Ruben" + "\r\n" + "2" + "\r\n"
+				+ "\r\n" + "1" + "\r\n" + "Gonzalez-Rubio, Ruben" + "\r\n" + "2" + "\r\n"
 				+ "3 2" + "\r\n" + "1 12 2 2" + "\r\n" + "1 1" + "\r\n"
 				+ "C1-387 C1-330" + "\r\n" + "0 0" + "\r\n" + "0 0" + "\r\n"
 				+ "0 0" + "\r\n";
 		DxSetOfInstructors dxsoiTempInst = new DxSetOfInstructors();
-		dxsoiTempInst.addInstructor("LUC LAJOIE", null);
-		dxsoiTempInst.addInstructor("RÉAL CAOUETTE", null);
-		dxsoiTempInst.addInstructor("Yannick", null);
-		dxsoiTempInst.addInstructor("Ruben", null);
+		DxAvailability aTemp = new DxAvailability();
+        aTemp.addDayAvailability("1 5 1");
+        aTemp.addDayAvailability("5 5 1 1");
+        aTemp.addDayAvailability("5 5 5 5 1");
+        aTemp.addDayAvailability("1 1 1 5 5 5");
+        aTemp.addDayAvailability("1 5 1 5 1 5 1");
+		dxsoiTempInst.addInstructor("LAJOIE, LUC", aTemp);
+		dxsoiTempInst.addInstructor("CAOUETTE, RÉAL", aTemp);
+		dxsoiTempInst.addInstructor("Syam, Yannick", aTemp);
+		dxsoiTempInst.addInstructor("Gonzalez-Rubio, Ruben", aTemp);
 
 		DxSetOfRooms dxsorTempRooms = new DxSetOfRooms();
 		dxsorTempRooms.addRoom(new DxRoom("C1-387", 0, 0, null, null, null));
 		dxsorTempRooms.addRoom(new DxRoom("C1-330", 0, 0, null, null, null));
 
 		DxLoadData ld = new DxLoadData();
-
+		boolean isDia = false;
+		int periodLength = 60;
 		DxReadActivitiesSites1dot5 dxrasSiteReader = new DxReadActivitiesSites1dot5(
 				ld.insertHeader(tokens.getBytes()), dxsoiTempInst,
-				dxsorTempRooms, 60, false);
+				dxsorTempRooms, periodLength, isDia);
 		DxSetOfActivitiesSites dxsoasAct = null;
 		try {
 			dxsoasAct = dxrasSiteReader.readSetOfActivitiesSites();
@@ -82,6 +92,8 @@ public class DxSetOfActivitiesSitesTest extends TestCase {
 			assertEquals("test4_buildSetOfResources1_5: assertEquals 2", 2,
 					dxtType1.getSectionCount());
 		} catch (Exception e) {
+			System.out.println("Exception in: test_values");
+			e.printStackTrace();
 			assertTrue("test_buildSetOfResources1_5: Read failed", false);
 		}
 
@@ -106,14 +118,20 @@ public class DxSetOfActivitiesSitesTest extends TestCase {
 				+ "\r\n" + "0 0" + "\r\n" + "0 0" + "\r\n" + "0 0" + "\r\n";
 
 		DxSetOfInstructors dxsoiTempInst = new DxSetOfInstructors();
-		dxsoiTempInst.addInstructor("LUC LAJOIE", null);
-		dxsoiTempInst.addInstructor("RÉAL CAOUETTE", null);
-		dxsoiTempInst.addInstructor("Yannick", null);
-		dxsoiTempInst.addInstructor("Ruben", null);
+		DxAvailability aTemp = new DxAvailability();
+        aTemp.addDayAvailability("1 5 1");
+        aTemp.addDayAvailability("5 5 1 1");
+        aTemp.addDayAvailability("5 5 5 5 1");
+        aTemp.addDayAvailability("1 1 1 5 5 5");
+        aTemp.addDayAvailability("1 5 1 5 1 5 1");
+		dxsoiTempInst.addInstructor("LUC LAJOIE", aTemp);
+		dxsoiTempInst.addInstructor("RÉAL CAOUETTE", aTemp);
+		dxsoiTempInst.addInstructor("Yannick", aTemp);
+		dxsoiTempInst.addInstructor("Ruben", aTemp);
 
 		DxSetOfRooms dxsorTempRooms = new DxSetOfRooms();
-		dxsorTempRooms.addRoom(new DxRoom("C1-387", 0, 0, null, null, null));
-		dxsorTempRooms.addRoom(new DxRoom("C1-330", 0, 0, null, null, null));
+		dxsorTempRooms.addRoom(new DxRoom("C1-387", 0, 0, null, null, aTemp));
+		dxsorTempRooms.addRoom(new DxRoom("C1-330", 0, 0, null, null, aTemp));
 
 		DxLoadData ld = new DxLoadData();
 
@@ -144,6 +162,9 @@ public class DxSetOfActivitiesSitesTest extends TestCase {
 			// assertEquals("test5_buildSetOfResources1_6: assertEquals 3", 50,
 			// dxaActivity.getCapacity());
 		} catch (Exception e) {
+			
+			System.out.println("Exception in: test_values");
+			e.printStackTrace();
 			assertTrue("test_buildSetOfResources1_6: Read failed", false);
 		}
 
