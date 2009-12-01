@@ -198,7 +198,7 @@ public class DModel extends Observable {
 		this.notifyObservers(this);
 	}
 
-	// this constructor is used only for tests
+	// this constructor is used only on tests
 	public DModel(DxDocument dxDocument, String fileName) throws DiaException,
 			NullPointerException, IOException {
 		boolean onlyATimeTable = false;
