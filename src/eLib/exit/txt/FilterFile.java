@@ -200,14 +200,17 @@ public class FilterFile {
 	// ------------------------------------------------------
 	// ordre de succession de fin de ligne sous windows: \r\n = cr + lf = 13 +
 	// 10
+	@SuppressWarnings("boxing")
 	public void adjustingLines() {
 		final String crlfStr = "\r\n";
 		ArrayList<Byte> byteArrayList = new ArrayList<Byte>();
+		
+		//byte  [] aux= new byte [10];
 
 		for (int i = 0; i < _bytesArray.length; i++) {
 			if ((_bytesArray[i] != (byte) crlfStr.charAt(0))
 					&& (_bytesArray[i] != (byte) crlfStr.charAt(1))) {
-				byteArrayList.add(new Byte(_bytesArray[i]));
+				byteArrayList.add(_bytesArray[i]);
 			}
 			// } else {// end if ((_b[i] != (byte)crlfStr.charAt(0)
 			if (_bytesArray[i] == (byte) crlfStr.charAt(0)) {
@@ -223,9 +226,6 @@ public class FilterFile {
 					addCrLf(byteArrayList);
 				}
 			}
-
-			// }
-
 		}// end for (int i=0; i< _b.length; i++)
 		toArrayOfBytes(byteArrayList);
 
@@ -233,8 +233,9 @@ public class FilterFile {
 
 	private void toArrayOfBytes(ArrayList<Byte> byteArrayList) {
 		_bytesArray = new byte[byteArrayList.size()];
-		for (int i = 0; i < byteArrayList.size(); i++)
+		for (int i = 0; i < byteArrayList.size(); i++) {
 			_bytesArray[i] = byteArrayList.get(i).byteValue();
+		}
 	}
 
 	private void addCrLf(ArrayList<Byte> byteArrayList) {
