@@ -113,6 +113,9 @@ public class DiamantTest {
 		forOutputTests.mkdir();
 		System.out.println("fot path" + forOutputTests.getAbsolutePath());
 		// Using files
+		if (DxFlags.newAlg) {
+			suite.addTest(DxAssignRoomsAlgTest.suite());
+		}
 		suite.addTest(DxTTStructureTest.suite());
 		suite.addTest(ByteInputFileTest.suite());
 		suite.addTest(ByteOutputFileTest.suite());
@@ -121,9 +124,7 @@ public class DiamantTest {
 		suite.addTest(DxInstructorsReaderTest.suite());
 		suite.addTest(DxSetOfSitesTest.suite());
 		suite.addTest(DxAssignAllAlgTest.suite());
-		if (DxFlags.newAlg) {
-			suite.addTest(DxAssignRoomsAlgTest.suite());
-		}
+
 		suite.addTest(RefinedStudMixAlgoTest.suite()); // TODO to be changed
 		suite.addTest(PeriodTest.suite());
 		suite.addTest(SequenceTest.suite());
@@ -157,7 +158,7 @@ public class DiamantTest {
 		suite.addTest(SetOfStuSitesTest.suite());
 
 		if (DxFlags.newActivity) {
-;//			suite.addTest(DxSetOfActivitiesSitesTest.suite());
+				//			suite.addTest(DxSetOfActivitiesSitesTest.suite());
 		} else {
 			suite.addTest(DSetOfActivitiesInSitesTest.suite());
 		}
