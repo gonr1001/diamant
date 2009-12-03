@@ -515,6 +515,7 @@ public class SectionDlg extends DDialog implements ActionListener,
 	 * The mouseListener for the JLists
 	 */
 	private MouseListener mouseListenerLists = new MouseAdapter() {
+		@SuppressWarnings("synthetic-access")
 		public void mouseClicked(MouseEvent e) {
 			if (e.getSource().equals(get_notAssignedList())) {
 				if (get_notAssignedVector().size() != 0) {

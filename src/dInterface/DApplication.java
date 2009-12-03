@@ -172,7 +172,7 @@ public class DApplication {
 
 	// -------------------------------------------
 	private JFrame createFrame(String str) {
-		JFrame jFrame = new JFrame(str + "   " + System.getProperty("user.dir"));
+		JFrame jFrame = new JFrame(str);//+ "   " + System.getProperty("user.dir"));
 
 		Image diamantIcon = createImageIcon(_LOGO_PATH);
 		if (diamantIcon != null) {
