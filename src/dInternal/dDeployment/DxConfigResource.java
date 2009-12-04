@@ -8,8 +8,7 @@ package dInternal.dDeployment;
 import java.io.File;
 
 public class DxConfigResource {
-    //private Vector<DxConfigResource> _children;
-
+    
     private boolean _isDirectory;
 
     private DxConfigResource _parent;
