@@ -23,60 +23,6 @@ import java.util.StringTokenizer;
 
 public class DXToolsMethods {
 
-	/**
-	 * check if a String only contains a reference value and exit software
-	 * otherwise
-	 * 
-	 * @param String
-	 *            the string value to check
-	 * @param String
-	 *            the reference value to use
-	 * @param String
-	 *            the error message to print
-	 * @param String
-	 *            the classe name where error has been detect
-	 */
-	public final static String checkIfBelongsValues(String line,
-			String refValues, String message, String classList) {
-		StringTokenizer ref = new StringTokenizer(refValues);
-		StringTokenizer lineValue = new StringTokenizer(line);
-		String lvalue;
-		String error = "";
-		int count = 0, refSize = ref.countTokens();
-		while (lineValue.hasMoreElements()) {
-			lvalue = lineValue.nextToken();
-			while (ref.hasMoreElements()) {
-				if (!lvalue.equals(ref.nextToken()))
-					count++;
-				if (count == refSize) {
-					error = message + " in the activity file:" + "\n"
-							+ "I was in " + classList
-							+ " class and in analyseTokens method ";
-				}// end if(count==refSize)
-			}// end while(ref.hasMoreElements())
-		}// end while(lineValue.hasMoreElements())
-		return error;
-	}
-
-	/**
-	 * check if a String is not empty and exit software otherwise
-	 * 
-	 * @param String
-	 *            the string value to check
-	 * @param String
-	 *            the error message to print
-	 * @param String
-	 *            the classe name where error has been detect
-	 */
-	public final static String checkIfLineIsEmpty(String line, String message,
-			String classList) {
-		String error = "";
-		if (line.length() == 0) {
-			error = message + " in the activity file:" + "\n" + "I was in "
-					+ classList + " class and in analyseTokens method ";
-		}
-		return error;
-	}
 
 	/**
 	 * check if a String is an int value and exit software otherwise
@@ -116,37 +62,7 @@ public class DXToolsMethods {
 		return true;
 	}
 
-//	/**
-//	 * compare two hour tables of int. tab[0] is the hour and tab[1] is the
-//	 * minute
-//	 * 
-//	 * @param int[2]
-//	 *            tab1 the first table of integer
-//	 * @param int[2]
-//	 *            tab2 the second table of integer
-//	 * @return int "1" if tab1 is greater than tab2, "0" if tab1 and tab2 are
-//	 *         equals, "-1" if tab1 is smaller than tab2
-//	 */
-//	public final static int compareTabsHour(int[] tab1, int[] tab2) {
-//		if ((tab1.length == 2) && (tab2.length == 2)) {
-//			if (tab1[0] >= tab2[0]) {
-//				if (tab1[0] > tab2[0]) {
-//					return 1;
-//				}// else{// else if(tab1[0]>tab2[0])
-//				if (tab1[1] > tab2[1]) {
-//					return 1;
-//				}// end if(tab1[1]>tab2[1])
-//				if (tab1[1] == tab2[1]) {
-//					return 0;
-//				}// end if(tab1[1]==tab2[1])
-//				if (tab1[1] < tab2[1]) {
-//					return -1;
-//				}// end if(tab1[1]<tab2[1])
-//				// }// end else if(tab1[0]>tab2[0])
-//			}// end if(tab1[0]>tab2[0])
-//		}// end if((tab1.length==2) && (tab2.length==2))
-//		return -1;
-//	}
+
 
 	/**
 	 * Convert STI Time and periods
