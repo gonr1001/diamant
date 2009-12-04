@@ -201,24 +201,26 @@ public abstract class DSetOfResources extends DObject {
 		return false;
 	}
 	
+//   to del	
+//	public boolean addResourceUsingIDWithDuplicatesrgr(DResource resource) {
+//		int index = 0;
+//		int add = -1;
+//
+//		if (add == -1) {
+//			index = searchWhereToInsertInt(Integer.parseInt(resource.getID()));
+//			resource.setKey(_currentKey);
+//			if (index > (_resourceList.size() - 1))
+//				_resourceList.add(resource);
+//			else
+//				_resourceList.insertElementAt(resource, index);
+//			_currentKey++;
+//			return true;
+//		}
+//		return false;
+//	}
+
 	
-	public boolean addResourceUsingIDWithDuplicatesrgr(DResource resource) {
-		int index = 0;
-		int add = -1;
-
-		if (add == -1) {
-			index = searchWhereToInsertInt(Integer.parseInt(resource.getID()));
-			resource.setKey(_currentKey);
-			if (index > (_resourceList.size() - 1))
-				_resourceList.add(resource);
-			else
-				_resourceList.insertElementAt(resource, index);
-			_currentKey++;
-			return true;
-		}
-		return false;
-	}
-
+	// to del 
 	// public boolean addResourceUsingIDWithDuplicatesMm(DResource resource) {
 	// int index = 0;
 	// int add = -1;

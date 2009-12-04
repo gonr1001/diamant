@@ -246,7 +246,7 @@ public class DxAssignRoomsAlg implements Algorithm {
 
 			DxEvent event = (DxEvent) events.getResourceAt(i).getAttach();
 			if (event.getRoomName().equalsIgnoreCase(name)) {
-				eventsInCat.addResourceUsingIDWithDuplicatesrgr(events
+				eventsInCat.addResourceUsingIDWithDuplicates(events
 						.getResourceAt(i));
 			}
 		}
@@ -335,7 +335,7 @@ public class DxAssignRoomsAlg implements Algorithm {
 			v = students.getStudentsSortedInGroup(actID, typeID, section, 0);
 			resc = new DResource(Integer.toString(v.size()), event);
 
-			setOfEventsInPeriod.addResourceUsingIDWithDuplicatesrgr(resc);
+			setOfEventsInPeriod.addResourceUsingIDWithDuplicates(resc);
 
 		}// for
 		if (_increase) {

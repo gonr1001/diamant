@@ -383,7 +383,7 @@ public class SetOfActivitiesInSites extends DSetOfResources {
 		// check if the permanent value is belong 0 and 1
 		while (stLine.hasMoreElements()) {
 			String sousString = stLine.nextToken();
-			String error = DXToolsMethods.checkIfBelongsValues(sousString,
+			String error = checkIfBelongsValues(sousString,
 					"0 1", DConst.ACTI_TEXT12 + line, "ActivityList");
 			if (error.length() != 0)
 				return error;
@@ -487,7 +487,7 @@ public class SetOfActivitiesInSites extends DSetOfResources {
 				position = 2;
 				break;
 			case 2:// activity visibility
-				_error = DXToolsMethods.checkIfBelongsValues(token, "0 1",
+				_error = checkIfBelongsValues(token, "0 1",
 						DConst.ACTI_TEXT2 + _line, "ActivityList");
 				if (_error.length() != 0)
 					return false;
@@ -546,7 +546,7 @@ public class SetOfActivitiesInSites extends DSetOfResources {
 //							+ "I was in ActiviesList class and in analyseTokens method ";
 //					return false;
 				}
-				_error = DXToolsMethods.checkIfLineIsEmpty(token,
+				_error = checkIfLineIsEmpty(token,
 						DConst.ACTI_TEXT6 + _line, "ActivityList");
 				if (_error.length() != 0)
 					return false;
@@ -560,7 +560,7 @@ public class SetOfActivitiesInSites extends DSetOfResources {
 				break;
 			case 9:// days and periods of blocs
 				stLine = new StringTokenizer(token);
-				_error = DXToolsMethods.checkIfLineIsEmpty(token,
+				_error = checkIfLineIsEmpty(token,
 						DConst.ACTI_TEXT6 + _line, "ActivityList");
 				if (_error.length() != 0)
 					return false;
@@ -584,13 +584,13 @@ public class SetOfActivitiesInSites extends DSetOfResources {
 				break;
 			case 10:// fixed rooms
 				stLine = new StringTokenizer(token);
-				_error = DXToolsMethods.checkIfLineIsEmpty(token,
+				_error = checkIfLineIsEmpty(token,
 						DConst.ACTI_TEXT6 + _line, "ActivityList");
 				if (_error.length() != 0)
 					return false;
 				while (stLine.hasMoreElements()) {
 					sousString = stLine.nextToken();
-					_error = DXToolsMethods.checkIfBelongsValues(sousString,
+					_error = checkIfBelongsValues(sousString,
 							"0 1", DConst.ACTI_TEXT9 + _line, "ActivityList");
 					if (_error.length() != 0)
 						return false;
@@ -599,7 +599,7 @@ public class SetOfActivitiesInSites extends DSetOfResources {
 				break;
 			case 11:// Preferred rooms
 				stLine = new StringTokenizer(token);
-				_error = DXToolsMethods.checkIfLineIsEmpty(token,
+				_error = checkIfLineIsEmpty(token,
 						DConst.ACTI_TEXT6 + _line, "ActivityList");
 				if (_error.length() != 0)
 					return false;
@@ -615,7 +615,7 @@ public class SetOfActivitiesInSites extends DSetOfResources {
 				break;
 			case 12:// type of rooms
 				stLine = new StringTokenizer(token);
-				_error = DXToolsMethods.checkIfLineIsEmpty(token,
+				_error = checkIfLineIsEmpty(token,
 						DConst.ACTI_TEXT6 + _line, "ActivityList");
 				if (_error.length() != 0)
 					return false;
@@ -629,7 +629,7 @@ public class SetOfActivitiesInSites extends DSetOfResources {
 				break;
 			case 13:// idem
 				stLine = new StringTokenizer(token);
-				_error = DXToolsMethods.checkIfLineIsEmpty(token,
+				_error = checkIfLineIsEmpty(token,
 						DConst.ACTI_TEXT6 + _line, "ActivityList");
 				if (_error.length() != 0)
 					return false;
@@ -1134,5 +1134,59 @@ public class SetOfActivitiesInSites extends DSetOfResources {
 	}
 
 
-
+	/**
+	 * check if a String is not empty and exit software otherwise
+	 * 
+	 * @param String
+	 *            the string value to check
+	 * @param String
+	 *            the error message to print
+	 * @param String
+	 *            the classe name where error has been detect
+	 */
+	private final String checkIfLineIsEmpty(String line, String message,
+			String classList) {
+		String error = "";
+		if (line.length() == 0) {
+			error = message + " in the activity file:" + "\n" + "I was in "
+					+ classList + " class and in analyseTokens method ";
+		}
+		return error;
+	}
+	
+	
+	/**
+	 * check if a String only contains a reference value and exit software
+	 * otherwise
+	 * 
+	 * @param String
+	 *            the string value to check
+	 * @param String
+	 *            the reference value to use
+	 * @param String
+	 *            the error message to print
+	 * @param String
+	 *            the classe name where error has been detect
+	 */
+	private final String checkIfBelongsValues(String line,
+			String refValues, String message, String classList) {
+		StringTokenizer ref = new StringTokenizer(refValues);
+		StringTokenizer lineValue = new StringTokenizer(line);
+		String lvalue;
+		String error = "";
+		int count = 0, refSize = ref.countTokens();
+		while (lineValue.hasMoreElements()) {
+			lvalue = lineValue.nextToken();
+			while (ref.hasMoreElements()) {
+				if (!lvalue.equals(ref.nextToken()))
+					count++;
+				if (count == refSize) {
+					error = message + " in the activity file:" + "\n"
+							+ "I was in " + classList
+							+ " class and in analyseTokens method ";
+				}// end if(count==refSize)
+			}// end while(ref.hasMoreElements())
+		}// end while(lineValue.hasMoreElements())
+		return error;
+	}
 }
