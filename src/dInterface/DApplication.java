@@ -118,7 +118,7 @@ public class DApplication {
 	private final int SCREEN_MIN_WIDTH = 512;
 
 	// -d" option in the command line means debug
-	private final String DEV = "-d";
+	private final String FLAG_DEV = "-d";
 
 	private JFrame _jFrame;
 
@@ -172,7 +172,11 @@ public class DApplication {
 
 	// -------------------------------------------
 	private JFrame createFrame(String str) {
-		JFrame jFrame = new JFrame(str);//+ "   " + System.getProperty("user.dir"));
+		JFrame jFrame;
+		if (_inDevelopment) {
+			jFrame = new JFrame(str + "   " + System.getProperty("user.dir"));
+		}
+		jFrame = new JFrame(str);
 
 		Image diamantIcon = createImageIcon(_LOGO_PATH);
 		if (diamantIcon != null) {
@@ -821,7 +825,7 @@ public class DApplication {
 	 * this string will be concatenated with System.getProperty("user.dir") 
 	 */
 	private void lookUpforOptions(String[] args) {
-		if (args[0].compareTo(DEV) == 0) {
+		if (args[0].compareTo(FLAG_DEV) == 0) {
 			_inDevelopment = true;
 			System.out.println("I am in Mode Development");
 		}
