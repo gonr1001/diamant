@@ -59,6 +59,7 @@ import dInterface.dAssignementDlgs.DxActivityDlg;
 import dInterface.dAssignementDlgs.DxConflictsOfAnEventDlg;
 import dInterface.dAssignementDlgs.DxEventsDlg;
 import dInterface.dAssignementDlgs.DxInstructorAvailabilityDlg;
+import dInterface.dAssignementDlgs.DxOldInstructorAvailabilityDlg;
 import dInterface.dAssignementDlgs.DxRoomAvailabilityDlg;
 import dInterface.dData.DefFilesToImportDlg;
 import dInterface.dData.ImportDlg;
@@ -504,14 +505,35 @@ public class DApplication {
 	 * 
 	 */
 	public void instructorAvailability() {
-		new DxInstructorAvailabilityDlg(this, this.getCurrentDxDoc()
-				.getCurrentDModel().getDxSetOfInstructors());
+			new DxOldInstructorAvailabilityDlg(this, this.getCurrentDModel()
+					.getDxSetOfInstructors());
 	}
+	/**
+	 * 
+	 */
+	public void testInstructorAvailability() {
+			new DxInstructorAvailabilityDlg(this,this.getCurrentDModel()
+			.getDxSetOfInstructors());
 
+	}
 	/**
 	 * 
 	 */
 	public void roomAvailability() {
+		// if (DxFlags.newRooms) {
+		new DxRoomAvailabilityDlg(this);
+		// new DxAvailabiltyRoomDlg(this, this.getCurrentDModel()
+		// .getDxSetOfRooms(), DConst.ROOMASSIGN);
+		// !!!NIC!!! How do we verify if it's multisite?
+		// new DxRoomAvailabilityDlg(this, this.getCurrentDModel()
+		// .getDxSetOfSites());
+		// } else {
+		// new AvailabiltyRoomDialog(this, this.getCurrentDModel()
+		// .getSetOfRooms(), DConst.ROOMASSIGN);
+		// }
+	}
+	
+	public void testRroomAvailability() {
 		// if (DxFlags.newRooms) {
 		new DxRoomAvailabilityDlg(this);
 		// new DxAvailabiltyRoomDlg(this, this.getCurrentDModel()

@@ -57,6 +57,10 @@ public class DNewFeaturesMenu extends JMenu implements MenuStates {
 	private JMenuItem _test2_3;
 
 	private JMenu _test3;
+	
+	private JMenuItem _test4;
+	
+	private JMenuItem _test5;
 
 	private JRadioButtonMenuItem _rbMenuIncrease;
 
@@ -81,7 +85,13 @@ public class DNewFeaturesMenu extends JMenu implements MenuStates {
 		this.addSeparator();
 		buildTest2();
 		buildTest3();
+		this.addSeparator();
+		buildTest4();
+		buildTest5();
+		
 	}
+
+	
 
 	/**
 	 * 
@@ -241,6 +251,38 @@ public class DNewFeaturesMenu extends JMenu implements MenuStates {
 
 	} // end buildTest3
 
+	
+	private void buildTest4() {
+		_test4 = new JMenuItem(DConst.INST_AVAILABILITY_M);
+		_test4.setFont(DxMenuBar.DxMB_FONT);
+		class Test1Listener implements ActionListener {
+			public void actionPerformed(ActionEvent event) {
+				event.toString(); // to avoid warning;
+				_dApplication.testInstructorAvailability();
+			}
+		}
+		ActionListener test1Listener = new Test1Listener();
+		_test4.addActionListener(test1Listener);
+		this.add(_test4);
+		
+	}
+	
+	private void buildTest5() {
+		_test5 = new JMenuItem(DConst.ROOM_AVAILABILITY_M);
+		_test5.setFont(DxMenuBar.DxMB_FONT);
+		class Test1Listener implements ActionListener {
+			public void actionPerformed(ActionEvent event) {
+				event.toString(); // to avoid warning;
+				_dApplication.testRroomAvailability();
+			}
+		}
+		ActionListener test1Listener = new Test1Listener();
+		_test5.addActionListener(test1Listener);
+		this.add(_test5);
+	}
+
+	
+	
 	/**
 	 * 
 	 */
@@ -257,6 +299,8 @@ public class DNewFeaturesMenu extends JMenu implements MenuStates {
 		_test2_1.setEnabled(false);
 		_test2_2.setEnabled(false);
 		_test2_3.setEnabled(false);
+		_test4.setEnabled(false);
+		_test5.setEnabled(false);
 	}
 
 	/*
@@ -271,6 +315,8 @@ public class DNewFeaturesMenu extends JMenu implements MenuStates {
 		_test2_1.setEnabled(false);
 		_test2_2.setEnabled(false);
 		_test2_3.setEnabled(false);
+		_test4.setEnabled(false);
+		_test5.setEnabled(false);
 	}
 
 	/*
@@ -285,6 +331,8 @@ public class DNewFeaturesMenu extends JMenu implements MenuStates {
 		_test2_1.setEnabled(false);
 		_test2_2.setEnabled(false);
 		_test2_3.setEnabled(false);
+		_test4.setEnabled(false);
+		_test5.setEnabled(false);
 	}
 
 	/*
@@ -299,6 +347,8 @@ public class DNewFeaturesMenu extends JMenu implements MenuStates {
 		_test2_1.setEnabled(false);
 		_test2_2.setEnabled(false);
 		_test2_3.setEnabled(false);
+		_test4.setEnabled(false);
+		_test5.setEnabled(false);
 	}
 
 	/*
@@ -313,6 +363,8 @@ public class DNewFeaturesMenu extends JMenu implements MenuStates {
 		_test2_1.setEnabled(false);
 		_test2_2.setEnabled(false);
 		_test2_3.setEnabled(false);
+		_test4.setEnabled(false);
+		_test5.setEnabled(false);
 	}
 
 	/*
@@ -327,6 +379,8 @@ public class DNewFeaturesMenu extends JMenu implements MenuStates {
 		_test2_1.setEnabled(false);
 		_test2_2.setEnabled(false);
 		_test2_3.setEnabled(false);
+		_test4.setEnabled(false);
+		_test5.setEnabled(false);
 	}
 
 	/*
@@ -341,6 +395,8 @@ public class DNewFeaturesMenu extends JMenu implements MenuStates {
 		_test2_1.setEnabled(true);
 		_test2_2.setEnabled(true);
 		_test2_3.setEnabled(true);
+		_test4.setEnabled(true);
+		_test5.setEnabled(true);
 	}
 
 	/*
@@ -355,6 +411,8 @@ public class DNewFeaturesMenu extends JMenu implements MenuStates {
 		_test2_1.setEnabled(true);
 		_test2_2.setEnabled(true);
 		_test2_3.setEnabled(true);
+		_test4.setEnabled(true);
+		_test5.setEnabled(true);
 	}
 
 }

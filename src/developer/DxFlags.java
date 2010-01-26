@@ -43,7 +43,7 @@ public class DxFlags {
 //	public final static boolean newDxTTPane = true;
 	
 	public final static boolean newDisplay = false;
-	
+		
 	public final static boolean newExceptionsReading = true;
 
 }
