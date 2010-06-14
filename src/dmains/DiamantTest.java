@@ -41,7 +41,6 @@ import dInternal.dData.dRooms.DxSetOfSitesTest;
 import dInternal.dOptimization.DxAssignRoomsAlgTest;
 import dInternal.dOptimization.StudentsConditionsTest;
 import dInternal.dOptimization.StudentsConflictsMatrixTest;
-import dInternal.dTimeTable.DxTTStructureTest;
 import dTest.ScanFileTest;
 import dTest.dInterface.dAssignementDlgs.DxEditEventDlgTest;
 import dTest.dInterface.dMenus.DFileMenuTest;
@@ -116,7 +115,7 @@ public class DiamantTest {
 		if (DxFlags.newAlg) {
 			suite.addTest(DxAssignRoomsAlgTest.suite());
 		}
-		suite.addTest(DxTTStructureTest.suite());
+
 		suite.addTest(ByteInputFileTest.suite());
 		suite.addTest(ByteOutputFileTest.suite());
 		suite.addTest(FilterFileTest.suite());

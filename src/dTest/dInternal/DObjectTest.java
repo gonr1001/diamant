@@ -72,9 +72,9 @@ public class DObjectTest extends TestCase{
   public void testA_getMatrixAvailability(){
   	assertEquals("testA_getMatrixAvailability: assertEquals", 2, a.getMatrixAvailability().length );
   }
-  public void testA_setAvailability(){
-  	int [][] mat= new int[2][2];
-  	a.setAvailability(mat);
-  	assertEquals("testA_setAvailability: assertEquals", 0, mat[0][0]);
-  }
+//  public void testA_setAvailability(){
+//  	int [][] mat= new int[2][2];
+//  	a.setAvailability(mat);
+//  	assertEquals("testA_setAvailability: assertEquals", 0, mat[0][0]);
+//  }
 }

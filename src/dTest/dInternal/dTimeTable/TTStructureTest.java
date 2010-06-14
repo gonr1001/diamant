@@ -22,17 +22,20 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-
+import java.util.StringTokenizer;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.xml.sax.SAXParseException;
 
+import dConstants.DConst;
 import dInternal.DResource;
 import dInternal.dTimeTable.Cycle;
 import dInternal.dTimeTable.Day;
+//import dInternal.dTimeTable.DxTTStructure;
 import dInternal.dTimeTable.Period;
 import dInternal.dTimeTable.Sequence;
 import dInternal.dTimeTable.TTStructure;
@@ -42,18 +45,119 @@ import eLib.exit.xml.output.XMLWriter;
 import eLib.exit.xml.output.XMLOutputFile;
 
 public class TTStructureTest extends TestCase {
-	
+
 	private final String _pathForFiles = "." + File.separator + "dataTest"
 			+ File.separator + "TTxmlFiles" + File.separator;
 
 	private final String _pathForOutputFiles = "." + File.separator
 			+ "forOutputTests" + File.separator;
 
+	private final String _pathForSchemas = "dInternal" + File.separator
+			+ "dTimeTable" + File.separator + "schemas" + File.separator;
+
 	public static Test suite() {
 		// the type safe way is in SimpleTest
 		// the dynamic way :
 		return new TestSuite(TTStructureTest.class);
 	} // end suite
+
+	public void test_fileEmpty() {
+		TTStructure dxTTS = new TTStructure();
+		try {
+			InputStream in = new FileInputStream(_pathForFiles + "noFile");
+			dxTTS.loadTTStructureFromInpuStream(in);
+			fail("Should raise a FileNotFoundException");
+		} catch (FileNotFoundException expected) {
+			assertEquals("test_fileEmpty: assertEquals", true, true);
+		} catch (Exception e) {
+			System.out.println("Exception " + e.toString());
+			assertFalse(true);
+		}
+	}
+
+	public void test_getSchemaFileName() {
+		TTStructure dxTTS = new TTStructure();
+
+		assertEquals("test_getSchemaFileName: equals", _pathForSchemas
+				+ "DxTimetable.xsd", dxTTS.getSchemaFileName());
+	}
+
+	public void test_fileBadCloseTag() {
+		TTStructure dxTTS = new TTStructure();
+
+		try {
+			InputStream in = new FileInputStream(_pathForFiles
+					+ "badClosedTag.xml");
+			dxTTS.loadTTStructureFromInpuStream(in);
+			fail("Should raise a SAXParseException");
+		} catch (SAXParseException xmlSE) { // XMLStreamException xmlSE) {
+			StringTokenizer st = new StringTokenizer(xmlSE.getMessage(),
+					DConst.CR_LF);
+			assertEquals(
+					"test_fileBadCloseTag: assertEquals",
+					st.nextToken(),
+					"Element type \"TTperiod\" must be followed by either attribute specifications, \">\" or \"/>\".");
+		} catch (Exception e) {
+			// Should not fail in tests, but if file not there gives a failure
+			// Should not fail in tests, but if file not there gives a failure
+			assertEquals("test_fileNoOpenTag: exception", "nullPointer", e
+					.toString());
+			System.out.println("Exception in: test_fileBadCloseTag");
+			e.printStackTrace();
+		}
+	}
+
+	public void test_fileNoOpenTag() {
+		TTStructure dxTTS = new TTStructure();
+		try {
+			InputStream in = new FileInputStream(_pathForFiles
+					+  "noOpenTag.xml");
+			dxTTS.loadTTStructureFromInpuStream(in);
+			fail("Should raise a SAXParseException");
+		} catch (SAXParseException xmlSE) { // XMLStreamException xmlSE) 
+			StringTokenizer st = new StringTokenizer(xmlSE.getMessage(),
+					DConst.CR_LF);
+
+			assertEquals(
+					"test_fileBadCloseTag: assertEquals",
+					st.nextToken(),
+					"The element type \"TTperiods\" must be terminated by the matching end-tag \"</TTperiods>\".");
+		} catch (Exception e) {
+			// Should not fail in tests, but if file not there gives a failure
+			assertEquals("test_fileNoOpenTag: exception", "nullPointer", e
+					.toString());
+			System.out.println("Exception in: test_fileNoOpenTag");
+			e.printStackTrace();
+		}
+	}
+	
+	
+	public void test_fileNoCloseTag() {
+		TTStructure dxTTS = new TTStructure();
+		try {
+			InputStream in = new FileInputStream(_pathForFiles
+					+ "noCloseTag.xml");
+			dxTTS.loadTTStructureFromInpuStream(in);
+			//dxTTS.loadTTSFromFile(_pathForFiles + "noCloseTag.xml");
+			fail("Should raise a XMLStreamException");
+		} catch (SAXParseException xmlSE) { // XMLStreamException xmlSE) 
+			StringTokenizer st = new StringTokenizer(xmlSE.getMessage(),
+					DConst.CR_LF);
+//			assertEquals("test_fileNoCloseTags: assertEquals", st.nextToken(),
+//					"ParseError at [row,col]:[37,17]");
+			assertEquals(
+					"test_fileNoCloseTag: assertEquals",
+					"The end-tag for element type \"TTperiod\" must end with a '>' delimiter.",
+					st.nextToken());
+
+		} catch (Exception e) {
+			// Should not fail in tests, but if file not there gives a failure
+			assertEquals("test_fileNoCloseTags: exception", "nullPointer", e
+					.toString());
+			System.out.println("Exception in: test_fileNoCloseTags");
+			e.printStackTrace();
+		}
+	}
 
 	/**
 	 * test that load the timetable from an xml file
@@ -63,8 +167,10 @@ public class TTStructureTest extends TestCase {
 		InputStream is;
 		try {
 			is = new FileInputStream(_pathForFiles + "StandardTTC.xml");
-//			Document doc = xmlFile.createDocumentFromInputStream(is);
-		    tts.loadTTStructureFromInpuStream(is);//loadTTSFromFile(_pathForFiles + "DXToolsMethodsTest_resizeAvailability.xml")
+
+			tts.loadTTStructureFromInpuStream(is);// loadTTSFromFile(_pathForFiles
+			// +
+			// "DXToolsMethodsTest_resizeAvailability.xml")
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -72,34 +178,31 @@ public class TTStructureTest extends TestCase {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-//		tts.loadTTSFromFile(_pathForFiles + "StandardTTC.xml");
 		assertEquals(
 				"test_CreateStandardTT : assertEquals 1 (number of cycles):",
 				3, tts.getSetOfCycles().size());
-		
+
 		Period period = tts.getCurrentCycle().getFirstPeriod();
 		assertEquals("test_getFirstPeriod : assertEquals 1 (begin hour):", 8,
 				period.getBeginHour()[0]);
 		assertEquals("test_getFirstPeriod : assertEquals 2 (begin minute):",
 				15, period.getBeginHour()[1]);
-		assertEquals("test_getFirstPeriod : assertEquals 3 (priority):", 0, period
-				.getPriority());
-		
-		
+		assertEquals("test_getFirstPeriod : assertEquals 3 (priority):", 0,
+				period.getPriority());
+
 		period = tts.getCurrentCycle().getLastPeriod();
 		assertEquals("test_getLastPeriod : assertEquals 1 (begin hour):", 21,
 				period.getBeginHour()[0]);
 		assertEquals("test_getLastPeriod : assertEquals 2 (begin minute):", 0,
 				period.getBeginHour()[1]);
-		assertEquals("test_getLastPeriod : assertEquals 3 (priority):", 1, period
-				.getPriority());
-		
-		
-		period  = tts.getCurrentCycle().getPeriodByIndex(4, 2, 1);
-		assertEquals("test_getPeriod : assertEquals 1 (begin hour):", 20, period
-				.getBeginHour()[0]);
-		assertEquals("test_getPeriod : assertEquals 2 (begin minute):", 0, period
-				.getBeginHour()[1]);
+		assertEquals("test_getLastPeriod : assertEquals 3 (priority):", 1,
+				period.getPriority());
+
+		period = tts.getCurrentCycle().getPeriodByIndex(4, 2, 1);
+		assertEquals("test_getPeriod : assertEquals 1 (begin hour):", 20,
+				period.getBeginHour()[0]);
+		assertEquals("test_getPeriod : assertEquals 2 (begin minute):", 0,
+				period.getBeginHour()[1]);
 		assertEquals("test_getPeriod : assertEquals 3 (priority):", 1, period
 				.getPriority());
 
@@ -114,8 +217,10 @@ public class TTStructureTest extends TestCase {
 		InputStream is;
 		try {
 			is = new FileInputStream(_pathForOutputFiles + "newStandardTT.xml");
-//			Document doc = xmlFile.createDocumentFromInputStream(is);
-		    tts.loadTTStructureFromInpuStream(is);//loadTTSFromFile(_pathForFiles + "DXToolsMethodsTest_resizeAvailability.xml")
+
+			tts.loadTTStructureFromInpuStream(is);// loadTTSFromFile(_pathForFiles
+			// +
+			// "DXToolsMethodsTest_resizeAvailability.xml")
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -123,15 +228,13 @@ public class TTStructureTest extends TestCase {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-//		tts.loadTTSFromFile(_pathForOutputFiles + "newStandardTT.xml");
+
 		assertEquals(
 				"test1_CreateDefaultTT : assertEquals 1 (number of cycles):",
 				5, tts.getSetOfCycles().size());
 		assertEquals("test2_CreateDefaultTT : assertEquals 2 (PeriodLenght):",
 				60, tts.getPeriodLenght());
 	}
-
-
 
 	/**
 	 * test that gives the maximal number of periods by day in a cycle
@@ -142,8 +245,9 @@ public class TTStructureTest extends TestCase {
 		InputStream is;
 		try {
 			is = new FileInputStream(_pathForFiles + "nonUniformTT.xml");
-//			Document doc = xmlFile.createDocumentFromInputStream(is);
-		    tts.loadTTStructureFromInpuStream(is);//loadTTSFromFile(_pathForFiles + "DXToolsMethodsTest_resizeAvailability.xml")
+			tts.loadTTStructureFromInpuStream(is);// loadTTSFromFile(_pathForFiles
+			// +
+			// "DXToolsMethodsTest_resizeAvailability.xml")
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -151,19 +255,15 @@ public class TTStructureTest extends TestCase {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-//		tts.loadTTSFromFile(_pathForFiles + "nonUniformTT.xml");
+
 		int maxPer = tts.getCurrentCycle().getMaxNumberOfPeriodsADay();
 		assertEquals("test_getMaxNumberOfPeriodsADay : assertEquals 1 :", 12,
 				maxPer);
-		
-		
+
 		int maxSeq = tts.getCurrentCycle().getMaxNumberOfSeqs();
 		assertEquals("test_getMaxNumberOfSequences : assertEquals 1 :", 3,
 				maxSeq);
 	}
-
-
 
 	/**
 	 * test that save the ttstructure in a xml file
@@ -173,8 +273,10 @@ public class TTStructureTest extends TestCase {
 		InputStream is;
 		try {
 			is = new FileInputStream(_pathForFiles + "StandardTTC.xml");
-//			Document doc = xmlFile.createDocumentFromInputStream(is);
-		    tts.loadTTStructureFromInpuStream(is);//loadTTSFromFile(_pathForFiles + "DXToolsMethodsTest_resizeAvailability.xml")
+
+			tts.loadTTStructureFromInpuStream(is);// loadTTSFromFile(_pathForFiles
+			// +
+			// "DXToolsMethodsTest_resizeAvailability.xml")
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -182,14 +284,15 @@ public class TTStructureTest extends TestCase {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-//		tts.loadTTSFromFile(_pathForFiles + "StandardTTC.xml");
 		tts.saveTTStructure(_pathForOutputFiles + "SaveStandardTTC.xml");
 		TTStructure newtts = new TTStructure();
 		InputStream nis;
 		try {
-			nis = new FileInputStream(_pathForOutputFiles + "SaveStandardTTC.xml");
-//			Document doc = xmlFile.createDocumentFromInputStream(is);
-			newtts.loadTTStructureFromInpuStream(nis);//loadTTSFromFile(_pathForFiles + "DXToolsMethodsTest_resizeAvailability.xml")
+			nis = new FileInputStream(_pathForOutputFiles
+					+ "SaveStandardTTC.xml");
+			newtts.loadTTStructureFromInpuStream(nis);// loadTTSFromFile(_pathForFiles
+			// +
+			// "DXToolsMethodsTest_resizeAvailability.xml")
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -197,7 +300,7 @@ public class TTStructureTest extends TestCase {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-//		newtts.loadTTSFromFile(_pathForOutputFiles + "SaveStandardTTC.xml");
+
 		Period lastPer = newtts.getCurrentCycle().getLastPeriod();
 		assertEquals(
 				"test_saveTTStructure : assertEquals 1 (number of cycles):", 3,
@@ -219,16 +322,16 @@ public class TTStructureTest extends TestCase {
 		XMLInputFile xmlFile;
 		Element item;
 		TTStructure tts = new TTStructure();
-		// SetOfCycles setOfcycle= new SetOfCycles();
+
 		try {
 			xmlFile = new XMLInputFile();
-			InputStream is = new FileInputStream(_pathForFiles + "StandardTTC.xml");
+			InputStream is = new FileInputStream(_pathForFiles
+					+ "StandardTTC.xml");
 			Document doc = xmlFile.createDocumentFromInputStream(is);
-			//Document doc = xmlFile.createDocument(_pathForFiles + "StandardTTC.xml");
 			XMLReader list = new XMLReader();
 			item = list.getRootElement(doc);
 			tts.readXMLtag(item);
-			// _setOfCycles.readXMLtag(root);
+
 		} catch (Exception e) {
 			System.out.println(e);
 		}
@@ -246,11 +349,6 @@ public class TTStructureTest extends TestCase {
 		Element item;
 		TTStructure tts = new TTStructure();
 		TTStructure newtts = new TTStructure();
-		// SetOfCycles setOfcycle= new SetOfCycles();
-		// SetOfCycles newSetOfcycle= new SetOfCycles();
-		// Cycle newCycle= new Cycle();
-		// cycle.getSetOfDays().addResource(new Resource("Ma",new Day()),0);
-		// cycle.addDays(3);
 
 		Cycle cycle = new Cycle();
 		cycle.getSetOfDays().addResource(new DResource("Ma", new Day()), 0);
@@ -264,8 +362,8 @@ public class TTStructureTest extends TestCase {
 		tts.getSetOfCycles().addResource(new DResource("2", cycle), 0);
 		try {
 			xmlFile = new XMLInputFile();
-			// System.out.println(path+"cycle.xml");//debug
-			Document doc;// = xmlFile.getDocumentFile(path+"cycle.xml");
+
+			Document doc;
 			XMLWriter wr = new XMLWriter();
 			doc = wr.getNewDocument();
 			// write xml file
@@ -275,22 +373,24 @@ public class TTStructureTest extends TestCase {
 			xmlOF.write(doc, _pathForOutputFiles + "SaveSetOfCycles.xml");
 
 			// read xml file
-			InputStream is = new FileInputStream(_pathForOutputFiles + "SaveSetOfCycles.xml");
+			InputStream is = new FileInputStream(_pathForOutputFiles
+					+ "SaveSetOfCycles.xml");
 			doc = xmlFile.createDocumentFromInputStream(is);
 			XMLReader list = new XMLReader();
 			item = list.getRootElement(doc);
 			newtts.readXMLtag(item);
-			assertEquals("test_writeXMLtag : assertEquals 1 (number of cycles):",
+			assertEquals(
+					"test_writeXMLtag : assertEquals 1 (number of cycles):",
 					tts.getSetOfCycles().size(), newtts.getSetOfCycles().size());
-			assertEquals("test_writeXMLtag : assertEquals 2 (period length):", tts
-					.getPeriodLenght(), newtts.getPeriodLenght());
+			assertEquals("test_writeXMLtag : assertEquals 2 (period length):",
+					tts.getPeriodLenght(), newtts.getPeriodLenght());
 		} catch (Exception e) {
 			// Should not fail in tests, but if file not there gives a failure
 			assertEquals("test_writeXMLtag: exception", "nullPointer", e
 					.toString());
 			System.out.println("Exception in: test_writeXMLtag");
 			e.printStackTrace();
-		}		
+		}
 	}
 
 	/**
@@ -301,8 +401,9 @@ public class TTStructureTest extends TestCase {
 		InputStream is;
 		try {
 			is = new FileInputStream(_pathForFiles + "5j27p.xml");
-//			Document doc = xmlFile.createDocumentFromInputStream(is);
-		    tts.loadTTStructureFromInpuStream(is);//loadTTSFromFile(_pathForFiles + "DXToolsMethodsTest_resizeAvailability.xml")
+			tts.loadTTStructureFromInpuStream(is);// loadTTSFromFile(_pathForFiles
+			// +
+			// "DXToolsMethodsTest_resizeAvailability.xml")
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -310,7 +411,6 @@ public class TTStructureTest extends TestCase {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//tts.loadTTSFromFile(_pathForFiles + "5j27p.xml");
 
 		TTStructure cloneTTS = tts.cloneCurrentTTS();
 		assertEquals(
@@ -352,8 +452,9 @@ public class TTStructureTest extends TestCase {
 		InputStream is;
 		try {
 			is = new FileInputStream(_pathForFiles + "5j27p.xml");
-//			Document doc = xmlFile.createDocumentFromInputStream(is);
-		    tts.loadTTStructureFromInpuStream(is);//loadTTSFromFile(_pathForFiles + "DXToolsMethodsTest_resizeAvailability.xml")
+			tts.loadTTStructureFromInpuStream(is);// loadTTSFromFile(_pathForFiles
+			// +
+			// "DXToolsMethodsTest_resizeAvailability.xml")
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -361,8 +462,6 @@ public class TTStructureTest extends TestCase {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-//		tts.loadTTSFromFile(_pathForFiles + "5j27p.xml");
 
 		TTStructure cloneTTS = tts.cloneCurrentTTS();
 		boolean isEquals = tts.getCurrentCycle().isEquals(

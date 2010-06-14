@@ -22,12 +22,12 @@ package dInternal;
 
 public abstract class DObject extends Object {
 
-	/**
-	 * this method is implemented in each resource object (Room, Instructor,
-	 * Student and Activity)
-	 */
-
-	public abstract long getSelectedField();
+//	/**
+//	 * this method is implemented in each resource object (Room, Instructor,
+//	 * Student and Activity)
+//	 */
+//
+//	public abstract long getSelectedField();
 
 	/**
 	 * Method to be implemented in each resource object. It compares if the
@@ -90,13 +90,13 @@ public abstract class DObject extends Object {
 		return mat; // XXXX Pascal: ?
 	}
 
-	/**
-	 * 
-	 * @param mat
-	 */
-	public void setAvailability(int[][] mat) {
-		mat[0][0] += 0;// XXXX Pascal: ?
-	}
+//	/**
+//	 * 
+//	 * @param mat
+//	 */
+//	public void setAvailability(int[][] mat) {
+//		mat[0][0] += 0;// XXXX Pascal: ?
+//	}
 
 	/**
 	 * @param field

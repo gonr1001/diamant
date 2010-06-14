@@ -32,7 +32,6 @@ import junit.framework.Test;
 import junit.framework.TestSuite;
 import dInternal.dData.dRooms.DxSetOfSitesTest;
 import dInternal.dOptimization.DxAssignRoomsAlgTest;
-import dInternal.dTimeTable.DxTTStructureTest;
 import dTest.dInternal.DxLoadDataTest;
 import dTest.dInternal.dData.DLoadDataTest;
 import dTest.dInternal.dData.DSaveDataTest; 
@@ -93,8 +92,6 @@ public class RgrTest {
 
 		
 			suite.addTest(DxSetOfSitesTest.suite());
-			
-			suite.addTest(DxTTStructureTest.suite());
 			suite.addTest(DxSiteReaderTest.suite());
 			suite.addTest(ByteInputFileTest.suite());
 			suite.addTest(ByteOutputFileTest.suite());

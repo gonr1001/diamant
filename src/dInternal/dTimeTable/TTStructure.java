@@ -19,6 +19,7 @@
 package dInternal.dTimeTable;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.InputStream;
 import java.util.Observable;
 
@@ -50,6 +51,9 @@ public class TTStructure extends Observable {
 	static final String _TAGITEM3 = "TTdays";
 
 	static final String ITEM2 = "DXTimeTable";
+	
+	private static String DXTTSTRUCTURE_SCHEMA_2_dot_2 = File.separator
+	+ "schemas" + File.separator + "DxTimetable.xsd";
 
 	// subtag
 	private final String[] ITEM2_subTag = { "TTcycle", "TTdays", "TTday",
@@ -598,4 +602,18 @@ public class TTStructure extends Observable {
 		_modified = true;
 	}
 
+	/**
+	 * it produces the SchemaFileName which is in the package
+	 * 
+	 * @return String SchemaFileName
+	 */
+
+	public String getSchemaFileName() {
+		String fullClassName = TTStructure.class.getCanonicalName();
+		String SimpleName = TTStructure.class.getSimpleName();
+		fullClassName = fullClassName.replace('.', File.separatorChar);
+		int i = fullClassName.indexOf(SimpleName);
+		String str = fullClassName.substring(0, i - 1);
+		return str + DXTTSTRUCTURE_SCHEMA_2_dot_2;
+	}
 } // end TTStructure

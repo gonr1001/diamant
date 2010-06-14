@@ -120,16 +120,6 @@ public class Unity extends DObject {
 		return _duration;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see dInternal.DObject#getSelectedField()
-	 */
-	@Override
-	public long getSelectedField() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	/**
 	 * get the cycle assignment list
