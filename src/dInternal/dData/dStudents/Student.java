@@ -71,7 +71,7 @@ public class Student extends DResource {
 				stateInGroup = DXToolsMethods.getToken(courseDesc, ";", 1);
 			}// end if( DXToolsMethods.countTokens(courseToken,";")>1)
 			if (course.length() >= DConst.STUDENT_COURSE_LENGTH) {
-				StuCourse courseValue = new StuCourse();
+				DValue courseValue = new DValue();
 				//courseValue.setStringValue(course.substring(0,_COURSELENGTH));
 				if (course.length() > DConst.STUDENT_COURSE_LENGTH) {
 					int group = Integer.parseInt(course.substring(
@@ -330,10 +330,10 @@ public class Student extends DResource {
 	 * */
 	private String exportToWrite() {
 		String str = "";
-		StuCourse courseValue;
+		DValue courseValue;
 		for (int i = 0; i < getCoursesList().size(); i++) {
 			str += getCoursesList().getResourceAt(i).getID();
-			courseValue = (StuCourse) getCoursesList().getResourceAt(i)
+			courseValue = (DValue) getCoursesList().getResourceAt(i)
 					.getAttach();
 			if (courseValue.getIntValue() > 0) {
 				String group = "00"
