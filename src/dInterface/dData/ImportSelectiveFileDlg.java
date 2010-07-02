@@ -21,6 +21,7 @@ import dResources.DFileFilter;
 import eLib.exit.dialog.DxExceptionDlg;
 import eLib.exit.dialog.InformationDlg;
 
+@SuppressWarnings("serial")
 public class ImportSelectiveFileDlg extends JDialog {
 
     /**

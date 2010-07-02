@@ -65,6 +65,7 @@ import eLib.exit.dialog.InformationDlg;
  * 
  * SectionDlg
  */
+@SuppressWarnings("serial")
 public class SectionDlg extends DDialog implements ActionListener,
 		 DlgIdentification {
 

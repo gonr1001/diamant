@@ -34,6 +34,7 @@ import dInterface.DlgGetFileName;
 import dResources.DFileFilter;
 
 
+@SuppressWarnings("serial")
 public class OpenTTSDlg extends JDialog implements DlgGetFileName {
 
 //	/**

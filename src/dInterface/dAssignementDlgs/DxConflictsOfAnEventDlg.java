@@ -58,6 +58,7 @@ import dInternal.DResource;
 import dInternal.dData.dActivities.Unity;
 import dInternal.dOptimization.DxEvent;
 
+@SuppressWarnings("serial")
 public class DxConflictsOfAnEventDlg extends DxEventsGUIforDlg implements
 		ActionListener, Observer, DlgIdentification {
 

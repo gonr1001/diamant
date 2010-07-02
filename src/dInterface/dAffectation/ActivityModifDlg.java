@@ -24,6 +24,7 @@ import dInternal.DModel;
 import dInternal.DResource;
 import dInternal.dData.dActivities.SetOfActivities;
 
+@SuppressWarnings("serial")
 public class ActivityModifDlg extends SetOfElementsInterface{
 
   private String[] _buttonsNames = {DConst.BUT_CLOSE};

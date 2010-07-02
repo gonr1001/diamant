@@ -26,6 +26,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
+@SuppressWarnings("serial")
 public class TwoButtonsPanel extends ButtonsPanel {
 
   public TwoButtonsPanel(ActionListener parentDialog, String [] buttonsNames) {

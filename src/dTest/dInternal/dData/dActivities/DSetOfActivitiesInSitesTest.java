@@ -8,7 +8,7 @@
  */
 package dTest.dInternal.dData.dActivities;
 
-import java.io.File;
+//import java.io.File;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -16,22 +16,22 @@ import junit.framework.TestSuite;
 
 import dConstants.DConst;
 import dExceptions.DiaException;
-import dInternal.DResource;
+//import dInternal.DResource;
 import dInternal.DxLoadData;
-import dInternal.dData.dActivities.Activity;
-import dInternal.dData.dActivities.Assignment;
-import dInternal.dData.dActivities.Section;
-import dInternal.dData.dActivities.SetOfActivities;
+//import dInternal.dData.dActivities.Activity;
+//import dInternal.dData.dActivities.Assignment;
+//import dInternal.dData.dActivities.Section;
+//import dInternal.dData.dActivities.SetOfActivities;
 import dInternal.dData.dActivities.SetOfActivitiesInSites;
-import dInternal.dData.dActivities.Type;
-import dInternal.dData.dActivities.Unity;
-import dInternal.dData.dInstructors.DxSetOfInstructors;
-import eLib.exit.txt.FilterFile;
+//import dInternal.dData.dActivities.Type;
+//import dInternal.dData.dActivities.Unity;
+//import dInternal.dData.dInstructors.DxSetOfInstructors;
+//import eLib.exit.txt.FilterFile;
 
 public class DSetOfActivitiesInSitesTest extends TestCase {
 
-	private final String _pathForFiles = "." + File.separator + "dataTest"
-			 + File.separator;
+//	private final String _pathForFiles = "." + File.separator + "dataTest"
+//			 + File.separator;
 
 	public static Test suite() {
 		// the type safe way is in SimpleTest

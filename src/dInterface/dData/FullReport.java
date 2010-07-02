@@ -49,6 +49,7 @@ import dInternal.DValue;
 
 
 
+@SuppressWarnings("serial")
 public class FullReport extends ViewReport implements ActionListener {
 	
 	

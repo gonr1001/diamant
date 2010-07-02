@@ -42,6 +42,7 @@ import dConstants.DConst;
 import dInterface.dUtil.DxTools;
 import dInternal.DModel;
 
+@SuppressWarnings("serial")
 public abstract class SetOfElementsInterface extends JDialog implements ActionListener{
 
   private Dialog _parent;

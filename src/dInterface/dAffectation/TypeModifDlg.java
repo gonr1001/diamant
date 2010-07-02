@@ -22,6 +22,7 @@ import dInternal.DResource;
 import dInternal.dData.dActivities.Type;
 
 
+@SuppressWarnings("serial")
 public class TypeModifDlg extends SetOfElementsInterface{
 
 private String[] _buttonsNames = {DConst.BUT_ADD, DConst.BUT_REMOVE, DConst.BUT_CLOSE};

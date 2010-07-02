@@ -47,6 +47,7 @@ import eLib.exit.txt.ByteOutputFile;
  *
  */
 
+@SuppressWarnings("serial")
 public class DefFilesToImportDlg extends JDialog
 implements ActionListener{
 	

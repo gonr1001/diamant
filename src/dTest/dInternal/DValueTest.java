@@ -48,10 +48,10 @@ public class DValueTest extends TestCase {
 		b = new DValue(5, new String("30"));
 	}
 
-	public void testA_setRefNo() {
-		a.setRefNo(1);
-		assertEquals("testA_setRefNo: assertEquals", 1, a.getRefNo());
-	}
+//	public void testA_setRefNo() {
+//		a.setRefNo(1);
+//		assertEquals("testA_setRefNo: assertEquals", 1, a.getRefNo());
+//	}
 
 	public void testA_setBooleanValue() {
 		a.setBooleanValue(true);
@@ -59,10 +59,10 @@ public class DValueTest extends TestCase {
 				.getBooleanValue());
 	}
 
-	public void testA_setIntValue() {
-		a.setIntValue(2);
-		assertEquals("testA_setIntValue: assertEquals", 2, a.getIntValue());
-	}
+//	public void testA_setIntValue() {
+//		a.setIntValue(2);
+//		assertEquals("testA_setIntValue: assertEquals", 2, a.getIntValue());
+//	}
 
 	public void testA_setObjectValue() {
 		a.setObjectValue(new String("3"));
@@ -70,10 +70,10 @@ public class DValueTest extends TestCase {
 				.getObjectValue());
 	}
 
-	public void testB_setRefNo() {
-		b.setRefNo(1);
-		assertEquals("testB_setRefNo: assertEquals", 1, b.getRefNo());
-	}
+//	public void testB_setRefNo() {
+//		b.setRefNo(1);
+//		assertEquals("testB_setRefNo: assertEquals", 1, b.getRefNo());
+//	}
 
 	public void testB_setBooleanValue() {
 		b.setBooleanValue(true);

@@ -25,7 +25,7 @@ package dInternal;
 public class DValue extends DObject{
 	
 	/**the reference value of this object*/
-	private int _refNo;
+	//private int _refNo;
 	/** the boolean value field*/
 	private boolean _booleanValue;
 	/**the integer value field*/
@@ -39,7 +39,7 @@ public class DValue extends DObject{
 	 * Contructor
 	 * */
 	public DValue() {
-		_refNo = 0;
+		//_refNo = 0;
 		_booleanValue = false;
 		_intValue = -1;
 		_stringValue = "";
@@ -51,7 +51,7 @@ public class DValue extends DObject{
 	 * */
 	public DValue(int i, Object obj) {
 		_intValue = i;
-		_refNo = 0;
+		//_refNo = 0;
 		_booleanValue = false;
 		_stringValue = "";
 		_objectValue = obj;
@@ -78,12 +78,12 @@ public class DValue extends DObject{
 		_stringValue = value;
 	}
 	
-	/**
-	 *
-	 * */
-	public void setRefNo(int refno){
-		_refNo = refno;
-	}
+//	/**
+//	 *
+//	 * */
+//	public void setRefNo(int refno){
+//		_refNo = refno;
+//	}
 	
 	/**
 	 *
@@ -113,12 +113,7 @@ public class DValue extends DObject{
 		return _stringValue;
 	}
 	
-	/**
-	 *
-	 * */
-	public int getRefNo(){
-		return _refNo;
-	}
+
 	
 	/**
 	 *
@@ -138,8 +133,8 @@ public class DValue extends DObject{
 			return false;
 		if(_intValue!= value._intValue)
 			return false;
-		if(_refNo!= value._refNo)
-			return false;
+//		if(_refNo!= value._refNo)
+//			return false;
 		if(!_stringValue.equals(value._stringValue))
 			return false;
 		/*if(!this._objectValue.equals(value._objectValue))
@@ -147,30 +142,23 @@ public class DValue extends DObject{
 		return true;
 	}
 	
-	/**
-	 *This object (which is already a string!) is itself returned.
-	 * @return the string itself
-	 * */
-	public String toWrite(){  
-		return ";"+_intValue+";"+_stringValue;
-	}
+//	/**
+//	 *This object (which is already a string!) is itself returned.
+//	 * @return the string itself
+//	 * */
+//	public String toWrite(){  
+//		return ";"+_intValue+";"+_stringValue;
+//	}
 	
-	/**
-	 * 
-	 */
-	public long getSelectedField(int choice) {		
-		switch(choice){
-	      case 0: return _refNo;
-	      case 1: return _intValue;
-	    }
-	    return -1;
-	}
-	/* (non-Javadoc)
-	 * @see dInternal.DObject#getSelectedField()
-	 */
-	public long getSelectedField() {
-		return 0;
-	}
-	
-	
+//	/**
+//	 * 
+//	 */
+//	public long getSelectedField(int choice) {		
+//		switch(choice){
+//	      case 0: return _refNo;
+//	      case 1: return _intValue;
+//	    }
+//	    return -1;
+//	}
+
 }

@@ -40,6 +40,7 @@ import dInterface.dTimeTable.SaveAsTxtDlg;
 import dInternal.DSetOfResources;
 import dInternal.DValue;
 
+@SuppressWarnings("serial")
 public class ImportReport extends ViewReport implements ActionListener {
 
     public ImportReport(ReportsDlg parentDlg, DApplication dApplic,

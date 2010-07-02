@@ -10,6 +10,7 @@ import dInterface.dUtil.ButtonsPanel;
 import dInternal.DModel;
 import dInternal.dData.dActivities.SetOfActivities;
 
+@SuppressWarnings("serial")
 public class DxEventsGUIforDlg extends JDialog {
 
 	// constants for JLists in dialog  

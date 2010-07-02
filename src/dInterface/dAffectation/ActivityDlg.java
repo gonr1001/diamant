@@ -43,6 +43,7 @@ import dInternal.DModel;
 import dInternal.dData.dActivities.SetOfActivities;
 
 
+@SuppressWarnings("serial")
 public class ActivityDlg extends JDialog implements ActionListener,
 		DlgIdentification {
 

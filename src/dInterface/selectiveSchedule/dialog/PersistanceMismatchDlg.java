@@ -40,6 +40,7 @@ import dInterface.selectiveSchedule.persistance.PersistanceMismatchManager;
  * @author Pascal
  *  
  */
+@SuppressWarnings("serial")
 public class PersistanceMismatchDlg extends JDialog {
 
     /**

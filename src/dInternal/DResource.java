@@ -202,17 +202,17 @@ public class DResource {
 		}
 	};
 
-	public static Comparator<DResource> FieldComparator = new Comparator<DResource>() {
-		public int compare(DResource left, DResource right) {
-			long diff = left.getAttach().getSelectedField(left._nSearchField)
-					- right.getAttach().getSelectedField(left._nSearchField);
-			if (diff > 0)
-				return 1;
-			if (diff < 0)
-				return -1;
-			return 0;
-		}
-	};
+//	public static Comparator<DResource> FieldComparator = new Comparator<DResource>() {
+//		public int compare(DResource left, DResource right) {
+//			long diff = left.getAttach().getSelectedField(left._nSearchField)
+//					- right.getAttach().getSelectedField(left._nSearchField);
+//			if (diff > 0)
+//				return 1;
+//			if (diff < 0)
+//				return -1;
+//			return 0;
+//		}
+//	};
 	
 	public static Comparator<DResource> ProgramComparator = new Comparator<DResource>() {
 //		public int compare(DResource left, DResource right) {

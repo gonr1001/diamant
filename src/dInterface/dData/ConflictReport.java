@@ -25,6 +25,7 @@ import dInterface.dTimeTable.SaveAsTxtDlg;
 import dInternal.DValue;
 
 
+@SuppressWarnings("serial")
 public class ConflictReport extends ViewReport implements ActionListener {
 
 	public ConflictReport(ReportsDlg parentDlg, DApplication dApplic,

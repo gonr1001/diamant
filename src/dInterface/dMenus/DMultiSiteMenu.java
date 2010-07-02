@@ -42,6 +42,7 @@ import dInterface.DApplication;
  * 
  */
 
+@SuppressWarnings("serial")
 public class DMultiSiteMenu extends JMenu implements MenuStates {
 
 	private DApplication _dApplication;

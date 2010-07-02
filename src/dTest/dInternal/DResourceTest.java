@@ -73,10 +73,10 @@ public class DResourceTest extends TestCase{
   	a.setManuallyCreated(true);
   	assertEquals("testA_setManuallyCreated: assertEquals", true, a.isManuallyCreated());
   }
-  public void testB_toWrite(){
-  	assertEquals("testB_toWrite: assertEquals", "20;;-1;", b.toWrite(";"));
-  	//assertEquals(.compareTo()==0);
-  }
+//  public void testB_toWrite(){
+//  	assertEquals("testB_toWrite: assertEquals", "20;;-1;", b.toWrite(";"));
+//  	//assertEquals(.compareTo()==0);
+//  }
   public void testB_isEquals(){
   	assertEquals("testB_isEquals: assertEquals", true, b.isEquals(c));
   }

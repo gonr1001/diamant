@@ -47,6 +47,7 @@ import javax.swing.ListModel;
  * @author Pascal
  *
  */
+@SuppressWarnings("serial")
 public class SetEditorDlg extends JDialog {
     private static final int STATE_CREATE = 1;
     private static final int STATE_MODIFY = 2;

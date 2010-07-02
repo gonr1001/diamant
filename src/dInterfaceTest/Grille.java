@@ -26,6 +26,7 @@ import javax.swing.JPanel;
 
 
 
+@SuppressWarnings("serial")
 public class Grille extends JPanel /*implements Observer*/{
 	
 	final static float dash1[] = {10.0f};

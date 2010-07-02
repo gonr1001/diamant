@@ -24,6 +24,7 @@ package dInterface.dUtil;
 
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public abstract class ButtonsPanel extends JPanel {
 
 	public abstract void setFirstEnable();

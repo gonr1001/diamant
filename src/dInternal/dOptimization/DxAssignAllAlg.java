@@ -47,17 +47,6 @@ public class DxAssignAllAlg implements Algorithm {
 
 	private DModel _dm;
 
-//	private DxConflictLimits _dxCL;
-
-	/**
-	 * constructor
-	 */
-//	public DxAssignAllAlg(DModel dm, DxConflictLimits dxcl) {
-//		_placedEvents = new Vector<DResource>();
-//		_dm = dm;
-//		_dxCL = dxcl;
-//	}
-
 	public DxAssignAllAlg(DModel dm) {
 		_placedEvents = new Vector<DResource>();
 		_dm = dm;
@@ -72,25 +61,11 @@ public class DxAssignAllAlg implements Algorithm {
 		Vector<DResource> vPeriods;
 		Vector<DResource> vNotYetAssignedEvents = getEvents();
 		int currentDuration = 0;
-		
-//		if (DxFlags.newPref) {			
-			// aa
-//		} else {
-//			_dxCL.getMNumOfEventsInPeriod(); // to avoid warning
-//		}
-		
-
 	
-		if (DxFlags.newAlg) {
-			
-//			if (DxFlags.newPref) {			
+		if (DxFlags.newAlg) {		
 				_dm.getConditionsToTest().extractParametersPref();
-//			} else {
-//				_dm.getConditionsToTest().extractDxPreference();
-//			}
-		} else {
-//			_dm.getConditionsToTest().extractPreference();
-		}
+		} 
+		
 		int[] nbConf;
 		for (int i = 0; i < vNotYetAssignedEvents.size(); i++) {
 			currentEvent = vNotYetAssignedEvents.get(i);
@@ -112,9 +87,7 @@ public class DxAssignAllAlg implements Algorithm {
 						int[] dayTime = { value.getIntValue(),
 								currentPeriod.getBeginHour()[0],
 								currentPeriod.getBeginHour()[1] };
-//						((DxEvent) currentEvent.getAttach()).setKey(4, _dm
-//								.getTTStructure().getCurrentCycle().getPeriod(
-//										dayTime));
+
 						((DxEvent) currentEvent.getAttach()).setPeriodKey(_dm
 								.getTTStructure().getCurrentCycle().getPeriod(
 										dayTime));

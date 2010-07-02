@@ -37,6 +37,7 @@ import dInterface.DApplication;
  * Build the DReport Menu, for each menu Item there is a Listener to call the
  * activated action in DxApplication.
  */
+@SuppressWarnings("serial")
 public class DReportMenu extends JMenu implements MenuStates {
 
 	private DApplication _dApplication;

@@ -37,6 +37,7 @@ import dInterface.DApplication;
  * activated action in DxApplication.
  * 
  */
+@SuppressWarnings("serial")
 public class DFileMenu extends JMenu implements MenuStates {
 
 	private DApplication _dApplication;

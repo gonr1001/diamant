@@ -40,6 +40,7 @@ import dInterface.DApplication;
  * 
  *
  */
+@SuppressWarnings("serial")
 public class DDevelopmentMenu extends JMenu implements MenuStates {
 
 	private DApplication _dApplication;

@@ -14,6 +14,7 @@ package dInterface.selectiveSchedule.relationTesters;
  * @author Pascal
  *
  */
+@SuppressWarnings("serial")
 public class UnexpectedArguments extends Exception {
 
     /**

@@ -27,6 +27,7 @@ import dInterface.dUtil.DxTools;
 import dInternal.dUtil.DXToolsMethods;
 import dInternal.DValue;
 
+@SuppressWarnings("serial")
 public abstract class ViewReport extends JPanel implements ActionListener {
 
 	protected ReportsDlg _parentDlg;

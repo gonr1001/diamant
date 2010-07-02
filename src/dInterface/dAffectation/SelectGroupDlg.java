@@ -21,6 +21,7 @@ import dInterface.dUtil.DxTools;
  * AboutDlg is a class used to display the about dialog.
  *
  */
+@SuppressWarnings("serial")
 public class SelectGroupDlg extends JDialog implements ActionListener {
   //DApplication _dApplic;
   private String [] _buttonsNames = {DConst.BUT_OK,DConst.BUT_CANCEL};

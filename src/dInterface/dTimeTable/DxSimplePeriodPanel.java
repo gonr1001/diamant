@@ -31,6 +31,7 @@ import javax.swing.JPanel;
 import dConstants.DConst;
 import dInternal.dTimeTable.Period;
 
+@SuppressWarnings("serial")
 public class DxSimplePeriodPanel extends DxPeriodPanel{
 
 	  public DxSimplePeriodPanel(int refNo, String str) {

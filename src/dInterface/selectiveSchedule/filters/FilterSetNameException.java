@@ -11,6 +11,7 @@ package dInterface.selectiveSchedule.filters;
  * @author Pascal
  *
  */
+@SuppressWarnings("serial")
 public class FilterSetNameException extends Exception {
 
     /**

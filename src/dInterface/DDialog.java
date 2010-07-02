@@ -42,6 +42,7 @@ import dInterface.dUtil.RightLeftInterface;
  * 
  * 
  */
+@SuppressWarnings("serial")
 public abstract class DDialog  extends JDialog implements ApplyCloseInterface,
 														RightLeftInterface {
 	

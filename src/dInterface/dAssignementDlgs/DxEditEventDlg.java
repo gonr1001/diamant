@@ -81,6 +81,7 @@ import dInternal.dUtil.DXToolsMethods;
 import eLib.exit.dialog.DxExceptionDlg;
 import eLib.exit.dialog.InformationDlg;
 
+@SuppressWarnings("serial")
 public class DxEditEventDlg extends JDialog implements ActionListener,
 		ChangeListener, DlgIdentification {
 

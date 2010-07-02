@@ -20,7 +20,6 @@
 package dInternal;
 
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.Vector;
 import dInternal.DResource;
 import dInternal.dData.StandardCollection;
@@ -511,19 +510,19 @@ public abstract class DSetOfResources extends DObject {
 		_stateSort = 0;
 	}
 
-	/**
-	 * Sort the SetOfResources by DResource object selected field from smallest
-	 * to biggest
-	 */
-	public void sortSetOfResourcesBySelectedAttachField(int field) {
-		Iterator<DResource> it = _resourceList.iterator();
-		while (it.hasNext())
-			 it.next().setSearchField(field);
-
-		Collections.sort(_resourceList, DResource.FieldComparator);
-		// sort(0, _resourceList.size() - 1, 2, field);
-		_stateSort = 2;
-	}
+//	/**
+//	 * Sort the SetOfResources by DResource object selected field from smallest
+//	 * to biggest
+//	 */
+//	public void sortSetOfResourcesBySelectedAttachField(int field) {
+//		Iterator<DResource> it = _resourceList.iterator();
+//		while (it.hasNext())
+//			 it.next().setSearchField(field);
+//
+//		Collections.sort(_resourceList, DResource.FieldComparator);
+//		// sort(0, _resourceList.size() - 1, 2, field);
+//		_stateSort = 2;
+//	}
 
 	/**
 	 * Sort the SetOfResources by DResource object selected field from smallest

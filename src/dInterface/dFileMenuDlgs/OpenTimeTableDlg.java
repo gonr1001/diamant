@@ -36,6 +36,7 @@ import dResources.DFileFilter;
  * 
  */
 
+@SuppressWarnings("serial")
 public class OpenTimeTableDlg extends JDialog  implements DlgGetFileName {
 
 	@Override

@@ -27,6 +27,7 @@ import dInternal.dData.dActivities.DxActivity;
 import dInternal.dData.dActivities.DxSetOfActivities;
 
 
+@SuppressWarnings("serial")
 public class DxActivityDlg extends JDialog implements ActionListener,
 		DlgIdentification {
 	// private DApplication _dApplic;

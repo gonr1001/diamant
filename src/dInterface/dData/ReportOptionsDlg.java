@@ -43,6 +43,7 @@ import dInterface.dUtil.DxTools;
 import dInterface.dUtil.TwoButtonsPanel;
 
 
+@SuppressWarnings("serial")
 public class ReportOptionsDlg extends JDialog implements ActionListener {
 	private ViewReport _parentDlg;
 

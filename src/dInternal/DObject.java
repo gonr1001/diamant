@@ -22,12 +22,11 @@ package dInternal;
 
 public abstract class DObject extends Object {
 
-//	/**
-//	 * this method is implemented in each resource object (Room, Instructor,
-//	 * Student and Activity)
-//	 */
-//
-//	public abstract long getSelectedField();
+	// /**
+	// * this method is implemented in each resource object (Room, Instructor,
+	// * Student and Activity)
+	// */
+	//
 
 	/**
 	 * Method to be implemented in each resource object. It compares if the
@@ -41,9 +40,7 @@ public abstract class DObject extends Object {
 	 *            The value tibe compared
 	 * @return true if the field has the same value of the argument "value"
 	 */
-	public boolean compareByField(
-	int fieldIndex, 
-	String value) {
+	public boolean compareByField(int fieldIndex, String value) {
 		return false; // XXXX Pascal: ???
 	}
 
@@ -51,16 +48,14 @@ public abstract class DObject extends Object {
 	 * Method to be implemented in each resource object. It sets the field
 	 * indicated by the argument "fieldValue" with the value "value"
 	 * 
-	 * @param fieldIndex.
-	 *            The index of the field. The value of the index is assigned in
-	 *            each resource
+	 * @param fieldIndex
+	 *            . The index of the field. The value of the index is assigned
+	 *            in each resource
 	 * @param value
 	 *            The value to be setted
 	 */
 
-	public void setField(
-	@SuppressWarnings("unused") int fieldIndex, 
-	String value) {
+	public void setField(int fieldIndex, String value) {
 		// to avoid warning
 	}
 
@@ -70,8 +65,6 @@ public abstract class DObject extends Object {
 	public String toWrite() {
 		return ""; // XXXX Pascal: ?
 	}
-
-
 
 	/**
 	 * 
@@ -90,27 +83,24 @@ public abstract class DObject extends Object {
 		return mat; // XXXX Pascal: ?
 	}
 
-//	/**
-//	 * 
-//	 * @param mat
-//	 */
-//	public void setAvailability(int[][] mat) {
-//		mat[0][0] += 0;// XXXX Pascal: ?
-//	}
+	// /**
+	// *
+	// * @param mat
+	// */
+	// public void setAvailability(int[][] mat) {
+	// mat[0][0] += 0;// XXXX Pascal: ?
+	// }
 
 	/**
 	 * @param field
 	 * @return
 	 */
-	public long getSelectedField(
-	int field) {
+	public long getSelectedField(int field) {
 		return 0;// XXXX Pascal: ?
 	}
-	
+
 	public String getProgram() {
-				return "";// XXXX Pascal: ?
-			}
-
-
+		return "";// XXXX Pascal: ?
+	}
 
 }

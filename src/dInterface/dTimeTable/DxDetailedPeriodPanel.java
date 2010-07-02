@@ -38,6 +38,7 @@ import dInternal.DSetOfResources;
 import dInternal.dData.StandardCollection;
 import dInternal.dTimeTable.Period;
 
+@SuppressWarnings("serial")
 public class DxDetailedPeriodPanel extends DxPeriodPanel{
 	  private JList _jList;
 	  private Vector<String> _vec;

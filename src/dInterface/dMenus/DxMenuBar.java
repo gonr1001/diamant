@@ -45,6 +45,7 @@ import dInterface.DApplication;
  * 
  * 
  */
+@SuppressWarnings("serial")
 public class DxMenuBar extends JMenuBar {
 
 	private final int NO_CHANGE_MENUS = 3;

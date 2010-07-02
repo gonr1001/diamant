@@ -36,6 +36,7 @@ import dInternal.dData.dInstructors.DxSetOfInstructors;
  * <p>
  * 
  */
+@SuppressWarnings("serial")
 public class DxInstructorAvailabilityDlg extends JDialog implements
 		ActionListener, ItemListener, DlgIdentification {
 	

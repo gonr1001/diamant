@@ -11,6 +11,7 @@ package dInterface.selectiveSchedule.dialog;
  * @author Pascal
  *
  */
+@SuppressWarnings("serial")
 public class SelectiveScheduleFileIOException extends Exception {
 
     /**

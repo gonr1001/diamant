@@ -57,6 +57,7 @@ import dInternal.dOptimization.DxEvent;
 import dInternal.dUtil.DXToolsMethods;
 import eLib.exit.dialog.InformationDlg;
 
+@SuppressWarnings("serial")
 public class DxEventsDlg extends DxEventsGUIforDlg  implements ActionListener, Observer,
 		DlgIdentification {
 

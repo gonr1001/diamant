@@ -42,6 +42,7 @@ import dInterface.DApplication;
  * This menu is used only with new features that are in test
  * 
  */
+@SuppressWarnings("serial")
 public class DNewFeaturesMenu extends JMenu implements MenuStates {
 
 	private DApplication _dApplication;

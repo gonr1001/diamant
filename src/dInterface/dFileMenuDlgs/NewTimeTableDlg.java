@@ -41,6 +41,7 @@ import org.apache.log4j.Logger;
  * <p> 
  * 
  */
+@SuppressWarnings("serial")
 public class NewTimeTableDlg extends JDialog /*TODO decomment rgr implements DlgGetFileName*/ {
 	private static Logger logger = Logger.getLogger(NewTimeTableDlg.class);
 

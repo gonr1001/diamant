@@ -37,6 +37,7 @@ import dResources.DFileFilter;
  * 
  */
 
+@SuppressWarnings("serial")
 public class ImportDlg extends JDialog implements DlgIdentification {
 
 	/**

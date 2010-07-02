@@ -42,6 +42,7 @@ import dInternal.dData.dRooms.DxCategory;
 import dInternal.dData.dRooms.DxRoom;
 import dInternal.dData.dRooms.DxSite;
 
+@SuppressWarnings("serial")
 public class DxRoomAvailabilityDlg extends JDialog implements ActionListener,
 		ItemListener, DlgIdentification {
 

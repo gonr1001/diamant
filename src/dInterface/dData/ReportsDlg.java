@@ -40,6 +40,7 @@ import dConstants.DConst;
 import dInterface.DApplication;
 import dInternal.dData.DStandardReportData;
 
+@SuppressWarnings("serial")
 public class ReportsDlg extends JDialog  { //Observer{// 
 	/* ADJUST_HEIGHT is needed to ajdust the screenSize
 	 * minus the barSize (the value is a guess) at the bottom */

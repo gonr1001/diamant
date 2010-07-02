@@ -73,6 +73,7 @@ import javax.swing.event.PopupMenuListener;
  * @author Pascal
  * 
  */
+@SuppressWarnings("serial")
 public class SelectiveScheduleDlg extends JDialog {
 	private static SelectiveScheduleDlg _instance = null;
 

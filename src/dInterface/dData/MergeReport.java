@@ -48,6 +48,7 @@ import dInternal.DSetOfResources;
 import dInternal.DValue;
 
 
+@SuppressWarnings("serial")
 public class MergeReport extends ViewReport implements ActionListener {
 
  public MergeReport(ReportsDlg parentDlg, DApplication dApplic, Dimension dim) {

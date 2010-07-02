@@ -22,6 +22,7 @@ import dInternal.DResource;
 import dInternal.dData.dActivities.Section;
 
 
+@SuppressWarnings("serial")
 public class UnityModifDlg extends SetOfElementsInterface {
 
 	private String[] _buttonsNames = { DConst.BUT_ADD, DConst.BUT_REMOVE,

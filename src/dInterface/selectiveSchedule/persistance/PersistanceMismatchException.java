@@ -11,6 +11,7 @@ package dInterface.selectiveSchedule.persistance;
  * @author Pascal
  *
  */
+@SuppressWarnings("serial")
 public class PersistanceMismatchException extends Exception {
 
     /**

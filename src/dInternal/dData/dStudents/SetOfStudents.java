@@ -221,75 +221,75 @@ public class SetOfStudents extends DSetOfResources {
 		}
 	}
 
-	/**
-	 *
-	 * @param activityID
-	 * @param typeID
-	 * @param group
-	 * @param order  
-	 * @return if order = 0, return ID, key, studentProgram;
-	 * if order = 1, return key, ID,  studentProgram;
-	 * if order = 2, return studentProgram, key, ID;
-	 */
-
-	public Vector getStudentsByGroupTable(String activityID, String typeID,
-			int group, int order) {
-		Vector<Vector> v = new Vector<Vector>();
-		Vector<String> vID = new Vector<String>();
-		Vector<String> vKey = new Vector<String>();
-		Vector<String> vSelField = new Vector<String>();
-		Vector<String> vFixState = new Vector<String>();
-
-		int keyLength = DConst.STUDENT_KEY_LENGTH;
-
-		int diff;
-		String iD, key, studentProgram;
-		Student studentRes;
-		//Vector list= new Vector();
-		if (order == 0)
-			sortSetOfResourcesByID();
-		if (order == 1)
-			sortSetOfResourcesByKey();
-		if (order == 2)
-			sortSetOfResourcesBySelectedAttachField(5);//sort by _auxField
-
-		for (int i = 0; i < size(); i++) {
-			studentRes = (Student) getResourceAt(i);
-			if (studentRes.isInGroup(activityID + typeID, group)) {
-				iD = studentRes.getID();
-				key = String.valueOf(studentRes.getKey());
-				diff = Math.abs(keyLength - key.length());
-				for (int j = 0; j < diff; j++)
-					key = "0" + key;
-				studentProgram = studentRes.getAuxField();
-				studentProgram = studentProgram.substring(0, 6);
-				vID.add(iD);
-				vKey.add(key);
-				vSelField.add(studentProgram);
-				if (studentRes.isFixedInGroup(activityID + typeID))
-					vFixState.add("" + DConst.CHAR_FIXED_IN_GROUP);
-				else
-					vFixState.add(" ");
-			}//end if(((StudentAttach)studentRes.getAttach()).isInGroup(activityID+typeID,group))
-		}//end for(int i=0; i< size(); i++)
-		if (order == 0) {
-			v.add(vID);//str = ID + " " + key + " " + studentProgram;
-			v.add(vKey);
-			v.add(vSelField);
-		}
-		if (order == 1) {
-			v.add(vKey);//str = key + " " + ID + " " + studentProgram;
-			v.add(vID);
-			v.add(vSelField);
-		}
-		if (order == 2) {
-			v.add(vSelField);//str = studentProgram + " " + ID + " " + key;
-			v.add(vID);
-			v.add(vKey);
-		}
-		v.add(vFixState);
-		return v;
-	}
+//	/**
+//	 *
+//	 * @param activityID
+//	 * @param typeID
+//	 * @param group
+//	 * @param order  
+//	 * @return if order = 0, return ID, key, studentProgram;
+//	 * if order = 1, return key, ID,  studentProgram;
+//	 * if order = 2, return studentProgram, key, ID;
+//	 */
+//
+//	public Vector getStudentsByGroupTable(String activityID, String typeID,
+//			int group, int order) {
+//		Vector<Vector> v = new Vector<Vector>();
+//		Vector<String> vID = new Vector<String>();
+//		Vector<String> vKey = new Vector<String>();
+//		Vector<String> vSelField = new Vector<String>();
+//		Vector<String> vFixState = new Vector<String>();
+//
+//		int keyLength = DConst.STUDENT_KEY_LENGTH;
+//
+//		int diff;
+//		String iD, key, studentProgram;
+//		Student studentRes;
+//		//Vector list= new Vector();
+//		if (order == 0)
+//			sortSetOfResourcesByID();
+//		if (order == 1)
+//			sortSetOfResourcesByKey();
+//		if (order == 2)
+//			sortSetOfResourcesBySelectedAttachField(5);//sort by _auxField
+//
+//		for (int i = 0; i < size(); i++) {
+//			studentRes = (Student) getResourceAt(i);
+//			if (studentRes.isInGroup(activityID + typeID, group)) {
+//				iD = studentRes.getID();
+//				key = String.valueOf(studentRes.getKey());
+//				diff = Math.abs(keyLength - key.length());
+//				for (int j = 0; j < diff; j++)
+//					key = "0" + key;
+//				studentProgram = studentRes.getAuxField();
+//				studentProgram = studentProgram.substring(0, 6);
+//				vID.add(iD);
+//				vKey.add(key);
+//				vSelField.add(studentProgram);
+//				if (studentRes.isFixedInGroup(activityID + typeID))
+//					vFixState.add("" + DConst.CHAR_FIXED_IN_GROUP);
+//				else
+//					vFixState.add(" ");
+//			}//end if(((StudentAttach)studentRes.getAttach()).isInGroup(activityID+typeID,group))
+//		}//end for(int i=0; i< size(); i++)
+//		if (order == 0) {
+//			v.add(vID);//str = ID + " " + key + " " + studentProgram;
+//			v.add(vKey);
+//			v.add(vSelField);
+//		}
+//		if (order == 1) {
+//			v.add(vKey);//str = key + " " + ID + " " + studentProgram;
+//			v.add(vID);
+//			v.add(vSelField);
+//		}
+//		if (order == 2) {
+//			v.add(vSelField);//str = studentProgram + " " + ID + " " + key;
+//			v.add(vID);
+//			v.add(vKey);
+//		}
+//		v.add(vFixState);
+//		return v;
+//	}
 
 	/**
 	 * Create an instance of set of students from a given vector

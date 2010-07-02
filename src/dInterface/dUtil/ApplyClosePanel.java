@@ -43,6 +43,7 @@ import dInterface.DDialog;
  * instance
  * 
  */
+@SuppressWarnings("serial")
 abstract public class ApplyClosePanel extends JPanel implements ApplyCloseInterface {
 	DDialog _parent;
 	JButton _button;

@@ -50,6 +50,7 @@ import dInterface.dUtil.TwoButtonsPanel;
 
 
 
+@SuppressWarnings("serial")
 public class SelectInstructors extends JDialog implements ActionListener {
 
 	/**

@@ -33,7 +33,6 @@ public class DObjectTest extends TestCase{
 	
   public DObjectTest(String name) {
      super(name);
-
   }
   
   public static Test suite() {
@@ -47,9 +46,6 @@ public class DObjectTest extends TestCase{
   	b = new DValue();
   }
 
-  public void testA_etSelectedField(){
-  	 assertEquals("testA_etSelectedField: assertEquals", true, (a.getSelectedField()==0));
-  }
   public void testA_compareByField(){
   	assertEquals("testA_compareByField: assertEquals", false, (a.compareByField(2,"2")));
   }  
@@ -58,10 +54,10 @@ public class DObjectTest extends TestCase{
   	assertEquals("testA_setField1: assertEquals", true, (a.getIntValue()==-1));
   	assertEquals("testA_setField2: assertEquals", true, (a.getStringValue().compareTo("")==0));
   }
-  public void testA_toWrite(){
-  	//System.out.println("\""+a.toWrite()+"\"");
-  	assertEquals("testA_toWrite: assertEquals", ";-1;",a.toWrite());
-  }
+//  public void testA_toWrite(){
+//  	//System.out.println("\""+a.toWrite()+"\"");
+//  	assertEquals("testA_toWrite: assertEquals", ";-1;",a.toWrite());
+//  }
 //  public void testA_externalKey(){
 //  	assertEquals("testA_externalKey: assertEquals","34",a.externalKey("3","4"));  }
   public void testA_isEquals(){
@@ -72,9 +68,5 @@ public class DObjectTest extends TestCase{
   public void testA_getMatrixAvailability(){
   	assertEquals("testA_getMatrixAvailability: assertEquals", 2, a.getMatrixAvailability().length );
   }
-//  public void testA_setAvailability(){
-//  	int [][] mat= new int[2][2];
-//  	a.setAvailability(mat);
-//  	assertEquals("testA_setAvailability: assertEquals", 0, mat[0][0]);
-//  }
+
 }
