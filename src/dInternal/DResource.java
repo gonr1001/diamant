@@ -179,16 +179,16 @@ public class DResource {
 		}
 	};
 	
-	public static Comparator<DResource> IDComparatorInt = new Comparator<DResource>() {
-		public int compare(DResource left, DResource right) {
-			int diff = Integer.parseInt(left._resourceID) - Integer.parseInt(right._resourceID);
-			if (diff > 0)
-				return 1;
-			if (diff < 0)
-				return -1;
-			return 0;
-		}
-	};
+//	public static Comparator<DResource> IDComparatorInt = new Comparator<DResource>() {
+//		public int compare(DResource left, DResource right) {
+//			int diff = Integer.parseInt(left._resourceID) - Integer.parseInt(right._resourceID);
+//			if (diff > 0)
+//				return 1;
+//			if (diff < 0)
+//				return -1;
+//			return 0;
+//		}
+//	};
 
 	
 	public static Comparator<DResource> KeyComparator = new Comparator<DResource>() {

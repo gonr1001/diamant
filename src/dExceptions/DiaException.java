@@ -20,6 +20,7 @@
 
 package dExceptions;
 
+@SuppressWarnings("serial")
 public class DiaException extends Exception {
 
 	public DiaException() {

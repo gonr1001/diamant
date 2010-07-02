@@ -63,7 +63,7 @@ import eLib.exit.txt.SemiExtendedAsciiFile;
  * 
  */
 public class DxLoadData {
-	
+
 	private final int OTHER_LINES = 4;
 
 	private String _instructorFileName;
@@ -142,8 +142,8 @@ public class DxLoadData {
 			linePosition++; // for separator =========================
 			// extract ttStructure
 			_tts = new TTStructure();
-			String inDiaTTSFileName = getAbsoluteFileName(
-					currentDir, dataTokens.nextToken().trim());
+			String inDiaTTSFileName = getAbsoluteFileName(currentDir,
+					dataTokens.nextToken().trim());
 			linePosition++;// for XML file name line
 			// _tts.loadTTSFromFile(inDiaTTSFileName);
 
@@ -213,7 +213,6 @@ public class DxLoadData {
 		return true;
 	}
 
-	
 	/**
 	 * give the relative path of a file Exemple: input of a relative path is:
 	 * ete04.dia the operation return:
@@ -223,16 +222,13 @@ public class DxLoadData {
 	 * @param str
 	 * @return
 	 */
-	private String getAbsoluteFileName(String absolutePath,
-			String str) {
+	private String getAbsoluteFileName(String absolutePath, String str) {
 		return absolutePath
 				+ File.separator
 				+ str.substring(str.lastIndexOf(File.separator) + 1, str
 						.length());
 	} // end getRelativeFileName
-	
-	
-	
+
 	private boolean loadData2dot1(String fileName) throws NullPointerException,
 			FileNotFoundException, IOException, DiaException {
 
@@ -241,11 +237,10 @@ public class DxLoadData {
 			loadData2dot1WithExceptions(fileName);
 			System.out.println("end by DxLoadData.loadData2dot1Exceptions");
 			return true;
+		} else {
+			System.out.println("end by DxLoadData.loadData2dot1Old");
+			return loadData2dot1Old(fileName);
 		}
-		// else {
-		System.out.println("end by DxLoadData.loadData2dot1Old");
-		return loadData2dot1Old(fileName);
-		// }
 	}
 
 	private boolean loadData2dot1Old(String fileName)
@@ -369,7 +364,7 @@ public class DxLoadData {
 
 			_dxSoSRooms = dxrr.readSetOfSites();
 			lines = dxrr.getLines();
-			
+
 			// }
 
 			// extract SetOfActivities
@@ -403,8 +398,6 @@ public class DxLoadData {
 		System.out.println("end lDxLoadData.loadData2dot1WithExceptions");
 
 	}
-
-
 
 	// /**
 	// *
@@ -612,8 +605,8 @@ public class DxLoadData {
 			throws DiaException, NullPointerException, FileNotFoundException,
 			IOException {
 		DataExchange de = buildDataExchange(_activitiesFileName);
-		SetOfActivitiesInSites activitiesList = new SetOfActivitiesInSites(false,
-				_dm.getTTStructure().getPeriodLenght());
+		SetOfActivitiesInSites activitiesList = new SetOfActivitiesInSites(
+				false, _dm.getTTStructure().getPeriodLenght());
 		if (de.getContents() != null) {
 			// Vector setOfResources = currentList
 			// .getSetOfResources();
@@ -644,8 +637,9 @@ public class DxLoadData {
 	 * @throws FileNotFoundException
 	 * @throws NullPointerException
 	 */
-	private DataExchange buildDataExchange(String fileName) throws DiaException,
-			NullPointerException, FileNotFoundException, IOException {
+	private DataExchange buildDataExchange(String fileName)
+			throws DiaException, NullPointerException, FileNotFoundException,
+			IOException {
 		byte[] dataloaded = filterBadChars(fileName);
 		StringTokenizer st = new StringTokenizer(new String(dataloaded),
 				DConst.CR_LF);
@@ -967,6 +961,5 @@ public class DxLoadData {
 		filter.validFile(str);
 		return filter.getByteArray();
 	}
-
 
 } // end DxLoadData

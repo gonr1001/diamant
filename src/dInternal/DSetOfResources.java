@@ -486,13 +486,13 @@ public abstract class DSetOfResources extends DObject {
 	}
 	
 	
-	/**
-	 * Sort the SetOfResources by DResource's ID from smallest to biggest
-	 */
-	public void sortSetOfResourcesByIDInt() {
-		Collections.sort(_resourceList, DResource.IDComparatorInt);
-		_stateSort = 1;
-	}
+//	/**
+//	 * Sort the SetOfResources by DResource's ID from smallest to biggest
+//	 */
+//	public void sortSetOfResourcesByIDInt() {
+//		Collections.sort(_resourceList, DResource.IDComparatorInt);
+//		_stateSort = 1;
+//	}
 //
 //	/**
 //	 * Sort the SetOfResources by DResource's ID from smallest to biggest
@@ -838,33 +838,33 @@ public abstract class DSetOfResources extends DObject {
 
 	
 	
-	/**
-	 * finds a index in a sorted vector, using the binary search algorithm
-	 * 
-	 * @param String
-	 *            the DResource ID from which to find index in SetOfResources
-	 * @return int index of the DResource in SetOfResources
-	 */
-	public int searchWhereToInsertInt(int id) {
-		if ((_stateSort != 1)) // || (_resourceList.size()<=3))
-			sortSetOfResourcesByIDInt();
-		int low = 0;
-		int high = _resourceList.size() - 1;
-		while (low <= high) {
-			int mid = (low + high) / 2;
-			int diff = Integer.parseInt(_resourceList.get(mid).getID())-id;
-			if (diff == 0) {
-				return mid;
-			}// else{
-			if (diff < 0) {
-				low = mid + 1;
-			} else {
-				high = mid - 1;
-			}
-
-		}// end while(low <= high)
-		return low;
-	}
+//	/**
+//	 * finds a index in a sorted vector, using the binary search algorithm
+//	 * 
+//	 * @param String
+//	 *            the DResource ID from which to find index in SetOfResources
+//	 * @return int index of the DResource in SetOfResources
+//	 */
+//	public int searchWhereToInsertInt(int id) {
+//		if ((_stateSort != 1)) // || (_resourceList.size()<=3))
+//			sortSetOfResourcesByIDInt();
+//		int low = 0;
+//		int high = _resourceList.size() - 1;
+//		while (low <= high) {
+//			int mid = (low + high) / 2;
+//			int diff = Integer.parseInt(_resourceList.get(mid).getID())-id;
+//			if (diff == 0) {
+//				return mid;
+//			}// else{
+//			if (diff < 0) {
+//				low = mid + 1;
+//			} else {
+//				high = mid - 1;
+//			}
+//
+//		}// end while(low <= high)
+//		return low;
+//	}
 	// /**
 	// * finds a index in a sorted vector, using the binary search algorithm
 	// * @param String the DResource ID from wich to find index in
