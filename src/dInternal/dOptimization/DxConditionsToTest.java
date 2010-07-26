@@ -43,7 +43,7 @@ import dInternal.dTimeTable.TTStructure;
  */
 public class DxConditionsToTest {
 
-	private StudentsConflictsMatrix _matrix;
+	private DxStudentConflictMatrix _matrix;
 
 	private DModel _dm;
 
@@ -78,14 +78,14 @@ public class DxConditionsToTest {
 		_periodVariationEvents = 0;
 
 		_conditionsToTest = new Vector<DxCondition>();
-		_matrix = new StudentsConflictsMatrix();
+		_matrix = new DxStudentConflictMatrix();
 		_conditionsToTest.add(new DxStudentCondtionsToTest(_matrix, _dm
 				.getSetOfActivities(), _dm.getTTStructure().getCurrentCycle()));
 		_conditionsToTest.add(new DxInstructorsConditionsToTest(_dm));
 		_conditionsToTest.add(new DxRoomsConditionsToTest(_dm));
 	}
 
-	public StudentsConflictsMatrix getConflictsMatrix() {
+	public DxStudentConflictMatrix getConflictsMatrix() {
 		return _matrix;
 	}
 

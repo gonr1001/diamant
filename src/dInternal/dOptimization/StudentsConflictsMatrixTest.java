@@ -75,13 +75,13 @@ public class StudentsConflictsMatrixTest extends TestCase {
 		dm1.getConditionsToTest().buildStudentConflictMatrix();
 		dm1.getConditionsToTest().buildAllConditions(dm1.getTTStructure());
 		
-		StudentsConflictsMatrix matrix1 = dm1.getConditionsToTest().getConflictsMatrix();
+		DxStudentConflictMatrix matrix1 = dm1.getConditionsToTest().getConflictsMatrix();
 
 
 		DModel dm2 = new DModel(new DxTTableDoc(), _pathForFiles + "loadData5j.dia");
 		dm2.getConditionsToTest().buildStudentConflictMatrix();
 		dm2.getConditionsToTest().buildAllConditions(dm2.getTTStructure());
-		StudentsConflictsMatrix matrix2 = dm2.getConditionsToTest().getConflictsMatrix();
+		DxStudentConflictMatrix matrix2 = dm2.getConditionsToTest().getConflictsMatrix();
 		
 		dm2.getConditionsToTest().buildStudentConflictMatrix();
 		dm2.getConditionsToTest().buildAllConditions(dm2.getTTStructure());

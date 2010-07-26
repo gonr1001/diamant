@@ -39,7 +39,7 @@ import dInternal.dUtil.DXToolsMethods;
  */
 public class DxStudentCondtionsToTest implements DxCondition {
 
-	StudentsConflictsMatrix _matrix;
+	DxStudentConflictMatrix _matrix;
 
 	SetOfActivities _soa;
 
@@ -53,7 +53,7 @@ public class DxStudentCondtionsToTest implements DxCondition {
 	 * @param soa
 	 * @param cycle
 	 */
-	public DxStudentCondtionsToTest(StudentsConflictsMatrix matrix,
+	public DxStudentCondtionsToTest(DxStudentConflictMatrix matrix,
 			SetOfActivities soa, Cycle cycle) {
 		_matrix = matrix;
 		_soa = soa;
