@@ -40,7 +40,7 @@ import developer.DxFlags;
 import dInternal.dData.dRooms.DxSetOfSitesTest;
 import dInternal.dOptimization.DxAssignRoomsAlgTest;
 import dInternal.dOptimization.StudentsConditionsTest;
-import dInternal.dOptimization.StudentsConflictsMatrixTest;
+import dInternal.dOptimization.DxStudentConflictMatrixTest;
 import dTest.ScanFileTest;
 import dTest.dInterface.dAssignementDlgs.DxEditEventDlgTest;
 import dTest.dInterface.dMenus.DFileMenuTest;
@@ -147,7 +147,7 @@ public class DiamantTest {
 		suite.addTest(ConflictsAttachTest.suite());
 
 		// to be classed
-		suite.addTest(StudentsConflictsMatrixTest.suite());
+		suite.addTest(DxStudentConflictMatrixTest.suite());
 		suite.addTest(InstructorsConditionsTest.suite());
 		suite.addTest(DxSiteReaderTest.suite());
 		suite.addTest(RoomsConditionsTest.suite());

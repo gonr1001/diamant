@@ -16,7 +16,7 @@ import junit.framework.TestSuite;
 import dInterface.DxTTableDoc;
 import dInternal.DModel;
 
-public class StudentsConflictsMatrixTest extends TestCase {
+public class DxStudentConflictMatrixTest extends TestCase {
 
 	
 	private final String _pathForFiles = "." + File.separator + "dataTest"
@@ -60,7 +60,7 @@ public class StudentsConflictsMatrixTest extends TestCase {
 	public static Test suite() {
 		// the type safe way is in SimpleTest
 		// the dynamic way :
-		return new TestSuite(StudentsConflictsMatrixTest.class);
+		return new TestSuite(DxStudentConflictMatrixTest.class);
 	} // end suite
 
 	/**

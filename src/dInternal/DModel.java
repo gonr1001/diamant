@@ -125,7 +125,7 @@ public class DModel extends Observable {
 	/**
 	 * int value is between 0-1000 and give the state of the progress bar
 	 */
-	private DValue _progressBarState;
+	private int _progressBarState;
 
 	/**
 	 * 
@@ -245,8 +245,8 @@ public class DModel extends Observable {
 		_setOfImportErrors = new StandardCollection();
 		_setOfImportSelErrors = new StandardCollection();
 
-		_progressBarState = new DValue();
-		_progressBarState.setIntValue(0);
+		_progressBarState = 0;
+		//_progressBarState.setIntValue(0);
 
 		_dxDocument = dDocument;
 		_isOnlyATimeTable = onlyATimeTable;
@@ -272,8 +272,15 @@ public class DModel extends Observable {
 	 * 
 	 * @return
 	 */
-	public DValue getProgressBarState() {
+	public int getProgressBarState() {
 		return _progressBarState;
+	}
+	/**
+	 * 
+	 * @return
+	 */
+	public void setProgressBarState(int i) {
+		 _progressBarState = i;
 	}
 
 	/**

@@ -96,7 +96,7 @@ public class DStandardReportData {
 		_activitiesReport = buildActivitiesReport();
 		_studentsReport = buildStudentsReport();
 		_conflictsReport = buildConflictsReport();
-		_dm.getProgressBarState().setIntValue(1000);
+		_dm.setProgressBarState(1000);
 	}
 
 	/**
@@ -107,7 +107,8 @@ public class DStandardReportData {
 		StringBuffer actlist = new StringBuffer("");
 		int size = _dm.getSetOfActivities().size();
 		for (int i = 0; i < size; i++) {
-			_dm.getProgressBarState().setIntValue(STATE1 * i / size);
+//			_dm.getProgressBarState().setIntValue(STATE1 * i / size);
+			_dm.setProgressBarState(STATE1 * i / size);
 			// System.out.println("Change progess bar: "+
 			// _dm.getProgressBarState().getIntValue());
 			Activity activity = (Activity) _dm.getSetOfActivities()
@@ -336,8 +337,7 @@ public class DStandardReportData {
 		StringBuffer report = new StringBuffer("");
 		int size = _dm.getTTStructure().getCurrentCycle().getSetOfDays().size();
 		for (int i = 0; i < size; i++) {
-			_dm.getProgressBarState().setIntValue(
-					STATE1 + STATE2 + STATE3 * i / size);
+			_dm.setProgressBarState(STATE1 + STATE2 + STATE3 * i / size);
 			DResource day = _dm.getTTStructure().getCurrentCycle()
 					.getSetOfDays().getResourceAt(i);
 			for (int j = 0; j < ((Day) day.getAttach()).getSetOfSequences()
