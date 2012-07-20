@@ -64,7 +64,8 @@ public class LookAndFeelPref implements ConstantsForLookAndFeel {
 	public void setLookAndFeel() {
 		String str = this.getLookAndFeel();
 		try {
-			UIManager.setLookAndFeel(str);
+			//was UIManager.setLookAndFeel(str);
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 			System.out.println("pref: " + str);
 		} catch (UnsupportedLookAndFeelException ulafe) {
 			new FatalProblemDlg("UnsupportedLookAndFeel: " + str);
