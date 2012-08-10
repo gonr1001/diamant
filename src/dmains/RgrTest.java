@@ -56,72 +56,72 @@ import eTest.ByteOutputFileTest;
  * <p>
  * 
  */
-public class RgrTest {
-
-	/**
-	 * 
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		junit.textui.TestRunner.run(suite());
-
-	}
-
-	/**
-	 * 
-	 * @return suite
-	 * 
-	 */
-	public static Test suite() {
-		System.out.println("Hello I am rgr selected Tests");
-
-		File forOutputTests = new File("." + File.separator + "forOutputTests");
-		if (!forOutputTests.isDirectory()) {
-			forOutputTests.mkdir();
-		}
-
-		TestSuite suite = new TestSuite("rgr selected Tests");
-
-		suite.addTest(DxAssignRoomsAlgTest.suite());
-		suite.addTest(DxAssignRoomsAlgTest.suite());
-		
-		
-		suite.addTest(DxSetOfActivitiesSitesTest.suite());
-		suite.addTest(DxSetOfActivitiesTest.suite());
-		
-
-		
-			suite.addTest(DxSetOfSitesTest.suite());
-			suite.addTest(DxSiteReaderTest.suite());
-			suite.addTest(ByteInputFileTest.suite());
-			suite.addTest(ByteOutputFileTest.suite());
-			suite.addTest(DxSetOfSitesTest.suite());
-			suite.addTest(DxAssignAllAlgTest.suite());
-			suite.addTest(RoomsConditionsTest.suite());
-
-			// if (DxFlags.newDxLoadData) {
-			suite.addTest(DxLoadDataTest.suite()); // TODO to review
-			// } else {
-			suite.addTest(DLoadDataTest.suite()); // TODO to review
-			// }
-
-			suite.addTest(SetOfEventsTest.suite());
-			suite.addTest(DSaveDataTest.suite());
-
-			suite.addTest(LookAndFeelPrefTest.suite());
-			suite.addTest(ParametersPrefTest.suite());
-			suite.addTest(ReportPrefTest.suite());
-			suite.addTest(FileFilterPrefTest.suite());
-			suite.addTest(ConditionsTest.suite());
-			suite.addTest(GenFonctionsTest.suite());
-		
-		suite.addTest(DxInstructorsReaderTest.suite());
-		suite.addTest(AdminFonctionsTest.suite());
-		
-		suite.addTest(DxAssignRoomsAlgTest.suite());
-		suite.addTest(DxAssignRoomsAlgTest.suite());
-		
-		System.out.println("Bye I was in rgr selected Tests");
-		return suite;
-	}
-}
+//public class RgrTest {
+//
+//	/**
+//	 * 
+//	 * @param args
+//	 */
+//	public static void main(String[] args) {
+//		junit.textui.TestRunner.run(suite());
+//
+//	}
+//
+//	/**
+//	 * 
+//	 * @return suite
+//	 * 
+//	 */
+//	public static Test suite() {
+//		System.out.println("Hello I am rgr selected Tests");
+//
+//		File forOutputTests = new File("." + File.separator + "forOutputTests");
+//		if (!forOutputTests.isDirectory()) {
+//			forOutputTests.mkdir();
+//		}
+//
+//		TestSuite suite = new TestSuite("rgr selected Tests");
+//
+//		suite.addTest(DxAssignRoomsAlgTest.suite());
+//		suite.addTest(DxAssignRoomsAlgTest.suite());
+//		
+//		
+//		suite.addTest(DxSetOfActivitiesSitesTest.suite());
+//		suite.addTest(DxSetOfActivitiesTest.suite());
+//		
+//
+//		
+//			suite.addTest(DxSetOfSitesTest.suite());
+//			suite.addTest(DxSiteReaderTest.suite());
+//			suite.addTest(ByteInputFileTest.suite());
+//			suite.addTest(ByteOutputFileTest.suite());
+//			suite.addTest(DxSetOfSitesTest.suite());
+//			suite.addTest(DxAssignAllAlgTest.suite());
+//			suite.addTest(RoomsConditionsTest.suite());
+//
+//			// if (DxFlags.newDxLoadData) {
+//			suite.addTest(DxLoadDataTest.suite()); // TODO to review
+//			// } else {
+//			suite.addTest(DLoadDataTest.suite()); // TODO to review
+//			// }
+//
+//			suite.addTest(SetOfEventsTest.suite());
+//			suite.addTest(DSaveDataTest.suite());
+//
+//			suite.addTest(LookAndFeelPrefTest.suite());
+//			suite.addTest(ParametersPrefTest.suite());
+//			suite.addTest(ReportPrefTest.suite());
+//			suite.addTest(FileFilterPrefTest.suite());
+//			suite.addTest(ConditionsTest.suite());
+//			suite.addTest(GenFonctionsTest.suite());
+//		
+//		suite.addTest(DxInstructorsReaderTest.suite());
+//		suite.addTest(AdminFonctionsTest.suite());
+//		
+//		suite.addTest(DxAssignRoomsAlgTest.suite());
+//		suite.addTest(DxAssignRoomsAlgTest.suite());
+//		
+//		System.out.println("Bye I was in rgr selected Tests");
+//		return suite;
+//	}
+//}

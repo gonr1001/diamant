@@ -89,106 +89,106 @@ import eTest.ByteOutputFileTest;
 import eTest.FilterFileTest;
 import eTest.SemiExtendedAsciiFileTest;
 
-public class DiamantTest {
-
-	/**
-	 * 
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		junit.textui.TestRunner.run(suite());
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public static Test suite() {
-		System.out.println("Hello I am in Diamant tests");
-		TestSuite suite = new TestSuite("Diamant Tests");
-		String str = System.getProperty("user.dir");
-		System.out.println("User Dir here  :" + str);
-		File forOutputTests = new File("." + File.separator + "forOutputTests");
-		forOutputTests.mkdir();
-		System.out.println("fot path" + forOutputTests.getAbsolutePath());
-		// Using files
-		if (DxFlags.newAlg) {
-			suite.addTest(DxAssignRoomsAlgTest.suite());
-		}
-
-		suite.addTest(ByteInputFileTest.suite());
-		suite.addTest(ByteOutputFileTest.suite());
-		suite.addTest(FilterFileTest.suite());
-		suite.addTest(SemiExtendedAsciiFileTest.suite());
-		suite.addTest(DxInstructorsReaderTest.suite());
-		suite.addTest(DxSetOfSitesTest.suite());
-		suite.addTest(DxAssignAllAlgTest.suite());
-
-		suite.addTest(RefinedStudMixAlgoTest.suite()); // TODO to be changed
-		suite.addTest(PeriodTest.suite());
-		suite.addTest(SequenceTest.suite());
-		suite.addTest(DayTest.suite());
-		suite.addTest(CycleTest.suite());
-		suite.addTest(TTStructureTest.suite());
-		suite.addTest(SetOfEventsTest.suite());
-		suite.addTest(GenFonctionsTest.suite());
-		suite.addTest(AdminFonctionsTest.suite());
-
-		// Not using files
-		suite.addTest(DxAvailabilityTest.suite());
-		suite.addTest(DxInstructorTest.suite());
-		suite.addTest(DxSetOfInstructorsTest.suite());
-		suite.addTest(ResourceTest.suite());
-		suite.addTest(AssignmentTest.suite());
-		suite.addTest(UnityTest.suite());
-		suite.addTest(SectionTest.suite());
-		suite.addTest(TypeTest.suite());
-		suite.addTest(ActivityTest.suite());
-		suite.addTest(ConflictsAttachTest.suite());
-
-		// to be classed
-		suite.addTest(DxStudentConflictMatrixTest.suite());
-		suite.addTest(InstructorsConditionsTest.suite());
-		suite.addTest(DxSiteReaderTest.suite());
-		suite.addTest(RoomsConditionsTest.suite());
-		suite.addTest(StudentsConditionsTest.suite());
-		suite.addTest(ConditionsTest.suite());
-		suite.addTest(ScanFileTest.suite());
-		suite.addTest(SetOfStuSitesTest.suite());
-
-		if (DxFlags.newActivity) {
-				//			suite.addTest(DxSetOfActivitiesSitesTest.suite());
-		} else {
-			suite.addTest(DSetOfActivitiesInSitesTest.suite());
-		}
-		suite.addTest(DValueTest.suite());
-		suite.addTest(DObjectTest.suite());
-		suite.addTest(DxStateTest.suite());
-		suite.addTest(DxStateBarModelTest.suite());
-		suite.addTest(DataExchangeTest.suite());
-		suite.addTest(ByteArrayMessageTest.suite());
-		suite.addTest(StandardCollectionTest.suite());
-		suite.addTest(DResourceTest.suite());
-		// if (DxFlags.newDxLoadData) {
-		suite.addTest(DxLoadDataTest.suite());
-		// } else {
-		suite.addTest(DLoadDataTest.suite());
-		// }
-		suite.addTest(DSaveDataTest.suite());
-		suite.addTest(DSetOfResourcesTest.suite());
-		suite.addTest(DStandardReportDataTest.suite());
-		suite.addTest(SetOfStuSitesTest.suite());
-		suite.addTest(StudentTest.suite());
-		suite.addTest(ResourceTest.suite());
-		suite.addTest(DFileMenuTest.suite());
-		suite.addTest(DxEditEventDlgTest.suite());
-
-		suite.addTest(LookAndFeelPrefTest.suite());
-		suite.addTest(ParametersPrefTest.suite());
-		suite.addTest(ReportPrefTest.suite());
-		suite.addTest(FileFilterPrefTest.suite());
-
-		System.out.println("Bye I was in Diamant tests");
-		return suite;
-	}
-}
+//public class DiamantTest {
+//
+//	/**
+//	 * 
+//	 * @param args
+//	 */
+//	public static void main(String[] args) {
+//		junit.textui.TestRunner.run(suite());
+//	}
+//
+//	/**
+//	 * 
+//	 * @return
+//	 */
+//	public static Test suite() {
+//		System.out.println("Hello I am in Diamant tests");
+//		TestSuite suite = new TestSuite("Diamant Tests");
+//		String str = System.getProperty("user.dir");
+//		System.out.println("User Dir here  :" + str);
+//		File forOutputTests = new File("." + File.separator + "forOutputTests");
+//		forOutputTests.mkdir();
+//		System.out.println("fot path" + forOutputTests.getAbsolutePath());
+//		// Using files
+//		if (DxFlags.newAlg) {
+//			suite.addTest(DxAssignRoomsAlgTest.suite());
+//		}
+//
+//		suite.addTest(ByteInputFileTest.suite());
+//		suite.addTest(ByteOutputFileTest.suite());
+//		suite.addTest(FilterFileTest.suite());
+//		suite.addTest(SemiExtendedAsciiFileTest.suite());
+//		suite.addTest(DxInstructorsReaderTest.suite());
+//		suite.addTest(DxSetOfSitesTest.suite());
+//		suite.addTest(DxAssignAllAlgTest.suite());
+//
+//		suite.addTest(RefinedStudMixAlgoTest.suite()); // TODO to be changed
+//		suite.addTest(PeriodTest.suite());
+//		suite.addTest(SequenceTest.suite());
+//		suite.addTest(DayTest.suite());
+//		suite.addTest(CycleTest.suite());
+//		suite.addTest(TTStructureTest.suite());
+//		suite.addTest(SetOfEventsTest.suite());
+//		suite.addTest(GenFonctionsTest.suite());
+//		suite.addTest(AdminFonctionsTest.suite());
+//
+//		// Not using files
+//		suite.addTest(DxAvailabilityTest.suite());
+//		suite.addTest(DxInstructorTest.suite());
+//		suite.addTest(DxSetOfInstructorsTest.suite());
+//		suite.addTest(ResourceTest.suite());
+//		suite.addTest(AssignmentTest.suite());
+//		suite.addTest(UnityTest.suite());
+//		suite.addTest(SectionTest.suite());
+//		suite.addTest(TypeTest.suite());
+//		suite.addTest(ActivityTest.suite());
+//		suite.addTest(ConflictsAttachTest.suite());
+//
+//		// to be classed
+//		suite.addTest(DxStudentConflictMatrixTest.suite());
+//		suite.addTest(InstructorsConditionsTest.suite());
+//		suite.addTest(DxSiteReaderTest.suite());
+//		suite.addTest(RoomsConditionsTest.suite());
+//		suite.addTest(StudentsConditionsTest.suite());
+//		suite.addTest(ConditionsTest.suite());
+//		suite.addTest(ScanFileTest.suite());
+//		suite.addTest(SetOfStuSitesTest.suite());
+//
+//		if (DxFlags.newActivity) {
+//				//			suite.addTest(DxSetOfActivitiesSitesTest.suite());
+//		} else {
+//			suite.addTest(DSetOfActivitiesInSitesTest.suite());
+//		}
+//		suite.addTest(DValueTest.suite());
+//		suite.addTest(DObjectTest.suite());
+//		suite.addTest(DxStateTest.suite());
+//		suite.addTest(DxStateBarModelTest.suite());
+//		suite.addTest(DataExchangeTest.suite());
+//		suite.addTest(ByteArrayMessageTest.suite());
+//		suite.addTest(StandardCollectionTest.suite());
+//		suite.addTest(DResourceTest.suite());
+//		// if (DxFlags.newDxLoadData) {
+//		suite.addTest(DxLoadDataTest.suite());
+//		// } else {
+//		suite.addTest(DLoadDataTest.suite());
+//		// }
+//		suite.addTest(DSaveDataTest.suite());
+//		suite.addTest(DSetOfResourcesTest.suite());
+//		suite.addTest(DStandardReportDataTest.suite());
+//		suite.addTest(SetOfStuSitesTest.suite());
+//		suite.addTest(StudentTest.suite());
+//		suite.addTest(ResourceTest.suite());
+//		suite.addTest(DFileMenuTest.suite());
+//		suite.addTest(DxEditEventDlgTest.suite());
+//
+//		suite.addTest(LookAndFeelPrefTest.suite());
+//		suite.addTest(ParametersPrefTest.suite());
+//		suite.addTest(ReportPrefTest.suite());
+//		suite.addTest(FileFilterPrefTest.suite());
+//
+//		System.out.println("Bye I was in Diamant tests");
+//		return suite;
+//	}
+//}

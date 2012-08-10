@@ -1,0 +1,3556 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<diamant_cours>
+<entete>
+<source_destination source="SIIG" destination="Diamant" />
+<version diamant="1.6" />
+<titre commentaire="Données provenantde la soumission 810 dans le SIIG" />
+<faculte nom="Faculté d'administration" code="adm031"/>
+<controle date="2012/06/04" heure="09:06:37" />
+<trimestre annee="2012" session="3" />
+<periode min="1" max="14" />
+<bloc taille="1" />
+<type horaire="Horaire des cours" />
+</entete>
+<activites>
+<activite code_activite="ADM713" nature="1" groupe="01" uaa="1206" uag="1220" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="ADM713-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="JE" heure_debut="08:30" heure_fin="11:30" horaire_fixe="O" no_local="K1-3080" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="ADM713" nature="1" groupe="03" uaa="1206" uag="1220" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="ADM713-1-03" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="MA" heure_debut="08:30" heure_fin="11:30" horaire_fixe="O" no_local="K1-3088" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="ADM713" nature="1" groupe="10" uaa="1206" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="ADM713-1-10" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="ME" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="K1-3066" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="ADM713" nature="1" groupe="55" uaa="1206" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="ADM713-1-55" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="MA" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="**" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="ADM713" nature="1" groupe="56" uaa="1206" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="ADM713-1-56" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="MA" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="**" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="ADM716" nature="1" groupe="03" uaa="1206" uag="1220" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="ADM716-1-03" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="ME" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="K1-3084" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="ADM717" nature="1" groupe="55" uaa="1206" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="ADM717-1-55" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="MA" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="**" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="ADM717" nature="1" groupe="56" uaa="1206" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="ADM717-1-56" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="LU" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="**" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="ADM721" nature="1" groupe="01" uaa="1206" uag="1220" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="ADM721-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="LU" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="K1-3080" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="ADM721" nature="1" groupe="03" uaa="1206" uag="1220" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="ADM721-1-03" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="ME" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="K1-3084" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="ADM721" nature="1" groupe="10" uaa="1206" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="ADM721-1-10" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="MA" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="K1-3066" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="ADM721" nature="1" groupe="55" uaa="1206" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="ADM721-1-55" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="MA" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="**" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="ADM721" nature="1" groupe="56" uaa="1206" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="ADM721-1-56" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="ME" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="**" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="ADM723" nature="1" groupe="01" uaa="1206" uag="1220" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="ADM723-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="LU" heure_debut="08:30" heure_fin="11:30" horaire_fixe="O" no_local="K1-3088" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="ADM723" nature="1" groupe="03" uaa="1206" uag="1220" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="ADM723-1-03" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="VE" heure_debut="08:30" heure_fin="11:30" horaire_fixe="O" no_local="K1-3308" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="ADM723" nature="1" groupe="10" uaa="1206" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="ADM723-1-10" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="LU" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="K1-3308" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="ADM723" nature="1" groupe="55" uaa="1206" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="ADM723-1-55" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="MA" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="**" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="ADM723" nature="1" groupe="56" uaa="1206" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="ADM723-1-56" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="ME" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="**" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="ADM724" nature="1" groupe="10" uaa="1206" uag="1223" lieu="SHE" max_etudiant="29">
+<enseignants>
+<enseignant id_enseignant="ADM724-1-10" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="MA" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="K1-3091" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="ADM724" nature="1" groupe="55" uaa="1206" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="ADM724-1-55" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="MA" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="**" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="ADM734" nature="1" groupe="03" uaa="1206" uag="1220" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="ADM734-1-03" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="LU" heure_debut="08:30" heure_fin="11:30" horaire_fixe="O" no_local="K1-3084" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="ADM745" nature="1" groupe="55" uaa="1206" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="ADM745-1-55" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="JE" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="**" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="ADM745" nature="1" groupe="56" uaa="1206" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="ADM745-1-56" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="JE" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="aucun" local_fixe="N"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="ADM746" nature="1" groupe="03" uaa="1206" uag="1220" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="ADM746-1-03" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="VE" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="K1-3085" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="ADM746" nature="1" groupe="55" uaa="1206" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="ADM746-1-55" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="LU" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="**" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="ADM756" nature="1" groupe="03" uaa="1206" uag="1220" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="648039" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="SA" heure_debut="09:00" heure_fin="12:00" horaire_fixe="O" no_local="aucun" local_fixe="N"/>
+<bloc_horaire jour="SA" heure_debut="13:00" heure_fin="16:30" horaire_fixe="O" no_local="aucun" local_fixe="N"/>
+<total_blocks_horaires total="2"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="ADM804" nature="1" groupe="01" uaa="1206" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="ADM804-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="ME" heure_debut="15:45" heure_fin="18:45" horaire_fixe="O" no_local="K1-3308" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="COP702" nature="1" groupe="01" uaa="1200" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="COP702-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="LU" heure_debut="08:30" heure_fin="11:30" horaire_fixe="O" no_local="K1-3086" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="COP706" nature="1" groupe="01" uaa="1200" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="COP706-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="JE" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="K1-3085" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="COP717" nature="1" groupe="01" uaa="1206" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="COP717-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="VE" heure_debut="08:30" heure_fin="11:30" horaire_fixe="O" no_local="K1-3086" local_fixe="O"/>
+<bloc_horaire jour="VE" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="K1-3086" local_fixe="O"/>
+<total_blocks_horaires total="2"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="COP718" nature="1" groupe="01" uaa="1206" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="COP718-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="MA" heure_debut="16:45" heure_fin="19:45" horaire_fixe="O" no_local="K1-3086" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="COP742" nature="1" groupe="01" uaa="1206" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="COP742-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="ME" heure_debut="15:45" heure_fin="18:45" horaire_fixe="O" no_local="K1-3092" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="CTB702" nature="1" groupe="10" uaa="1212" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="CTB702-1-10" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="LU" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="K1-3091" local_fixe="O"/>
+<bloc_horaire jour="MA" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="K1-3091" local_fixe="O"/>
+<bloc_horaire jour="ME" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="K1-3091" local_fixe="O"/>
+<bloc_horaire jour="JE" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="K1-3091" local_fixe="O"/>
+<bloc_horaire jour="VE" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="K1-3308" local_fixe="O"/>
+<total_blocks_horaires total="5"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="CTB702" nature="1" groupe="55" uaa="1212" uag="1223" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="CTB702-1-55" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="LU" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="3620" local_fixe="O"/>
+<bloc_horaire jour="MA" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="aucun" local_fixe="N"/>
+<bloc_horaire jour="ME" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="3620" local_fixe="O"/>
+<bloc_horaire jour="JE" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="aucun" local_fixe="N"/>
+<bloc_horaire jour="VE" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="3620" local_fixe="O"/>
+<total_blocks_horaires total="5"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="CTB710" nature="1" groupe="03" uaa="1212" uag="1220" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="CTB710-1-03" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="JE" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="K1-3088" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="CTB712" nature="1" groupe="01" uaa="1212" uag="1220" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="CTB712-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="JE" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="K1-3084" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="CTB712" nature="1" groupe="10" uaa="1212" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="CTB712-1-10" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="JE" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="K1-3308" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="CTB712" nature="1" groupe="55" uaa="1212" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="CTB712-1-55" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="LU" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="**" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="CTB712" nature="1" groupe="56" uaa="1212" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="CTB712-1-56" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="MA" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="**" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="CTB723" nature="1" groupe="01" uaa="1212" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="CTB723-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="ME" heure_debut="08:30" heure_fin="11:30" horaire_fixe="O" no_local="K1-3080" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="CTB726" nature="1" groupe="10" uaa="1212" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="CTB726-1-10" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="MA" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="K1-3091" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="CTB726" nature="1" groupe="55" uaa="1212" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="CTB726-1-55" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="MA" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="**" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="CTB730" nature="1" groupe="10" uaa="1212" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="CTB730-1-10" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="ME" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="K1-3091" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="CTB860" nature="1" groupe="01" uaa="1212" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="CTB860-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="ME" heure_debut="08:30" heure_fin="11:30" horaire_fixe="O" no_local="K1-3088" local_fixe="O"/>
+<bloc_horaire jour="JE" heure_debut="08:30" heure_fin="11:30" horaire_fixe="O" no_local="K1-3092" local_fixe="O"/>
+<total_blocks_horaires total="2"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="DAT802" nature="1" groupe="50" uaa="1212" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="DAT802-1-50" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="JE" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="aucun" local_fixe="N"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="DAT812" nature="1" groupe="50" uaa="1212" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="DAT812-1-50" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="ME" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="aucun" local_fixe="N"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="DAT822" nature="1" groupe="50" uaa="1212" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="DAT822-1-50" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="LU" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="aucun" local_fixe="N"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="DAT823" nature="1" groupe="50" uaa="1212" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="DAT823-1-50" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="SA" heure_debut="09:00" heure_fin="16:00" horaire_fixe="O" no_local="aucun" local_fixe="N"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="DAT824" nature="1" groupe="50" uaa="1212" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="DAT824-1-50" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="JE" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="aucun" local_fixe="N"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="DAT826" nature="1" groupe="50" uaa="1212" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="DAT826-1-50" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="MA" heure_debut="18:30" heure_fin="21:30" horaire_fixe="O" no_local="aucun" local_fixe="N"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="DBA810" nature="1" groupe="01" uaa="1200" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="DBA810-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="MA" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="A1-228" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="DBA830" nature="1" groupe="01" uaa="1200" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="DBA830-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="JE" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="A1-228" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="DRT744" nature="1" groupe="01" uaa="1212" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="DRT744-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="ME" heure_debut="15:45" heure_fin="18:45" horaire_fixe="O" no_local="K1-3066" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="ECN700" nature="1" groupe="01" uaa="1213" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="ECN700-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="JE" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="K1-3092" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="ECN701" nature="1" groupe="01" uaa="1213" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="ECN701-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="LU" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="K1-3091" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="ECN702" nature="1" groupe="01" uaa="1213" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="ECN702-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="ME" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="K1-3092" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="ECN770" nature="1" groupe="01" uaa="1213" uag="1220" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="ECN770-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="JE" heure_debut="08:30" heure_fin="11:30" horaire_fixe="O" no_local="K1-3080" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="ECN770" nature="1" groupe="02" uaa="1213" uag="1220" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="ECN770-1-02" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="MA" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="K1-3092" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="FEC711" nature="1" groupe="01" uaa="1204" uag="1220" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="FEC711-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="VE" heure_debut="08:30" heure_fin="11:30" horaire_fixe="O" no_local="A8-249" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="FEC711" nature="1" groupe="02" uaa="1204" uag="1220" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="FEC711-1-02" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="LU" heure_debut="08:30" heure_fin="11:30" horaire_fixe="O" no_local="A8-245" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="FEC722" nature="1" groupe="55" uaa="1204" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="FEC722-1-55" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="LU" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="**" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="FEC722" nature="1" groupe="56" uaa="1204" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="FEC722-1-56" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="JE" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="**" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="FEC756" nature="1" groupe="01" uaa="1204" uag="1220" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="FEC756-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="LU" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="K1-3080" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="FEC765" nature="1" groupe="10" uaa="1204" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="FEC765-1-10" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="JE" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="K1-3091" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="FEC810" nature="1" groupe="01" uaa="1204" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="FEC810-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="ME" heure_debut="08:30" heure_fin="11:30" horaire_fixe="O" no_local="K1-3066" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="FEC810" nature="1" groupe="02" uaa="1204" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="FEC810-1-02" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="ME" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="K1-3066" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="FEC822" nature="1" groupe="01" uaa="1204" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="FEC822-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="JE" heure_debut="08:30" heure_fin="11:30" horaire_fixe="O" no_local="K1-3066" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="FEC822" nature="1" groupe="02" uaa="1204" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="FEC822-1-02" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="JE" heure_debut="15:45" heure_fin="18:45" horaire_fixe="O" no_local="K1-3066" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="FEC840" nature="1" groupe="01" uaa="1204" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="FEC840-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="MA" heure_debut="08:30" heure_fin="11:30" horaire_fixe="O" no_local="K1-3066" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="FEC840" nature="1" groupe="02" uaa="1204" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="FEC840-1-02" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="MA" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="K1-3066" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="FEC860" nature="1" groupe="01" uaa="1204" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="FEC860-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="LU" heure_debut="08:30" heure_fin="11:30" horaire_fixe="O" no_local="K1-3066" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="FEC860" nature="1" groupe="02" uaa="1204" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="FEC860-1-02" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="LU" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="K1-3066" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="FIS730" nature="1" groupe="01" uaa="1212" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="FIS730-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="ME" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="K1-3092" local_fixe="O"/>
+<bloc_horaire jour="JE" heure_debut="08:30" heure_fin="11:30" horaire_fixe="O" no_local="K1-3092" local_fixe="O"/>
+<bloc_horaire jour="JE" heure_debut="15:45" heure_fin="18:45" horaire_fixe="O" no_local="K1-3092" local_fixe="O"/>
+<bloc_horaire jour="JE" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="K1-3092" local_fixe="O"/>
+<bloc_horaire jour="VE" heure_debut="08:30" heure_fin="11:30" horaire_fixe="O" no_local="K1-3092" local_fixe="O"/>
+<total_blocks_horaires total="5"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="FIS730" nature="1" groupe="02" uaa="1212" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="FIS730-1-02" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="ME" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="K1-3092" local_fixe="O"/>
+<bloc_horaire jour="JE" heure_debut="08:30" heure_fin="11:30" horaire_fixe="O" no_local="K1-3092" local_fixe="O"/>
+<bloc_horaire jour="JE" heure_debut="15:45" heure_fin="18:45" horaire_fixe="O" no_local="K1-3092" local_fixe="O"/>
+<bloc_horaire jour="JE" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="K1-3092" local_fixe="O"/>
+<bloc_horaire jour="VE" heure_debut="08:30" heure_fin="11:30" horaire_fixe="O" no_local="K1-3092" local_fixe="O"/>
+<bloc_horaire jour="VE" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="K1-3092" local_fixe="O"/>
+<total_blocks_horaires total="6"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="FIS740" nature="1" groupe="01" uaa="1212" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="FIS740-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="MA" heure_debut="08:30" heure_fin="11:30" horaire_fixe="O" no_local="K1-3092" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="FIS740" nature="1" groupe="02" uaa="1212" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="FIS740-1-02" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="MA" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="K1-3092" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="FIS742" nature="1" groupe="01" uaa="1212" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="FIS742-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="LU" heure_debut="08:30" heure_fin="11:30" horaire_fixe="O" no_local="K1-3092" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="FIS745" nature="1" groupe="01" uaa="1212" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="FIS745-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="VE" heure_debut="08:30" heure_fin="11:30" horaire_fixe="O" no_local="K1-3085" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="FIS745" nature="1" groupe="02" uaa="1212" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="FIS745-1-02" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="VE" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="K1-3085" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="GCE801" nature="1" groupe="01" uaa="1210" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="GCE801-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="MA" heure_debut="08:30" heure_fin="11:30" horaire_fixe="O" no_local="K1-3084" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="GIS716" nature="1" groupe="01" uaa="1210" uag="1220" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="GIS716-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="ME" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="K1-3080" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="GIS716" nature="1" groupe="55" uaa="1210" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="GIS716-1-55" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="ME" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="**" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="GIS716" nature="1" groupe="56" uaa="1210" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="GIS716-1-56" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="JE" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="**" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="GIS800" nature="1" groupe="01" uaa="1210" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="GIS800-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="LU" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="K1-3084" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="GIS802" nature="1" groupe="01" uaa="1210" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="GIS802-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="ME" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="K1-3085" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="GIS802" nature="1" groupe="50" uaa="1210" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="GIS802-1-50" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="LU" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="aucun" local_fixe="N"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="GIS803" nature="1" groupe="01" uaa="1210" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="GIS803-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="ME" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="K1-3080" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="GIS803" nature="1" groupe="50" uaa="1210" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="GIS803-1-50" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="ME" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="aucun" local_fixe="N"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="GIS821" nature="1" groupe="01" uaa="1210" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="GIS821-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="ME" heure_debut="15:45" heure_fin="18:45" horaire_fixe="O" no_local="K1-3085" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="GIS860" nature="1" groupe="01" uaa="1210" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="GIS860-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="VE" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="K1-3091" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="GIS861" nature="1" groupe="01" uaa="1210" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="GIS861-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="JE" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="K1-3086" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="GRH722" nature="1" groupe="01" uaa="1206" uag="1220" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="GRH722-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="VE" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="K1-3084" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="GRH722" nature="1" groupe="10" uaa="1206" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="GRH722-1-10" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="LU" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="K1-3066" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="GRH756" nature="1" groupe="01" uaa="1206" uag="1220" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="GRH756-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="ME" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="K1-3080" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="GRH820" nature="1" groupe="01" uaa="1206" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="GRH820-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="MA" heure_debut="08:30" heure_fin="11:30" horaire_fixe="O" no_local="K1-3087" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="ICO811" nature="1" groupe="01" uaa="1206" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="ICO811-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="MA" heure_debut="15:45" heure_fin="18:45" horaire_fixe="O" no_local="K1-3308" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="ICO812" nature="1" groupe="01" uaa="1206" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="ICO812-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="MA" heure_debut="08:30" heure_fin="11:30" horaire_fixe="O" no_local="K1-3308" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="ICO817" nature="1" groupe="01" uaa="1206" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="ICO817-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="LU" heure_debut="08:30" heure_fin="11:30" horaire_fixe="O" no_local="K1-3308" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="ICO821" nature="1" groupe="01" uaa="1206" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="ICO821-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="ME" heure_debut="08:30" heure_fin="11:30" horaire_fixe="O" no_local="K1-3308" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="INS710" nature="1" groupe="03" uaa="1206" uag="1220" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="INS710-1-03" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="MA" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="K1-3087" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="INT811" nature="1" groupe="01" uaa="1204" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="INT811-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="SA" heure_debut="08:30" heure_fin="11:30" horaire_fixe="O" no_local="K1-3066" local_fixe="O"/>
+<bloc_horaire jour="SA" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="K1-3066" local_fixe="O"/>
+<total_blocks_horaires total="2"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="INT813" nature="1" groupe="01" uaa="1212" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="INT813-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="LU" heure_debut="15:45" heure_fin="18:45" horaire_fixe="O" no_local="K1-3308" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="INT814" nature="1" groupe="01" uaa="1206" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="INT814-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="MA" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="K1-3308" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="INT815" nature="1" groupe="01" uaa="1200" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="INT815-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="VE" heure_debut="08:30" heure_fin="11:30" horaire_fixe="O" no_local="K1-3091" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="MAR711" nature="1" groupe="01" uaa="1208" uag="1220" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="MAR711-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="MA" heure_debut="08:30" heure_fin="11:30" horaire_fixe="O" no_local="aucun" local_fixe="N"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="MAR722" nature="1" groupe="10" uaa="1208" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="MAR722-1-10" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="JE" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="K1-3088" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="MAR724" nature="1" groupe="55" uaa="1208" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="MAR724-1-55" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="JE" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="**" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="MAR724" nature="1" groupe="56" uaa="1208" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="MAR724-1-56" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="LU" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="**" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="MAR754" nature="1" groupe="10" uaa="1208" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="MAR754-1-10" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="LU" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="K1-3091" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="MAR756" nature="1" groupe="01" uaa="1208" uag="1220" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="MAR756-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="JE" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="K1-3080" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="MAR762" nature="1" groupe="55" uaa="1208" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="MAR762-1-55" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="LU" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="**" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="MAR771" nature="1" groupe="03" uaa="1208" uag="1220" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="MAR771-1-03" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="JE" heure_debut="08:30" heure_fin="11:30" horaire_fixe="O" no_local="K1-3084" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="MAR771" nature="1" groupe="55" uaa="1208" uag="1223" lieu="SHE" max_etudiant="28">
+<enseignants>
+<enseignant id_enseignant="MAR771-1-55" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="ME" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="**" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="MAR801" nature="1" groupe="01" uaa="1208" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="MAR801-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="ME" heure_debut="08:30" heure_fin="11:30" horaire_fixe="O" no_local="K1-3308" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="MAR803" nature="1" groupe="01" uaa="1208" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="MAR803-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="LU" heure_debut="15:45" heure_fin="18:45" horaire_fixe="O" no_local="K1-3066" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="MAR804" nature="1" groupe="01" uaa="1208" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="MAR804-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="JE" heure_debut="08:30" heure_fin="11:30" horaire_fixe="O" no_local="K1-3308" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="MAR824" nature="1" groupe="01" uaa="1208" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="MAR824-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="JE" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="K1-3066" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="MAR832" nature="1" groupe="01" uaa="1208" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="MAR832-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="VE" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="K1-3080" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="MAR862" nature="1" groupe="01" uaa="1208" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="MAR862-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="JE" heure_debut="08:30" heure_fin="11:30" horaire_fixe="O" no_local="K1-3085" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="MAR873" nature="1" groupe="01" uaa="1208" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="MAR873-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="ME" heure_debut="08:30" heure_fin="11:30" horaire_fixe="O" no_local="K1-3085" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="MAR877" nature="1" groupe="01" uaa="1208" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="MAR877-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="LU" heure_debut="15:45" heure_fin="18:45" horaire_fixe="O" no_local="K1-3085" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="MMP800" nature="1" groupe="01" uaa="1200" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="MMP800-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="ME" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="K1-3308" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="MMP802" nature="1" groupe="01" uaa="1200" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="MMP802-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="VE" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="K1-3308" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="MMP806" nature="1" groupe="01" uaa="1206" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="MMP806-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="JE" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="K1-3087" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="MMP808" nature="1" groupe="01" uaa="1206" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="MMP808-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="LU" heure_debut="15:45" heure_fin="18:45" horaire_fixe="O" no_local="K1-3092" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="MQG707" nature="1" groupe="10" uaa="1210" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="MQG707-1-10" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="LU" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="K1-3086" local_fixe="O"/>
+<bloc_horaire jour="MA" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="K1-3086" local_fixe="O"/>
+<bloc_horaire jour="JE" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="K1-3086" local_fixe="O"/>
+<bloc_horaire jour="VE" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="K1-3086" local_fixe="O"/>
+<total_blocks_horaires total="4"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="MQG707" nature="1" groupe="55" uaa="1210" uag="1223" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="MQG707-1-55" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="LU" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="3620" local_fixe="O"/>
+<bloc_horaire jour="MA" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="aucun" local_fixe="N"/>
+<bloc_horaire jour="JE" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="3620" local_fixe="O"/>
+<bloc_horaire jour="VE" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="aucun" local_fixe="N"/>
+<total_blocks_horaires total="4"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="MQG713" nature="1" groupe="01" uaa="1210" uag="1220" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="MQG713-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="LU" heure_debut="15:45" heure_fin="18:45" horaire_fixe="O" no_local="K1-3080" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="MQG713" nature="1" groupe="55" uaa="1210" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="MQG713-1-55" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="ME" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="**" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="MQG713" nature="1" groupe="56" uaa="1210" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="MQG713-1-56" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="JE" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="**" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="MQG717" nature="1" groupe="01" uaa="1210" uag="1220" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="MQG717-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="MA" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="aucun" local_fixe="N"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="MQG717" nature="1" groupe="10" uaa="1210" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="MQG717-1-10" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="MA" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="K1-3088" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="MQG721" nature="1" groupe="55" uaa="1210" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="MQG721-1-55" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="MA" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="**" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="MQG723" nature="1" groupe="55" uaa="1210" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="MQG723-1-55" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="ME" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="**" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="MQG756" nature="1" groupe="01" uaa="1210" uag="1220" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="MQG756-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="MA" heure_debut="08:30" heure_fin="11:30" horaire_fixe="O" no_local="aucun" local_fixe="N"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="MQG800" nature="1" groupe="01" uaa="1210" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="MQG800-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="VE" heure_debut="08:30" heure_fin="11:30" horaire_fixe="O" no_local="K1-3066" local_fixe="O"/>
+<bloc_horaire jour="MA" heure_debut="15:45" heure_fin="17:15" horaire_fixe="O" no_local="K1-3301" local_fixe="O"/>
+<total_blocks_horaires total="2"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="MQG800" nature="1" groupe="02" uaa="1210" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="MQG800-1-02" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="VE" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="K1-3066" local_fixe="O"/>
+<bloc_horaire jour="MA" heure_debut="15:45" heure_fin="17:15" horaire_fixe="O" no_local="K1-3301" local_fixe="O"/>
+<total_blocks_horaires total="2"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="MQG800" nature="1" groupe="03" uaa="1210" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="MQG800-1-03" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="MA" heure_debut="08:30" heure_fin="11:30" horaire_fixe="O" no_local="K1-3086" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="MQG810" nature="1" groupe="01" uaa="1210" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="MQG810-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="JE" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="K1-3308" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="MQG810" nature="1" groupe="02" uaa="1210" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="MQG810-1-02" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="LU" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="K1-3086" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="MQG810" nature="1" groupe="03" uaa="1210" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="MQG810-1-03" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="MA" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="K1-3086" local_fixe="O"/>
+<bloc_horaire jour="MA" heure_debut="15:45" heure_fin="18:45" horaire_fixe="O" no_local="K1-3066" local_fixe="O"/>
+<total_blocks_horaires total="2"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="MQG810" nature="1" groupe="06" uaa="1210" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="MQG810-1-06" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="ME" heure_debut="08:30" heure_fin="11:30" horaire_fixe="O" no_local="K1-3092" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="MQG811" nature="1" groupe="01" uaa="1210" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="MQG811-1-01" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="MA" heure_debut="12:30" heure_fin="15:30" horaire_fixe="O" no_local="K1-3088" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="MQG811" nature="1" groupe="50" uaa="1210" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="MQG811-1-50" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="MA" heure_debut="19:00" heure_fin="22:00" horaire_fixe="O" no_local="aucun" local_fixe="N"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="SST803" nature="1" groupe="50" uaa="1206" uag="1223" lieu="SHE" max_etudiant="30">
+<enseignants>
+<enseignant id_enseignant="SST803-1-50" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="ME" heure_debut="18:30" heure_fin="21:30" horaire_fixe="O" no_local="aucun" local_fixe="N"/>
+<bloc_horaire jour="SA" heure_debut="09:00" heure_fin="16:00" horaire_fixe="O" no_local="aucun" local_fixe="N"/>
+<total_blocks_horaires total="2"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="TCA820" nature="1" groupe="50" uaa="1200" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="TCA820-1-50" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="ME" heure_debut="18:00" heure_fin="21:00" horaire_fixe="O" no_local="L1-11620" local_fixe="O"/>
+<bloc_horaire jour="MA" heure_debut="18:00" heure_fin="21:00" horaire_fixe="O" no_local="L1-11620" local_fixe="O"/>
+<bloc_horaire jour="JE" heure_debut="18:00" heure_fin="21:00" horaire_fixe="O" no_local="L1-11620" local_fixe="O"/>
+<bloc_horaire jour="VE" heure_debut="08:30" heure_fin="17:00" horaire_fixe="O" no_local="L1-11620" local_fixe="O"/>
+<bloc_horaire jour="SA" heure_debut="08:30" heure_fin="17:00" horaire_fixe="O" no_local="L1-11620" local_fixe="O"/>
+<total_blocks_horaires total="5"/>
+</blocs_horaires>
+</activite>
+<activite code_activite="TCA830" nature="1" groupe="50" uaa="1200" uag="1220" lieu="SHE" max_etudiant="99999">
+<enseignants>
+<enseignant id_enseignant="TCA830-1-50" />
+<total_enseignants total="1"/>
+</enseignants>
+<blocs_horaires>
+<bloc_horaire jour="JE" heure_debut="18:00" heure_fin="21:00" horaire_fixe="O" no_local="L1-11615" local_fixe="O"/>
+<total_blocks_horaires total="1"/>
+</blocs_horaires>
+</activite>
+<total_activites total="147"/>
+</activites>
+<enseignants>
+<enseignant id_enseignant="ADM713-1-01" prenom_enseignant="ADM713-1-01" nom_enseignant="ADM713-1-01" statut_enseignant=""/>
+<enseignant id_enseignant="ADM713-1-03" prenom_enseignant="ADM713-1-03" nom_enseignant="ADM713-1-03" statut_enseignant=""/>
+<enseignant id_enseignant="ADM713-1-10" prenom_enseignant="ADM713-1-10" nom_enseignant="ADM713-1-10" statut_enseignant=""/>
+<enseignant id_enseignant="ADM713-1-55" prenom_enseignant="ADM713-1-55" nom_enseignant="ADM713-1-55" statut_enseignant=""/>
+<enseignant id_enseignant="ADM713-1-56" prenom_enseignant="ADM713-1-56" nom_enseignant="ADM713-1-56" statut_enseignant=""/>
+<enseignant id_enseignant="ADM716-1-03" prenom_enseignant="ADM716-1-03" nom_enseignant="ADM716-1-03" statut_enseignant=""/>
+<enseignant id_enseignant="ADM717-1-55" prenom_enseignant="ADM717-1-55" nom_enseignant="ADM717-1-55" statut_enseignant=""/>
+<enseignant id_enseignant="ADM717-1-56" prenom_enseignant="ADM717-1-56" nom_enseignant="ADM717-1-56" statut_enseignant=""/>
+<enseignant id_enseignant="ADM721-1-01" prenom_enseignant="ADM721-1-01" nom_enseignant="ADM721-1-01" statut_enseignant=""/>
+<enseignant id_enseignant="ADM721-1-03" prenom_enseignant="ADM721-1-03" nom_enseignant="ADM721-1-03" statut_enseignant=""/>
+<enseignant id_enseignant="ADM721-1-10" prenom_enseignant="ADM721-1-10" nom_enseignant="ADM721-1-10" statut_enseignant=""/>
+<enseignant id_enseignant="ADM721-1-55" prenom_enseignant="ADM721-1-55" nom_enseignant="ADM721-1-55" statut_enseignant=""/>
+<enseignant id_enseignant="ADM721-1-56" prenom_enseignant="ADM721-1-56" nom_enseignant="ADM721-1-56" statut_enseignant=""/>
+<enseignant id_enseignant="ADM723-1-01" prenom_enseignant="ADM723-1-01" nom_enseignant="ADM723-1-01" statut_enseignant=""/>
+<enseignant id_enseignant="ADM723-1-03" prenom_enseignant="ADM723-1-03" nom_enseignant="ADM723-1-03" statut_enseignant=""/>
+<enseignant id_enseignant="ADM723-1-10" prenom_enseignant="ADM723-1-10" nom_enseignant="ADM723-1-10" statut_enseignant=""/>
+<enseignant id_enseignant="ADM723-1-55" prenom_enseignant="ADM723-1-55" nom_enseignant="ADM723-1-55" statut_enseignant=""/>
+<enseignant id_enseignant="ADM723-1-56" prenom_enseignant="ADM723-1-56" nom_enseignant="ADM723-1-56" statut_enseignant=""/>
+<enseignant id_enseignant="ADM724-1-10" prenom_enseignant="ADM724-1-10" nom_enseignant="ADM724-1-10" statut_enseignant=""/>
+<enseignant id_enseignant="ADM724-1-55" prenom_enseignant="ADM724-1-55" nom_enseignant="ADM724-1-55" statut_enseignant=""/>
+<enseignant id_enseignant="ADM734-1-03" prenom_enseignant="ADM734-1-03" nom_enseignant="ADM734-1-03" statut_enseignant=""/>
+<enseignant id_enseignant="ADM745-1-55" prenom_enseignant="ADM745-1-55" nom_enseignant="ADM745-1-55" statut_enseignant=""/>
+<enseignant id_enseignant="ADM745-1-56" prenom_enseignant="ADM745-1-56" nom_enseignant="ADM745-1-56" statut_enseignant=""/>
+<enseignant id_enseignant="ADM746-1-03" prenom_enseignant="ADM746-1-03" nom_enseignant="ADM746-1-03" statut_enseignant=""/>
+<enseignant id_enseignant="ADM746-1-55" prenom_enseignant="ADM746-1-55" nom_enseignant="ADM746-1-55" statut_enseignant=""/>
+<enseignant id_enseignant="648039" prenom_enseignant="Yvon" nom_enseignant="Dufour" statut_enseignant="1"/>
+<enseignant id_enseignant="ADM804-1-01" prenom_enseignant="ADM804-1-01" nom_enseignant="ADM804-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="COP702-1-01" prenom_enseignant="COP702-1-01" nom_enseignant="COP702-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="COP706-1-01" prenom_enseignant="COP706-1-01" nom_enseignant="COP706-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="COP717-1-01" prenom_enseignant="COP717-1-01" nom_enseignant="COP717-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="COP718-1-01" prenom_enseignant="COP718-1-01" nom_enseignant="COP718-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="COP742-1-01" prenom_enseignant="COP742-1-01" nom_enseignant="COP742-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="CTB702-1-10" prenom_enseignant="CTB702-1-10" nom_enseignant="CTB702-1-10" statut_enseignant="1"/>
+<enseignant id_enseignant="CTB702-1-55" prenom_enseignant="CTB702-1-55" nom_enseignant="CTB702-1-55" statut_enseignant="1"/>
+<enseignant id_enseignant="CTB710-1-03" prenom_enseignant="CTB710-1-03" nom_enseignant="CTB710-1-03" statut_enseignant="1"/>
+<enseignant id_enseignant="CTB712-1-01" prenom_enseignant="CTB712-1-01" nom_enseignant="CTB712-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="CTB712-1-10" prenom_enseignant="CTB712-1-10" nom_enseignant="CTB712-1-10" statut_enseignant="1"/>
+<enseignant id_enseignant="CTB712-1-55" prenom_enseignant="CTB712-1-55" nom_enseignant="CTB712-1-55" statut_enseignant="1"/>
+<enseignant id_enseignant="CTB712-1-56" prenom_enseignant="CTB712-1-56" nom_enseignant="CTB712-1-56" statut_enseignant="1"/>
+<enseignant id_enseignant="CTB723-1-01" prenom_enseignant="CTB723-1-01" nom_enseignant="CTB723-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="CTB726-1-10" prenom_enseignant="CTB726-1-10" nom_enseignant="CTB726-1-10" statut_enseignant="1"/>
+<enseignant id_enseignant="CTB726-1-55" prenom_enseignant="CTB726-1-55" nom_enseignant="CTB726-1-55" statut_enseignant="1"/>
+<enseignant id_enseignant="CTB730-1-10" prenom_enseignant="CTB730-1-10" nom_enseignant="CTB730-1-10" statut_enseignant="1"/>
+<enseignant id_enseignant="CTB860-1-01" prenom_enseignant="CTB860-1-01" nom_enseignant="CTB860-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="DAT802-1-50" prenom_enseignant="DAT802-1-50" nom_enseignant="DAT802-1-50" statut_enseignant="1"/>
+<enseignant id_enseignant="DAT812-1-50" prenom_enseignant="DAT812-1-50" nom_enseignant="DAT812-1-50" statut_enseignant="1"/>
+<enseignant id_enseignant="DAT822-1-50" prenom_enseignant="DAT822-1-50" nom_enseignant="DAT822-1-50" statut_enseignant="1"/>
+<enseignant id_enseignant="DAT823-1-50" prenom_enseignant="DAT823-1-50" nom_enseignant="DAT823-1-50" statut_enseignant="1"/>
+<enseignant id_enseignant="DAT824-1-50" prenom_enseignant="DAT824-1-50" nom_enseignant="DAT824-1-50" statut_enseignant="1"/>
+<enseignant id_enseignant="DAT826-1-50" prenom_enseignant="DAT826-1-50" nom_enseignant="DAT826-1-50" statut_enseignant="1"/>
+<enseignant id_enseignant="DBA810-1-01" prenom_enseignant="DBA810-1-01" nom_enseignant="DBA810-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="DBA830-1-01" prenom_enseignant="DBA830-1-01" nom_enseignant="DBA830-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="DRT744-1-01" prenom_enseignant="DRT744-1-01" nom_enseignant="DRT744-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="ECN700-1-01" prenom_enseignant="ECN700-1-01" nom_enseignant="ECN700-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="ECN701-1-01" prenom_enseignant="ECN701-1-01" nom_enseignant="ECN701-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="ECN702-1-01" prenom_enseignant="ECN702-1-01" nom_enseignant="ECN702-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="ECN770-1-01" prenom_enseignant="ECN770-1-01" nom_enseignant="ECN770-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="ECN770-1-02" prenom_enseignant="ECN770-1-02" nom_enseignant="ECN770-1-02" statut_enseignant="1"/>
+<enseignant id_enseignant="FEC711-1-01" prenom_enseignant="FEC711-1-01" nom_enseignant="FEC711-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="FEC711-1-02" prenom_enseignant="FEC711-1-02" nom_enseignant="FEC711-1-02" statut_enseignant="1"/>
+<enseignant id_enseignant="FEC722-1-55" prenom_enseignant="FEC722-1-55" nom_enseignant="FEC722-1-55" statut_enseignant="1"/>
+<enseignant id_enseignant="FEC722-1-56" prenom_enseignant="FEC722-1-56" nom_enseignant="FEC722-1-56" statut_enseignant="1"/>
+<enseignant id_enseignant="FEC756-1-01" prenom_enseignant="FEC756-1-01" nom_enseignant="FEC756-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="FEC765-1-10" prenom_enseignant="FEC765-1-10" nom_enseignant="FEC765-1-10" statut_enseignant="1"/>
+<enseignant id_enseignant="FEC810-1-01" prenom_enseignant="FEC810-1-01" nom_enseignant="FEC810-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="FEC810-1-02" prenom_enseignant="FEC810-1-02" nom_enseignant="FEC810-1-02" statut_enseignant="1"/>
+<enseignant id_enseignant="FEC822-1-01" prenom_enseignant="FEC822-1-01" nom_enseignant="FEC822-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="FEC822-1-02" prenom_enseignant="FEC822-1-02" nom_enseignant="FEC822-1-02" statut_enseignant="1"/>
+<enseignant id_enseignant="FEC840-1-01" prenom_enseignant="FEC840-1-01" nom_enseignant="FEC840-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="FEC840-1-02" prenom_enseignant="FEC840-1-02" nom_enseignant="FEC840-1-02" statut_enseignant="1"/>
+<enseignant id_enseignant="FEC860-1-01" prenom_enseignant="FEC860-1-01" nom_enseignant="FEC860-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="FEC860-1-02" prenom_enseignant="FEC860-1-02" nom_enseignant="FEC860-1-02" statut_enseignant="1"/>
+<enseignant id_enseignant="FIS730-1-01" prenom_enseignant="FIS730-1-01" nom_enseignant="FIS730-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="FIS730-1-02" prenom_enseignant="FIS730-1-02" nom_enseignant="FIS730-1-02" statut_enseignant="1"/>
+<enseignant id_enseignant="FIS740-1-01" prenom_enseignant="FIS740-1-01" nom_enseignant="FIS740-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="FIS740-1-02" prenom_enseignant="FIS740-1-02" nom_enseignant="FIS740-1-02" statut_enseignant="1"/>
+<enseignant id_enseignant="FIS742-1-01" prenom_enseignant="FIS742-1-01" nom_enseignant="FIS742-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="FIS745-1-01" prenom_enseignant="FIS745-1-01" nom_enseignant="FIS745-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="FIS745-1-02" prenom_enseignant="FIS745-1-02" nom_enseignant="FIS745-1-02" statut_enseignant="1"/>
+<enseignant id_enseignant="GCE801-1-01" prenom_enseignant="GCE801-1-01" nom_enseignant="GCE801-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="GIS716-1-01" prenom_enseignant="GIS716-1-01" nom_enseignant="GIS716-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="GIS716-1-55" prenom_enseignant="GIS716-1-55" nom_enseignant="GIS716-1-55" statut_enseignant="1"/>
+<enseignant id_enseignant="GIS716-1-56" prenom_enseignant="GIS716-1-56" nom_enseignant="GIS716-1-56" statut_enseignant="1"/>
+<enseignant id_enseignant="GIS800-1-01" prenom_enseignant="GIS800-1-01" nom_enseignant="GIS800-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="GIS802-1-01" prenom_enseignant="GIS802-1-01" nom_enseignant="GIS802-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="GIS802-1-50" prenom_enseignant="GIS802-1-50" nom_enseignant="GIS802-1-50" statut_enseignant="1"/>
+<enseignant id_enseignant="GIS803-1-01" prenom_enseignant="GIS803-1-01" nom_enseignant="GIS803-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="GIS803-1-50" prenom_enseignant="GIS803-1-50" nom_enseignant="GIS803-1-50" statut_enseignant="1"/>
+<enseignant id_enseignant="GIS821-1-01" prenom_enseignant="GIS821-1-01" nom_enseignant="GIS821-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="GIS860-1-01" prenom_enseignant="GIS860-1-01" nom_enseignant="GIS860-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="GIS861-1-01" prenom_enseignant="GIS861-1-01" nom_enseignant="GIS861-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="GRH722-1-01" prenom_enseignant="GRH722-1-01" nom_enseignant="GRH722-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="GRH722-1-10" prenom_enseignant="GRH722-1-10" nom_enseignant="GRH722-1-10" statut_enseignant="1"/>
+<enseignant id_enseignant="GRH756-1-01" prenom_enseignant="GRH756-1-01" nom_enseignant="GRH756-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="GRH820-1-01" prenom_enseignant="GRH820-1-01" nom_enseignant="GRH820-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="ICO811-1-01" prenom_enseignant="ICO811-1-01" nom_enseignant="ICO811-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="ICO812-1-01" prenom_enseignant="ICO812-1-01" nom_enseignant="ICO812-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="ICO817-1-01" prenom_enseignant="ICO817-1-01" nom_enseignant="ICO817-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="ICO821-1-01" prenom_enseignant="ICO821-1-01" nom_enseignant="ICO821-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="INS710-1-03" prenom_enseignant="INS710-1-03" nom_enseignant="INS710-1-03" statut_enseignant="1"/>
+<enseignant id_enseignant="INT811-1-01" prenom_enseignant="INT811-1-01" nom_enseignant="INT811-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="INT813-1-01" prenom_enseignant="INT813-1-01" nom_enseignant="INT813-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="INT814-1-01" prenom_enseignant="INT814-1-01" nom_enseignant="INT814-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="INT815-1-01" prenom_enseignant="INT815-1-01" nom_enseignant="INT815-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="MAR711-1-01" prenom_enseignant="MAR711-1-01" nom_enseignant="MAR711-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="MAR722-1-10" prenom_enseignant="MAR722-1-10" nom_enseignant="MAR722-1-10" statut_enseignant="1"/>
+<enseignant id_enseignant="MAR724-1-55" prenom_enseignant="MAR724-1-55" nom_enseignant="MAR724-1-55" statut_enseignant="1"/>
+<enseignant id_enseignant="MAR724-1-56" prenom_enseignant="MAR724-1-56" nom_enseignant="MAR724-1-56" statut_enseignant="1"/>
+<enseignant id_enseignant="MAR754-1-10" prenom_enseignant="MAR754-1-10" nom_enseignant="MAR754-1-10" statut_enseignant="1"/>
+<enseignant id_enseignant="MAR756-1-01" prenom_enseignant="MAR756-1-01" nom_enseignant="MAR756-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="MAR762-1-55" prenom_enseignant="MAR762-1-55" nom_enseignant="MAR762-1-55" statut_enseignant="1"/>
+<enseignant id_enseignant="MAR771-1-03" prenom_enseignant="MAR771-1-03" nom_enseignant="MAR771-1-03" statut_enseignant="1"/>
+<enseignant id_enseignant="MAR771-1-55" prenom_enseignant="MAR771-1-55" nom_enseignant="MAR771-1-55" statut_enseignant="1"/>
+<enseignant id_enseignant="MAR801-1-01" prenom_enseignant="MAR801-1-01" nom_enseignant="MAR801-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="MAR803-1-01" prenom_enseignant="MAR803-1-01" nom_enseignant="MAR803-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="MAR804-1-01" prenom_enseignant="MAR804-1-01" nom_enseignant="MAR804-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="MAR824-1-01" prenom_enseignant="MAR824-1-01" nom_enseignant="MAR824-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="MAR832-1-01" prenom_enseignant="MAR832-1-01" nom_enseignant="MAR832-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="MAR862-1-01" prenom_enseignant="MAR862-1-01" nom_enseignant="MAR862-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="MAR873-1-01" prenom_enseignant="MAR873-1-01" nom_enseignant="MAR873-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="MAR877-1-01" prenom_enseignant="MAR877-1-01" nom_enseignant="MAR877-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="MMP800-1-01" prenom_enseignant="MMP800-1-01" nom_enseignant="MMP800-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="MMP802-1-01" prenom_enseignant="MMP802-1-01" nom_enseignant="MMP802-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="MMP806-1-01" prenom_enseignant="MMP806-1-01" nom_enseignant="MMP806-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="MMP808-1-01" prenom_enseignant="MMP808-1-01" nom_enseignant="MMP808-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="MQG707-1-10" prenom_enseignant="MQG707-1-10" nom_enseignant="MQG707-1-10" statut_enseignant="1"/>
+<enseignant id_enseignant="MQG707-1-55" prenom_enseignant="MQG707-1-55" nom_enseignant="MQG707-1-55" statut_enseignant="1"/>
+<enseignant id_enseignant="MQG713-1-01" prenom_enseignant="MQG713-1-01" nom_enseignant="MQG713-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="MQG713-1-55" prenom_enseignant="MQG713-1-55" nom_enseignant="MQG713-1-55" statut_enseignant="1"/>
+<enseignant id_enseignant="MQG713-1-56" prenom_enseignant="MQG713-1-56" nom_enseignant="MQG713-1-56" statut_enseignant="1"/>
+<enseignant id_enseignant="MQG717-1-01" prenom_enseignant="MQG717-1-01" nom_enseignant="MQG717-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="MQG717-1-10" prenom_enseignant="MQG717-1-10" nom_enseignant="MQG717-1-10" statut_enseignant="1"/>
+<enseignant id_enseignant="MQG721-1-55" prenom_enseignant="MQG721-1-55" nom_enseignant="MQG721-1-55" statut_enseignant="1"/>
+<enseignant id_enseignant="MQG723-1-55" prenom_enseignant="MQG723-1-55" nom_enseignant="MQG723-1-55" statut_enseignant="1"/>
+<enseignant id_enseignant="MQG756-1-01" prenom_enseignant="MQG756-1-01" nom_enseignant="MQG756-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="MQG800-1-01" prenom_enseignant="MQG800-1-01" nom_enseignant="MQG800-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="MQG800-1-02" prenom_enseignant="MQG800-1-02" nom_enseignant="MQG800-1-02" statut_enseignant="1"/>
+<enseignant id_enseignant="MQG800-1-03" prenom_enseignant="MQG800-1-03" nom_enseignant="MQG800-1-03" statut_enseignant="1"/>
+<enseignant id_enseignant="MQG810-1-01" prenom_enseignant="MQG810-1-01" nom_enseignant="MQG810-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="MQG810-1-02" prenom_enseignant="MQG810-1-02" nom_enseignant="MQG810-1-02" statut_enseignant="1"/>
+<enseignant id_enseignant="MQG810-1-03" prenom_enseignant="MQG810-1-03" nom_enseignant="MQG810-1-03" statut_enseignant="1"/>
+<enseignant id_enseignant="MQG810-1-06" prenom_enseignant="MQG810-1-06" nom_enseignant="MQG810-1-06" statut_enseignant="1"/>
+<enseignant id_enseignant="MQG811-1-01" prenom_enseignant="MQG811-1-01" nom_enseignant="MQG811-1-01" statut_enseignant="1"/>
+<enseignant id_enseignant="MQG811-1-50" prenom_enseignant="MQG811-1-50" nom_enseignant="MQG811-1-50" statut_enseignant="1"/>
+<enseignant id_enseignant="SST803-1-50" prenom_enseignant="SST803-1-50" nom_enseignant="SST803-1-50" statut_enseignant="1"/>
+<enseignant id_enseignant="TCA820-1-50" prenom_enseignant="TCA820-1-50" nom_enseignant="TCA820-1-50" statut_enseignant="1"/>
+<enseignant id_enseignant="TCA830-1-50" prenom_enseignant="TCA830-1-50" nom_enseignant="TCA830-1-50" statut_enseignant="1"/>
+<total_enseignants total="147"/>
+</enseignants>
+<unites_admin>
+<unite_admin code_unite="1206" nom_unite="ADM Management"/>
+<unite_admin code_unite="1220" nom_unite="ADM Prog. gradués"/>
+<unite_admin code_unite="1223" nom_unite="ADM Gradués T.P."/>
+<unite_admin code_unite="1200" nom_unite="ADMINISTRATION"/>
+<unite_admin code_unite="1212" nom_unite="ADM Sc. ctb. et fis."/>
+<unite_admin code_unite="1213" nom_unite="ADM Économique"/>
+<unite_admin code_unite="1204" nom_unite="ADM Finance"/>
+<unite_admin code_unite="1210" nom_unite="ADM S.I. et M.Q.G."/>
+<unite_admin code_unite="1208" nom_unite="ADM Marketing"/>
+<total_unites_admin total="9"/>
+</unites_admin>
+<etudiants>
+<etudiant id_etudiant="009089776020000620113" prenom_etudiant="Chantal" nom_etudiant="Guindi">
+<activites>
+<activite code_activite="ADM724" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM756" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB726" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="009293206020000620113" prenom_etudiant="Mathieu" nom_etudiant="Lemieux">
+<activites>
+<activite code_activite="ADM756" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB730" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR754" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="009295896020000620121" prenom_etudiant="Benoît" nom_etudiant="Chaloux">
+<activites>
+<activite code_activite="ADM756" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC765" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR754" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="009430006020000620122" prenom_etudiant="Véronique" nom_etudiant="Leboeuf">
+<activites>
+<activite code_activite="CTB726" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR771" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="009540246020000620113" prenom_etudiant="Jacinthe" nom_etudiant="Arès">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC722" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC765" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="009586186020000720113" prenom_etudiant="Mali" nom_etudiant="Rodrigue-Prud'Homme">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB730" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG717" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="009759206020000720113" prenom_etudiant="Jean-François" nom_etudiant="Delabre">
+<activites>
+<activite code_activite="CTB726" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC722" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR754" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG717" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="4"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="011202276020000620113" prenom_etudiant="Maxime" nom_etudiant="Chagnon">
+<activites>
+<activite code_activite="ADM723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM746" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="011288536020000720113" prenom_etudiant="Carl-Michaël" nom_etudiant="Tessier">
+<activites>
+<activite code_activite="FEC722" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="GRH722" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="011362016020000620113" prenom_etudiant="Frédérick" nom_etudiant="Parrot">
+<activites>
+<activite code_activite="FEC765" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR754" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="011407136020000620113" prenom_etudiant="Andrée-Anne" nom_etudiant="De Gagné">
+<activites>
+<activite code_activite="ADM723" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC722" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR722" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="011475566020000620113" prenom_etudiant="Karine" nom_etudiant="Tas">
+<activites>
+<activite code_activite="ADM717" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR762" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR771" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="011831325010000420083" prenom_etudiant="Peng Thai" nom_etudiant="Chea">
+<activites>
+<activite code_activite="ADM723" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM756" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC765" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="022144556020000720113" prenom_etudiant="Benoît" nom_etudiant="Lapointe">
+<activites>
+<activite code_activite="CTB726" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB730" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="GRH722" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG717" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="4"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="022434966020000620113" prenom_etudiant="Andréanne" nom_etudiant="Beaulieu Harvey">
+<activites>
+<activite code_activite="MAR724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR762" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR771" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="022566045010000420083" prenom_etudiant="Linsay" nom_etudiant="Roberge">
+<activites>
+<activite code_activite="ADM756" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR754" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="022856456020000720113" prenom_etudiant="Patrick" nom_etudiant="Nikiema">
+<activites>
+<activite code_activite="ADM723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM745" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM746" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG713" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="4"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="033148446020000620122" prenom_etudiant="Olivier" nom_etudiant="Blouin">
+<activites>
+<activite code_activite="ADM746" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC722" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG721" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="033427426020000620113" prenom_etudiant="Marc-Olivier" nom_etudiant="St-Pierre">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC722" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="033462126020000620113" prenom_etudiant="David" nom_etudiant="Tétreault">
+<activites>
+<activite code_activite="CTB726" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC765" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="033619536020000720113" prenom_etudiant="Pierre-Luc" nom_etudiant="Bourdages">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB726" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="GRH722" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG717" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="4"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="033736555010000420083" prenom_etudiant="Frédéric" nom_etudiant="Rhadbane">
+<activites>
+<activite code_activite="CTB730" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR754" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="033801206020000720113" prenom_etudiant="Marc-André" nom_etudiant="Martin-Chartrand">
+<activites>
+<activite code_activite="ADM717" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM721" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="044773006020000620113" prenom_etudiant="Jean-Étienne" nom_etudiant="Caron">
+<activites>
+<activite code_activite="ADM723" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM756" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="044798526020000620113" prenom_etudiant="Marie-Maude" nom_etudiant="Roberge Dubé">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC722" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="044935326020000620113" prenom_etudiant="Sandra" nom_etudiant="Trudeau">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM745" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM746" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="5"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="056067756020000620113" prenom_etudiant="Daniel" nom_etudiant="Dolha">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM746" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="5"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="067611596020000620113" prenom_etudiant="Antoine" nom_etudiant="Charbel">
+<activites>
+<activite code_activite="CTB712" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG713" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="067993246020000720121" prenom_etudiant="Marie-Michèle" nom_etudiant="Cliche">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG717" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="068528635010000420083" prenom_etudiant="Sylvain" nom_etudiant="Donahue">
+<activites>
+<activite code_activite="ADM723" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM756" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR722" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="068562086020000620103" prenom_etudiant="Sabrina" nom_etudiant="Turgeon">
+<activites>
+<activite code_activite="ADM724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="068624336020000620113" prenom_etudiant="Patricia" nom_etudiant="Michaud">
+<activites>
+<activite code_activite="ADM756" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="1"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="068695886020000620113" prenom_etudiant="Walid" nom_etudiant="Aloui">
+<activites>
+<activite code_activite="ADM723" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM745" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR724" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="068912326020000720121" prenom_etudiant="Kadiatou" nom_etudiant="Diallo">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB712" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC722" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="071069906020000620113" prenom_etudiant="Mirko" nom_etudiant="Beaudry">
+<activites>
+<activite code_activite="ADM745" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB726" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR762" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="071125275010000420073" prenom_etudiant="Donald" nom_etudiant="Armand">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB726" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC722" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="GIS716" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="4"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="071131166020000620113" prenom_etudiant="Geneviève" nom_etudiant="Turgeon">
+<activites>
+<activite code_activite="ADM756" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC765" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="071284776020000620113" prenom_etudiant="Hakima" nom_etudiant="Brahimi">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR771" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="071352456020000720122" prenom_etudiant="Jaouad" nom_etudiant="Benazzouz">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM723" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR722" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="072177816020000620113" prenom_etudiant="Isabelle" nom_etudiant="Paris">
+<activites>
+<activite code_activite="MAR724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="072226045010000420073" prenom_etudiant="Samia" nom_etudiant="Rekab">
+<activites>
+<activite code_activite="MAR762" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="083028926020000620101" prenom_etudiant="Mariela" nom_etudiant="Tyutyundzhieva">
+<activites>
+<activite code_activite="ADM724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR762" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="083114906020000620113" prenom_etudiant="France" nom_etudiant="Bérubé">
+<activites>
+<activite code_activite="CTB730" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC765" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="083192966020000720113" prenom_etudiant="Nathalie" nom_etudiant="Labrie">
+<activites>
+<activite code_activite="CTB726" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR754" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG717" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="083244225010000420093" prenom_etudiant="Robin" nom_etudiant="Poulin Lemieux">
+<activites>
+<activite code_activite="ADM724" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM756" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR754" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="083992446020000620113" prenom_etudiant="Chantal" nom_etudiant="Alix">
+<activites>
+<activite code_activite="CTB730" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR722" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="083993156020000620113" prenom_etudiant="Francis" nom_etudiant="Bissonnette">
+<activites>
+<activite code_activite="ADM724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="1"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="084031956020000620113" prenom_etudiant="Marianne" nom_etudiant="Plourde-Mainville">
+<activites>
+<activite code_activite="ADM723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB726" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC722" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="4"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="084088316020000720113" prenom_etudiant="Farid" nom_etudiant="Ait Amar">
+<activites>
+<activite code_activite="ADM717" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="GIS716" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="084096985010000420083" prenom_etudiant="Anne-Marie" nom_etudiant="Langelier">
+<activites>
+<activite code_activite="FEC722" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="GIS716" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="084141836020000720113" prenom_etudiant="Farouk" nom_etudiant="Oudina">
+<activites>
+<activite code_activite="ADM717" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB712" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="GIS716" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="084175276020000620113" prenom_etudiant="Claudia Cristin" nom_etudiant="Dusu">
+<activites>
+<activite code_activite="MAR771" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="1"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="084199726020000620113" prenom_etudiant="Jacques" nom_etudiant="Messier">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR762" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR771" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="084230396020000620113" prenom_etudiant="Martine" nom_etudiant="Gosselin">
+<activites>
+<activite code_activite="CTB726" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR771" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="084298546020000620113" prenom_etudiant="Marjorie" nom_etudiant="Le Bozec">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR762" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR771" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="4"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="084397816020000620121" prenom_etudiant="Marc-André" nom_etudiant="Lavigne">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR762" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR771" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="090420475010000420111" prenom_etudiant="Jean-Pierre" nom_etudiant="Bibeau">
+<activites>
+<activite code_activite="MAR722" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG717" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="090521156020000620113" prenom_etudiant="Andréanne" nom_etudiant="Millette-Thiriet">
+<activites>
+<activite code_activite="ADM717" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG713" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="090528106020000720113" prenom_etudiant="Yasmina" nom_etudiant="Bouanane">
+<activites>
+<activite code_activite="ADM717" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB712" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="090530256020000620113" prenom_etudiant="Stéphane" nom_etudiant="Fortier">
+<activites>
+<activite code_activite="ADM724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="090542116020000620113" prenom_etudiant="Dominic" nom_etudiant="Caron">
+<activites>
+<activite code_activite="ADM746" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="090619356020000620113" prenom_etudiant="Massimo" nom_etudiant="Forgione">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR771" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="090776156020000620122" prenom_etudiant="Jean-Denis" nom_etudiant="Lamarre">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="090834856020000620121" prenom_etudiant="Sylvain" nom_etudiant="Gautreau">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM723" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM756" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="090886126020000620113" prenom_etudiant="Joëlle" nom_etudiant="Brodeur">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR762" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="091410836020000620121" prenom_etudiant="Jean-Louis" nom_etudiant="Cabral">
+<activites>
+<activite code_activite="ADM746" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB726" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="091471216020000620113" prenom_etudiant="Marie-Ève" nom_etudiant="Méthot">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM746" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="091533196020000620122" prenom_etudiant="Dany" nom_etudiant="Marois">
+<activites>
+<activite code_activite="CTB730" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC765" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="091533376020000620113" prenom_etudiant="Serge" nom_etudiant="Lapointe">
+<activites>
+<activite code_activite="ADM724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR762" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="4"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="091564235010000420093" prenom_etudiant="Catherine" nom_etudiant="Duprey">
+<activites>
+<activite code_activite="ADM746" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="1"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="091576816020000620113" prenom_etudiant="Nathalie" nom_etudiant="Bélanger">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR762" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="091587516020000620113" prenom_etudiant="Hugo" nom_etudiant="Monette">
+<activites>
+<activite code_activite="ADM746" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="1"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="091599566020000720113" prenom_etudiant="Adil" nom_etudiant="Benassila">
+<activites>
+<activite code_activite="ADM717" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM745" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC722" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="GIS716" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="4"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="091603656020000620113" prenom_etudiant="Edoe" nom_etudiant="Agbekodo">
+<activites>
+<activite code_activite="MAR762" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR771" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="091609266020000620113" prenom_etudiant="Sami" nom_etudiant="Abada">
+<activites>
+<activite code_activite="FEC722" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="091767316020000620121" prenom_etudiant="Karen" nom_etudiant="Joseph">
+<activites>
+<activite code_activite="CTB726" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR771" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="091767686020000620113" prenom_etudiant="Valery" nom_etudiant="Gagnon">
+<activites>
+<activite code_activite="ADM724" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM756" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="091801016020000620121" prenom_etudiant="Philippe" nom_etudiant="Giroux">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB726" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR762" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR771" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="4"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="091819946020000620113" prenom_etudiant="Philippe" nom_etudiant="Roy">
+<activites>
+<activite code_activite="ADM746" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="091822256020000620113" prenom_etudiant="Mélissa" nom_etudiant="Leblanc">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR762" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="5"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="091850356020000620113" prenom_etudiant="Dave" nom_etudiant="Marcheterre">
+<activites>
+<activite code_activite="ADM746" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB726" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR771" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="091867485010000420093" prenom_etudiant="Najib" nom_etudiant="Aboujaafar">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM745" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM746" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB726" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="GIS716" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="7"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="091873285010000420093" prenom_etudiant="Gilles" nom_etudiant="Cohen">
+<activites>
+<activite code_activite="ADM724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG713" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="5"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="091889156020000620113" prenom_etudiant="Marie-Andrée" nom_etudiant="Beaulieu">
+<activites>
+<activite code_activite="ADM746" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB726" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR771" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="4"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="091921986020000620113" prenom_etudiant="Sarah" nom_etudiant="Forrest">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR762" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="4"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="091944366020000620113" prenom_etudiant="Marie-Pierre" nom_etudiant="Morel">
+<activites>
+<activite code_activite="ADM756" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC765" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR754" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="091958546020000620113" prenom_etudiant="Jean-Daniel" nom_etudiant="Potvin">
+<activites>
+<activite code_activite="ADM745" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM746" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="091975306020000620122" prenom_etudiant="Khaled" nom_etudiant="Saad">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR762" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR771" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="092001526020000620113" prenom_etudiant="Christian" nom_etudiant="Alimanescu">
+<activites>
+<activite code_activite="ADM723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB712" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG713" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="092006976020000620122" prenom_etudiant="Pascal" nom_etudiant="Lemire">
+<activites>
+<activite code_activite="MAR771" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="1"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="092023476020000620113" prenom_etudiant="Ahioua Casimir" nom_etudiant="Adueny">
+<activites>
+<activite code_activite="CTB730" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="1"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="092039986020000620122" prenom_etudiant="Marie-Hélène" nom_etudiant="Ouellet">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="GIS716" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR762" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR771" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="5"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="092171715010000420093" prenom_etudiant="Jérôme" nom_etudiant="Caron">
+<activites>
+<activite code_activite="CTB726" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB730" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="092174576020000620113" prenom_etudiant="Jean-Serge" nom_etudiant="Cloix">
+<activites>
+<activite code_activite="ADM724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM746" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR762" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="4"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="092174666020000620113" prenom_etudiant="Omar" nom_etudiant="Idinarene">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="GIS716" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR762" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR771" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="4"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="092174846020000620113" prenom_etudiant="Shirley Anne Edgire" nom_etudiant="Lamand">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM746" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG721" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="4"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="092272226020000620113" prenom_etudiant="Jonathan" nom_etudiant="Barriault">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC722" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="092376676020000620113" prenom_etudiant="Abdelilah" nom_etudiant="El Kabriti">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM746" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG713" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="5"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="100041945010000420101" prenom_etudiant="Patrick" nom_etudiant="Villemaire">
+<activites>
+<activite code_activite="ADM723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM745" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="100045136020000620113" prenom_etudiant="Safia" nom_etudiant="Dellah">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM746" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="5"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="100045406020000620113" prenom_etudiant="Guillaume" nom_etudiant="Paquin">
+<activites>
+<activite code_activite="ADM724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB726" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC722" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR771" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="5"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="100083055010000420101" prenom_etudiant="Dave" nom_etudiant="Whittom">
+<activites>
+<activite code_activite="ADM723" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR722" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="100094116020000620113" prenom_etudiant="Jean François" nom_etudiant="Proulx">
+<activites>
+<activite code_activite="ADM723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM745" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC722" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="100144966020000720113" prenom_etudiant="Mohamed" nom_etudiant="Asmine">
+<activites>
+<activite code_activite="ADM717" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB712" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="100251086020000620113" prenom_etudiant="Réjean" nom_etudiant="Roy">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM745" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="100429736020000720113" prenom_etudiant="Marc-André" nom_etudiant="Proulx">
+<activites>
+<activite code_activite="ADM713" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM717" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM745" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB726" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="4"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="100747505010000420103" prenom_etudiant="Maude" nom_etudiant="Guay">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM723" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="100930986020000620113" prenom_etudiant="Sylvain" nom_etudiant="Dubuc">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR771" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="101016135010000420111" prenom_etudiant="Abdeljabar" nom_etudiant="El Andaloussi">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM723" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM756" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="101125126020000620113" prenom_etudiant="Jezabel" nom_etudiant="Ouellet">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM745" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="4"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="101396286020000720113" prenom_etudiant="Mohammed" nom_etudiant="Ech-Chetyteh">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM745" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM746" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB726" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="GIS716" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="7"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="101400376020000620113" prenom_etudiant="Audrey" nom_etudiant="Goulet">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM723" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC722" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="101430616020000620113" prenom_etudiant="Guy" nom_etudiant="Lassonde">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM745" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="4"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="101444446020000620113" prenom_etudiant="Aziz" nom_etudiant="Labib">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM745" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB726" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="GIS716" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR771" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="5"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="101452476020000620113" prenom_etudiant="Louis" nom_etudiant="Cormier">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM745" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR724" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="5"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="101456116020000620113" prenom_etudiant="Francis" nom_etudiant="Audet">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM745" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR724" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="5"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="101457466020000620113" prenom_etudiant="Hector Rolando" nom_etudiant="Moreno Aguilar">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM745" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR724" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="5"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="101487436020000720121" prenom_etudiant="Michael" nom_etudiant="Nolan">
+<activites>
+<activite code_activite="CTB712" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="GRH722" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="101487526020000620113" prenom_etudiant="Marie-Soleil" nom_etudiant="Pépin">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC722" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG713" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="4"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="101488966020000620113" prenom_etudiant="Giovanna" nom_etudiant="Cocco">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR771" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="101523276020000620113" prenom_etudiant="Philippe" nom_etudiant="Djomkam">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM723" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM745" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM746" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB726" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="7"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="101527286020000620113" prenom_etudiant="Patrick" nom_etudiant="Beauchamp">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="4"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="101556186020000620113" prenom_etudiant="Natalie" nom_etudiant="Godbout">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC722" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="101562616020000620113" prenom_etudiant="Julie" nom_etudiant="Smythe">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="GIS716" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR771" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="5"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="101579295010000420103" prenom_etudiant="Karine" nom_etudiant="Morin">
+<activites>
+<activite code_activite="ADM723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB726" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC722" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="4"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="101580636020000620113" prenom_etudiant="Normand Jr" nom_etudiant="Côtes-Simard">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR762" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="4"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="101587956020000620113" prenom_etudiant="Mitali" nom_etudiant="Saha">
+<activites>
+<activite code_activite="ADM723" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB712" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="101601856020000620113" prenom_etudiant="Steve" nom_etudiant="Kearney">
+<activites>
+<activite code_activite="ADM756" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC765" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="101622276020000720113" prenom_etudiant="Ahmed Mory" nom_etudiant="Fané">
+<activites>
+<activite code_activite="ADM717" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM721" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="101638056020000620113" prenom_etudiant="Julie" nom_etudiant="Grondin">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM745" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM746" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM756" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="5"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="101701926020000620113" prenom_etudiant="Jean-François" nom_etudiant="Lapointe-Lambert">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="4"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="101703166020000620121" prenom_etudiant="Ismael" nom_etudiant="Rhissa Zakary">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="101709596020000620113" prenom_etudiant="François" nom_etudiant="Boivin">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC722" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="101718506020000620113" prenom_etudiant="Mélanie" nom_etudiant="Daigneault">
+<activites>
+<activite code_activite="ADM723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="GIS716" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="101774806020000620113" prenom_etudiant="Aphouet Rosine" nom_etudiant="Kouassi">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB712" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG713" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="4"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="101778726020000620113" prenom_etudiant="Charles" nom_etudiant="M. Brunelle">
+<activites>
+<activite code_activite="FEC722" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR722" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="101976456020000620113" prenom_etudiant="Patrick" nom_etudiant="Timmons">
+<activites>
+<activite code_activite="FEC722" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG713" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="102244106020000720122" prenom_etudiant="Marie-Pier" nom_etudiant="Raymond">
+<activites>
+<activite code_activite="ADM713" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM717" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM745" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB726" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="4"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="102287466020000720113" prenom_etudiant="François" nom_etudiant="Provost">
+<activites>
+<activite code_activite="ADM723" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="GIS716" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="102532816020000720113" prenom_etudiant="Manon" nom_etudiant="Ouellette">
+<activites>
+<activite code_activite="ADM717" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC722" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="110071446020000720113" prenom_etudiant="Mohamed" nom_etudiant="Sbaihi">
+<activites>
+<activite code_activite="ADM717" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM745" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="110126466020000720113" prenom_etudiant="Sarkis" nom_etudiant="Jambazian">
+<activites>
+<activite code_activite="CTB712" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="GIS716" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="110155906020000720113" prenom_etudiant="Boujemaâ" nom_etudiant="El-Ouaqaf">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG717" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="110334006020000720113" prenom_etudiant="Marie-France" nom_etudiant="Bergeron">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB712" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="110391736020000720113" prenom_etudiant="Guillaume" nom_etudiant="Richard">
+<activites>
+<activite code_activite="ADM717" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="110665166020000720113" prenom_etudiant="Pierre" nom_etudiant="Laboursodière">
+<activites>
+<activite code_activite="ADM717" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="1"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="110736336020000720113" prenom_etudiant="Ahlame" nom_etudiant="Tabit">
+<activites>
+<activite code_activite="ADM717" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM745" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC722" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="GIS716" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="4"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="110760976020000720113" prenom_etudiant="Marianne" nom_etudiant="Cloutier">
+<activites>
+<activite code_activite="ADM723" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM724" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG717" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="110855046020000720113" prenom_etudiant="Isabelle" nom_etudiant="Larouche">
+<activites>
+<activite code_activite="ADM717" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="110856026020000720113" prenom_etudiant="Patrick" nom_etudiant="Gendreau">
+<activites>
+<activite code_activite="ADM717" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="110882806020000720113" prenom_etudiant="Valérie" nom_etudiant="Sazerat">
+<activites>
+<activite code_activite="ADM717" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM721" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="110917486020000720121" prenom_etudiant="Nicolas" nom_etudiant="Nourry">
+<activites>
+<activite code_activite="ADM717" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG713" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="111011855010000520113" prenom_etudiant="Lucie" nom_etudiant="Royal">
+<activites>
+<activite code_activite="GIS716" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="1"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="111029876020000720113" prenom_etudiant="Marie-Ève" nom_etudiant="Renaud Poirier">
+<activites>
+<activite code_activite="ADM745" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM746" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="GIS716" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="111048416020000720113" prenom_etudiant="Michel Demba" nom_etudiant="Sarr">
+<activites>
+<activite code_activite="ADM724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC722" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG713" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="111079466020000720113" prenom_etudiant="Mathieu" nom_etudiant="Chevrefils">
+<activites>
+<activite code_activite="ADM713" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM717" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG713" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="111086326020000720113" prenom_etudiant="Pierre" nom_etudiant="Desforges">
+<activites>
+<activite code_activite="MAR724" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG713" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="4"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="111095796020000720113" prenom_etudiant="Jonathan" nom_etudiant="Wajcman">
+<activites>
+<activite code_activite="ADM745" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC722" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG713" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="111100136020000720113" prenom_etudiant="Nicholas" nom_etudiant="Roy">
+<activites>
+<activite code_activite="ADM724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM745" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR762" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG713" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="4"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="111105496020000720113" prenom_etudiant="Sonia" nom_etudiant="Isabel">
+<activites>
+<activite code_activite="ADM717" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="111107726020000720113" prenom_etudiant="Kevin" nom_etudiant="Denoncourt">
+<activites>
+<activite code_activite="ADM717" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC722" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="GIS716" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="111114236020000720113" prenom_etudiant="Julien" nom_etudiant="Payment">
+<activites>
+<activite code_activite="ADM717" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM745" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG713" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="111143046020000720113" prenom_etudiant="Martine" nom_etudiant="Haines">
+<activites>
+<activite code_activite="ADM717" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC722" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG713" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="111151706020000720113" prenom_etudiant="Vanessa" nom_etudiant="Bevilacqua-Bissonnette">
+<activites>
+<activite code_activite="ADM745" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC722" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG713" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="111152056020000720113" prenom_etudiant="Audrey" nom_etudiant="Castonguay">
+<activites>
+<activite code_activite="ADM745" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC722" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="111174456020000720113" prenom_etudiant="Radouane" nom_etudiant="Amadid">
+<activites>
+<activite code_activite="ADM723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM745" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC722" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG713" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="5"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="111202267340000120123" prenom_etudiant="Soloniaina Patrick" nom_etudiant="Randriamaro Zafindravohitra">
+<activites>
+<activite code_activite="ECN700" nature="1" groupe="01" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ECN701" nature="1" groupe="01" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ECN702" nature="1" groupe="01" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="111212706020000720113" prenom_etudiant="Guy" nom_etudiant="Veilleux">
+<activites>
+<activite code_activite="ADM724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM746" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC722" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="4"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="111229476020000720113" prenom_etudiant="Julien" nom_etudiant="Arnaud">
+<activites>
+<activite code_activite="ADM717" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC722" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="GIS716" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="111231076020000720113" prenom_etudiant="Sabrina" nom_etudiant="Tremblay">
+<activites>
+<activite code_activite="ADM717" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC722" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="111262396020000720113" prenom_etudiant="Vincent" nom_etudiant="Rancourt">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="GIS716" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="111270506020000720113" prenom_etudiant="Dora Esther" nom_etudiant="Ascoy Cancino">
+<activites>
+<activite code_activite="ADM717" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC722" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="111276576020000720113" prenom_etudiant="Shant" nom_etudiant="Antounian">
+<activites>
+<activite code_activite="FEC722" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="GIS716" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG713" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="111307146020000720113" prenom_etudiant="Sylvain" nom_etudiant="Larocque">
+<activites>
+<activite code_activite="ADM717" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM745" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC722" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR771" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="5"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="111309386020000720113" prenom_etudiant="Abdelkader" nom_etudiant="El Idrissi">
+<activites>
+<activite code_activite="ADM717" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB712" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="111340157340000120123" prenom_etudiant="Gino" nom_etudiant="Alavo">
+<activites>
+<activite code_activite="ECN700" nature="1" groupe="01" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ECN701" nature="1" groupe="01" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ECN702" nature="1" groupe="01" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="111347386020000720113" prenom_etudiant="Manon" nom_etudiant="Vallières">
+<activites>
+<activite code_activite="ADM717" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="111369416020000720113" prenom_etudiant="Amal" nom_etudiant="Affane">
+<activites>
+<activite code_activite="MAR724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR762" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG713" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="111379686020000720113" prenom_etudiant="Manon" nom_etudiant="Labrie">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="GRH722" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG717" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="111380486020000720113" prenom_etudiant="Jean Philippe" nom_etudiant="Joseph">
+<activites>
+<activite code_activite="ADM717" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB726" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC722" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="111381556020000720113" prenom_etudiant="Jorge Nelson" nom_etudiant="Lopez Vessena">
+<activites>
+<activite code_activite="CTB726" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC722" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR722" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="111384136020000720113" prenom_etudiant="Tracy Marisa" nom_etudiant="Fonzo">
+<activites>
+<activite code_activite="ADM717" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC722" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="111803856020000720121" prenom_etudiant="Jean-François" nom_etudiant="Bouchard">
+<activites>
+<activite code_activite="ADM717" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB712" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG713" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="120021566020000720121" prenom_etudiant="Lejla" nom_etudiant="Aliefendic">
+<activites>
+<activite code_activite="ADM713" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB712" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="GIS716" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="120080076020000720123" prenom_etudiant="Éric" nom_etudiant="Lavoie">
+<activites>
+<activite code_activite="ADM713" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM717" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM721" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB712" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="4"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="120388406010060620123" prenom_etudiant="Sophie" nom_etudiant="Dyer">
+<activites>
+<activite code_activite="FEC722" nature="1" groupe="00" lieu="SHE" groupe_fixe="N"/>
+<total_activites total="1"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="121207056020000720123" prenom_etudiant="Jean-Simon" nom_etudiant="Labrecque">
+<activites>
+<activite code_activite="ADM713" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB712" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="GIS716" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG713" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="4"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="121357356020000720123" prenom_etudiant="Natanael" nom_etudiant="Vaz">
+<activites>
+<activite code_activite="ADM713" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM745" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB712" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="833987746020000620113" prenom_etudiant="Pierre" nom_etudiant="Baillargeon">
+<activites>
+<activite code_activite="ADM723" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM756" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC765" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="834181196020000620113" prenom_etudiant="Jacques" nom_etudiant="Boudreau">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR762" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR771" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="834258606020000720113" prenom_etudiant="Judith" nom_etudiant="Basque">
+<activites>
+<activite code_activite="MAR724" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG713" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="4"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="834938216020000720113" prenom_etudiant="Jacques" nom_etudiant="Guertin">
+<activites>
+<activite code_activite="MAR724" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG713" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="4"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="845824396020000620113" prenom_etudiant="Jean-Jacques" nom_etudiant="Caron">
+<activites>
+<activite code_activite="FEC722" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR722" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="856298966020000620113" prenom_etudiant="Daniel" nom_etudiant="Gendron">
+<activites>
+<activite code_activite="ADM724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR762" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="856453886020000720121" prenom_etudiant="Yves" nom_etudiant="Goudreault">
+<activites>
+<activite code_activite="ADM713" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB712" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="856508436020000720122" prenom_etudiant="Joël" nom_etudiant="Landry">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM756" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC722" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC765" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR754" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="5"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="868392576020000620121" prenom_etudiant="Marie Pascale" nom_etudiant="Brière">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM745" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR771" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="879191416020000720113" prenom_etudiant="Barbara" nom_etudiant="Beugger">
+<activites>
+<activite code_activite="ADM713" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM721" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="GIS716" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="881229364860000120111" prenom_etudiant="Sonia" nom_etudiant="Drouin">
+<activites>
+<activite code_activite="MQG713" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="1"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="891942416020000620121" prenom_etudiant="Paul" nom_etudiant="Bellemare">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="GRH722" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="892448396020000720113" prenom_etudiant="Sylvie" nom_etudiant="Papineau">
+<activites>
+<activite code_activite="ADM717" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB712" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="GIS716" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="903938816020000620113" prenom_etudiant="Marie-Josée" nom_etudiant="Gervais">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM745" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB726" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR762" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR771" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="5"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="905246876020000620121" prenom_etudiant="Michel" nom_etudiant="Paquette">
+<activites>
+<activite code_activite="ADM724" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM756" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB726" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR754" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="4"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="915562125010000420111" prenom_etudiant="Jandro" nom_etudiant="Latendresse">
+<activites>
+<activite code_activite="CTB726" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="GRH722" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="915636325010000420083" prenom_etudiant="Désirée" nom_etudiant="Tremblay">
+<activites>
+<activite code_activite="MQG721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="1"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="927209706020000620113" prenom_etudiant="Renée-Isabelle" nom_etudiant="Prévost">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM746" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR724" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG721" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="5"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="927504016020000620113" prenom_etudiant="Karine" nom_etudiant="Gagnon">
+<activites>
+<activite code_activite="ADM723" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR722" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="930784226020000620113" prenom_etudiant="Myriam" nom_etudiant="Bergeron">
+<activites>
+<activite code_activite="ADM756" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC765" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR754" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="931229906020000620113" prenom_etudiant="Caroline" nom_etudiant="Roy">
+<activites>
+<activite code_activite="ADM756" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC765" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="941916726020000620121" prenom_etudiant="Éric" nom_etudiant="Gingras">
+<activites>
+<activite code_activite="ADM724" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM756" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="942013226020000720121" prenom_etudiant="Francis" nom_etudiant="Bouchard-Boulianne">
+<activites>
+<activite code_activite="ADM713" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB712" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="942076926020000720122" prenom_etudiant="Sylvie" nom_etudiant="Grégoire">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM756" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="942211956020000620113" prenom_etudiant="François" nom_etudiant="Jubinville">
+<activites>
+<activite code_activite="CTB730" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC765" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="942819596020000720113" prenom_etudiant="Alain" nom_etudiant="Coulombe">
+<activites>
+<activite code_activite="GRH722" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG717" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="942832076020000720113" prenom_etudiant="Salah" nom_etudiant="Damache">
+<activites>
+<activite code_activite="ADM717" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM721" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM745" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC722" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="GIS716" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG713" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="6"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="943294275010000420103" prenom_etudiant="Mathieu" nom_etudiant="Lefebvre">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM723" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM724" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="953804756020000620113" prenom_etudiant="Josée" nom_etudiant="Maffett">
+<activites>
+<activite code_activite="ADM723" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR722" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="953990366020000620113" prenom_etudiant="Nicolas" nom_etudiant="Gabbour">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM724" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="954422206020000620113" prenom_etudiant="Geneviève" nom_etudiant="Vaillancourt">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM723" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM756" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="954653026020000620113" prenom_etudiant="Maryse" nom_etudiant="Berthiaume">
+<activites>
+<activite code_activite="ADM724" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="1"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="965064096020000620113" prenom_etudiant="Julie" nom_etudiant="Benjamin">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC722" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="976003956020000620113" prenom_etudiant="Claude" nom_etudiant="Poulin">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR754" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="976138266020000720113" prenom_etudiant="Jean-Julien" nom_etudiant="Carrière">
+<activites>
+<activite code_activite="ADM713" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM745" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC722" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG713" nature="1" groupe="56" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="5"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="976286506020000720113" prenom_etudiant="David" nom_etudiant="Héraud">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC722" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="GRH722" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR722" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="4"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="976930536020000620113" prenom_etudiant="Marie-Eve" nom_etudiant="Duplin">
+<activites>
+<activite code_activite="ADM723" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR722" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="987090356020000620113" prenom_etudiant="Mohamed Amine" nom_etudiant="Chbani">
+<activites>
+<activite code_activite="ADM723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM746" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG721" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG723" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="4"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="987099096020000620121" prenom_etudiant="Samuel" nom_etudiant="Richard">
+<activites>
+<activite code_activite="ADM724" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM756" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC765" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR754" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="4"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="987221546020000620113" prenom_etudiant="Jean-Philippe" nom_etudiant="Turcotte">
+<activites>
+<activite code_activite="CTB730" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC765" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR722" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR754" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="4"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="987314845010000420102" prenom_etudiant="Mathieu" nom_etudiant="Bégin">
+<activites>
+<activite code_activite="FEC722" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR771" nature="1" groupe="55" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="2"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="987464876020000620113" prenom_etudiant="Véronique" nom_etudiant="Bisaillon">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="FEC722" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="GRH722" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR722" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="4"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="987594816020000720112" prenom_etudiant="Aurore" nom_etudiant="Vincent">
+<activites>
+<activite code_activite="CTB726" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="GRH722" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG717" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="987804206020000620113" prenom_etudiant="David" nom_etudiant="Cournoyer">
+<activites>
+<activite code_activite="FEC722" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="1"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="998394656020000620113" prenom_etudiant="David" nom_etudiant="Gagné">
+<activites>
+<activite code_activite="ADM721" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="ADM723" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MAR722" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<etudiant id_etudiant="998500306020000620113" prenom_etudiant="Pascal" nom_etudiant="Collin">
+<activites>
+<activite code_activite="ADM723" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="CTB730" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<activite code_activite="MQG717" nature="1" groupe="10" lieu="SHE" groupe_fixe="O"/>
+<total_activites total="3"/>
+</activites>
+</etudiant>
+<total_etudiants total="234"/>
+</etudiants>
+</diamant_cours>
+

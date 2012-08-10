@@ -5,11 +5,11 @@
 	<classpathentry kind="lib" path="jars/ant-jsch.jar"/>
 	<classpathentry kind="lib" path="jars/jdom.jar"/>
 	<classpathentry kind="lib" path="jars/jsch.jar"/>
-	<classpathentry kind="lib" path="jars/junit.jar"/>
 	<classpathentry kind="lib" path="jars/sjsxp.jar"/>
 	<classpathentry kind="lib" path="jars/xercesImpl.jar"/>
 	<classpathentry kind="lib" path="jars/xml-apis.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="jars/bsaf-1.9.1.jar"/>
+	<classpathentry kind="lib" path="jars/junit.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
