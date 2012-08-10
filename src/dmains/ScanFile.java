@@ -28,11 +28,7 @@ import dConstants.DConst;
 import eLib.exit.txt.ByteInputFile;
 import java.io.FileOutputStream;
 
-// System.out.println("char: "+(char)b[i] +
-// " int: "+ b[i] +
-// " byte: " + (byte)b[i] +
-// " short: "+(short)b[i] +
-// " HEX:" + Integer.toHexString(b[i]).toUpperCase());
+
 public class ScanFile {
 	String _error;
 
@@ -46,7 +42,7 @@ public class ScanFile {
 		if (args.length == 0)
 			return obtainFileNamefromUser();
 		_fileName = args[0];
-		return true; // D:\Developpements\DiamantExtreme\Dx\data\fgen\75\choixet.sig.CHOIXET
+		return true; 
 	}
 
 	public void doIt(String iFileName, String oFileName) {
