@@ -24,7 +24,7 @@ import junit.framework.TestCase;
 public class ReadFileTest extends TestCase {
 
 	private final String _pathForFiles = "." + File.separator + "f4Test"
-			+ File.separator + "scanFileDataTest" + File.separator;
+			+ File.separator + "readTests" + File.separator;
 	
 	public void testSimpleStart() {
 	    assertTrue(1==1);
