@@ -58,7 +58,7 @@ public class StiFile {
 		stiD.addInstructors(enseignantsList);
 
 		// // call method to add all enseignants from current diamant_cours
-		insertEnseignants(enseignantsList);
+		insertInstructor(enseignantsList);
 
 		// we have a element "diamant_cours" and we search Element activites
 		Element activites = diamantCours.getChild("activites");
@@ -88,13 +88,13 @@ public class StiFile {
 	/**
 	 * Insert the enseignants to the the database
 	 */
-	private boolean insertEnseignants(List enseignants) {
+	private boolean insertInstructor(List enseignants) {
 		
 
 		
 		boolean importOk = true;
 		
-		ArrayList allTeachers = new ArrayList();
+		ArrayList allInstructors = new ArrayList();
 
 //		SelectSiigEnseignant selectSiigEnseignant = new SelectSiigEnseignant();
 //		
