@@ -1,7 +1,7 @@
 /**
  * #rep
  * This comment must be replaced by
- * a copyrigth or copyleft allowing to
+ * a copyright or copy left allowing to
  * distribute the code as open source 
  *
  * the prefix for the packages is
