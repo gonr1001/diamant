@@ -21,7 +21,7 @@ import java.util.List;
 
 public class StiData {
 	
-	@SuppressWarnings("rawtypes")
+	//@SuppressWarnings("rawtypes")
 	ArrayList <List> _stiData = new ArrayList<List>() ;
 	
 	void addInstructors(List list){

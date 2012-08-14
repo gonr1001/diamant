@@ -26,17 +26,15 @@ public class ReadFileTest extends TestCase {
 	private final String _path = "." + File.separator + "f4Tests"
 			+ File.separator + "readTests" + File.separator;
 
-	public void testTheTests() {
-		assertEquals("toTestTests: assertEquals", "a", "a");
-	}
+
 
 	public void testReadSTIFile() {
 		StiFile sf = new StiFile();
 		
 		try {
-			StiData stiD = sf.loadData(_path + "stiFile0.xml");
-			
+			StiData stiD = sf.loadData(_path + "stiFile0.xml");		
 			stiD.getInstructors();
+			assertEquals("testReadSTIFile", stiD.getInstructors().get(0), 97);
 			assertEquals("testReadSTIFile", stiD.getInstructors().size(), 97);
 
 		} catch (FileNotFoundException e) {
