@@ -91,14 +91,8 @@ public class StiFile {
 	 */
 	private ArrayList<StiInstructor> insertInstructor(List enseignants) {
 
-		boolean importOk = true;
-
 		ArrayList<StiInstructor> allInstructors = new ArrayList<StiInstructor>();
 
-		// SelectSiigEnseignant selectSiigEnseignant = new
-		// SelectSiigEnseignant();
-		// try {
-		// // call one Enseignants folder with Enseignants from diamant_cours
 		Iterator iterator = enseignants.iterator();
 		//
 		// // this is Etudian to insert in database
@@ -114,26 +108,7 @@ public class StiFile {
 			StiInstructor enseignant = new StiInstructor(id, fn, ln, ty);
 
 			allInstructors.add(enseignant);
-		}// End of While
-			// insert all the teachers
-			// if (!selectSiigEnseignant.insertAllSiigEnseignant(context,
-		// databaseName, allTeachers)) {
-		//
-		// importOk = false;
-		// }
-
-		// } // End try
-		// catch (Exception e) {
-		// logger.warn("***** Database error at insertEnseignants : " + e);
-		// }
-		//
-
-		// SiigEnseignant enseignant = new SiigEnseignant();
-		// int i = 0;
-		// for (i = 0; i < allTeachers.size(); i++) {
-		// enseignant = (SiigEnseignant) allTeachers.get(i);
-		//
-		// }
+		}
 		 return allInstructors;
 	}// end of insertEnseignants
 
