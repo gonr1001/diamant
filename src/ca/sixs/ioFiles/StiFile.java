@@ -56,10 +56,11 @@ public class StiFile {
 
 		// then we get a List from Element "enseignant"
 		List instructorsList = instructors.getChildren("enseignant");
-		stiD.addInstructors(instructorsList);
+		ArrayList<StiInstructor> si = insertInstructor(instructorsList);
+		stiD.setInstructors(si);
 
 		// // call method to add all enseignants from current diamant_cours
-		insertInstructor(instructorsList);
+		//insertInstructor(instructorsList);
 
 		// we have a element "diamant_cours" and we search Element activites
 		Element activites = diamantCours.getChild("activites");
@@ -83,65 +84,58 @@ public class StiFile {
 		return stiD;
 
 	}
-	
-	
+
 	/** ***************************************************************** */
 	/**
 	 * Insert the enseignants to the the database
 	 */
-	private void insertInstructor(List enseignants) {
-				
+	private ArrayList<StiInstructor> insertInstructor(List enseignants) {
+
 		boolean importOk = true;
-		
-		ArrayList <StiInstructor> AllInstructors = new ArrayList<StiInstructor>();
 
-//		SelectSiigEnseignant selectSiigEnseignant = new SelectSiigEnseignant();
-//	try {
-//			// call one Enseignants folder with Enseignants from diamant_cours
+		ArrayList<StiInstructor> allInstructors = new ArrayList<StiInstructor>();
+
+		// SelectSiigEnseignant selectSiigEnseignant = new
+		// SelectSiigEnseignant();
+		// try {
+		// // call one Enseignants folder with Enseignants from diamant_cours
 		Iterator iterator = enseignants.iterator();
-//
-//			// this is Etudian to insert in database
-//
+		//
+		// // this is Etudian to insert in database
+		//
 		while (iterator.hasNext()) {
-//				// here, Element is a Enseignant folder
-				Element oneEnseignant = (Element) iterator.next();
-//				// we set values of enseignant
-				String id = oneEnseignant
-						.getAttributeValue("id_enseignant");
-				 String fn = oneEnseignant
-						.getAttributeValue("prenom_enseignant");
-				 String ln =oneEnseignant
-						.getAttributeValue("nom_enseignant");
-				String ty =oneEnseignant
-						.getAttributeValue("statut_enseignant");
-						
-				StiInstructor enseignant = new StiInstructor(id, fn, ln, ty);
-				
-				AllInstructors.add(enseignant);
-			}// End of While
+			// // here, Element is a Enseignant folder
+			Element oneEnseignant = (Element) iterator.next();
+			// // we set values of enseignant
+			String id = oneEnseignant.getAttributeValue("id_enseignant");
+			String fn = oneEnseignant.getAttributeValue("prenom_enseignant");
+			String ln = oneEnseignant.getAttributeValue("nom_enseignant");
+			String ty = oneEnseignant.getAttributeValue("statut_enseignant");
+			StiInstructor enseignant = new StiInstructor(id, fn, ln, ty);
+
+			allInstructors.add(enseignant);
+		}// End of While
 			// insert all the teachers
-//			if (!selectSiigEnseignant.insertAllSiigEnseignant(context,
-//					databaseName, allTeachers)) {
-//				
-//				importOk = false;
-//			}
+			// if (!selectSiigEnseignant.insertAllSiigEnseignant(context,
+		// databaseName, allTeachers)) {
+		//
+		// importOk = false;
+		// }
 
-//		} // End try
-//		catch (Exception e) {
-//			logger.warn("***** Database error at insertEnseignants : " + e);
-//		}
-//		
-		
-		
-//		SiigEnseignant enseignant = new SiigEnseignant();
-//		int i = 0;
-//		for (i = 0; i < allTeachers.size(); i++) {
-//			enseignant = (SiigEnseignant) allTeachers.get(i);
-//
-//		}
-//		return importOk;
+		// } // End try
+		// catch (Exception e) {
+		// logger.warn("***** Database error at insertEnseignants : " + e);
+		// }
+		//
+
+		// SiigEnseignant enseignant = new SiigEnseignant();
+		// int i = 0;
+		// for (i = 0; i < allTeachers.size(); i++) {
+		// enseignant = (SiigEnseignant) allTeachers.get(i);
+		//
+		// }
+		 return allInstructors;
 	}// end of insertEnseignants
-
 
 	/**
 	 * @param outputStream

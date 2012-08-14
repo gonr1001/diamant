@@ -17,19 +17,19 @@ package ca.sixs.ioFiles;
  */
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class StiData {
 	
 	//@SuppressWarnings("rawtypes")
-	ArrayList <List> _stiData = new ArrayList<List>() ;
+	ArrayList <StiInstructor> _instructors = new ArrayList<StiInstructor>() ;
 	
-	void addInstructors(List list){
-		_stiData.add(list);
+	void setInstructors(ArrayList <StiInstructor> instructors){
+		_instructors = instructors;
 	}
 	
-	List getInstructors(){
-		return _stiData.get(0);
+	ArrayList <StiInstructor> getInstructors(){
+		return _instructors;
 	}
 	
 	
