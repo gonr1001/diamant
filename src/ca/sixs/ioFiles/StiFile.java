@@ -59,9 +59,6 @@ public class StiFile implements InstructorConst, ActivityConst {
 		// we have a element "diamant_cours" and we search Element "activites"
 		Element activites = diamantCours.getChild("activites");
 		// thenloadActivites
-//		stiD.setInstructors(loadActivites(activites));
-//		List activitesList = activites.getChildren("activite");
-//		ArrayList<StiActivity> sa = extractActivities(activitesList);
 		stiD.setActivities(loadActivities(activites));
 		// call method to add all activites from current diamant_cours
 		// importOk = insertActivites(context, databaseName, activitesList,
@@ -81,18 +78,17 @@ public class StiFile implements InstructorConst, ActivityConst {
 
 	}
 
-
-	private ArrayList<StiInstructor> loadInstructors(Element instructors) {
-		@SuppressWarnings("rawtypes")
+	@SuppressWarnings("rawtypes")
+	private ArrayList<StiInstructor> loadInstructors(Element instructors) {		
 		List instructorsList = instructors.getChildren("enseignant");		
 		return extractInstructors(instructorsList);		
 	}
 	
 	
-	private ArrayList<StiActivity> loadActivities(Element instructors) {
-		@SuppressWarnings("rawtypes")
-		List activitiesList = instructors.getChildren("enseignant");		
-		return extractActivities(activitiesList);		
+	@SuppressWarnings("rawtypes")
+	private ArrayList<StiActivity> loadActivities(Element activites) {
+		List activitesList = activites.getChildren("activite");	
+		return extractActivities(activitesList);		
 	}
 
 	
@@ -123,17 +119,20 @@ public class StiFile implements InstructorConst, ActivityConst {
 	private ArrayList<StiActivity> extractActivities(List activites) {
 		ArrayList<StiActivity> allActivities = new ArrayList<StiActivity>();
 		Iterator iterator = activites.iterator();
-		
+	
 		while (iterator.hasNext()) {
-			// here, Element is a enseignant 
+			// here, Element is an activity 
+			
 			Element oneActivity = (Element) iterator.next();
 
 			HashMap<Integer, String> hm = new HashMap<Integer, String>();
 			// Put elements to the map
 			hm.put(AC, oneActivity.getAttributeValue("code_activite"));
-			hm.put(NAT, oneActivity.getAttributeValue("nature"));
+			hm.put(ACT_TYP, oneActivity.getAttributeValue("nature"));
 			hm.put(GRP, oneActivity.getAttributeValue("groupe"));
 			hm.put(UAA, oneActivity.getAttributeValue("uaa"));
+			hm.put(LOC, oneActivity.getAttributeValue("lieu"));
+			hm.put(MAX_S, oneActivity.getAttributeValue("max_etudiant"));
 			StiActivity activity = new StiActivity(hm);
 
 			allActivities.add(activity);
@@ -141,7 +140,101 @@ public class StiFile implements InstructorConst, ActivityConst {
 		return allActivities;
 	}
 	
-	
+//	private boolean insertActivites(List activites) {
+//
+//		boolean importOk = true;
+//		Element blocsHoraires;
+//		List blocsHorairesList;
+//		Element enseignants;
+//		List enseignantsList;
+//		String code = null;
+//		ArrayList allActivitys = new ArrayList();
+//		ArrayList allTeachersByActivity = new ArrayList();
+//		ArrayList allHorairesByActivity = new ArrayList();
+//		SelectSiigActivite selectSiigActivite = new SelectSiigActivite();
+//
+//		try {
+//
+//			// call one Activites folder with Activites from diamant_cours
+//			Iterator iterator = activites.iterator();
+//
+//			int lieuKey = 1;
+//
+//			String activiteKey = "";
+//			int count = 1;
+//			while (iterator.hasNext()) {
+//				// here, Element is a Activites`folder
+//				Element oneActivite = (Element) iterator.next();
+//				SiigActivite activite = new SiigActivite();
+//				ArrayList activityByTeacher = new ArrayList();
+//				ArrayList timeTableByActivity = new ArrayList();
+//
+//				// Get Siig ActiviteCatKey and ActiviteCatCode
+//				activite.setActiviteCode(oneActivite
+//						.getAttributeValue("code_activite"));
+//				activite.setSessionKey(sessionKey);
+//				activite.setFacultyKey(Integer.parseInt(facultykey));
+//				activite.setActiviteGroupe(oneActivite
+//						.getAttributeValue("groupe"));
+//				activite.setActiviteLieu(oneActivite.getAttributeValue("lieu"));
+//				activite.setActiviteNature(oneActivite
+//						.getAttributeValue("nature"));
+//				activite.setActiviteMaxEtudiant(Integer.parseInt(oneActivite
+//						.getAttributeValue("max_etudiant")));
+//
+//				allActivitys.add(activite);
+//
+//				enseignants = oneActivite.getChild("enseignants");
+//				enseignantsList = enseignants.getChildren("enseignant");
+//				activiteKey = activite.getActiviteCode()
+//						+ activite.getActiviteGroupe()
+//						+ activite.getActiviteLieu()
+//						+ activite.getActiviteNature();
+//
+//				activityByTeacher = insertEnseignantsByActivity(context,
+//						databaseName, enseignantsList, activiteKey);
+//				allTeachersByActivity.addAll(activityByTeacher);
+//				// element "blocs_horaires"
+//				blocsHoraires = oneActivite.getChild("blocs_horaires");
+//				// List from Element "blocs_horaires"
+//				blocsHorairesList = blocsHoraires.getChildren("bloc_horaire");
+//
+//				timeTableByActivity = insertHoraires(context, databaseName,
+//						blocsHorairesList, activiteKey);
+//				allHorairesByActivity.addAll(timeTableByActivity);
+//				count = count + 1;
+//			}// End of While
+//
+//			importOk = selectSiigActivite
+//					.insertActivitesAndEnseingnantsAndBlocsHoraires(context,
+//							databaseName, allActivitys, allTeachersByActivity,
+//							allHorairesByActivity);
+//		} // End try
+//		catch (Exception e) {
+//			logger.warn("***** Error in insertActivites" + e.toString());
+//		}
+//		SiigActivite activite = new SiigActivite();
+//		int i = 0;
+//		for (i = 0; i < allActivitys.size(); i++) {
+//			activite = (SiigActivite) allActivitys.get(i);
+//			
+//		}
+//		SiigActiviteSiigEnseignant siigActiviteSiigEnseignant = new SiigActiviteSiigEnseignant();
+//		int j = 0;
+//		for (j = 0; j < allTeachersByActivity.size(); j++) {
+//			siigActiviteSiigEnseignant = (SiigActiviteSiigEnseignant) allTeachersByActivity
+//					.get(j);
+//			
+//		}
+//		SiigBlockHoraire siigBlockHoraire = new SiigBlockHoraire();
+//		int k = 0;
+//		for (k = 0; k < allHorairesByActivity.size(); k++) {
+//			siigBlockHoraire = (SiigBlockHoraire) allHorairesByActivity.get(k);
+//			
+//		}
+//		
+//		return importOk;
+//	}// end of insertActivites
 	
 
 	/**

@@ -21,31 +21,42 @@ public class StiActivity implements ActivityConst {
 	
 	public StiActivity(HashMap<Integer, String> hm) {
 		_activityCode = hm.get(AC);
-		_instructorFirstName = hm.get(NAT);
-		_intructorLastName = hm.get(GRP);
-		_instructorType = hm.get(UAA);
+		_activityType = hm.get(ACT_TYP);
+		_group = hm.get(GRP);
+		_uaa = hm.get(UAA);
+		_location = hm.get(LOC);
+		_maxStudents =hm.get(MAX_S);
 	}
 
 	public String getActivityCode() {
 		return this._activityCode;
 	}
 
-	public String getinstructorFirstName() {
-		return this._instructorFirstName;
+	public String getType() {
+		return this._activityType;
 	}
 
-	public String getInstructorLastName() {
-		return this._intructorLastName;
+	public String getGroup() {
+		return this._group;
 	}
 
-	public String getinstructorType() {
-		return this._instructorType;
+	public String getUAA() {
+		return this._uaa;
+	}
+	
+	public String getLocation() {
+		return this._location;
+	}
+	
+	public String getMaxStu() {
+		return this._maxStudents;
 	}
 
 	private String _activityCode;
-	private String _instructorFirstName;
-	private String _intructorLastName;
-	private String _instructorType;
-	
+	private String _activityType;
+	private String _group;
+	private String _uaa;
+	private String _location;
+	private String _maxStudents;
 
 }

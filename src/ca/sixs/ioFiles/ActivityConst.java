@@ -18,7 +18,10 @@ package ca.sixs.ioFiles;
 public interface ActivityConst {
 	
 	final int AC = 1; 
-	final int NAT = 2;
+	final int ACT_TYP = 2;
 	final int GRP = 3; 
 	final int UAA = 4;
+	final int LOC = 5;
+	final int MAX_S = 6;
+	
 }
