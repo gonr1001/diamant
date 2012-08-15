@@ -80,7 +80,7 @@ public class StiFile implements InstructorConst {
 		Element etudiants = diamantCours.getChild("etudiants");
 
 		// then we get a List from Element "etudiants"
-//    		List etudiantsList = etudiants.getChildren("etudiant");
+    		List etudiantsList = etudiants.getChildren("etudiant");
 
 		// call method to add all etudiants from current diamant_cours
 		// importOk = insertEtudiants(context, databaseName, etudiantsList,
