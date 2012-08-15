@@ -15,6 +15,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
@@ -31,7 +32,7 @@ import org.jdom.input.SAXBuilder;
  * @author gonr1001
  * 
  */
-public class StiFile {
+public class StiFile implements InstructorConst {
 
 	/**
 	 * @param inputStream
@@ -40,10 +41,11 @@ public class StiFile {
 	 * @throws JAXBException
 	 * @throws JDOMException
 	 */
+	@SuppressWarnings("rawtypes")
 	public StiData loadData(String fileName) throws FileNotFoundException,
 			IOException, UnmarshalException, JAXBException, JDOMException {
 		StiData stiD = new StiData();
-
+		
 		SAXBuilder builder = new SAXBuilder(false);
 		Document doc = builder.build(new File(fileName));
 
@@ -56,17 +58,19 @@ public class StiFile {
 
 		// then we get a List from Element "enseignant"
 		List instructorsList = instructors.getChildren("enseignant");
-		ArrayList<StiInstructor> si = insertInstructor(instructorsList);
+		
+		ArrayList<StiInstructor> si = extractInstructors(instructorsList);
 		stiD.setInstructors(si);
 
 		// // call method to add all enseignants from current diamant_cours
-		//insertInstructor(instructorsList);
+		// insertInstructor(instructorsList);
 
 		// we have a element "diamant_cours" and we search Element activites
 		Element activites = diamantCours.getChild("activites");
 		// then we get a List from Element "activites"
 		List activitesList = activites.getChildren("activite");
-
+		ArrayList<StiActivity> sa = extractActivities(activitesList);
+		stiD.setActivities(sa);
 		// call method to add all activites from current diamant_cours
 		// importOk = insertActivites(context, databaseName, activitesList,
 		// facultykey, sessionKey);
@@ -76,7 +80,7 @@ public class StiFile {
 		Element etudiants = diamantCours.getChild("etudiants");
 
 		// then we get a List from Element "etudiants"
-		List etudiantsList = etudiants.getChildren("etudiant");
+//    		List etudiantsList = etudiants.getChildren("etudiant");
 
 		// call method to add all etudiants from current diamant_cours
 		// importOk = insertEtudiants(context, databaseName, etudiantsList,
@@ -85,31 +89,35 @@ public class StiFile {
 
 	}
 
-	/** ***************************************************************** */
 	/**
-	 * Insert the enseignants to the the database
+	 * @param activitesList
+	 * @return
 	 */
-	private ArrayList<StiInstructor> insertInstructor(List enseignants) {
-
+	@SuppressWarnings("rawtypes")
+	private ArrayList<StiActivity> extractActivities(List activitesList) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@SuppressWarnings("rawtypes")
+	private ArrayList<StiInstructor> extractInstructors(List enseignants) {
 		ArrayList<StiInstructor> allInstructors = new ArrayList<StiInstructor>();
-
 		Iterator iterator = enseignants.iterator();
-		//
-		// // this is Etudian to insert in database
-		//
+		
 		while (iterator.hasNext()) {
 			// // here, Element is a Enseignant folder
 			Element oneEnseignant = (Element) iterator.next();
-			// // we set values of enseignant
-			String id = oneEnseignant.getAttributeValue("id_enseignant");
-			String fn = oneEnseignant.getAttributeValue("prenom_enseignant");
-			String ln = oneEnseignant.getAttributeValue("nom_enseignant");
-			String ty = oneEnseignant.getAttributeValue("statut_enseignant");
-			StiInstructor enseignant = new StiInstructor(id, fn, ln, ty);
+
+			HashMap<Integer, String> hm = new HashMap<Integer, String>();
+			// Put elements to the map
+			hm.put(ID, oneEnseignant.getAttributeValue("id_enseignant"));
+			hm.put(FN, oneEnseignant.getAttributeValue("prenom_enseignant"));
+			hm.put(LN, oneEnseignant.getAttributeValue("nom_enseignant"));
+			hm.put(TY, oneEnseignant.getAttributeValue("statut_enseignant"));
+			StiInstructor enseignant = new StiInstructor(hm);
 
 			allInstructors.add(enseignant);
 		}
-		 return allInstructors;
+		return allInstructors;
 	}// end of insertEnseignants
 
 	/**

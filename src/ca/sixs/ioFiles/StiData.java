@@ -21,15 +21,25 @@ import java.util.ArrayList;
 
 public class StiData {
 	
-	//@SuppressWarnings("rawtypes")
-	ArrayList <StiInstructor> _instructors = new ArrayList<StiInstructor>() ;
+	ArrayList <StiInstructor> _instructors;
+	ArrayList <StiActivity> _activities;
 	
-	void setInstructors(ArrayList <StiInstructor> instructors){
-		_instructors = instructors;
+	
+	
+	public StiData() {
+		_instructors = new ArrayList<StiInstructor>();
+		_activities = new ArrayList<StiActivity>();
+	}
+	void setInstructors(ArrayList <StiInstructor> si){
+		_instructors = si;
 	}
 	
 	ArrayList <StiInstructor> getInstructors(){
 		return _instructors;
+	}
+
+	public void setActivities(ArrayList<StiActivity> sa) {
+		_activities =sa;	
 	}
 	
 	

@@ -11,18 +11,20 @@
  */
 package ca.sixs.ioFiles;
 
+import java.util.HashMap;
+
+
 /**
  * @author gonr1001
  * 
  */
-public class StiInstructor {
+public class StiInstructor implements InstructorConst {
 
-	public StiInstructor(String instructorID, String instructorFirstName,
-			String intructorLastName, String instructorType) {
-		_instructorID = instructorID;
-		_instructorFirstName = instructorFirstName;
-		_intructorLastName = intructorLastName;
-		_instructorType = instructorType;
+	public StiInstructor(HashMap<Integer, String> hm) {
+		_instructorID = hm.get(ID);
+		_instructorFirstName = hm.get(FN);
+		_intructorLastName = hm.get(LN);
+		_instructorType = hm.get(TY);
 	}
 
 	public String getInstructorID() {
