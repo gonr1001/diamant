@@ -18,30 +18,31 @@ package ca.sixs.ioFiles;
 
 import java.util.ArrayList;
 
-
 public class StiData {
-	
-	ArrayList <StiInstructor> _instructors;
-	ArrayList <StiActivity> _activities;
-	
-	
+
 	
 	public StiData() {
 		_instructors = new ArrayList<StiInstructor>();
 		_activities = new ArrayList<StiActivity>();
 	}
-	void setInstructors(ArrayList <StiInstructor> si){
+
+	public void setInstructors(ArrayList<StiInstructor> si) {
 		_instructors = si;
 	}
-	
-	ArrayList <StiInstructor> getInstructors(){
+
+	public ArrayList<StiInstructor> getInstructors() {
 		return _instructors;
 	}
 
 	public void setActivities(ArrayList<StiActivity> sa) {
-		_activities =sa;	
+		_activities = sa;
 	}
 	
+	public ArrayList<StiActivity> getActivities() {
+		return _activities;
+	}
 	
+	private ArrayList<StiInstructor> _instructors;
+	private ArrayList<StiActivity> _activities;
 
 }

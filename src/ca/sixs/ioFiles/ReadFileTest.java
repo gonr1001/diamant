@@ -33,9 +33,14 @@ public class ReadFileTest extends TestCase {
 		
 		try {
 			StiData stiD = sf.loadData(_path + "stiFile0.xml");		
-			stiD.getInstructors();
 			assertEquals("testReadSTIFile", stiD.getInstructors().get(0).getInstructorID(), "503335");
+			assertEquals("testReadSTIFile", stiD.getInstructors().get(96).getInstructorID(), "SCA701-1-01");
 			assertEquals("testReadSTIFile", stiD.getInstructors().size(), 97);
+			
+			
+//			assertEquals("testReadSTIFile", stiD.getActivities().get(0).getInstructorID(), "503335");
+//			assertEquals("testReadSTIFile", stiD.getActivities().get(96).getInstructorID(), "SCA701-1-01");
+			assertEquals("testReadSTIFile", stiD.getActivities().size(), 97);
 
 		} catch (FileNotFoundException e) {
 			assertEquals(true  ,e.toString().contains("FileNotFoundException"));

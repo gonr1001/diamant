@@ -32,7 +32,7 @@ import org.jdom.input.SAXBuilder;
  * @author gonr1001
  * 
  */
-public class StiFile implements InstructorConst {
+public class StiFile implements InstructorConst, ActivityConst {
 
 	/**
 	 * @param inputStream
@@ -48,29 +48,21 @@ public class StiFile implements InstructorConst {
 		
 		SAXBuilder builder = new SAXBuilder(false);
 		Document doc = builder.build(new File(fileName));
-
 		// Get the root element, "diamant_cours"
 		Element diamantCours = doc.getRootElement();
 
-		// we have a element "diamant_cours"
-		// and we search Element form "enseignants"
+		// we have a element "diamant_cours" and we search Element "enseignants"
 		Element instructors = diamantCours.getChild("enseignants");
+		// then loadInstructors
+		stiD.setInstructors(loadInstructors(instructors));
 
-		// then we get a List from Element "enseignant"
-		List instructorsList = instructors.getChildren("enseignant");
-		
-		ArrayList<StiInstructor> si = extractInstructors(instructorsList);
-		stiD.setInstructors(si);
-
-		// // call method to add all enseignants from current diamant_cours
-		// insertInstructor(instructorsList);
-
-		// we have a element "diamant_cours" and we search Element activites
+		// we have a element "diamant_cours" and we search Element "activites"
 		Element activites = diamantCours.getChild("activites");
-		// then we get a List from Element "activites"
-		List activitesList = activites.getChildren("activite");
-		ArrayList<StiActivity> sa = extractActivities(activitesList);
-		stiD.setActivities(sa);
+		// thenloadActivites
+//		stiD.setInstructors(loadActivites(activites));
+//		List activitesList = activites.getChildren("activite");
+//		ArrayList<StiActivity> sa = extractActivities(activitesList);
+		stiD.setActivities(loadActivities(activites));
 		// call method to add all activites from current diamant_cours
 		// importOk = insertActivites(context, databaseName, activitesList,
 		// facultykey, sessionKey);
@@ -89,22 +81,28 @@ public class StiFile implements InstructorConst {
 
 	}
 
-	/**
-	 * @param activitesList
-	 * @return
-	 */
-	@SuppressWarnings("rawtypes")
-	private ArrayList<StiActivity> extractActivities(List activitesList) {
-		// TODO Auto-generated method stub
-		return null;
+
+	private ArrayList<StiInstructor> loadInstructors(Element instructors) {
+		@SuppressWarnings("rawtypes")
+		List instructorsList = instructors.getChildren("enseignant");		
+		return extractInstructors(instructorsList);		
 	}
+	
+	
+	private ArrayList<StiActivity> loadActivities(Element instructors) {
+		@SuppressWarnings("rawtypes")
+		List activitiesList = instructors.getChildren("enseignant");		
+		return extractActivities(activitiesList);		
+	}
+
+	
 	@SuppressWarnings("rawtypes")
-	private ArrayList<StiInstructor> extractInstructors(List enseignants) {
+	private ArrayList<StiInstructor> extractInstructors(List intructors) {
 		ArrayList<StiInstructor> allInstructors = new ArrayList<StiInstructor>();
-		Iterator iterator = enseignants.iterator();
+		Iterator iterator = intructors.iterator();
 		
 		while (iterator.hasNext()) {
-			// // here, Element is a Enseignant folder
+			// here, Element is a enseignant 
 			Element oneEnseignant = (Element) iterator.next();
 
 			HashMap<Integer, String> hm = new HashMap<Integer, String>();
@@ -118,7 +116,33 @@ public class StiFile implements InstructorConst {
 			allInstructors.add(enseignant);
 		}
 		return allInstructors;
-	}// end of insertEnseignants
+	}
+	
+
+	@SuppressWarnings("rawtypes")
+	private ArrayList<StiActivity> extractActivities(List activites) {
+		ArrayList<StiActivity> allActivities = new ArrayList<StiActivity>();
+		Iterator iterator = activites.iterator();
+		
+		while (iterator.hasNext()) {
+			// here, Element is a enseignant 
+			Element oneActivity = (Element) iterator.next();
+
+			HashMap<Integer, String> hm = new HashMap<Integer, String>();
+			// Put elements to the map
+			hm.put(AC, oneActivity.getAttributeValue("code_activite"));
+			hm.put(NAT, oneActivity.getAttributeValue("nature"));
+			hm.put(GRP, oneActivity.getAttributeValue("groupe"));
+			hm.put(UAA, oneActivity.getAttributeValue("uaa"));
+			StiActivity activity = new StiActivity(hm);
+
+			allActivities.add(activity);
+		}
+		return allActivities;
+	}
+	
+	
+	
 
 	/**
 	 * @param outputStream
