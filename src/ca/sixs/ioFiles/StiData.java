@@ -24,6 +24,7 @@ public class StiData {
 	public StiData() {
 		_instructors = new ArrayList<StiInstructor>();
 		_activities = new ArrayList<StiActivity>();
+		_students = new ArrayList<StiStudent>();
 	}
 
 	public void setInstructors(ArrayList<StiInstructor> si) {
@@ -42,7 +43,13 @@ public class StiData {
 		return _activities;
 	}
 	
+	
+	public void setStudents(ArrayList<StiStudent> students) {
+		_students = students;
+	}
+	
 	private ArrayList<StiInstructor> _instructors;
 	private ArrayList<StiActivity> _activities;
-
+	private ArrayList<StiStudent> _students;
+	
 }

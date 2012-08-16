@@ -61,14 +61,10 @@ public class StiFile implements InstructorConst, ActivityConst, SlotConst {
 		stiD.setActivities(loadActivities(activites));
 
 		// we have a element "diamant_cours" and we search Element "etudiants"
-		// Element etudiants = diamantCours.getChild("etudiants");
+		Element students = diamantCours.getChild("etudiants");
+		// thenloadActivites
+		stiD.setStudents(loadStudents(students));
 
-		// then we get a List from Element "etudiants"
-		// List etudiantsList = etudiants.getChildren("etudiant");
-
-		// call method to add all etudiants from current diamant_cours
-		// importOk = insertEtudiants(context, databaseName, etudiantsList,
-		// facultykey, sessionKey);
 		return stiD;
 
 	}
@@ -84,6 +80,13 @@ public class StiFile implements InstructorConst, ActivityConst, SlotConst {
 		List activitesList = activites.getChildren("activite");
 		return extractActivities(activitesList);
 	}
+	
+	
+	@SuppressWarnings("rawtypes")
+	private ArrayList<StiStudent> loadStudents(Element students) {
+		List studentList = students.getChildren("etudiant");
+		return extractStudents(studentList);
+	}
 
 	@SuppressWarnings("rawtypes")
 	private ArrayList<StiInstructorID> loadInstructorsFromActivities(
@@ -94,7 +97,7 @@ public class StiFile implements InstructorConst, ActivityConst, SlotConst {
 
 	@SuppressWarnings("rawtypes")
 	private ArrayList<StiSlot> loadSlotsFromActivities(Element slots) {
-		List slotsList = slots.getChildren("blocs_horaire");
+		List slotsList = slots.getChildren("bloc_horaire");
 		return extractSlotsForActivity(slotsList);
 	}
 
@@ -149,6 +152,28 @@ public class StiFile implements InstructorConst, ActivityConst, SlotConst {
 			allActivities.add(activity);
 		}
 		return allActivities;
+	}
+	
+	
+	@SuppressWarnings("rawtypes")
+	private ArrayList<StiStudent> extractStudents(List students) {
+		ArrayList<StiStudent> allStudents = new ArrayList<StiStudent>();
+		Iterator iterator = students.iterator();
+		HashMap<Integer, String> hm = new HashMap<Integer, String>();
+
+		while (iterator.hasNext()) {
+			Element oneStudent = (Element) iterator.next();
+
+			// Put elements to the map
+			hm.put(ID, oneStudent.getAttributeValue("id_enseignant"));
+			hm.put(FN, oneStudent.getAttributeValue("prenom_enseignant"));
+			hm.put(LN, oneStudent.getAttributeValue("nom_enseignant"));
+			hm.put(TY, oneStudent.getAttributeValue("statut_enseignant"));
+			StiStudent student = new StiStudent(hm);
+
+//			allStudents.add(instructor);
+		}
+		return allStudents;
 	}
 
 	@SuppressWarnings("rawtypes")

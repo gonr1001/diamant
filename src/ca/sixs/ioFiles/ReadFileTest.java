@@ -34,21 +34,24 @@ public class ReadFileTest extends TestCase {
 		
 		try {
 			StiData stiD = sf.loadData(_path + "stiFile0.xml");		
-			assertEquals("testReadSTIFile", "503335", stiD.getInstructors().get(0).getInstructorID());
-			assertEquals("testReadSTIFile", "SCA701-1-01", stiD.getInstructors().get(96).getInstructorID() );
-			assertEquals("testReadSTIFile", 97, stiD.getInstructors().size());
+			assertEquals("testReadSTIFile ", "503335", stiD.getInstructors().get(0).getInstructorID());
+			assertEquals("testReadSTIFile ", "SCA701-1-01", stiD.getInstructors().get(96).getInstructorID() );
+			assertEquals("testReadSTIFile ", 97, stiD.getInstructors().size());
 			
 			StiActivity sa = stiD.getActivities().get(0);
-			assertEquals("testReadSTIFile", sa.getActivityCode(), "AMC917");
+			assertEquals("testReadSTIFile ", "AMC917", sa.getActivityCode());
 			ArrayList<StiInstructorID> instuctorsID = sa.getInstructors();
-			assertEquals("testReadSTIFile", 1, instuctorsID.size());
+			assertEquals("testReadSTIFile ", 1, instuctorsID.size());
 			
-			assertEquals("testReadSTIFile", instuctorsID.get(0).getInstructorID(), "503335");
+			assertEquals("testReadSTIFile ", "503335",  instuctorsID.get(0).getInstructorID());
 			
-			
-			
-			assertEquals("testReadSTIFile", stiD.getActivities().get(211).getActivityCode(), "SCA701");
-			assertEquals("testReadSTIFile", 212, stiD.getActivities().size());
+			ArrayList<StiSlot> slots = sa.getSlots();
+			assertEquals("testReadSTIFile ", 2, slots.size());
+			assertEquals("testReadSTIFile ", "JE", slots.get(0).getDay());
+			assertEquals("testReadSTIFile ", "JE", slots.get(1).getDay());
+					
+			assertEquals("testReadSTIFile ", "SCA701", stiD.getActivities().get(211).getActivityCode());
+			assertEquals("testReadSTIFile ", 212, stiD.getActivities().size());
 
 		} catch (FileNotFoundException e) {
 			assertEquals(true  ,e.toString().contains("FileNotFoundException"));
