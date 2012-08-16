@@ -59,12 +59,9 @@ public class StiFile implements InstructorConst, ActivityConst {
 		Element activites = diamantCours.getChild("activites");
 		// thenloadActivites
 		stiD.setActivities(loadActivities(activites));
-		// call method to add all activites from current diamant_cours
-		// importOk = insertActivites(context, databaseName, activitesList,
-		// facultykey, sessionKey);
+		
 
-		// we have a element "diamant_cours" and we search Element
-		// "etudiants"
+		// we have a element "diamant_cours" and we search Element "etudiants"
 //		Element etudiants = diamantCours.getChild("etudiants");
 
 		// then we get a List from Element "etudiants"
@@ -92,23 +89,23 @@ public class StiFile implements InstructorConst, ActivityConst {
 
 	
 	@SuppressWarnings("rawtypes")
-	private ArrayList<StiInstructor> extractInstructors(List intructors) {
+	private ArrayList<StiInstructor> extractInstructors(List instructors) {
 		ArrayList<StiInstructor> allInstructors = new ArrayList<StiInstructor>();
-		Iterator iterator = intructors.iterator();
+		Iterator iterator = instructors.iterator();
+		HashMap<Integer, String> hm = new HashMap<Integer, String>();
 		
 		while (iterator.hasNext()) {
 			// here, Element is a enseignant 
-			Element oneEnseignant = (Element) iterator.next();
-
-			HashMap<Integer, String> hm = new HashMap<Integer, String>();
+			Element oneInstructor = (Element) iterator.next();
+			
 			// Put elements to the map
-			hm.put(ID, oneEnseignant.getAttributeValue("id_enseignant"));
-			hm.put(FN, oneEnseignant.getAttributeValue("prenom_enseignant"));
-			hm.put(LN, oneEnseignant.getAttributeValue("nom_enseignant"));
-			hm.put(TY, oneEnseignant.getAttributeValue("statut_enseignant"));
-			StiInstructor enseignant = new StiInstructor(hm);
+			hm.put(ID, oneInstructor.getAttributeValue("id_enseignant"));
+			hm.put(FN, oneInstructor.getAttributeValue("prenom_enseignant"));
+			hm.put(LN, oneInstructor.getAttributeValue("nom_enseignant"));
+			hm.put(TY, oneInstructor.getAttributeValue("statut_enseignant"));
+			StiInstructor instructor = new StiInstructor(hm);
 
-			allInstructors.add(enseignant);
+			allInstructors.add(instructor);
 		}
 		return allInstructors;
 	}
@@ -118,13 +115,16 @@ public class StiFile implements InstructorConst, ActivityConst {
 	private ArrayList<StiActivity> extractActivities(List activites) {
 		ArrayList<StiActivity> allActivities = new ArrayList<StiActivity>();
 		Iterator iterator = activites.iterator();
-	
+		Element instructors;
+		
+		HashMap<Integer, String> hm = new HashMap<Integer, String>();
+		
 		while (iterator.hasNext()) {
 			// here, Element is an activity 
 			
 			Element oneActivity = (Element) iterator.next();
 
-			HashMap<Integer, String> hm = new HashMap<Integer, String>();
+			
 			// Put elements to the map
 			hm.put(AC, oneActivity.getAttributeValue("code_activite"));
 			hm.put(ACT_TYP, oneActivity.getAttributeValue("nature"));
@@ -134,11 +134,47 @@ public class StiFile implements InstructorConst, ActivityConst {
 			hm.put(MAX_S, oneActivity.getAttributeValue("max_etudiant"));
 			StiActivity activity = new StiActivity(hm);
 
+			
+			
+			instructors = oneActivity.getChild("enseignants");
+			//ArrayList<StiInstructorID> inst = loadInstructorsFromActivities(instructors);
+			activity.setInstructors(loadInstructorsFromActivities(instructors));
+			
+//			stiD.setInstructors(loadInstructors(instructors));
+			
 			allActivities.add(activity);
 		}
 		return allActivities;
 	}
 	
+	
+	@SuppressWarnings("rawtypes")
+	private ArrayList<StiInstructorID> loadInstructorsFromActivities(Element instructors) {		
+		List instructorsList = instructors.getChildren("enseignant");		
+		return extractInstructorsForActivity(instructorsList);		
+	}
+	
+	
+	@SuppressWarnings("rawtypes")
+	private ArrayList<StiInstructorID> extractInstructorsForActivity(
+			List instructors) {
+		ArrayList <StiInstructorID> instructorsForActivity = new ArrayList<StiInstructorID>();
+		Iterator iterator = instructors.iterator();
+		HashMap<Integer, String> hm = new HashMap<Integer, String>();
+		while (iterator.hasNext()) {
+			// here, Element is an Activites folder
+			Element oneInstructor =   (Element) iterator.next();
+			// Put elements to the map
+			hm.put(ID, oneInstructor.getAttributeValue("id_enseignant"));
+			StiInstructorID si = new StiInstructorID(hm);
+			instructorsForActivity.add(si);
+		}// End of While
+		return instructorsForActivity;
+	}
+
+	
+	
+
 //	private boolean insertActivites(List activites) {
 //
 //		boolean importOk = true;
@@ -167,28 +203,11 @@ public class StiFile implements InstructorConst, ActivityConst {
 //				SiigActivite activite = new SiigActivite();
 //				ArrayList activityByTeacher = new ArrayList();
 //				ArrayList timeTableByActivity = new ArrayList();
+
+////
+////				allActivitys.add(activite);
 //
-//				// Get Siig ActiviteCatKey and ActiviteCatCode
-//				activite.setActiviteCode(oneActivite
-//						.getAttributeValue("code_activite"));
-//				activite.setSessionKey(sessionKey);
-//				activite.setFacultyKey(Integer.parseInt(facultykey));
-//				activite.setActiviteGroupe(oneActivite
-//						.getAttributeValue("groupe"));
-//				activite.setActiviteLieu(oneActivite.getAttributeValue("lieu"));
-//				activite.setActiviteNature(oneActivite
-//						.getAttributeValue("nature"));
-//				activite.setActiviteMaxEtudiant(Integer.parseInt(oneActivite
-//						.getAttributeValue("max_etudiant")));
-//
-//				allActivitys.add(activite);
-//
-//				enseignants = oneActivite.getChild("enseignants");
-//				enseignantsList = enseignants.getChildren("enseignant");
-//				activiteKey = activite.getActiviteCode()
-//						+ activite.getActiviteGroupe()
-//						+ activite.getActiviteLieu()
-//						+ activite.getActiviteNature();
+
 //
 //				activityByTeacher = insertEnseignantsByActivity(context,
 //						databaseName, enseignantsList, activiteKey);

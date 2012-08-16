@@ -14,6 +14,7 @@ package ca.sixs.ioFiles;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import junit.framework.TestCase;
 
@@ -37,8 +38,14 @@ public class ReadFileTest extends TestCase {
 			assertEquals("testReadSTIFile", "SCA701-1-01", stiD.getInstructors().get(96).getInstructorID() );
 			assertEquals("testReadSTIFile", 97, stiD.getInstructors().size());
 			
+			StiActivity sa = stiD.getActivities().get(0);
+			assertEquals("testReadSTIFile", sa.getActivityCode(), "AMC917");
+			ArrayList<StiInstructorID> instuctorsID = sa.getInstructors();
+			assertEquals("testReadSTIFile", instuctorsID.size(), 1);
+			assertEquals("testReadSTIFile", instuctorsID.get(0).getInstructorID(), "503335");
 			
-			assertEquals("testReadSTIFile", stiD.getActivities().get(0).getActivityCode(), "AMC917");
+			
+			
 			assertEquals("testReadSTIFile", stiD.getActivities().get(211).getActivityCode(), "SCA701");
 			assertEquals("testReadSTIFile", 212, stiD.getActivities().size());
 
