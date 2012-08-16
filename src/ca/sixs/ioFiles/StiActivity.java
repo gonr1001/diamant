@@ -64,6 +64,18 @@ public class StiActivity implements ActivityConst {
 	public ArrayList<StiInstructorID> getInstructors() {
 		return _instructorsForActivity ;
 	}
+	
+	
+	/**
+	 * @param loadInstructorsFromActivities
+	 */
+	public void setSlots(ArrayList<StiSlot> slots) {
+		_slotsForActivity = slots;
+	}
+	
+	public ArrayList<StiSlot> getSlots() {
+		return _slotsForActivity ;
+	}
 
 	private String _activityCode;
 	private String _activityType;
@@ -72,5 +84,5 @@ public class StiActivity implements ActivityConst {
 	private String _location;
 	private String _maxStudents;
 	private ArrayList<StiInstructorID> _instructorsForActivity;
-
+	private ArrayList<StiSlot> _slotsForActivity;
 }
