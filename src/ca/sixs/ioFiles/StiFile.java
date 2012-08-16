@@ -32,7 +32,7 @@ import org.jdom.input.SAXBuilder;
  * @author gonr1001
  * 
  */
-public class StiFile implements InstructorConst, ActivityConst {
+public class StiFile implements InstructorConst, ActivityConst, SlotConst {
 
 	/**
 	 * @param inputStream
@@ -86,13 +86,25 @@ public class StiFile implements InstructorConst, ActivityConst {
 	}
 
 	@SuppressWarnings("rawtypes")
+	private ArrayList<StiInstructorID> loadInstructorsFromActivities(
+			Element instructors) {
+		List instructorsList = instructors.getChildren("enseignant");
+		return extractInstructorsForActivity(instructorsList);
+	}
+
+	@SuppressWarnings("rawtypes")
+	private ArrayList<StiSlot> loadSlotsFromActivities(Element slots) {
+		List slotsList = slots.getChildren("blocs_horaire");
+		return extractSlotsForActivity(slotsList);
+	}
+
+	@SuppressWarnings("rawtypes")
 	private ArrayList<StiInstructor> extractInstructors(List instructors) {
 		ArrayList<StiInstructor> allInstructors = new ArrayList<StiInstructor>();
 		Iterator iterator = instructors.iterator();
 		HashMap<Integer, String> hm = new HashMap<Integer, String>();
 
 		while (iterator.hasNext()) {
-			// here, Element is a enseignant
 			Element oneInstructor = (Element) iterator.next();
 
 			// Put elements to the map
@@ -117,8 +129,6 @@ public class StiFile implements InstructorConst, ActivityConst {
 		HashMap<Integer, String> hm = new HashMap<Integer, String>();
 
 		while (iterator.hasNext()) {
-			// here, Element is an activity
-
 			Element oneActivity = (Element) iterator.next();
 
 			// Put elements to the map
@@ -134,28 +144,11 @@ public class StiFile implements InstructorConst, ActivityConst {
 			activity.setInstructors(loadInstructorsFromActivities(instructors));
 
 			slots = oneActivity.getChild("blocs_horaires");
-			// ArrayList<StiInstructorID> inst =
-			// loadInstructorsFromActivities(instructors);
 			activity.setSlots(loadSlotsFromActivities(slots));
-
-			// stiD.setInstructors(loadInstructors(instructors));
 
 			allActivities.add(activity);
 		}
 		return allActivities;
-	}
-
-	@SuppressWarnings("rawtypes")
-	private ArrayList<StiInstructorID> loadInstructorsFromActivities(
-			Element instructors) {
-		List instructorsList = instructors.getChildren("enseignant");
-		return extractInstructorsForActivity(instructorsList);
-	}
-
-	@SuppressWarnings("rawtypes")
-	private ArrayList<StiSlot> loadSlotsFromActivities(Element slots) {
-		List slotsList = slots.getChildren("blocs_horaire");
-		return extractSlotsForActivity(slotsList);
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -183,7 +176,12 @@ public class StiFile implements InstructorConst, ActivityConst {
 		while (iterator.hasNext()) {
 			Element oneSlot = (Element) iterator.next();
 			// Put elements to the map
-			hm.put(ID, oneSlot.getAttributeValue("id_enseignant"));
+			hm.put(DAY, oneSlot.getAttributeValue("jour"));
+			hm.put(BEGIN, oneSlot.getAttributeValue("heure_debut"));
+			hm.put(END, oneSlot.getAttributeValue("heure_fin"));
+			hm.put(FIXED, oneSlot.getAttributeValue("horaire_fixe"));
+			hm.put(ROOM, oneSlot.getAttributeValue("local"));
+			hm.put(ROOM_FIXED, oneSlot.getAttributeValue("local_fixe"));
 			StiSlot ss = new StiSlot(hm);
 			slotsForActivity.add(ss);
 		}// End of While

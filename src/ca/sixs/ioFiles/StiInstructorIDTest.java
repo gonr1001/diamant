@@ -17,17 +17,15 @@ import junit.framework.TestCase;
 
 /**
  * @author gonr1001
- *
+ * 
  */
 public class StiInstructorIDTest extends TestCase implements InstructorConst {
 
-	public void testStiInstructor() {
+	public void testStiInstructorID() {
 		HashMap<Integer, String> hm = new HashMap<Integer, String>();
-
 		hm.put(ID, "423486");
-		
 		StiInstructor si = new StiInstructor(hm);
 
-		assertEquals("testStiInstructor id: ", si.getInstructorID(), "423486");
+		assertEquals("testStiInstructorID", "423486", si.getInstructorID());
 	}
 }

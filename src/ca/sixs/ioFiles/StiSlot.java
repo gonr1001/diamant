@@ -20,31 +20,45 @@ import java.util.HashMap;
 public class StiSlot implements SlotConst {
 
 	public StiSlot(HashMap<Integer, String> hm) {
-//		_instructorID = hm.get(ID);
-//		_instructorFirstName = hm.get(FN);
-//		_intructorLastName = hm.get(LN);
-//		_instructorType = hm.get(TY);
+		_day = hm.get(DAY);
+		_begin = hm.get(BEGIN);
+		_end = hm.get(END);
+		_fixed = hm.get(FIXED);
+		_room = hm.get(ROOM);
+		_room_fixed = hm.get(ROOM_FIXED);
+
 	}
 
-	public String getInstructorID() {
-		return this._instructorID;
+	public String getDay() {
+		return this._day; 		
 	}
 
-	public String getinstructorFirstName() {
-		return this._instructorFirstName;
+	public String getBegin() {
+		return this._begin;
 	}
 
-	public String getInstructorLastName() {
-		return this._intructorLastName;
+	public String getEnd() {
+		return this._end;
+		
 	}
 
-	public String getinstructorType() {
-		return this._instructorType;
+	public String getFixed() {
+		return this._fixed;
+	}
+	
+	public String getRoom() {
+		return this._room;
+	}
+	
+	public String getRoomFixed() {
+		return this._room_fixed; 
 	}
 
-	private String _instructorID;
-	private String _instructorFirstName;
-	private String _intructorLastName;
-	private String _instructorType;
+	private String _day;
+	private String _begin;
+	private String _end;
+	private String _fixed;
+	private String _room;
+	private String _room_fixed;
 
 }

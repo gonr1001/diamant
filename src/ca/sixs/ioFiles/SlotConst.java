@@ -17,9 +17,12 @@ package ca.sixs.ioFiles;
  */
 public interface SlotConst {
 	
-	final int ID = 1; 
-	final int FN = 2;
-	final int LN = 3; 
-	final int TY = 4;
-
+	final int DAY = 1; 
+	final int BEGIN = 2;
+	final int END = 3; 
+	final int FIXED = 4;
+	final int ROOM = 5;
+	final int ROOM_FIXED = 6;
+	
 }
+
