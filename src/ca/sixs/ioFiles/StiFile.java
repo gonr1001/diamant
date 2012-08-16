@@ -169,7 +169,7 @@ public class StiFile implements InstructorConst, ActivityConst, SlotConst {
 			hm.put(FN, oneStudent.getAttributeValue("prenom_enseignant"));
 			hm.put(LN, oneStudent.getAttributeValue("nom_enseignant"));
 			hm.put(TY, oneStudent.getAttributeValue("statut_enseignant"));
-			StiStudent student = new StiStudent(hm);
+//			StiStudent student = new StiStudent(hm);
 
 //			allStudents.add(instructor);
 		}

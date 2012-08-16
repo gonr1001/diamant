@@ -48,6 +48,10 @@ public class StiData {
 		_students = students;
 	}
 	
+	public ArrayList<StiStudent> getStudents() {
+		return _students;
+	}
+	
 	private ArrayList<StiInstructor> _instructors;
 	private ArrayList<StiActivity> _activities;
 	private ArrayList<StiStudent> _students;
