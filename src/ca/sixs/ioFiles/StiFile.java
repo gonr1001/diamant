@@ -116,6 +116,7 @@ public class StiFile implements InstructorConst, ActivityConst {
 		ArrayList<StiActivity> allActivities = new ArrayList<StiActivity>();
 		Iterator iterator = activites.iterator();
 		Element instructors;
+		Element slots;
 		
 		HashMap<Integer, String> hm = new HashMap<Integer, String>();
 		
@@ -133,12 +134,13 @@ public class StiFile implements InstructorConst, ActivityConst {
 			hm.put(LOC, oneActivity.getAttributeValue("lieu"));
 			hm.put(MAX_S, oneActivity.getAttributeValue("max_etudiant"));
 			StiActivity activity = new StiActivity(hm);
-
-			
 			
 			instructors = oneActivity.getChild("enseignants");
-			//ArrayList<StiInstructorID> inst = loadInstructorsFromActivities(instructors);
 			activity.setInstructors(loadInstructorsFromActivities(instructors));
+			
+			slots = oneActivity.getChild("blocs_horaires");
+			//ArrayList<StiInstructorID> inst = loadInstructorsFromActivities(instructors);
+//			activity.setInstructors(loadSlotsFromActivities(slots));
 			
 //			stiD.setInstructors(loadInstructors(instructors));
 			
@@ -152,6 +154,12 @@ public class StiFile implements InstructorConst, ActivityConst {
 	private ArrayList<StiInstructorID> loadInstructorsFromActivities(Element instructors) {		
 		List instructorsList = instructors.getChildren("enseignant");		
 		return extractInstructorsForActivity(instructorsList);		
+	}
+	
+	@SuppressWarnings("rawtypes")
+	private ArrayList<StiInstructorID> loadSlotsFromActivities(Element slots) {		
+		List slotsList = slots.getChildren("blocs_horaire");		
+		return extractInstructorsForActivity(slotsList);		
 	}
 	
 	
@@ -170,6 +178,23 @@ public class StiFile implements InstructorConst, ActivityConst {
 			instructorsForActivity.add(si);
 		}// End of While
 		return instructorsForActivity;
+	}
+	
+	@SuppressWarnings("rawtypes")
+	private ArrayList<StiSlot> extractSlotsForActivity(
+			List slots) {
+		ArrayList <StiSlot> slotsForActivity = new ArrayList<StiSlot>();
+		Iterator iterator = slots.iterator();
+		HashMap<Integer, String> hm = new HashMap<Integer, String>();
+		while (iterator.hasNext()) {
+			// here, Element is an Activites folder
+			Element oneSlot =   (Element) iterator.next();
+			// Put elements to the map
+			hm.put(ID, oneSlot.getAttributeValue("id_enseignant"));
+			StiSlot ss = new StiSlot(hm);
+			slotsForActivity.add(ss);
+		}// End of While
+		return slotsForActivity;
 	}
 
 	

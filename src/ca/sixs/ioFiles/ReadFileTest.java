@@ -41,7 +41,8 @@ public class ReadFileTest extends TestCase {
 			StiActivity sa = stiD.getActivities().get(0);
 			assertEquals("testReadSTIFile", sa.getActivityCode(), "AMC917");
 			ArrayList<StiInstructorID> instuctorsID = sa.getInstructors();
-			assertEquals("testReadSTIFile", instuctorsID.size(), 1);
+			assertEquals("testReadSTIFile", 1, instuctorsID.size());
+			
 			assertEquals("testReadSTIFile", instuctorsID.get(0).getInstructorID(), "503335");
 			
 			
