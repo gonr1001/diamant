@@ -24,4 +24,7 @@ public interface ActivityConst {
 	final int LOC = 5;
 	final int MAX_S = 6;
 	
+	
+	final int FIX_GRP = 7;
+	
 }

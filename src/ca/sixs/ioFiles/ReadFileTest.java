@@ -52,6 +52,12 @@ public class ReadFileTest extends TestCase {
 					
 			assertEquals("testReadSTIFile ", "SCA701", stiD.getActivities().get(211).getActivityCode());
 			assertEquals("testReadSTIFile ", 212, stiD.getActivities().size());
+			
+			StiStudent ss = stiD.getStudents().get(884);
+			
+			assertEquals("testReadSTIFile ", "121547402145000720123", ss.getStudentID());
+			assertEquals("testReadSTIFile ", 885, stiD.getStudents().size());
+
 
 		} catch (FileNotFoundException e) {
 			assertEquals(true  ,e.toString().contains("FileNotFoundException"));

@@ -31,9 +31,9 @@ public class StiStudentTest extends TestCase implements StudentConst {
 		StiStudent ss = new StiStudent(hm);
 
 		assertEquals("testStiStudent", "121547402145000720123",
-				ss.getInstructorID());
-		assertEquals("testStiStudent", "Jonathan", ss.getinstructorFirstName());
-		assertEquals("testStiStudent", "Baril Roy", ss.getInstructorLastName());
+				ss.getStudentID());
+		assertEquals("testStiStudent", "Jonathan", ss.getStudentFirstName());
+		assertEquals("testStiStudent", "Baril Roy", ss.getStudentrLastName());
 
 	}
 

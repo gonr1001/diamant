@@ -11,6 +11,7 @@
  */
 package ca.sixs.ioFiles;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -26,20 +27,32 @@ public class StiStudent implements StudentConst {
 
 	}
 
-	public String getInstructorID() {
+	public String getStudentID() {
 		return this._student_ID;
 	}
 
-	public String getinstructorFirstName() {
+	public String getStudentFirstName() {
 		return this._studentFirstName;
 	}
 
-	public String getInstructorLastName() {
+	public String getStudentrLastName() {
 		return this._studentLastName;
+	}
+	
+	/**
+	 * @param loadInstructorsFromActivities
+	 */
+	public void setActivities(ArrayList<StiActivityInStudent> slots) {
+		_activitiesForStudent = slots;
+	}
+
+	public ArrayList<StiActivityInStudent> getActivities() {
+		return _activitiesForStudent;
 	}
 
 	private String _student_ID;
 	private String _studentFirstName;
 	private String _studentLastName;
+	private ArrayList<StiActivityInStudent> _activitiesForStudent;
 
 }

@@ -21,7 +21,7 @@ import java.util.HashMap;
 public class StiActivity implements ActivityConst {
 
 	public StiActivity(HashMap<Integer, String> hm) {
-		_instructorsForActivity = new ArrayList<StiInstructorID>();
+		//_instructorsForActivity = new ArrayList<StiInstructorID>();
 		_activityCode = hm.get(AC);
 		_activityType = hm.get(ACT_TYP);
 		_group = hm.get(GRP);
@@ -60,21 +60,20 @@ public class StiActivity implements ActivityConst {
 	public void setInstructors(ArrayList<StiInstructorID> instructors) {
 		_instructorsForActivity = instructors;
 	}
-	
+
 	public ArrayList<StiInstructorID> getInstructors() {
-		return _instructorsForActivity ;
+		return _instructorsForActivity;
 	}
-	
-	
+
 	/**
 	 * @param loadInstructorsFromActivities
 	 */
 	public void setSlots(ArrayList<StiSlot> slots) {
 		_slotsForActivity = slots;
 	}
-	
+
 	public ArrayList<StiSlot> getSlots() {
-		return _slotsForActivity ;
+		return _slotsForActivity;
 	}
 
 	private String _activityCode;
@@ -85,4 +84,5 @@ public class StiActivity implements ActivityConst {
 	private String _maxStudents;
 	private ArrayList<StiInstructorID> _instructorsForActivity;
 	private ArrayList<StiSlot> _slotsForActivity;
+
 }
