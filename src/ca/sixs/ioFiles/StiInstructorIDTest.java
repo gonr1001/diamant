@@ -23,7 +23,7 @@ public class StiInstructorIDTest extends TestCase implements InstructorConst {
 
 	public void testStiInstructorID() {
 		HashMap<Integer, String> hm = new HashMap<Integer, String>();
-		hm.put(ID, "423486");
+		hm.put(ID_I, "423486");
 		StiInstructor si = new StiInstructor(hm);
 
 		assertEquals("testStiInstructorID", "423486", si.getInstructorID());

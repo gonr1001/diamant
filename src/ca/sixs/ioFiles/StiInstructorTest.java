@@ -24,18 +24,18 @@ public class StiInstructorTest extends TestCase implements InstructorConst {
 	public void testStiInstructor() {
 		HashMap<Integer, String> hm = new HashMap<Integer, String>();
 
-		hm.put(ID, "423486");
-		hm.put(FN, "François");
-		hm.put(LN, "Gitzhofer");
+		hm.put(ID_I, "423486");
+		hm.put(FN_I, "François");
+		hm.put(LN_I, "Gitzhofer");
 		hm.put(TY, "1");
 
 		StiInstructor si = new StiInstructor(hm);
 
-		assertEquals("testStiInstructor id: ", si.getInstructorID(), "423486");
-		assertEquals("testStiInstructor firstName: ",
-				si.getinstructorFirstName(), "François");
-		assertEquals("testStiInstructor id:", si.getInstructorLastName(),
-				"Gitzhofer");
-		assertEquals("testStiInstructor id:", si.getinstructorType(), "1");
+		assertEquals("testStiInstructor ", "423486", si.getInstructorID());
+		assertEquals("testStiInstructor ", "François",
+				si.getinstructorFirstName());
+		assertEquals("testStiInstructor ", "Gitzhofer",
+				si.getInstructorLastName());
+		assertEquals("testStiInstructor ", "1", si.getinstructorType());
 	}
 }

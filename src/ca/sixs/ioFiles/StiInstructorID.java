@@ -21,7 +21,7 @@ import java.util.HashMap;
 public class StiInstructorID implements InstructorConst {
 
 	public StiInstructorID(HashMap<Integer, String> hm) {
-		_instructorID = hm.get(ID);
+		_instructorID = hm.get(ID_I);
 	}
 
 	public String getInstructorID() {

@@ -17,28 +17,24 @@ import junit.framework.TestCase;
 
 /**
  * @author gonr1001
- *
+ * 
  */
-public class StiStudentTest extends TestCase implements InstructorConst {
+public class StiStudentTest extends TestCase implements StudentConst {
 
-	public void testStiInstructor() {
+	public void testStiStudent() {
 		HashMap<Integer, String> hm = new HashMap<Integer, String>();
 
-		hm.put(ID, "423486");
-		hm.put(FN, "François");
-		hm.put(LN, "Gitzhofer");
-		hm.put(TY, "1");
+		hm.put(ID_S, "121547402145000720123");
+		hm.put(FN_S, "Jonathan");
+		hm.put(LN_S, "Baril Roy");
 
-		StiInstructor si = new StiInstructor(hm);
+		StiStudent ss = new StiStudent(hm);
 
-		assertEquals("testStiInstructor id: ", si.getInstructorID(), "423486");
-		assertEquals("testStiInstructor firstName: ",
-				si.getinstructorFirstName(), "François");
-		assertEquals("testStiInstructor id:", si.getInstructorLastName(),
-				"Gitzhofer");
-		assertEquals("testStiInstructor id:", si.getinstructorType(), "1");
+		assertEquals("testStiStudent", "121547402145000720123",
+				ss.getInstructorID());
+		assertEquals("testStiStudent", "Jonathan", ss.getinstructorFirstName());
+		assertEquals("testStiStudent", "Baril Roy", ss.getInstructorLastName());
+
 	}
-	
-	
 
 }

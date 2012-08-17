@@ -32,7 +32,7 @@ import org.jdom.input.SAXBuilder;
  * @author gonr1001
  * 
  */
-public class StiFile implements InstructorConst, ActivityConst, SlotConst {
+public class StiFile implements InstructorConst, ActivityConst, SlotConst, StudentConst {
 
 	/**
 	 * @param inputStream
@@ -111,9 +111,9 @@ public class StiFile implements InstructorConst, ActivityConst, SlotConst {
 			Element oneInstructor = (Element) iterator.next();
 
 			// Put elements to the map
-			hm.put(ID, oneInstructor.getAttributeValue("id_enseignant"));
-			hm.put(FN, oneInstructor.getAttributeValue("prenom_enseignant"));
-			hm.put(LN, oneInstructor.getAttributeValue("nom_enseignant"));
+			hm.put(ID_I, oneInstructor.getAttributeValue("id_enseignant"));
+			hm.put(FN_I, oneInstructor.getAttributeValue("prenom_enseignant"));
+			hm.put(LN_I, oneInstructor.getAttributeValue("nom_enseignant"));
 			hm.put(TY, oneInstructor.getAttributeValue("statut_enseignant"));
 			StiInstructor instructor = new StiInstructor(hm);
 
@@ -165,17 +165,34 @@ public class StiFile implements InstructorConst, ActivityConst, SlotConst {
 			Element oneStudent = (Element) iterator.next();
 
 			// Put elements to the map
-			hm.put(ID, oneStudent.getAttributeValue("id_enseignant"));
-			hm.put(FN, oneStudent.getAttributeValue("prenom_enseignant"));
-			hm.put(LN, oneStudent.getAttributeValue("nom_enseignant"));
-			hm.put(TY, oneStudent.getAttributeValue("statut_enseignant"));
-//			StiStudent student = new StiStudent(hm);
+			hm.put(ID_S, oneStudent.getAttributeValue("id_etudiant"));
+			hm.put(FN_S, oneStudent.getAttributeValue("prenom_etudiant"));
+			hm.put(LN_S, oneStudent.getAttributeValue("nom_enseignant"));
+			StiStudent student = new StiStudent(hm);
 
-//			allStudents.add(instructor);
+			allStudents.add(student);
 		}
 		return allStudents;
 	}
 
+	
+//	<etudiant id_etudiant="121547402145000720123" prenom_etudiant="Jonathan" nom_etudiant="Baril Roy">
+//	<activites>
+//	<activite code_activite="GEN101" nature="1" groupe="00" lieu="SHE" groupe_fixe="N"/>
+//	<activite code_activite="GEN111" nature="1" groupe="00" lieu="SHE" groupe_fixe="N"/>
+//	<activite code_activite="GEN122" nature="1" groupe="00" lieu="SHE" groupe_fixe="N"/>
+//	<activite code_activite="GEN135" nature="1" groupe="00" lieu="SHE" groupe_fixe="N"/>
+//	<activite code_activite="GEN136" nature="1" groupe="00" lieu="SHE" groupe_fixe="N"/>
+//	<activite code_activite="GEN143" nature="1" groupe="00" lieu="SHE" groupe_fixe="N"/>
+//	<activite code_activite="GEN144" nature="1" groupe="00" lieu="SHE" groupe_fixe="N"/>
+//	<activite code_activite="GEN145" nature="1" groupe="00" lieu="SHE" groupe_fixe="N"/>
+//	<activite code_activite="GEN150" nature="1" groupe="00" lieu="SHE" groupe_fixe="N"/>
+//	<activite code_activite="GEN170" nature="1" groupe="00" lieu="SHE" groupe_fixe="N"/>
+//	<total_activites total="10"/>
+	
+	
+	
+	
 	@SuppressWarnings("rawtypes")
 	private ArrayList<StiInstructorID> extractInstructorsForActivity(
 			List instructors) {
@@ -186,7 +203,7 @@ public class StiFile implements InstructorConst, ActivityConst, SlotConst {
 			// here, Element is an Activites folder
 			Element oneInstructor = (Element) iterator.next();
 			// Put elements to the map
-			hm.put(ID, oneInstructor.getAttributeValue("id_enseignant"));
+			hm.put(ID_I, oneInstructor.getAttributeValue("id_enseignant"));
 			StiInstructorID si = new StiInstructorID(hm);
 			instructorsForActivity.add(si);
 		}// End of While

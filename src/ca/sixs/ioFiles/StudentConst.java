@@ -13,14 +13,12 @@ package ca.sixs.ioFiles;
 
 /**
  * @author gonr1001
- * 
  *
  */
-public interface InstructorConst {
+public interface StudentConst {
 	
-	final int ID_I = 1; 
-	final int FN_I = 2;
-	final int LN_I = 3; 
-	final int TY = 4;
+	final int ID_S = 1; 
+	final int FN_S = 2;
+	final int LN_S = 3; 
 
 }

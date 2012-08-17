@@ -21,9 +21,9 @@ import java.util.HashMap;
 public class StiInstructor implements InstructorConst {
 
 	public StiInstructor(HashMap<Integer, String> hm) {
-		_instructorID = hm.get(ID);
-		_instructorFirstName = hm.get(FN);
-		_intructorLastName = hm.get(LN);
+		_instructorID = hm.get(ID_I);
+		_instructorFirstName = hm.get(FN_I);
+		_intructorLastName = hm.get(LN_I);
 		_instructorType = hm.get(TY);
 	}
 
