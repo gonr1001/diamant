@@ -82,6 +82,6 @@ public class RefinedStudMixAlgoTest extends TestCase {
 
 	public void test_build() {
 //		 _refined.build();
-//	 assertEquals("test_build: assertEquals", "", _dm1);
+	 assertEquals("test_build: assertEquals", "", _dm1);
 	}
 }
