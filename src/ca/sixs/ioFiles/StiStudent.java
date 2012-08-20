@@ -42,8 +42,8 @@ public class StiStudent implements StudentConst {
 	/**
 	 * @param loadInstructorsFromActivities
 	 */
-	public void setActivities(ArrayList<StiActivityInStudent> slots) {
-		_activitiesForStudent = slots;
+	public void setActivities(ArrayList<StiActivityInStudent> activites) {
+		_activitiesForStudent = activites;
 	}
 
 	public ArrayList<StiActivityInStudent> getActivities() {

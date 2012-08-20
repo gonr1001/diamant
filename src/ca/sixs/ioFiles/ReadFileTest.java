@@ -46,14 +46,44 @@ public class ReadFileTest extends TestCase {
 			assertEquals("testReadSTIFile ", "503335",  instuctorsID.get(0).getInstructorID());
 			
 			ArrayList<StiSlot> slots = sa.getSlots();
+			StiSlot stiSlot0 =slots.get(0);
+			StiSlot stiSlot1 =slots.get(1);
+			
 			assertEquals("testReadSTIFile ", 2, slots.size());
-			assertEquals("testReadSTIFile ", "JE", slots.get(0).getDay());
-			assertEquals("testReadSTIFile ", "JE", slots.get(1).getDay());
+			assertEquals("testReadSTIFile ", "JE", stiSlot0.getDay());
+			assertEquals("testReadSTIFile ", "08:30", stiSlot0.getBegin());
+			assertEquals("testReadSTIFile ", "12:30", stiSlot0.getEnd());
+			assertEquals("testReadSTIFile ", "O", stiSlot0.getFixed());
+			assertEquals("testReadSTIFile ", "C1-5012", stiSlot0.getRoom());
+			assertEquals("testReadSTIFile ", "O", stiSlot0.getRoomFixed());
+			
+			assertEquals("testReadSTIFile ", "JE", stiSlot1.getDay());
+			assertEquals("testReadSTIFile ", "13:30", stiSlot1.getBegin());
+			assertEquals("testReadSTIFile ", "17:30", stiSlot1.getEnd());
+			assertEquals("testReadSTIFile ", "O", stiSlot0.getFixed());
+			assertEquals("testReadSTIFile ", "C1-5012", stiSlot0.getRoom());
+			assertEquals("testReadSTIFile ", "O", stiSlot0.getRoomFixed());
+			
 					
 			assertEquals("testReadSTIFile ", "SCA701", stiD.getActivities().get(211).getActivityCode());
 			assertEquals("testReadSTIFile ", 212, stiD.getActivities().size());
 			
 			StiStudent ss = stiD.getStudents().get(884);
+			ArrayList<StiActivityInStudent> ssais = ss.getActivities();
+			StiActivityInStudent activityInStudent0 = ssais.get(0);
+			StiActivityInStudent activityInStudent9 = ssais.get(9);
+			
+			assertEquals("testReadSTIFile ", 10, ssais.size());
+			assertEquals("testReadSTIFile ", "GEN101", activityInStudent0.getActivityCode());
+			assertEquals("testReadSTIFile ", "1", activityInStudent0.getType());
+			assertEquals("testReadSTIFile ", "N", activityInStudent0.getFixedGroup());
+			assertEquals("testReadSTIFile ", "00", activityInStudent0.getGroup());
+			assertEquals("testReadSTIFile ", "SHE", activityInStudent0.getLocation());
+			assertEquals("testReadSTIFile ", "GEN170", activityInStudent9.getActivityCode());
+			assertEquals("testReadSTIFile ", "1", activityInStudent0.getType());
+			assertEquals("testReadSTIFile ", "N", activityInStudent0.getFixedGroup());
+			assertEquals("testReadSTIFile ", "00", activityInStudent0.getGroup());
+			assertEquals("testReadSTIFile ", "SHE", activityInStudent0.getLocation());
 			
 			assertEquals("testReadSTIFile ", "121547402145000720123", ss.getStudentID());
 			assertEquals("testReadSTIFile ", 885, stiD.getStudents().size());

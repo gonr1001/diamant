@@ -11,7 +11,6 @@
  */
 package ca.sixs.ioFiles;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -20,14 +19,12 @@ import java.util.HashMap;
  */
 public class StiActivityInStudent implements ActivityConst {
 	
-
 	public StiActivityInStudent(HashMap<Integer, String> hm) {
-		//_instructorsForActivity = new ArrayList<StiInstructorID>();
 		_activityCode = hm.get(AC);
 		_activityType = hm.get(ACT_TYP);
 		_group = hm.get(GRP);
 		_location = hm.get(LOC);
-		_fixedGroup = hm.get(MAX_S);
+		_fixedGroup = hm.get(FIX_GRP);
 	}
 
 	public String getActivityCode() {
@@ -41,7 +38,6 @@ public class StiActivityInStudent implements ActivityConst {
 	public String getGroup() {
 		return this._group;
 	}
-
 
 	public String getLocation() {
 		return this._location;

@@ -102,6 +102,12 @@ public class StiFile implements InstructorConst, ActivityConst, SlotConst, Stude
 	}
 
 	@SuppressWarnings("rawtypes")
+	private ArrayList<StiActivityInStudent> loadActivitiesFromStudents(Element activities) {
+		List activitiesList = activities.getChildren("activite");
+		return extractActivitiesForStudents(activitiesList);
+	}
+	
+	@SuppressWarnings("rawtypes")
 	private ArrayList<StiInstructor> extractInstructors(List instructors) {
 		ArrayList<StiInstructor> allInstructors = new ArrayList<StiInstructor>();
 		Iterator iterator = instructors.iterator();
@@ -159,6 +165,7 @@ public class StiFile implements InstructorConst, ActivityConst, SlotConst, Stude
 	private ArrayList<StiStudent> extractStudents(List students) {
 		ArrayList<StiStudent> allStudents = new ArrayList<StiStudent>();
 		Iterator iterator = students.iterator();
+		Element activities;
 		HashMap<Integer, String> hm = new HashMap<Integer, String>();
 
 		while (iterator.hasNext()) {
@@ -169,29 +176,15 @@ public class StiFile implements InstructorConst, ActivityConst, SlotConst, Stude
 			hm.put(FN_S, oneStudent.getAttributeValue("prenom_etudiant"));
 			hm.put(LN_S, oneStudent.getAttributeValue("nom_enseignant"));
 			StiStudent student = new StiStudent(hm);
+			
+			activities = oneStudent.getChild("activites");
+			student.setActivities(loadActivitiesFromStudents(activities));
+			
 
 			allStudents.add(student);
 		}
 		return allStudents;
 	}
-
-	
-//	<etudiant id_etudiant="121547402145000720123" prenom_etudiant="Jonathan" nom_etudiant="Baril Roy">
-//	<activites>
-//	<activite code_activite="GEN101" nature="1" groupe="00" lieu="SHE" groupe_fixe="N"/>
-//	<activite code_activite="GEN111" nature="1" groupe="00" lieu="SHE" groupe_fixe="N"/>
-//	<activite code_activite="GEN122" nature="1" groupe="00" lieu="SHE" groupe_fixe="N"/>
-//	<activite code_activite="GEN135" nature="1" groupe="00" lieu="SHE" groupe_fixe="N"/>
-//	<activite code_activite="GEN136" nature="1" groupe="00" lieu="SHE" groupe_fixe="N"/>
-//	<activite code_activite="GEN143" nature="1" groupe="00" lieu="SHE" groupe_fixe="N"/>
-//	<activite code_activite="GEN144" nature="1" groupe="00" lieu="SHE" groupe_fixe="N"/>
-//	<activite code_activite="GEN145" nature="1" groupe="00" lieu="SHE" groupe_fixe="N"/>
-//	<activite code_activite="GEN150" nature="1" groupe="00" lieu="SHE" groupe_fixe="N"/>
-//	<activite code_activite="GEN170" nature="1" groupe="00" lieu="SHE" groupe_fixe="N"/>
-//	<total_activites total="10"/>
-	
-	
-	
 	
 	@SuppressWarnings("rawtypes")
 	private ArrayList<StiInstructorID> extractInstructorsForActivity(
@@ -222,94 +215,35 @@ public class StiFile implements InstructorConst, ActivityConst, SlotConst, Stude
 			hm.put(BEGIN, oneSlot.getAttributeValue("heure_debut"));
 			hm.put(END, oneSlot.getAttributeValue("heure_fin"));
 			hm.put(FIXED, oneSlot.getAttributeValue("horaire_fixe"));
-			hm.put(ROOM, oneSlot.getAttributeValue("local"));
+			hm.put(ROOM, oneSlot.getAttributeValue("no_local"));
 			hm.put(ROOM_FIXED, oneSlot.getAttributeValue("local_fixe"));
 			StiSlot ss = new StiSlot(hm);
 			slotsForActivity.add(ss);
 		}// End of While
 		return slotsForActivity;
 	}
-
-	// private boolean insertActivites(List activites) {
-	//
-	// boolean importOk = true;
-	// Element blocsHoraires;
-	// List blocsHorairesList;
-	// Element enseignants;
-	// List enseignantsList;
-	// String code = null;
-	// ArrayList allActivitys = new ArrayList();
-	// ArrayList allTeachersByActivity = new ArrayList();
-	// ArrayList allHorairesByActivity = new ArrayList();
-	// SelectSiigActivite selectSiigActivite = new SelectSiigActivite();
-	//
-	// try {
-	//
-	// // call one Activites folder with Activites from diamant_cours
-	// Iterator iterator = activites.iterator();
-	//
-	// int lieuKey = 1;
-	//
-	// String activiteKey = "";
-	// int count = 1;
-	// while (iterator.hasNext()) {
-	// // here, Element is a Activites`folder
-	// Element oneActivite = (Element) iterator.next();
-	// SiigActivite activite = new SiigActivite();
-	// ArrayList activityByTeacher = new ArrayList();
-	// ArrayList timeTableByActivity = new ArrayList();
-
-	// //
-	// // allActivitys.add(activite);
-	//
-
-	//
-	// activityByTeacher = insertEnseignantsByActivity(context,
-	// databaseName, enseignantsList, activiteKey);
-	// allTeachersByActivity.addAll(activityByTeacher);
-	// // element "blocs_horaires"
-	// blocsHoraires = oneActivite.getChild("blocs_horaires");
-	// // List from Element "blocs_horaires"
-	// blocsHorairesList = blocsHoraires.getChildren("bloc_horaire");
-	//
-	// timeTableByActivity = insertHoraires(context, databaseName,
-	// blocsHorairesList, activiteKey);
-	// allHorairesByActivity.addAll(timeTableByActivity);
-	// count = count + 1;
-	// }// End of While
-	//
-	// importOk = selectSiigActivite
-	// .insertActivitesAndEnseingnantsAndBlocsHoraires(context,
-	// databaseName, allActivitys, allTeachersByActivity,
-	// allHorairesByActivity);
-	// } // End try
-	// catch (Exception e) {
-	// logger.warn("***** Error in insertActivites" + e.toString());
-	// }
-	// SiigActivite activite = new SiigActivite();
-	// int i = 0;
-	// for (i = 0; i < allActivitys.size(); i++) {
-	// activite = (SiigActivite) allActivitys.get(i);
-	//
-	// }
-	// SiigActiviteSiigEnseignant siigActiviteSiigEnseignant = new
-	// SiigActiviteSiigEnseignant();
-	// int j = 0;
-	// for (j = 0; j < allTeachersByActivity.size(); j++) {
-	// siigActiviteSiigEnseignant = (SiigActiviteSiigEnseignant)
-	// allTeachersByActivity
-	// .get(j);
-	//
-	// }
-	// SiigBlockHoraire siigBlockHoraire = new SiigBlockHoraire();
-	// int k = 0;
-	// for (k = 0; k < allHorairesByActivity.size(); k++) {
-	// siigBlockHoraire = (SiigBlockHoraire) allHorairesByActivity.get(k);
-	//
-	// }
-	//
-	// return importOk;
-	// }// end of insertActivites
+	
+	@SuppressWarnings("rawtypes")
+	private ArrayList<StiActivityInStudent> extractActivitiesForStudents(
+			List activities) {
+		ArrayList<StiActivityInStudent> activitiesForStudent = new ArrayList<StiActivityInStudent>();
+		Iterator iterator = activities.iterator();
+		HashMap<Integer, String> hm = new HashMap<Integer, String>();
+		while (iterator.hasNext()) {
+			// here, Element is an Activites folder
+			Element oneActivity = (Element) iterator.next();
+			// Put elements to the map
+			hm.put(AC, oneActivity.getAttributeValue("code_activite"));
+			hm.put(ACT_TYP, oneActivity.getAttributeValue("nature"));
+			hm.put(GRP, oneActivity.getAttributeValue("groupe"));
+			hm.put(LOC, oneActivity.getAttributeValue("lieu"));
+			hm.put(FIX_GRP, oneActivity.getAttributeValue("groupe_fixe"));
+			
+			StiActivityInStudent sais = new StiActivityInStudent(hm);
+			activitiesForStudent.add(sais);
+		}// End of While
+		return activitiesForStudent;
+	}
 
 	/**
 	 * @param outputStream
